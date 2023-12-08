@@ -21,8 +21,8 @@ function App() {
             variant="gradient"
             color="gray"
             className="mb-4 grid h-28 place-items-center">
-            <Typography variant="h3" color="white">
-              Sign In
+            <Typography variant="h3" color="red">
+              Book My Drone
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
@@ -51,7 +51,7 @@ function App() {
           </CardFooter>
         </Card>
       </div>
-      <img style={{width: '60%', height: '100vh'}} src="https://images.pexels.com/photos/158826/structure-light-led-movement-158826.jpeg" />
+      <img style={{width: '60%', height: '100vh'}} src="https://images.pexels.com/photos/257699/pexels-photo-257699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
     </div>
   );
 }
