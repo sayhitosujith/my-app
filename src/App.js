@@ -20,8 +20,7 @@ function App() {
           <CardHeader
             variant="gradient"
             color="gray"
-            className="mb-4 grid h-28 place-items-center"
-          >
+            className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
               Sign In
             </Typography>
@@ -52,7 +51,7 @@ function App() {
           </CardFooter>
         </Card>
       </div>
-      <img style={{width: '50%', height: '100vh'}} src="https://media.istockphoto.com/id/1465352994/photo/abstract-digital-background.webp?b=1&s=170667a&w=0&k=20&c=fbQF3xro_gX0A06HcEYRjERIgQA1lKe6q_X-_xEfRus=" />
+      <img style={{width: '60%', height: '100vh'}} src="https://images.pexels.com/photos/158826/structure-light-led-movement-158826.jpeg" />
     </div>
   );
 }
