@@ -1,4 +1,6 @@
 import './App.css';
+import ReactDOM from 'react-dom/client';
+
 
 import {
   Card,
@@ -9,6 +11,7 @@ import {
   Input,
   Checkbox,
   Button,
+  refreshPage,
 } from "@material-tailwind/react";
 
 
@@ -21,8 +24,8 @@ function App() {
             variant="gradient"
             color="gray"
             className="mb-4 grid h-28 place-items-center">
-            <Typography variant="h3" color="red">
-              Book My Drone
+            <Typography variant="h3" color="white">
+            ADMIN 
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
@@ -34,8 +37,15 @@ function App() {
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-              Sign In
+             Log In
             </Button>
+            &nbsp;
+            <Button variant="gradient" fullWidth>
+             The current time is
+             <b><h2>{new Date().toLocaleTimeString()}IST</h2></b> 
+            </Button>
+
+
             <Typography variant="small" className="mt-6 flex justify-center">
               Don&apos;t have an account?
               <Typography
@@ -43,17 +53,21 @@ function App() {
                 href="#signup"
                 variant="small"
                 color="blue-gray"
-                className="ml-1 font-bold"
-              >
+                className="ml-1 font-bold">
                 Sign up
               </Typography>
             </Typography>
           </CardFooter>
+          
+
         </Card>
       </div>
-      <img style={{width: '60%', height: '100vh'}} src="https://images.pexels.com/photos/257699/pexels-photo-257699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+      <img style={{width: '58%', height: '100vh'}} src="https://images.projectsgeek.com/2016/07/Dabbawala-Android-Project.jpg" />
     </div>
   );
+
+  
 }
 
 export default App;
+
