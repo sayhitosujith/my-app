@@ -40,6 +40,10 @@ function App() {
              Log In
             </Button>
             &nbsp;
+            <Typography
+          variant="p"
+          sx={{ letterSpacing: '1.5px', marginLeft: '10px'  }}>
+        </Typography>
             <Button variant="gradient" fullWidth>
              The current time is
              <b><h2>{new Date().toLocaleTimeString()}IST</h2></b> 

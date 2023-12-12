@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Home from './Home';
 import Profile from './components/profile';
+import Customer_Home from './Customer_Home';
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path: "/Customer_home",
+    element: <Customer_Home />,
   },
   {
     path: "/profile",
