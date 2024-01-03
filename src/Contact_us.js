@@ -13,61 +13,62 @@ import {
 } from "@material-tailwind/react";
 
 
-function App() {
+
+
+function Contact_us() {
   return (
     <div className="flex flex-row gap-5">
       <div className='w-1/2 h-screen flex items-center justify-center'>
-        <Card className="w-96">
+        <Card className="w-98">
           <CardHeader
             variant="gradient"
             color="gray"
             className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
-            Welcome to dabbawala 
+            Send us a Message. 
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
+            <Input label="First Name" size="lg" />
             <Input label="Email" size="lg" />
-            <Input label="Password" size="lg" />
-            <div className="-ml-2.5">
-              <Checkbox label="Remember Me" />
-              <Checkbox label="Forgot Password" />
-
-            </div>
+            <Input label="Subject" size="lg" />
+            <Input label="Comments" size="lg" />
+            <Input label="Confirm password" size="lg" />
+            
             
           </CardBody>
-          <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-             Log In
+             Send message
             </Button>
             &nbsp;
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>
-            
-            <Typography variant="small" className="mt-6 flex justify-center">
-              Don&apos;t have an account?
-              <Typography
+          
+          
+        <Typography variant="small" className="mt-6 flex justify-center">
+           <b>Address : 23, Navyog Mension, Sleater Road, Naushir Bharucha Marg, Opposite Krishna Palace Hotel,Grant Road, Mumbai - 400007 info@mumbaidabbawala.in</b>
+           <Typography
                 as="a"
                 href="#signup"
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-                Sign up
               </Typography>
-            </Typography>
-          </CardFooter>
-          
+           </Typography>
 
         </Card>
       </div>
-      <img style={{width: '60%', height: '100vh'}} src="https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D" />
+      <img style={{width: '60%', height: '100vh'}} src="https://mocomi.com/wp-content/uploads/2016/09/MOC_GIFO_DABBAWALAS.gif" />
     </div>
+   
+
+   
   );
 
   
 }
 
-export default App;
+export default Contact_us;
 
