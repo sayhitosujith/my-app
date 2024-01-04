@@ -14,28 +14,21 @@ import {
   Select,
   Option,
   Breadcrumbs,
-  Avatar,
-  List,
-  ListItem,
-  ListItemPrefix,
 } from "@material-tailwind/react";
 
 const data = [
-  {id: 1, name: 'South Indian Meal', src: 'https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw',},
-  {id: 2, name: 'Chole Meal', src: 'https://im1.dineout.co.in/images/uploads/restaurant/sharpen/5/j/u/p5908-15671490325d68cbe8b52d8.jpg?tr=tr:n-xlarge',},
-  {id: 3, name: 'Puliogre', src: 'https://www.harfieldtableware.co.uk/wp-content/uploads/2020/09/856BLU-for-website-scaled.jpg',},
-  {id: 4, name: 'Veg combo', src: 'https://sites.udel.edu/eli/files/2017/12/bento-box-1pmzqgv.jpg',},
-  {id: 5, name: 'Non-veg Meal', src: 'https://tse3.mm.bing.net/th?id=OIP.1SxzeKMtZ9qeVnA1JQ8IqgHaE8&pid=Api&P=0&h=220',},
-  {id: 6, name: 'Chicken biriyani', src: 'https://thumbs.dreamstime.com/b/meal-lunch-boxes-packaging-meal-lunch-boxes-isolated-white-background-121017730.jpg',},
-  {id: 7, name: 'Veg salad', src: 'https://sammyapproves.com/wp-content/uploads/2019/08/028-min.jpg',},
-  {id: 8, name: 'Rice & Curry', src: 'https://images-na.ssl-images-amazon.com/images/I/61HFT-GD82L._AC_SY450_.jpg',},
-  {id: 9, name: 'Veg Sandwitch', src: 'https://tse1.mm.bing.net/th?id=OIP.VHHFXZA8vZMlCfMN5BbwcAHaHa&pid=Api&P=0&h=220',},
-  {id: 10, name: 'Fish Meal', src: 'https://tse3.mm.bing.net/th?id=OIP.yORsSgJVQYcn7xIZ3Aa12AHaFj&pid=Api&P=0&h=220',},
-  {id: 11, name: 'Veg Sandwitch', src: 'https://tse1.mm.bing.net/th?id=OIP.VHHFXZA8vZMlCfMN5BbwcAHaHa&pid=Api&P=0&h=220',},
-  {id: 12, name: 'Fish Meal', src: 'https://tse3.mm.bing.net/th?id=OIP.yORsSgJVQYcn7xIZ3Aa12AHaFj&pid=Api&P=0&h=220',},
-  {id: 13, name: 'veg Meal', src: 'https://tse3.mm.bing.net/th?id=OIP.1SxzeKMtZ9qeVnA1JQ8IqgHaE8&pid=Api&P=0&h=220',},
-  {id: 14, name: 'Lemon Rice', src: 'https://indiancurrytrail.com/wp-content/uploads/2019/03/Lunchbox-Idea-1-1.jpg',},
-  {id: 15, name: 'Cure Rice', src: 'https://i.ytimg.com/vi/B2ZO4tN_8-c/sddefault.jpg',},
+  {id: 1, name: 'Sujith', src: 'https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw',},
+  {id: 2, name: 'Raju', src: 'https://im1.dineout.co.in/images/uploads/restaurant/sharpen/5/j/u/p5908-15671490325d68cbe8b52d8.jpg?tr=tr:n-xlarge',},
+  {id: 3, name: 'Shekar', src: 'https://www.harfieldtableware.co.uk/wp-content/uploads/2020/09/856BLU-for-website-scaled.jpg',},
+  {id: 4, name: 'Hari', src: 'https://sites.udel.edu/eli/files/2017/12/bento-box-1pmzqgv.jpg',},
+  {id: 5, name: 'Naveen', src: 'https://tse3.mm.bing.net/th?id=OIP.1SxzeKMtZ9qeVnA1JQ8IqgHaE8&pid=Api&P=0&h=220',},
+  {id: 6, name: 'Vinay', src: 'https://thumbs.dreamstime.com/b/meal-lunch-boxes-packaging-meal-lunch-boxes-isolated-white-background-121017730.jpg',},
+  {id: 7, name: 'Hima', src: 'https://sammyapproves.com/wp-content/uploads/2019/08/028-min.jpg',},
+  {id: 8, name: 'Prabath', src: 'https://images-na.ssl-images-amazon.com/images/I/61HFT-GD82L._AC_SY450_.jpg',},
+  {id: 9, name: 'Mohan', src: 'https://tse1.mm.bing.net/th?id=OIP.VHHFXZA8vZMlCfMN5BbwcAHaHa&pid=Api&P=0&h=220',},
+  {id: 10, name: 'Shubam', src: 'https://tse3.mm.bing.net/th?id=OIP.yORsSgJVQYcn7xIZ3Aa12AHaFj&pid=Api&P=0&h=220',},
+  {id: 11, name: 'Tushar', src: 'https://tse1.mm.bing.net/th?id=OIP.VHHFXZA8vZMlCfMN5BbwcAHaHa&pid=Api&P=0&h=220',},
+ 
 
 ]
 
@@ -68,7 +61,7 @@ const CardItem = ({item}) => (
   <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Available for Customer</span>
 </label>
 
-      <div className="w-72">
+            <div className="w-72">
       <Select label="Select Item">
         <Option>Chapati</Option>
         <Option>Poori</Option>
@@ -95,7 +88,7 @@ const CardItem = ({item}) => (
         </Card>
 )
 
-function App() {
+function Profile() {
   return (
     <div className="p-10">
        
@@ -120,24 +113,13 @@ function App() {
     </Breadcrumbs>
 
     <Typography variant="h2" color="Black">
-      ADMIN HOME 
+      PROFILES 
     <div style={{float: 'right'}}>
-       
+          <Badge content="6">
+          <Button>My cart </Button>
+          </Badge>
+          <h4>{new Date().toLocaleTimeString()} - IST</h4>
 
-      <div className="w-74">
-      <Select label="Profile">
-        <Option>    
-          <Avatar src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_400_400/0/1703428628673?e=1709769600&v=beta&t=8mgWsJuWJNrgjbsLZpe_vQCFOdMKgLQSE6ruvd5OgkU" alt="avatar" size="xl" /></Option>
-    <Badge content="6">
-    <Button>My cart </Button>
-    </Badge>
-       <Option>About</Option>
-       <Option>Change Password</Option>
-        <button><Option>Logout</Option></button>
-       
-
-      </Select>
-    </div>
             </div>
         </Typography>
 
@@ -146,20 +128,21 @@ function App() {
 
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(0,4).map((item) => <CardItem item={item} />)
+                data.slice(0,5).map((item) => <CardItem item={item} />)
             }
         </div>
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(4, 8).map((item) => <CardItem item={item} />)
+                data.slice(5, 10).map((item) => <CardItem item={item} />)
             }
         </div>
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(8, 12).map((item) => <CardItem item={item} />)
+                data.slice(10, 15).map((item) => <CardItem item={item} />)
             }
         </div>
         <br></br>
+        <Button>Logout</Button>
 
     </div>
  );
@@ -168,7 +151,7 @@ function App() {
 }
 
 
-export default App;
+export default Profile;
 
 
 
