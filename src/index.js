@@ -13,6 +13,8 @@ import Contact_us from './Contact_us'
 import Customer_Home from './Customer_Home';
 import Profile from './Profile';
 import Customer_Login from './Customer_Login';
+import OTP from './OTP';
+import Admin_Analytics from './Admin_Analytics';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,15 @@ const router = createBrowserRouter([
   {
     path: "/Customer_Login",
     element: <Customer_Login/>,
+  },
+  {
+    path: "/OTP",
+    element: <OTP/>,
+  },
+
+  {
+    path: "/Admin_Analytics",
+    element: <Admin_Analytics/>,
   },
 
 ]);

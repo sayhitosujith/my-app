@@ -15,9 +15,7 @@ import {
   Option,
   Breadcrumbs,
   Avatar,
-  List,
-  ListItem,
-  ListItemPrefix,
+
 } from "@material-tailwind/react";
 
 const data = [
@@ -86,6 +84,7 @@ const CardItem = ({item}) => (
         <label>
      <b> Description:</b>
       <textarea name="postContent" rows={4} cols={40} />
+  
     </label>
           </Typography>
           </CardFooter>
@@ -122,12 +121,12 @@ function App() {
     <Typography variant="h2" color="Black">
       ADMIN HOME 
     <div style={{float: 'right'}}>
-       
+    <Avatar src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_400_400/0/1703428628673?e=1709769600&v=beta&t=8mgWsJuWJNrgjbsLZpe_vQCFOdMKgLQSE6ruvd5OgkU" alt="avatar" size="xxl" />
 
       <div className="w-74">
-      <Select label="Profile">
+      <Select label="Sujith">
         <Option>    
-          <Avatar src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_400_400/0/1703428628673?e=1709769600&v=beta&t=8mgWsJuWJNrgjbsLZpe_vQCFOdMKgLQSE6ruvd5OgkU" alt="avatar" size="xl" /></Option>
+        </Option>
     <Badge content="6">
     <Button>My cart </Button>
     </Badge>
@@ -144,17 +143,17 @@ function App() {
 
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(0,4).map((item) => <CardItem item={item} />)
+                data.slice(0,5).map((item) => <CardItem item={item} />)
             }
         </div>
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(4, 8).map((item) => <CardItem item={item} />)
+                data.slice(5, 10).map((item) => <CardItem item={item} />)
             }
         </div>
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(8, 12).map((item) => <CardItem item={item} />)
+                data.slice(10, 15).map((item) => <CardItem item={item} />)
             }
         </div>
         <br></br>

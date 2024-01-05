@@ -24,7 +24,7 @@ function App() {
             color="gray"
             className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
-            Welcome to dabbawala 
+            Dabbwala ADMIN 
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
@@ -42,13 +42,7 @@ function App() {
              Log In
             </Button>
             &nbsp;
-            <Typography> OR </Typography>
-
-            <Input label="Login with Phone Number" size="lg" />
-            &nbsp;
-            <Button variant="gradient" fullWidth>
-             Request OTP
-            </Button>
+           
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -72,7 +66,7 @@ function App() {
       </div>
       <Carousel className="rounded-xl">
 
-      <img style={{width: '100%', height: '100vh'}} src="https://i.ytimg.com/vi/kiIPHm_4fbM/maxresdefault.jpg" 
+      <img style={{width: '100%', height: '100vh'}} src="https://images.projectsgeek.com/2016/07/Dabbawala-Android-Project.jpg" 
       alt="image 1"
         className="h-full w-full object-cover"
         />
