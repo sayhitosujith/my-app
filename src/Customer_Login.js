@@ -18,7 +18,7 @@ function Customer_Login() {
   return (
     <div className="flex flex-row gap-5">
       <div className='w-1/2 h-screen flex items-center justify-center'>
-      <Card style={{width:"80%", height:"60%"}}> 
+      <Card style={{width:"80%", height:"40%"}}> 
           
           <CardHeader
             variant="gradient"
