@@ -18,18 +18,19 @@ function Customer_Login() {
   return (
     <div className="flex flex-row gap-5">
       <div className='w-1/2 h-screen flex items-center justify-center'>
-        <Card className="w-99">
+      <Card style={{width:"80%", height:"60%"}}> 
+          
           <CardHeader
             variant="gradient"
             color="gray"
-            className="mb-4 grid h-28 place-items-center">
+           className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
-            Welcome to dabbawala 
+            Login to Dabbawala 
             </Typography>
           </CardHeader>
-      
+          &nbsp;
 
-            <Input label="Enter Email/Mobile Number" size="lg" />
+            <Input label="Enter Email ID / Mobile Number" size="lg" />
             &nbsp;
             <Button variant="gradient" fullWidth>
              Request OTP
