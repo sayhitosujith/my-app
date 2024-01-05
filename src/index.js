@@ -12,6 +12,7 @@ import NewRegistration from './NewRegistration';
 import Contact_us from './Contact_us'
 import Customer_Home from './Customer_Home';
 import Profile from './Profile';
+import Customer_Login from './Customer_Login';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
     path: "/Profile",
     element: <Profile/>,
   },
+  {
+    path: "/Customer_Login",
+    element: <Customer_Login/>,
+  },
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

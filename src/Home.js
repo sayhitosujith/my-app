@@ -134,8 +134,6 @@ function App() {
        <Option>About</Option>
        <Option>Change Password</Option>
         <button><Option>Logout</Option></button>
-       
-
       </Select>
     </div>
             </div>

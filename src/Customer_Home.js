@@ -1,6 +1,7 @@
 import './App.css';
 import { Select, Option } from "@material-tailwind/react";
 import { Badge } from "@material-tailwind/react";
+import { IconButton } from "@material-tailwind/react";
 
 
 import {
@@ -12,6 +13,7 @@ import {
   Button,
   Checkbox,
   Breadcrumbs,
+  Avatar,
 } from "@material-tailwind/react";
 
 const data = [
@@ -43,6 +45,13 @@ const CardItem = ({item}) => (
               {item.id} : {item.name} 
               </Typography>
             </CardHeader>
+
+            <IconButton color="green">
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+      </IconButton>
+
+
+
             <div className='flex justify-center items-center'>
             <img style={{width: '200px', height: '200px'}} src={item.src} className='rounded-full' />
             </div>
@@ -98,6 +107,7 @@ const CardItem = ({item}) => (
         </svg>
         Buy Now
       </Button>
+      
 <br></br>
 
           <Button className="flex items-center gap-3">
@@ -147,31 +157,36 @@ function App() {
       CUSTOMER HOME
     <div style={{float: 'right'}}>
     
+    <div className="w-74">
+      <Select label="Sujith S">
+        <Option>    
+          <Avatar src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_400_400/0/1703428628673?e=1709769600&v=beta&t=8mgWsJuWJNrgjbsLZpe_vQCFOdMKgLQSE6ruvd5OgkU" alt="avatar" size="xl" /></Option>
     <Badge content="6">
     <Button>My cart </Button>
     </Badge>
-
-     <b><h4>{new Date().toLocaleTimeString()} - IST</h4></b> 
+       <Option>About</Option>
+       <Option>Change Password</Option>
+        <button><Option>Logout</Option></button>
+      </Select>
     </div>
+            </div>
         </Typography>
-        <div className='w-full flex mt-20 gap-5'>
-            {
-                data.slice(0,5).map((item) => <CardItem item={item} />)
-            }
-        </div>
-        <div className='w-full flex mt-20 gap-5'>
-            {
-                data.slice(5, 10).map((item) => <CardItem item={item} />)
-            }
-        </div>
-        <div className='w-full flex mt-20 gap-5'>
-            {
-                data.slice(10, 15).map((item) => <CardItem item={item} />)
-            }
-        </div>
-        <br></br>
-        <Button>Logout</Button>
 
+        <div className='w-full flex mt-20 gap-5'>
+            {
+                data.slice(0,4).map((item) => <CardItem item={item} />)
+            }
+        </div>
+        <div className='w-full flex mt-20 gap-5'>
+            {
+                data.slice(4, 8).map((item) => <CardItem item={item} />)
+            }
+        </div>
+        <div className='w-full flex mt-20 gap-5'>
+            {
+                data.slice(8, 12).map((item) => <CardItem item={item} />)
+            }
+        </div>
     </div>
  );
  

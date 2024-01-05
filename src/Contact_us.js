@@ -25,7 +25,7 @@ function Contact_us() {
             color="gray"
             className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
-            Send us a Message. 
+            Contact Us
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
@@ -48,7 +48,7 @@ function Contact_us() {
           
           
         <Typography variant="small" className="mt-6 flex justify-center">
-           <b>Address : 23, Navyog Mension, Sleater Road, Naushir Bharucha Marg, Opposite Krishna Palace Hotel,Grant Road, Mumbai - 400007 info@mumbaidabbawala.in</b>
+           <b>Address : #290, Medahalli, Banglore - 560049 , info@mumbaidabbawala.in</b>
            <Typography
                 as="a"
                 href="#signup"

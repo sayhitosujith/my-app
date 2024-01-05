@@ -14,11 +14,11 @@ import {
 } from "@material-tailwind/react";
 
 
-function App() {
+function Customer_Login() {
   return (
     <div className="flex flex-row gap-5">
       <div className='w-1/2 h-screen flex items-center justify-center'>
-        <Card className="w-92">
+        <Card className="w-99">
           <CardHeader
             variant="gradient"
             color="gray"
@@ -27,24 +27,9 @@ function App() {
             Welcome to dabbawala 
             </Typography>
           </CardHeader>
-          <CardBody className="flex flex-col gap-4">
-            <Input label="Email" size="lg" />
-            <Input label="Password" size="lg" />
-            <div className="-ml-2.5">
-              <Checkbox label="Remember Me" />
-              <Checkbox label="Forgot Password" />
+      
 
-            </div>
-            
-          </CardBody>
-          <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-             Log In
-            </Button>
-            &nbsp;
-            <Typography> OR </Typography>
-
-            <Input label="Login with Phone Number" size="lg" />
+            <Input label="Enter Email/Mobile Number" size="lg" />
             &nbsp;
             <Button variant="gradient" fullWidth>
              Request OTP
@@ -54,6 +39,13 @@ function App() {
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>
             
+        &nbsp;
+
+<Typography>Get access to your Orders, Wishlist and Recommendations
+
+</Typography>
+
+
             <Typography variant="small" className="mt-6 flex justify-center">
               Don&apos;t have an account?
               <Typography
@@ -62,10 +54,9 @@ function App() {
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-                Sign up
+                Create New Account
               </Typography>
             </Typography>
-          </CardFooter>
           
 
         </Card>
@@ -92,5 +83,5 @@ function App() {
   
 }
 
-export default App;
+export default Customer_Login;
 
