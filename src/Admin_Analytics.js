@@ -102,7 +102,7 @@ const CardItem = ({item}) => (
 
 
             <div className='flex justify-center items-center'>
-            <img style={{width: '200px', height: '200px'}} src={item.src} className="h-96 w-full object-cover object-center" />
+            <img style={{width: '200px', height: '200px'}} src={item.src} alt="h-96 w-full object-cover object-center" />
             </div>
           <CardBody className="flex flex-col gap-4">
             <div className="-mr-50">
