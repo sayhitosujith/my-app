@@ -5,11 +5,8 @@ import { Carousel } from "@material-tailwind/react";
 import {
   Card,
   CardHeader,
-  CardBody,
-  CardFooter,
   Typography,
   Input,
-  Checkbox,
   Button,
 } from "@material-tailwind/react";
 

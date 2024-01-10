@@ -14,7 +14,6 @@ import {
   CardBody,
   CardFooter,
   Button,
-  Checkbox,
   Breadcrumbs,
   Avatar,
   Chip,
@@ -143,11 +142,11 @@ function Admin_Analytics() {
       <a href="#" className="opacity-60">
       <a href="#">Profile</a>
       </a>
-      <a href="#">Analytics</a>
+      <a href="#">Power BI Analytics</a>
       
     </Breadcrumbs>
     <Typography variant="h3" color="Black">
-    ANALYTICS
+    Power BI Analytics
 
     <div style={{float: 'right'}}>
     <Avatar src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_400_400/0/1703428628673?e=1709769600&v=beta&t=8mgWsJuWJNrgjbsLZpe_vQCFOdMKgLQSE6ruvd5OgkU" alt="avatar" size="xxl" />

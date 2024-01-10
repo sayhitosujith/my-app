@@ -5,11 +5,10 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Typography,
   Input,
-  Checkbox,
   Button,
+  Textarea,
 } from "@material-tailwind/react";
 
 
@@ -30,10 +29,11 @@ function Contact_us() {
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
             <Input label="First Name" size="lg" />
+            <Input label="Last Name" size="lg" />
             <Input label="Email" size="lg" />
             <Input label="Subject" size="lg" />
-            <Input label="Comments" size="lg" />
-            <Input label="Confirm password" size="lg" />
+            <Textarea label="Comments" />
+
             
             
           </CardBody>
