@@ -1,5 +1,5 @@
 import './App.css';
-import { Carousel } from "@material-tailwind/react";
+import OtpInput from 'react-otp-input';
 
 
 import {
@@ -8,6 +8,8 @@ import {
   Typography,
   Input,
   Button,
+  otp,
+  setOtp,
 } from "@material-tailwind/react";
 
 
@@ -28,7 +30,14 @@ function OTP() {
           &nbsp;
 
           <div className="w-[32rem]">
-      <Input type="OTP" label="OTP" />
+      <OtpInput
+      value={otp}
+      onChange={setOtp}
+      numInputs={6}
+      size="ls"
+      renderSeparator={<span>-</span>}
+      renderInput={(props) => <input {...props} />}
+    />
       <Typography
         variant="small"
         color="gray"
@@ -46,7 +55,7 @@ function OTP() {
             clipRule="evenodd"
           />
         </svg>
-        Use at least 4 characters.
+        Use at least 6 characters.
       </Typography>
     </div>            &nbsp;
             <Button variant="gradient" fullWidth>
@@ -60,7 +69,7 @@ function OTP() {
         &nbsp;
 
         <Typography>If you didn't recieve a code! <u> <a href="https://example.com/faq.html" rel="noreferrer">
-      Resend
+      RESEND
   </a></u></Typography>
        
 
@@ -68,9 +77,9 @@ function OTP() {
 
         </Card>
       </div>
-    
-
+      <img style={{width: '60%', height: '100vh'}} src="https://cdn.dribbble.com/users/3821672/screenshots/7172846/otp.gif" />
     </div>
+
   );
 
   
