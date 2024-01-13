@@ -54,6 +54,8 @@ const router = createBrowserRouter([
     path: "/Admin_Analytics",
     element: <Admin_Analytics/>,
   },
+  
+
 
 ]);
 

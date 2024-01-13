@@ -5,8 +5,10 @@ import {
   Card,
   CardHeader,
   CardBody,
+  CardFooter,
   Typography,
   Input,
+  Checkbox,
   Button,
   Textarea,
 } from "@material-tailwind/react";
@@ -17,11 +19,14 @@ import {
 function Contact_us() {
   return (
     <div className="flex flex-row gap-5">
+      
       <div className='w-1/2 h-screen flex items-center justify-center'>
         <Card className="w-98">
           <CardHeader
             variant="gradient"
             color="gray"
+            background= "red"
+
             className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
             Contact Us

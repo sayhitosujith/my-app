@@ -26,7 +26,7 @@ const TABLE_HEAD = ["Transaction", "Amount", "Date", "Status", "Account", "Actio
 
 const TABLE_ROWS = [
     {
-      image: "https://docs.material-tailwind.com/img/logos/logo-spotify.svg",
+      img: "https://docs.material-tailwind.com/img/logos/logo-spotify.svg",
       name: "Spotify",
       amount: "$2,500",
       date: "Wed 3:00pm",
@@ -36,7 +36,7 @@ const TABLE_ROWS = [
       expiry: "06/2026",
     },
     {
-      image: "https://docs.material-tailwind.com/img/logos/logo-amazon.svg",
+      img: "https://docs.material-tailwind.com/img/logos/logo-amazon.svg",
       name: "Amazon",
       amount: "$5,000",
       date: "Wed 1:00pm",
@@ -46,7 +46,7 @@ const TABLE_ROWS = [
       expiry: "06/2026",
     },
     {
-      image: "https://docs.material-tailwind.com/img/logos/logo-pinterest.svg",
+      img: "https://docs.material-tailwind.com/img/logos/logo-pinterest.svg",
       name: "Pinterest",
       amount: "$3,400",
       date: "Mon 7:40pm",
@@ -56,7 +56,7 @@ const TABLE_ROWS = [
       expiry: "06/2026",
     },
     {
-      image: "https://docs.material-tailwind.com/img/logos/logo-google.svg",
+      img: "https://docs.material-tailwind.com/img/logos/logo-google.svg",
       name: "Google",
       amount: "$1,000",
       date: "Wed 5:00pm",
@@ -66,7 +66,7 @@ const TABLE_ROWS = [
       expiry: "06/2026",
     },
     {
-      image: "https://docs.material-tailwind.com/img/logos/logo-netflix.svg",
+      img: "https://docs.material-tailwind.com/img/logos/logo-netflix.svg",
       name: "netflix",
       amount: "$14,000",
       date: "Wed 3:30am",
@@ -102,7 +102,7 @@ const CardItem = ({item}) => (
 
 
             <div className='flex justify-center items-center'>
-            <image style={{width: '200px', height: '200px'}} src={item.src} alt="h-96 w-full object-cover object-center" />
+            <img style={{width: '200px', height: '200px'}} src={item.src} className="h-96 w-full object-cover object-center" />
             </div>
           <CardBody className="flex flex-col gap-4">
             <div className="-mr-50">
@@ -128,7 +128,7 @@ function Admin_Analytics() {
     <div className="p-10">
         
             <Breadcrumbs>
-      <a className="opacity-60">
+      <a href="#" className="opacity-60">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-4 w-4"
@@ -139,10 +139,10 @@ function Admin_Analytics() {
         </svg>
       </a>
 
-      <a className="opacity-60">
-      <a> Profile</a>
+      <a href="#" className="opacity-60">
+      <a href="#">Profile</a>
       </a>
-      <a> Power BI Analytics</a>
+      <a href="#">Power BI Analytics</a>
       
     </Breadcrumbs>
     <Typography variant="h3" color="Black">
@@ -230,7 +230,7 @@ function Admin_Analytics() {
             {TABLE_ROWS.map(
               (
                 {
-                  image,
+                  img,
                   name,
                   amount,
                   date,
@@ -251,7 +251,7 @@ function Admin_Analytics() {
                     <td className={classes}>
                       <div className="flex items-center gap-3">
                         <Avatar
-                          src={image}
+                          src={img}
                           alt={name}
                           size="md"
                           className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"

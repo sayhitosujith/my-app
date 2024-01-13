@@ -50,7 +50,7 @@ function OTP() {
       </Typography>
     </div>            &nbsp;
             <Button variant="gradient" fullWidth>
-             Validate
+             V E R I F Y
             </Button>
             <Typography
           variant="p"
