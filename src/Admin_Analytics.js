@@ -82,7 +82,8 @@ const data = [
     {id: 2, name: 'Todays Orders', src: 'https://media.licdn.com/dms/image/D5612AQERVZ2zcWRhUA/article-cover_image-shrink_720_1280/0/1683168912775?e=2147483647&v=beta&t=hZyQJXBr0hNXuf7KYighwiqkhIRoTgQlqqOP1Tipfi0',},
     {id: 3, name: 'Added to Cart', src: 'https://images.klipfolio.com/website/public/cf3d1718-8c3e-4567-bbed-ec56cfd4c7d6/website-analytics-sessions-metric.png',},
     {id: 4, name: 'Total Sales', src: 'https://lordicon.com/icons/wired/gradient/976-web-analytics.svg',},
-   
+    {id: 5, name: 'Active Countries', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbk-T3O-4_zcnjU3F35X-SeiuAPTp9gUqzLw&usqp=CAU',},
+
 ]
 
 
@@ -165,19 +166,19 @@ function Admin_Analytics() {
             </div>
         </Typography>
 
-        <div className='w-full flex mt-20 gap-5'>
+        <div className='w-full flex mt-20 gap-7'>
             {
-                data.slice(0,4).map((item) => <CardItem item={item} />)
+                data.slice(0,5).map((item) => <CardItem item={item} />)
             }
         </div>
-        <div className='w-full flex mt-20 gap-5'>
+        <div className='w-full flex mt-20 gap-7'>
             {
-                data.slice(4, 8).map((item) => <CardItem item={item} />)
+                data.slice(6, 10).map((item) => <CardItem item={item} />)
             }
         </div>
-        <div className='w-full flex mt-20 gap-5'>
+        <div className='w-full flex mt-20 gap-7'>
             {
-                data.slice(8, 12).map((item) => <CardItem item={item} />)
+                data.slice(11, 15).map((item) => <CardItem item={item} />)
             }
         </div>
        

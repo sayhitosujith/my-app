@@ -113,11 +113,11 @@ function App() {
       <a href="#">Profile</a>
       </a>
       <a href="#">Admin Home</a>
-
     </Breadcrumbs>
 
     <Typography variant="h2" color="Black">
-      ADMIN HOME 
+      <br></br>
+   <Button><b> + ADD MEAL </b> </Button>
     <div style={{float: 'right'}}>
     <Avatar src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_400_400/0/1703428628673?e=1709769600&v=beta&t=8mgWsJuWJNrgjbsLZpe_vQCFOdMKgLQSE6ruvd5OgkU" alt="avatar" size="xxl" />
 
@@ -134,6 +134,7 @@ function App() {
         <button><Option>Logout</Option></button>
       </Select>
     </div>
+
             </div>
         </Typography>
 
@@ -142,17 +143,17 @@ function App() {
 
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(0,4).map((item) => <CardItem item={item} />)
+                data.slice(0,5).map((item) => <CardItem item={item} />)
             }
         </div>
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(4, 8).map((item) => <CardItem item={item} />)
+                data.slice(6, 11).map((item) => <CardItem item={item} />)
             }
         </div>
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(8, 12).map((item) => <CardItem item={item} />)
+                data.slice(12, 16).map((item) => <CardItem item={item} />)
             }
         </div>
         <br></br>

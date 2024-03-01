@@ -73,8 +73,6 @@ function OTP() {
   </a></u></Typography>
        
 
-          
-
         </Card>
       </div>
       <img style={{width: '60%', height: '100vh'}} src="https://cdn.dribbble.com/users/3821672/screenshots/7172846/otp.gif" />

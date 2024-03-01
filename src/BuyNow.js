@@ -16,7 +16,7 @@ import {
 
 
 
-function NewRegistration() {
+function BuyNow() {
   return (
     <div className="flex flex-row gap-5">
       <div className='w-1/2 h-screen flex items-center justify-center'>
@@ -26,28 +26,11 @@ function NewRegistration() {
             color="gray"
             className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
-            USER REGISTRATION 
-            </Typography>
+            BuyNow
+                        </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
-          <Avatar src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png" alt="avatar" size="xxl" />
-            
-          
- 
-
-       
-<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
-<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"/>
-
-            
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" />
-            <Input label="Phone Number *" size="lg" />
-            <Input label="Password *" size="lg" />
-            <Input label="Confirm Password *" size="lg" />
-            <Input label="Zip Code *" size="lg" />
-
+          <Avatar src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_400_400/0/1703428628673?e=1709769600&v=beta&t=8mgWsJuWJNrgjbsLZpe_vQCFOdMKgLQSE6ruvd5OgkU" alt="avatar" size="xxl" />
             
           </CardBody>
           <CardFooter className="pt-0">
@@ -74,7 +57,7 @@ function NewRegistration() {
           </CardFooter>
           
         <Typography variant="small" className="mt-6 flex justify-center">
-           <b>To verify your number, we will send you a text message with a temporary code. Message and data rates may apply</b>
+           <b>To verify your number</b>
            <Typography
                 as="a"
                 href="#signup"
@@ -86,7 +69,6 @@ function NewRegistration() {
 
         </Card>
       </div>
-      <img style={{width: '50%', height: '100vh'}} src="https://courseuniv.com/app/assets/images/register_02.gif" />
     </div>
    
 
@@ -96,5 +78,5 @@ function NewRegistration() {
   
 }
 
-export default NewRegistration;
+export default BuyNow;
 

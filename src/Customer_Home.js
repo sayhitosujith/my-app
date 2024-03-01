@@ -46,7 +46,7 @@ const CardItem = ({ item }) => (
       </Typography>
     </CardHeader>
 
-    <IconButton color="red">
+    <IconButton color="green">
     <i className="fas fa-heart" />
     </IconButton>
     <Typography>Add to WishList</Typography>  
@@ -173,12 +173,12 @@ function App() {
 
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(0, 4).map((item) => <CardItem item={item} />)
+          data.slice(0, 5).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(4, 8).map((item) => <CardItem item={item} />)
+          data.slice(6, 11).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
