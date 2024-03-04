@@ -16,6 +16,7 @@ import Customer_Login from './Customer_Login';
 import OTP from './OTP';
 import Admin_Analytics from './Admin_Analytics';
 import BuyNow from './BuyNow';
+import AddMeal from './AddMeal';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
   {
     path: "/BuyNow",
     element: <BuyNow/>,
+  },
+  {
+    path: "/AddMeal",
+    element: <AddMeal/>,
   },
 
 ]);
