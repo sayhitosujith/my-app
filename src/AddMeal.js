@@ -76,10 +76,7 @@ function AddMeal() {
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
-        </Typography>
-          
-
-            
+        </Typography>     
           </CardFooter>
           
         <Typography variant="small" className="mt-6 flex justify-center">

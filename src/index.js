@@ -17,6 +17,8 @@ import OTP from './OTP';
 import Admin_Analytics from './Admin_Analytics';
 import BuyNow from './BuyNow';
 import AddMeal from './AddMeal';
+import ResetPassword from './ResetPassword';
+
 
 const router = createBrowserRouter([
   {
@@ -65,7 +67,11 @@ const router = createBrowserRouter([
     path: "/AddMeal",
     element: <AddMeal/>,
   },
-
+  
+  {
+    path: "/ResetPassword",
+    element: <ResetPassword/>,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
