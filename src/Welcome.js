@@ -12,6 +12,7 @@ import {
   Select,
   Option,
   Breadcrumbs,
+  Avatar
 
 } from "@material-tailwind/react";
 
@@ -31,7 +32,7 @@ const CardItem = ({item}) => (
               variant="gradient"
               color="blue"
               className="mb-5 grid h-10 place-items-center">
-              <Typography variant="h3" color="white">
+              <Typography variant="h2" color="grey">
                 {item.id} : {item.name}  
              </Typography>
             </CardHeader>
@@ -72,17 +73,23 @@ function Welcome() {
       <a href="#" className="opacity-60">
       <a href="#">Profile</a>
       </a>
-      <a href="#">Admin Home</a>
+      <a href="#">Welcome</a>
     </Breadcrumbs>
+
+
 
     <Typography variant="h2" color="Black">
       <br></br>
       Welcome to My DB-APP
+      <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xxl" variant="square" div style={{float: 'right'}}></Avatar>
       <br></br>
       <br></br>
 
-      <Typography variant="small" className="mt-8 flex justify-center">
-           <b>Access your provisioned services below. Switch services any time from the Apps icon in the Middle of your screen.</b>
+      <b><hr class="separator" /></b>
+
+
+      <Typography variant="small" className="mt-8 flex flex justify-center items-center">
+           <b>Access your provisioned services below. Switch services any time from the Apps icon in the top right corner of your screen.</b>
            <Typography
                 as="a"
                 href="#signup"
@@ -96,7 +103,6 @@ function Welcome() {
 
       <div className="w-74">
       <Select label="Sujith">
-        
         <Option>    
         </Option>
     <Badge content="6">
@@ -114,14 +120,30 @@ function Welcome() {
 
 
 
-        <div className='w-full flex mt-20 gap-5'>
+        <div className='w-full flex mt-20 gap-5 flex justify-center items-center'>
             {
                 data.slice(0,3).map((item) => <CardItem item={item} />)
             }
         </div>
       
         <br></br>
+        <b><hr class="separator" /></b>
 
+        <div className='flex justify-center items-center'>
+       <Typography variant="h2" color="Black">
+      <br></br>
+      Need Help ?
+      <br></br>
+      <br></br>
+      </Typography>
+    </div>
+
+    <div className='flex justify-center items-center'>
+       <Typography variant="h7" color="Black">
+       <b>Find articles, tutorials, online training videos, and more.</b>
+      <br></br>
+      </Typography>
+    </div>
     </div>
  );
  

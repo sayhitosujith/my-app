@@ -19,6 +19,7 @@ import BuyNow from './BuyNow';
 import AddMeal from './AddMeal';
 import ResetPassword from './ResetPassword';
 import Welcome from './Welcome';
+import Addprofile from './Addprofile';
 
 
 const router = createBrowserRouter([
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
   {
     path: "/Welcome",
     element: <Welcome/>,
+  },
+  {
+    path: "/Addprofile",
+    element: <Addprofile/>,
   },
 ]);
 

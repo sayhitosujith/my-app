@@ -152,12 +152,13 @@ function App() {
         <a href="#">Customer_Home</a>
 
       </Breadcrumbs>
+      <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="square" div style={{float: 'right'}}></Avatar>
+
       <Typography variant="h3" color="Black">
         CUSTOMER HOME
         <div style={{ float: 'right' }}>
-          <Avatar src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_400_400/0/1703428628673?e=1709769600&v=beta&t=8mgWsJuWJNrgjbsLZpe_vQCFOdMKgLQSE6ruvd5OgkU" alt="avatar" size="xxl" />
           <div className="w-74">
-            <Select label="Sujith S">
+            <Select label="Profile">
               <Option>
               </Option>
               <Badge content="6">
