@@ -11,6 +11,7 @@ import {
   Typography,
   Input,
   Button,
+  Checkbox,
 
 } from "@material-tailwind/react";
 
@@ -45,10 +46,29 @@ function Addprofile() {
             <Input label="Email *" size="lg" />
             <Input label="Phone Number *" size="lg" />
             <Input label="Password *" size="lg" />
-            <Input label="Confirm Password *" size="lg" />
             <Input label="Aadhar Number *" size="lg" />
             <Input label="Address *" size="lg" />
             <Input label="Zip Code *" size="lg" />   
+        
+            <Checkbox
+          label={
+            <Typography
+              variant="small"
+              color="gray"
+              className="flex items-center font-normal"
+            >
+              I agree the
+              <a
+                href="#"
+                className="font-medium transition-colors hover:text-gray-900"
+              >
+                &nbsp;Terms and Conditions
+              </a>
+            </Typography>
+          }
+          containerProps={{ className: "-ml-2.5" }}
+        />
+
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>

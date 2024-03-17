@@ -10,6 +10,7 @@ import {
   Typography,
   Input,
   Button,
+  Checkbox,
 } from "@material-tailwind/react";
 
 
@@ -33,6 +34,25 @@ function ResetPassword() {
             <Input label="New Password  *" size="lg" />
             <Input label="confirm Password  *" size="lg" />
            
+            <Checkbox
+          label={
+            <Typography
+              variant="small"
+              color="gray"
+              className="flex items-center font-normal"
+            >
+              I agree the
+              <a
+                href="#"
+                className="font-medium transition-colors hover:text-gray-900"
+              >
+                &nbsp;Terms and Conditions
+              </a>
+            </Typography>
+          }
+          containerProps={{ className: "-ml-2.5" }}
+        />
+
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>

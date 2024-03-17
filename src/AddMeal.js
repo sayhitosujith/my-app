@@ -13,6 +13,7 @@ import {
   Button,
   Select,
   Option,
+  Checkbox,
 } from "@material-tailwind/react";
 
 
@@ -63,6 +64,24 @@ function AddMeal() {
 
     </label>
 
+    <Checkbox
+          label={
+            <Typography
+              variant="small"
+              color="gray"
+              className="flex items-center font-normal"
+            >
+              I agree the
+              <a
+                href="#"
+                className="font-medium transition-colors hover:text-gray-900"
+              >
+                &nbsp;Terms and Conditions
+              </a>
+            </Typography>
+          }
+          containerProps={{ className: "-ml-2.5" }}
+        />
             
           </CardBody>
           <CardFooter className="pt-0">
@@ -92,7 +111,7 @@ function AddMeal() {
 
         </Card>
       </div>
-      <img style={{width: '50%', height: '100vh'}} src="https://80a12acdf128618db717-c22bdc94c381e6a71ffe213927c1cf90.ssl.cf1.rackcdn.com/auto2.gif" />
+      <img style={{width: '60%', height: '100vh'}} src="https://80a12acdf128618db717-c22bdc94c381e6a71ffe213927c1cf90.ssl.cf1.rackcdn.com/auto2.gif" />
     </div>
    
 
