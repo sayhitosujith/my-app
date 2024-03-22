@@ -13,7 +13,7 @@ import {
   Option,
   Breadcrumbs,
   Avatar,
-  Textarea,
+  Rating,
 
 } from "@material-tailwind/react";
 
@@ -70,6 +70,7 @@ const CardItem = ({item}) => (
      <b> Aadhar Number:</b><br></br>
      <b> Address:</b><br></br>
      <b> ZipCode:</b><br></br>
+     <Rating unratedColor="amber" ratedColor="amber" />
 
     </label>
           </Typography>
@@ -118,6 +119,7 @@ function Profile() {
        <Option>About</Option>
        <Option>Change Password</Option>
         <button><Option>Logout</Option></button>
+
       </Select>
     </div>
             </div>

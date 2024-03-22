@@ -1,4 +1,5 @@
 import './App.css';
+import { Rating } from "@material-tailwind/react";
 
 
 import {
@@ -63,6 +64,8 @@ function ProfileCard() {
           textGradient
         >
           <i className="fab fa-instagram" />
+           <Rating value={4} />
+
         </Typography>
       </Tooltip>
     </CardFooter>

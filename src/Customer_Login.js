@@ -22,7 +22,7 @@ function Customer_Login() {
             color="gray"
            className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
-            Login to Dabbawala 
+            Login to Maven Meal 
             </Typography>
           </CardHeader>
           &nbsp;
@@ -39,9 +39,9 @@ function Customer_Login() {
             
         &nbsp;
 
-<Typography>Get access to your Orders, Wishlist and Recommendations
 
-</Typography>
+<h1 style={{ color: 'Green' }}><b><div>Get access to your Orders, Wishlist and Recommendations </div></b></h1>
+
 
 
             <Typography variant="small" className="mt-6 flex justify-center">

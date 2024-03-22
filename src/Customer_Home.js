@@ -13,7 +13,7 @@ import {
   Button,
   Checkbox,
   Breadcrumbs,
-  Avatar,
+  Rating,
 } from "@material-tailwind/react";
 
 const data = [
@@ -49,10 +49,9 @@ const CardItem = ({ item }) => (
     <IconButton color="green">
     <i className="fas fa-heart" />
     </IconButton>
-    <Typography>Add to WishList</Typography>  
 
     <div className='flex justify-center items-center'>
-      <img style={{ width: '200px', height: '200px' }} src={item.src} className='rounded-full' />
+      <img style={{ width: '200px', height: '200px' }} src={item.src}  />
     </div>
     <CardBody className="flex flex-col gap-4">
       <div className="-mr-50">
@@ -60,11 +59,14 @@ const CardItem = ({ item }) => (
     </CardBody>
     <CardFooter className="pt-0">
       <Typography variant="h10" color="black">
-
         <div>
-          <button> <Typography variant="h6">Limited Time Deal - Flat 8% off</Typography></button>
+        <b><hr class="separator" /></b>
+
+          <button> <Typography variant="h6">Limited Time Deal - Flat 5% off</Typography></button>
+          <b><hr class="separator" /></b>
 
         </div>
+         <Rating value={4} readonly />
 
         <Checkbox label="Select Item" />
         {
@@ -128,8 +130,8 @@ function App() {
 
              <div style={{ float: 'right' }}>
       <Badge content="6">
-                <Button>My cart </Button>
-              </Badge>
+      <Button color="red" appearance="primary"> 
+           BUY NOW</Button> </Badge>
               </div>
 
         <div style={{ float: 'right' }}>
