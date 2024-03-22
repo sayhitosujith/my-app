@@ -25,7 +25,7 @@ function App() {
             color="gray"
             className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
-           Maven MEAL ADMIN
+            ADMIN
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
@@ -43,6 +43,10 @@ function App() {
             <Button variant="gradient" fullWidth>
              Log In 
             </Button>
+            <br></br>
+            <Button variant="gradient" fullWidth>
+             Cancel 
+            </Button>
             &nbsp;
            
             <Typography
@@ -54,8 +58,8 @@ function App() {
         size="lg"
         variant="outlined"
         color="blue-gray"
-        className="flex items-center gap-3"
-      >
+        className="flex items-center gap-3">
+
         <img src="https://docs.material-tailwind.com/icons/google.svg" alt="metamask" className="h-6 w-6" />
         Continue with Google
       </Button>

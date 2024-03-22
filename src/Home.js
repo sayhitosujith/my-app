@@ -51,7 +51,7 @@ const CardItem = ({item}) => (
             </CardHeader>
 
             <div className='flex justify-center items-center'>
-            <img style={{width: '180px', height: '180px'}} src={item.src} className='rounded-full' />
+            <img style={{width: '180px', height: '180px'}} src={item.src}/>
             </div>
           <CardBody className="flex flex-col gap-4">
             <div className="-mr-50">
