@@ -25,7 +25,7 @@ function App() {
             color="gray"
             className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
-            Dabbwala ADMIN
+           Maven MEAL ADMIN
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
@@ -50,22 +50,35 @@ function App() {
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>
             
+        <Button
+        size="lg"
+        variant="outlined"
+        color="blue-gray"
+        className="flex items-center gap-3"
+      >
+        <img src="https://docs.material-tailwind.com/icons/google.svg" alt="metamask" className="h-6 w-6" />
+        Continue with Google
+      </Button>
  
-    <div className="flex gap-4">
-      <IconButton className="rounded bg-[#ea4335] hover:shadow-[#ea4335]/20 focus:shadow-[#ea4335]/20 active:shadow-[#ea4335]/10">
-        <i className="fab fa-google text-lg" />
-      </IconButton>
-      <IconButton className="rounded bg-[#1DA1F2] hover:shadow-[#1DA1F2]/20 focus:shadow-[#1DA1F2]/20 active:shadow-[#1DA1F2]/10">
-        <i className="fab fa-twitter text-lg" />
-      </IconButton>
-      <IconButton className="rounded bg-[#ea4c89] hover:shadow-[#ea4c89]/20 focus:shadow-[#ea4c89]/20 active:shadow-[#ea4c89]/10">
-        <i className="fab fa-dribbble text-lg" />
-      </IconButton>
-      <IconButton className="rounded bg-[#333333] hover:shadow-[#333333]/20 focus:shadow-[#333333]/20 active:shadow-[#333333]/10">
-        <i className="fab fa-github text-lg" />
-      </IconButton>
-    </div>
+      <br></br>
+        <Button
+        size="lg"
+        variant="gradient"
+        color="light-blue"
+        className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
+      >
+        Sign in with Twitter
+        <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
+          <img src="https://docs.material-tailwind.com/icons/twitter.svg" alt="metamask" className="h-6 w-6" />
+        </span>
+      </Button>
   
+      <br></br>
+
+      <Button size="lg" color="white" className="flex items-center gap-3">
+        <img src="https://docs.material-tailwind.com/icons/metamask.svg" alt="metamask" className="h-6 w-6" />
+        Connect Wallet
+      </Button>
 
             <Typography variant="small" className="mt-6 flex justify-center">
               Don&apos;t have an account?

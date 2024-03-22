@@ -80,7 +80,7 @@ function Welcome() {
 
     <Typography variant="h2" color="Black">
       <br></br>
-      Welcome to My DB-APP
+      Welcome to MealMaven
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xxl" variant="square" div style={{float: 'right'}}></Avatar>
       <br></br>
       <br></br>
