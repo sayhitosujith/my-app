@@ -1,7 +1,5 @@
 import './App.css';
 import { Carousel } from "@material-tailwind/react";
-import { IconButton } from "@material-tailwind/react";
-
 
 import {
   Card,
@@ -85,7 +83,7 @@ function App() {
       </Button>
 
             <Typography variant="small" className="mt-6 flex justify-center">
-              Don&apos;t have an account?
+              Don&apos;t have an account? click here to
               <Typography
                 as="a"
                 href="#signup"
@@ -100,21 +98,10 @@ function App() {
 
         </Card>
       </div>
-      <Carousel className="rounded-xl">
-
-      <img style={{width: '100%', height: '100vh'}} src="https://www.macobserver.com/wp-content/uploads/2023/04/How-To-Fix-a-Blurry-iPhone-Home-Screen.jpg" 
+              <img style={{width: '70%', height: '100vh'}} src="https://t3.ftcdn.net/jpg/03/99/24/82/360_F_399248286_Ogm0T8CFeauN4Hdn42FqWfsCE02dJBbX.jpg" 
       alt="image 1"
         className="h-full w-full object-cover"
         />
-              <img style={{width: '100%', height: '100vh'}} src="https://www.dabbawala.live/img/img1.png" 
-      alt="image 1"
-        className="h-full w-full object-cover"
-        />
-              <img style={{width: '100%', height: '100vh'}} src="https://www.dabbawala.live/img/img3.png" 
-      alt="image 1"
-        className="h-full w-full object-cover"
-        />
-            </Carousel>
 
     </div>
   );

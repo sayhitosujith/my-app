@@ -39,16 +39,13 @@ const CardItem = ({ item }) => (
   <Card className="w-96">
     <CardHeader
       variant="gradient"
-      color="green"
+      color="orange"
       className="mb-5 grid h-10 place-items-center">
       <Typography variant="h3" color="white">
         {item.id} : {item.name}
       </Typography>
     </CardHeader>
 
-    <IconButton color="green">
-    <i className="fas fa-heart" />
-    </IconButton>
 
     <div className='flex justify-center items-center'>
       <img style={{ width: '200px', height: '200px' }} src={item.src}  />
@@ -92,12 +89,12 @@ const CardItem = ({ item }) => (
       </Typography>
     </CardFooter>
 
-    <Button color="orange" appearance="primary"> 
+    <Button color="white" appearance="primary"> 
            BUY NOW</Button> 
 
     <br></br>
 
-    <Button color="yellow" appearance="primary"> 
+    <Button color="white" appearance="primary"> 
            ADD TO CART</Button> 
   </Card>
 

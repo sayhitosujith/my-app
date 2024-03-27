@@ -43,7 +43,7 @@ const CardItem = ({item}) => (
       
           <CardHeader
               variant="gradient"
-              color="blue"
+              color="orange"
               className="mb-5 grid h-10 place-items-center">
               <Typography variant="h3" color="white">
                 {item.id} : {item.name}  
@@ -126,7 +126,7 @@ function App() {
         
         <Option>    
         </Option>
-    <Badge content="6">
+    <Badge content="6" color="white">
     <Button>My cart </Button>
     </Badge>
        <Option>About</Option>
