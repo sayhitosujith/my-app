@@ -127,7 +127,7 @@ function App() {
 
              <div style={{ float: 'right' }}>
       <Badge content="6">
-      <Button color="red" appearance="primary"> 
+      <Button color="black" appearance="primary"> 
            BUY NOW</Button> </Badge>
               </div>
 
