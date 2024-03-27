@@ -148,17 +148,17 @@ function App() {
 
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(0, 5).map((item) => <CardItem item={item} />)
+          data.slice(0, 6).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(6, 11).map((item) => <CardItem item={item} />)
+          data.slice(7, 13).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(8, 12).map((item) => <CardItem item={item} />)
+          data.slice(7, 13).map((item) => <CardItem item={item} />)
         }
       </div>
     </div>
