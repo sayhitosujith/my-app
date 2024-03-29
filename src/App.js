@@ -98,7 +98,7 @@ function App() {
 
         </Card>
       </div>
-              <img style={{width: '70%', height: '100vh'}} src="https://t3.ftcdn.net/jpg/03/99/24/82/360_F_399248286_Ogm0T8CFeauN4Hdn42FqWfsCE02dJBbX.jpg" 
+              <img style={{width: '70%', height: '100vh'}} src="https://png.pngtree.com/background/20230625/original/pngtree-luminous-3d-chamber-with-neon-tubes-brick-walls-and-concrete-flooring-picture-image_4043768.jpg" 
       alt="image 1"
         className="h-full w-full object-cover"
         />
