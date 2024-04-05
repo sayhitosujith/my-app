@@ -14,9 +14,9 @@ import {
 
 } from "@material-tailwind/react";
 
-
 function ProfileCard() {
   return (
+    
     <Card className="w-96">
     <CardHeader floated={false} className="h-80">
       <img src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_800_800/0/1703428628673?e=1716422400&v=beta&t=VtQDfl43-_TcdxcF25jtqWBH0vbbTkI68tcAAT3W0iU" alt="profile-picture" />

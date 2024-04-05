@@ -82,8 +82,8 @@ function App() {
         Connect Wallet
       </Button>
 
-            <Typography variant="small" className="mt-6 flex justify-center">
-              Don&apos;t have an account? click here to
+            <Typography variant="small" className="mt-8 flex justify-center">
+              Don&apos;t you have an account? click on the link to
               <Typography
                 as="a"
                 href="#signup"
@@ -98,7 +98,7 @@ function App() {
 
         </Card>
       </div>
-              <img style={{width: '70%', height: '100vh'}} src="https://png.pngtree.com/background/20230625/original/pngtree-luminous-3d-chamber-with-neon-tubes-brick-walls-and-concrete-flooring-picture-image_4043768.jpg" 
+              <img style={{width: '60%', height: '100vh'}} src="https://png.pngtree.com/background/20230618/original/pngtree-online-food-delivery-concept-computer-generated-3d-render-of-food-flying-picture-image_3756857.jpg" 
       alt="image 1"
         className="h-full w-full object-cover"
         />

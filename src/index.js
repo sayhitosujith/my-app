@@ -22,6 +22,7 @@ import Welcome from './Welcome';
 import Addprofile from './Addprofile';
 import MyCart from './MyCart';
 import ProfileCard from './ProfileCard';
+import HomePage from './HomePage';
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,11 @@ const router = createBrowserRouter([
     path: "/ProfileCard",
     element: <ProfileCard/>,
   },
+  {
+    path: "/HomePage",
+    element: <HomePage/>,
+  },
+  
 ]);
 
 

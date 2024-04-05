@@ -34,7 +34,6 @@ const data = [
 
 const CardItem = ({item}) => (
     <Card className="w-96">
-      
           <CardHeader
               variant="gradient"
               color="orange"
@@ -54,12 +53,8 @@ const CardItem = ({item}) => (
           <CardFooter className="pt-0">
             <Typography variant="h10" color="black">
 
-
-         
-
    
 <div className="w-72">
-
     </div>
         <label>
      <b> First Name:</b><br></br>

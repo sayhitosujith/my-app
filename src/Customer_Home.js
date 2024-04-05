@@ -70,8 +70,11 @@ const CardItem = ({ item }) => (
           (
             <div className="w-72">
               <Select label="Select">
-                <Option>Chapati</Option>
-                <Option>Poori</Option>
+                <Option>Chapati & Chatni</Option>
+                <Option>Poori & Saagu</Option>
+                <Option>Masala Dosa & Saagu</Option>
+                <Option>Idli and Uddina Vada</Option>
+
               </Select>
             </div>
           )}
@@ -89,12 +92,12 @@ const CardItem = ({ item }) => (
       </Typography>
     </CardFooter>
 
-    <Button color="white" appearance="primary"> 
+    <Button color="green" appearance="primary"> 
            BUY NOW</Button> 
 
     <br></br>
 
-    <Button color="white" appearance="primary"> 
+    <Button color="green" appearance="primary"> 
            ADD TO CART</Button> 
   </Card>
 
