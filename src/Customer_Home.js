@@ -39,16 +39,13 @@ const CardItem = ({ item }) => (
   <Card className="w-96">
     <CardHeader
       variant="gradient"
-      color="green"
+      color="orange"
       className="mb-5 grid h-10 place-items-center">
       <Typography variant="h3" color="white">
         {item.id} : {item.name}
       </Typography>
     </CardHeader>
 
-    <IconButton color="green">
-    <i className="fas fa-heart" />
-    </IconButton>
 
     <div className='flex justify-center items-center'>
       <img style={{ width: '200px', height: '200px' }} src={item.src}  />
@@ -73,8 +70,11 @@ const CardItem = ({ item }) => (
           (
             <div className="w-72">
               <Select label="Select">
-                <Option>Chapati</Option>
-                <Option>Poori</Option>
+                <Option>Chapati & Chatni</Option>
+                <Option>Poori & Saagu</Option>
+                <Option>Masala Dosa & Saagu</Option>
+                <Option>Idli and Uddina Vada</Option>
+
               </Select>
             </div>
           )}
@@ -92,12 +92,12 @@ const CardItem = ({ item }) => (
       </Typography>
     </CardFooter>
 
-    <Button color="orange" appearance="primary"> 
+    <Button color="green" appearance="primary"> 
            BUY NOW</Button> 
 
     <br></br>
 
-    <Button color="yellow" appearance="primary"> 
+    <Button color="green" appearance="primary"> 
            ADD TO CART</Button> 
   </Card>
 
@@ -130,7 +130,7 @@ function App() {
 
              <div style={{ float: 'right' }}>
       <Badge content="6">
-      <Button color="red" appearance="primary"> 
+      <Button color="black" appearance="primary"> 
            BUY NOW</Button> </Badge>
               </div>
 
@@ -151,17 +151,17 @@ function App() {
 
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(0, 5).map((item) => <CardItem item={item} />)
+          data.slice(0, 6).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(6, 11).map((item) => <CardItem item={item} />)
+          data.slice(7, 13).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(8, 12).map((item) => <CardItem item={item} />)
+          data.slice(7, 13).map((item) => <CardItem item={item} />)
         }
       </div>
     </div>

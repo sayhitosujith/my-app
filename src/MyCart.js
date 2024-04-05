@@ -40,10 +40,10 @@ function MyCart() {
           <b><hr class="separator" /></b>
           </CardBody>
           <CardFooter className="pt-0">
-          <Button color="white" appearance="primary" > 
-           SAVE FOR LATER</Button> 
-            <Button color="white" appearance="primary" > 
-           REMOVE</Button> 
+          <Button color="green" appearance="primary" > 
+           SAVE FOR LATER</Button> <br></br><br></br>
+            <Button color="green" appearance="primary" > 
+           CANCEL</Button> 
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -60,10 +60,10 @@ function MyCart() {
           <b><hr class="separator" /></b>
           </CardBody>
           <CardFooter className="pt-0">
-          <Button color="white" appearance="primary" > 
-           SAVE FOR LATER</Button> 
-            <Button color="white" appearance="primary" > 
-           REMOVE</Button> 
+          <Button color="green" appearance="primary" > 
+           SAVE FOR LATER</Button> <br></br><br></br>
+            <Button color="green" appearance="primary" > 
+           CANCEL</Button> 
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>

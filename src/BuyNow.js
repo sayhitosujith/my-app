@@ -10,7 +10,7 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Input,
+  Radio,
   Button,
 } from "@material-tailwind/react";
 
@@ -20,56 +20,50 @@ import {
 function BuyNow() {
   return (
     <div className="flex flex-row gap-5">
-      <div className='w-1/2 h-screen flex items-center justify-center'>
+    
+      <div className='w-1/1 h-screen flex items-center justify-center'>
         <Card className="w-98">
           <CardBody className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
-        <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" variant="square" />
         <div>
-         
-          <Typography variant="h6">SUJITH</Typography>
-          <Typography variant="small" color="gray" className="font-normal">
-            SDET
-          </Typography>
         </div>
       </div>       
           </CardBody>
           <CardFooter className="pt-0">
-           <Progress value={50} label="Completed" />
 
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
           </Typography>
             <Typography variant="small" className="mt-6 flex justify-center">
-              Already have an account?
+            <Radio name="color" color="red" />
               <Typography
                 as="a"
                 href="#signup"
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-                Login
+                 <b> <Typography>DELIVERY ADDRESS</Typography></b>
+                 <b><hr class="separator" /></b>
+
+                Sujith - 9480860587 
+                <br></br>
+                <div></div>
+                Medahalli - 560049
+                <div></div>
+                <b><hr class="separator" /></b>
+               <button> <h1 style={{ color: 'red' }}><b><div>EDIT</div></b></h1></button>
+<br></br>
+                <Button color="red" appearance="primary"> 
+          DELIVER HERE</Button> 
               </Typography>
             </Typography>
           </CardFooter>
-          
-        <Typography variant="small" className="mt-6 flex justify-center">
-           <b>To verify your number</b>
-           <Typography
-                as="a"
-                href="#signup"
-                variant="small"
-                color="blue-gray"
-                className="ml-1 font-bold">
-              </Typography>
-           </Typography>
-
-
-           
-
         </Card>
       </div>
+      <div></div>
+      <Progress value={50} label="Completed" />
+
     </div>
    
 
@@ -80,4 +74,5 @@ function BuyNow() {
 }
 
 export default BuyNow;
+
 

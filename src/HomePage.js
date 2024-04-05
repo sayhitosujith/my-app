@@ -12,17 +12,12 @@ import {
   Select,
   Option,
   Breadcrumbs,
-  Avatar
+  Avatar,
+  data
 
 } from "@material-tailwind/react";
 
-const data = [
-  {id: 1, name: 'Admin', src: 'https://media.istockphoto.com/id/1192884194/vector/admin-sign-on-laptop-icon-stock-vector.jpg?s=170667a&w=0&k=20&c=S274xvXNsp27UyKxzNjhmZEzAb3Zqi2pFOqZjLsZJz0=',},
-  {id: 2, name: 'Customer', src: 'https://img.freepik.com/premium-vector/customer-concept-2-colored-icon-simple-blue-element-illustration-customer-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-3585.jpg',},
-  {id: 3, name: 'Analytics', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCswCYnhK7o9KobHw5jmOtXQKY6JV8xuixdQ&usqp=CAU',},
-  {id: 3, name: 'Concact Center', src: 'https://img.freepik.com/premium-vector/mobile_393879-1160.jpg',},
 
-]
 
 
 const CardItem = ({item}) => (
@@ -74,17 +69,12 @@ function Welcome() {
       <a href="#" className="opacity-60">
       <a href="#">Profile</a>
       </a>
-      <a href="#">Welcome</a>
+      <a href="#">HomePage</a>
     </Breadcrumbs>
-
-
-
+    <Avatar src="https://fellows.ias.ac.in/public/images/stock/avatar.svg?v=105894425" alt="avatar"size="xxl" div style={{float: 'right'}}></Avatar>
     <Typography variant="h2" color="Black">
       <br></br>
-      Welcome to MealMaven
-      <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xxl" div style={{float: 'right'}}></Avatar>
-      <br></br>
-      <br></br>
+      <img style={{width: '5%', height: '10vh'}} src="https://logowik.com/content/uploads/images/maven-apache3537.jpg" />
 
       <b><hr class="separator" /></b>
 
@@ -102,46 +92,58 @@ function Welcome() {
 
     <div style={{float: 'right'}}>
 
-      <div className="w-74">
-      <Select label="Sujith">
-        <Option>    
-        </Option>
-    <Badge content="6">
-    <Button>My cart </Button>
-    </Badge>
-       <Option>About</Option>
-       <Option>Change Password</Option>
-        <button><Option>Logout</Option></button>
-      </Select>
-    </div>
+
 
             </div>
         </Typography>
+ 
+      <img style={{width: '100%', height: '65vh'}} src="https://kyari.co/cdn/shop/files/HP_Desktop_option_2-01.png?v=1708169023" />
 
+       
+     <br></br> 
 
-
-
-        <div className='w-full flex mt-20 gap-5 flex justify-center items-center'>
-            {
-                data.slice(0,4).map((item) => <CardItem item={item} />)
-            }
-        </div>
-      
         <br></br>
         <b><hr class="separator" /></b>
 
         <div className='flex justify-center items-center'>
        <Typography variant="h2" color="Black">
       <br></br>
-      Need Help ?
+    Our Customers <br></br>
       <br></br>
-      <br></br>
+      <div></div>
+      <Avatar
+      size="xxl"
+      alt="avatar"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyCtZ3TP29Od5dmWVgLi3KGGbiR9dBS12NVnzhRQeTDg&s"
+      className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+               <b>              </b>  
+     <Avatar
+      size="xxl"
+      alt="avatar"
+      src="https://assets.untappd.com/site/brewery_logos_hd/brewery-353492_f8cb2_hd.jpeg"
+      className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+            <b>              </b>  
+
+     <Avatar
+      size="xxl"
+      alt="avatar"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTSIdXHY0RfTWs3eo705sFof5SL4RJy9pvOyyb0L_oEA&s"
+      className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+               <b>            </b> 
+      <Avatar
+      size="xxl"
+      alt="avatar"
+      src="https://lh3.googleusercontent.com/KZdcDokR9jQgQk7FGh_z9vueezoeBWESSAK0U5r494Sav4WGp_ObBL8T_vzICe3k-rcZz5OAzuPT9XWslotw4xReGlNSzjONORvxob4"
+      className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
       </Typography>
     </div>
 
     <div className='flex justify-center items-center'>
        <Typography variant="h7" color="Black">
-       <b>Find articles, tutorials, online training videos, and more.</b>
       <br></br>
       </Typography>
     </div>
