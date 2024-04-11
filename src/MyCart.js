@@ -28,7 +28,7 @@ function MyCart() {
       <div className='w-1/2 h-screen flex items-center fullWidth justify-center'>
         
         <Card className="w-98">
-        <h1 style={{ color: 'Green' }}><b><div>BILL DETAILS</div></b></h1>
+        <h1 style={{ color: 'Green' }}><b><div>BILLING DETAILS</div></b></h1>
 
           <b><hr class="separator" /></b>
 
@@ -37,7 +37,7 @@ function MyCart() {
           <Avatar src="https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw"
            alt="avatar" size="xxl" variant="square"/> 
           <h1 style={{ color: 'red' }}><b><div>Out of Stock </div></b></h1> 
-          <Checkbox label="Select Meal" />
+          <b> <div><button>-</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button>+</button></div></b>          <Checkbox label="Select Meal" />
         
           <b><hr class="separator" /></b>
           </CardBody>
@@ -59,6 +59,8 @@ function MyCart() {
           <b><div>Chines Meal</div></b>
           <Avatar src="https://tse3.mm.bing.net/th?id=OIP.yORsSgJVQYcn7xIZ3Aa12AHaFj&pid=Api&P=0&h=220" alt="avatar" size="xxl" variant="square"/>
           <h1 style={{ color: 'Green' }}><b><div>In Stock </div></b></h1>
+         <b> <div><button>-</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button>+</button></div></b>
+
           <Checkbox label="Select Meal" />
          
           <b><hr class="separator" /></b>
