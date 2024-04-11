@@ -149,6 +149,8 @@ function App() {
               </div>
 
         <div style={{ float: 'right' }}>
+
+        <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
           <div className="w-74">
             <Select label= "Maven Meal">
               <Option>

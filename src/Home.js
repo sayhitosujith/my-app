@@ -16,7 +16,7 @@ import {
   Breadcrumbs,
   Avatar,
   Textarea,
-
+  Chip,
 } from "@material-tailwind/react";
 
 const data = [
@@ -117,9 +117,21 @@ function App() {
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="square" div style={{float: 'right'}}></Avatar>
     <Typography variant="h2" color="Black">
       <br></br>
+
+      <div className="w-72">
+              <Select label="Select">
+                <Option><Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="red"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="white"size="sm"value="Offline" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="Blu"size="sm"value="Do not Distrub" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+
+       </Select>
+       </div>
+       <br></br>
+
    <Button><b> + ADD MEAL </b> </Button>
     <div style={{float: 'right'}}>
-      <br></br>
+    <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
 
       <div className="w-74">
       <Select label="Profile">
