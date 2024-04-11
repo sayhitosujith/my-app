@@ -42,7 +42,7 @@ function MyCart() {
           </CardBody>
           <CardFooter className="pt-0">
           <Button color="green" appearance="primary" > 
-           SAVE FOR LATER</Button> <br></br><br></br>
+           SAVE FOR LATER</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Button color="green" appearance="primary" > 
            CANCEL</Button> 
             <Typography
@@ -64,7 +64,7 @@ function MyCart() {
           </CardBody>
           <CardFooter className="pt-0">
           <Button color="green" appearance="primary" > 
-           SAVE FOR LATER</Button> <br></br><br></br>
+           SAVE FOR LATER</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Button color="green" appearance="primary" > 
 
            CANCEL</Button> 
