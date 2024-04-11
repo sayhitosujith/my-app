@@ -106,7 +106,7 @@ function MyCart() {
             <b><hr class="w-1/2 flex items-center justify-center" /></b>
             <br></br>
             <div style={{ width: '38rem' }}>
-            <h1 style={{ color: 'Orange' }}><b><div>Review your order and address details to avoid cancellations</div></b></h1>
+            <h1 style={{ color: 'Green' }}><b><div>Review your order and address details to avoid cancellations</div></b></h1>
     <b><hr class="separator" /></b>
 <br></br>
 <div>Item Total(2 Items): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
