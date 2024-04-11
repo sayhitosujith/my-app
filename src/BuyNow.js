@@ -60,7 +60,13 @@ function BuyNow() {
             </Typography>
           </CardFooter>
         </Card>
+        
       </div>
+      <img
+      className="h-96 w-full rounded-lg object-cover object-center"
+      src="https://media.licdn.com/dms/image/C5112AQHUgnYzLZFzrw/article-cover_image-shrink_600_2000/0/1572953249284?e=2147483647&v=beta&t=A_GoOK8Cn093eUx3dSF2wpi1t_G8GZRcCJTK_sIp8oU"
+      alt="nature image"
+    />
       <div></div>
       <Progress value={50} label="Completed" />
 

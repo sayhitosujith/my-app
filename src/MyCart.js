@@ -51,7 +51,7 @@ function MyCart() {
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>     
           </CardFooter>
-          <b> NOTE: From the Saved Address the order will be processed,Please add new Address if required </b>
+          <b> <u>NOTE</u>: From the Saved Address the order will be processed,Please add new Address if required </b>
 
           <b><hr class="separator" /></b>
 
@@ -78,7 +78,7 @@ function MyCart() {
         </Typography>     
           </CardFooter>
 
-          <b> NOTE: From the Saved Address the order will be processed,Please add new Address if required </b>
+          <b><u>NOTE</u>: From the Saved Address the order will be processed,Please add new Address if required </b>
 
         <Typography variant="small" className="mt-6 flex justify-center">
     
