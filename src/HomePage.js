@@ -15,7 +15,10 @@ import {
   Avatar,
   data,
   Input,
-  Checkbox
+  Checkbox,
+  Popover,
+  PopoverHandler,
+  PopoverContent,
 
 } from "@material-tailwind/react";
 
@@ -76,7 +79,6 @@ function Welcome() {
         </Typography>
  
       <img style={{width: '100%', height: '65vh'}} src="https://kyari.co/cdn/shop/files/HP_Desktop_option_2-01.png?v=1708169023" />
-
        
      <br></br> 
 
@@ -205,13 +207,52 @@ function Welcome() {
     <br></br>
 
     <b><hr class="separator" /></b>
+    <br></br>
+    <br></br>
+    <br></br>
+
+    <Popover placement="bottom">
+    News Letter
+<br></br>
+      <PopoverHandler>
+        <Button>Subscribe </Button>
+      </PopoverHandler>
+      <PopoverContent className="w-96">
+        <Typography variant="h6" color="blue-gray" className="mb-6">
+          Newsletter Subscription
+        </Typography>
+        <Typography
+          variant="small"
+          color="blue-gray"
+          className="mb-1 font-bold"
+        >
+          Your Name
+        </Typography>
+        <div className="flex gap-2">
+          <Input
+            size="lg"
+            placeholder="name@mail.com"
+            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            labelProps={{
+              className: "before:content-none after:content-none",
+            }}
+          />
+          <Button variant="gradient" className="flex-shrink-0">
+            Subscribe 
+          </Button>
+        </div>
+      </PopoverContent>
+    </Popover>
+    <br></br>
+    <br></br>
+    <br></br>
+    <b><hr class="separator" /></b>
     <div className='flex justify-center items-center'>
        <Typography variant="h2" color="Black">
       <br></br>
      Customer Success Stories 
    <br></br>
    <br></br>
-
 
 
      <div className="flex flex-row gap-5">
