@@ -34,8 +34,9 @@ function MyCart() {
 
           <CardBody className="flex flex-col gap-5">
           <b><div>North Indian Meal</div></b>
-          <Avatar src="https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw" alt="avatar" size="xxl" variant="square"/>
-          <h1 style={{ color: 'red' }}><b><div>Out of Stock </div></b></h1>
+          <Avatar src="https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw"
+           alt="avatar" size="xxl" variant="square"/> 
+          <h1 style={{ color: 'red' }}><b><div>Out of Stock </div></b></h1> 
           <Checkbox label="Select Meal" />
         
           <b><hr class="separator" /></b>
@@ -79,7 +80,8 @@ function MyCart() {
 
         <Typography variant="small" className="mt-6 flex justify-center">
     
-        
+        <br></br>
+
            <Typography
                 as="a"
                 href="#signup"
@@ -90,12 +92,19 @@ function MyCart() {
            </Typography>
         </Card>
       </div>
-      
+      <br></br>
       <card >
         <CardHeader >
             <CardBody>
+<br></br>
 
+<img
+      className="h-96 w-full rounded-lg object-cover object-center"
+      src="https://media.licdn.com/dms/image/C5112AQHUgnYzLZFzrw/article-cover_image-shrink_600_2000/0/1572953249284?e=2147483647&v=beta&t=A_GoOK8Cn093eUx3dSF2wpi1t_G8GZRcCJTK_sIp8oU"
+      alt="nature image"
+    />
             <b><hr class="w-1/2 flex items-center justify-center" /></b>
+            <br></br>
             <div style={{ width: '38rem' }}>
             <h1 style={{ color: 'Orange' }}><b><div>Review your order and address details to avoid cancellations</div></b></h1>
     <b><hr class="separator" /></b>
@@ -141,9 +150,8 @@ function MyCart() {
     <b><hr class="separator"/></b>
 <br></br>
     <Button color="red" appearance="primary" > 
-           PLACE ORDER</Button> 
-   
-
+           PLACE ORDER</Button>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Button color="red" appearance="primary" > 
+           CANCEL</Button>
      </div>
      <br></br>
             </CardBody>
