@@ -127,8 +127,7 @@ function MyCart() {
             <CardBody>
             <b><hr class="separator" /></b>
             <div style={{ width: '38rem' }}>
-    <b><button>PRICE DETAILS</button></b> 
-    <br></br>
+            <h1 style={{ color: 'Green' }}><b><div>PRICE DETAILS</div></b></h1>
     <b><hr class="separator" /></b>
 <br></br>
 <div>Price(2 Items):300 </div>
@@ -143,14 +142,15 @@ function MyCart() {
 <br></br>
 <b><hr class="separator" /></b>
 <br></br>
-<h1 style={{ color: 'Red' }}><b><div>Note: If you cancel within 60 seconds of placing your order, a 100% refund will be issues ,No refund for cancellation made after 60 seconds</div></b></h1>
+<h1 style={{ color: 'Red' }}><b><div><u>NOTE</u>: If you cancel within 60 seconds of placing your order, a 100% refund will be issues ,No refund for cancellation made after 60 seconds</div></b></h1>
 
 <br></br>
 <h1 style={{ color: 'Red' }}><b><div>Avoid cancellation as it leads to food wastaged</div></b></h1>
     <br></br>
+    <b><hr class="separator"/></b>
+<br></br>
     <Button color="red" appearance="primary" > 
            PLACE ORDER</Button> 
-           <b><hr class="separator"/></b>
    
 
      </div>
