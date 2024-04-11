@@ -51,7 +51,6 @@ function MyCart() {
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>     
           </CardFooter>
-          <b> <u>NOTE</u>: From the Saved Address the order will be processed,Please add new Address if required </b>
 
           <b><hr class="separator" /></b>
 
