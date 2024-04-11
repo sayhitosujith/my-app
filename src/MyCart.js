@@ -28,7 +28,7 @@ function MyCart() {
       <div className='w-1/2 h-screen flex items-center fullWidth justify-center'>
         
         <Card className="w-98">
-
+        <h1 style={{ color: 'Green' }}><b><div>BILL DETAILS</div></b></h1>
 
           <b><hr class="separator" /></b>
 
@@ -37,6 +37,7 @@ function MyCart() {
           <Avatar src="https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw" alt="avatar" size="xxl" variant="square"/>
           <h1 style={{ color: 'red' }}><b><div>Out of Stock </div></b></h1>
           <Checkbox label="Select Meal" />
+        
           <b><hr class="separator" /></b>
           </CardBody>
           <CardFooter className="pt-0">
@@ -49,6 +50,7 @@ function MyCart() {
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>     
           </CardFooter>
+          <b> NOTE: From the Saved Address the order will be processed,Please add new Address if required </b>
 
           <b><hr class="separator" /></b>
 
@@ -57,6 +59,7 @@ function MyCart() {
           <Avatar src="https://tse3.mm.bing.net/th?id=OIP.yORsSgJVQYcn7xIZ3Aa12AHaFj&pid=Api&P=0&h=220" alt="avatar" size="xxl" variant="square"/>
           <h1 style={{ color: 'Green' }}><b><div>In Stock </div></b></h1>
           <Checkbox label="Select Meal" />
+         
           <b><hr class="separator" /></b>
           </CardBody>
           <CardFooter className="pt-0">
@@ -64,17 +67,17 @@ function MyCart() {
            SAVE FOR LATER</Button> <br></br><br></br>
             <Button color="green" appearance="primary" > 
            CANCEL</Button> 
+           
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>     
           </CardFooter>
 
-          <b><hr class="separator" /></b>
-          
+          <b> NOTE: From the Saved Address the order will be processed,Please add new Address if required </b>
+
         <Typography variant="small" className="mt-6 flex justify-center">
     
-           <b> NOTE: From the Saved Address the order will be processed,Please add new Address if required </b>
         
            <Typography
                 as="a"
@@ -90,39 +93,50 @@ function MyCart() {
       <card >
         <CardHeader >
             <CardBody>
-            <b><hr class="separator" /></b>
-            <div style={{ width: '38rem' }}>
-    <b><button>PRICE DETAILS</button></b> 
-    <br></br>
-    <b><hr class="separator" /></b>
-<br></br>
-<div>Price(2 Items):300 </div>
-<br></br>
-<div>Discount : 50/</div>
-<br></br>
-<div>Delivery Charges: FREE</div>
-<br></br>
-<b><hr class="separator" /></b>
-<br></br>
-<b><div>Total Amount: 150/-</div></b>
-<br></br>
-<b><hr class="separator" /></b>
-<br></br>
-<h1 style={{ color: 'Green' }}><b><div>You will save ₹150/- on this order </div></b></h1>
 
+            <b><hr class="w-1/2 flex items-center justify-center" /></b>
+            <div style={{ width: '38rem' }}>
+            <h1 style={{ color: 'Orange' }}><b><div>Review your order and address details to avoid cancellations</div></b></h1>
     <b><hr class="separator" /></b>
+<br></br>
+<div>Item Total(2 Items):300 </div>
+<br></br>
+<b><hr class="separator"/></b>
+<br></br>
+<div>Delivery Tip :<h1 style={{ color: 'orange' }}><b><div>Add Tip</div></b></h1>
+</div>
+<br></br>
+<div>Discount : 50/-</div>
+<br></br>
+<div>Delivery Charges: Free/-</div>
+<br></br>
+<div>GST and Restaurant Charges: 50/-</div>
+<br></br>
+<b><hr class="separator" /></b>
+<br></br>
+<b><div>To Pay: 350/-</div></b>
+<br></br>
+<b><hr class="separator" /></b>
+<br></br>
+<h1 style={{ color: 'Red' }}><b><div><u>NOTE</u>: If you cancel within 60 seconds of placing your order, a 100% refund will be issues ,No refund for cancellation made after 60 seconds</div></b></h1>
+
+<br></br>
+<h1 style={{ color: 'Red' }}><b><div>Avoid cancellation as it leads to food wastaged</div></b></h1>
     <br></br>
+    <b><hr class="separator"/></b>
+<br></br>
     <Button color="red" appearance="primary" > 
            PLACE ORDER</Button> 
+   
+
      </div>
+     <br></br>
             </CardBody>
         </CardHeader>
       </card>
 
-   
-
     </div>
-   
+    
 
   );
 

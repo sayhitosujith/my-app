@@ -2,6 +2,7 @@ import './App.css';
 import { Select, Option } from "@material-tailwind/react";
 import { Badge } from "@material-tailwind/react";
 import { IconButton } from "@material-tailwind/react";
+import { Chip } from "@material-tailwind/react";
 
 
 import {
@@ -127,6 +128,19 @@ function App() {
 
       <Typography variant="h3" color="Black">
         CUSTOMER HOME
+        <div className="flex gap-2">
+      
+        <div className="w-72">
+              <Select label="Select">
+                <Option><Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="red"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="white"size="sm"value="Offline" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="Blu"size="sm"value="Do not Distrub" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+
+       </Select>
+            </div>
+      </div>
+
 
              <div style={{ float: 'right' }}>
       <Badge content="6">
