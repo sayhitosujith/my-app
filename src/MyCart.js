@@ -37,7 +37,10 @@ function MyCart() {
           <Avatar src="https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw"
            alt="avatar" size="xxl" variant="square"/> 
           <h1 style={{ color: 'red' }}><b><div>Out of Stock </div></b></h1> 
-          <b> <div><button>-</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button>+</button></div></b>          <Checkbox label="Select Meal" />
+          <b> <div><button><h1 style={{ color: 'red' }}><b><div>-</div></b></h1></button>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <button><h1 style={{ color: 'Red' }}><b><div>+</div></b></h1></button></div></b>
+                 <b><Checkbox label="Select Meal" /></b>
         
           <b><hr class="separator" /></b>
           </CardBody>
@@ -58,7 +61,9 @@ function MyCart() {
           <b><div>Chines Meal</div></b>
           <Avatar src="https://tse3.mm.bing.net/th?id=OIP.yORsSgJVQYcn7xIZ3Aa12AHaFj&pid=Api&P=0&h=220" alt="avatar" size="xxl" variant="square"/>
           <h1 style={{ color: 'Green' }}><b><div>In Stock </div></b></h1>
-         <b> <div><button>-</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button>+</button></div></b>
+         <b> <div><button><h1 style={{ color: 'red' }}><b><div>-</div></b></h1></button>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <button><h1 style={{ color: 'Red' }}><b><div>+</div></b></h1></button></div></b>
 
           <Checkbox label="Select Meal" />
          
@@ -97,7 +102,6 @@ function MyCart() {
       <card >
         <CardHeader >
             <CardBody>
-<br></br>
 
 <img
       className="h-96 w-full rounded-lg object-cover object-center"
