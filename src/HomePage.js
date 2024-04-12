@@ -213,6 +213,13 @@ function Welcome() {
 
     <Popover placement="bottom">
     News Letter
+    
+    <audio controls>
+  <source src="horse.ogg" type="audio/ogg"/>
+  <source src="horse.mp3" type="audio/mpeg"/>
+  Your browser does not support the audio tag.
+</audio>
+    
 <br></br>
       <PopoverHandler>
         <Button>Subscribe </Button>
@@ -329,7 +336,10 @@ Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to th
 
     
 
-    
+    <footer>
+  <p>This web page is a part of a demonstration of fluid web design made by w3schools.com. Resize the browser window to see the content respond to the resizing.</p>
+  </footer>
+
 
     <div className='flex justify-center items-center'>
        <Typography variant="h7" color="Black">
@@ -337,12 +347,14 @@ Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to th
       </Typography>
     </div>
     </div>
+    
  );
  
  
 
  
 }
+
 export default Welcome;
 
 

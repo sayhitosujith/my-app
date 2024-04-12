@@ -1,7 +1,8 @@
 import './App.css';
 import { Avatar } from "@material-tailwind/react";
 import { DocSearch } from "@docsearch/react";
-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
 import {
   Card,
@@ -154,9 +155,9 @@ function MyCart() {
     <br></br>
     <b><hr class="separator"/></b>
 <br></br>
-    <Button color="red" appearance="primary" > 
-           PLACE ORDER</Button>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Button color="red" appearance="primary" > 
-           CANCEL</Button>
+    <Button color="red" appearance="primary" > PLACE ORDER</Button> 
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <Button color="red" appearance="primary" > CANCEL</Button>
      </div>
      <br></br>
             </CardBody>
