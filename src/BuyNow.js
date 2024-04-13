@@ -25,17 +25,30 @@ function BuyNow() {
   return (
 
     <div className="flex flex-row gap-5">
-        
-      <div className='w-1/2 h-screen flex items-center fullWidth justify-center'>
-        
-        <Card className="w-98">
-        <h1 style={{ color: 'Green' }}><b><div>Contact</div></b></h1>
+        <header>
+        <Typography variant="small" className="mt-0 justify-center">
+ <img style={{width: '45%', height: '25vh'}} src="https://mms.businesswire.com/media/20191209005536/en/761245/23/FoodMaven-Logo.jpg" /> </Typography>      
+ <br></br>
+ <br></br>
+   
+  </header>
 
-          <b><hr class="separator" /></b>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
 
-         
-          
+      <div className="flex flex-col gap-5">
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <b><hr class="separator" /></b>
 
+      <Typography variant="h3" color="Black">
+        <h1 style={{ color: 'Green' }}><b><div>Delivery</div></b></h1> </Typography>  
           <b><hr class="separator" /></b>
 
           <CardBody className="flex flex-col gap-6">
@@ -50,18 +63,28 @@ function BuyNow() {
                 <Option>China</Option>
 
               </Select>
+              
             </div>
-         <b> <div><button><h1 style={{ color: 'red' }}><b><div>-</div></b></h1></button>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <button><h1 style={{ color: 'Red' }}><b><div>+</div></b></h1></button></div></b>
+            <Input label="First Name " size="lg" />
 
-          <Checkbox label="Select Meal" />
-         
+            <Input label="Last Name " size="lg" />
+
+            <Input label="Company (Optional) " size="lg" />
+
+            <Input label="Address " size="lg" />
+            <Input label="City " size="lg" />
+            <Input label="State " size="lg" />
+            <Input label="Pincode " size="lg" />
+            <Input label="Phone " size="lg" />
+
+          <Checkbox label="Save this information for next time" />
+          <Checkbox label="Text me with news and offers" />
+
           <b><hr class="separator" /></b>
           </CardBody>
           <CardFooter className="pt-0">
           <Button color="green" appearance="primary" > 
-           SAVE FOR LATER</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           PAY NOW</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Button color="green" appearance="primary" > 
 
            CANCEL</Button> 
@@ -86,8 +109,8 @@ function BuyNow() {
                 className="ml-1 font-bold">
               </Typography>
            </Typography>
-        </Card>
       </div>
+      
       <br></br>
      
 
