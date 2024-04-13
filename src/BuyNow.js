@@ -48,7 +48,7 @@ function BuyNow() {
       <b><hr class="separator" /></b>
 
       <Typography variant="h3" color="Black">
-        <h1 style={{ color: 'Green' }}><b><div>Delivery</div></b></h1> </Typography>  
+        <h1 style={{ color: 'Green' }}><b><div>contact</div></b></h1> </Typography>  
           <b><hr class="separator" /></b>
 
           <CardBody className="flex flex-col gap-6">
