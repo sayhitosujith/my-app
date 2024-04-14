@@ -105,7 +105,7 @@ function PricingCard({
         <Button
           fullWidth
           variant="gradient"
-          color="gray"
+          color="green"
         >
           get started
         </Button>

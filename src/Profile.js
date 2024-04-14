@@ -36,7 +36,7 @@ const CardItem = ({item}) => (
     <Card className="w-96">
           <CardHeader
               variant="gradient"
-              color="orange"
+              color="green"
               className="mb-5 grid h-10 place-items-center">
               <Typography variant="h3" color="white">
                 {item.id} : {item.name}  
