@@ -18,7 +18,18 @@ import {
   Input
 } from "@material-tailwind/react";
 
+<style>
+.footer 
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: red;
+   color: white;
+   text-align: center;
+   clearfix overflow: auto;
 
+</style>
 
 
 function BuyNow() {
@@ -86,12 +97,12 @@ function BuyNow() {
           <h1 style={{ color: 'Green' }}><b><div>PAYMENT </div></b></h1>
 
          <label>
-            <input type="radio" value="option1" checked={true} />&nbsp;&nbsp;
+            <input type="radio" value="option1" checked={false} />&nbsp;&nbsp;
             Razorpay Secure (UPI, Cards, Wallets, NetBanking)
             </label>
 
             <label>
-            <input type="radio" value="option1" checked={false} />&nbsp;&nbsp;
+            <input type="radio" value="option1" checked={true} />&nbsp;&nbsp;
             Cash on Delivery(COD)
             </label>
           
@@ -104,15 +115,18 @@ function BuyNow() {
             <Button color="green" appearance="primary" > 
 
            CANCEL</Button> 
-           
+           <br></br>
+           <br></br>
+
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>     
           </CardFooter>
 
-          <b><u>NOTE</u>: From the Saved Address the order will be processed,Please add new Address if required </b>
-
+          <div class="footer">
+  <p>Footer</p>
+</div>
         <Typography variant="small" className="mt-6 flex justify-center">
     
         <br></br>

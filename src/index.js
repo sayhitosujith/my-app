@@ -23,6 +23,7 @@ import Addprofile from './Addprofile';
 import MyCart from './MyCart';
 import ProfileCard from './ProfileCard';
 import HomePage from './HomePage';
+import Pricing from './Pricing';
 
 const router = createBrowserRouter([
   {
@@ -97,7 +98,10 @@ const router = createBrowserRouter([
     path: "/HomePage",
     element: <HomePage/>,
   },
-  
+  {
+    path: "/Pricing",
+    element: <Pricing/>,
+  },
   
 ]);
 
