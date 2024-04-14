@@ -54,10 +54,16 @@ const CardItem = ({ item }) => (
     <CardBody className="flex flex-col gap-4">
       <div className="-mr-50">
       </div>
+      <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+              <svg className="h-5 w-5" fill="grey" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21.638l-1.625-1.473C5.303 15.013 2 11.12 2 7.25 2 4.364 4.364 2 7.25 2c1.79 0 3.462 1.144 4.75 2.977C13.288 3.144 14.96 2 16.75 2 19.636 2 22 4.364 22 7.25c0 3.87-3.303 7.762-8.375 13.917L12 21.638z"/>
+              </svg>
+            </Typography>
     </CardBody>
     <CardFooter className="pt-0">
       <Typography variant="h10" color="black">
         <div>
+          
         <b><hr class="separator" /></b>
 
           <button> <Typography variant="h6"> Discount - 5%</Typography></button>
