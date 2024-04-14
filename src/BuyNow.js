@@ -48,7 +48,7 @@ function BuyNow() {
       <b><hr class="separator" /></b>
 
       <Typography variant="h3" color="Black">
-        <h1 style={{ color: 'Green' }}><b><div>contact</div></b></h1> </Typography>  
+        <h1 style={{ color: 'Green' }}><b><div>Contact</div></b></h1> </Typography>  
           <b><hr class="separator" /></b>
 
           <CardBody className="flex flex-col gap-6">
@@ -79,12 +79,28 @@ function BuyNow() {
 
           <Checkbox label="Save this information for next time" />
           <Checkbox label="Text me with news and offers" />
-
+          
+          
           <b><hr class="separator" /></b>
+
+          <h1 style={{ color: 'Green' }}><b><div>PAYMENT </div></b></h1>
+
+         <label>
+            <input type="radio" value="option1" checked={true} />&nbsp;&nbsp;
+            Razorpay Secure (UPI, Cards, Wallets, NetBanking)
+            </label>
+
+            <label>
+            <input type="radio" value="option1" checked={false} />&nbsp;&nbsp;
+            Cash on Delivery(COD)
+            </label>
+          
+            <b><hr class="separator" /></b>
+
           </CardBody>
           <CardFooter className="pt-0">
           <Button color="green" appearance="primary" > 
-           PAY NOW</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           COMPLETE ORDER</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Button color="green" appearance="primary" > 
 
            CANCEL</Button> 
