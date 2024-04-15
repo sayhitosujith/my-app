@@ -39,7 +39,7 @@ const LINKS = [
 ];
  
 const currentYear = new Date().getFullYear();
- 
+const Time =  new Date().toLocaleString()
 
 const CardItem = ({item}) => (
     
@@ -85,7 +85,7 @@ function Welcome() {
           <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
         </svg>
       </a>
-
+<br></br>
       <a href="#" className="opacity-60">
       <a href="#">Profile</a>
       </a>
@@ -96,11 +96,20 @@ function Welcome() {
       Welcome to Food Maven
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xxl" div style={{float: 'right'}}></Avatar>
       <br></br>
-      <br></br>
 
       <b><hr class="separator" /></b>
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
            <b>Access your provisioned services below. Switch services any time from the Apps icon in the top right corner of your screen.</b>
+           <br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           {Time} - IST
            <Typography
                 as="a"
                 href="#signup"
@@ -126,6 +135,7 @@ function Welcome() {
     </div>
             </div>
         </Typography>
+        <br></br>
 
 
 
@@ -192,7 +202,7 @@ function Welcome() {
             variant="small"
             className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
           >
-            &copy; {currentYear} <a href="https://material-tailwind.com/">Food Maven</a>. All
+            &copy; {currentYear}<a href="https://material-tailwind.com/">Food Maven</a>. All
             Rights Reserved.
           </Typography>
           <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
