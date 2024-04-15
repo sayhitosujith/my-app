@@ -20,7 +20,7 @@ const data = [
   {id: 1, name: 'Admin', src: 'https://media.istockphoto.com/id/1192884194/vector/admin-sign-on-laptop-icon-stock-vector.jpg?s=170667a&w=0&k=20&c=S274xvXNsp27UyKxzNjhmZEzAb3Zqi2pFOqZjLsZJz0=',},
   {id: 2, name: 'Customer', src: 'https://img.freepik.com/premium-vector/customer-concept-2-colored-icon-simple-blue-element-illustration-customer-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-3585.jpg',},
   {id: 3, name: 'Analytics', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCswCYnhK7o9KobHw5jmOtXQKY6JV8xuixdQ&usqp=CAU',},
-  {id: 3, name: 'Concact Center', src: 'https://img.freepik.com/premium-vector/mobile_393879-1160.jpg',},
+  {id: 4, name: 'Concact Center', src: 'https://img.freepik.com/premium-vector/mobile_393879-1160.jpg',},
 
 ]
 const LINKS = [
@@ -74,7 +74,6 @@ const CardItem = ({item}) => (
 function Welcome() {
   return (
     <div className="p-10">
-            <br></br>
             <Breadcrumbs>
       <a href="#" className="opacity-60">
         <svg
@@ -93,18 +92,13 @@ function Welcome() {
       <a href="#">Welcome</a>
     </Breadcrumbs>
 
-
-
     <Typography variant="h2" color="Black">
-      <br></br>
       Welcome to Food Maven
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xxl" div style={{float: 'right'}}></Avatar>
       <br></br>
       <br></br>
 
       <b><hr class="separator" /></b>
-
-
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
            <b>Access your provisioned services below. Switch services any time from the Apps icon in the top right corner of your screen.</b>
            <Typography
@@ -119,7 +113,7 @@ function Welcome() {
     <div style={{float: 'right'}}>
 
       <div className="w-74">
-      <Select label="Sujith">
+      <Select label="Profile">
         <Option>    
         </Option>
     <Badge content="6">
@@ -130,7 +124,6 @@ function Welcome() {
         <button><Option>Logout</Option></button>
       </Select>
     </div>
-
             </div>
         </Typography>
 
@@ -148,7 +141,6 @@ function Welcome() {
 
         <div className='flex justify-center items-center'>
        <Typography variant="h2" color="Black">
-      <br></br>
       Need Help ?
       <br></br>
       <br></br>
@@ -159,6 +151,8 @@ function Welcome() {
        <Typography variant="h7" color="Black">
        <b>Find articles, tutorials, online training videos, and more.</b>
       <br></br>
+      <b><hr class="separator" /></b>
+
       </Typography>
     </div>
     <footer className="relative w-full">
