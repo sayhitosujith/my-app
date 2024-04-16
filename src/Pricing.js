@@ -270,13 +270,13 @@ export function PricingSection11() {
   ];
 
   return (
-    <section className="py-24 px-8">
+    <section className="py-18 px-8">
       <div className="container mx-auto">
         <Typography color="blue-gray" className="mb-4 font-bold text-lg">
-        Food Maven -Pricing Plans
+        Food Maven - Pricing Plans
         </Typography>
         <Typography variant="h1" color="blue-gray" className="mb-4 !leading-snug lg:!text-4xl !text-2xl max-w-2xl">
-        Invest in a plan that&apos;s as ambitious as your corporate goals.
+        Invest in a plan and avail more offers.
         </Typography>
         <Typography variant="lead" className="mb-10 font-normal !text-gray-500 max-w-xl">
         Compare the benefits and features of each plan below to find the ideal 
