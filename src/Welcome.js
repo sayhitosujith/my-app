@@ -49,7 +49,7 @@ const CardItem = ({item}) => (
               variant="gradient"
               color="green"
               className="mb-5 grid h-10 place-items-center">
-              <Typography variant="h2" color="grey">
+              <Typography variant="h2" color="grey" >
                 {item.id} : {item.name}  
              </Typography>
             </CardHeader>
