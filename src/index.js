@@ -24,6 +24,7 @@ import MyCart from './MyCart';
 import ProfileCard from './ProfileCard';
 import HomePage from './HomePage';
 import Pricing from './Pricing';
+import CustomerCare from './CustomerCare';
 
 const router = createBrowserRouter([
   {
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
   {
     path: "/Pricing",
     element: <Pricing/>,
+  },
+  {
+    path: "/CustomerCare",
+    element: <CustomerCare/>,
   },
   
 ]);
