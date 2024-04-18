@@ -39,9 +39,9 @@ function App() {
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-             Log In 
-             <a href="/Customer_Home"/>
-              
+             <a href="/Customer_home">
+               Log In 
+               </a>              
             </Button>
             <br></br>
             <Button variant="gradient" fullWidth>
