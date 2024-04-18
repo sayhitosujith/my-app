@@ -56,7 +56,9 @@ function ResetPassword() {
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
+            <a href="/">
              Submit
+               </a>  
             </Button>
             <br></br>
 
