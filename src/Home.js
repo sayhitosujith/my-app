@@ -136,7 +136,11 @@ function App() {
        </div>
        <br></br>
 
-   <Button><b> + ADD MEAL </b> </Button>
+   <Button><b>  
+   <a href="/AddMeal">
+   + ADD MEAL 
+               </a>  
+    </b> </Button>
     <div style={{float: 'right'}}>
     <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
 
