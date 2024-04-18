@@ -25,6 +25,7 @@ import ProfileCard from './ProfileCard';
 import HomePage from './HomePage';
 import Pricing from './Pricing';
 import CustomerCare from './CustomerCare';
+import BillingDetails from './BillingDetails';
 
 const router = createBrowserRouter([
   {
@@ -107,7 +108,11 @@ const router = createBrowserRouter([
     path: "/CustomerCare",
     element: <CustomerCare/>,
   },
-  
+  {
+    path: "/BillingDetails",
+    element: <BillingDetails/>,
+  },
+
 ]);
 
 

@@ -32,8 +32,8 @@ function App() {
             <div className="-ml-2.5">
               <div></div>
               <Checkbox label="Remember Me" /><div></div>
-              <a href="#desired_content">Forgot Password? Click here to Reset</a>
-
+              <a href="/ResetPassword">Forgot Password? Click here to Reset
+              </a>
             </div>
             
           </CardBody>
