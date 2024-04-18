@@ -40,6 +40,8 @@ function App() {
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
              Log In 
+             <a href="/Customer_Home"/>
+              
             </Button>
             <br></br>
             <Button variant="gradient" fullWidth>
@@ -90,7 +92,8 @@ function App() {
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-                Sign up
+                <a href="/NewRegistration">Sign up</a>
+
               </Typography>
             </Typography>
           </CardFooter>

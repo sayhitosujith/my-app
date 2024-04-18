@@ -87,7 +87,8 @@ function NewRegistration() {
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-                Login
+               <a href="/">Login</a>
+
               </Typography>
             </Typography>
           </CardFooter>
