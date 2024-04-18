@@ -50,7 +50,10 @@ const CardItem = ({item}) => (
               color="green"
               className="mb-5 grid h-10 place-items-center">
               <Typography variant="h2" color="grey" >
-                {item.id} : {item.name}  
+                <a href="/Customer_home">
+                {item.id} : 
+                {item.name}  
+               </a> 
              </Typography>
             </CardHeader>
 

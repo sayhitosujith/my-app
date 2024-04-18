@@ -70,8 +70,10 @@ function NewRegistration() {
             
           </CardBody>
           <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-             Register
+          <Button variant="gradient" fullWidth>
+            <a href="/">
+               Register 
+               </a>   
             </Button>
             <Typography
           variant="p"

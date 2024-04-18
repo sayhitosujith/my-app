@@ -45,7 +45,9 @@ function App() {
             </Button>
             <br></br>
             <Button variant="gradient" fullWidth>
-             Cancel 
+            <a href="/">
+               Cancel 
+               </a>   
             </Button>
             &nbsp;
            

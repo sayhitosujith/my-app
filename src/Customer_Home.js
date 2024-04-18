@@ -174,7 +174,14 @@ function App() {
               </Option>
               <Option>About</Option>
               <Option>Change Password</Option>
-              <button><Option>Logout</Option></button>
+              <button><Option>
+              <Button variant="gradient" fullWidth>
+            <a href="/">
+               Logout 
+               </a>   
+            </Button>
+                
+                </Option></button>
             </Select>
           </div>
         </div>
