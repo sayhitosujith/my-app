@@ -32,7 +32,7 @@ function App() {
             <div className="-ml-2.5">
               <div></div>
               <Checkbox label="Remember Me" /><div></div>
-              <a href="/ResetPassword">Forgot Password? Click here to Reset
+              <a href="/ResetPassword">Forgot Password? Click here to <b>Reset</b>
               </a>
             </div>
             
