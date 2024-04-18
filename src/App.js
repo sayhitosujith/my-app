@@ -1,5 +1,4 @@
 import './App.css';
-import { Carousel } from "@material-tailwind/react";
 
 import {
   Card,
@@ -39,8 +38,8 @@ function App() {
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-             <a href="/Customer_home">
-               Log In 
+            <a href="/Home">
+             LOGIN 
                </a>              
             </Button>
             <br></br>
