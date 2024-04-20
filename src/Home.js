@@ -116,7 +116,11 @@ function App() {
       </a>
 
       <a href="#" className="opacity-60">
-      <a href="#">Profile</a>
+      <a href="#">
+      <a href="/Profile">
+             Profle 
+               </a>    
+      </a>
       </a>
       <a href="#">Admin Home</a>
     </Breadcrumbs>

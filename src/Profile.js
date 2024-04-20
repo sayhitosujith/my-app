@@ -92,7 +92,9 @@ function Profile() {
       </a>
 
       <a href="#" className="opacity-60">
-      <a href="#">Customer_Home</a>
+      <a href="/Customer_Home">
+      Customer_Home 
+               </a>    
       </a>
       <a href="#">Profiles</a>
 
@@ -101,6 +103,9 @@ function Profile() {
 
     <Typography variant="h2" color="Black">
       PROFILES 
+        <a href="/Home">
+             LOGIN 
+               </a>    
       <br></br>
    <Button> + ADD PROFILE </Button>
     <div style={{float: 'right'}}>

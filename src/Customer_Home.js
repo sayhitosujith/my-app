@@ -127,7 +127,9 @@ function App() {
         </a>
 
         <a href="#" className="opacity-60">
-          <a href="#">Profile</a>
+          <a href="/Home">
+          Profile 
+               </a>    
         </a>
         <a href="#">Customer_Home</a>
       </Breadcrumbs>
