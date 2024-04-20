@@ -27,6 +27,7 @@ import Pricing from './Pricing';
 import CustomerCare from './CustomerCare';
 import BillingDetails from './BillingDetails';
 import Success from './Success';
+import OrderDetails from './OrderDetails';
 
 
 
@@ -119,7 +120,11 @@ const router = createBrowserRouter([
     path: "/Success",
     element: <Success/>,
   },
-
+  {
+    path: "/OrderDetails",
+    element: <OrderDetails/>,
+  },
+  
 ]);
 
 
