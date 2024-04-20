@@ -1,11 +1,9 @@
 import './App.css';
 import { Avatar } from "@material-tailwind/react";
-import { useCountries } from "use-react-countries";
 
 
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Typography,
@@ -47,7 +45,6 @@ function Addprofile() {
             >
               I agree the
               <a
-                href="#"
                 className="font-medium transition-colors hover:text-gray-900"
               >
                 &nbsp;Terms and Conditions
@@ -76,18 +73,12 @@ function Addprofile() {
           
         <Typography variant="small" className="mt-6 flex justify-center">
            <b>NOTE : Add a new Customer profile, from Admin from backend.......................!!</b>
-           <Typography
-                as="a"
-                href="#signup"
-                variant="small"
-                color="blue-gray"
-                className="ml-1 font-bold">
-              </Typography>
            </Typography>
 
         </Card>
       </div>
-      <img style={{width: '60%', height: '100vh'}} src="https://user-images.githubusercontent.com/74038190/219923823-bf1ce878-c6b8-4faa-be07-93e6b1006521.gif" />
+      <img style={{width: '60%', height: '100vh'}} src="https://user-images.githubusercontent.com/74038190/219923823-bf1ce878-c6b8-4faa-be07-93e6b1006521.gif"/>
+      Add meals image
     </div>
    
 

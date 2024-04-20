@@ -117,13 +117,14 @@ function App() {
 
       <a href="#" className="opacity-60">
       <a href="#">
-      <a href="/Profile">
+      <a href="/Profle">
              Profle 
                </a>    
       </a>
       </a>
       <a href="#">Admin Home</a>
     </Breadcrumbs>
+    
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="square" div style={{float: 'right'}}></Avatar>
     <Typography variant="h2" color="Black">
       <br></br>
@@ -153,11 +154,28 @@ function App() {
         <Option>    
         </Option>
     <Badge content="6" color="white">
-    <Button>My cart </Button>
+    <Button>
+    <a href="/MYCART">
+             MyCart 
+               </a> 
+      
+    </Button>
     </Badge>
-       <Option>About</Option>
-       <Option>Change Password</Option>
-        <button><Option>Logout</Option></button>
+       <Option>
+       <a href="/HomePage">
+             About 
+               </a> 
+       </Option>
+       <Option>
+       <a href="/ResetPassword">
+             Change Password 
+               </a> 
+       </Option>
+        <button><Option> 
+        <a href="/">
+             Logout 
+               </a>    
+          </Option></button>
       </Select>
     </div>
 
