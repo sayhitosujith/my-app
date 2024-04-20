@@ -1,5 +1,6 @@
 import './App.css';
 import { Badge } from "@material-tailwind/react";
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 
 import {
@@ -66,6 +67,20 @@ const CardItem = ({item}) => (
      <b> Address:</b><br></br>
      <b> ZipCode:</b><br></br>
      <Rating unratedColor="amber" ratedColor="amber" />
+     <Button
+            size="sm"
+            variant="text"
+            color="red"
+            className="flex items-center gap-2"
+          >
+            <TrashIcon className="h-4 w-4 text-red-500" />
+            <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
+            <a href="/Success">
+             DELETE PROFILE
+               </a> 
+            </Typography>
+          </Button>
+            <br></br>
 
     </label>
           </Typography>
@@ -102,10 +117,7 @@ function Profile() {
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="square" div style={{float: 'right'}}></Avatar>
 
     <Typography variant="h2" color="Black">
-      PROFILES 
-        <a href="/Home">
-             LOGIN 
-               </a>    
+      PROFILES  
       <br></br>
    <Button> 
    <a href="/Addprofile">
