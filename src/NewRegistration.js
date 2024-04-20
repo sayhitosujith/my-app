@@ -32,12 +32,9 @@ function NewRegistration() {
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
           <Avatar src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png" alt="avatar" size="xxl" />
-            
-          
- 
 
        
-<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
+<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image (JPEG,PNG)</label>
 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"/>
 
             
@@ -70,8 +67,10 @@ function NewRegistration() {
             
           </CardBody>
           <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-             Register
+          <Button variant="gradient" fullWidth>
+            <a href="/Success">
+               Register 
+               </a>   
             </Button>
             <Typography
           variant="p"
@@ -87,7 +86,8 @@ function NewRegistration() {
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-                Login
+               <a href="/">Login</a>
+
               </Typography>
             </Typography>
           </CardFooter>
@@ -111,8 +111,6 @@ function NewRegistration() {
 
    
   );
-
-  
 }
 
 export default NewRegistration;

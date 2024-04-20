@@ -1,13 +1,11 @@
 import './App.css';
-import { Carousel } from "@material-tailwind/react";
+import { Input, Typography } from "@material-tailwind/react";
 
 import {
   Card,
   CardHeader,
   CardBody,
   CardFooter,
-  Typography,
-  Input,
   Checkbox,
   Button,
 } from "@material-tailwind/react";
@@ -28,22 +26,46 @@ function App() {
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
             <Input label="Email" size="lg" />
-            <Input label="Password" size="lg" />
-            <div className="-ml-2.5">
+            <div className="w-[32rem]">
+      <Input type="password" label="Password" />
+      <Typography
+        variant="small"
+        color="gray"
+        className="mt-2 flex items-center gap-1 font-normal"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="-mt-px h-4 w-4"
+        >
+          <path
+            fillRule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
+            clipRule="evenodd"
+          />
+        </svg>
+        Use at least 8 characters, one uppercase, one lowercase and one number.
+      </Typography>
+    </div>            <div className="-ml-2.5">
               <div></div>
               <Checkbox label="Remember Me" /><div></div>
-              <a href="#desired_content">Forgot Password? Click here to Reset</a>
-
+              <a href="/ResetPassword">Forgot Password? Click here to <b>Reset</b>
+              </a>
             </div>
             
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-             Log In 
+            <a href="/Home">
+             LOGIN 
+               </a>              
             </Button>
             <br></br>
             <Button variant="gradient" fullWidth>
-             Cancel 
+            <a href="/">
+               Cancel 
+               </a>   
             </Button>
             &nbsp;
            
@@ -59,7 +81,9 @@ function App() {
         className="flex items-center gap-3">
 
         <img src="https://docs.material-tailwind.com/icons/google.svg" alt="metamask" className="h-6 w-6" />
-        Continue with Google
+        <a href="/Customer_Home">
+        Continue with Google 
+               </a> 
       </Button>
  
       <br></br>
@@ -69,7 +93,9 @@ function App() {
         color="light-blue"
         className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
       >
-        Sign in with Twitter
+        <a href="/Customer_Home">
+        Continue with Twitter
+               </a> 
         <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
           <img src="https://docs.material-tailwind.com/icons/twitter.svg" alt="metamask" className="h-6 w-6" />
         </span>
@@ -79,7 +105,7 @@ function App() {
 
       <Button size="lg" color="white" className="flex items-center gap-3">
         <img src="https://docs.material-tailwind.com/icons/metamask.svg" alt="metamask" className="h-6 w-6" />
-        Connect Wallet
+        Connect to the Wallet
       </Button>
 
             <Typography variant="small" className="mt-8 flex justify-center">
@@ -90,7 +116,8 @@ function App() {
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-                Sign up
+                <a href="/NewRegistration">Sign up</a>
+
               </Typography>
             </Typography>
           </CardFooter>

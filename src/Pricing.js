@@ -1,23 +1,15 @@
 import './App.css';
-import { Avatar } from "@material-tailwind/react";
-import { DocSearch } from "@docsearch/react";
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
+import React from "react";
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
   Typography,
-  Textarea,
   Button,
-  Select,
-  Option,
-  Checkbox,
-  Input
-  
+  Card,
+  CardBody,
+  CardHeader,
 } from "@material-tailwind/react";
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
+import { MinusCircleIcon } from "@heroicons/react/24/outline";
+
 const LINKS = [
   {
     title: "Product",
@@ -34,113 +26,281 @@ const LINKS = [
 ];
  
 const currentYear = new Date().getFullYear();
-<style>
-.footer 
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: red;
-   color: white;
-   text-align: center;
-   clearfix overflow: auto;
 
-</style>
+interface PricingCardPropsType {
+  title: string;
+  desc: string;
+  price: string[];
+  options: {
+    icon: React.ReactNode;
+    info: string;
+  }[];
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}
 
-
-function BuyNow() {
+function PricingCard({
+  title,
+  desc,
+  price,
+  options,
+}: PricingCardPropsType) {
   return (
+    <Card
+      variant="gradient"
+      color="white"
+    >
+      <CardHeader
+        floated={false}
+        shadow={false}
+        color="transparent"
+        className="!m-0 p-6"
+      >
+        <Typography
+          variant="h6"
+          color="blue-gray"
+          className="capitalize font-bold mb-1"
+        >
+          {title}
+        </Typography>
+        <Typography
+          variant="small"
+          className="font-normal !text-gray-500"
+        >
+          {desc}
+        </Typography>
+        <Typography
+          variant="h3"
+          color="blue-gray"
+          className="mt-4 flex gap-1 !text-4xl"
+        >
+          {price[0]}
+          {price[1]}
+          <Typography
+            as="span"
+            color="blue-gray"
+            className="-translate-y-0.5 self-end opacity-70 text-lg font-bold"
+          >
+            /{price[2]}
+          </Typography>
+        </Typography>
+      </CardHeader>
+      <CardBody className="pt-0">
+        <ul className="flex flex-col gap-3 mb-6">
+          {options.map((option, key) => (
+            <li
+              key={key}
+              className="flex items-center gap-3 text-gray-700"
+            > 
+            {option.icon}
+              <Typography
+                variant="small"
+                className="font-normal text-inherit"
+              >
+                {option.info}
+              </Typography>
+            </li>
+          ))}
+        </ul>
+        <Button
+          fullWidth
+          variant="gradient"
+          color="green"
+        >
+          get started
+        </Button>
+      </CardBody>
+    </Card>
+  );
+}
 
-    <div className="flex flex-row gap-5">
-        <header>
-        <Typography variant="small" className="mt-0 justify-center">
- <img style={{width: '45%', height: '25vh'}} src="https://mms.businesswire.com/media/20191209005536/en/761245/23/FoodMaven-Logo.jpg" /> </Typography>      
- <br></br>
- <br></br>
-   
-  </header>
+export function PricingSection11() {
+  const cards = [
+    {
+      title: "starter",
+      desc: "Free access for 2 members",
+      price: ["$", "129", "year"],
+      options: [
+        { 
+          icon: (
+            <CheckCircleIcon
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Complete documentation"
+        },
+        { 
+          icon: (
+            <CheckCircleIcon
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Working materials in Sketch"
+        },
+        { 
+          icon: (
+            <MinusCircleIcon
+            strokeWidth={2.5}
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Integration help"
+        },
+        { 
+          icon: (
+            <MinusCircleIcon
+            strokeWidth={2.5}
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "40GB Cloud storage"
+        },
+        { 
+          icon: (
+            <MinusCircleIcon
+            strokeWidth={2.5}
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Support team full assist"
+        },
+      ],
+    },
+    {
+      title: "premium",
+      desc: "Free access for 30 members",
+      price: ["$", "299", "year"],
+      options: [
+        { 
+          icon: (
+            <CheckCircleIcon
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Complete documentation"
+        },
+        { 
+          icon: (
+            <CheckCircleIcon
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Working materials in Sketch"
+        },
+        { 
+          icon: (
+            <CheckCircleIcon
+            strokeWidth={2.5}
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Integration help"
+        },
+        { 
+          icon: (
+            <CheckCircleIcon
+            strokeWidth={2.5}
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "40GB Cloud storage"
+        },
+        { 
+          icon: (
+            <MinusCircleIcon
+            strokeWidth={2.5}
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Support team full assist"
+        },
+      ],
+    },
+    {
+      
+      title: "company",
+      desc: "Free access for 200 members",
+      price: ["$", "399", "year"],
+      options: [
+        { 
+          icon: (
+            <CheckCircleIcon
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Complete documentation"
+        },
+        { 
+          icon: (
+            <CheckCircleIcon
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Working materials in Sketch"
+        },
+        { 
+          icon: (
+            <CheckCircleIcon
+            strokeWidth={2.5}
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Integration help"
+        },
+        { 
+          icon: (
+            <CheckCircleIcon
+            strokeWidth={2.5}
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "40GB Cloud storage"
+        },
+        { 
+          icon: (
+            <CheckCircleIcon
+            strokeWidth={2.5}
+          className="h-5 w-5 text-blue-gray-900"
+        />
+          ),
+          info: "Support team full assist"
+        },
+      ],
+    },
+  ];
 
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-
-      <div className="flex flex-col gap-5">
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <b><hr class="separator" /></b>
-
-      <Typography variant="h3" color="Black">
-        <h1 style={{ color: 'Green' }}><b><div>Contact</div></b></h1> </Typography>  
-          <b><hr class="separator" /></b>
-
-          <CardBody className="flex flex-col gap-6">
-          <Input label="Email or Mobile Number " size="lg" />
-          <h1 style={{ color: 'Green' }}><b><div>Delivery </div></b></h1>
-
-          <div className="w-72">
-              <Select label="Country/Region">
-                <Option>India</Option>
-                <Option>Srlkanka</Option>
-                <Option>Thailand</Option>
-                <Option>China</Option>
-
-              </Select>
-              
-            </div>
-            <Input label="First Name " size="lg" />
-
-            <Input label="Last Name " size="lg" />
-
-            <Input label="Company (Optional) " size="lg" />
-
-            <Input label="Address " size="lg" />
-            <Input label="City " size="lg" />
-            <Input label="State " size="lg" />
-            <Input label="Pincode " size="lg" />
-            <Input label="Phone " size="lg" />
-
-          <Checkbox label="Save this information for next time" />
-          <Checkbox label="Text me with news and offers" />
-          
-          
-          <b><hr class="separator" /></b>
-
-          <h1 style={{ color: 'Green' }}><b><div>PAYMENT </div></b></h1>
-
-         <label>
-            <input type="radio" value="option1" checked={false} />&nbsp;&nbsp;
-            Razorpay Secure (UPI, Cards, Wallets, NetBanking)
-            </label>
-
-            <label>
-            <input type="radio" value="option1" checked={true} />&nbsp;&nbsp;
-            Cash on Delivery(COD)
-            </label>
-          
-            <b><hr class="separator" /></b>
-
-          </CardBody>
-          <CardFooter className="pt-0">
-          <Button color="green" appearance="primary" > 
-           COMPLETE ORDER</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Button color="green" appearance="primary" > 
-
-           CANCEL</Button> 
-           <br></br>
-           <br></br>
-
-            <Typography
-          variant="p"
-          sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
-        </Typography>     
-          </CardFooter>
-
-          <footer className="relative w-full">
+  return (
+    <section className="py-18 px-8">
+      <div className="container mx-auto">
+        <Typography color="blue-gray" className="mb-4 font-bold text-lg">
+        Food Maven - Pricing Plans
+        </Typography>
+        <Typography variant="h1" color="blue-gray" className="mb-4 !leading-snug lg:!text-4xl !text-2xl max-w-2xl">
+        Invest in a plan and avail more offers.
+        </Typography>
+        <Typography variant="lead" className="mb-10 font-normal !text-gray-500 max-w-xl">
+        Compare the benefits and features of each plan below to find the ideal 
+        match for your business&apos;s budget and ambitions.
+        </Typography>
+        <div className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl">
+          {cards.map(({ title, desc, options, price },key) => (
+            <PricingCard 
+              key={key}
+              title={title} 
+              desc={desc}
+              price={price} 
+              options={options}
+              />
+          ))}
+        </div>
+        <Typography variant="small" className="mt-10 font-normal !text-gray-500">
+        You have Free Unlimited Updates and Premium Support on each package. 
+        You also have 30 days to request a refund.
+        </Typography>
+        <br></br>
+        <b><hr class="separator" /></b>
+<br></br>
+        <footer className="relative w-full">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
           <Typography variant="h5" className="mb-6">
@@ -226,30 +386,9 @@ function BuyNow() {
         </div>
       </div>
     </footer>
-        <Typography variant="small" className="mt-6 flex justify-center">
-    
-        <br></br>
-
-           <Typography
-                as="a"
-                href="#signup"
-                variant="small"
-                color="blue-gray"
-                className="ml-1 font-bold">
-              </Typography>
-           </Typography>
       </div>
-      
-      <br></br>
-     
-
-    </div>
-    
-
+    </section>
   );
-
-  
 }
 
-export default BuyNow;
-
+export default PricingSection11;

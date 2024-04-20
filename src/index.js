@@ -23,6 +23,12 @@ import Addprofile from './Addprofile';
 import MyCart from './MyCart';
 import ProfileCard from './ProfileCard';
 import HomePage from './HomePage';
+import Pricing from './Pricing';
+import CustomerCare from './CustomerCare';
+import BillingDetails from './BillingDetails';
+import Success from './Success';
+
+
 
 const router = createBrowserRouter([
   {
@@ -97,8 +103,23 @@ const router = createBrowserRouter([
     path: "/HomePage",
     element: <HomePage/>,
   },
-  
-  
+  {
+    path: "/Pricing",
+    element: <Pricing/>,
+  },
+  {
+    path: "/CustomerCare",
+    element: <CustomerCare/>,
+  },
+  {
+    path: "/BillingDetails",
+    element: <BillingDetails/>,
+  },
+  {
+    path: "/Success",
+    element: <Success/>,
+  },
+
 ]);
 
 

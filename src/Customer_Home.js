@@ -54,13 +54,19 @@ const CardItem = ({ item }) => (
     <CardBody className="flex flex-col gap-4">
       <div className="-mr-50">
       </div>
+      <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+              <svg className="h-5 w-5" fill="grey" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21.638l-1.625-1.473C5.303 15.013 2 11.12 2 7.25 2 4.364 4.364 2 7.25 2c1.79 0 3.462 1.144 4.75 2.977C13.288 3.144 14.96 2 16.75 2 19.636 2 22 4.364 22 7.25c0 3.87-3.303 7.762-8.375 13.917L12 21.638z"/>
+              </svg>
+            </Typography>
     </CardBody>
     <CardFooter className="pt-0">
       <Typography variant="h10" color="black">
         <div>
+          
         <b><hr class="separator" /></b>
 
-          <button> <Typography variant="h6">Limited Time Deal - Flat 5% off</Typography></button>
+          <button> <Typography variant="h6"> Discount - 5%</Typography></button>
           <b><hr class="separator" /></b>
 
         </div>
@@ -94,7 +100,7 @@ const CardItem = ({ item }) => (
     </CardFooter>
 
     <Button color="green" appearance="primary"> 
-           BUY NOW</Button> 
+           BUY NOW @ (₹199)</Button> 
 
     <br></br>
 
@@ -121,7 +127,9 @@ function App() {
         </a>
 
         <a href="#" className="opacity-60">
-          <a href="#">Profile</a>
+          <a href="/Welcome">
+          Welcome 
+               </a>    
         </a>
         <a href="#">Customer_Home</a>
       </Breadcrumbs>
@@ -131,33 +139,67 @@ function App() {
         <div className="flex gap-2">
       
         <div className="w-72">
-              <Select label="Select">
+          
+              <Select label="Select Status">
                 <Option><Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
                 <Option><Chip variant="ghost"color="red"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
                 <Option><Chip variant="ghost"color="white"size="sm"value="Offline" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-                <Option><Chip variant="ghost"color="Blu"size="sm"value="Do not Distrub" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-
+                <Option><Chip variant="ghost"color=""size="sm"value="--Do not Distrub--" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
        </Select>
-            </div>
+       
+       
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+  <search>
+  <form>
+    <input name="fsrch" id="fsrch" placeholder="Search for a Meal"/>
+  </form>
+</search>
+
+
       </div>
-
-
-             <div style={{ float: 'right' }}>
-      <Badge content="6">
-      <Button color="black" appearance="primary"> 
-           BUY NOW</Button> </Badge>
+      <div style={{ float: 'right' }}>
+            <button> <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></button>
               </div>
-
-        <div style={{ float: 'right' }}>
-          <div className="w-74">
-            <Select label= "Maven Meal">
-              <Option>
-              </Option>
-              <Option>About</Option>
-              <Option>Change Password</Option>
-              <button><Option>Logout</Option></button>
-            </Select>
-          </div>
+<br></br>      
+  <div style={{ float: 'right' }}>
+  <div className="w-74">
+      <Select label="Profile">
+        
+        <Option>    
+        </Option>
+    <Badge content="6" color="white">
+    <Button>
+    <a href="/MyCart">
+             MyCart 
+               </a> 
+      
+    </Button>
+    </Badge>
+       <Option>
+       <a href="/HomePage">
+             About 
+               </a> 
+       </Option>
+       <Option>
+       <a href="/ResetPassword">
+             Change Password 
+               </a> 
+       </Option>
+        <button><Option> 
+        <a href="/">
+             Logout 
+               </a>    
+          </Option></button>
+      </Select>
+       </div>
         </div>
       </Typography>
 

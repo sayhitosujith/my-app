@@ -30,8 +30,9 @@ function Customer_Login() {
             <Input label="Enter Email ID / Mobile Number" size="lg" />
             &nbsp;
             <Button variant="gradient" fullWidth>
-             Request OTP
-            </Button>
+            <a href="/OTP">
+             Request OTP 
+               </a></Button>
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>

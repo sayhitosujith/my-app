@@ -36,7 +36,7 @@ const CardItem = ({item}) => (
     <Card className="w-96">
           <CardHeader
               variant="gradient"
-              color="orange"
+              color="green"
               className="mb-5 grid h-10 place-items-center">
               <Typography variant="h3" color="white">
                 {item.id} : {item.name}  
@@ -92,7 +92,9 @@ function Profile() {
       </a>
 
       <a href="#" className="opacity-60">
-      <a href="#">Customer_Home</a>
+      <a href="/Customer_Home">
+      Customer_Home 
+ </a>    
       </a>
       <a href="#">Profiles</a>
 
@@ -101,8 +103,16 @@ function Profile() {
 
     <Typography variant="h2" color="Black">
       PROFILES 
+        <a href="/Home">
+             LOGIN 
+               </a>    
       <br></br>
-   <Button> + ADD PROFILE </Button>
+   <Button> 
+   <a href="/Addprofile">
+             +ADD PROFILE 
+               </a>    
+    
+     </Button>
     <div style={{float: 'right'}}>
       <div className="w-74">
       <Select label="Profile">

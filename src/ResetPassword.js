@@ -1,5 +1,4 @@
 import './App.css';
-import { Avatar } from "@material-tailwind/react";
 
 
 import {
@@ -56,12 +55,16 @@ function ResetPassword() {
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-             Submit
+            <a href="/Success">
+               RESET 
+               </a>    
             </Button>
             <br></br>
 
             <Button variant="gradient" fullWidth>
-             Cancel
+            <a href="/">
+               CANCEL 
+               </a>  
             </Button>
             <Typography
           variant="p"

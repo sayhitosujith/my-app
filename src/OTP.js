@@ -6,7 +6,6 @@ import {
   Card,
   CardHeader,
   Typography,
-  Input,
   Button,
   otp,
   setOtp,
@@ -59,8 +58,9 @@ function OTP() {
       </Typography>
     </div>            &nbsp;
             <Button variant="gradient" fullWidth>
+            <a href="/Customer_home">
              V E R I F Y
-            </Button>
+               </a> </Button>
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -68,7 +68,7 @@ function OTP() {
             
         &nbsp;
 
-        <Typography>If you didn't recieve a code! <u> <a href="https://example.com/faq.html" rel="noreferrer">
+        <Typography>If you didn't recieve a code! <u> <a href="/OTP" rel="noreferrer">
       RESEND
   </a></u></Typography>
        

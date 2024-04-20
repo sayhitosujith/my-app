@@ -1,6 +1,5 @@
 import './App.css';
 import { Avatar } from "@material-tailwind/react";
-import { useCountries } from "use-react-countries";
 
 
 import {
@@ -34,12 +33,8 @@ function AddMeal() {
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
           <Avatar src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png" alt="avatar" size="xxl" />
-            
-          
- 
-
-       
-<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
+               
+<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image (JPEG,PNG)</label>
 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"/>
 
             
@@ -86,11 +81,15 @@ function AddMeal() {
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-             Add
+            <a href="/Home">
+             ADD MEAL
+               </a>      
             </Button>
             <br></br>
             <Button variant="gradient" fullWidth>
-             Cancel
+            <a href="/">
+              Cancel
+               </a> 
             </Button>
             <Typography
           variant="p"
@@ -111,14 +110,10 @@ function AddMeal() {
 
         </Card>
       </div>
-      <img style={{width: '60%', height: '100vh'}} src="https://80a12acdf128618db717-c22bdc94c381e6a71ffe213927c1cf90.ssl.cf1.rackcdn.com/auto2.gif" />
+      <img style={{width: '60%', height: '100vh'}} src="https://80a12acdf128618db717-c22bdc94c381e6a71ffe213927c1cf90.ssl.cf1.rackcdn.com/auto2.gif"/>
     </div>
-   
-
-   
   );
 
-  
 }
 
 export default AddMeal;

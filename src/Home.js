@@ -1,7 +1,6 @@
 import './App.css';
-import { IconButton } from "@material-tailwind/react";
 import { Badge } from "@material-tailwind/react";
-
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 import {
   Card,
@@ -16,8 +15,10 @@ import {
   Breadcrumbs,
   Avatar,
   Textarea,
+  Chip,
 
 } from "@material-tailwind/react";
+
 
 const data = [
   {id: 1, name: 'South Indian Meal', src: 'https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw',},
@@ -49,7 +50,11 @@ const CardItem = ({item}) => (
                 {item.id} : {item.name}  
              </Typography>
             </CardHeader>
-
+            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+            &nbsp; <svg className="h-5 w-5" fill="grey" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21.638l-1.625-1.473C5.303 15.013 2 11.12 2 7.25 2 4.364 4.364 2 7.25 2c1.79 0 3.462 1.144 4.75 2.977C13.288 3.144 14.96 2 16.75 2 19.636 2 22 4.364 22 7.25c0 3.87-3.303 7.762-8.375 13.917L12 21.638z"/>
+              </svg>
+            </Typography>
             <div className='flex justify-center items-center'>
             <img style={{width: '180px', height: '180px'}} src={item.src}/>
             </div>
@@ -60,6 +65,20 @@ const CardItem = ({item}) => (
           <CardFooter className="pt-0">
             <Typography variant="h10" color="black">
 
+            <Button
+            size="sm"
+            variant="text"
+            color="red"
+            className="flex items-center gap-2"
+          >
+            <TrashIcon className="h-4 w-4 text-red-500" />
+            <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
+            <a href="/Success">
+             DELETE 
+               </a> 
+            </Typography>
+          </Button>
+            <br></br>
       <div className="w-72">
       <Select label="Select Item">
         <Option>Chapati</Option>
@@ -106,20 +125,45 @@ function App() {
           fill="currentColor"
         >
           <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+       
+          <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
+              delete
+            </Typography>
         </svg>
       </a>
 
       <a href="#" className="opacity-60">
-      <a href="#">Profile</a>
+      <a href="#">
+      <a href="/Welcome">
+             Welcome 
+               </a>    
+      </a>
       </a>
       <a href="#">Admin Home</a>
     </Breadcrumbs>
-    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="square" div style={{float: 'right'}}></Avatar>
+    
+    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
     <Typography variant="h2" color="Black">
       <br></br>
-   <Button><b> + ADD MEAL </b> </Button>
+
+      <div className="w-72">
+              <Select label="Select Status">
+                <Option><Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="red"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="white"size="sm"value="Offline" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="Blu"size="sm"value="Do not Distrub" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+
+       </Select>
+       </div>
+       <br></br>
+
+   <Button><b>  
+   <a href="/AddMeal">
+             + Add Meal 
+               </a>   
+    </b> </Button>
     <div style={{float: 'right'}}>
-      <br></br>
+    <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
 
       <div className="w-74">
       <Select label="Profile">
@@ -127,11 +171,28 @@ function App() {
         <Option>    
         </Option>
     <Badge content="6" color="white">
-    <Button>My cart </Button>
+    <Button>
+    <a href="/MyCart">
+             MyCart 
+               </a> 
+      
+    </Button>
     </Badge>
-       <Option>About</Option>
-       <Option>Change Password</Option>
-        <button><Option>Logout</Option></button>
+       <Option>
+       <a href="/HomePage">
+             About 
+               </a> 
+       </Option>
+       <Option>
+       <a href="/ResetPassword">
+             Change Password 
+               </a> 
+       </Option>
+        <button><Option> 
+        <a href="/">
+             Logout 
+               </a>    
+          </Option></button>
       </Select>
     </div>
 
