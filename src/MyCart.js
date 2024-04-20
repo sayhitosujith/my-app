@@ -1,8 +1,7 @@
 import './App.css';
 import { Avatar } from "@material-tailwind/react";
-import { DocSearch } from "@docsearch/react";
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 import {
   Card,
@@ -10,12 +9,9 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Textarea,
   Button,
-  Select,
-  Option,
   Checkbox,
-  Navbar
+  Chip,
 } from "@material-tailwind/react";
 
 
@@ -37,10 +33,23 @@ function MyCart() {
           <b><div>North Indian Meal</div></b>
           <Avatar src="https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw"
            alt="avatar" size="xxl" variant="square"/> 
-          <h1 style={{ color: 'red' }}><b><div>Out of Stock </div></b></h1> 
+          <Chip variant="ghost"color="red"size="sm"value="Out Of stock" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
           <b> <div><button><h1 style={{ color: 'red' }}><b><div>-</div></b></h1></button>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <button><h1 style={{ color: 'Red' }}><b><div>+</div></b></h1></button></div></b>
+         <Button
+            size="sm"
+            variant="text"
+            color="red"
+            className="flex items-center gap-2"
+          >
+            <TrashIcon className="h-4 w-4 text-red-500" />
+            <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
+            <a href="/Success">
+             DELETE 
+               </a> 
+            </Typography>
+          </Button>
                  <b><Checkbox label="Select Meal" /></b>
         
           <b><hr class="separator" /></b>
@@ -61,10 +70,23 @@ function MyCart() {
           <CardBody className="flex flex-col gap-6">
           <b><div>Chines Meal</div></b>
           <Avatar src="https://tse3.mm.bing.net/th?id=OIP.yORsSgJVQYcn7xIZ3Aa12AHaFj&pid=Api&P=0&h=220" alt="avatar" size="xxl" variant="square"/>
-          <h1 style={{ color: 'Green' }}><b><div>In Stock </div></b></h1>
+          <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
          <b> <div><button><h1 style={{ color: 'red' }}><b><div>-</div></b></h1></button>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <button><h1 style={{ color: 'Red' }}><b><div>+</div></b></h1></button></div></b>
+         <Button
+            size="sm"
+            variant="text"
+            color="red"
+            className="flex items-center gap-2"
+          >
+            <TrashIcon className="h-4 w-4 text-red-500" />
+            <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
+            <a href="/Success">
+             DELETE 
+               </a> 
+            </Typography>
+          </Button>
 
           <Checkbox label="Select Meal" />
          
