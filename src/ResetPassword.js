@@ -56,14 +56,16 @@ function ResetPassword() {
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-            <a href="/">
-             RESET 
-               </a>     
+            <a href="/Success">
+               RESET 
+               </a>    
             </Button>
             <br></br>
 
             <Button variant="gradient" fullWidth>
-             Cancel
+            <a href="/">
+               CANCEL 
+               </a>  
             </Button>
             <Typography
           variant="p"
