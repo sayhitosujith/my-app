@@ -9,16 +9,13 @@ import {
   CardFooter,
   Typography,
   Button,
-  Select,
-  Option,
-  Breadcrumbs,
   Avatar,
-  data,
   Input,
-  Checkbox,
-  Popover,
   PopoverHandler,
   PopoverContent,
+  Popover,
+  Select,
+  Option
 
 } from "@material-tailwind/react";
 const LINKS = [
@@ -62,12 +59,9 @@ const CardItem = ({item}) => (
           </CardBody>
           <CardFooter className="pt-0">
             <Typography variant="h10" color="black">
-    <br></br>
           </Typography>
           </CardFooter>
-       
-<br></br>
-        </Card>
+               </Card>
 )
 
 function Welcome() {
@@ -88,7 +82,37 @@ function Welcome() {
 
     <div style={{float: 'right'}}>
 
-
+    <div className="w-74">
+      <Select label="Profile">
+        
+        <Option>    
+        </Option>
+    <Badge content="6" color="white">
+    <Button>
+    <a href="/MyCart">
+             MyCart 
+               </a> 
+      
+    </Button>
+    </Badge>
+       <Option>
+       <a href="/HomePage">
+             About 
+               </a> 
+       </Option>
+       <Option>
+       <a href="/ResetPassword">
+             Change Password 
+               </a> 
+       </Option>
+        <button><Option> 
+        <a href="/">
+             Logout 
+               </a>    
+          </Option></button>
+      </Select>
+    </div>
+  
 
             </div>
         </Typography>

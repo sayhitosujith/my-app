@@ -117,8 +117,8 @@ function App() {
 
       <a href="#" className="opacity-60">
       <a href="#">
-      <a href="/Profle">
-             Profle 
+      <a href="/Welcome">
+             Welcome 
                </a>    
       </a>
       </a>
@@ -155,7 +155,7 @@ function App() {
         </Option>
     <Badge content="6" color="white">
     <Button>
-    <a href="/MYCART">
+    <a href="/MyCart">
              MyCart 
                </a> 
       

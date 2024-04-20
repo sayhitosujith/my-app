@@ -88,9 +88,12 @@ function Welcome() {
           <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
         </svg>
       </a>
-<br></br>
       <a href="#" className="opacity-60">
-      <a href="#">Profile</a>
+      <a href="#">
+      <a href="/HomePage">
+             HomePage 
+               </a>    
+      </a>
       </a>
       <a href="#">Welcome</a>
     </Breadcrumbs>
@@ -122,14 +125,21 @@ function Welcome() {
 
       <div className="w-74">
       <Select label="Profile">
-        <Option>    
-        </Option>
-    <Badge content="6">
-    <Button>My cart </Button>
-    </Badge>
-       <Option>About</Option>
-       <Option>Change Password</Option>
-        <button><Option>Logout</Option></button>
+       <Option>
+       <a href="/HomePage">
+             About 
+               </a>    
+       </Option>
+       <Option>
+       <a href="/ResetPassword">
+             Change Password 
+               </a> 
+       </Option>
+        <button><Option>
+        <a href="/ResetPassword">
+              
+               </a> 
+          </Option></button>
       </Select>
     </div>
             </div>

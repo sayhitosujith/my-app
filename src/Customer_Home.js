@@ -127,8 +127,8 @@ function App() {
         </a>
 
         <a href="#" className="opacity-60">
-          <a href="/Home">
-          Profile 
+          <a href="/Welcome">
+          Welcome 
                </a>    
         </a>
         <a href="#">Customer_Home</a>
