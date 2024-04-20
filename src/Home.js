@@ -1,6 +1,6 @@
 import './App.css';
 import { Badge } from "@material-tailwind/react";
-
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 import {
   Card,
@@ -16,6 +16,7 @@ import {
   Avatar,
   Textarea,
   Chip,
+
 } from "@material-tailwind/react";
 
 
@@ -49,7 +50,11 @@ const CardItem = ({item}) => (
                 {item.id} : {item.name}  
              </Typography>
             </CardHeader>
-
+            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+            &nbsp; <svg className="h-5 w-5" fill="grey" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21.638l-1.625-1.473C5.303 15.013 2 11.12 2 7.25 2 4.364 4.364 2 7.25 2c1.79 0 3.462 1.144 4.75 2.977C13.288 3.144 14.96 2 16.75 2 19.636 2 22 4.364 22 7.25c0 3.87-3.303 7.762-8.375 13.917L12 21.638z"/>
+              </svg>
+            </Typography>
             <div className='flex justify-center items-center'>
             <img style={{width: '180px', height: '180px'}} src={item.src}/>
             </div>
@@ -60,13 +65,20 @@ const CardItem = ({item}) => (
           <CardFooter className="pt-0">
             <Typography variant="h10" color="black">
 
-            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
-              <svg className="h-5 w-5" fill="grey" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 21.638l-1.625-1.473C5.303 15.013 2 11.12 2 7.25 2 4.364 4.364 2 7.25 2c1.79 0 3.462 1.144 4.75 2.977C13.288 3.144 14.96 2 16.75 2 19.636 2 22 4.364 22 7.25c0 3.87-3.303 7.762-8.375 13.917L12 21.638z"/>
-              </svg>
+            <Button
+            size="sm"
+            variant="text"
+            color="red"
+            className="flex items-center gap-2"
+          >
+            <TrashIcon className="h-4 w-4 text-red-500" />
+            <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
+            <a href="/Success">
+             DELETE 
+               </a> 
             </Typography>
+          </Button>
             <br></br>
-            
       <div className="w-72">
       <Select label="Select Item">
         <Option>Chapati</Option>
@@ -130,7 +142,7 @@ function App() {
       <a href="#">Admin Home</a>
     </Breadcrumbs>
     
-    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="square" div style={{float: 'right'}}></Avatar>
+    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
     <Typography variant="h2" color="Black">
       <br></br>
 

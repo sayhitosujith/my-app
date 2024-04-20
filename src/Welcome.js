@@ -1,5 +1,4 @@
 import './App.css';
-import { Badge } from "@material-tailwind/react";
 
 
 import {
@@ -8,7 +7,6 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Button,
   Select,
   Option,
   Breadcrumbs,
@@ -56,7 +54,7 @@ const CardItem = ({item}) => (
             </CardHeader>
 
             <div className='flex justify-center items-center'>
-            <img style={{width: '200px', height: '200px'}} src={item.src} className='rounded-full' />
+            <img style={{width: '150px', height: '150px'}} src={item.src} className='rounded-full' />
             </div>
           <CardBody className="flex flex-col gap-4">
             <div className="-mr-50">
@@ -98,7 +96,7 @@ function Welcome() {
 
     <Typography variant="h2" color="Black">
       Welcome to Food Maven
-      <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xxl" div style={{float: 'right'}}></Avatar>
+      <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
       <br></br>
 
       <b><hr class="separator" /></b>
