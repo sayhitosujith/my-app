@@ -31,7 +31,9 @@ function Success() {
                 variant="h4"
               >
               </Typography>
-              <Typography className="text-[20px] font-normal text-gray-500">
+              <Typography className="text-[20px] font-normal justify-center">
+              <img style={{width: '100%', height: '50vh'}} src="https://fcs3pub.s3.amazonaws.com/photo-book/images/payment/success.gif" />
+
               Don&apos;t miss out on the latest deals and promotions.
               </Typography>
               <Button size="lg" className="mt-8">
