@@ -23,22 +23,10 @@ function Addprofile() {
     <div className="flex flex-row gap-5">
       <div className='w-1/2 h-screen flex items-center justify-center'>
         <Card className="w-98">
-          <CardHeader
-            variant="gradient"
-            color="gray"
-            className="mb-4 grid h-28 place-items-center">
-            <Typography variant="h3" color="white">
-            ADD PROFILE
-            </Typography>
-          </CardHeader>
+          
           <CardBody className="flex flex-col gap-4">
           <Avatar src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png" alt="avatar" size="xxl" />
-            
-          
- 
-
-       
-<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
+<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image(JPEG,PNG)</label>
 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"/>
 
 <Input label="First Name *" size="lg" />
@@ -72,7 +60,9 @@ function Addprofile() {
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-             Add
+            <a href="/Profile">
+             ADD 
+               </a>    
             </Button>
             <br></br>
             <Button variant="gradient" fullWidth>

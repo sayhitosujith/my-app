@@ -94,7 +94,7 @@ function Profile() {
       <a href="#" className="opacity-60">
       <a href="/Customer_Home">
       Customer_Home 
-               </a>    
+ </a>    
       </a>
       <a href="#">Profiles</a>
 
@@ -107,7 +107,12 @@ function Profile() {
              LOGIN 
                </a>    
       <br></br>
-   <Button> + ADD PROFILE </Button>
+   <Button> 
+   <a href="/Addprofile">
+             +ADD PROFILE 
+               </a>    
+    
+     </Button>
     <div style={{float: 'right'}}>
       <div className="w-74">
       <Select label="Profile">
