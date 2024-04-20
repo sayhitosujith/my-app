@@ -50,10 +50,8 @@ const CardItem = ({item}) => (
               color="green"
               className="mb-5 grid h-10 place-items-center">
               <Typography variant="h2" color="grey" >
-                <a href="/Customer_home">
                 {item.id} : 
                 {item.name}  
-               </a> 
              </Typography>
             </CardHeader>
 
@@ -131,19 +129,20 @@ function Welcome() {
                </a>    
        </Option>
        <Option>
-       <a href="/Password">
+       <a href="/ResetPassword">
              Change Password 
                </a> 
        </Option>
-        <button><Option>Logout</Option></button>
+        <button><Option>
+        <a href="/">
+             Logout 
+               </a> 
+          </Option></button>
       </Select>
     </div>
             </div>
         </Typography>
         <br></br>
-
-
-
 
         <div className='w-full flex mt-20 gap-5 flex justify-center items-center'>
             {

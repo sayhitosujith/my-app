@@ -82,7 +82,7 @@ function AddMeal() {
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
             <a href="/Home">
-             ADD 
+             ADD MEAL
                </a>      
             </Button>
             <br></br>

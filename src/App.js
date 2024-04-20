@@ -62,7 +62,9 @@ function App() {
         className="flex items-center gap-3">
 
         <img src="https://docs.material-tailwind.com/icons/google.svg" alt="metamask" className="h-6 w-6" />
-        Continue with Google
+        <a href="/Customer_Home">
+        Continue with Google 
+               </a> 
       </Button>
  
       <br></br>
@@ -72,7 +74,9 @@ function App() {
         color="light-blue"
         className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
       >
-        Sign in with Twitter
+        <a href="/Customer_Home">
+        Continue with Twitter
+               </a> 
         <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
           <img src="https://docs.material-tailwind.com/icons/twitter.svg" alt="metamask" className="h-6 w-6" />
         </span>
@@ -82,7 +86,7 @@ function App() {
 
       <Button size="lg" color="white" className="flex items-center gap-3">
         <img src="https://docs.material-tailwind.com/icons/metamask.svg" alt="metamask" className="h-6 w-6" />
-        Connect Wallet
+        Connect to the Wallet
       </Button>
 
             <Typography variant="small" className="mt-8 flex justify-center">
