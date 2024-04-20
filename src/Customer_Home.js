@@ -170,22 +170,36 @@ function App() {
               </div>
 <br></br>      
   <div style={{ float: 'right' }}>
-          <div className="w-74">
-            <Select label= "Maven Meal">
-              <Option>
-              </Option>
-              <Option>About</Option>
-              <Option>Change Password</Option>
-              <button><Option>
-              <Button variant="gradient" fullWidth>
-            <a href="/">
-               Logout 
-               </a>   
-            </Button>
-                
-                </Option></button>
-            </Select>
-          </div>
+  <div className="w-74">
+      <Select label="Profile">
+        
+        <Option>    
+        </Option>
+    <Badge content="6" color="white">
+    <Button>
+    <a href="/MyCart">
+             MyCart 
+               </a> 
+      
+    </Button>
+    </Badge>
+       <Option>
+       <a href="/HomePage">
+             About 
+               </a> 
+       </Option>
+       <Option>
+       <a href="/ResetPassword">
+             Change Password 
+               </a> 
+       </Option>
+        <button><Option> 
+        <a href="/">
+             Logout 
+               </a>    
+          </Option></button>
+      </Select>
+       </div>
         </div>
       </Typography>
 

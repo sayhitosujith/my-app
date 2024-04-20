@@ -26,6 +26,9 @@ import HomePage from './HomePage';
 import Pricing from './Pricing';
 import CustomerCare from './CustomerCare';
 import BillingDetails from './BillingDetails';
+import Success from './Success';
+
+
 
 const router = createBrowserRouter([
   {
@@ -111,6 +114,10 @@ const router = createBrowserRouter([
   {
     path: "/BillingDetails",
     element: <BillingDetails/>,
+  },
+  {
+    path: "/Success",
+    element: <Success/>,
   },
 
 ]);

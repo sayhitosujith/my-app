@@ -131,15 +131,11 @@ function Welcome() {
                </a>    
        </Option>
        <Option>
-       <a href="/ResetPassword">
+       <a href="/Password">
              Change Password 
                </a> 
        </Option>
-        <button><Option>
-        <a href="/ResetPassword">
-              
-               </a> 
-          </Option></button>
+        <button><Option>Logout</Option></button>
       </Select>
     </div>
             </div>

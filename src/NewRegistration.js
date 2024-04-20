@@ -31,9 +31,6 @@ function NewRegistration() {
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
           <Avatar src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png" alt="avatar" size="xxl" />
-            
-          
- 
 
        
 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
@@ -70,7 +67,7 @@ function NewRegistration() {
           </CardBody>
           <CardFooter className="pt-0">
           <Button variant="gradient" fullWidth>
-            <a href="/">
+            <a href="/Success">
                Register 
                </a>   
             </Button>
@@ -113,8 +110,6 @@ function NewRegistration() {
 
    
   );
-
-  
 }
 
 export default NewRegistration;
