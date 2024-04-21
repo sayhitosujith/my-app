@@ -1,7 +1,6 @@
 import './App.css';
 import { Select, Option } from "@material-tailwind/react";
 import { Badge } from "@material-tailwind/react";
-import { IconButton } from "@material-tailwind/react";
 import { Chip } from "@material-tailwind/react";
 
 
@@ -18,7 +17,7 @@ import {
 } from "@material-tailwind/react";
 
 const data = [
-  { id: 1, name: 'South Indian Meal', src: 'https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw', },
+  { id: 1, name: 'Veg Green Salad', src: 'https://i.ytimg.com/vi/ln_P2jNCSA0/maxresdefault.jpg', },
   { id: 2, name: 'Chole Meal', src: 'https://im1.dineout.co.in/images/uploads/restaurant/sharpen/5/j/u/p5908-15671490325d68cbe8b52d8.jpg?tr=tr:n-xlarge', },
   { id: 3, name: 'Puliogre', src: 'https://www.harfieldtableware.co.uk/wp-content/uploads/2020/09/856BLU-for-website-scaled.jpg', },
   { id: 4, name: 'Veg combo', src: 'https://sites.udel.edu/eli/files/2017/12/bento-box-1pmzqgv.jpg', },
@@ -100,12 +99,19 @@ const CardItem = ({ item }) => (
     </CardFooter>
 
     <Button color="green" appearance="primary"> 
-           BUY NOW @ (₹199)</Button> 
+           <a href="/OrderDetails">
+           BUY NOW @ (₹199) 
+               </a> 
+           </Button> 
+           
 
     <br></br>
 
     <Button color="green" appearance="primary"> 
-           ADD TO CART</Button> 
+           <a href="/MyCart">
+           ADD TO CART
+               </a> 
+           </Button> 
   </Card>
 
 )
@@ -153,9 +159,29 @@ function App() {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+           
+    <div class="inline-flex items-left">
+    <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+       Veg
+      </p>
+  <div class="relative inline-block w-8 h-4 -mt-5 rounded-full cursor-pointer">
+    <input type="checkbox" id="desc"
+      class="absolute w-8 h-4 transition-colors duration-300 rounded-full appearance-none cursor-pointer peer bg-blue-gray-100 checked:bg-gray-900 peer-checked:border-gray-900 peer-checked:before:bg-gray-900" />
+    <label htmlFor="desc"
+      class="before:content[''] absolute top-2/4 -left-1 h-5 w-5 -translate-y-2/4 cursor-pointer rounded-full border border-blue-gray-100 bg-white shadow-md transition-all duration-300 before:absolute before:top-2/4 before:left-2/4 before:block before:h-10 before:w-10 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity hover:before:opacity-10 peer-checked:translate-x-full peer-checked:border-gray-900 peer-checked:before:bg-gray-900">
+      <div class="inline-block p-5 rounded-full top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4"></div>
+    </label>
+  </div>
+  <label htmlFor="desc" class="mt-px mb-0 ml-3 font-light text-gray-700 cursor-pointer select-none">
+    <div>
+      <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+        Non-Veg
+      </p>
+    </div>
+  </label>
+</div>
 
   <search>
   <form>
