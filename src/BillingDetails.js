@@ -149,8 +149,9 @@ function BillingDetails() {
               className="flex justify-center gap-3 md:max-w-fit w-full ml-auto"
             >
               <PlusIcon strokeWidth={3} className="h-4 w-4" />
-              add new card
-            </Button>
+              <a href="/CheckoutForm">
+             Add New card 
+               </a>             </Button>
           </div>
         </CardHeader>
         <CardBody className="flex flex-col gap-4 !p-4">

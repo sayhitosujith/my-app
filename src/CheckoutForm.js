@@ -194,7 +194,10 @@ export default function CheckoutForm() {
                     }}
                   />
                 </div>
-                <Button size="lg">Pay Now</Button>
+                <Button size="lg">
+                <a href="/Success">
+             Pay Now 
+               </a>                   </Button>
                 <Typography
                   variant="small"
                   color="gray"
