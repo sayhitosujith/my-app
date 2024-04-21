@@ -11,21 +11,16 @@ export function OrderDetails() {
   return (
     <section className="py-16 px-8">
       <div className="mx-auto container grid place-items-center grid-cols-1 md:grid-cols-2">
-      <img style={{width: '55%', height: '55vh'}} src="https://indiancurrytrail.com/wp-content/uploads/2019/03/Lunchbox-Idea-1-1.jpg" />  
+      <img style={{width: '60%', height: '50vh'}} src="https://i.ytimg.com/vi/ln_P2jNCSA0/maxresdefault.jpg" />  
         <div>
           <Typography className="mb-4" variant="h3">
-          Veg combo - PLAY 4K 2K HD LED 180° Rotation Projector Android 11, 2.4G+5G Ultra Fast Wireless (5000 lm / Wireless / Remote Controller) Portable Projector  (White)
+          Veg Green Salad 
           </Typography>
           <b><hr class="separator" /></b>
           <h1 style={{ color: 'Green' }}><b><div>Special Price </div></b></h1>
           <Typography variant="h5">₹199</Typography>
           <Typography className="mt-4 text-base font-normal leading-[27px] !text-gray-500">
-            As we live, our hearts turn colder. Cause pain is what we go through
-            as we become older. We get insulted by others, lose trust for those
-            others. We get back stabbed by friends. It becomes harder for us to
-            give others a hand. We get our heart broken by people we love, even
-            that we give them all we have. Then we lose family over time. What
-            else could rust the heart more over time? Blackgold.
+          A refreshing vegetable salad using all different kinds of vegetables. You can use whatever you like, but the tomatoes and cucumbers make it taste great. It is very much like an Israeli salad. The homemade dressing is very good for any green salad.
           </Typography>
           <div className="my-8 flex items-center gap-2">
             <Rating value={4} className="text-amber-500" />
