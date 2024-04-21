@@ -1,8 +1,5 @@
 import './App.css';
-import { Avatar } from "@material-tailwind/react";
-import { DocSearch } from "@docsearch/react";
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 
 import {
   Card,
@@ -51,7 +48,7 @@ const currentYear = new Date().getFullYear();
 function BuyNow() {
   return (
 
-    <div className="flex flex-row gap-5">
+    <div className="flex flex-row gap-5b justify-center">
         <header>
         <Typography variant="small" className="mt-0 justify-center">
  <img style={{width: '45%', height: '25vh'}} src="https://mms.businesswire.com/media/20191209005536/en/761245/23/FoodMaven-Logo.jpg" /> </Typography>      

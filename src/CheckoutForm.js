@@ -70,7 +70,7 @@ export default function CheckoutForm() {
           )}
         </div>
         <Typography variant="h5" color="white">
-          Material Tailwind PRO
+          Maven Meal PRO
         </Typography>
       </CardHeader>
       <CardBody>
@@ -298,6 +298,8 @@ export default function CheckoutForm() {
           </TabsBody>
         </Tabs>
       </CardBody>
+      
     </Card>
+    
   );
 }
