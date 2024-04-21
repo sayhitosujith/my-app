@@ -37,7 +37,7 @@ export function OrderDetails() {
             <div className="h-5 w-5 rounded border border-blue-red-100 bg-red-900 "></div>
           </div>
           <div className="mb-4 flex w-full items-center gap-3 md:w-1/2 ">
-            <Button color="gray" className="w-52">
+    <Button color="green" appearance="primary"> 
               <a href="/MyCart">
               Add to Cart
                </a> 
