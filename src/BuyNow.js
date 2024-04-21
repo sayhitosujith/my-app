@@ -1,5 +1,7 @@
 import './App.css';
 import React from 'react';
+import { Radio } from "@material-tailwind/react";
+
 
 import {
   Card,
@@ -109,15 +111,10 @@ function BuyNow() {
 
           <h1 style={{ color: 'Green' }}><b><div>PAYMENT </div></b></h1>
 
-         <label>
-            <input type="radio" value="option1" checked={false} />&nbsp;&nbsp;
-            Razorpay Secure (UPI, Cards, Wallets, NetBanking)
-            </label>
-
-            <label>
-            <input type="radio" value="option1" checked={true} />&nbsp;&nbsp;
-            Cash on Delivery(COD)
-            </label>
+            <div className="flex gap-10">
+      <Radio name="type" label=" Razorpay Secure (UPI, Cards, Wallets, NetBanking)" />
+      <Radio name="type" label=" Cash on Delivery(COD)" defaultChecked />
+    </div>
           
             <b><hr class="separator" /></b>
 
