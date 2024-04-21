@@ -149,25 +149,26 @@ function App() {
       <br></br>
 
       <div className="w-72">
-              <Select label="Select Status">
+              <Select label="Restaurant Status">
                 <Option><Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
                 <Option><Chip variant="ghost"color="blue"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
                 <Option><Chip variant="ghost"color="white"size="sm"value="Closed" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
                 <Option><Chip variant="ghost"color="red"size="sm"value="Out Of stock" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-
        </Select>
        </div>
        <br></br>
 
-   <Button><b>  
-   <a href="/AddMeal">
-             + Add Meal 
-               </a>   
-    </b> </Button>
+    <Button color="green" appearance="primary"> 
+           <a href="/AddMeal">
+           + Add Meal 
+               </a> 
+           </Button> 
+
     &nbsp;&nbsp;
     <div class="inline-flex items-center">
     <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
-       Veg
+       Veg     &nbsp;&nbsp;
+
       </p>
   <div class="relative inline-block w-8 h-4 -mt-5 rounded-full cursor-pointer">
     <input type="checkbox" id="desc"

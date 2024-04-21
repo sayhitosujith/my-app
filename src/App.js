@@ -50,7 +50,7 @@ function App() {
     </div>            <div className="-ml-2.5">
               <div></div>
               <Checkbox label="Remember Me" /><div></div>
-              <a href="/ResetPassword">Forgot Password? Click here to <b>Reset</b>
+              <a href="/ResetPassword">Forgot Password? Click here to <u><b>Reset</b></u>
               </a>
             </div>
             
@@ -109,14 +109,14 @@ function App() {
       </Button>
 
             <Typography variant="small" className="mt-8 flex justify-center">
-              Don&apos;t you have an account? click on the link to
+              Don&apos;t you have an account? click here link to
               <Typography
                 as="a"
                 href="#signup"
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-                <a href="/NewRegistration">Sign up</a>
+               <u><a href="/NewRegistration">Sign up</a></u> 
 
               </Typography>
             </Typography>

@@ -86,7 +86,7 @@ function NewRegistration() {
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-               <a href="/">Login</a>
+               <u><a href="/">Login</a></u>
 
               </Typography>
             </Typography>

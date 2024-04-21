@@ -143,14 +143,14 @@ function App() {
       <Typography variant="h3" color="Black">
         CUSTOMER HOME
         <div className="flex gap-2">
-      
-        <div className="w-72">
+  
           
-              <Select label="Select Status">
+        <div className="w-72">
+              <Select label="Restaurant Status">
                 <Option><Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-                <Option><Chip variant="ghost"color="red"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-                <Option><Chip variant="ghost"color="white"size="sm"value="Offline" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-                <Option><Chip variant="ghost"color=""size="sm"value="--Do not Distrub--" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="blue"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="white"size="sm"value="Closed" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="red"size="sm"value="Out Of stock" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
        </Select>
        
        
@@ -165,7 +165,7 @@ function App() {
     <div class="inline-flex items-left">
     <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
        Veg
-      </p>
+      </p>&nbsp;&nbsp;
   <div class="relative inline-block w-8 h-4 -mt-5 rounded-full cursor-pointer">
     <input type="checkbox" id="desc"
       class="absolute w-8 h-4 transition-colors duration-300 rounded-full appearance-none cursor-pointer peer bg-blue-gray-100 checked:bg-gray-900 peer-checked:border-gray-900 peer-checked:before:bg-gray-900" />

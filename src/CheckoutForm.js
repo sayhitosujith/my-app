@@ -133,7 +133,7 @@ export default function CheckoutForm() {
                     icon={
                       <CreditCardIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
                     }
-                    placeholder="0000 0000 0000 0000"
+                    placeholder="XXXX XXXX XXXX XXXX"
                     className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                     labelProps={{
                       className: "before:content-none after:content-none",
