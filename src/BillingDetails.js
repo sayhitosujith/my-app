@@ -1,3 +1,4 @@
+import './App.css';
 import React from "react";
 import {
   Card,
@@ -5,7 +6,6 @@ import {
   CardHeader,
   Typography,
   Button,
-  BillingCard
 } from "@material-tailwind/react";
 import { BriefcaseIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { PlusIcon } from "@heroicons/react/24/outline";
@@ -19,7 +19,7 @@ interface BillingCardPropsType {
   detail: string;
 }
 
-function BillingDetails({ title, options, icon, detail }: BillingCardPropsType) {
+function BillingCard({ title, options, icon, detail }: BillingCardPropsType) {
   return (
     <Card
       shadow={false}
@@ -121,7 +121,7 @@ const billingCardData = [
   },
 ];
 
-function Billing3() {
+function BillingDetails() {
   return (
     <section className="max-w-4xl !mx-auto px-8 py-20 w-full">
       <Card shadow={false}>
