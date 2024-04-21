@@ -127,7 +127,10 @@ function BuyNow() {
           </CardBody>
           <CardFooter className="pt-0">
           <Button color="green" appearance="primary" > 
-           PAY NOW</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="/CheckoutForm">
+           PAY NOW 
+               </a> 
+           </Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Button color="green" appearance="primary" > 
 
            CANCEL</Button> 

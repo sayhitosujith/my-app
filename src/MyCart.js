@@ -177,7 +177,11 @@ function MyCart() {
     <br></br>
     <b><hr class="separator"/></b>
 <br></br>
-    <Button color="red" appearance="primary" > PLACE ORDER</Button> 
+    <Button color="red" appearance="primary" > 
+    <a href="/BuyNow">
+    PLACE ORDER
+ </a> 
+    </Button> 
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            <Button color="red" appearance="primary" > CANCEL</Button>
      </div>
