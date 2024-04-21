@@ -49,7 +49,8 @@ const CardItem = ({item}) => (
               className="mb-5 grid h-10 place-items-center">
               <Typography variant="h2" color="grey" >
                 {item.id} : 
-                {item.name}  
+                {item.name}:
+                 
              </Typography>
             </CardHeader>
 
@@ -142,12 +143,13 @@ function Welcome() {
         </Typography>
         <br></br>
 
+        <a href="/Home">     
         <div className='w-full flex mt-20 gap-5 flex justify-center items-center'>
             {
                 data.slice(0,4).map((item) => <CardItem item={item} />)
             }
         </div>
-      
+        </a> 
         <br></br>
         <b><hr class="separator" /></b>
 <br></br>
