@@ -99,12 +99,19 @@ const CardItem = ({ item }) => (
     </CardFooter>
 
     <Button color="green" appearance="primary"> 
-           BUY NOW @ (₹199)</Button> 
+           <a href="/OrderDetails">
+           BUY NOW @ (₹199) 
+               </a> 
+           </Button> 
+           
 
     <br></br>
 
     <Button color="green" appearance="primary"> 
-           ADD TO CART</Button> 
+           <a href="/MyCart">
+           ADD TO CART
+               </a> 
+           </Button> 
   </Card>
 
 )
@@ -153,6 +160,7 @@ function App() {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
            
     <div class="inline-flex items-left">
     <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">

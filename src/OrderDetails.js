@@ -38,7 +38,9 @@ export function OrderDetails() {
           </div>
           <div className="mb-4 flex w-full items-center gap-3 md:w-1/2 ">
             <Button color="gray" className="w-52">
+              <a href="/MyCart">
               Add to Cart
+               </a> 
             </Button>
             <IconButton color="gray" variant="text" className="shrink-0">
               <HeartIcon className="h-6 w-6" />

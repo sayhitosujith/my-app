@@ -127,7 +127,7 @@ function BuyNow() {
           </CardBody>
           <CardFooter className="pt-0">
           <Button color="green" appearance="primary" > 
-           COMPLETE ORDER</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           PAY NOW</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Button color="green" appearance="primary" > 
 
            CANCEL</Button> 
