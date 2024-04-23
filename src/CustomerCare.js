@@ -1,9 +1,65 @@
 import './App.css';
-import { Button, Input, Textarea, Typography } from "@material-tailwind/react";
+import { Button, Input, Textarea, Breadcrumbs,Typography,Select ,Option,Badge,Avatar} from "@material-tailwind/react";
+
 
 function CustomerCare() {
   return (
     <section className="px-8 py-8 lg:py-16">
+        <Breadcrumbs>
+      <a href="#" className="opacity-60">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+        </svg>
+      </a>
+
+      <a href="#" className="opacity-60">
+      <a href="/Welcome">
+      Welcome 
+ </a>    
+      </a>
+      <a href="#">CustomerCare</a>
+
+    </Breadcrumbs>
+    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
+    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+    <br></br>      
+  <div style={{ float: 'right' }}>
+  <div className="w-74">
+      <Select label="My Profile">
+        
+        <Option>    
+        </Option>
+    <Badge content="6" color="white">
+    <Button>
+    <a href="/MyCart">
+             MyCart 
+               </a> 
+      
+    </Button>
+    </Badge>
+       <Option>
+       <a href="/HomePage">
+             About 
+               </a> 
+       </Option>
+       <Option>
+       <a href="/ResetPassword">
+             Change Password 
+               </a> 
+       </Option>
+        <button><Option> 
+        <a href="/">
+             Logout 
+               </a>    
+          </Option></button>
+      </Select>
+       </div>
+        </div>
       <div className="container mx-auto text-center">
         <Typography
           variant="h5"
@@ -26,7 +82,7 @@ function CustomerCare() {
         </Typography>
         <div className="grid grid-cols-1 gap-x-12 gap-y-6 lg:grid-cols-2 items-start">
           <img
-            src="/image/map.svg"
+            src="https://thumbs.dreamstime.com/b/closeup-beautiful-business-customer-service-woman-smiling-30207893.jpg"
             alt="map"
             className="w-full h-full lg:max-h-[510px]"
           />
@@ -137,6 +193,7 @@ function CustomerCare() {
             <Button className="w-full" color="gray">
               Send message
             </Button>
+            
           </form>
         </div>
       </div>

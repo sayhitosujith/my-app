@@ -107,8 +107,8 @@ function Profile() {
       </a>
 
       <a href="#" className="opacity-60">
-      <a href="/Customer_Home">
-      Customer_Home 
+      <a href="/Welcome">
+      Welcome 
  </a>    
       </a>
       <a href="#">Profiles</a>
