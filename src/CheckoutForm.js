@@ -49,6 +49,7 @@ function formatExpires(value: string) {
 }
  
 export default function CheckoutForm() {
+  
   const { countries } = useCountries();
   const [type, setType] = React.useState("card");
   const [cardNumber, setCardNumber] = React.useState("");
@@ -57,6 +58,7 @@ export default function CheckoutForm() {
   return (
     <Card className="w-full max-w-[24rem]">
       <CardHeader
+
         color="gray"
         floated={false}
         shadow={false}

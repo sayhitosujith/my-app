@@ -100,6 +100,10 @@ function Welcome() {
       <br></br>
 
       <b><hr class="separator" /></b>
+      <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
+     <b>Welcome!</b> 
+      </Typography>
+  
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
       <Typography variant="h6" color="red">
       <b>Access your provisioned services below. Switch services any time from the Apps icon in the top right corner of your screen.</b>
