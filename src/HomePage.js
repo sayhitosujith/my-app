@@ -150,7 +150,7 @@ function Welcome() {
       <Avatar
       size="xxl"
       alt="avatar"
-      variant="rounded"
+      variant="circular"
       src="https://www.kitchenherald.com/wp-content/uploads/2023/10/Virat-1.png"
       className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
@@ -158,7 +158,7 @@ function Welcome() {
      <Avatar
       size="xxl"
       alt="avatar"
-      variant="rounded"
+      variant="circular"
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyCtZ3TP29Od5dmWVgLi3KGGbiR9dBS12NVnzhRQeTDg&s"
       className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
@@ -167,7 +167,7 @@ function Welcome() {
      <Avatar
       size="xxl"
       alt="avatar"
-      variant="rounded"
+      variant="circular"
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTSIdXHY0RfTWs3eo705sFof5SL4RJy9pvOyyb0L_oEA&s"
       className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
@@ -176,7 +176,7 @@ function Welcome() {
 <Avatar
  size="xxl"
  alt="avatar"
- variant="rounded"
+ variant="circular"
  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJjyDtZJPb5c2S42BIohdtt7NxJ--UafzIZIgNQns18A&s"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
@@ -185,7 +185,7 @@ function Welcome() {
 <Avatar
  size="xxl"
  alt="avatar"
- variant="rounded"
+ variant="circular"
  src="https://artude.com/logos/logo-akshayas.jpg"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
@@ -194,7 +194,7 @@ function Welcome() {
 <Avatar
  size="xxl"
  alt="avatar"
- variant="rounded"
+ variant="circular"
  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTANzRPr2aZNqLevUOcIonhHoEAcwWH19nWc5GoafQm1A&s"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
@@ -203,7 +203,7 @@ function Welcome() {
 <Avatar
  size="xxl"
  alt="avatar"
- variant="rounded"
+ variant="circular"
  src="https://idealdesigns.in/wp-content/uploads/2020/08/best-hotels-logo-design-in-hyderabad-hotel-branding-bangalore-best-hotel-in-India-kaveri.jpg"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
@@ -212,7 +212,7 @@ function Welcome() {
 <Avatar
  size="xxl"
  alt="avatar"
- variant="rounded"
+ variant="circular"
  src="https://idealbranding.in/wp-content/uploads/2018/04/restaurant-logo-design-hotel-shubham-palace2.jpg"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
@@ -221,7 +221,7 @@ function Welcome() {
 <Avatar
  size="xxl"
  alt="avatar"
- variant="rounded"
+ variant="circular"
  src="https://www.tajhotels.com/content/dam/tajhotels/icons/style-icons/logo--Taj.png"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
@@ -230,7 +230,7 @@ function Welcome() {
 <Avatar
  size="xxl"
  alt="avatar"
- variant="rounded"
+ variant="circular"
  src="https://i.pinimg.com/originals/f6/f1/bc/f6f1bccf8d36edee548acb2c90db5e14.jpg"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
@@ -239,7 +239,7 @@ function Welcome() {
 <Avatar
  size="xxl"
  alt="avatar"
- variant="rounded"
+ variant="circular"
  src="https://graphicdesigneye.com/images/hotel-logo-design-service.png"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
@@ -248,7 +248,7 @@ function Welcome() {
 <Avatar
  size="xxl"
  alt="avatar"
- variant="rounded"
+ variant="circular"
  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTERlpItS51IO_Y8UBZ0aXQTeq3Drrjf-scnz_LeZzZKg&s"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
