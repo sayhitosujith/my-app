@@ -136,7 +136,7 @@ function Welcome() {
       </Typography>
   
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
-      <Typography variant="h6" color="red">
+      <Typography variant="h6" color="black">
       <b>Access your provisioned services below. Switch services any time from the Apps icon in the middle of your screen.</b>
            <br></br></Typography>
            
@@ -145,6 +145,7 @@ function Welcome() {
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
            </Typography>
+           <b><hr class="separator" /></b>
 
     <div style={{float: 'right'}}>
 
@@ -176,48 +177,47 @@ function Welcome() {
        
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
        <span class="MuiButton-label">
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Admin</span>
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
         <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://media.istockphoto.com/id/1192884194/vector/admin-sign-on-laptop-icon-stock-vector.jpg?s=170667a&w=0&k=20&c=S274xvXNsp27UyKxzNjhmZEzAb3Zqi2pFOqZjLsZJz0="></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Admin</span>
         </a>
         
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
        <span class="MuiButton-label">
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Customer</span>
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} marginleft='1px' src = "https://img.freepik.com/premium-vector/customer-concept-2-colored-icon-simple-blue-element-illustration-customer-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-3585.jpg"></img>
-       
+        <img style={{width: '180px', height: '180px'}} marginleft='1px' src = "https://st2.depositphotos.com/4520249/8383/v/450/depositphotos_83833486-stock-illustration-clients-users-icon.jpg"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Customer</span>
         </a>
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" role="button"aria-disabled="false"data-aid="tile" href="/Admin_Analytics">    
        <span class="MuiButton-label">
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Analytics</span>
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
         <img style={{width: '180px', height: '180px'}} marginleft='2px'src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCswCYnhK7o9KobHw5jmOtXQKY6JV8xuixdQ&usqp=CAU"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Analytics</span>
         </a>
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" role="button"aria-disabled="false"data-aid="tile" href="/CustomerCare">    
        <span class="MuiButton-label">
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">CustomerCare</span>
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
         <img style={{width: '180px', height: '180px'}} marginleft='3px' src = "https://thumbs.dreamstime.com/b/people-contact-customer-service-call-center-logo-icon-illustration-design-connection-phone-speech-bubble-headphones-information-169062794.jpg"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; CustomerCare</span>
         </a>
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/Profile">    
        <span class="MuiButton-label">
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Profiles</span>
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
         <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Profiles</span>
         </a>
 </div>
 
