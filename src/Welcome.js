@@ -152,7 +152,7 @@ function Welcome() {
         <img style={{width: '180px', height: '180px'}} src = "https://img.freepik.com/premium-vector/customer-concept-2-colored-icon-simple-blue-element-illustration-customer-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-3585.jpg"></img>
         </a>
 
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" role="button"aria-disabled="false"data-aid="tile" href="/Admin_Analytics">    
        <span class="MuiButton-label">
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Analytics</span>
 <g fill="none" fill-rule="evenodd"></g>
@@ -161,7 +161,7 @@ function Welcome() {
         <img style={{width: '180px', height: '180px'}} src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCswCYnhK7o9KobHw5jmOtXQKY6JV8xuixdQ&usqp=CAU"></img>
         </a>
 
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" role="button"aria-disabled="false"data-aid="tile" href="/CustomerCare">    
        <span class="MuiButton-label">
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">CustomerCare</span>
 <g fill="none" fill-rule="evenodd"></g>
@@ -169,11 +169,10 @@ function Welcome() {
        </span>
         <img style={{width: '180px', height: '180px'}} src = "https://img.freepik.com/premium-vector/mobile_393879-1160.jpg"></img>
         </a>
-      
-        <br></br>
-        <b><hr class="separator" /></b>
-<br></br>
 </div>
+
+        <b><hr class="separator" /></b>
+
 
     <div className='flex justify-center items-center'>
        <Typography variant="h7" color="Black">
