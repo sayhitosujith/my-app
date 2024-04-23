@@ -151,7 +151,7 @@ function Welcome() {
       size="xxl"
       alt="avatar"
       variant="circular"
-      src="https://www.kitchenherald.com/wp-content/uploads/2023/10/Virat-1.png"
+      src="https://gmraerocity.com/wp-content/uploads/2021/04/one8.png"
       className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
                <b>              </b>  
@@ -177,7 +177,7 @@ function Welcome() {
  size="xxl"
  alt="avatar"
  variant="circular"
- src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJjyDtZJPb5c2S42BIohdtt7NxJ--UafzIZIgNQns18A&s"
+ src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt_w3vxbe-ZZPqsxcf1Oe_PqAfgRPlTe9Akzm53fn2tlHjrSvjuJXguyj3V8WkUU3OMdI&usqp=CAU"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
 <b>              </b>  
@@ -186,7 +186,7 @@ function Welcome() {
  size="xxl"
  alt="avatar"
  variant="circular"
- src="https://artude.com/logos/logo-akshayas.jpg"
+ src="https://banner2.cleanpng.com/20180510/wyw/kisspng-hotel-highway-king-bagru-jodhpur-restaurant-5af469d784d804.8287207815259673195441.jpg"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
 <b>              </b>  
@@ -195,7 +195,7 @@ function Welcome() {
  size="xxl"
  alt="avatar"
  variant="circular"
- src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTANzRPr2aZNqLevUOcIonhHoEAcwWH19nWc5GoafQm1A&s"
+ src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Byt5v2L1W7-dKsgB7aJ2s7FVO_rl8BUMqA&usqp=CAU"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
 <b>              </b>  
@@ -222,7 +222,7 @@ function Welcome() {
  size="xxl"
  alt="avatar"
  variant="circular"
- src="https://www.tajhotels.com/content/dam/tajhotels/icons/style-icons/logo--Taj.png"
+ src="https://play-lh.googleusercontent.com/ATJbrSAzIwdFdp-qOVnyUXmvyx6mLm8W22RQOmaIa_EyZroHbuwofHg6bWSPGoQ1nXc=w600-h300-pc0xffffff-pd"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
 <b>              </b>  
