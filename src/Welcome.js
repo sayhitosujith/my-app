@@ -10,7 +10,8 @@ import {
   Select,
   Option,
   Breadcrumbs,
-  Avatar
+  Avatar,
+  Helmet
 
 } from "@material-tailwind/react";
 
@@ -73,7 +74,6 @@ const Time =  new Date().toLocaleString()
 const CardItem = ({item}) => (
     
     <Card className="w-96">
-      
           <CardHeader
               variant="gradient"
               color="green"
@@ -132,7 +132,7 @@ function Welcome() {
 
       <b><hr class="separator" /></b>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
-     <b>Welcome!</b> 
+      <h1 style={{ color: 'Blue' }}><b><div> Welcome!</div></b></h1>
       </Typography>
   
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
@@ -155,6 +155,7 @@ function Welcome() {
              About 
                </a>    
        </Option>
+       
        <Option>
        <a href="/ResetPassword">
              Change Password 
