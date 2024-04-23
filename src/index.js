@@ -32,7 +32,7 @@ import CheckoutForm from './CheckoutForm';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/my-app",
     element: <App />,
   },
   {
