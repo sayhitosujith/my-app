@@ -28,6 +28,44 @@ const LINKS = [
     items: ["Blog", "Newsletter", "Events", "Help center"],
   },
 ];
+const data = [
+  {
+    imageLink:
+      "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+  },
+  {
+    imageLink:
+      "https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+  },
+  {
+    imageLink:
+      "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80",
+  },
+  {
+    imageLink:
+      "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+  },
+  {
+    imageLink:
+      "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+  },
+  {
+    imageLink:
+      "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+  },
+  {
+    imageLink:
+      "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg",
+  },
+  {
+    imageLink:
+      "https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg",
+  },
+  {
+    imageLink:
+      "https://images.unsplash.com/photo-1620064916958-605375619af8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1493&q=80",
+  },
+];
  
 const currentYear = new Date().getFullYear();
 const Time =  new Date().toLocaleString()
@@ -133,14 +171,15 @@ function Welcome() {
         </Typography>
         <br></br>
 
-<div tilesnumber="4" class="AppPickerstyled__Container-sc-1kwjv9m-3 wePBY">
+<div tilesnumber="4" class="grid grid-cols-1 gap-0 sm:grid-cols-2 md:grid-cols-5">
+       
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
        <span class="MuiButton-label">
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Admin</span>
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} src = "https://media.istockphoto.com/id/1192884194/vector/admin-sign-on-laptop-icon-stock-vector.jpg?s=170667a&w=0&k=20&c=S274xvXNsp27UyKxzNjhmZEzAb3Zqi2pFOqZjLsZJz0="></img>
+        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://media.istockphoto.com/id/1192884194/vector/admin-sign-on-laptop-icon-stock-vector.jpg?s=170667a&w=0&k=20&c=S274xvXNsp27UyKxzNjhmZEzAb3Zqi2pFOqZjLsZJz0="></img>
         </a>
         
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
@@ -149,7 +188,7 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} src = "https://img.freepik.com/premium-vector/customer-concept-2-colored-icon-simple-blue-element-illustration-customer-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-3585.jpg"></img>
+        <img style={{width: '180px', height: '180px'}} marginleft='2px'  src = "https://img.freepik.com/premium-vector/customer-concept-2-colored-icon-simple-blue-element-illustration-customer-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-3585.jpg"></img>
         </a>
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" role="button"aria-disabled="false"data-aid="tile" href="/Admin_Analytics">    
@@ -167,19 +206,46 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} src = "https://img.freepik.com/premium-vector/mobile_393879-1160.jpg"></img>
+        <img style={{width: '180px', height: '180px'}} src = "https://thumbs.dreamstime.com/b/people-contact-customer-service-call-center-logo-icon-illustration-design-connection-phone-speech-bubble-headphones-information-169062794.jpg"></img>
+        </a>
+
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/Profile">    
+       <span class="MuiButton-label">
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Profiles</span>
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
+        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg"></img>
         </a>
 </div>
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <b><hr class="separator" /></b>
 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
     <div className='flex justify-center items-center'>
        <Typography variant="h7" color="Black">
-       <b>Contact us  - Info@mavenmeals.com.</b>
+       <b>Contact us  - Info@mavenmeals.com</b>
       <br></br>
       <b><hr class="separator" /></b>
       <br></br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
       </Typography>
     </div>
