@@ -133,23 +133,47 @@ function Welcome() {
         </Typography>
         <br></br>
 
-        <a href="/Home">    
+<div tilesnumber="4" class="AppPickerstyled__Container-sc-1kwjv9m-3 wePBY">
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
+       <span class="MuiButton-label">
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Admin</span>
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
         <img style={{width: '180px', height: '180px'}} src = "https://media.istockphoto.com/id/1192884194/vector/admin-sign-on-laptop-icon-stock-vector.jpg?s=170667a&w=0&k=20&c=S274xvXNsp27UyKxzNjhmZEzAb3Zqi2pFOqZjLsZJz0="></img>
         </a>
-        <a href="/Customer_Home">
+        
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
+       <span class="MuiButton-label">
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Customer</span>
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
         <img style={{width: '180px', height: '180px'}} src = "https://img.freepik.com/premium-vector/customer-concept-2-colored-icon-simple-blue-element-illustration-customer-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-3585.jpg"></img>
         </a>
-        <a href="/Admin_Analytics">
+
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
+       <span class="MuiButton-label">
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">Analytics</span>
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
         <img style={{width: '180px', height: '180px'}} src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCswCYnhK7o9KobHw5jmOtXQKY6JV8xuixdQ&usqp=CAU"></img>
         </a>
-        <a href="/CustomerCare">
+
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
+       <span class="MuiButton-label">
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">CustomerCare</span>
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
         <img style={{width: '180px', height: '180px'}} src = "https://img.freepik.com/premium-vector/mobile_393879-1160.jpg"></img>
-        </a> 
+        </a>
       
         <br></br>
         <b><hr class="separator" /></b>
 <br></br>
-   
+</div>
 
     <div className='flex justify-center items-center'>
        <Typography variant="h7" color="Black">
