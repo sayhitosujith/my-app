@@ -14,13 +14,6 @@ import {
 
 } from "@material-tailwind/react";
 
-const data = [
-  {id: 1, name: 'Admin', src: 'https://media.istockphoto.com/id/1192884194/vector/admin-sign-on-laptop-icon-stock-vector.jpg?s=170667a&w=0&k=20&c=S274xvXNsp27UyKxzNjhmZEzAb3Zqi2pFOqZjLsZJz0=',},
-  {id: 2, name: 'Customer', src: 'https://img.freepik.com/premium-vector/customer-concept-2-colored-icon-simple-blue-element-illustration-customer-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-3585.jpg',},
-  {id: 3, name: 'Analytics', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCswCYnhK7o9KobHw5jmOtXQKY6JV8xuixdQ&usqp=CAU',},
-  {id: 4, name: 'Concact Center', src: 'https://img.freepik.com/premium-vector/mobile_393879-1160.jpg',},
-
-]
 const LINKS = [
   {
     title: "Product",
@@ -112,13 +105,7 @@ function Welcome() {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <Typography
-                as="a"
-                href="#signup"
-                variant="Medium"
-                color="blue-gray"
-                className="ml-1 font-bold">
-              </Typography>
+
            </Typography>
 
     <div style={{float: 'right'}}>
@@ -146,13 +133,17 @@ function Welcome() {
         </Typography>
         <br></br>
 
+        <a href="/Home">    
+        <img style={{width: '180px', height: '180px'}} src = "https://media.istockphoto.com/id/1192884194/vector/admin-sign-on-laptop-icon-stock-vector.jpg?s=170667a&w=0&k=20&c=S274xvXNsp27UyKxzNjhmZEzAb3Zqi2pFOqZjLsZJz0="></img>
+        </a>
         <a href="/Customer_Home">
-             
-        <div className='w-full flex mt-20 gap-5 flex justify-center items-center'>
-            {
-                data.slice(0,4).map((item) => <CardItem item={item} />)
-            }
-        </div>
+        <img style={{width: '180px', height: '180px'}} src = "https://img.freepik.com/premium-vector/customer-concept-2-colored-icon-simple-blue-element-illustration-customer-concept-symbol-design-can-be-used-web-mobile-ui-ux_159242-3585.jpg"></img>
+        </a>
+        <a href="/Admin_Analytics">
+        <img style={{width: '180px', height: '180px'}} src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCswCYnhK7o9KobHw5jmOtXQKY6JV8xuixdQ&usqp=CAU"></img>
+        </a>
+        <a href="/CustomerCare">
+        <img style={{width: '180px', height: '180px'}} src = "https://img.freepik.com/premium-vector/mobile_393879-1160.jpg"></img>
         </a> 
       
         <br></br>
@@ -206,7 +197,7 @@ function Welcome() {
             variant="small"
             className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
           >
-            &copy; {currentYear}<a href="https://material-tailwind.com/">Food Maven</a>. All
+            &copy; {currentYear}<a href="https://material-tailwind.com/"> - Food Maven</a>. All
             Rights Reserved.
             <br></br>
             INDIA - {Time} 
