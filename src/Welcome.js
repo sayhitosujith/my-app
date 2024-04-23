@@ -184,7 +184,7 @@ function Welcome() {
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Admin</span>
         </a>
         
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI" role="button"aria-disabled="false"data-aid="tile" href="/Customer_Login">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
@@ -241,7 +241,7 @@ function Welcome() {
 
     <div className='flex justify-center items-center'>
        <Typography variant="h7" color="Black">
-       <b>Contact us  - Info@mavenmeals.com</b>
+       <b>Contact us  - Info@foodmaven.com</b>
       <br></br>
       <b><hr class="separator" /></b>
       <br></br>
