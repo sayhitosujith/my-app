@@ -57,7 +57,7 @@ function App() {
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
-            <a href="/Home">
+            <a href="/Welcome">
              LOGIN 
                </a>              
             </Button>
