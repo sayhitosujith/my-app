@@ -137,7 +137,7 @@ function Welcome() {
   
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
       <Typography variant="h6" color="red">
-      <b>Access your provisioned services below. Switch services any time from the Apps icon in the top right corner of your screen.</b>
+      <b>Access your provisioned services below. Switch services any time from the Apps icon in the middle of your screen.</b>
            <br></br></Typography>
            
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

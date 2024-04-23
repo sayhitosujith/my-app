@@ -128,7 +128,7 @@ function Admin_Analytics() {
   return (
     <div className="p-10">
         
-            <Breadcrumbs>
+        <Breadcrumbs>
       <a href="#" className="opacity-60">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -137,20 +137,28 @@ function Admin_Analytics() {
           fill="currentColor"
         >
           <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+       
+          <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
+              delete
+            </Typography>
         </svg>
       </a>
 
       <a href="#" className="opacity-60">
-      <a href="#">Profile</a>
+      <a href="#">
+      <a href="/Welcome">
+             Welcome 
+               </a>    
       </a>
-      <a href="#">Power BI Analytics</a>
-      
+      </a>
+      <a href="#">Admin Analytics</a>
     </Breadcrumbs>
+    <br></br>
     <Typography variant="h3" color="Black">
     Power BI Analytics
 
     <div style={{float: 'right'}}>
-    <Avatar src="https://media.licdn.com/dms/image/D5603AQFxv9b5cCxs2w/profile-displayphoto-shrink_400_400/0/1703428628673?e=1709769600&v=beta&t=8mgWsJuWJNrgjbsLZpe_vQCFOdMKgLQSE6ruvd5OgkU" alt="avatar" size="xxl" />
+    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
     <div className="w-74">
       <Select label="Sujith">
         <Option>    
