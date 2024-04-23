@@ -352,7 +352,7 @@ function Welcome() {
 
  <br></br>
 
-        <Card className="w-98">
+        <Card className="w-99">
           <CardHeader
             variant="gradient"
             color="white"
@@ -375,6 +375,7 @@ When asked about the cafe’s origin story, Divya told us that from her time in 
 This dream was furthered when she met Raghavendra, who had a humble food cart in Seshadripuram and brought along with him, 15+ years of experience in the food industry.  
 Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to the late Mr. Dr. APJ Abdul Kalam’s birthplace -</b>
 <br></br>
+
 
            <Typography
                 as="a"
