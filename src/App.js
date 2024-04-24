@@ -125,7 +125,7 @@ function App() {
 
         </Card>
       </div>
-              <img style={{width: '60%', height: '100vh'}} src="https://png.pngtree.com/background/20230618/original/pngtree-online-food-delivery-concept-computer-generated-3d-render-of-food-flying-picture-image_3756857.jpg" 
+              <img style={{width: '70%', height: '100vh'}} src="https://static.wixstatic.com/media/50d4e6_32867390a3404625aff33feab77a527e~mv2.jpg/v1/fill/w_436,h_438,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/50d4e6_32867390a3404625aff33feab77a527e~mv2.jpg" 
       alt="image 1"
         className="h-full w-full object-cover"
         />
