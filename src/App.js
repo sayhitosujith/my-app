@@ -125,7 +125,7 @@ function App() {
 
         </Card>
       </div>
-              <img style={{width: '70%', height: '100vh'}} src="https://static.wixstatic.com/media/50d4e6_32867390a3404625aff33feab77a527e~mv2.jpg/v1/fill/w_436,h_438,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/50d4e6_32867390a3404625aff33feab77a527e~mv2.jpg" 
+              <img style={{width: '70%', height: '100vh'}} src="https://i.pinimg.com/originals/15/6f/d5/156fd5c7f1ddefa85c5f7268275195c9.jpg" 
       alt="image 1"
         className="h-full w-full object-cover"
         />
