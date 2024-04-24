@@ -124,7 +124,7 @@ function App() {
         
         </Card>
       </div>
-              <img style={{width: '70%', height: '100vh'}} src="https://media.istockphoto.com/id/1456866576/vector/seamless-geometric-vector-pattern.jpg?s=612x612&w=0&k=20&c=I4kx34CMETvRYE1xWFOF47I0nMUqYax03UijwHUKfQI=" 
+              <img style={{width: '70%', height: '100vh'}} src="https://c4.wallpaperflare.com/wallpaper/857/229/187/5bd35420125ed-wallpaper-preview.jpg" 
       alt="image 1"
         className="h-full w-full object-cover"
         />
