@@ -124,8 +124,8 @@ function App() {
         
         </Card>
       </div>
-              <img style={{width: '70%', height: '100vh'}} src="https://c4.wallpaperflare.com/wallpaper/857/229/187/5bd35420125ed-wallpaper-preview.jpg" 
-      alt="image 1"
+              <img style={{width: '70%', height: '100vh'}} src="https://www.shutterstock.com/image-photo/lunch-boxes-food-ready-go-260nw-710495494.jpg" 
+      alt=" Lunch box"
         className="h-full w-full object-cover"
         />
     </div>
