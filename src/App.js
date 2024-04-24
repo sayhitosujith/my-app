@@ -121,18 +121,16 @@ function App() {
               </Typography>
             </Typography>
           </CardFooter>
-          
-
+        
         </Card>
       </div>
-              <img style={{width: '70%', height: '100vh'}} src="https://static.wixstatic.com/media/50d4e6_32867390a3404625aff33feab77a527e~mv2.jpg/v1/fill/w_436,h_438,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/50d4e6_32867390a3404625aff33feab77a527e~mv2.jpg" 
+              <img style={{width: '70%', height: '100vh'}} src="https://media.istockphoto.com/id/1456866576/vector/seamless-geometric-vector-pattern.jpg?s=612x612&w=0&k=20&c=I4kx34CMETvRYE1xWFOF47I0nMUqYax03UijwHUKfQI=" 
       alt="image 1"
         className="h-full w-full object-cover"
         />
 
     </div>
   );
-
   
 }
 
