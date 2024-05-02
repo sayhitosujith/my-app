@@ -37,7 +37,7 @@ function Success() {
               Don&apos;t miss out on the latest deals and promotions.
               </Typography>
               <Button size="lg" className="mt-8">
-              <a href="/">
+              <a href="/Welcome">
                Success 
                </a>   
               </Button>
