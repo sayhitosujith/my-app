@@ -11,7 +11,6 @@ import {
   Option,
   Breadcrumbs,
   Avatar,
-  Helmet
 
 } from "@material-tailwind/react";
 
@@ -66,6 +65,10 @@ const data = [
     imageLink:
       "https://images.unsplash.com/photo-1620064916958-605375619af8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1493&q=80",
   },
+  {
+    imageLink:
+      "https://images.unsplash.com/photo-1620064916958-605375619af8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1493&q=80",
+  },
 ];
  
 const currentYear = new Date().getFullYear();
@@ -77,7 +80,7 @@ const CardItem = ({item}) => (
           <CardHeader
               variant="gradient"
               color="green"
-              className="mb-5 grid h-10 place-items-center">
+              className="mb-6 grid h-10 place-items-center">
               <Typography variant="h2" color="grey" >
                 {item.id} : 
                 {item.name}: 
@@ -173,7 +176,7 @@ function Welcome() {
         </Typography>
         <br></br>
 
-<div tilesnumber="4" class="grid grid-cols-1 gap-0 sm:grid-cols-2 md:grid-cols-5">
+<div tilesnumber="4" class="grid grid-cols-1 gap-0 sm:grid-cols-2 md:grid-cols-6">
        
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
        <span class="MuiButton-label">
@@ -218,6 +221,15 @@ function Welcome() {
        </span>
         <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Profiles</span>
+        </a>
+
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/BillingDetails">    
+       <span class="MuiButton-label">
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
+        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://png.pngtree.com/png-clipart/20230822/original/pngtree-document-billing-icon-vector-design-template-picture-image_8188256.png"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Billing Details</span>
         </a>
 </div>
 
