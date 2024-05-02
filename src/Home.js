@@ -3,6 +3,10 @@ import { Badge } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { Checkbox } from "@material-tailwind/react";
 import { Switch } from "@material-tailwind/react";
+import {
+  ArrowDownTrayIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 
 import {
   Card,
@@ -17,6 +21,7 @@ import {
   Avatar,
   Textarea,
   Chip,
+  
 
 } from "@material-tailwind/react";
 
@@ -180,15 +185,13 @@ function App() {
 
 <div style={{float: 'right'}}>
 
-      <button
-        class="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-        type="button" >
-             <a href="/BillingDetails">
-             Billing Details
-               </a> 
-      </button>
+<Button className="flex items-center gap-3" size="sl">
+              <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
+            </Button>
+            <div style={{ float: 'right' }}>
+            <button> <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></button>
+              </div>
 <br></br>
-
       <div className="w-74">
       <Select label="Profile">
         <Option>    
@@ -227,17 +230,17 @@ function App() {
 
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(0,6).map((item) => <CardItem item={item} />)
+                data.slice(0,5).map((item) => <CardItem item={item} />)
             }
         </div>
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(7, 13).map((item) => <CardItem item={item} />)
+                data.slice(6, 11).map((item) => <CardItem item={item} />)
             }
         </div>
         <div className='w-full flex mt-20 gap-5'>
             {
-                data.slice(7, 13).map((item) => <CardItem item={item} />)
+                data.slice(7, 12).map((item) => <CardItem item={item} />)
             }
         </div>
         <br></br>
