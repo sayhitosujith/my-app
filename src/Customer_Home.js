@@ -230,7 +230,7 @@ function App() {
                </a> 
        </Option>
         <button><Option> 
-        <a href="/">
+        <a href="/my-app">
              Logout 
                </a>    
           </Option></button>

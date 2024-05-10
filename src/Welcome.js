@@ -166,7 +166,7 @@ function Welcome() {
                </a> 
        </Option>
         <button><Option>
-        <a href="/">
+        <a href="/my-app">
              Logout 
                </a> 
           </Option></button>
@@ -183,7 +183,7 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://media.istockphoto.com/id/1192884194/vector/admin-sign-on-laptop-icon-stock-vector.jpg?s=170667a&w=0&k=20&c=S274xvXNsp27UyKxzNjhmZEzAb3Zqi2pFOqZjLsZJz0="></img>
+        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://cdn-icons-png.freepik.com/512/6512/6512792.png"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Admin</span>
         </a>
         
@@ -192,7 +192,7 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} marginleft='1px' src = "https://st2.depositphotos.com/4520249/8383/v/450/depositphotos_83833486-stock-illustration-clients-users-icon.jpg"></img>
+        <img style={{width: '180px', height: '180px'}} marginleft='1px' src = "https://png.pngtree.com/png-vector/20220520/ourmid/pngtree-vectorized-blue-user-icon-for-account-and-profile-web-icons-vector-png-image_46417352.jpg"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Customer</span>
         </a>
 
@@ -201,7 +201,7 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} marginleft='2px'src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCswCYnhK7o9KobHw5jmOtXQKY6JV8xuixdQ&usqp=CAU"></img>
+        <img style={{width: '180px', height: '180px'}} marginleft='2px'src = "https://cdn-icons-png.freepik.com/512/7731/7731130.png"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Analytics</span>
         </a>
 
@@ -219,7 +219,7 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg"></img>
+        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6xbxe9O3Jh6Qv6zY2jGgjlS-TKi42zi_s1jrhJKDKn9VzmAtu6MgvDhlzQo3evqTQudE&usqp=CAU"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Profiles</span>
         </a>
 
@@ -228,7 +228,7 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://png.pngtree.com/png-clipart/20230822/original/pngtree-document-billing-icon-vector-design-template-picture-image_8188256.png"></img>
+        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://cdn4.vectorstock.com/i/1000x1000/85/78/invoice-icon-in-blue-style-for-any-projects-vector-35418578.jpg"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Billing Details</span>
         </a>
 </div>

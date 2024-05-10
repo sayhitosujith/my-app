@@ -154,7 +154,7 @@ function App() {
       <br></br>
 
       <div className="w-72">
-              <Select label="Select Status">
+              <Select label= <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>>
                 <Option><Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
                 <Option><Chip variant="ghost"color="blue"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
                 <Option><Chip variant="ghost"color="white"size="sm"value="Closed" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
@@ -188,9 +188,6 @@ function App() {
 <Button className="flex items-center gap-3" size="sl">
               <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
             </Button>
-            <div style={{ float: 'right' }}>
-            <button> <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></button>
-              </div>
 <br></br>
       <div className="w-74">
       <Select label="Profile">
@@ -215,7 +212,7 @@ function App() {
                </a> 
        </Option>
         <button><Option> 
-        <a href="/">
+        <a href="/my-app">
              Logout 
                </a>    
           </Option></button>
