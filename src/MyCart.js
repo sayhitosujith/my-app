@@ -12,12 +12,19 @@ import {
   Button,
   Checkbox,
   Chip,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
 } from "@material-tailwind/react";
 
 
 
 
 function MyCart() {
+  const [open, setOpen] = React.useState(false);
+ 
+  const handleOpen = () => setOpen(!open);
   return (
 
     <div className="flex flex-row gap-5">
@@ -45,9 +52,38 @@ function MyCart() {
           >
             <TrashIcon className="h-4 w-4 text-red-500" />
             <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
-            <a href="/Success">
+            <Button onClick={handleOpen} variant="gradient">
              DELETE 
-               </a> 
+             </Button>
+             <Dialog
+        open={open}
+        handler={handleOpen}
+        animate={{
+          mount: { scale: 1, y: 0 },
+          unmount: { scale: 0.9, y: -100 },
+        }}
+      >
+        <DialogHeader>Remove Item</DialogHeader>
+        <DialogBody>
+          Are you sure want to remove this item?
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={handleOpen}
+            className="mr-1"
+          >
+            <span>Cancel</span>
+          </Button>
+          <Button variant="gradient" color="green" onClick={handleOpen}>
+          <a href="/MyCart">
+            <span>Confirm</span>
+            </a> 
+          </Button>
+        </DialogFooter>
+      </Dialog>
+
             </Typography>
           </Button>
                  <b><Checkbox label="Select Meal" /></b>
@@ -80,11 +116,40 @@ function MyCart() {
             color="red"
             className="flex items-center gap-2"
           >
-            <TrashIcon className="h-4 w-4 text-red-500" />
+            <TrashIcon className="h-4 w-5 text-red-500" />
             <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
-            <a href="/Success">
+            <Button onClick={handleOpen} variant="gradient">
              DELETE 
-               </a> 
+             </Button>
+             <Dialog
+        open={open}
+        handler={handleOpen}
+        animate={{
+          mount: { scale: 1, y: 0 },
+          unmount: { scale: 0.9, y: -100 },
+        }}
+      >
+        <DialogHeader>Remove Item</DialogHeader>
+        <DialogBody>
+          Are you sure want to remove this item?
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={handleOpen}
+            className="mr-1"
+          >
+            <span>Cancel</span>
+          </Button>
+          <Button variant="gradient" color="green" onClick={handleOpen}>
+          <a href="/MyCart">
+            <span>Confirm</span>
+            </a> 
+          </Button>
+        </DialogFooter>
+      </Dialog>
+
             </Typography>
           </Button>
 
