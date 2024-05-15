@@ -2,6 +2,7 @@ import './App.css';
 import { Avatar } from "@material-tailwind/react";
 import React from 'react';
 import { TrashIcon } from "@heroicons/react/24/solid";
+import { Alert } from "@material-tailwind/react";
 
 import {
   Card,
@@ -16,6 +17,7 @@ import {
   DialogHeader,
   DialogBody,
   DialogFooter,
+  Input
 } from "@material-tailwind/react";
 
 
@@ -43,7 +45,9 @@ function MyCart() {
           <Chip variant="ghost"color="red"size="sm"value="Out Of stock" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
           <b> <div><button><h1 style={{ color: 'red' }}><b><div>-</div></b></h1></button>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <button><h1 style={{ color: 'Red' }}><b><div>+</div></b></h1></button></div></b>
+         <button><h1 style={{ color: 'Red' }}><b><div>
+          +
+          </div></b></h1></button></div></b>
          <Button
             size="sm"
             variant="text"
@@ -63,9 +67,9 @@ function MyCart() {
           unmount: { scale: 0.9, y: -100 },
         }}
       >
-        <DialogHeader>Remove Item</DialogHeader>
+        <DialogHeader>REMOVE ITEM</DialogHeader>
         <DialogBody>
-          Are you sure want to remove this item?
+          Are you sure want to remove this item.?
         </DialogBody>
         <DialogFooter>
           <Button
@@ -129,9 +133,9 @@ function MyCart() {
           unmount: { scale: 0.9, y: -100 },
         }}
       >
-        <DialogHeader>Remove Item</DialogHeader>
+        <DialogHeader>REMOVE ITEM</DialogHeader>
         <DialogBody>
-          Are you sure want to remove this item?
+          Are you sure want to remove this item.?
         </DialogBody>
         <DialogFooter>
           <Button
@@ -149,7 +153,6 @@ function MyCart() {
           </Button>
         </DialogFooter>
       </Dialog>
-
             </Typography>
           </Button>
 
@@ -212,7 +215,52 @@ function MyCart() {
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Tip</b></h1>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
+            <Button onClick={handleOpen} variant="gradient" color="orange">
+             ADD TIP 
+             </Button>
+             <Dialog
+        open={open}
+        handler={handleOpen}
+        animate={{
+          mount: { scale: 1, y: 0 },
+          unmount: { scale: 0.9, y: -100 },
+        }}
+      >
+        <DialogHeader>ADD DELIVERY TIP</DialogHeader>
+        <Card className="mx-auto w-full max-w-[24rem]">
+          <CardBody className="flex flex-col gap-4">
+            <Typography variant="h4" color="blue-gray">
+              Thankyou for the Tip
+            </Typography>
+            <Typography
+              className="mb-3 font-normal"
+              variant="paragraph"
+              color="gray"
+            >
+            </Typography>
+            <Typography className="-mb-2" variant="h6">
+              Your Email
+            </Typography>
+            <Input label="Email" size="lg" />
+            <Typography className="-mb-2" variant="h6">
+            </Typography>
+            <Input label="Enter the Amount" size="lg" />
+            <div className="-ml-2.5 -mt-3">
+            </div>
+          </CardBody>
+          <CardFooter className="pt-0">
+            <Button variant="gradient" onClick={handleOpen} fullWidth>
+              SUBMIT TIP
+            </Button>
+          </CardFooter>
+        </Card>
+      </Dialog>
+            </Typography>
+      </b>    
+ </h1>
+  
 </div>
 <br></br>
 <div>Discount : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
