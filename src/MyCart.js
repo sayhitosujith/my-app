@@ -2,13 +2,14 @@ import './App.css';
 import { Avatar } from "@material-tailwind/react";
 import React from 'react';
 import { TrashIcon } from "@heroicons/react/24/solid";
-import { Tooltip, Typography } from "@material-tailwind/react";
+import { Alert } from "@material-tailwind/react";
 
 import {
   Card,
   CardHeader,
   CardBody,
   CardFooter,
+  Typography,
   Button,
   Checkbox,
   Chip,
@@ -16,7 +17,6 @@ import {
   DialogHeader,
   DialogBody,
   DialogFooter,
-  Input
 } from "@material-tailwind/react";
 
 
@@ -192,15 +192,16 @@ function MyCart() {
       <card >
         <CardHeader >
             <CardBody>
-<br></br>
+
 <img
       className="h-96 w-100 rounded-lg object-cover object-center"
       src="https://api.qrserver.com/v1/create-qr-code/?size=225x225&data=upi%3A%2F%2Fpay%3Fpa%3D9480860587%40mobile.npci%26pn%3Dfood%26cu%3DINR"
-      alt="Bar code"
+      alt="nature image"
     />
             <b><hr class="w-1/2 flex items-center justify-center" /></b>
             <br></br>
             <div style={{ width: '38rem' }}>
+            <h1 style={{ color: 'Green' }}><b><div>Scan the QC Code to pay via UPI Apps Online</div></b></h1>
     <b><hr class="separator" /></b>
 <br></br>
 <div>Item Total(2 Items): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -214,46 +215,12 @@ function MyCart() {
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
-            <Button onClick={handleOpen} variant="gradient" color="orange">
-             ADD TIP 
-             </Button>
-             <Dialog
-        open={open}
-        handler={handleOpen}
-        animate={{
-          mount: { scale: 1, y: 0 },
-          unmount: { scale: 0.9, y: -100 },
-        }}
-      >
-        <DialogHeader>ADD DELIVERY TIP</DialogHeader>
-        <Card className="mx-auto w-full max-w-[24rem]">
-          <CardBody className="flex flex-col gap-4">
-            <Typography variant="h4" color="blue-gray">
-              Thankyou for the Tip
-              
-            </Typography>
-            <Typography
-              className="mb-3 font-normal"
-              variant="paragraph"
-              color="gray"
-            >
-            </Typography>
-
-            <Input label="Enter the Amount" size="lg" />
-            <div className="-ml-2.5 -mt-3">
-            </div>
-          </CardBody>
-          <CardFooter className="pt-0">
-            <Button variant="gradient" onClick={handleOpen} fullWidth>
-              SUBMIT TIP
-            </Button>
-          </CardFooter>
-        </Card>
-      </Dialog>
-            </Typography>
-      </b>    
- </h1>
+  <Button color="orange" appearance="primary" > 
+    <a href="/BuyNow">
+    ADD TIP
+ </a> 
+    </Button> 
+  </b></h1>
   
 </div>
 <br></br>
@@ -284,13 +251,13 @@ function MyCart() {
     <br></br>
     <b><hr class="separator"/></b>
 <br></br>
-    <Button color="green" appearance="primary" > 
+    <Button color="red" appearance="primary" > 
     <a href="/BuyNow">
     PLACE ORDER
  </a> 
     </Button> 
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <Button color="green" appearance="primary" > CANCEL</Button>
+           <Button color="red" appearance="primary" > CANCEL</Button>
      </div>
      <br></br>
             </CardBody>
