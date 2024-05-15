@@ -192,7 +192,7 @@ function MyCart() {
       <card >
         <CardHeader >
             <CardBody>
-
+<br></br>
 <img
       className="h-96 w-100 rounded-lg object-cover object-center"
       src="https://api.qrserver.com/v1/create-qr-code/?size=225x225&data=upi%3A%2F%2Fpay%3Fpa%3D9480860587%40mobile.npci%26pn%3Dfood%26cu%3DINR"
