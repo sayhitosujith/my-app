@@ -201,7 +201,7 @@ function MyCart() {
             <b><hr class="w-1/2 flex items-center justify-center" /></b>
             <br></br>
             <div style={{ width: '38rem' }}>
-            <h1 style={{ color: 'Green' }}><b><div>Scan the QR Code to pay via different UPI Apps Online</div></b></h1>
+            <h1 style={{ color: 'Green' }}><b><div>Scan the QR Code from your mobile to pay via different UPI Apps Online</div></b></h1>
     <b><hr class="separator" /></b>
 <br></br>
 <div>Item Total(2 Items): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
