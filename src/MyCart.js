@@ -2,14 +2,13 @@ import './App.css';
 import { Avatar } from "@material-tailwind/react";
 import React from 'react';
 import { TrashIcon } from "@heroicons/react/24/solid";
-import { Alert } from "@material-tailwind/react";
+import { Tooltip, Typography } from "@material-tailwind/react";
 
 import {
   Card,
   CardHeader,
   CardBody,
   CardFooter,
-  Typography,
   Button,
   Checkbox,
   Chip,
@@ -195,14 +194,14 @@ function MyCart() {
             <CardBody>
 
 <img
-      className="h-96 w-full rounded-lg object-cover object-center"
-      src="https://media.licdn.com/dms/image/C5112AQHUgnYzLZFzrw/article-cover_image-shrink_600_2000/0/1572953249284?e=2147483647&v=beta&t=A_GoOK8Cn093eUx3dSF2wpi1t_G8GZRcCJTK_sIp8oU"
-      alt="nature image"
+      className="h-96 w-99 rounded-lg object-cover object-center"
+      src="https://api.qrserver.com/v1/create-qr-code/?size=225x225&data=upi%3A%2F%2Fpay%3Fpa%3D9480860587%40mobile.npci%26pn%3Dfood%26cu%3DINR"
+      alt="Bar code"
     />
             <b><hr class="w-1/2 flex items-center justify-center" /></b>
             <br></br>
             <div style={{ width: '38rem' }}>
-            <h1 style={{ color: 'Green' }}><b><div>Review your order and address details to avoid cancellations</div></b></h1>
+            <h1 style={{ color: 'Green' }}><b><div>Scan the QR code to pay the amount via UPI's</div></b></h1>
     <b><hr class="separator" /></b>
 <br></br>
 <div>Item Total(2 Items): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -233,6 +232,7 @@ function MyCart() {
           <CardBody className="flex flex-col gap-4">
             <Typography variant="h4" color="blue-gray">
               Thankyou for the Tip
+              
             </Typography>
             <Typography
               className="mb-3 font-normal"
@@ -240,7 +240,7 @@ function MyCart() {
               color="gray"
             >
             </Typography>
-           
+
             <Input label="Enter the Amount" size="lg" />
             <div className="-ml-2.5 -mt-3">
             </div>
@@ -285,13 +285,13 @@ function MyCart() {
     <br></br>
     <b><hr class="separator"/></b>
 <br></br>
-    <Button color="red" appearance="primary" > 
+    <Button color="green" appearance="primary" > 
     <a href="/BuyNow">
     PLACE ORDER
  </a> 
     </Button> 
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <Button color="red" appearance="primary" > CANCEL</Button>
+           <Button color="green" appearance="primary" > CANCEL</Button>
      </div>
      <br></br>
             </CardBody>
