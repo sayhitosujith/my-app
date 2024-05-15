@@ -192,16 +192,15 @@ function MyCart() {
       <card >
         <CardHeader >
             <CardBody>
-
+<br></br>
 <img
-      className="h-96 w-99 rounded-lg object-cover object-center"
+      className="h-96 w-100 rounded-lg object-cover object-center"
       src="https://api.qrserver.com/v1/create-qr-code/?size=225x225&data=upi%3A%2F%2Fpay%3Fpa%3D9480860587%40mobile.npci%26pn%3Dfood%26cu%3DINR"
       alt="Bar code"
     />
             <b><hr class="w-1/2 flex items-center justify-center" /></b>
             <br></br>
             <div style={{ width: '38rem' }}>
-            <h1 style={{ color: 'Green' }}><b><div>Scan the QR code to pay the amount via UPI's</div></b></h1>
     <b><hr class="separator" /></b>
 <br></br>
 <div>Item Total(2 Items): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
