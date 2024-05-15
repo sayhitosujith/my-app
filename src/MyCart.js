@@ -240,12 +240,7 @@ function MyCart() {
               color="gray"
             >
             </Typography>
-            <Typography className="-mb-2" variant="h6">
-              Your Email
-            </Typography>
-            <Input label="Email" size="lg" />
-            <Typography className="-mb-2" variant="h6">
-            </Typography>
+           
             <Input label="Enter the Amount" size="lg" />
             <div className="-ml-2.5 -mt-3">
             </div>
