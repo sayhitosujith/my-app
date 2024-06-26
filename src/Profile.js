@@ -80,6 +80,7 @@ const CardItem = ({item}) => (
                 {<button>  Delete Profile </button>}
                 position="right center">
                 <div>Profile Deleted Successfully</div>
+                <a href="/Welcome"/>
             </Popup>
             </Typography>
           </Button>

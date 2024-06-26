@@ -77,8 +77,8 @@ function App() {
         <Button
         size="lg"
         variant="outlined"
-        color="blue"
-        className="flex items-center gap-3">
+        color="green"
+        className="flex items-center gap-4">
 
         
         <a href="/Customer_Home">
@@ -91,13 +91,13 @@ function App() {
         <Button
         size="lg"
         variant="gradient"
-        color="light-blue"
+        color="light-green"
         className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
       >
         <a href="/Customer_Home">
         Continue with the Twitter
                </a> 
-        <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
+        <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-green-600 transition-colors group-hover:bg-light-green-700">
           <img src="https://docs.material-tailwind.com/icons/twitter.svg" alt="metamask" className="h-6 w-6" />
         </span>
       </Button>
