@@ -1,7 +1,7 @@
 import './App.css';
 import { Badge } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/solid";
-
+import Popup from 'reactjs-popup';
 
 import {
   Card,
@@ -66,10 +66,6 @@ const CardItem = ({item}) => (
      <b> Aadhar Number:</b><br></br>
      <b> Address:</b><br></br>
      <b> ZipCode:</b><br></br>
-     <Button size="lg" color="blue" className="flex items-center gap-3">
-         Wallet
-        <img src="https://docs.material-tailwind.com/icons/metamask.svg" alt="metamask" className="h-6 w-6" />
-      </Button>
      <Rating unratedColor="amber" ratedColor="amber" />
      <Button
             size="sm"
@@ -79,9 +75,12 @@ const CardItem = ({item}) => (
           >
             <TrashIcon className="h-4 w-4 text-red-500" />
             <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
-            <a href="/Success">
-             DELETE PROFILE
-               </a> 
+            
+            <Popup trigger=
+                {<button>  Delete Profile </button>}
+                position="right center">
+                <div>Profile Deleted Successfully</div>
+            </Popup>
             </Typography>
           </Button>
             <br></br>
