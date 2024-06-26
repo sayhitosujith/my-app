@@ -199,7 +199,10 @@ function App() {
         Search
       </button>
 
-
+      <Button size="lg" color="blue" className="flex items-center gap-3">
+        My Wallet
+        <img src="https://docs.material-tailwind.com/icons/metamask.svg" alt="metamask" className="h-6 w-6" />
+      </Button>
       </div>
       <div style={{ float: 'right' }}>
             <button> <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></button>
@@ -229,6 +232,8 @@ function App() {
              Change Password 
                </a> 
        </Option>
+      
+
         <button><Option> 
         <a href="/my-app">
              Logout 

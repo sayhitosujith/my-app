@@ -72,7 +72,7 @@ const data = [
 ];
  
 const currentYear = new Date().getFullYear();
-const Time =  new Date().toLocaleString()
+const Time =  new Date().toLocaleString();
 
 const CardItem = ({item}) => (
     
@@ -128,6 +128,7 @@ function Welcome() {
       <a href="#">Welcome</a>
     </Breadcrumbs>
 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <Typography variant="h2" color="Black">
       Welcome to Food Maven
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
@@ -183,7 +184,7 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://cdn-icons-png.freepik.com/512/6512/6512792.png"></img>
+        <img style={{width: '100px', height: '100px'}} box-sizing='border-box' marginleft='2px' src = "https://cdn-icons-png.freepik.com/512/6512/6512792.png"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Admin</span>
         </a>
         
@@ -192,8 +193,8 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} marginleft='1px' src = "https://png.pngtree.com/png-vector/20220520/ourmid/pngtree-vectorized-blue-user-icon-for-account-and-profile-web-icons-vector-png-image_46417352.jpg"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Customer</span>
+        <img style={{width: '100px', height: '100px'}} marginleft='2px' src = "https://png.pngtree.com/png-vector/20220520/ourmid/pngtree-vectorized-blue-user-icon-for-account-and-profile-web-icons-vector-png-image_46417352.jpg"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Customer</span>
         </a>
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" role="button"aria-disabled="false"data-aid="tile" href="/Admin_Analytics">    
@@ -201,8 +202,8 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} marginleft='2px'src = "https://cdn-icons-png.freepik.com/512/7731/7731130.png"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Analytics</span>
+        <img style={{width: '100px', height: '100px'}} marginleft='1px'src = "https://cdn-icons-png.freepik.com/512/7731/7731130.png"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Analytics</span>
         </a>
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" role="button"aria-disabled="false"data-aid="tile" href="/CustomerCare">    
@@ -210,8 +211,8 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} marginleft='3px' src = "https://thumbs.dreamstime.com/b/people-contact-customer-service-call-center-logo-icon-illustration-design-connection-phone-speech-bubble-headphones-information-169062794.jpg"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; CustomerCare</span>
+        <img style={{width: '100px', height: '100px'}} marginleft='1px' src = "https://thumbs.dreamstime.com/b/people-contact-customer-service-call-center-logo-icon-illustration-design-connection-phone-speech-bubble-headphones-information-169062794.jpg"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;CustomerCare</span>
         </a>
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/Profile">    
@@ -219,7 +220,7 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6xbxe9O3Jh6Qv6zY2jGgjlS-TKi42zi_s1jrhJKDKn9VzmAtu6MgvDhlzQo3evqTQudE&usqp=CAU"></img>
+        <img style={{width: '100px', height: '100px'}} box-sizing='border-box' marginleft='0px' src = "https://cdn-icons-png.freepik.com/512/5580/5580909.png"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Profiles</span>
         </a>
 
@@ -228,7 +229,7 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-        <img style={{width: '180px', height: '180px'}} box-sizing='border-box' marginleft='0px' src = "https://cdn4.vectorstock.com/i/1000x1000/85/78/invoice-icon-in-blue-style-for-any-projects-vector-35418578.jpg"></img>
+        <img style={{width: '100px', height: '100px'}} box-sizing='border-box' marginleft='0px' src = "https://us.123rf.com/450wm/popcornarts/popcornarts2205/popcornarts220501496/185646720-these-are-black-and-blue-mix-icons.jpg?ver=6"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Billing Details</span>
         </a>
 </div>
@@ -303,7 +304,7 @@ function Welcome() {
             &copy; {currentYear}<a href="https://material-tailwind.com/"> - Food Maven</a>. All
             Rights Reserved.
             <br></br>
-            INDIA - {Time} 
+            INDIA - {currentYear} 
 
           </Typography>
           <div className="flex gap-4 text-blue-gray-900 sm:justify-center">

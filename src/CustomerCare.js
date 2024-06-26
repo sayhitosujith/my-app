@@ -62,14 +62,14 @@ function CustomerCare() {
         </div>
       <div className="container mx-auto text-center">
         <Typography
-          variant="h5"
+          variant="h1"
           color="blue-gray"
           className="mb-4 !text-base lg:!text-2xl"
         >
-          Customer Care
+         Welcome to Customer Care
         </Typography>
         <Typography
-          variant="h1"
+          variant="h2"
           color="blue-gray"
           className="mb-4 !text-3xl lg:!text-5xl"
         >

@@ -4,6 +4,8 @@ import { Badge } from "@material-tailwind/react";
 import { IconButton } from "@material-tailwind/react";
 import { Card, Typography } from "@material-tailwind/react";
 import { PencilIcon } from "@heroicons/react/24/solid";
+import { Slider } from "@material-tailwind/react";
+
 import {
     ArrowDownTrayIcon,
     MagnifyingGlassIcon,
@@ -85,7 +87,6 @@ const data = [
     {id: 5, name: 'Active Countries', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbk-T3O-4_zcnjU3F35X-SeiuAPTp9gUqzLw&usqp=CAU',},
 
 ]
-
 
 const CardItem = ({item}) => (
     <Card className="w-200">
@@ -190,6 +191,16 @@ function Admin_Analytics() {
             }
         </div>
        
+        <div className="w-96">
+    <Slider
+      defaultValue={50}
+      className="text-[#2ec947]"
+      barClassName="rounded-none bg-[#2ec946]"
+      thumbClassName="[&::-moz-range-thumb]:rounded-none [&::-webkit-slider-thumb]:rounded-none [&::-moz-range-thumb]:-mt-[4px] [&::-webkit-slider-thumb]:-mt-[4px]"
+      trackClassName="[&::-webkit-slider-runnable-track]:bg-transparent [&::-moz-range-track]:bg-transparent rounded-none !bg-[#2ec946]/10 border border-[#2ec946]/20"
+    />
+  </div>
+
        
         <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none">

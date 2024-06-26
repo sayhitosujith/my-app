@@ -66,6 +66,10 @@ const CardItem = ({item}) => (
      <b> Aadhar Number:</b><br></br>
      <b> Address:</b><br></br>
      <b> ZipCode:</b><br></br>
+     <Button size="lg" color="blue" className="flex items-center gap-3">
+         Wallet
+        <img src="https://docs.material-tailwind.com/icons/metamask.svg" alt="metamask" className="h-6 w-6" />
+      </Button>
      <Rating unratedColor="amber" ratedColor="amber" />
      <Button
             size="sm"
