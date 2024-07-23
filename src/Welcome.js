@@ -1,5 +1,5 @@
 import './App.css';
-
+import React, { useEffect } from 'react';
 
 import {
   Card,
@@ -74,6 +74,12 @@ const data = [
 const currentYear = new Date().getFullYear();
 const Time =  new Date().toLocaleString();
 
+function Example() {
+  useEffect(() => {
+    document.title = 'Welcome';
+  }, []);
+}
+
 const CardItem = ({item}) => (
     
     <Card className="w-96">
@@ -136,7 +142,7 @@ function Welcome() {
 
       <b><hr class="separator" /></b>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
-      <h1 style={{ color: 'Blue' }}><b><div> Welcome!</div></b></h1>
+      <h1 style={{ color: '#FFA500' }}><b><div> Welcome!</div></b></h1>
       </Typography>
   
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">

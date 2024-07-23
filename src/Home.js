@@ -50,7 +50,7 @@ const CardItem = ({item}) => (
       
           <CardHeader
               variant="gradient"
-              color="orange"
+              color="green"
               className="mb-5 grid h-10 place-items-center">
               <Typography variant="h3" color="white">
                 {item.id} : {item.name}  
@@ -77,8 +77,8 @@ const CardItem = ({item}) => (
             color="red"
             className="flex items-center gap-2"
           >
-            <TrashIcon className="h-4 w-4 text-red-500" />
-            <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
+            <TrashIcon className="h-4 w-4 text-green-500" />
+            <Typography className="!font-semibold text-xs text-green-500 md:block hidden">
             <a href="/Success">
              DELETE 
                </a> 
@@ -90,6 +90,10 @@ const CardItem = ({item}) => (
       <Select label="Select Item">
         <Option>Chapati</Option>
         <Option>Poori</Option>
+        <Option>Dosa</Option>
+        <Option>Idli & Vada</Option>
+
+
       </Select>
     </div>
   
@@ -111,7 +115,7 @@ const CardItem = ({item}) => (
       
           <label class="relative inline-flex items-center cursor-pointer">
   <input type="checkbox" value="" class="sr-only peer"/>
-  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
   <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Publish to Customer</span>
 </label>    
 <br></br>
@@ -170,11 +174,6 @@ function App() {
                </a> 
            </Button> 
 <br></br>
-           <Button color="green" appearance="primary"> 
-           <a href="/DeliveryBoy">
-           + Add Delivey Captain 
-               </a> 
-           </Button> 
 
     &nbsp;&nbsp;
     <div class="inline-flex items-left">
@@ -195,6 +194,11 @@ function App() {
               <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
             </Button>
 <br></br>
+<Button color="green" appearance="primary"> 
+           <a href="/DeliveryBoy">
+           + Add Delivey Captain 
+               </a> 
+           </Button> 
       <div className="w-74">
       <Select label="Profile">
         <Option>    
