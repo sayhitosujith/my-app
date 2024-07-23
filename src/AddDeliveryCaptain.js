@@ -59,12 +59,14 @@ function AddDeliveryCaptain() {
           <CardFooter className="pt-0">
             <Button variant="gradient" fullWidth>
             <a href="/DeliveryBoy">
-             ADD 
+             ADD DELIVERY CAPTIAN
                </a>    
             </Button>
             <br></br>
             <Button variant="gradient" fullWidth>
+            <a href="/Welcome">
              Cancel
+             </a> 
             </Button>
             <Typography
           variant="p"
