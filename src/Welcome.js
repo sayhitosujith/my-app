@@ -126,8 +126,8 @@ function Welcome() {
       </a>
       <a href="#" className="opacity-60">
       <a href="#">
-      <a href="/HomePage">
-             HomePage 
+      <a href="/my-app">
+             Admin Login 
                </a>    
       </a>
       </a>
