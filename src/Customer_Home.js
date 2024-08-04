@@ -151,7 +151,7 @@ function App() {
                 <Option><Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
                 <Option><Chip variant="ghost"color="blue"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
                 <Option><Chip variant="ghost"color="white"size="sm"value="Closed" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-                <Option><Chip variant="ghost"color="red"size="sm"value="Out Of stock" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+                <Option><Chip variant="ghost"color="red"size="sm"value="Out of Service" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
        </Select>
        
        
