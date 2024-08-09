@@ -86,7 +86,7 @@ function NewRegistration() {
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold">
-               <u><a href="/">Login</a></u>
+               <u><a href="/my-app#signup">Login</a></u>
 
               </Typography>
             </Typography>
