@@ -126,6 +126,13 @@ function Welcome() {
       </a>
       <a href="#" className="opacity-60">
       <a href="#">
+      <a href="/HomePage">
+             Home 
+               </a>    
+      </a>
+      </a>
+      <a href="#" className="opacity-60">
+      <a href="#">
       <a href="/my-app">
              Admin Login 
                </a>    
@@ -189,59 +196,66 @@ function Welcome() {
 
 <div tilesnumber="4" class="grid grid-cols-1 gap-0 sm:grid-cols-2 md:grid-cols-6">
        
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/Home">    
-       <span class="MuiButton-label">
-<g fill="none" fill-rule="evenodd"></g>
-<span class="MuiTouchRipple-root"></span>
-       </span>
-        <img style={{width: '100px', height: '100px'}} box-sizing='border-box' marginleft='2px' src = "https://cdn-icons-png.freepik.com/512/6512/6512792.png"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Admin</span>
-        </a>
-        
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI" role="button"aria-disabled="false"data-aid="tile" href="/Customer_Login">    
-       <span class="MuiButton-label">
-<g fill="none" fill-rule="evenodd"></g>
-<span class="MuiTouchRipple-root"></span>
-       </span>
-        <img style={{width: '100px', height: '100px'}} marginleft='2px' src = "https://png.pngtree.com/png-vector/20220520/ourmid/pngtree-vectorized-blue-user-icon-for-account-and-profile-web-icons-vector-png-image_46417352.jpg"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Customer</span>
-        </a>
 
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" role="button"aria-disabled="false"data-aid="tile" href="/Admin_Analytics">    
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI"style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" 
+        href="/Customer_Login">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
+
+
+
+
+       <div style={{border: '1px solid black'}}>
+    <img style={{width: '100px', height: '100px'}} marginleft='2px' object-center src = "https://png.pngtree.com/png-vector/20220520/ourmid/pngtree-vectorized-blue-user-icon-for-account-and-profile-web-icons-vector-png-image_46417352.jpg"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Customer</span></div>
+        </a>
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" href="/Admin_Analytics">    
+       <span class="MuiButton-label">
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
+
+
+       <div style={{border: '1px solid black'}}>
         <img style={{width: '100px', height: '100px'}} marginleft='1px'src = "https://cdn-icons-png.freepik.com/512/7731/7731130.png"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;Analytics</span>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;Analytics</span></div>
         </a>
-
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" role="button"aria-disabled="false"data-aid="tile" href="/CustomerCare">    
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" href="/CustomerCare">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
+       <div style={{border: '1px solid black'}}>
         <img style={{width: '100px', height: '100px'}} marginleft='1px' src = "https://thumbs.dreamstime.com/b/people-contact-customer-service-call-center-logo-icon-illustration-design-connection-phone-speech-bubble-headphones-information-169062794.jpg"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;CustomerCare</span>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;CustomerCare</span></div>
         </a>
 
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/Profile">    
+
+
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" style={{marginRight: "20px"}}  role="button"aria-disabled="false"data-aid="tile" href="/Profile">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
+       <div style={{border: '1px solid black'}}>
         <img style={{width: '100px', height: '100px'}} box-sizing='border-box' marginleft='0px' src = "https://cdn-icons-png.freepik.com/512/5580/5580909.png"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp; Profiles</span>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp; Profiles</span></div>
         </a>
+
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" role="button"aria-disabled="false"data-aid="tile" href="/BillingDetails">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
-       </span>
+       </span> 
+       <div style={{border: '1px solid black'}}>
         <img style={{width: '100px', height: '100px'}} box-sizing='border-box' marginleft='0px' src = "https://us.123rf.com/450wm/popcornarts/popcornarts2205/popcornarts220501496/185646720-these-are-black-and-blue-mix-icons.jpg?ver=6"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;  Billing Details</span>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;  Billing Details</span></div>
         </a>
+
+
 </div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

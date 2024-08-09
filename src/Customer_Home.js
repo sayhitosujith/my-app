@@ -40,7 +40,7 @@ const CardItem = ({ item }) => (
   <Card className="w-96">
     <CardHeader
       variant="gradient"
-      color="orange"
+      color="green"
       className="mb-5 grid h-10 place-items-center">
       <Typography variant="h3" color="white">
         {item.id} : {item.name}
@@ -61,7 +61,7 @@ const CardItem = ({ item }) => (
             </Typography>
     </CardBody>
     <CardFooter className="pt-0">
-      <Typography variant="h10" color="black">
+      <Typography variant="h10" color="orange">
         <div>
           
         <b><hr class="separator" /></b>
@@ -108,7 +108,7 @@ const CardItem = ({ item }) => (
 
     <br></br>
 
-    <Button color="green" appearance="primary"> 
+    <Button color="orange" appearance="primary"> 
            <a href="/MyCart">
            ADD TO CART
                </a> 
@@ -141,7 +141,7 @@ function App() {
         <a href="#">Customer_Home</a>
       </Breadcrumbs>
 
-      <Typography variant="h3" color="Black">
+      <Typography variant="h3" color="orange">
         CUSTOMER HOME
         <div className="flex gap-2">
   
@@ -199,7 +199,7 @@ function App() {
         Search
       </button>
 
-      <Button size="lg" color="blue" className="flex items-center gap-3">
+      <Button size="lg" color="green" className="flex items-center gap-3">
         My Wallet
         <img src="https://docs.material-tailwind.com/icons/metamask.svg" alt="metamask" className="h-6 w-6" />
       </Button>
@@ -248,17 +248,17 @@ function App() {
 
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(0, 6).map((item) => <CardItem item={item} />)
+          data.slice(0, 5).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(7, 13).map((item) => <CardItem item={item} />)
+          data.slice(6, 11).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(7, 13).map((item) => <CardItem item={item} />)
+          data.slice(12, 15).map((item) => <CardItem item={item} />)
         }
       </div>
     </div>
