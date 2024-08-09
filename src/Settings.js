@@ -89,7 +89,7 @@ function DeliveryBoy() {
     </Breadcrumbs>
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="circle" div style={{float: 'right'}}></Avatar>
 <br></br>
-    <Typography variant="h2" color="Black">
+    <Typography variant="h2" color="green">
     ADMIN SETTINGS      <br></br>
    <Button> 
    <a href="/AddDeliveryCaptain">
@@ -121,7 +121,7 @@ function DeliveryBoy() {
         
           <div className="w-full mb-2">
 
-            <Typography className="!font-bold" color="blue-gray">
+            <Typography className="!font-bold" color="green">
             ACCOUNT SETTINGS
             </Typography>
             <Typography
@@ -141,7 +141,7 @@ function DeliveryBoy() {
       <b><hr class="separator" /></b>
 
       <div className="w-full mb-3">
-            <Typography className="!font-bold" color="blue-gray">
+            <Typography className="!font-bold" color="green">
             ADMIN PAGE SETTINGS
             </Typography>
             <Typography
@@ -162,7 +162,7 @@ function DeliveryBoy() {
 
           <b><hr class="separator" /></b>
  <div className="w-full mb-3">
-            <Typography className="!font-bold" color="blue-gray">
+            <Typography className="!font-bold" color="green">
             CUSTOMER SETTINGS
             </Typography>
             <Typography
@@ -182,9 +182,8 @@ function DeliveryBoy() {
         </Typography>
           </div>
           <b><hr class="separator" /></b>
-          <b><hr class="separator" /></b>
  <div className="w-full mb-3">
-            <Typography className="!font-bold" color="blue-gray">
+            <Typography className="!font-bold" color="green">
             RESTAURANT SETTINGS
             </Typography>
             <Typography
