@@ -174,6 +174,11 @@ function App() {
                </a> 
            </Button> 
 <br></br>
+<Button color="green" appearance="primary"> 
+           <a href="/DeliveryBoy">
+           + Add Delivey Captain 
+               </a> 
+           </Button> 
 
     &nbsp;&nbsp;
     <div class="inline-flex items-left">
@@ -193,18 +198,11 @@ function App() {
 <Button className="flex items-center gap-3" size="sl">
               <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
             </Button>
-<br></br>
 
       <div className="w-74">
       <Select label="Profile">
         <Option>    
         </Option>
- 
-    <Button color="green" appearance="primary"> 
-           <a href="/DeliveryBoy">
-           + Add Delivey Captain 
-               </a> 
-           </Button> 
 
        <Option>
        <a href="/HomePage">
