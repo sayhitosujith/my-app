@@ -148,14 +148,14 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small"
             >
-        <Checkbox label="Enable Customer " />
-        <Checkbox label="Enable Analytics " />
-        <Checkbox label="Enable Customer Care" />
-        <Checkbox label="Enable Profiles " />
-        <Checkbox label="Enable Billing Details " />
-        <Checkbox label="Enable Adding Delivery Captain " />
-        <Checkbox label="Enable Adding Meal " />
-        <Checkbox label="Enable Updating CopyRight" />
+        <Checkbox label="Allow Customer " />
+        <Checkbox label="Allow Analytics " />
+        <Checkbox label="Allow Customer Care" />
+        <Checkbox label="Allow Profiles " />
+        <Checkbox label="Allow Billing Details " />
+        <Checkbox label="Allow Adding Delivery Captain " />
+        <Checkbox label="Allow Adding Meal " />
+        <Checkbox label="Allow Updating CopyRight" />
 
         </Typography>
           </div>
@@ -169,14 +169,14 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small"
             >
-        <Checkbox label="Enable 24/7 " />
-        <Checkbox label="Enable Cancellation" />
-        <Checkbox label="Enable Access to Customer Care Number" />
-        <Checkbox label="Enable Payment Online " />
-        <Checkbox label="Enable COD " />
-        <Checkbox label="Enable Edit Order " />
-        <Checkbox label="Enable Rating " />
-        <Checkbox label="Enable Add Tip" />
+        <Checkbox label="Allow 24/7 " />
+        <Checkbox label="Allow Cancellation" />
+        <Checkbox label="Allow Access to Customer Care Number" />
+        <Checkbox label="Allow Payment Online " />
+        <Checkbox label="Allow COD " />
+        <Checkbox label="Allow Edit Order " />
+        <Checkbox label="Allow Rating " />
+        <Checkbox label="Allow Add Tip" />
         <Checkbox label="Enable QR Code" />
 
         </Typography>
@@ -190,16 +190,16 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small"
             >
-        <Checkbox label="Enable Add Meal " />
+        <Checkbox label="Allow Add Meal " />
         <Checkbox label="Enable 24/7 " />
-        <Checkbox label="Enable Cancellation" />
-        <Checkbox label="Enable Access to Restaurant Number" />
-        <Checkbox label="Enable Payment Online " />
+        <Checkbox label="Allow Cancellation" />
+        <Checkbox label="Allow Access to Restaurant Number" />
+        <Checkbox label="Allow Payment Online " />
         <Checkbox label="Enable COD " />
         <Checkbox label="Enable Edit Order " />
-        <Checkbox label="Enable Restaurant Rating " />
-        <Checkbox label="Enable Add Tip" /><br></br>
-        <Checkbox label="Enable Download Invoice" />
+        <Checkbox label="Allow Restaurant Rating " />
+        <Checkbox label="Allow Add Tip" /><br></br>
+        <Checkbox label="Allow Download Invoice" />
 
         </Typography>
           </div>
