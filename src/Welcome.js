@@ -172,6 +172,11 @@ function Welcome() {
              Change Password 
                </a> 
        </Option>
+       <Option>
+       <a href="/Settings">
+       Settings 
+               </a> 
+       </Option>
         <button><Option>
         <a href="/my-app">
              Logout 

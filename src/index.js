@@ -31,6 +31,7 @@ import OrderDetails from './OrderDetails';
 import CheckoutForm from './CheckoutForm';
 import DeliveryBoy from './DeliveryBoy';
 import AddDeliveryCaptain from './AddDeliveryCaptain';
+import Settings from './Settings';
 
 
 const router = createBrowserRouter([
@@ -133,6 +134,10 @@ const router = createBrowserRouter([
   {
     path: "/DeliveryBoy",
     element: <DeliveryBoy/>,
+  },
+  {
+    path: "/Settings",
+    element: <Settings/>,
   },
   {
     path: "/AddDeliveryCaptain",
