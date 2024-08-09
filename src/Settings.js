@@ -2,6 +2,8 @@ import './App.css';
 import { Badge } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import Popup from 'reactjs-popup';
+import { Spinner } from "@material-tailwind/react";
+
 
 import {
   Card,
@@ -128,12 +130,12 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small" >
                 
-        <Checkbox label="Allow Customer Login" />
-        <Checkbox label="Allow Schedule Tasks" />
-        <Checkbox label="Allow Customer to Update Order Details" />
-        <Checkbox label="Allow Customer to Manage Users" />
-        <Checkbox label="Allow Customer for an International access" />
-        <Checkbox label="Allow Customer to Reject Order" />
+        <Checkbox label="Allow Customer Login" color="green"/>
+        <Checkbox label="Allow Schedule Tasks"color="green" />
+        <Checkbox label="Allow Customer to Update Order Details"color="green" />
+        <Checkbox label="Allow Customer to Manage Users"color="green" />
+        <Checkbox label="Allow Customer for an International access" color="green"/>
+        <Checkbox label="Allow Customer to Reject Order" color="green"/>
         </Typography>
           </div>
       </div>
@@ -148,14 +150,14 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small"
             >
-        <Checkbox label="Allow Customer " />
-        <Checkbox label="Allow Analytics " />
-        <Checkbox label="Allow Customer Care" />
-        <Checkbox label="Allow Profiles " />
-        <Checkbox label="Allow Billing Details " />
-        <Checkbox label="Allow Adding Delivery Captain " />
-        <Checkbox label="Allow Adding Meal " />
-        <Checkbox label="Allow Updating CopyRight" />
+        <Checkbox label="Allow Customer " color="green"/>
+        <Checkbox label="Allow Analytics " color="green"/>
+        <Checkbox label="Allow Customer Care"color="green" />
+        <Checkbox label="Allow Profiles "color="green" />
+        <Checkbox label="Allow Billing Details " color="green"/>
+        <Checkbox label="Allow Adding Delivery Captain "color="green" />
+        <Checkbox label="Allow Adding Meal " color="green"/>
+        <Checkbox label="Allow Updating CopyRight" color="green"/>
 
         </Typography>
           </div>
@@ -169,15 +171,15 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small"
             >
-        <Checkbox label="Allow 24/7 " />
-        <Checkbox label="Allow Cancellation" />
+        <Checkbox label="Allow 24/7 " color="green"/>
+        <Checkbox label="Allow Cancellation" color="green"/>
         <Checkbox label="Allow Access to Customer Care Number" />
-        <Checkbox label="Allow Payment Online " />
-        <Checkbox label="Allow COD " />
-        <Checkbox label="Allow Edit Order " />
-        <Checkbox label="Allow Rating " />
-        <Checkbox label="Allow Add Tip" />
-        <Checkbox label="Enable QR Code" />
+        <Checkbox label="Allow Payment Online "color="green" />
+        <Checkbox label="Allow COD "color="green" />
+        <Checkbox label="Allow Edit Order "color="green" />
+        <Checkbox label="Allow Rating "color="green" />
+        <Checkbox label="Allow Add Tip"color="green" />
+        <Checkbox label="Enable QR Code"color="green" />
 
         </Typography>
           </div>
@@ -190,16 +192,16 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small"
             >
-        <Checkbox label="Allow Add Meal " />
-        <Checkbox label="Enable 24/7 " />
-        <Checkbox label="Allow Cancellation" />
-        <Checkbox label="Allow Access to Restaurant Number" />
-        <Checkbox label="Allow Payment Online " />
-        <Checkbox label="Enable COD " />
-        <Checkbox label="Enable Edit Order " />
-        <Checkbox label="Allow Restaurant Rating " />
-        <Checkbox label="Allow Add Tip" /><br></br>
-        <Checkbox label="Allow Download Invoice" />
+        <Checkbox label="Allow Add Meal "color="green" />
+        <Checkbox label="Enable 24/7 "color="green" />
+        <Checkbox label="Allow Cancellation"color="green" />
+        <Checkbox label="Allow Access to Restaurant Number" color="green"/>
+        <Checkbox label="Allow Payment Online " color="green"/>
+        <Checkbox label="Enable COD "color="green" />
+        <Checkbox label="Enable Edit Order "color="green" />
+        <Checkbox label="Allow Restaurant Rating " color="green"/>
+        <Checkbox label="Allow Add Tip"color="green" /><br></br>
+        <Checkbox label="Allow Download Invoice"color="green" />
 
         </Typography>
           </div>
