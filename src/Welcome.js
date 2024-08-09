@@ -136,13 +136,12 @@ function Welcome() {
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <Typography variant="h2" color="Black">
-      Welcome to Food Maven
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
       <br></br>
 
       <b><hr class="separator" /></b>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
-      <h1 style={{ color: '#FFA500' }}><b><div> Welcome!</div></b></h1>
+      <h1 style={{ color: '#130d00' }}><b><div>Welcome to Food Maven!</div></b></h1>
       </Typography>
   
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">

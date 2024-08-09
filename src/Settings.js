@@ -1,6 +1,7 @@
 import './App.css';
 import { Badge } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/solid";
+import { PencilIcon } from '@heroicons/react/24/outline';
 import Popup from 'reactjs-popup';
 import { Spinner } from "@material-tailwind/react";
 
@@ -17,7 +18,10 @@ import {
   Breadcrumbs,
   Avatar,
   Rating,
-  Checkbox
+  Checkbox,
+  classes,
+  Tooltip,
+  IconButton
 
 } from "@material-tailwind/react";
 
@@ -118,8 +122,14 @@ function DeliveryBoy() {
           data.slice(0, 0).map((item) => <CardItem item={item} />)
           
         }
-        
+
           <div className="w-full mb-2">
+          <Tooltip content="Edit Settings" >
+                        <IconButton variant="text">
+                          <PencilIcon className="h-4 w-4" />
+                        </IconButton>
+                      </Tooltip>
+          <b><hr class="separator" /></b>
 
             <Typography className="!font-bold" color="green">
             ACCOUNT SETTINGS
@@ -127,13 +137,16 @@ function DeliveryBoy() {
             <Typography
               className="mt-1 !font-normal !text-gray-600"
               variant="small" >
-                
+                 <td className={classes}>
         <Checkbox label="Allow Customer Login" color="green"/>
         <Checkbox label="Allow Schedule Tasks"color="green" />
         <Checkbox label="Allow Customer to Update Order Details"color="green" />
         <Checkbox label="Allow Customer to Manage Users"color="green" />
         <Checkbox label="Allow Customer for an International access" color="green"/>
         <Checkbox label="Allow Customer to Reject Order" color="green"/>
+                      
+                    </td>
+        
         </Typography>
           </div>
       </div>
