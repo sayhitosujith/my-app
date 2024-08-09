@@ -194,23 +194,18 @@ function App() {
               <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
             </Button>
 <br></br>
-<Button color="green" appearance="primary"> 
-           <a href="/DeliveryBoy">
-           + Add Delivey Captain 
-               </a> 
-           </Button> 
+
       <div className="w-74">
       <Select label="Profile">
         <Option>    
         </Option>
-    <Badge content="6" color="white">
-    <Button>
-    <a href="/MyCart">
-             MyCart 
+ 
+    <Button color="green" appearance="primary"> 
+           <a href="/DeliveryBoy">
+           + Add Delivey Captain 
                </a> 
-      
-    </Button>
-    </Badge>
+           </Button> 
+
        <Option>
        <a href="/HomePage">
              About 

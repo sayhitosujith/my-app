@@ -89,27 +89,25 @@ function DeliveryBoy() {
       <a href="#">ADMIN SETTINGS</a>
 
     </Breadcrumbs>
-    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="circle" div style={{float: 'right'}}></Avatar>
+   
 <br></br>
     <Typography variant="h2" color="green">
     ADMIN SETTINGS      <br></br>
-   <Button> 
-   <a href="/AddDeliveryCaptain">
+   
+    <div style={{float: 'right'}}>
+    <Button> 
+       <a href="/AddDeliveryCaptain" color="green">
              + ADD SUPER ADMIN 
                </a>    
-     </Button>
-
-    <div style={{float: 'right'}}>
+      </Button>
       <div className="w-74">
       <Select label="Profile">
         <Option>    
         </Option>
-    <Badge content="6">
-    <Button>My cart </Button>
-    </Badge>
-       <Option>About</Option>
-       <Option>Change Password</Option>
-        <button><Option>Logout</Option></button>
+      
+      <Option>About</Option>
+      <Option>Change Password</Option>
+      <button><Option>Logout</Option></button>
 
       </Select>
     </div>
@@ -209,11 +207,14 @@ function DeliveryBoy() {
 <br></br>
    
 <div style={{float: 'right'}}>
-          <Button color="green" appearance="primary" > 
-           SAVE</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Button color="green" appearance="primary" > 
-
-           CANCEL</Button> 
+     
+           <a href="/Welcome">
+           <Button color="green" appearance="primary"> SAVE </Button> 
+               </a>   
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="/Settings">
+           <Button color="green" appearance="primary"> CANCEL </Button> 
+               </a>   
            
             <Typography
           variant="p"
@@ -225,5 +226,6 @@ function DeliveryBoy() {
  
 }
 
+<Spinner className="h-4 w-4" />
 
 export default DeliveryBoy;

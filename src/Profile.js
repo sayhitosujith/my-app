@@ -125,7 +125,7 @@ function Profile() {
       <br></br>
    <Button> 
    <a href="/Addprofile">
-             +ADD PROFILE 
+             + ADD PROFILE 
                </a>    
     
      </Button>
