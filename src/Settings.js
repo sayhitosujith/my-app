@@ -15,21 +15,19 @@ import {
   Breadcrumbs,
   Avatar,
   Rating,
+  Checkbox
 
 } from "@material-tailwind/react";
 
 const data = [
   {id: 1,  src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
   {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 3, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 4,  src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 5, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 6, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 7,  src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 8,  src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 9,  src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 10,  src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 11,  src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
 
 ]
 
@@ -89,16 +87,16 @@ function DeliveryBoy() {
       <a href="#">ADMIN SETTINGS</a>
 
     </Breadcrumbs>
-    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="square" div style={{float: 'right'}}></Avatar>
-
+    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="circle" div style={{float: 'right'}}></Avatar>
+<br></br>
     <Typography variant="h2" color="Black">
     ADMIN SETTINGS      <br></br>
    <Button> 
    <a href="/AddDeliveryCaptain">
              + ADD SUPER ADMIN 
                </a>    
-    
      </Button>
+
     <div style={{float: 'right'}}>
       <div className="w-74">
       <Select label="Profile">
@@ -117,14 +115,110 @@ function DeliveryBoy() {
         </Typography>
         <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(0, 5).map((item) => <CardItem item={item} />)
+          data.slice(0, 0).map((item) => <CardItem item={item} />)
+          
         }
+        
+          <div className="w-full mb-2">
+
+            <Typography className="!font-bold" color="blue-gray">
+            ACCOUNT SETTINGS
+            </Typography>
+            <Typography
+              className="mt-1 !font-normal !text-gray-600"
+              variant="small" >
+                
+        <Checkbox label="Allow Customer Login" />
+        <Checkbox label="Allow Schedule Tasks" />
+        <Checkbox label="Allow Customer to Update Order Details" />
+        <Checkbox label="Allow Customer to Manage Users" />
+        <Checkbox label="Allow Customer for an International access" />
+        <Checkbox label="Allow Customer to Reject Order" />
+        </Typography>
+          </div>
       </div>
-      <div className='w-full flex mt-20 gap-5'>
-        {
-          data.slice(6, 11).map((item) => <CardItem item={item} />)
-        }
-      </div>
+
+      <b><hr class="separator" /></b>
+
+      <div className="w-full mb-3">
+            <Typography className="!font-bold" color="blue-gray">
+            ADMIN PAGE SETTINGS
+            </Typography>
+            <Typography
+              className="mt-1 !font-normal !text-gray-600"
+              variant="small"
+            >
+        <Checkbox label="Enable Customer " />
+        <Checkbox label="Enable Analytics " />
+        <Checkbox label="Enable Customer Care" />
+        <Checkbox label="Enable Profiles " />
+        <Checkbox label="Enable Billing Details " />
+        <Checkbox label="Enable Adding Delivery Captain " />
+        <Checkbox label="Enable Adding Meal " />
+        <Checkbox label="Enable Updating CopyRight" />
+
+        </Typography>
+          </div>
+
+          <b><hr class="separator" /></b>
+ <div className="w-full mb-3">
+            <Typography className="!font-bold" color="blue-gray">
+            CUSTOMER SETTINGS
+            </Typography>
+            <Typography
+              className="mt-1 !font-normal !text-gray-600"
+              variant="small"
+            >
+        <Checkbox label="Enable 24/7 " />
+        <Checkbox label="Enable Cancellation" />
+        <Checkbox label="Enable Access to Customer Care Number" />
+        <Checkbox label="Enable Payment Online " />
+        <Checkbox label="Enable COD " />
+        <Checkbox label="Enable Edit Order " />
+        <Checkbox label="Enable Rating " />
+        <Checkbox label="Enable Add Tip" />
+        <Checkbox label="Enable QR Code" />
+
+        </Typography>
+          </div>
+          <b><hr class="separator" /></b>
+          <b><hr class="separator" /></b>
+ <div className="w-full mb-3">
+            <Typography className="!font-bold" color="blue-gray">
+            RESTAURANT SETTINGS
+            </Typography>
+            <Typography
+              className="mt-1 !font-normal !text-gray-600"
+              variant="small"
+            >
+        <Checkbox label="Enable Add Meal " />
+        <Checkbox label="Enable 24/7 " />
+        <Checkbox label="Enable Cancellation" />
+        <Checkbox label="Enable Access to Restaurant Number" />
+        <Checkbox label="Enable Payment Online " />
+        <Checkbox label="Enable COD " />
+        <Checkbox label="Enable Edit Order " />
+        <Checkbox label="Enable Restaurant Rating " />
+        <Checkbox label="Enable Add Tip" /><br></br>
+        <Checkbox label="Enable Download Invoice" />
+
+        </Typography>
+          </div>
+          <b><hr class="separator" /></b>
+<br></br>
+   
+<div style={{float: 'right'}}>
+          <Button color="green" appearance="primary" > 
+           SAVE</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Button color="green" appearance="primary" > 
+
+           CANCEL</Button> 
+           
+            <Typography
+          variant="p"
+          sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
+        </Typography>     
+        </div>
     </div>
  );
  
