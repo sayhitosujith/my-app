@@ -157,7 +157,7 @@ function Admin_Analytics() {
     </Breadcrumbs>
     <br></br>
     <Typography variant="h3" color="Black">
-    Power BI Analytics
+    Dashboard
 
     <div style={{float: 'right'}}>
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
