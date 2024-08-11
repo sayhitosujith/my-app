@@ -131,13 +131,6 @@ function Welcome() {
                </a>    
       </a>
       </a>
-      <a href="#" className="opacity-60">
-      <a href="#">
-      <a href="/my-app">
-             Admin Login 
-               </a>    
-      </a>
-      </a>
       <a href="#">Welcome</a>
     </Breadcrumbs>
 
