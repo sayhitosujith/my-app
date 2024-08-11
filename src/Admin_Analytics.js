@@ -5,6 +5,7 @@ import { IconButton } from "@material-tailwind/react";
 import { Card, Typography } from "@material-tailwind/react";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import { Slider } from "@material-tailwind/react";
+import FileDownloader from './FileDownloader';
 
 import {
     ArrowDownTrayIcon,
@@ -221,7 +222,8 @@ function Admin_Analytics() {
               />
             </div>
             <Button className="flex items-center gap-3" size="sm">
-              <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
+              <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> 
+              <FileDownloader />
             </Button>
           </div>
         </div>

@@ -198,7 +198,18 @@ function Welcome() {
        
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI"style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" 
-        href="/Customer_Login">    
+        href="/my-app">    
+       <span class="MuiButton-label">
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
+
+
+       <div style={{border: '1px solid black'}}>
+    <img style={{width: '100px', height: '100px'}} marginleft='2px' object-center src = "https://www.logolynx.com/images/logolynx/18/186056e89f0f92c07b026966bccb6e0c.png"></img>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Admin</span></div>
+        </a>
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" href="my-app">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
@@ -206,9 +217,8 @@ function Welcome() {
 
 
 
-
        <div style={{border: '1px solid black'}}>
-    <img style={{width: '100px', height: '100px'}} marginleft='2px' object-center src = "https://png.pngtree.com/png-vector/20220520/ourmid/pngtree-vectorized-blue-user-icon-for-account-and-profile-web-icons-vector-png-image_46417352.jpg"></img>
+    <img style={{width: '70px', height: '100px'}} marginleft='2px' object-center src = "https://png.pngtree.com/png-vector/20220520/ourmid/pngtree-vectorized-blue-user-icon-for-account-and-profile-web-icons-vector-png-image_46417352.jpg"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Customer</span></div>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" href="/Admin_Analytics">    
