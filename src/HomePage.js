@@ -138,7 +138,7 @@ function Welcome() {
             </div>
         </Typography>
  
-      <img style={{width: '100%', height: '65vh'}} src="https://kyari.co/cdn/shop/files/HP_Desktop_option_2-01.png?v=1708169023" />
+      <img style={{width: '100%', height: '100vh'}} src="https://appdukaan.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2021/07/uber-eats-clone-app-development.jpg.webp" />
        
      <br></br> 
 
