@@ -142,6 +142,7 @@ function Welcome() {
       <b><hr class="separator" /></b>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
       <h1 style={{ color: '#130d00' }}><b><div>Welcome to Food Maven!</div></b></h1>
+
       </Typography>
   
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
@@ -191,7 +192,7 @@ function Welcome() {
        
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI"style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" 
-        href="/my-app">    
+        href="/Home">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
@@ -237,7 +238,6 @@ function Welcome() {
         <img style={{width: '100px', height: '100px'}} marginleft='1px' src = "https://thumbs.dreamstime.com/b/people-contact-customer-service-call-center-logo-icon-illustration-design-connection-phone-speech-bubble-headphones-information-169062794.jpg"></img>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;CustomerCare</span></div>
         </a>
-
 
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" style={{marginRight: "20px"}}  role="button"aria-disabled="false"data-aid="tile" 
