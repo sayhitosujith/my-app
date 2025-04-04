@@ -158,7 +158,7 @@ function App() {
         variant="ghost"
         color="green"
         size="sm"
-        value="Open"
+        value="Available"
         icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900" />}
       />
     </Option>
@@ -167,7 +167,7 @@ function App() {
         variant="ghost"
         color="blue"
         size="sm"
-        value="Busy"
+        value="Not-Available"
         icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-blue-900" />}
       />
     </Option>
@@ -176,7 +176,7 @@ function App() {
         variant="ghost"
         color="gray"
         size="sm"
-        value="Closed"
+        value="Out Of Stock"
         icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-gray-900" />}
       />
     </Option>
@@ -185,7 +185,7 @@ function App() {
         variant="ghost"
         color="red"
         size="sm"
-        value="Out Of Stock"
+        value="Will be available soon"
         icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-red-900" />}
       />
     </Option>
