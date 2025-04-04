@@ -7,7 +7,6 @@ import { AiFillCustomerService } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa";
 import { Button, IconButton } from "@material-tailwind/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 
 
 import {
@@ -142,15 +141,14 @@ function Welcome() {
       </a>
       <a href="#">Welcome</a>
     </Breadcrumbs>
-    <div className="mb-4 shadow-sm px-4 py-2 flex bg-orange-800 overflow-x-auto whitespace-nowrap">
-  <Typography variant="h6" color="white" className="text-md inline-block">
+
+<div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-green-500 overflow-x-auto whitespace-nowrap">
+  <Typography variant="h6" color="white" className="text-md inline-block"><i>
     NEW | 🛍️ Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨!
-  </Typography> 
-  <Button color="white" size="sm" className="inline-block">
-    check out
-  </Button>
-  <IconButton color="white" variant="text" className="inline-block">
-    <XMarkIcon className="text-white w-4 h-4 stroke-2" />
+    </i> </Typography>
+
+  <IconButton color="white" variant="text" className="inline-block ml-4">
+    ✖
   </IconButton>
 </div>
 
@@ -222,7 +220,7 @@ function Welcome() {
 
 
        <div style={{ border: "1px solid black", display: "flex",alignItems: "center", alignItems: "center", padding: "10px" }}>
-       <RiAdminFill size={100} color="black" /></div>
+       <RiAdminFill size={100} color="orange" /></div>
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Admin</span>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile"
@@ -235,7 +233,7 @@ function Welcome() {
 
 
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <CiUser size={100} color="black" /></div>
+       <CiUser size={100} color="orange" /></div>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Customer</span>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" 
@@ -247,7 +245,7 @@ function Welcome() {
 
 
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <TbBrandGoogleAnalytics  size={100} color="black" /></div>
+       <TbBrandGoogleAnalytics  size={100} color="orange" /></div>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;Analytics</span>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile"
@@ -256,8 +254,9 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
     <span class="MuiTouchRipple-root"></span>
        </span>
+       
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-      <AiFillCustomerService  size={100} /></div>
+      <AiFillCustomerService  size={100}color="orange" /></div>
       <span className="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;CustomerCare</span>
     
         </a>
@@ -270,7 +269,7 @@ function Welcome() {
 <span class="MuiTouchRipple-root"></span>
        </span>
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <FaUsers size={100} color="black"  /></div>
+       <FaUsers size={100} color="orange"   /></div>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp; Profiles</span>
         </a>
 
@@ -281,7 +280,7 @@ function Welcome() {
 <span class="MuiTouchRipple-root"></span>
        </span> 
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <FaFileInvoiceDollar size={100} color="black"  />
+       <FaFileInvoiceDollar size={100} color="orange"  />
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;  Billing Details</span></div>
         </a>
 

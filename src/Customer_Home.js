@@ -2,6 +2,10 @@ import './App.css';
 import { Select, Option } from "@material-tailwind/react";
 import { Badge } from "@material-tailwind/react";
 import { Chip } from "@material-tailwind/react";
+import { IconButton } from "@material-tailwind/react";
+import { BsCart3 } from "react-icons/bs";
+import { IoCartOutline } from "react-icons/io5";
+import { CiWallet } from "react-icons/ci";
 
 
 import {
@@ -21,7 +25,7 @@ const data = [
   { id: 1, name: 'Veg Green Salad', src: 'https://i.ytimg.com/vi/ln_P2jNCSA0/maxresdefault.jpg', },
   { id: 2, name: 'Chole Meal', src: 'https://im1.dineout.co.in/images/uploads/restaurant/sharpen/5/j/u/p5908-15671490325d68cbe8b52d8.jpg?tr=tr:n-xlarge', },
   { id: 3, name: 'Puliogre', src: 'https://www.harfieldtableware.co.uk/wp-content/uploads/2020/09/856BLU-for-website-scaled.jpg', },
-  { id: 4, name: 'Veg combo', src: 'https://sites.udel.edu/eli/files/2017/12/bento-box-1pmzqgv.jpg', },
+  { id: 4, name: 'Veg combo', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoKfY4-8bnrTwpHepBSSHA1_nTNvDFM7WA6A&s', },
   { id: 5, name: 'Non-veg Meal', src: 'https://tse3.mm.bing.net/th?id=OIP.1SxzeKMtZ9qeVnA1JQ8IqgHaE8&pid=Api&P=0&h=220', },
   { id: 6, name: 'Chicken biriyani', src: 'https://thumbs.dreamstime.com/b/meal-lunch-boxes-packaging-meal-lunch-boxes-isolated-white-background-121017730.jpg', },
   { id: 7, name: 'Veg salad', src: 'https://sammyapproves.com/wp-content/uploads/2019/08/028-min.jpg', },
@@ -55,7 +59,7 @@ const CardItem = ({ item }) => (
       <div className="-mr-50">
       </div>
       <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
-              <svg className="h-5 w-5" fill="grey" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="h-5 w-5" fill="red" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 21.638l-1.625-1.473C5.303 15.013 2 11.12 2 7.25 2 4.364 4.364 2 7.25 2c1.79 0 3.462 1.144 4.75 2.977C13.288 3.144 14.96 2 16.75 2 19.636 2 22 4.364 22 7.25c0 3.87-3.303 7.762-8.375 13.917L12 21.638z"/>
               </svg>
             </Typography>
@@ -98,21 +102,20 @@ const CardItem = ({ item }) => (
         </label>
       </Typography>
     </CardFooter>
-
-    <Button color="green" appearance="primary"> 
-           <a href="/OrderDetails">
-           BUY NOW @ (₹199) 
-               </a> 
-           </Button> 
            
 
     <br></br>
 
-    <Button color="orange" appearance="primary"> 
-           <a href="/MyCart">
-           ADD TO CART
-               </a> 
-           </Button> 
+    <Button color="orange" appearance="primary" className="text-lg font-semibold">
+  <a href="/MyCart" className="flex items-center gap-10">
+    <span>ADD TO CART</span>
+    <span> - </span>
+    <BsCart3 size={25} color="white" />
+
+  </a>
+</Button>
+
+
   </Card>
 
 )
@@ -140,6 +143,16 @@ function App() {
         </a>
         <a href="#">Customer_Home</a>
       </Breadcrumbs>
+
+<div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-orange-800 overflow-x-auto whitespace-nowrap">
+  <Typography variant="h6" color="white" className="text-md inline-block"><i>
+    NEW | 🛍️ Arrivals Alert! Fresh food,Deserts and must-have picks just dropped. Shop now before they're gone! 🔥✨!
+    </i> </Typography>
+
+  <IconButton color="white" variant="text" className="inline-block ml-4">
+    ✖
+  </IconButton>
+</div>
 
       <Typography variant="h3" color="orange">
         CUSTOMER HOME
@@ -200,13 +213,13 @@ function App() {
       </button>
 
       <Button size="lg" color="green" className="flex items-center gap-3">
-        My Wallet
-        <img src="https://docs.material-tailwind.com/icons/metamask.svg" alt="metamask" className="h-6 w-6" />
+      <a href="/MyCart">
+             My cart
+               </a>        
+               <IoCartOutline  size={25} color="white"/> 
       </Button>
       </div>
-      <div style={{ float: 'right' }}>
-            <button> <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></button>
-              </div>
+     
 <br></br>      
   <div style={{ float: 'right' }}>
   <div className="w-74">
@@ -214,14 +227,12 @@ function App() {
         
         <Option>    
         </Option>
-    <Badge content="6" color="white">
     <Button>
     <a href="/MyCart">
-             MyCart 
+               <CiWallet  size={20} color="white" /> My wallet 
                </a> 
-      
+
     </Button>
-    </Badge>
        <Option>
        <a href="/HomePage">
              About 
