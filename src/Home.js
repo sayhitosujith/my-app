@@ -152,57 +152,46 @@ function App() {
     <Typography variant="h2" color="Black">
       <br></br>
       <div className="w-72">
-      <Select
-        label={
-          <Chip
-            variant="ghost"
-            color="green"
-            size="sm"
-            value="Available"
-            icon={
-              <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900" />
-            }
-          />
-        }
-      >
-        <Option>
-          <Chip
-            variant="ghost"
-            color="green"
-            size="sm"
-            value="Available"
-            icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900" />}
-          />
-        </Option>
-        <Option>
-          <Chip
-            variant="ghost"
-            color="blue"
-            size="sm"
-            value="Busy"
-            icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-blue-900" />}
-          />
-        </Option>
-        <Option>
-          <Chip
-            variant="ghost"
-            color="gray"
-            size="sm"
-            value="Closed"
-            icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-gray-900" />}
-          />
-        </Option>
-        <Option>
-          <Chip
-            variant="ghost"
-            color="red"
-            size="sm"
-            value="Out Of Stock"
-            icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-red-900" />}
-          />
-        </Option>
-      </Select>
-    </div>
+  <Select label="Select Status">
+    <Option>
+      <Chip
+        variant="ghost"
+        color="green"
+        size="sm"
+        value="Available"
+        icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900" />}
+      />
+    </Option>
+    <Option>
+      <Chip
+        variant="ghost"
+        color="blue"
+        size="sm"
+        value="Busy"
+        icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-blue-900" />}
+      />
+    </Option>
+    <Option>
+      <Chip
+        variant="ghost"
+        color="gray"
+        size="sm"
+        value="Closed"
+        icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-gray-900" />}
+      />
+    </Option>
+    <Option>
+      <Chip
+        variant="ghost"
+        color="red"
+        size="sm"
+        value="Out Of Stock"
+        icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-red-900" />}
+      />
+    </Option>
+  </Select>
+</div>
+
 
        <br></br>
 
@@ -240,7 +229,7 @@ function App() {
 </div>
 
 <div style={{float: 'right'}}>
-
+<br></br>
 
  {/* Profile Select Dropdown */}
  <div className="w-full lg:w-1/2">
