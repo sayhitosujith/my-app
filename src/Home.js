@@ -7,6 +7,9 @@ import {
   ArrowDownTrayIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
+import { MdDelete } from "react-icons/md";
+import { IoCartOutline } from "react-icons/io5";
+import { CiHeart } from "react-icons/ci";
 
 import {
   Card,
@@ -30,7 +33,7 @@ const data = [
   { id: 1, name: 'Veg Green Salad', src: 'https://i.ytimg.com/vi/ln_P2jNCSA0/maxresdefault.jpg', },
   {id: 2, name: 'Chole Meal', src: 'https://im1.dineout.co.in/images/uploads/restaurant/sharpen/5/j/u/p5908-15671490325d68cbe8b52d8.jpg?tr=tr:n-xlarge',},
   {id: 3, name: 'Puliogre', src: 'https://www.harfieldtableware.co.uk/wp-content/uploads/2020/09/856BLU-for-website-scaled.jpg',},
-  {id: 4, name: 'Veg combo', src: 'https://sites.udel.edu/eli/files/2017/12/bento-box-1pmzqgv.jpg',},
+  {id: 4, name: 'Veg combo', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUwbIEMBVwW6NnJzUIhy0OZ7rRhHkss4Sh2A&s',},
   {id: 5, name: 'Non-veg Meal', src: 'https://tse3.mm.bing.net/th?id=OIP.1SxzeKMtZ9qeVnA1JQ8IqgHaE8&pid=Api&P=0&h=220',},
   {id: 6, name: 'Chicken biriyani', src: 'https://thumbs.dreamstime.com/b/meal-lunch-boxes-packaging-meal-lunch-boxes-isolated-white-background-121017730.jpg',},
   {id: 7, name: 'Veg salad', src: 'https://sammyapproves.com/wp-content/uploads/2019/08/028-min.jpg',},
@@ -56,11 +59,11 @@ const CardItem = ({item}) => (
                 {item.id} : {item.name}  
              </Typography>
             </CardHeader>
-            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
-            &nbsp; <svg className="h-5 w-5" fill="grey" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 21.638l-1.625-1.473C5.303 15.013 2 11.12 2 7.25 2 4.364 4.364 2 7.25 2c1.79 0 3.462 1.144 4.75 2.977C13.288 3.144 14.96 2 16.75 2 19.636 2 22 4.364 22 7.25c0 3.87-3.303 7.762-8.375 13.917L12 21.638z"/>
-              </svg>
-            </Typography>
+       
+            <div className="flex items-center justify-between w-full">
+              
+            <CiHeart size={30} color="black"/></div>
+
             <div className='flex justify-center items-center'>
             <img style={{width: '180px', height: '180px'}} src={item.src}/>
             </div>
@@ -71,19 +74,11 @@ const CardItem = ({item}) => (
           <CardFooter className="pt-0">
             <Typography variant="h10" color="black">
 
-            <Button
-            size="sm"
-            variant="text"
-            color="red"
-            className="flex items-center gap-2"
-          >
-            <TrashIcon className="h-4 w-4 text-green-500" />
-            <Typography className="!font-semibold text-xs text-green-500 md:block hidden">
-            <a href="/Success">
-             DELETE 
-               </a> 
-            </Typography>
-          </Button>
+            <div className="flex items-center justify-between w-full">
+            <IoCartOutline size={30} color="green" />
+           <MdDelete size={30} color="red" />
+</div>
+
             <br></br>
             
       <div className="w-72">
@@ -156,16 +151,59 @@ function App() {
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
     <Typography variant="h2" color="Black">
       <br></br>
-
       <div className="w-72">
-              <Select label = <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>>
-                <Option><Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-                <Option><Chip variant="ghost"color="blue"size="sm"value="Busy" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-                <Option><Chip variant="ghost"color="white"size="sm"value="Closed" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
-                <Option><Chip variant="ghost"color="red"size="sm"value="Out Of stock" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/></Option>
+      <Select
+        label={
+          <Chip
+            variant="ghost"
+            color="green"
+            size="sm"
+            value="Available"
+            icon={
+              <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900" />
+            }
+          />
+        }
+      >
+        <Option>
+          <Chip
+            variant="ghost"
+            color="green"
+            size="sm"
+            value="Available"
+            icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900" />}
+          />
+        </Option>
+        <Option>
+          <Chip
+            variant="ghost"
+            color="blue"
+            size="sm"
+            value="Busy"
+            icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-blue-900" />}
+          />
+        </Option>
+        <Option>
+          <Chip
+            variant="ghost"
+            color="gray"
+            size="sm"
+            value="Closed"
+            icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-gray-900" />}
+          />
+        </Option>
+        <Option>
+          <Chip
+            variant="ghost"
+            color="red"
+            size="sm"
+            value="Out Of Stock"
+            icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-red-900" />}
+          />
+        </Option>
+      </Select>
+    </div>
 
-       </Select>
-       </div>
        <br></br>
 
     <Button color="green" appearance="primary"> 
