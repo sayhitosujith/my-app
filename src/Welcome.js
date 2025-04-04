@@ -3,9 +3,12 @@ import React, { useEffect } from 'react';
 import { RiAdminFill } from "react-icons/ri";
 import { CiUser } from "react-icons/ci";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
-import { FcCustomerSupport } from "react-icons/fc";
+import { AiFillCustomerService } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa";
+import { useState } from "react";
+import { Button, IconButton } from "@material-tailwind/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 
 import {
@@ -140,6 +143,19 @@ function Welcome() {
       </a>
       <a href="#">Welcome</a>
     </Breadcrumbs>
+    
+    <div className="mb-4 shadow-sm px-4 py-2 flex bg-yellow-900 flex-wrap lg:items-center lg:justify-center justify-end gap-x-6">
+        <Typography variant="h6" color="white" className="text-md">
+          NEW | Material Tailwind PRO, a comprehensive compilation of 200+
+          sections, now available for your use!
+        </Typography>
+        <Button color="white" size="sm">
+          check out
+        </Button>
+        <IconButton color="white" variant="text">
+          <XMarkIcon className="text-white w-4 h-4 stroke-2" />
+        </IconButton>
+      </div>
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <Typography variant="h2" color="Black">
@@ -206,7 +222,7 @@ function Welcome() {
        </span>
 
 
-       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
+       <div style={{ border: "1px solid black", display: "flex",alignItems: "center", alignItems: "center", padding: "10px" }}>
        <RiAdminFill size={100} color="black" /></div>
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Admin</span>
         </a>
@@ -242,7 +258,7 @@ function Welcome() {
     <span class="MuiTouchRipple-root"></span>
        </span>
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-      <FcCustomerSupport size={100} /></div>
+      <AiFillCustomerService  size={100} /></div>
       <span className="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;CustomerCare</span>
     
         </a>
@@ -266,8 +282,8 @@ function Welcome() {
 <span class="MuiTouchRipple-root"></span>
        </span> 
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <FaFileInvoiceDollar size={100} color="black"  /></div>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;  Billing Details</span>
+       <FaFileInvoiceDollar size={100} color="black"  />
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;  Billing Details</span></div>
         </a>
 
 
