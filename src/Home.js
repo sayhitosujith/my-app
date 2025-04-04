@@ -206,11 +206,19 @@ function App() {
 
        <br></br>
 
-    <Button color="green" appearance="primary"> 
-           <a href="/AddMeal">
-           + Add Meal 
-               </a> 
-           </Button> 
+ {/* Add Meal Button */}
+<div className="relative">
+  <div className="absolute top-0 right-0 m-4 flex gap-4">
+    <Button color="red" appearance="primary">
+      <a href="/AddMeal">+ Add Meal</a>
+    </Button>
+     {/* Download Button */}
+    <Button className="flex items-center gap-3" size="sl">
+      <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
+    </Button>
+  </div>
+ 
+
 <br></br>
 <Button color="green" appearance="primary"> 
            <a href="/DeliveryBoy">
@@ -233,38 +241,28 @@ function App() {
 
 <div style={{float: 'right'}}>
 
-<Button className="flex items-center gap-3" size="sl">
-              <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
-            </Button>
 
-      <div className="w-74">
-      <Select label="Profile">
-        <Option>    
-        </Option>
+ {/* Profile Select Dropdown */}
+ <div className="w-full lg:w-1/2">
+        <Select label="Profile">
+          <Option>
+            <a href="/HomePage">About</a>
+          </Option>
+          <Option>
+            <a href="/ResetPassword">Change Password</a>
+          </Option>
+          <Option>
+            <a href="/Settings">Settings</a>
+          </Option>
+          <button>
+            <Option>
+              <a href="/my-app">Logout</a>
+            </Option>
+          </button>
+        </Select>
+      </div>
+</div>
 
-       <Option>
-       <a href="/HomePage">
-             About 
-               </a> 
-       </Option>
-       <Option>
-       <a href="/ResetPassword">
-             Change Password 
-               </a> 
-               </Option>
-
-               <Option>
-       <a href="/Settings">
-       Settings 
-               </a> 
-       </Option>
-        <button><Option> 
-        <a href="/my-app">
-             Logout 
-               </a>    
-          </Option></button>
-      </Select>
-    </div>
 
             </div>
         </Typography>
