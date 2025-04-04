@@ -1,5 +1,12 @@
 import './App.css';
 import React, { useEffect } from 'react';
+import { RiAdminFill } from "react-icons/ri";
+import { CiUser } from "react-icons/ci";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { FcCustomerSupport } from "react-icons/fc";
+import { FaUsers } from "react-icons/fa";
+import { FaFileInvoiceDollar } from "react-icons/fa";
+
 
 import {
   Card,
@@ -199,9 +206,9 @@ function Welcome() {
        </span>
 
 
-       <div style={{border: '1px solid black'}}>
-    <img style={{width: '100px', height: '100px'}} marginleft='2px' object-center src = "https://www.logolynx.com/images/logolynx/18/186056e89f0f92c07b026966bccb6e0c.png"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Admin</span></div>
+       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
+       <RiAdminFill size={100} color="black" /></div>
+       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Admin</span>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile"
          href="Customer_Login">    
@@ -212,9 +219,9 @@ function Welcome() {
 
 
 
-       <div style={{border: '1px solid black'}}>
-    <img style={{width: '70px', height: '100px'}} marginleft='2px' object-center src = "https://png.pngtree.com/png-vector/20220520/ourmid/pngtree-vectorized-blue-user-icon-for-account-and-profile-web-icons-vector-png-image_46417352.jpg"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Customer</span></div>
+       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
+       <CiUser size={100} color="black" /></div>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; Customer</span>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" 
         href="/Admin_Analytics">    
@@ -224,19 +231,20 @@ function Welcome() {
        </span>
 
 
-       <div style={{border: '1px solid black'}}>
-        <img style={{width: '100px', height: '100px'}} marginleft='1px'src = "https://cdn-icons-png.freepik.com/512/7731/7731130.png"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;Analytics</span></div>
+       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
+       <TbBrandGoogleAnalytics  size={100} color="black" /></div>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;Analytics</span>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile"
          href="/CustomerCare">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
-<span class="MuiTouchRipple-root"></span>
+    <span class="MuiTouchRipple-root"></span>
        </span>
-       <div style={{border: '1px solid black'}}>
-        <img style={{width: '100px', height: '100px'}} marginleft='1px' src = "https://thumbs.dreamstime.com/b/people-contact-customer-service-call-center-logo-icon-illustration-design-connection-phone-speech-bubble-headphones-information-169062794.jpg"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;CustomerCare</span></div>
+       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
+      <FcCustomerSupport size={100} /></div>
+      <span className="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;CustomerCare</span>
+    
         </a>
 
 
@@ -246,9 +254,9 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-       <div style={{border: '1px solid black'}}>
-        <img style={{width: '100px', height: '100px'}} box-sizing='border-box' marginleft='0px' src = "https://cdn-icons-png.freepik.com/512/5580/5580909.png"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp; Profiles</span></div>
+       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
+       <FaUsers size={100} color="black"  /></div>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp; Profiles</span>
         </a>
 
 
@@ -257,9 +265,9 @@ function Welcome() {
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span> 
-       <div style={{border: '1px solid black'}}>
-        <img style={{width: '100px', height: '100px'}} box-sizing='border-box' marginleft='0px' src = "https://us.123rf.com/450wm/popcornarts/popcornarts2205/popcornarts220501496/185646720-these-are-black-and-blue-mix-icons.jpg?ver=6"></img>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;  Billing Details</span></div>
+       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
+       <FaFileInvoiceDollar size={100} color="black"  /></div>
+        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;  Billing Details</span>
         </a>
 
 
