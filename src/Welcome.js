@@ -144,10 +144,9 @@ function Welcome() {
       <a href="#">Welcome</a>
     </Breadcrumbs>
     
-    <div className="mb-4 shadow-sm px-4 py-2 flex bg-yellow-900 flex-wrap lg:items-center lg:justify-center justify-end gap-x-6">
+    <div className="mb-4 shadow-sm px-4 py-2 flex bg-green-500 flex-wrap lg:items-center lg:justify-center justify-end gap-x-6">
         <Typography variant="h6" color="white" className="text-md">
-          NEW | Material Tailwind PRO, a comprehensive compilation of 200+
-          sections, now available for your use!
+          NEW | 🛍️ Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨!
         </Typography>
         <Button color="white" size="sm">
           check out
