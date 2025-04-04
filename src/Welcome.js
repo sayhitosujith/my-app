@@ -142,18 +142,19 @@ function Welcome() {
       </a>
       <a href="#">Welcome</a>
     </Breadcrumbs>
-    
-    <div className="mb-4 shadow-sm px-4 py-2 flex bg-green-500 flex-wrap lg:items-center lg:justify-center justify-end gap-x-6">
-        <Typography variant="h6" color="white" className="text-md">
-          NEW | 🛍️ Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨!
-        </Typography>
-        <Button color="white" size="sm">
-          check out
-        </Button>
-        <IconButton color="white" variant="text">
-          <XMarkIcon className="text-white w-4 h-4 stroke-2" />
-        </IconButton>
-      </div>
+    <div className="mb-4 shadow-sm px-4 py-2 flex bg-orange-800 overflow-x-auto whitespace-nowrap">
+  <Typography variant="h6" color="white" className="text-md inline-block">
+    NEW | 🛍️ Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨!
+  </Typography> 
+  <Button color="white" size="sm" className="inline-block">
+    check out
+  </Button>
+  <IconButton color="white" variant="text" className="inline-block">
+    <XMarkIcon className="text-white w-4 h-4 stroke-2" />
+  </IconButton>
+</div>
+
+
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <Typography variant="h2" color="Black">
