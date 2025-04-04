@@ -152,13 +152,13 @@ function App() {
     <Typography variant="h2" color="Black">
       <br></br>
       <div className="w-72">
-  <Select label="Select Status">
+  <Select label="Select Meal Status">
     <Option>
       <Chip
         variant="ghost"
         color="green"
         size="sm"
-        value="Available"
+        value="Open"
         icon={<span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900" />}
       />
     </Option>
@@ -203,7 +203,7 @@ function App() {
     </Button>
      {/* Download Button */}
     <Button className="flex items-center gap-3" size="sl">
-      <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
+      <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download Report
     </Button>
   </div>
  
