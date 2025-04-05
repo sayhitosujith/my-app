@@ -6,6 +6,8 @@ import { Card, Typography } from "@material-tailwind/react";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import { Slider } from "@material-tailwind/react";
 import FileDownloader from './FileDownloader';
+import { MdDeleteOutline } from "react-icons/md";
+import { FaRegClone } from "react-icons/fa";
 
 import {
     ArrowDownTrayIcon,
@@ -355,11 +357,22 @@ function Admin_Analytics() {
                       </div>
                     </td>
                     <td className={classes}>
-                      <Tooltip content="Edit User">
+                    <Tooltip content="Clone User">
                         <IconButton variant="text">
-                          <PencilIcon className="h-4 w-4" />
+                          <FaRegClone  className="h-5 w-5" />
                         </IconButton>
                       </Tooltip>
+                      <Tooltip content="Edit User">
+                        <IconButton variant="text">
+                          <PencilIcon className="h-6 w-6" />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip content="Delete User">
+                        <IconButton variant="text">
+                          <MdDeleteOutline className="h-6 w-6" />
+                        </IconButton>
+                      </Tooltip>
+                    
                     </td>
                   </tr>
                 );
