@@ -171,6 +171,10 @@ function Welcome() {
       <Typography variant="h6" color="black">
       <b>Access your provisioned services below. Switch services any time from the Apps icon in the middle of your screen.</b>
            <br></br></Typography>
+
+           <b><hr class="separator" /></b>
+
+
            
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -178,6 +182,8 @@ function Welcome() {
 
            </Typography>
            <b><hr class="separator" /></b>
+
+           
 
     <div style={{float: 'right'}}>
 
@@ -359,7 +365,7 @@ function Welcome() {
             &copy; {currentYear}<a href="https://material-tailwind.com/"> - Food Maven</a>. All
             Rights Reserved.
             <br></br>
-            INDIA - {currentYear} 
+            MAKE IN INDIA - {currentYear} 
 
           </Typography>
           <div className="flex gap-4 text-blue-gray-900 sm:justify-center">

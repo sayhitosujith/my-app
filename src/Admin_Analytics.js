@@ -357,11 +357,6 @@ function Admin_Analytics() {
                       </div>
                     </td>
                     <td className={classes}>
-                    <Tooltip content="Clone User">
-                        <IconButton variant="text">
-                          <FaRegClone  className="h-5 w-5" />
-                        </IconButton>
-                      </Tooltip>
                       <Tooltip content="Edit User">
                         <IconButton variant="text">
                           <PencilIcon className="h-6 w-6" />
@@ -372,7 +367,11 @@ function Admin_Analytics() {
                           <MdDeleteOutline className="h-6 w-6" />
                         </IconButton>
                       </Tooltip>
-                    
+                      <Tooltip content="Clone User">
+                        <IconButton variant="text">
+                          <FaRegClone  className="h-5 w-5" />
+                        </IconButton>
+                      </Tooltip>
                     </td>
                   </tr>
                 );
