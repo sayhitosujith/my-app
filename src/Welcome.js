@@ -103,7 +103,7 @@ const CardItem = ({item}) => (
             </CardHeader>
 
             <div className='flex justify-center items-center'>
-            <img style={{width: '150px', height: '150px'}} src={item.src} className='rounded-full' />
+            <img style={{width: '150px',alignItems: "center",padding: "10px", height: '150px'}} src={item.src} className='rounded-full' />
             </div>
           <CardBody className="flex flex-col gap-4">
             <div className="-mr-50">
@@ -222,7 +222,7 @@ function Welcome() {
 
 
        <div style={{ border: "1px solid black", display: "flex",alignItems: "center", alignItems: "center", padding: "10px" }}>
-       <RiAdminFill size={100} color="orange" /></div>
+       <RiAdminFill size={100} color="#3BB143" /></div>
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; <b>ADMIN</b></span>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile"
@@ -235,7 +235,7 @@ function Welcome() {
 
 
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <CiUser size={100} color="orange" /></div>
+       <CiUser size={100} color="#3BB143" /></div>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; <b>CUSTOMER</b></span>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" 
@@ -247,7 +247,7 @@ function Welcome() {
 
 
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <TbBrandGoogleAnalytics  size={100} color="orange" /></div>
+       <TbBrandGoogleAnalytics  size={100} color="#3BB143" /></div>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;<b>ANALYTICS</b></span>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile"
@@ -258,7 +258,7 @@ function Welcome() {
        </span>
        
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-      <AiFillCustomerService  size={100}color="orange" /></div>
+      <AiFillCustomerService  size={100} color="#3BB143" /></div>
       <span className="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;<b>CUSTOMER CARE</b></span>
     
         </a>
@@ -271,7 +271,7 @@ function Welcome() {
 <span class="MuiTouchRipple-root"></span>
        </span>
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <FaUsers size={100} color="orange"   /></div>
+       <FaUsers size={100} color="#3BB143"  /></div>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp; <b>PROFILES</b></span>
         </a>
 
@@ -283,7 +283,7 @@ function Welcome() {
 <span class="MuiTouchRipple-root"></span>
        </span>
        <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <FaFileInvoiceDollar size={100} color="orange"   /></div>
+       <FaFileInvoiceDollar size={100} color="#3BB143"  /></div>
         <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp; <b>BILLING</b></span>
         </a>
 
