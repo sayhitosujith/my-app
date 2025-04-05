@@ -406,7 +406,7 @@ function Admin_Analytics() {
 
                       
                       <Tooltip content="Clone User">
-                        <IconButton variant="text">
+                        <IconButton color="green"variant="text">
                           <FaRegClone  className="h-5 w-5" />
                         </IconButton>
                       </Tooltip>
