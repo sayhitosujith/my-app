@@ -110,10 +110,6 @@ const CardItem = ({item}) => (
               </Typography>
             </CardHeader>
 
-            
-
-
-
             <div className='flex justify-center items-center'>
             <img style={{width: '200px', height: '200px'}} src={item.src} className="h-96 w-full object-cover object-center" />
             </div>
@@ -151,6 +147,8 @@ function Admin_Analytics() {
     setOpen(false);
     setSelectedItem(null);
   };
+
+
   return (
     <div className="p-10">
         
@@ -386,10 +384,10 @@ function Admin_Analytics() {
                       </Tooltip>
 
                       <Tooltip content="Delete User">
-  <IconButton variant="text" onClick={() => handleOpen(name)}>
-    <MdDeleteOutline className="h-6 w-6" />
-  </IconButton>
-</Tooltip>
+                   <IconButton variant="text"color="red" onClick={() => handleOpen(name)}>
+                   <MdDeleteOutline className="h-6 w-6" />
+                     </IconButton>
+                    </Tooltip>
 
 <Dialog open={open} handler={setOpen}>
   <DialogHeader>Confirm Deletion</DialogHeader>
