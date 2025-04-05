@@ -41,6 +41,11 @@ const data = [
 
 ]
 
+const currentYear = new Date().getFullYear();
+const currentMonth = new Date().getMonth() + 1; 
+const currentDate = new Date().getDate();
+
+
 const CardItem = ({ item }) => (
   <Card className="w-96">
     <CardHeader
@@ -149,7 +154,7 @@ function App() {
 
       <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-yellow-800 overflow-x-auto whitespace-nowrap">
         <Typography variant="h6" color="black" className="text-md inline-block"><i>
-          {/* <figure className="relative h-99 w-full"> */}
+          <figure className="relative h-99 w-full">
 
             <img
               className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50"
@@ -157,20 +162,21 @@ function App() {
               alt="banner image"
             />
 
-            {/* <figcaption className="absolute bottom-8 left-2/4 flex w-[calc(100%-4rem)] -translate-x-2/4 justify-between rounded-xl border border-white bg-white/75 py-4 px-6 shadow-lg shadow-black/5 saturate-200 backdrop-blur-sm">
+            <figcaption className="absolute bottom-8 left-2/4 flex w-[calc(100%-4rem)] -translate-x-2/4 justify-between rounded-xl border border-white bg-white/75 py-4 px-6 shadow-lg shadow-black/5 saturate-200 backdrop-blur-sm">
               <div>
                 <Typography variant="h5" color="blue-gray">
-                  Sara Lamalo
+                  Welcome to Foodie World
                 </Typography>
                 <Typography color="gray" className="mt-2 font-normal">
-                  20 July 2022
-                </Typography>
+                Date : {currentDate} - {currentMonth} - {currentYear}<br></br>
+                Time : {new Date().toLocaleTimeString()}
+                              </Typography>
               </div>
               <Typography variant="h5" color="blue-gray">
                 Growth
               </Typography>
             </figcaption>
-          </figure> */}
+          </figure>
 
           NEW | 🛍️ Arrivals Alert! Fresh food,Deserts and must-have picks just dropped. Shop now before they're gone! 🔥✨!
         </i> </Typography>
