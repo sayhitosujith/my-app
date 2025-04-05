@@ -6,6 +6,7 @@ import { IconButton } from "@material-tailwind/react";
 import { BsCart3 } from "react-icons/bs";
 import { IoCartOutline } from "react-icons/io5";
 import { CiWallet } from "react-icons/ci";
+import { IoLogOutOutline } from "react-icons/io5";
 
 
 import {
@@ -52,19 +53,19 @@ const CardItem = ({ item }) => (
     </CardHeader>
 
 
-    <div className='flex justify-center items-center'>
+    <div className='flex justify-center items-center '>
       <img style={{ width: '200px', height: '200px' }} src={item.src}  />
     </div>
-    <CardBody className="flex flex-col gap-4">
+    <CardBody className="flex flex-col gap-4 ">
       <div className="-mr-50">
       </div>
-      <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+      <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100 object-cover rounded-full">
               <svg className="h-5 w-5" fill="red" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 21.638l-1.625-1.473C5.303 15.013 2 11.12 2 7.25 2 4.364 4.364 2 7.25 2c1.79 0 3.462 1.144 4.75 2.977C13.288 3.144 14.96 2 16.75 2 19.636 2 22 4.364 22 7.25c0 3.87-3.303 7.762-8.375 13.917L12 21.638z"/>
               </svg>
             </Typography>
     </CardBody>
-    <CardFooter className="pt-0">
+    <CardFooter className="pt-0" >
       <Typography variant="h10" color="orange">
         <div>
           
@@ -144,7 +145,7 @@ function App() {
         <a href="#">Customer_Home</a>
       </Breadcrumbs>
 
-<div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-orange-800 overflow-x-auto whitespace-nowrap">
+<div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-green-800 overflow-x-auto whitespace-nowrap">
   <Typography variant="h6" color="white" className="text-md inline-block"><i>
     NEW | 🛍️ Arrivals Alert! Fresh food,Deserts and must-have picks just dropped. Shop now before they're gone! 🔥✨!
     </i> </Typography>
@@ -206,19 +207,24 @@ function App() {
           </svg>
         </div>
       </div>
-      <button
-        class="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-        type="button">
-        Search
-      </button>
 
-      <Button size="lg" color="green" className="flex items-center gap-3">
+
+      <Button size="sm" color="green" className="flex items-center gap-3">
       <a href="/MyCart">
              My cart
                </a>        
-               <IoCartOutline  size={25} color="white"/> 
-      </Button>
+               <IoCartOutline  size={25} color="white"/> </Button>
+
+      <Button size="sm" color="green" className="flex items-center gap-4">
+      <IoLogOutOutline size={20} color="white" />
+      <a href="/my-app">
+             Logout
+               </a>    
+      
+</Button>
       </div>
+
+
      
 <br></br>      
   <div style={{ float: 'right' }}>
@@ -243,13 +249,7 @@ function App() {
              Change Password 
                </a> 
        </Option>
-      
-
-        <button><Option> 
-        <a href="/my-app">
-             Logout 
-               </a>    
-          </Option></button>
+    
       </Select>
        </div>
         </div>
