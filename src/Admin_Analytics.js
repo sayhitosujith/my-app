@@ -121,7 +121,7 @@ const CardItem = ({item}) => (
             <Typography variant="h10" color="black">
            <div className="w-72">
            <Typography as="caption" variant="small" className="mt-2 text-center font-normal">
-        Image caption
+        {/* Image caption */}
       </Typography>
             </div>
             <label>
