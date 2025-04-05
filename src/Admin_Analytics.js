@@ -8,6 +8,7 @@ import { Slider } from "@material-tailwind/react";
 import FileDownloader from './FileDownloader';
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegClone } from "react-icons/fa";
+import { useState } from "react";
 
 import {
     ArrowDownTrayIcon,
@@ -24,6 +25,13 @@ import {
   Chip,
   Tooltip,
   Input,
+    } from "@material-tailwind/react";
+
+    import {
+      Dialog,
+      DialogHeader,
+      DialogBody,
+      DialogFooter,
     } from "@material-tailwind/react";
 
 const TABLE_HEAD = ["Transaction", "Amount", "Date", "Status", "Account", "Actions"];
@@ -129,6 +137,20 @@ const CardItem = ({item}) => (
 )
 
 function Admin_Analytics() {
+  const [open, setOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleOpen = (item) => {
+    setSelectedItem(item);
+    setOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    // Perform delete action here, e.g., call an API or update state
+    console.log("Deleting item:", selectedItem);
+    setOpen(false);
+    setSelectedItem(null);
+  };
   return (
     <div className="p-10">
         
@@ -362,11 +384,29 @@ function Admin_Analytics() {
                           <PencilIcon className="h-6 w-6" />
                         </IconButton>
                       </Tooltip>
+
                       <Tooltip content="Delete User">
-                        <IconButton variant="text">
-                          <MdDeleteOutline className="h-6 w-6" />
-                        </IconButton>
-                      </Tooltip>
+  <IconButton variant="text" onClick={() => handleOpen(name)}>
+    <MdDeleteOutline className="h-6 w-6" />
+  </IconButton>
+</Tooltip>
+
+<Dialog open={open} handler={setOpen}>
+  <DialogHeader>Confirm Deletion</DialogHeader>
+  <DialogBody>
+    Are you sure you want to delete <strong>{selectedItem}</strong>?
+  </DialogBody>
+  <DialogFooter>
+    <Button variant="text" color="gray" onClick={() => setOpen(false)}>
+      Cancel
+    </Button>
+    <Button variant="gradient" color="red" onClick={handleConfirmDelete}>
+      Confirm
+    </Button>
+  </DialogFooter>
+</Dialog>
+
+                      
                       <Tooltip content="Clone User">
                         <IconButton variant="text">
                           <FaRegClone  className="h-5 w-5" />
