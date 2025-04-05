@@ -168,7 +168,7 @@ function App() {
                   Welcome to Foodie World
                 </Typography>
                 <Typography color="gray" className="mt-2 font-normal">
-                Date : {currentDate} - {currentMonth} - {currentYear}<br></br>
+                Date : {currentDate} - {currentMonth} - {currentYear}
                 Time : {new Date().toLocaleTimeString()}
                               </Typography>
               </div>

@@ -39,9 +39,12 @@ function MyCart() {
 
           <CardBody className="flex flex-col gap-5">
           <b><div>North Indian Meal</div></b>
-          <Avatar src="https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw"
-           alt="avatar" size="xxl" variant="square"/> 
-          <Chip variant="ghost"color="red"size="sm"value="Out Of stock" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
+          <img
+        className="h-full w-full rounded-xl object-cover object-center"
+        src="https://lh3.googleusercontent.com/NU4IkpoLvslBNf-uQLkOlDoMo8382HeTXOp5U6uw8kO2LWFORZE-QlvqBuscORT9leTX47dfXJuy-uod7k6Fz5GNhth75QqKd9H0pRII=h450-rw"
+        alt="nature image"
+      />
+          <Chip variant="ghost"color="green"size="sm"value="Avaialble" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
           <b> <div><button><h1 style={{ color: 'red' }}><b><div>-</div></b></h1></button>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <button><h1 style={{ color: 'Red' }}><b><div>
@@ -106,71 +109,13 @@ function MyCart() {
 
           <b><hr class="separator" /></b>
 
-          <CardBody className="flex flex-col gap-6">
-          <b><div>Chines Meal</div></b>
-          <Avatar src="https://tse3.mm.bing.net/th?id=OIP.yORsSgJVQYcn7xIZ3Aa12AHaFj&pid=Api&P=0&h=220" alt="avatar" size="xxl" variant="square"/>
-          <Chip variant="ghost"color="green"size="sm"value="Available" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
-         <b> <div><button><h1 style={{ color: 'red' }}><b><div>-</div></b></h1></button>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <button><h1 style={{ color: 'Red' }}><b><div>+</div></b></h1></button></div></b>
-         <Button
-            size="sm"
-            variant="text"
-            color="red"
-            className="flex items-center gap-2"
-          >
-            <TrashIcon className="h-4 w-5 text-red-500" />
-            <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
-            <Button onClick={handleOpen} variant="gradient">
-             DELETE 
-             </Button>
-             <Dialog
-        open={open}
-        handler={handleOpen}
-        animate={{
-          mount: { scale: 1, y: 0 },
-          unmount: { scale: 0.9, y: -100 },
-        }}
-      >
-        <DialogHeader>REMOVE ITEM</DialogHeader>
-        <DialogBody>
-          Are you sure want to remove this item.?
-        </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={handleOpen}
-            className="mr-1"
-          >
-            <span>Cancel</span>
-          </Button>
-          <Button variant="gradient" color="green" onClick={handleOpen}>
-          <a href="/MyCart">
-            <span>Confirm</span>
-            </a> 
-          </Button>
-        </DialogFooter>
-      </Dialog>
-            </Typography>
-          </Button>
 
-          <Checkbox label="Select Meal" />
-         
-          <b><hr class="separator" /></b>
-          </CardBody>
-          <CardFooter className="pt-0">
-          <Button color="green" appearance="primary" > 
-           SAVE FOR LATER</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Button color="green" appearance="primary" > 
-
-           CANCEL</Button> 
            
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>     
-          </CardFooter>
+        
 
           <b><u>NOTE</u>: From the Saved Address the order will be processed,Please add new Address if required </b>
 
