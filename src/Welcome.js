@@ -23,6 +23,13 @@ import {
 
 } from "@material-tailwind/react";
 
+
+  const now = new Date();
+  const startDate = new Date('2025-04-08T08:00:00'); // Start time
+  const endDate = new Date('2025-04-10T23:59:59');   // End time
+
+  const isBannerActive = now >= startDate && now <= endDate;
+
 const LINKS = [
   {
     title: "Product",
@@ -145,9 +152,13 @@ function Welcome() {
 
 <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-green-500 overflow-x-auto whitespace-nowrap">
 <FcAdvertising size={35} />
-<Typography variant="h6" color="white" className="text-md inline-block"><i>
+
+
+{isBannerActive && (
+          <h2><Typography variant="h6" color="white" className="text-md inline-block"><i>
    | 🛍️ NEW Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨!
-    </i> </Typography>
+    </i> </Typography></h2>
+      )}
 
   <IconButton color="white" variant="text" className="inline-block ml-4">
     ✖
