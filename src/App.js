@@ -9,7 +9,6 @@ import {
   Checkbox,
   Button,
 } from "@material-tailwind/react";
-import logo from './assets/logo.png'; // Adjust path based on your structure
 
 
 function App() {
