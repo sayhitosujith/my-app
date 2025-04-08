@@ -9,6 +9,7 @@ import {
   Checkbox,
   Button,
 } from "@material-tailwind/react";
+import logo from './assets/logo.png'; // Adjust path based on your structure
 
 
 function App() {
@@ -122,7 +123,8 @@ function App() {
         
         </Card>
       </div>
-              <img style={{width: '60%', height: '100vh'}} src="https://img.freepik.com/free-photo/flat-lay-arrangement-with-salad-box-sauce_23-2148247883.jpg" 
+      {/* <img style={{width: '60%', height: '100vh'}} src="https://img.freepik.com/free-photo/flat-lay-arrangement-with-salad-box-sauce_23-2148247883.jpg"  */}
+      <img style={{width: '60%', height: '100vh'}} src="https://exostar.greythr.com/uas/v1/cms/asset/fdbfaaa0-65c4-4612-bf5c-45943ef8a42d" 
       alt=" Lunch box"
         className="h-full w-full object-cover"
         />

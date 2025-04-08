@@ -30,7 +30,7 @@ const FileDownloader = () => {
 
   return (
     <div>
-      <button onClick={downloadFile}>Download File</button>
+      <button onClick={downloadFile}>Export CSV</button>
     </div>
   );
 };
