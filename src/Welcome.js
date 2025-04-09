@@ -9,6 +9,7 @@ import { FaFileInvoiceDollar } from "react-icons/fa";
 import { IconButton } from "@material-tailwind/react";
 import react from "react";
 import { Carousel } from "@material-tailwind/react";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 import {
   Card,
@@ -150,7 +151,19 @@ function Welcome() {
       <a href="#">Welcome</a>
     </Breadcrumbs>
 
-    
+    <div className="opacity-90">
+  {/* Logout Icon */}
+  <div className="absolute top-4 right-3 size={200}">
+      <button>
+        <a href="/my-app">
+        <RiLogoutCircleRLine color="green"/>
+        <span className="text-green-800">Logout</span>    
+               </a> 
+          </button>
+  </div>
+
+  {/* Your content below */}
+</div>
     <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-white-100 overflow-x-auto whitespace-nowrap">
   {isBannerActive && (
     <>
@@ -162,15 +175,15 @@ function Welcome() {
       
       {/* cursol images */}
           <Carousel className="rounded-xl">
-<img style={{width: '100%', height: '50%'}} src="https://b.zmtcdn.com/data/o2_assets/e067a1cf0d3fe27b366402b98b994e9f1716296909.png" 
+<img style={{width: '100%', height: '30%'}} src="https://b.zmtcdn.com/data/o2_assets/e067a1cf0d3fe27b366402b98b994e9f1716296909.png" 
 alt="image 1"
   className="h-full w-full object-cover"
   />
-        <img style={{width: '100%', height: '50%'}} src="https://b.zmtcdn.com/data/o2_assets/85e14f93411a6b584888b6f3de3daf081716296829.png" 
+        <img style={{width: '100%', height: '30%'}} src="https://b.zmtcdn.com/data/o2_assets/85e14f93411a6b584888b6f3de3daf081716296829.png" 
 alt="image 1"
   className="h-full w-full object-cover"
   />
-        <img style={{width: '100%', height: '50%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/a354077c3747d8f6.png?q=20" 
+        <img style={{width: '100%', height: '30%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/a354077c3747d8f6.png?q=20" 
 alt="image 1"
   />
       </Carousel>
@@ -184,10 +197,8 @@ alt="image 1"
 
 
 
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <Typography variant="h2" color="Black">
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
-      <br></br>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
       <h1 style={{ color: '#130d00' }}><b><div>Welcome to Food Maven!</div></b></h1>
 
@@ -233,11 +244,7 @@ alt="image 1"
        Settings 
                </a> 
        </Option>
-        <button><Option>
-        <a href="/my-app">
-             Logout 
-               </a> 
-          </Option></button>
+ 
       </Select>
     </div>
             </div>

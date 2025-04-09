@@ -10,6 +10,7 @@ import {
 import { MdDelete } from "react-icons/md";
 import { IoCartOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 import {
   Card,
@@ -148,10 +149,13 @@ function App() {
       <a href="#">Admin Home</a>
     </Breadcrumbs>
     
+
+    
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
     <Typography variant="h2" color="Black">
       <br></br>
       <div className="w-72">
+        
   <Select label="Select Meal Status">
     <Option>
       <Chip
