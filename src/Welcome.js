@@ -151,23 +151,22 @@ function Welcome() {
     </Breadcrumbs>
 
     
-    <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-blue-800 overflow-x-auto whitespace-nowrap">
+    <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-white-100 overflow-x-auto whitespace-nowrap">
   {isBannerActive && (
     <>
       <h2>
-        <Typography variant="h6" className="text-md inline-block text-white">
+        <Typography variant="h6" className="text-md inline-block text-red">
           {/* <i>
   🛍️ NEW Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨
           </i> */}
       
-
       {/* cursol images */}
           <Carousel className="rounded-xl">
-<img style={{width: '100%', height: '50%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/373914b13f0b4dfb.jpg?q=20" 
+<img style={{width: '100%', height: '50%'}} src="https://b.zmtcdn.com/data/o2_assets/e067a1cf0d3fe27b366402b98b994e9f1716296909.png" 
 alt="image 1"
   className="h-full w-full object-cover"
   />
-        <img style={{width: '100%', height: '50%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/10e15f15b32bcddc.jpg?q=20" 
+        <img style={{width: '100%', height: '50%'}} src="https://b.zmtcdn.com/data/o2_assets/85e14f93411a6b584888b6f3de3daf081716296829.png" 
 alt="image 1"
   className="h-full w-full object-cover"
   />
