@@ -151,7 +151,7 @@ function Welcome() {
     </Breadcrumbs>
 
     
-    <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-white-800 overflow-x-auto whitespace-nowrap">
+    <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-blue-800 overflow-x-auto whitespace-nowrap">
   {isBannerActive && (
     <>
       <h2>
@@ -160,7 +160,7 @@ function Welcome() {
   🛍️ NEW Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨
           </i> */}
       
-      
+
       {/* cursol images */}
           <Carousel className="rounded-xl">
 <img style={{width: '100%', height: '50%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/373914b13f0b4dfb.jpg?q=20" 
