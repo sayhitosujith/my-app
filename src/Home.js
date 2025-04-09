@@ -1,7 +1,5 @@
 import './App.css';
 import { Badge } from "@material-tailwind/react";
-import { TrashIcon } from "@heroicons/react/24/solid";
-import { Checkbox } from "@material-tailwind/react";
 import { Switch } from "@material-tailwind/react";
 import {
   ArrowDownTrayIcon,
@@ -153,7 +151,9 @@ function App() {
 
     <div className="absolute top-4 right-4 flex items-center space-x-3">
   <a href="">
+  <Badge content="6">
     <IoIosNotificationsOutline color="black" size={30} />
+ </Badge>
   </a>
   <a href="/my-app">
     <FaPowerOff color="black" size={20} />
@@ -204,6 +204,7 @@ function App() {
     </Option>
   </Select>
 </div>
+ </Typography>
 
 
        <br></br>
@@ -211,7 +212,7 @@ function App() {
  {/* Add Meal Button */}
 <div className="relative">
   <div className="absolute top-0 right-0 m-4 flex gap-4">
-    <Button color="red" appearance="primary">
+    <Button color="green" appearance="primary">
       <a href="/AddMeal">+ Add Meal</a>
     </Button>
      {/* Download Button */}
@@ -242,8 +243,7 @@ function App() {
 </div>
 
 <div style={{float: 'right'}}>
-<br></br>
-
+<br></br> <br></br>
  {/* Profile Select Dropdown */}
  <div className="w-full lg:w-1/2">
         <Select label="Profile">
@@ -259,15 +259,10 @@ function App() {
         </Select>
       </div>
 </div>
+ </div>
+ <br></br> <br></br>
 
-
-            </div>
-        </Typography>
-
-
-
-
-        <div className='w-full flex mt-20 gap-5'>
+        <div className='w-full flex mt-35 gap-5'>
             {
                 data.slice(0,5).map((item) => <CardItem item={item} />)
             }
