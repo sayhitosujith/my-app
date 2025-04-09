@@ -11,6 +11,8 @@ import { MdDelete } from "react-icons/md";
 import { IoCartOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { RiLogoutCircleRLine } from "react-icons/ri";
+import { FaPowerOff } from "react-icons/fa6";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 import {
   Card,
@@ -148,6 +150,15 @@ function App() {
       </a>
       <a href="#">Admin Home</a>
     </Breadcrumbs>
+
+    <div className="absolute top-4 right-4 flex items-center space-x-3">
+  <a href="/my-app">
+    <IoIosNotificationsOutline color="black" size={30} />
+  </a>
+  <a href="/my-app">
+    <FaPowerOff color="black" size={20} />
+  </a>
+</div>
     
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
     <Typography variant="h2" color="Black">
@@ -245,11 +256,6 @@ function App() {
           <Option>
             <a href="/Settings">Settings</a>
           </Option>
-          <button>
-            <Option>
-              <a href="/my-app">Logout</a>
-            </Option>
-          </button>
         </Select>
       </div>
 </div>

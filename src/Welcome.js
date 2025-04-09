@@ -201,7 +201,6 @@ alt="image 1"
       <h1 style={{ color: '#130d00' }}><b><div>Welcome to Food Maven!</div></b></h1>
 
       </Typography>
-      <b><hr class="separator" /></b>
  
   
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
