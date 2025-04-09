@@ -149,8 +149,6 @@ function App() {
       <a href="#">Admin Home</a>
     </Breadcrumbs>
     
-
-    
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
     <Typography variant="h2" color="Black">
       <br></br>

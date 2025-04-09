@@ -6,10 +6,8 @@ import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { AiFillCustomerService } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa";
-import { IconButton } from "@material-tailwind/react";
-import react from "react";
-import { Carousel } from "@material-tailwind/react";
-import { RiLogoutCircleRLine } from "react-icons/ri";
+import { FaPowerOff } from "react-icons/fa6";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 import {
   Card,
@@ -152,15 +150,7 @@ function Welcome() {
     </Breadcrumbs>
 
     <div className="opacity-90">
-  {/* Logout Icon */}
-  <div className="absolute top-4 right-3 size={200}">
-      <button>
-        <a href="/my-app">
-        <RiLogoutCircleRLine color="green"/>
-        <span className="text-green-800">Logout</span>    
-               </a> 
-          </button>
-  </div>
+  
 
   {/* Your content below */}
 </div>
@@ -169,12 +159,12 @@ function Welcome() {
     <>
       <h2>
         <Typography variant="h6" className="text-md inline-block text-red">
-          {/* <i>
+          <i>
   🛍️ NEW Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨
-          </i> */}
+          </i>
       
       {/* cursol images */}
-          <Carousel className="rounded-xl">
+          {/* <Carousel className="rounded-xl">
 <img style={{width: '100%', height: '30%'}} src="https://b.zmtcdn.com/data/o2_assets/e067a1cf0d3fe27b366402b98b994e9f1716296909.png" 
 alt="image 1"
   className="h-full w-full object-cover"
@@ -186,8 +176,16 @@ alt="image 1"
         <img style={{width: '100%', height: '30%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/a354077c3747d8f6.png?q=20" 
 alt="image 1"
   />
-      </Carousel>
-
+      </Carousel> */}
+{/* Logout Icon */}
+<div className="absolute top-4 right-4 flex items-center space-x-3">
+  <a href="/my-app">
+    <IoIosNotificationsOutline color="black" size={30} />
+  </a>
+  <a href="/my-app">
+    <FaPowerOff color="black" size={20} />
+  </a>
+</div>
 
         </Typography>
       </h2>
