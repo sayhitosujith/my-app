@@ -6,9 +6,9 @@ import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { AiFillCustomerService } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa";
-import { Button, IconButton } from "@material-tailwind/react";
-import { FcAdvertising } from "react-icons/fc";
-
+import { IconButton } from "@material-tailwind/react";
+import react from "react";
+import { Carousel } from "@material-tailwind/react";
 
 import {
   Card,
@@ -25,8 +25,8 @@ import {
 
 
   const now = new Date();
-  const startDate = new Date('2025-04-08T08:00:00'); // Start time
-  const endDate = new Date('2025-04-10T23:59:59');   // End time
+  const startDate = new Date('2025-04-05T08:00:00'); // Start time
+  const endDate = new Date('2026-04-08T23:59:59');   // End time
 
   const isBannerActive = now >= startDate && now <= endDate;
 
@@ -150,19 +150,37 @@ function Welcome() {
       <a href="#">Welcome</a>
     </Breadcrumbs>
 
-<div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-green-500 overflow-x-auto whitespace-nowrap">
-<FcAdvertising size={35} />
+    
+    <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-white-800 overflow-x-auto whitespace-nowrap">
+  {isBannerActive && (
+    <>
+      <h2>
+        <Typography variant="h6" className="text-md inline-block text-white">
+          {/* <i>
+  🛍️ NEW Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨
+          </i> */}
+      
+      
+      {/* cursol images */}
+          <Carousel className="rounded-xl">
+<img style={{width: '100%', height: '50%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/373914b13f0b4dfb.jpg?q=20" 
+alt="image 1"
+  className="h-full w-full object-cover"
+  />
+        <img style={{width: '100%', height: '50%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/10e15f15b32bcddc.jpg?q=20" 
+alt="image 1"
+  className="h-full w-full object-cover"
+  />
+        <img style={{width: '100%', height: '50%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/a354077c3747d8f6.png?q=20" 
+alt="image 1"
+  />
+      </Carousel>
 
 
-{isBannerActive && (
-          <h2><Typography variant="h6" color="white" className="text-md inline-block"><i>
-   | 🛍️ NEW Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨!
-    </i> </Typography></h2>
-      )}
-
-  <IconButton color="white" variant="text" className="inline-block ml-4">
-    ✖
-  </IconButton>
+        </Typography>
+      </h2>
+    </>
+  )}
 </div>
 
 
