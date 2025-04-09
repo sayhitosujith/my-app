@@ -7,7 +7,8 @@ import { BsCart3 } from "react-icons/bs";
 import { IoCartOutline } from "react-icons/io5";
 import { CiWallet } from "react-icons/ci";
 import { IoLogOutOutline } from "react-icons/io5";
-
+import { FaPowerOff } from "react-icons/fa6";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 import {
   Card,
@@ -150,6 +151,15 @@ function App() {
         <a href="#">Customer_Home</a>
       </Breadcrumbs>
 
+      <div className="absolute top-4 right-4 flex items-center space-x-3">
+  <a href="">
+    <IoIosNotificationsOutline color="black" size={30} />
+  </a>
+  <a href="/my-app">
+    <FaPowerOff color="black" size={20} />
+  </a>
+</div>
+
       <b><hr class="separator" /></b>
 
       <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-yellow-800 overflow-x-auto whitespace-nowrap">
@@ -174,7 +184,7 @@ function App() {
                               </Typography>
               </div>
               <Typography variant="h5" color="blue-gray">
-                Growth
+                
               </Typography>
             </figcaption>
           </figure>
@@ -182,9 +192,6 @@ function App() {
           NEW | 🛍️ Arrivals Alert! Fresh food,Deserts and must-have picks just dropped. Shop now before they're gone! 🔥✨!
         </i> </Typography>
 
-        <IconButton color="white" variant="text" className="inline-block ml-4">
-          ✖
-        </IconButton>
       </div>
       
       <b><hr class="separator" /></b>
@@ -256,18 +263,13 @@ function App() {
           </div>
 
 
-          <Button size="sm" color="orange" className="flex items-center gap-3">
+          <Button size="sm" color="orange" className="flex items-center gap-2">
             <a href="/MyCart">
               My cart
             </a>
-            <IoCartOutline size={25} color="white" /> </Button>
+            <IoCartOutline size={35} color="white" /> </Button>
 
-          <Button size="sm" color="orange" className="flex items-center gap-4">
-            <a href="/my-app">
-              Logout
-            </a>
-            <IoLogOutOutline size={25} color="white" />
-          </Button>
+  
         </div>
 
 

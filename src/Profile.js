@@ -2,6 +2,8 @@ import './App.css';
 import { Badge } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import Popup from 'reactjs-popup';
+import { FaPowerOff } from "react-icons/fa6";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 import {
   Card,
@@ -118,10 +120,21 @@ function Profile() {
       <a href="#">Profiles</a>
 
     </Breadcrumbs>
+
+
+    <div className="absolute top-4 right-4 flex items-center space-x-3">
+  <a href="">
+    <IoIosNotificationsOutline color="black" size={30} />
+  </a>
+  <a href="/my-app">
+    <FaPowerOff color="black" size={20} />
+  </a>
+</div>
+
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" variant="square" div style={{float: 'right'}}></Avatar>
 
     <Typography variant="h2" color="Black">
-      PROFILES  
+      Profiles  
       <br></br>
    <Button> 
    <a href="/Addprofile">

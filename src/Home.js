@@ -152,7 +152,7 @@ function App() {
     </Breadcrumbs>
 
     <div className="absolute top-4 right-4 flex items-center space-x-3">
-  <a href="/my-app">
+  <a href="">
     <IoIosNotificationsOutline color="black" size={30} />
   </a>
   <a href="/my-app">

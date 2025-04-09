@@ -1,6 +1,7 @@
 import './App.css';
 import { Button, Input, Textarea, Breadcrumbs,Typography,Select ,Option,Badge,Avatar} from "@material-tailwind/react";
-
+import { FaPowerOff } from "react-icons/fa6";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 function CustomerCare() {
   return (
@@ -23,8 +24,18 @@ function CustomerCare() {
  </a>    
       </a>
       <a href="#">CustomerCare</a>
-
     </Breadcrumbs>
+
+    <div className="absolute top-4 right-4 flex items-center space-x-3">
+  <a href="">
+    <IoIosNotificationsOutline color="black" size={30} />
+  </a>
+  <a href="/my-app">
+    <FaPowerOff color="black" size={20} />
+  </a>
+</div>
+
+
     <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
     &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
     <br></br>      

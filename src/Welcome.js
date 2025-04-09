@@ -8,6 +8,7 @@ import { FaUsers } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa6";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { Badge } from "@material-tailwind/react";
 
 import {
   Card,
@@ -178,9 +179,12 @@ alt="image 1"
   />
       </Carousel> */}
 {/* Logout Icon */}
-<div className="absolute top-4 right-4 flex items-center space-x-3">
-  <a href="/my-app">
+
+    <div className="absolute top-4 right-4 flex items-center space-x-3">
+  <a href="">
+  <Badge content="6">
     <IoIosNotificationsOutline color="black" size={30} />
+ </Badge>
   </a>
   <a href="/my-app">
     <FaPowerOff color="black" size={20} />
@@ -315,7 +319,7 @@ alt="image 1"
 
 
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" style={{marginRight: "20px"}}  role="button"aria-disabled="false"data-aid="tile" 
-        href="/Profile">    
+        href="/BillingDetails">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>

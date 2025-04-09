@@ -9,7 +9,8 @@ import FileDownloader from './FileDownloader';
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegClone } from "react-icons/fa";
 import { useState } from "react";
-
+import { FaPowerOff } from "react-icons/fa6";
+import { IoIosNotificationsOutline } from "react-icons/io";
 import {
     ArrowDownTrayIcon,
     MagnifyingGlassIcon,
@@ -177,6 +178,16 @@ function Admin_Analytics() {
       </a>
       <a href="#">Admin Analytics</a>
     </Breadcrumbs>
+
+
+    <div className="absolute top-4 right-4 flex items-center space-x-3">
+  <a href="">
+    <IoIosNotificationsOutline color="black" size={30} />
+  </a>
+  <a href="/my-app">
+    <FaPowerOff color="black" size={20} />
+  </a>
+</div>
     <br></br>
     <Typography variant="h3" color="Black">
     Dashboard
