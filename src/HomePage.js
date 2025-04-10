@@ -343,7 +343,7 @@ function Welcome() {
     <div className='flex justify-center items-center'>
        <Typography variant="h2" color="Black">
       <br></br>
-     Customer Success Stories 
+    Meet our Team
    <br></br>
    <br></br>
 
@@ -355,12 +355,12 @@ function Welcome() {
             variant="gradient"
             color="white"
             className="mb-4 grid h-28 place-items-center">
-         <b>One Commune - Virat Kohli</b>
+         <b>Sujith Reddy</b>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
          </CardBody>
           <CardFooter className="pt-0">
-          <img style={{width: '100%', height: '50vh'}} src="https://www.kitchenherald.com/wp-content/uploads/2023/10/Virat-1.png" />
+          <img style={{width: '100%', height: '50vh'}} src="https://lh3.googleusercontent.com/a/ACg8ocJO_DJNoZHUMfLr_B-8BYsh6impbbqrVh9BrO2bddEoMn7j6ea5Ww=s360-c-no" />
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -388,7 +388,7 @@ function Welcome() {
             variant="gradient"
             color="white"
             className="mb-4 grid h-28 place-items-center">
-         <b>Rameshwaram cafe</b>
+         <b>Vidhya Reddy</b>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
          </CardBody>
