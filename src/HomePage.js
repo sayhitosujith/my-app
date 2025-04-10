@@ -141,12 +141,33 @@ function Welcome() {
       <img style={{width: '70%', height: '70vh'}} src="https://homeal.co.in/wp-content/uploads/2024/06/FOOODD.png" />
       
      
-     
-      <br></br>Bringing generational recipes that are unique to each home 
-      Our home chefs are from diverse backgrounds. From Dhoklas to Litti Chokha, and Ragi roti to Idiyappam, the regional delicacies available on Homeal is a fest to explore.And, regional dishes taste best when cooked at home!
-      <br></br>
-     <br></br> 
-
+      <div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '10vh', // Full viewport height
+  }}
+>
+  <h1 style={{ color: '#f2ad18', fontSize: '3rem' }}>
+    <b>Bringing generational recipes that are unique to each home</b>
+  </h1>
+</div>
+      
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '10vh', // Full viewport height
+  }}
+>
+  <h6 style={{ color: '#0a0a0a', fontSize: '1.2rem' }}>
+    <b>      Our home chefs are from diverse backgrounds. From Dhoklas to Litti Chokha, and Ragi roti to Idiyappam, the regional delicacies available on Homeal is a fest to explore.And, regional dishes taste best when cooked at home!
+    </b>
+  </h6>
+</div>
+      
         <br></br>
         <b><hr class="separator" /></b>
 
