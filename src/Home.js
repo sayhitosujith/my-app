@@ -77,7 +77,7 @@ const CardItem = ({item}) => (
 
             <div className="flex items-center justify-between w-full">
             <IoCartOutline size={30} color="green" />
-           <MdDelete size={30} color="red" />
+           <MdDelete size={30} color="black" />
 </div>
 
             <br></br>
@@ -220,7 +220,6 @@ function App() {
       <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download Report
     </Button>
   </div>
- 
 
 <br></br>
 <Button color="green" appearance="primary"> 
