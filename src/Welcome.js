@@ -252,7 +252,7 @@ alt="image 1"
         </Typography>
         <br></br>
 
-<div tilesnumber="4" class="grid grid-cols-1 gap-0 sm:grid-cols-2 md:grid-cols-5">
+<div tilesnumber="4" class="grid grid-cols-1 gap-9 sm:grid-cols-2 md:grid-cols-5">
        
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI"style={{marginRight: "40px"}} role="button"aria-disabled="false"data-aid="tile" 
         href="Home">    
