@@ -393,7 +393,7 @@ function Welcome() {
           <CardBody className="flex flex-col gap-4">
          </CardBody>
           <CardFooter className="pt-0">
-          <img style={{width: '100%', height: '50vh'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyCtZ3TP29Od5dmWVgLi3KGGbiR9dBS12NVnzhRQeTDg&s" />
+          <img style={{width: '100%', height: '50vh'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQav7E1F1JcyozZIOKqNhORPf3WVfq_Jhc-A&s" />
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -430,6 +430,11 @@ Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to th
           <Typography variant="h5" className="mb-6">
              Maven Meal
           </Typography>
+
+          <Button variant="gradient" className="flex-shrink-0" >
+          Download for free 
+          </Button>
+
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
@@ -449,6 +454,7 @@ Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to th
                       className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
                     >
                       {link}
+                      
                     </Typography>
                   </li>
                 ))}
