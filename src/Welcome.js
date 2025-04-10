@@ -21,6 +21,7 @@ import {
   Option,
   Breadcrumbs,
   Avatar,
+  Button
 
 } from "@material-tailwind/react";
 
@@ -103,7 +104,7 @@ const CardItem = ({item}) => (
           <CardHeader
               variant="gradient"
               color="green"
-              className="mb-6 grid h-10 place-items-center">
+              className="mb-6 grid h-10 place-items-centergap-1 bg-blue-500/25 p-1">
               <Typography variant="h2" color="grey" >
                 {item.id} : 
                 {item.name}: 
@@ -161,24 +162,21 @@ function Welcome() {
     <>
       <h2>
         <Typography variant="h6" className="text-md inline-block text-red">
-          {/* <i>
+          <i>
   🛍️ NEW Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! 🔥✨
-          </i> */}
+          </i>
       
       {/* cursol images */}
-          <Carousel className="rounded-xl">
+          {/* <Carousel className="rounded-xl">
 <img style={{width: '100%', height: '30%'}} src="https://b.zmtcdn.com/data/o2_assets/e067a1cf0d3fe27b366402b98b994e9f1716296909.png" 
 alt="image 1"
   className="h-full w-full object-cover"
   />
-        <img style={{width: '100%', height: '30%'}} src="https://b.zmtcdn.com/data/o2_assets/85e14f93411a6b584888b6f3de3daf081716296829.png" 
+        <img style={{width: '100%', height: '20%'}} src="https://b.zmtcdn.com/data/o2_assets/85e14f93411a6b584888b6f3de3daf081716296829.png" 
 alt="image 1"
   className="h-full w-full object-cover"
   />
-        <img style={{width: '100%', height: '30%'}} src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/a354077c3747d8f6.png?q=20" 
-alt="image 1"
-  />
-      </Carousel>
+      </Carousel> */}
 
 
 {/* Logout Icon */}
@@ -256,81 +254,85 @@ alt="image 1"
 
 <div tilesnumber="4" class="grid grid-cols-1 gap-0 sm:grid-cols-2 md:grid-cols-6">
        
-
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI"style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" 
-        href="/Home">    
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI"style={{marginRight: "40px"}} role="button"aria-disabled="false"data-aid="tile" 
+        href="Home">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
 
-
-       <div style={{ border: "1px solid black", display: "flex",alignItems: "center", alignItems: "center", padding: "10px" }}>
-       <RiAdminFill size={100} color="#3BB143" /></div>
-       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; <b>ADMIN</b></span>
+       <Button
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       <RiAdminFill size={100} color="#3BB143" />
+       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>ADMIN</b></span>
+       </Button>
         </a>
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile"
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button" aria-disabled="false" data-aid="tile"
+         
          href="Customer_Login">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-
-
-
-       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <CiUser size={100} color="#3BB143" /></div>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; <b>CUSTOMER</b></span>
-        </a>
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile" 
-        href="/Admin_Analytics">    
-       <span class="MuiButton-label">
-<g fill="none" fill-rule="evenodd"></g>
-<span class="MuiTouchRipple-root"></span>
-       </span>
-
-
-       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <TbBrandGoogleAnalytics  size={100} color="#3BB143" /></div>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;<b>ANALYTICS</b></span>
-        </a>
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKK" style={{marginRight: "20px"}} role="button"aria-disabled="false"data-aid="tile"
-         href="/CustomerCare">    
-       <span class="MuiButton-label">
-<g fill="none" fill-rule="evenodd"></g>
-    <span class="MuiTouchRipple-root"></span>
-       </span>
        
-       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-      <AiFillCustomerService  size={100} color="#3BB143" /></div>
-      <span className="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp;<b>CUSTOMER CARE</b></span>
-    
+
+       <Button
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       <CiUser size={100} color="#3BB143" />
+       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>CUSTOMER</b></span>
+       </Button>
         </a>
-
-
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" style={{marginRight: "20px"}}  role="button"aria-disabled="false"data-aid="tile" 
-        href="/Profile">    
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button" aria-disabled="false" data-aid="tile"
+         
+         href="Admin_Analytics">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <FaUsers size={100} color="#3BB143"  /></div>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp; <b>PROFILES</b></span>
+
+       <Button
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       <TbBrandGoogleAnalytics size={100} color="#3BB143" />
+       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>ANALYTICS</b></span>
+       </Button>
         </a>
-
-
-        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKH" style={{marginRight: "20px"}}  role="button"aria-disabled="false"data-aid="tile" 
-        href="/BillingDetails">    
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button" aria-disabled="false" data-aid="tile"
+         
+         href="CustomerCare">    
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>
        </span>
-       <div style={{ border: "1px solid black", display: "flex", alignItems: "center", padding: "10px" }}>
-       <FaFileInvoiceDollar size={100} color="#3BB143"  /></div>
-        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi">&nbsp;&nbsp; &nbsp; <b>BILLING</b></span>
-        </a>
 
+       <Button
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       <FaUsers size={100} color="#3BB143" />
+       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>CUSTOMER CARE</b></span>
+       </Button>
+        </a>
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button" aria-disabled="false" data-aid="tile"
+         
+         href="Profile">    
+       <span class="MuiButton-label">
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
+
+       <Button
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       <FaFileInvoiceDollar size={100} color="#3BB143" />
+       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>PROFILES</b></span>
+       </Button>
+        </a>
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button" aria-disabled="false" data-aid="tile"
+         
+         href="Customer_Login">    
+       <span class="MuiButton-label">
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
+      
+        </a>
 </div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
