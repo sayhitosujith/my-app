@@ -138,8 +138,13 @@ function Welcome() {
             </div>
         </Typography>
  
-      <img style={{width: '100%', height: '100vh'}} src="https://appdukaan.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2021/07/uber-eats-clone-app-development.jpg.webp" />
-       
+      <img style={{width: '70%', height: '70vh'}} src="https://homeal.co.in/wp-content/uploads/2024/06/FOOODD.png" />
+      
+     
+     
+      <br></br>Bringing generational recipes that are unique to each home 
+      Our home chefs are from diverse backgrounds. From Dhoklas to Litti Chokha, and Ragi roti to Idiyappam, the regional delicacies available on Homeal is a fest to explore.And, regional dishes taste best when cooked at home!
+      <br></br>
      <br></br> 
 
         <br></br>
@@ -340,6 +345,7 @@ function Welcome() {
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
         </Typography>     
           </CardFooter>  
+          
         <Typography variant="small" className="mt-6 flex justify-center">
         <b>Celebrated cricketer Virat Kohli is a culinary connoisseur at heart—but you knew that already. Sepia-toned pictures from his childhood regularly make the rounds on online fanclubs, capturing the twinkle in his eyes as he gingerly lifts a burger or crunches down on potato chips. But perhaps what the photos fail to convey at first glance is that food is more than just a passion for the Delhi boy—it is a ritual. Today, he credits the simple joys of coming home to a steaming plate of his mother’s rajma chawal or bingeing on chole bathure in the labyrinthine lanes of Delhi as a formative memory of growing up. His childhood coach, meanwhile, speaks fondly of the time when the young trainee would implore him to leave his lunch behind so they could instead feast on the biryani and kebabs he’d 
             brought from home. While Kohli would go on to achieve immense success and proclaim endless laurels in the world of cricket, it is perhaps this love for bringing people together over food that serves as the raw, beating heart of his culinary venture, one8 Commune.</b>
