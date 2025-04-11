@@ -89,7 +89,7 @@ function ResetPassword() {
         </Card>
 
         {/* Logout Icon */}
-            <div className="absolute top-4 right-4 flex items-center space-x-3">
+            <div className="absolute top-4 right-4 flex items-center space-x-8">
           <a href="">
           <Badge content="6">
             <IoIosNotificationsOutline color="black" size={30} />
