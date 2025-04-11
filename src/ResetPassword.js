@@ -1,5 +1,7 @@
 import './App.css';
-
+import { FaPowerOff } from "react-icons/fa6";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { Badge } from "@material-tailwind/react";
 
 import {
   Card,
@@ -62,7 +64,7 @@ function ResetPassword() {
             <br></br>
 
             <Button variant="gradient" fullWidth>
-            <a href="/">
+            <a href="/resetpassword">
                CANCEL 
                </a>  
             </Button>
@@ -85,6 +87,18 @@ function ResetPassword() {
            </Typography>
 
         </Card>
+
+        {/* Logout Icon */}
+            <div className="absolute top-4 right-4 flex items-center space-x-3">
+          <a href="">
+          <Badge content="6">
+            <IoIosNotificationsOutline color="black" size={30} />
+         </Badge>
+          </a>
+          <a href="/my-app">
+            <FaPowerOff color="black" size={20} />
+          </a>
+        </div>
       </div>
       <img style={{width: '50%', height: '100vh'}} src="https://courseuniv.com/app/assets/images/register_02.gif" />
     </div>
