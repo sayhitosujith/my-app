@@ -31,9 +31,31 @@ function ResetPassword() {
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
-            <Input label="Old Password *" size="lg" />
-            <Input label="New Password  *" size="lg" />
-            <Input label="confirm Password  *" size="lg" />
+            
+          <Input
+  label={
+    <>
+      Old Password <span className="text-red-500"> *</span>
+    </>
+  }
+  size="lg"
+/>
+<Input
+  label={
+    <>
+      New Password <span className="text-red-500"> *</span>
+    </>
+  }
+  size="lg"
+/>
+<Input
+  label={
+    <>
+      Confirm Password <span className="text-red-500"> *</span>
+    </>
+  }
+  size="lg"
+/>
            
             <Checkbox
           label={
