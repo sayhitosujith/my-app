@@ -1,5 +1,7 @@
 import './App.css';
 import { Badge } from "@material-tailwind/react";
+import { RiAppleLine } from "react-icons/ri";
+import { GrAndroid } from "react-icons/gr";
 
 
 import {
@@ -431,9 +433,11 @@ Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to th
              Maven Meal
           </Typography>
 
-          <Button variant="gradient" className="flex-shrink-0" >
-          Download for free 
-          </Button>
+          <div className="flex items-center gap-2 text-black text-sm ml-auto">
+          <b><i className="text-xl">DOWNLOAD FOR FREE - </i></b>
+           <RiAppleLine size={30} color="black" />
+          <GrAndroid size={30} color="black" />
+          </div>
 
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (

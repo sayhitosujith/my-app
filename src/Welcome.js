@@ -104,8 +104,8 @@ const CardItem = ({item}) => (
           <CardHeader
               variant="gradient"
               color="green"
-              className="mb-6 grid h-10 place-items-centergap-1 bg-blue-500/25 p-1">
-              <Typography variant="h2" color="grey" >
+              className="mb-18 grid h-18 place-items-centergap-4 bg-blue-500/25 p-1">
+              <Typography variant="h1" color="green" >
                 {item.id} : 
                 {item.name}: 
              </Typography>
@@ -190,7 +190,6 @@ alt="image 1"
     <FaPowerOff color="black" size={30} />
   </a>
 </div>
-
         </Typography>
       </h2>
     </>
