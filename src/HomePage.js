@@ -435,8 +435,8 @@ Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to th
 
           <div className="flex items-center gap-2 text-black text-sm ml-auto">
           <b><i className="text-xl">DOWNLOAD FOR FREE - </i></b>
-           <RiAppleLine size={30} color="black" />
-          <GrAndroid size={30} color="black" />
+           <RiAppleLine size={30} color="green" />
+          <GrAndroid size={30} color="green" />
           </div>
 
           <div className="grid grid-cols-3 justify-between gap-4">
