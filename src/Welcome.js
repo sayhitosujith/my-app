@@ -183,11 +183,11 @@ alt="image 1"
     <div className="absolute top-4 right-4 flex items-center space-x-3">
   <a href="">
   <Badge content="6">
-    <IoIosNotificationsOutline color="black" size={30} />
+    <IoIosNotificationsOutline color="black" size={40} />
  </Badge>
   </a>
   <a href="/my-app">
-    <FaPowerOff color="black" size={20} />
+    <FaPowerOff color="black" size={30} />
   </a>
 </div>
 
