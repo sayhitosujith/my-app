@@ -157,13 +157,13 @@ function Welcome() {
 
   {/* Your content below */}
 </div>
-    <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-orange-700 overflow-x-auto whitespace-nowrap">
+    <div className="mb-5 shadow-sm px-4 py-7 flex justify-center items-center bg-green-500 overflow-x-auto whitespace-nowrap">
   {isBannerActive && (
     <>
       <h2>
-      <Typography variant="h6" className="text-md inline-block text-white">
+      <Typography variant="h1" className="text-md inline-block text-white">
           <i>
-  🛍️ NEW Arrivals Alert! Fresh styles, hot trends, and must-have picks just dropped. Shop now before they're gone! .{' '}🔥✨
+  🛍️ NEW ARRIVALS ALLERT ! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. Don’t miss out — shop your favorites now! 🍽️💫{' '}🔥✨
           </i>
       
       {/* cursol images */}
