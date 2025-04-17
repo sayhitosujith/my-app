@@ -2,7 +2,7 @@ import './App.css';
 import { Badge } from "@material-tailwind/react";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
-
+import Flag from 'react-world-flags';
 
 import {
   Card,
@@ -473,6 +473,10 @@ Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to th
           >
             &copy; {currentYear} <a href="https://material-tailwind.com/">Food Maven</a>. All
             Rights Reserved.
+            <div className="flex items-center space-x-2">
+      <span className="text-lg font-semibold">MADE IN INDIA</span>
+      <Flag code="IN" style={{ width: 30, height: 20 }} />
+      </div>
           </Typography>
           <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
             <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
