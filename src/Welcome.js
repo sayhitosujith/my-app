@@ -9,7 +9,7 @@ import { FaFileInvoiceDollar } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa6";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Badge } from "@material-tailwind/react";
-import { Carousel } from "@material-tailwind/react";
+import Flag from 'react-world-flags';
 
 import {
   Card,
@@ -136,7 +136,7 @@ function Welcome() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-4 w-4"
-          viewBox="0 0 20 20"
+          viewBox="0 0 30 30"
           fill="currentColor"
         >
           <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -404,8 +404,10 @@ alt="image 1"
             &copy; {currentYear}<a href="https://material-tailwind.com/"> - Food Maven</a>. All
             Rights Reserved.
             <br></br>
-            MAKE IN INDIA - {currentYear} 
-
+            <div className="flex items-center space-x-2">
+      <span className="text-lg font-semibold">MADE IN INDIA</span>
+      <Flag code="IN" style={{ width: 30, height: 20 }} />
+      </div>
           </Typography>
           <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
             <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
