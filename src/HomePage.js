@@ -345,12 +345,12 @@ function Welcome() {
     <div className='flex justify-center items-center'>
        <Typography variant="h2" color="Black">
       <br></br>
-    Meet our Team
+      Leadership Team
    <br></br>
    <br></br>
 
 
-     <div className="flex flex-row gap-5">
+     <div className="flex flex-row gap-2">
       <div className='w-1/2 h-screen flex items-center justify-center'>
         <Card className="w-98">
           <CardHeader
@@ -362,7 +362,7 @@ function Welcome() {
           <CardBody className="flex flex-col gap-4">
          </CardBody>
           <CardFooter className="pt-0">
-          <img style={{width: '100%', height: '50vh'}} src="https://lh3.googleusercontent.com/a/ACg8ocJO_DJNoZHUMfLr_B-8BYsh6impbbqrVh9BrO2bddEoMn7j6ea5Ww=s360-c-no" />
+          <img style={{width: '100%', height: '50vh'}} src="https://robotmorning.com/wp-content/uploads/2020/04/Emmeram.jpg" />
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -395,7 +395,7 @@ function Welcome() {
           <CardBody className="flex flex-col gap-4">
          </CardBody>
           <CardFooter className="pt-0">
-          <img style={{width: '100%', height: '50vh'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQav7E1F1JcyozZIOKqNhORPf3WVfq_Jhc-A&s" />
+          <img style={{width: '100%', height: '50vh'}} src="https://robotmorning.com/wp-content/uploads/2020/04/Dan2.jpg" />
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
