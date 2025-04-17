@@ -77,7 +77,7 @@ const CardItem = ({item}) => (
 
             <div className="flex items-center justify-between w-full">
             {/* <IoCartOutline size={30} color="green" /> */}
-           <MdDelete size={30} color="orange" />
+           <MdDelete size={30} color="red" />
            </div>
 
             <br></br>
