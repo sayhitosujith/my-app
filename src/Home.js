@@ -76,9 +76,9 @@ const CardItem = ({item}) => (
             <Typography variant="h10" color="black">
 
             <div className="flex items-center justify-between w-full">
-            <IoCartOutline size={30} color="green" />
-           <MdDelete size={30} color="black" />
-</div>
+            {/* <IoCartOutline size={30} color="green" /> */}
+           <MdDelete size={30} color="orange" />
+           </div>
 
             <br></br>
             
