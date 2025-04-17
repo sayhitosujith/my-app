@@ -152,12 +152,12 @@ function Welcome() {
       <a href="#">Welcome</a>
     </Breadcrumbs>
 
-    <div className="opacity-90">
+    <div className="opacity-70">
   
 
   {/* Your content below */}
 </div>
-    <div className="mb-5 shadow-sm px-4 py-7 flex justify-center items-center bg-green-500 overflow-x-auto whitespace-nowrap">
+    <div className="mb-5 shadow-sm px-4 py-7 flex justify-center items-center bg-orange-500 overflow-x-auto whitespace-nowrap">
   {isBannerActive && (
     <>
       <h2>
