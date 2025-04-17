@@ -83,11 +83,11 @@ const CardItem = ({item}) => (
             <br></br>
             
       <div className="w-72">
-      <Select label="Select Item">
-        <Option>Chapati</Option>
-        <Option>Poori</Option>
-        <Option>Dosa</Option>
-        <Option>Idli & Vada</Option>
+      <Select label="Select Optional Item">
+        <Option>Pickel pocket</Option>
+        <Option>Extra salt</Option>
+        <Option>Extra Fruits</Option>
+        <Option>Soft drinks</Option>
 
 
       </Select>
