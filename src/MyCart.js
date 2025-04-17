@@ -3,6 +3,7 @@ import { Avatar } from "@material-tailwind/react";
 import React from 'react';
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { Alert } from "@material-tailwind/react";
+import { useState } from 'react'; // Import useState
 
 import {
   Card,
@@ -24,8 +25,19 @@ import {
 
 function MyCart() {
   const [open, setOpen] = React.useState(false);
- 
+  const [count, setCount] = useState(1); // State to track the count
+
   const handleOpen = () => setOpen(!open);
+  const incrementCount = () => {
+    setCount(count + 1); // Increment the count
+  };
+
+  const decrementCount = () => {
+    if (count > 1) {
+      setCount(count - 1); // Decrement the count, but not below 1
+    }
+  };
+
   return (
 
     <div className="flex flex-row gap-5">
@@ -45,11 +57,26 @@ function MyCart() {
         alt="nature image"
       />
           <Chip variant="ghost"color="green"size="sm"value="Avaialble" icon={ <span className="mx-auto mt-1 block h-2 w-2 rounded-full bg-green-900 content-['']" />  }/>
-          <b> <div><button><h1 style={{ color: 'red' }}><b><div>-</div></b></h1></button>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <button><h1 style={{ color: 'Red' }}><b><div>
-          +
-          </div></b></h1></button></div></b>
+          <b>  <div>
+                <button onClick={decrementCount}>
+                  <h1 style={{ color: 'red' }}>
+                    <b>
+                      <div>-</div>
+                    </b>
+                  </h1>
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>{count}</span> {/* Display the count */}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button onClick={incrementCount}>
+                  <h1 style={{ color: 'Red' }}>
+                    <b>
+                      <div>+</div>
+                    </b>
+                  </h1>
+                </button>
+              </div>
+</b>
          <Button
             size="sm"
             variant="text"
