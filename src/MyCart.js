@@ -236,7 +236,6 @@ function MyCart() {
       </card>
 
     </div>
-    
 
   );
 

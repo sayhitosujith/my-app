@@ -39,7 +39,7 @@ function formatCardNumber(value: string) {
   }
 }
  
-function formatExpires(value: string) {
+function formatExpires(value) {
   return value
     .replace(/[^0-9]/g, "")
     .replace(/^([2-9])$/g, "0$1")
