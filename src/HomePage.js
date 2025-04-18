@@ -3,7 +3,6 @@ import { Badge } from "@material-tailwind/react";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import Flag from 'react-world-flags';
-
 import {
   Card,
   CardHeader,
@@ -104,7 +103,7 @@ function Welcome() {
     </Breadcrumbs>
 
     <div style={{float: 'right'}}>
-    <Button color="orange" appearance="primary"> 
+    <Button color="green" appearance="primary"> 
            <a href="/Customer_Home">
            Order your Box Online
                </a> 
@@ -151,8 +150,8 @@ function Welcome() {
     height: '10vh', // Full viewport height
   }}
 >
-  <h1 style={{ color: '#f2ad18', fontSize: '3rem' }}>
-    <b>Bringing generational recipes that are unique to each home</b>
+  <h1 style={{ color: '#2ae319', fontSize: '3rem' }}>
+  <i> <b>Bringing generational recipes that are unique to each home</b></i> 
   </h1>
 </div>
       
