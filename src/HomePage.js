@@ -429,7 +429,7 @@ Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to th
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
           <Typography variant="h5" className="mb-6">
-             Maven Meal
+             Food Maven
           </Typography>
 
           <div className="flex items-center gap-2 text-black text-sm ml-auto">

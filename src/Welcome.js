@@ -100,15 +100,15 @@ function Example() {
 
 const CardItem = ({item}) => (
     
-    <Card className="w-96">
+    <Card className="w-96" >
           <CardHeader
               variant="gradient"
               color="green"
-              className="mb-18 grid h-18 place-items-centergap-4 bg-blue-500/25 p-1">
-              <Typography variant="h1" color="green" >
-                {item.id} : 
-                {item.name}: 
-             </Typography>
+              style={{ backgroundColor: "#1c8aeb" }}
+              className="mb-18 grid h-18 place-items-center gap-4 bg-blue-500/25 p-1">
+              <Typography variant="h1" color="green">
+                {item.id} : {item.name}
+              </Typography>
             </CardHeader>
 
             <div className='flex justify-center items-center'>
