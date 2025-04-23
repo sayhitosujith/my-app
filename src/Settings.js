@@ -4,6 +4,7 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 import { PencilIcon } from '@heroicons/react/24/outline';
 import Popup from 'reactjs-popup';
 import { Spinner } from "@material-tailwind/react";
+import React, { useState } from 'react';
 
 
 import {
@@ -69,6 +70,33 @@ const CardItem = ({item}) => (
 )
 
 function Settings() {
+  // State to manage switch values
+  const [settings, setSettings] = useState({
+    allow24x7: false,
+    allowCancellation: false,
+    allowCustomerCare: false,
+    allowPaymentOnline: false,
+    allowCOD: false,
+    allowEditOrder: false,
+    allowRating: false,
+    allowAddTip: false,
+    enableQRCode: false,
+  });
+
+    // Handle switch toggle
+    const handleSwitchChange = (key) => {
+      setSettings((prev) => ({
+        ...prev,
+        [key]: !prev[key],
+      }));
+    };
+  
+    // Handle save action
+    const handleSave = () => {
+      console.log("Saved Settings:", settings);
+      alert("Settings saved successfully!");
+      // Here, you can send the `settings` object to your backend API
+    };
   return (
     <div className="p-10">
       <br></br>
@@ -264,7 +292,7 @@ function Settings() {
 
       <div style={{ float: 'right' }}>
         <a href="/Welcome">
-          <Button color="green" appearance="primary">
+          <Button color="green" appearance="primary" onClick={handleSave}>
             SAVE
           </Button>
         </a>
