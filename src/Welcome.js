@@ -10,6 +10,8 @@ import { FaPowerOff } from "react-icons/fa6";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Badge } from "@material-tailwind/react";
 import Flag from 'react-world-flags';
+import { IoSettingsOutline } from "react-icons/io5";
+
 
 import {
   Card,
@@ -251,7 +253,7 @@ alt="image 1"
         </Typography>
         <br></br>
 
-<div tilesnumber="4" class="grid grid-cols-1 gap-9 sm:grid-cols-2 md:grid-cols-5">
+<div tilesnumber="4" class="grid grid-cols-1 gap-9 sm:grid-cols-2 md:grid-cols-6">
        
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKI"style={{marginRight: "40px"}} role="button"aria-disabled="false"data-aid="tile" 
         href="Home">    
@@ -324,8 +326,20 @@ alt="image 1"
        </Button>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button" aria-disabled="false" data-aid="tile"
-         
-         href="Customer_Login">    
+         href="Settings">    
+       <span class="MuiButton-label">
+<g fill="none" fill-rule="evenodd"></g>
+<span class="MuiTouchRipple-root"></span>
+       </span>
+
+       <Button
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       <IoSettingsOutline size={100} color="#3BB143" />
+       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>SETTINGS</b></span>
+       </Button>
+        </a>
+        <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button" aria-disabled="false" data-aid="tile"
+         href="Settings">
        <span class="MuiButton-label">
 <g fill="none" fill-rule="evenodd"></g>
 <span class="MuiTouchRipple-root"></span>

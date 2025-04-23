@@ -124,11 +124,7 @@ function DeliveryBoy() {
         }
 
           <div className="w-full mb-2">
-          <Tooltip content="Edit Settings" >
-                        <IconButton variant="text">
-                          <PencilIcon className="h-4 w-4" />
-                        </IconButton>
-                      </Tooltip>
+        
           <b><hr class="separator" /></b>
 
             <Typography className="!font-bold" color="green">
@@ -138,15 +134,14 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small" >
                  <td className={classes}>
-        <Checkbox label="Allow Customer Login" color="green"/>
-        <Checkbox label="Allow Schedule Tasks"color="green" />
-        <Checkbox label="Allow Customer to Update Order Details"color="green" />
-        <Checkbox label="Allow Customer to Manage Users"color="green" />
-        <Checkbox label="Allow Customer for an International access" color="green"/>
-        <Checkbox label="Allow Customer to Reject Order" color="green"/>
-                      
-                    </td>
-        
+        <Checkbox label="Allow Customer Login" color="green"/><br></br>
+        <Checkbox label="Allow Schedule Tasks"color="green" /><br></br>
+        <Checkbox label="Allow Customer to Update Order Details"color="green" /><br></br>
+        <Checkbox label="Allow Customer to Manage Users"color="green" /><br></br>
+        <Checkbox label="Allow Customer for an International access" color="green"/><br></br>
+        <Checkbox label="Allow Customer to Reject Order" color="green"/><br></br>
+                       </td>
+
         </Typography>
           </div>
       </div>
@@ -161,14 +156,14 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small"
             >
-        <Checkbox label="Allow Customer " color="green"/>
-        <Checkbox label="Allow Analytics " color="green"/>
-        <Checkbox label="Allow Customer Care"color="green" />
-        <Checkbox label="Allow Profiles "color="green" />
-        <Checkbox label="Allow Billing Details " color="green"/>
-        <Checkbox label="Allow Adding Delivery Captain "color="green" />
-        <Checkbox label="Allow Adding Meal " color="green"/>
-        <Checkbox label="Allow Updating CopyRight" color="green"/>
+        <Checkbox label="Allow Customer " color="green"/><br></br>
+        <Checkbox label="Allow Analytics " color="green"/><br></br>
+        <Checkbox label="Allow Customer Care"color="green" /><br></br>
+        <Checkbox label="Allow Profiles "color="green" /><br></br>
+        <Checkbox label="Allow Billing Details " color="green"/><br></br>
+        <Checkbox label="Allow Adding Delivery Captain "color="green" /><br></br>
+        <Checkbox label="Allow Adding Meal " color="green"/><br></br>
+        <Checkbox label="Allow Updating CopyRight" color="green"/><br></br>
 
         </Typography>
           </div>
@@ -182,15 +177,15 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small"
             >
-        <Checkbox label="Allow 24/7 " color="green"/>
-        <Checkbox label="Allow Cancellation" color="green"/>
-        <Checkbox label="Allow Access to Customer Care Number" />
-        <Checkbox label="Allow Payment Online "color="green" />
-        <Checkbox label="Allow COD "color="green" />
-        <Checkbox label="Allow Edit Order "color="green" />
-        <Checkbox label="Allow Rating "color="green" />
-        <Checkbox label="Allow Add Tip"color="green" />
-        <Checkbox label="Enable QR Code"color="green" />
+        <Checkbox label="Allow 24/7 " color="green"/><br></br>
+        <Checkbox label="Allow Cancellation" color="green"/><br></br>
+        <Checkbox label="Allow Access to Customer Care Number" /><br></br>
+        <Checkbox label="Allow Payment Online "color="green" /><br></br>
+        <Checkbox label="Allow COD "color="green" /><br></br>
+        <Checkbox label="Allow Edit Order "color="green" /><br></br>
+        <Checkbox label="Allow Rating "color="green" /><br></br>
+        <Checkbox label="Allow Add Tip"color="green" /><br></br>
+        <Checkbox label="Enable QR Code"color="green" /><br></br>
 
         </Typography>
           </div>
@@ -203,16 +198,16 @@ function DeliveryBoy() {
               className="mt-1 !font-normal !text-gray-600"
               variant="small"
             >
-        <Checkbox label="Allow Add Meal "color="green" />
-        <Checkbox label="Enable 24/7 "color="green" />
-        <Checkbox label="Allow Cancellation"color="green" />
-        <Checkbox label="Allow Access to Restaurant Number" color="green"/>
-        <Checkbox label="Allow Payment Online " color="green"/>
-        <Checkbox label="Enable COD "color="green" />
-        <Checkbox label="Enable Edit Order "color="green" />
-        <Checkbox label="Allow Restaurant Rating " color="green"/>
+        <Checkbox label="Allow Add Meal "color="green" /><br></br>
+        <Checkbox label="Enable 24/7 "color="green" /><br></br>
+        <Checkbox label="Allow Cancellation"color="green" /><br></br>
+        <Checkbox label="Allow Access to Restaurant Number" color="green"/><br></br>
+        <Checkbox label="Allow Payment Online " color="green"/><br></br>
+        <Checkbox label="Enable COD "color="green" /><br></br>
+        <Checkbox label="Enable Edit Order "color="green" /><br></br>
+        <Checkbox label="Allow Restaurant Rating " color="green"/><br></br>
         <Checkbox label="Allow Add Tip"color="green" /><br></br>
-        <Checkbox label="Allow Download Invoice"color="green" />
+        <Checkbox label="Allow Download Invoice"color="green" /><br></br>
 
         </Typography>
           </div>
