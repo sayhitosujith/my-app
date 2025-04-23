@@ -20,7 +20,7 @@ import {
   Rating,
   Checkbox,
   classes,
-  Tooltip,
+  Switch,
   IconButton
 
 } from "@material-tailwind/react";
@@ -112,142 +112,150 @@ function Settings() {
         </div>
       </Typography>
 
+      
+
       {/* Customer Settings Section */}
       <b>
-        <hr className="separator" />
-      </b>
-      <div className="w-full mb-3">
-        <Typography className="!font-bold" color="green">
-          CUSTOMER SETTINGS
-        </Typography>
-        <Typography
-          className="mt-1 !font-normal !text-gray-600"
-          variant="small"
-        >
-          <Checkbox label="Allow 24/7 " color="green" />
-          <br></br>
-          <Checkbox label="Allow Cancellation" color="green" />
-          <br></br>
-          <Checkbox label="Allow Access to Customer Care Number" />
-          <br></br>
-          <Checkbox label="Allow Payment Online " color="green" />
-          <br></br>
-          <Checkbox label="Allow COD " color="green" />
-          <br></br>
-          <Checkbox label="Allow Edit Order " color="green" />
-          <br></br>
-          <Checkbox label="Allow Rating " color="green" />
-          <br></br>
-          <Checkbox label="Allow Add Tip" color="green" />
-          <br></br>
-          <Checkbox label="Enable QR Code" color="green" />
-          <br></br>
-        </Typography>
-      </div>
+  <hr className="separator mb-4" /> {/* Added margin-bottom */}
+</b>
+<div className="grid grid-cols-4 gap-x-4 gap-y-4">
+  <Typography className="col-span-2 !font-bold" color="BLACK">
+    SUPER ADMIN SETTINGS
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow 24/7" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Cancellation" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Access to Customer Care Number" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Payment Online" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow COD" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Edit Order" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Rating" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Add Tip" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Enable QR Code" color="green" />
+  </Typography>
+</div>
 
       {/* Account Settings Section */}
       <b>
-        <hr className="separator" />
-      </b>
-      <div className="w-full mb-2">
-        <Typography className="!font-bold" color="green">
-          ACCOUNT SETTINGS
-        </Typography>
-        <Typography
-          className="mt-1 !font-normal !text-gray-600"
-          variant="small"
-        >
-          <td className={classes}>
-            <Checkbox label="Allow Customer Login" color="green" />
-            <br></br>
-            <Checkbox label="Allow Schedule Tasks" color="green" />
-            <br></br>
-            <Checkbox
-              label="Allow Customer to Update Order Details"
-              color="green"
-            />
-            <br></br>
-            <Checkbox label="Allow Customer to Manage Users" color="green" />
-            <br></br>
-            <Checkbox
-              label="Allow Customer for an International access"
-              color="green"
-            />
-            <br></br>
-            <Checkbox label="Allow Customer to Reject Order" color="green" />
-            <br></br>
-          </td>
-        </Typography>
-      </div>
+  <hr className="separator mb-4" /> {/* Added margin-bottom */}
+</b>
+<div className="grid grid-cols-4 gap-x-6 gap-y-4 mt-4"> {/* Added margin-top */}
+  <Typography className="col-span-2 !font-bold" color="BLACK">
+    CUSTOMER SETTINGS
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Customer Login" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Schedule Tasks" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Customer to Update Order Details" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Customer to Manage Users" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Customer for an International access" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Customer to Reject Order" color="green" />
+  </Typography>
+</div>
 
       {/* Admin Page Settings Section */}
       <b>
-        <hr className="separator" />
-      </b>
-      <div className="w-full mb-3">
-        <Typography className="!font-bold" color="green">
-          ADMIN PAGE SETTINGS
-        </Typography>
-        <Typography
-          className="mt-1 !font-normal !text-gray-600"
-          variant="small"
-        >
-          <Checkbox label="Allow Customer " color="green" />
-          <br></br>
-          <Checkbox label="Allow Analytics " color="green" />
-          <br></br>
-          <Checkbox label="Allow Customer Care" color="green" />
-          <br></br>
-          <Checkbox label="Allow Profiles " color="green" />
-          <br></br>
-          <Checkbox label="Allow Billing Details " color="green" />
-          <br></br>
-          <Checkbox label="Allow Adding Delivery Captain " color="green" />
-          <br></br>
-          <Checkbox label="Allow Adding Meal " color="green" />
-          <br></br>
-          <Checkbox label="Allow Updating CopyRight" color="green" />
-          <br></br>
-        </Typography>
-      </div>
+  <hr className="separator mb-4" /> {/* Added margin-bottom */}
+</b>
+<div className="grid grid-cols-4 gap-x-6 gap-y-4 mt-4"> {/* Added margin-top */}
+  <Typography className="col-span-2 !font-bold" color="BLACK">
+    ADMIN SETTINGS
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Customer" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Analytics" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Customer Care" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Profiles" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Billing Details" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Adding Delivery Captain" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Adding Meal" color="green" />
+  </Typography>
+  <Typography className="!font-normal !text-gray-600" variant="small">
+    <Switch label="Allow Updating CopyRight" color="green" />
+  </Typography>
+</div>
+
 
       {/* Restaurant Settings Section */}
       <b>
-        <hr className="separator" />
-      </b>
-      <div className="w-full mb-3">
-        <Typography className="!font-bold" color="green">
-          RESTAURANT SETTINGS
-        </Typography>
-        <Typography
-          className="mt-1 !font-normal !text-gray-600"
-          variant="small"
-        >
-          <Checkbox label="Allow Add Meal " color="green" />
-          <br></br>
-          <Checkbox label="Enable 24/7 " color="green" />
-          <br></br>
-          <Checkbox label="Allow Cancellation" color="green" />
-          <br></br>
-          <Checkbox
-            label="Allow Access to Restaurant Number"
-            color="green"
-          />
-          <br></br>
-          <Checkbox label="Allow Payment Online " color="green" />
-          <br></br>
-          <Checkbox label="Enable COD " color="green" />
-          <br></br>
-          <Checkbox label="Enable Edit Order " color="green" />
-          <br></br>
-          <Checkbox label="Allow Restaurant Rating " color="green" />
-          <br></br>
-          <Checkbox label="Allow Add Tip" color="green" />
-          <br></br>
-          <Checkbox label="Allow Download Invoice" color="green" />
-          <br></br>
-        </Typography>
-      </div>
+  <hr className="separator mb-4" /> {/* Added margin-bottom */}
+</b>
+
+<div className="w-full mb-3 mt-4"> {/* Added margin-top */}
+  <div className="grid grid-cols-4 gap-x-6 gap-y-4">
+    <Typography className="col-span-2 !font-bold" color="BLACK">
+      RESTAURANT SETTINGS
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Allow Add Meal" color="green" />
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Enable 24/7" color="green" />
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Allow Cancellation" />
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Allow Access to Restaurant Number" color="green" />
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Allow Payment Online" color="green" />
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Enable COD" color="green" />
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Enable Edit Order" color="green" />
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Allow Restaurant Rating" color="green" />
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Allow Add Tip" color="green" />
+    </Typography>
+    <Typography className="!font-normal !text-gray-600" variant="small">
+      <Switch label="Allow Download Invoice" color="green" />
+    </Typography>
+  </div>
+</div>
 
       <b>
         <hr className="separator" />
