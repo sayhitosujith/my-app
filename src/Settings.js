@@ -1,9 +1,4 @@
 import './App.css';
-import { Badge } from "@material-tailwind/react";
-import { TrashIcon } from "@heroicons/react/24/solid";
-import { PencilIcon } from '@heroicons/react/24/outline';
-import Popup from 'reactjs-popup';
-import { Spinner } from "@material-tailwind/react";
 import React, { useState } from 'react';
 
 
@@ -17,12 +12,7 @@ import {
   Select,
   Option,
   Breadcrumbs,
-  Avatar,
-  Rating,
-  Checkbox,
-  classes,
   Switch,
-  IconButton
 
 } from "@material-tailwind/react";
 
