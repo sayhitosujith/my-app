@@ -1,7 +1,5 @@
 import './App.css';
 import React, { useState } from 'react';
-
-
 import {
   Card,
   CardHeader,
@@ -13,51 +11,24 @@ import {
   Option,
   Breadcrumbs,
   Switch,
-
 } from "@material-tailwind/react";
 
 const data = [
   {id: 1,  src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
   {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 3, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 4, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 5, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 6, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 7, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+  {id: 8, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
+];
 
-]
-
-const CardItem = ({item}) => (
-    <Card className="w-96">
-          <CardHeader
-              variant="gradient"
-              color="green"
-              className="mb-5 grid h-10 place-items-center">
-            
-            </CardHeader>
-
-            <div className='flex justify-center items-center'>
-            <img style={{width: '180px', height: '180px'}} src={item.src} />
-            </div>
-          <CardBody className="flex flex-col gap-4">
-            <div className="-mr-50">
-            </div>
-          </CardBody>
-          <CardFooter className="pt-0">
-            <Typography variant="h10" color="black">
-
-   
-<div className="w-72">
-    </div>
-        <label>
-     
-    </label>
-          </Typography>
-          </CardFooter>
-         
-        </Card>
-)
+const users = [
+  { id: 1, name: 'Sujith', email: 'sayhitosujith@gmail.com' },
+  { id: 2, name: 'Bob', email: 'bob@example.com' },
+  { id: 3, name: 'Charlie', email: 'charlie@example.com' },
+];
 
 function Settings() {
   // State to manage switch values
@@ -73,23 +44,23 @@ function Settings() {
     enableQRCode: false,
   });
 
-    // Handle switch toggle
-    const handleSwitchChange = (key) => {
-      setSettings((prev) => ({
-        ...prev,
-        [key]: !prev[key],
-      }));
-    };
-  
-    // Handle save action
-    const handleSave = () => {
-      console.log("Saved Settings:", settings);
-      alert("Settings saved successfully!");
-      // Here, you can send the `settings` object to your backend API
-    };
+  // Handle switch toggle
+  const handleSwitchChange = (key) => {
+    setSettings((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  // Handle save action
+  const handleSave = () => {
+    console.log("Saved Settings:", settings);
+    alert("Settings saved successfully!");
+    // Here, you can send the `settings` object to your backend API
+  };
+
   return (
     <div className="p-10">
-      <br></br>
       <Breadcrumbs>
         <a href="#" className="opacity-60">
           <svg
@@ -101,45 +72,41 @@ function Settings() {
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001-1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
           </svg>
         </a>
-
         <a href="#" className="opacity-60">
           <a href="/Welcome">Welcome</a>
         </a>
         <a href="#">ADMIN SETTINGS</a>
       </Breadcrumbs>
 
-      <br></br>
-      <Typography variant="h2" color="green">
-        ADMIN SETTINGS <br></br>
+      <Typography variant="h2" color="green" className="mb-4">
+        ADMIN SETTINGS
         <div style={{ float: 'right' }}>
-          <Button>
-            <a href="/AddDeliveryCaptain" color="green">
-              + ADD SUPER ADMIN
-            </a>
+          <Button color="green">
+            <a href="/AddDeliveryCaptain">+ ADD SUPER ADMIN</a>
           </Button>
           <div className="w-74">
             <Select label="Profile">
-              <Option></Option>
               <Option>About</Option>
               <Option>Change Password</Option>
-              <button>
-                <Option>Logout</Option>
-              </button>
+              <Option>Logout</Option>
             </Select>
           </div>
         </div>
       </Typography>
 
-      
-
+      {/* Customer Settings Section */}
+      <div className="grid grid-cols-4 gap-x-4 gap-y-4">
+        <Typography className="col-span-2 !font-bold" color="BLACK">
+          SUPER ADMIN SETTINGS
+        </Typography>
       {/* Customer Settings Section */}
       <b>
-  <hr className="separator mb-4" /> {/* Added margin-bottom */}
+</b>
+{/* Customer Settings Section */}
+<b>
 </b>
 <div className="grid grid-cols-4 gap-x-4 gap-y-4">
-  <Typography className="col-span-2 !font-bold" color="BLACK">
-    SUPER ADMIN SETTINGS
-  </Typography>
+ 
   <Typography className="!font-normal !text-gray-600" variant="small">
     <Switch label="Allow 24/7" color="green" />
   </Typography>
@@ -171,7 +138,6 @@ function Settings() {
 
       {/* Account Settings Section */}
       <b>
-  <hr className="separator mb-4" /> {/* Added margin-bottom */}
 </b>
 <div className="grid grid-cols-4 gap-x-6 gap-y-4 mt-4"> {/* Added margin-top */}
   <Typography className="col-span-2 !font-bold" color="BLACK">
@@ -199,7 +165,6 @@ function Settings() {
 
       {/* Admin Page Settings Section */}
       <b>
-  <hr className="separator mb-4" /> {/* Added margin-bottom */}
 </b>
 <div className="grid grid-cols-4 gap-x-6 gap-y-4 mt-4"> {/* Added margin-top */}
   <Typography className="col-span-2 !font-bold" color="BLACK">
@@ -234,7 +199,6 @@ function Settings() {
 
       {/* Restaurant Settings Section */}
       <b>
-  <hr className="separator mb-4" /> {/* Added margin-bottom */}
 </b>
 
 <div className="w-full mb-3 mt-4"> {/* Added margin-top */}
@@ -275,27 +239,47 @@ function Settings() {
   </div>
 </div>
 
-      <b>
-        <hr className="separator" />
-      </b>
-      <br></br>
+
+
+        {/* Add other switches here... */}
+      </div>
+
+
+      {/* Users Table */}
+      <div className="w-full mb-3 mt-4">
+        <Typography variant="h6">Registered Users</Typography>
+        <table
+          border="1"
+          width="100%"
+          style={{
+            borderCollapse: 'collapse', // Ensures that borders between cells collapse into a single border
+          }}
+        >
+          <thead>
+            <tr>
+              <th style={{ border: '1px solid black', padding: '8px' }}>ID</th>
+              <th style={{ border: '1px solid black', padding: '8px' }}>Name</th>
+              <th style={{ border: '1px solid black', padding: '8px' }}>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td style={{ border: '1px solid black', padding: '8px' }}>{user.id}</td>
+                <td style={{ border: '1px solid black', padding: '8px' }}>{user.name}</td>
+                <td style={{ border: '1px solid black', padding: '8px' }}>{user.email}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <div style={{ float: 'right' }}>
-        <a href="/Welcome">
-          <Button color="green" appearance="primary" onClick={handleSave}>
-            SAVE
-          </Button>
-        </a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <Button color="green" onClick={handleSave}>SAVE</Button>
         <a href="/Settings">
-          <Button color="green" appearance="primary">
-            CANCEL
-          </Button>
+          <Button color="green">CANCEL</Button>
         </a>
-        <Typography
-          variant="p"
-          sx={{ letterSpacing: '1.5px', marginLeft: '4px' }}
-        ></Typography>
       </div>
     </div>
   );
