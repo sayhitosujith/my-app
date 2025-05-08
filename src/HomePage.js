@@ -3,6 +3,8 @@ import { Badge } from "@material-tailwind/react";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import Flag from 'react-world-flags';
+import { MdOutlineDesktopMac } from "react-icons/md";
+
 import {
   Card,
   CardHeader,
@@ -429,10 +431,16 @@ function Welcome() {
           </Typography>
 
           <div className="flex items-center gap-2 text-black text-sm ml-auto">
-          <b><i className="text-xl">DOWNLOAD FOR FREE - </i></b>
-           <RiAppleLine size={30} color="green" />
-          <GrAndroid size={30} color="green" />
-          </div>
+  <b>
+    <i className="text-xl">DOWNLOAD FOR FREE - </i>
+  </b>
+  <Button className="flex items-center gap-4">
+  <GrAndroid size={30} color="white" />
+    <RiAppleLine size={30} color="white" />
+    <MdOutlineDesktopMac  size={30} color="white" />
+
+  </Button>
+</div>
 
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
