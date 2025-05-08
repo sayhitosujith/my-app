@@ -350,8 +350,8 @@ function Welcome() {
 
 
      <div className="flex flex-row gap-2">
-      <div className='w-1/2 h-screen flex items-center justify-center'>
-        <Card className="w-98">
+      <div className=' h-screen flex items-center justify-center'>
+        <Card className="w-98 ">
           <CardHeader
             variant="gradient"
             color="white"
@@ -361,7 +361,7 @@ function Welcome() {
           <CardBody className="flex flex-col gap-4">
          </CardBody>
           <CardFooter className="pt-0">
-          <img style={{width: '100%', height: '50vh'}} src="https://robotmorning.com/wp-content/uploads/2020/04/Emmeram.jpg" />
+          <img style={{width: '100%', height: '50vh'}} src="https://media.licdn.com/dms/image/v2/D5603AQFfj8VDvp5RZw/profile-displayphoto-shrink_800_800/B56ZaFkiWtHAAc-/0/1745997672987?e=1752105600&v=beta&t=Ao4lblR4hdwNciayZ1t-zKBQWt4xdrQQqJ_7Lxnu5G0" />
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -369,8 +369,7 @@ function Welcome() {
           </CardFooter>  
           
         <Typography variant="small" className="mt-6 flex justify-center">
-        <b>Celebrated cricketer Virat Kohli is a culinary connoisseur at heart—but you knew that already. Sepia-toned pictures from his childhood regularly make the rounds on online fanclubs, capturing the twinkle in his eyes as he gingerly lifts a burger or crunches down on potato chips. But perhaps what the photos fail to convey at first glance is that food is more than just a passion for the Delhi boy—it is a ritual. Today, he credits the simple joys of coming home to a steaming plate of his mother’s rajma chawal or bingeing on chole bathure in the labyrinthine lanes of Delhi as a formative memory of growing up. His childhood coach, meanwhile, speaks fondly of the time when the young trainee would implore him to leave his lunch behind so they could instead feast on the biryani and kebabs he’d 
-            brought from home. While Kohli would go on to achieve immense success and proclaim endless laurels in the world of cricket, it is perhaps this love for bringing people together over food that serves as the raw, beating heart of his culinary venture, one8 Commune.</b>
+        <b>Founder and CEO</b>
            <Typography
                 as="a"
                 href="#signup"
@@ -394,7 +393,7 @@ function Welcome() {
           <CardBody className="flex flex-col gap-4">
          </CardBody>
           <CardFooter className="pt-0">
-          <img style={{width: '100%', height: '50vh'}} src="https://robotmorning.com/wp-content/uploads/2020/04/Dan2.jpg" />
+          <img style={{width: '100%', height: '50vh'}} src="https://media.licdn.com/dms/image/v2/D5603AQE-qKq7fzwSZQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1711510456619?e=1752105600&v=beta&t=ftpRUKv9McBOMPghXaDRMKD-HfGibem2Uj4WYPxpx_k" />
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -402,10 +401,7 @@ function Welcome() {
           </CardFooter>
         <Typography variant="small" className="mt-6 flex justify-center">
         <br></br>
-        <b>The Rameshwaram Cafe was founded by CA Divya Raghavendra Rao and Raghavendra Rao in 2021.
-When asked about the cafe’s origin story, Divya told us that from her time in IIM Ahmedabad as a postgraduate student, she envisioned bringing traditional South Indian cuisine to the limelight with consistent quality and service; the same way global chain restaurants like KFC and McDonalds were able to.
-This dream was furthered when she met Raghavendra, who had a humble food cart in Seshadripuram and brought along with him, 15+ years of experience in the food industry.  
-Together, they launched The Rameshwaram Cafe; a name chosen to pay tribute to the late Mr. Dr. APJ Abdul Kalam’s birthplace -</b>
+        <b>Co-Founder and HR specialist </b>
 <br></br>
 
 
