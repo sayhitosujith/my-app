@@ -253,7 +253,7 @@ function Welcome() {
  size="xxl"
  alt="avatar"
  variant="circular"
- src="https://play-lh.googleusercontent.com/ATJbrSAzIwdFdp-qOVnyUXmvyx6mLm8W22RQOmaIa_EyZroHbuwofHg6bWSPGoQ1nXc=w600-h300-pc0xffffff-pd"
+ src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-wLQ5SwTXIBf3pGOKezm3buZNBa0qpdwy7g&s"
  className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
 />
 <b>              </b>  
@@ -349,7 +349,7 @@ function Welcome() {
    <br></br>
 
 
-     <div className="flex flex-row gap-2">
+     <div className="flex flex-row gap-4">
       <div className=' h-screen flex items-center justify-center'>
         <Card className="w-98 ">
           <CardHeader
@@ -358,7 +358,7 @@ function Welcome() {
             className="mb-4 grid h-28 place-items-center">
          <b>Sujith Reddy</b>
           </CardHeader>
-          <CardBody className="flex flex-col gap-4">
+          <CardBody className="flex flex-col gap-6">
          </CardBody>
           <CardFooter className="pt-0">
           <img style={{width: '100%', height: '50vh'}} src="https://media.licdn.com/dms/image/v2/D5603AQFfj8VDvp5RZw/profile-displayphoto-shrink_800_800/B56ZaFkiWtHAAc-/0/1745997672987?e=1752105600&v=beta&t=Ao4lblR4hdwNciayZ1t-zKBQWt4xdrQQqJ_7Lxnu5G0" />
@@ -390,7 +390,7 @@ function Welcome() {
             className="mb-4 grid h-28 place-items-center">
          <b>Vidhya Reddy</b>
           </CardHeader>
-          <CardBody className="flex flex-col gap-4">
+          <CardBody className="flex flex-col gap-6">
          </CardBody>
           <CardFooter className="pt-0">
           <img style={{width: '100%', height: '50vh'}} src="https://media.licdn.com/dms/image/v2/D5603AQE-qKq7fzwSZQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1711510456619?e=1752105600&v=beta&t=ftpRUKv9McBOMPghXaDRMKD-HfGibem2Uj4WYPxpx_k" />
