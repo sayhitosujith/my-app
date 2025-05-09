@@ -14,6 +14,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import { MdOutlineDesktopMac } from "react-icons/md";
+import packageJson from '../package.json';
 
 import {
   Card,
@@ -206,7 +207,7 @@ alt="image 1"
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
       <h1 style={{ color: '#057528' }}><b><div>Welcome to Food Maven!</div></b></h1>
-
+ 
       </Typography>
  
   
@@ -370,7 +371,8 @@ alt="image 1"
 
     <div className='flex justify-center items-center'>
        <Typography variant="h7" color="Black">
-       <b>Contact us  - Info@foodmaven.com</b>
+       <h8>Application Version: {packageJson.version}</h8>
+
       <br></br>
       <b><hr class="separator" /></b>
 
@@ -395,9 +397,11 @@ alt="image 1"
     <footer className="relative w-full">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-          <Typography variant="h5" className="mb-6">
+          <Typography variant="h8" className="mb-6">
             Food Maven
-          </Typography>
+            </Typography>
+          <div>
+    </div>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
