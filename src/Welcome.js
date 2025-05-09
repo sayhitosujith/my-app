@@ -11,7 +11,9 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { Badge } from "@material-tailwind/react";
 import Flag from 'react-world-flags';
 import { IoSettingsOutline } from "react-icons/io5";
-
+import { RiAppleLine } from "react-icons/ri";
+import { GrAndroid } from "react-icons/gr";
+import { MdOutlineDesktopMac } from "react-icons/md";
 
 import {
   Card,
@@ -159,11 +161,11 @@ function Welcome() {
 
   {/* Your content below */}
 </div>
-    <div className="mb-5 shadow-sm px-4 py-7 flex justify-center items-center bg-orange-500 overflow-x-auto whitespace-nowrap">
+    <div className="mb-5 shadow-sm px-4 py-7 flex justify-center items-center bg-white-500 overflow-x-auto whitespace-nowrap">
   {isBannerActive && (
     <>
       <h2>
-      <Typography variant="h1" className="text-md inline-block text-white">
+      <Typography variant="h1" className="text-md inline-block text-red">
           <i>
   🛍️ NEW ARRIVALS ALLERT ! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. Don’t miss out — shop your favorites now! 🍽️💫{' '}🔥✨
           </i>
@@ -203,7 +205,7 @@ alt="image 1"
     <Typography variant="h2" color="Black">
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
-      <h1 style={{ color: '#130d00' }}><b><div>Welcome to Food Maven!</div></b></h1>
+      <h1 style={{ color: '#057528' }}><b><div>Welcome to Food Maven!</div></b></h1>
 
       </Typography>
  
@@ -371,6 +373,18 @@ alt="image 1"
        <b>Contact us  - Info@foodmaven.com</b>
       <br></br>
       <b><hr class="separator" /></b>
+
+      <div className="absolute bottom-92 right-20 flex items-center gap-2 text-black text-sm">
+      {/* Other left-aligned content */}
+
+  <div className="flex items-center gap-2 text-black text-sm ml-auto">
+    <b><i className="text-xl">DOWNLOAD FOR FREE - </i></b>
+    <Button className="flex items-center gap-4">
+      <GrAndroid size={30} color="white" />
+      <RiAppleLine size={30} color="white" />
+    </Button>
+  </div>
+</div>
       <br></br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
