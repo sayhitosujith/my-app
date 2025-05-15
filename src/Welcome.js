@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { RiAdminFill } from "react-icons/ri";
 import { CiUser } from "react-icons/ci";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
-import { AiFillCustomerService } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa6";
@@ -13,7 +12,6 @@ import Flag from 'react-world-flags';
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
-import { MdOutlineDesktopMac } from "react-icons/md";
 import packageJson from '../package.json';
 
 import {
@@ -162,11 +160,11 @@ function Welcome() {
 
   {/* Your content below */}
 </div>
-    <div className="mb-5 shadow-sm px-4 py-7 flex justify-center items-center bg-white-500 overflow-x-auto whitespace-nowrap">
+    <div className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center bg-yellow-400 overflow-x-auto whitespace-nowrap">
   {isBannerActive && (
     <>
       <h2>
-      <Typography variant="h1" className="text-md inline-block text-red">
+      <Typography variant="h1" className="text-md inline-block text-black">
           <i>
   🛍️ NEW ARRIVALS ALLERT ! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. Don’t miss out — shop your favorites now! 🍽️💫{' '}🔥✨
           </i>
@@ -379,8 +377,7 @@ alt="image 1"
       <div className="absolute bottom-92 right-20 flex items-center gap-2 text-black text-sm">
       {/* Other left-aligned content */}
 
-  <div className="flex items-center gap-2 text-black text-sm ml-auto">
-    <b><i className="text-xl">DOWNLOAD FOR FREE - </i></b>
+  <div className="flex items-center gap-2 text-black text-sl ml-auto">
     <Button className="flex items-center gap-4">
       <GrAndroid size={30} color="white" />
       <RiAppleLine size={30} color="white" />
