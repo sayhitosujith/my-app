@@ -13,6 +13,8 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import packageJson from '../package.json';
+import { PiChatCircleDotsFill } from "react-icons/pi";
+
 
 import {
   Card,
@@ -398,7 +400,11 @@ alt="image 1"
             Food Maven
             </Typography>
           <div>
-    </div>
+        
+          <div className="fixed bottom-4 right-4 z-50">
+  <PiChatCircleDotsFill size={60} color="green" />
+</div>
+          </div>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
