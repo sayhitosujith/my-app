@@ -123,7 +123,7 @@ function App() {
         
         </Card>
       </div>
-       <img style={{width: '60%', height: '100vh'}} src="https://media.glamour.com/photos/66b395f7626a69f05aa0b823/master/w_2560%2Cc_limit/0807-earlydinner.gif"  
+       <img style={{width: '70%', height: '100vh'}} src="https://media.glamour.com/photos/66b395f7626a69f05aa0b823/master/w_2560%2Cc_limit/0807-earlydinner.gif"  
       /* <img style={{width: '60%', height: '100vh'}} src="https://exostar.greythr.com/uas/v1/cms/asset/fdbfaaa0-65c4-4612-bf5c-45943ef8a42d"  */
       alt=" Lunch box"
         className="h-full w-full object-cover"
