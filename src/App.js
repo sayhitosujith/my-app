@@ -1,6 +1,7 @@
 import './App.css';
 import { Input, Typography } from "@material-tailwind/react";
 import React from 'react';
+import packageJson from '../package.json';
 
 import {
   Card,
@@ -57,69 +58,64 @@ function App() {
             </div>
             
           </CardBody>
-          <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-            <a href="/Welcome">
-             LOGIN 
-               </a>              
-            </Button>
-            <br></br>
-            <Button variant="gradient" fullWidth>
-            <a href="/">
-               Cancel 
-               </a>   
-            </Button>
-            &nbsp;
-           
-            <Typography
-          variant="p"
-          sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
-        </Typography>
-            
-        <Button
-        size="lg"
-        variant="outlined"
-        color="green"
-        className="flex items-center gap-4">
-
-        
-        <a href="/Customer_Home">
-        Continue with the Google 
-               </a> 
-               <img src="https://docs.material-tailwind.com/icons/google.svg" alt="metamask" className="h-6 w-6" />
-      </Button>
- 
-      <br></br>
-        <Button
-        size="lg"
-        variant="gradient"
-        color="light-green"
-        className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
-      >
-        <a href="/Customer_Home">
-        Continue with the Twitter
-               </a> 
-        <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-green-600 transition-colors group-hover:bg-light-green-700">
-          <img src="https://docs.material-tailwind.com/icons/twitter.svg" alt="metamask" className="h-6 w-6" />
-        </span>
-      </Button>
+          <CardFooter className="pt-0 flex flex-col items-center gap-4">
+  <Button variant="gradient" fullWidth>
+    <a href="/Welcome">LOGIN</a>
+  </Button>
   
-      <br></br>
+  <Button variant="gradient" fullWidth>
+    <a href="/">Cancel</a>
+  </Button>
 
-     
-            <Typography variant="small" className="mt-8 flex justify-center">
-              Don&apos;t you have an account? click here link to
-              <Typography
-                as="a"
-                href="#signup"
-                variant="small"
-                color="blue-gray"
-                className="ml-1 font-bold">
-               <u><a href="/NewRegistration">Sign up</a></u> 
+  <Button
+    size="lg"
+    variant="outlined"
+    color="green"
+    className="flex items-center gap-4"
+  >
+    <a href="/Customer_Home">Continue with the Google</a>
+    <img
+      src="https://docs.material-tailwind.com/icons/google.svg"
+      alt="google"
+      className="h-6 w-6"
+    />
+  </Button>
 
-              </Typography>
-            </Typography>
-          </CardFooter>
+  <Button
+    size="lg"
+    variant="gradient"
+    color="light-green"
+    className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
+  >
+    <a href="/Customer_Home">Continue with the Twitter</a>
+    <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-green-600 transition-colors group-hover:bg-light-green-700">
+      <img
+        src="https://docs.material-tailwind.com/icons/twitter.svg"
+        alt="twitter"
+        className="h-6 w-6"
+      />
+    </span>
+  </Button>
+
+  <Typography variant="small" className="mt-8 flex flex-col items-center">
+    Don&apos;t have an account? Click here to
+    <Typography
+      as="div"
+      variant="small"
+      color="blue-gray"
+      className="ml-1 font-bold"
+    >
+      <a href="/NewRegistration" className="underline">Sign up</a>
+    </Typography>
+  </Typography>
+
+  {/* Centered Application Version */}
+  <div className="mt-4">
+    <Typography variant="small" color="black" className="text-center">
+      Application Build Version: {packageJson.version}
+    </Typography>
+  </div>
+</CardFooter>
         
         </Card>
       </div>

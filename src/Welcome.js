@@ -369,7 +369,7 @@ alt="image 1"
 
     <div className='flex justify-center items-center'>
        <Typography variant="h7" color="Black">
-       <h8>Application Version: {packageJson.version}</h8>
+       <h8>Application Build Version : {packageJson.version}</h8>
 
       <br></br>
       <b><hr class="separator" /></b>
