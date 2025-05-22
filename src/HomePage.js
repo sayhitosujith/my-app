@@ -4,6 +4,9 @@ import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import Flag from 'react-world-flags';
 import { MdOutlineDesktopMac } from "react-icons/md";
+import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
+import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
+
 
 import {
   Card,
@@ -363,7 +366,13 @@ function Welcome() {
           <CardBody className="flex flex-col gap-6">
          </CardBody>
           <CardFooter className="pt-0">
-          <img style={{width: '100%', height: '50vh'}} src="https://media.licdn.com/dms/image/v2/D5603AQGSUpgMHQoyhQ/profile-displayphoto-shrink_400_400/B56ZbZedIoHgAg-/0/1747405362280?e=1753315200&v=beta&t=Vf0ROyfvBtdej3ehM2OszsW57DhahdbzKWW_yDKagJ4" />
+
+          <img
+  style={{ width: '100%', height: '50vh' }}
+  src={sujithImage}
+  alt="Profile"
+/>
+
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -395,7 +404,13 @@ function Welcome() {
           <CardBody className="flex flex-col gap-6">
          </CardBody>
           <CardFooter className="pt-0">
-          <img style={{width: '100%', height: '50vh'}} src="https://media.licdn.com/dms/image/v2/D5603AQE-qKq7fzwSZQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1711510456619?e=1752105600&v=beta&t=ftpRUKv9McBOMPghXaDRMKD-HfGibem2Uj4WYPxpx_k" />
+
+          <img
+  style={{ width: '100%', height: '50vh' }}
+  src={vidhyaImage}
+  alt="Profile"
+/>
+
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>

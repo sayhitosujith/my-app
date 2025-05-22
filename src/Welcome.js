@@ -212,7 +212,7 @@ alt="image 1"
     <Typography variant="h2" color="Black">
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
-      <h1 style={{ color: '#ed4511' }}><b><div>Welcome to Food Maven!</div></b></h1>
+      <h1 style={{ color: '#fa282f' }}><b><div>Welcome to Food Maven!</div></b></h1>
  
       </Typography>
  
