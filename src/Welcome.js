@@ -13,7 +13,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import packageJson from '../package.json';
-import { PiChatCircleDotsFill } from "react-icons/pi";
+import { FaRobot } from "react-icons/fa";
 
 
 import {
@@ -212,7 +212,7 @@ alt="image 1"
     <Typography variant="h2" color="Black">
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
-      <h1 style={{ color: '#0d5e01' }}><b><div>Welcome to Food Maven!</div></b></h1>
+      <h1 style={{ color: '#ed4511' }}><b><div>Welcome to Food Maven!</div></b></h1>
  
       </Typography>
  
@@ -272,7 +272,7 @@ alt="image 1"
        </span>
 
        <Button
-       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
        <RiAdminFill size={100} color="#00ff00" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>ADMIN</b></span>
        </Button>
@@ -287,7 +287,7 @@ alt="image 1"
        
 
        <Button
-       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
        <CiUser size={100} color="#00ff00" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>CUSTOMER</b></span>
        </Button>
@@ -301,7 +301,7 @@ alt="image 1"
        </span>
 
        <Button
-       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
        <TbBrandGoogleAnalytics size={100} color="#00ff00" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>ANALYTICS</b></span>
        </Button>
@@ -315,7 +315,7 @@ alt="image 1"
        </span>
 
        <Button
-       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
        <FaUsers size={100} color="#00ff00" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>CUSTOMER CARE</b></span>
        </Button>
@@ -329,7 +329,7 @@ alt="image 1"
        </span>
 
        <Button
-       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
        <FaFileInvoiceDollar size={100} color="#00ff00" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>PROFILES</b></span>
        </Button>
@@ -342,7 +342,7 @@ alt="image 1"
        </span>
 
        <Button
-       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "white", }}>
+       style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
        <IoSettingsOutline size={100} color="#00ff00" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>SETTINGS</b></span>
        </Button>
@@ -376,7 +376,7 @@ alt="image 1"
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
     <div className='flex justify-center items-center'>
-       <Typography variant="h7" color="Black">
+       <Typography variant="h9" color="Black">
        <h8>Application Build Version : {packageJson.version}</h8>
 
       <br></br>
@@ -412,8 +412,8 @@ alt="image 1"
   className="fixed bottom-3 right-3 z-30 p-4 bg-white rounded-full shadow-lg hover:scale-105 transition-transform flex flex-col items-center justify-center"
   aria-label="Open chat"
 >
-  <PiChatCircleDotsFill size={50} color="#6cdb04" />
-  <span className="text-sm font-bold mt-4 text-black">Chat with Bella</span>
+  <FaRobot size={50} color="#6cdb04" />
+  <span className="text-sm font-bold mt-4 text-black">Chat with AI</span>
 </button>
           
           

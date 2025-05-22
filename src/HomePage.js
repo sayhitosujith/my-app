@@ -363,7 +363,7 @@ function Welcome() {
           <CardBody className="flex flex-col gap-6">
          </CardBody>
           <CardFooter className="pt-0">
-          <img style={{width: '100%', height: '50vh'}} src="https://media.licdn.com/dms/image/v2/D5603AQFfj8VDvp5RZw/profile-displayphoto-shrink_800_800/B56ZaFkiWtHAAc-/0/1745997672987?e=1752105600&v=beta&t=Ao4lblR4hdwNciayZ1t-zKBQWt4xdrQQqJ_7Lxnu5G0" />
+          <img style={{width: '100%', height: '50vh'}} src="https://media.licdn.com/dms/image/v2/D5603AQGSUpgMHQoyhQ/profile-displayphoto-shrink_400_400/B56ZbZedIoHgAg-/0/1747405362280?e=1753315200&v=beta&t=Vf0ROyfvBtdej3ehM2OszsW57DhahdbzKWW_yDKagJ4" />
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
