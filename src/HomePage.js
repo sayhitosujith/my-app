@@ -6,6 +6,8 @@ import Flag from 'react-world-flags';
 import { MdOutlineDesktopMac } from "react-icons/md";
 import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
 import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
+import logo from './assets/foodmaven.png'; // adjust the path as necessary
+import food_wallpaper from './assets/FOOODD.png'; // adjust the path as necessary
 
 
 import {
@@ -74,8 +76,11 @@ const CardItem = ({item}) => (
 function Welcome() {
   return (
     <div className="p-10">
-              <img style={{width: '15%', height: '15vh'}} src="https://mms.businesswire.com/media/20191209005536/en/761245/23/FoodMaven-Logo.jpg" />          
-    <Avatar src="https://fellows.ias.ac.in/public/images/stock/avatar.svg?v=105894425" alt="avatar"size="xxl" div style={{float: 'right'}}></Avatar>
+              <img
+  style={{ width: '15%', height: '15%' }}
+  src={logo}
+  alt="Application_logo"
+/>
     <Typography variant="h2" color="Black">
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
            <Typography
@@ -144,8 +149,11 @@ function Welcome() {
             </div>
         </Typography>
  
-      <img style={{width: '70%', height: '70vh'}} src="https://homeal.co.in/wp-content/uploads/2024/06/FOOODD.png" />
-      
+        <img
+  style={{ width: '80%', height: '50vh' }}
+  src={food_wallpaper}
+  alt="Profile"
+/>      
      
       <div
   style={{
