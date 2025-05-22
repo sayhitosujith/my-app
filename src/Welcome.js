@@ -133,6 +133,12 @@ const CardItem = ({item}) => (
         </Card>
 )
 
+function ChatWithBellaButton() {
+  const handleClick = () => {
+    window.open("https://chatgpt.com", "_blank"); // opens in a new tab
+  };
+}
+
 function Welcome() {
   return (
     <div className="p-10">
@@ -403,10 +409,11 @@ alt="image 1"
         
           <button
   onClick={() => console.log("Chat button clicked")}
-  className="fixed bottom-3 right-3 z-30 p-2 bg-white rounded-full shadow-lg hover:scale-105 transition-transform"
+  className="fixed bottom-3 right-3 z-30 p-4 bg-white rounded-full shadow-lg hover:scale-105 transition-transform flex flex-col items-center justify-center"
   aria-label="Open chat"
 >
-  <PiChatCircleDotsFill size={60} color="#00ff00" />
+  <PiChatCircleDotsFill size={50} color="#6cdb04" />
+  <span className="text-sm font-bold mt-4 text-black">Chat with Bella</span>
 </button>
           
           
@@ -501,6 +508,3 @@ alt="image 1"
  
 }
 export default Welcome;
-
-
-
