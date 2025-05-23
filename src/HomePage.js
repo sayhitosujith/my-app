@@ -378,7 +378,7 @@ function Welcome() {
           <img
   style={{ width: '100%', height: '50vh' }}
   src={sujithImage}
-  alt="Profile"
+  alt="sujith_Profile"
 />
 
             <Typography
@@ -416,7 +416,7 @@ function Welcome() {
           <img
   style={{ width: '100%', height: '50vh' }}
   src={vidhyaImage}
-  alt="Profile"
+  alt="vidhya_Profile"
 />
 
             <Typography
