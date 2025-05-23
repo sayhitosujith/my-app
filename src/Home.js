@@ -33,9 +33,9 @@ import {
 
 const data = [
   { id: 1, name: 'Veg Green Salad', src: 'https://i.ytimg.com/vi/ln_P2jNCSA0/maxresdefault.jpg', },
-  {id: 2, name: 'Chole Meal', src: 'https://im1.dineout.co.in/images/uploads/restaurant/sharpen/5/j/u/p5908-15671490325d68cbe8b52d8.jpg?tr=tr:n-xlarge',},
-  {id: 3, name: 'Puliogre', src: 'https://www.harfieldtableware.co.uk/wp-content/uploads/2020/09/856BLU-for-website-scaled.jpg',},
-  {id: 4, name: 'Veg combo', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUwbIEMBVwW6NnJzUIhy0OZ7rRhHkss4Sh2A&s',},
+  {id: 2, name: 'Chole Meal', src: 'https://homeal.co.in/wp-content/uploads/2024/06/food-6.png',},
+  {id: 3, name: 'Puliogre', src: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8ZOpSI88oF6KK0CxFz8WkK8EwtKePlBg8ICRT2FXX6kcN-J6YCj46s4-XzxNQrFj1GycGVKZNX2e9WBQF4_taVCR1-NFtY7TZ-hjIP3lrGDxnsWaPRCfIV-7qOIEnuYhn_bkTfk7YRw43/s3823/DSC_3404+%25282%2529.JPG',},
+  {id: 4, name: 'Veg combo', src: 'https://www.shutterstock.com/image-photo/indian-mini-meal-parcel-platter-600nw-2201280349.jpg',},
   {id: 5, name: 'Non-veg Meal', src: 'https://tse3.mm.bing.net/th?id=OIP.1SxzeKMtZ9qeVnA1JQ8IqgHaE8&pid=Api&P=0&h=220',},
   {id: 6, name: 'Chicken biriyani', src: 'https://thumbs.dreamstime.com/b/meal-lunch-boxes-packaging-meal-lunch-boxes-isolated-white-background-121017730.jpg',},
   {id: 7, name: 'Veg salad', src: 'https://sammyapproves.com/wp-content/uploads/2019/08/028-min.jpg',},

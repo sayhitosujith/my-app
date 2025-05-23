@@ -115,7 +115,7 @@ function Welcome() {
     <div style={{float: 'right'}}>
     <Button color="green" appearance="primary"> 
            <a href="/Customer_Home">
-           Order your Box Online
+           Order your Meal now
                </a> 
            </Button> 
     <div className="w-74">
@@ -150,10 +150,10 @@ function Welcome() {
         </Typography>
  
         <img
-  style={{ width: '80%', height: '50vh' }}
-  src={food_wallpaper}
-  alt="Profile"
-/>      
+    style={{ width: '80%', height: '100%', objectFit: 'cover' }}
+    src={food_wallpaper}
+    alt="Profile"
+  />     
      
       <div
   style={{
