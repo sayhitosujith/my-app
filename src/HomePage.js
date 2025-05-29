@@ -188,7 +188,7 @@ function Welcome() {
 
       <div className='flex justify-center items-center'>
         <Typography variant="h2" color="Black">
-          <br></br>Our Customers <br></br>
+          <br></br>Official IPL Partners <br></br>
 
           <br></br>
           <div></div>
@@ -196,7 +196,7 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://gmraerocity.com/wp-content/uploads/2021/04/one8.png"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-35G1TVAFg5ii-zc0AoU3V7Qpk9M9Kb5ihQ&s"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
@@ -204,7 +204,7 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyCtZ3TP29Od5dmWVgLi3KGGbiR9dBS12NVnzhRQeTDg&s"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9yljJ1BxLYJGeJB999n6RefvnSJxN0w8bQw&s"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
@@ -213,7 +213,7 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTSIdXHY0RfTWs3eo705sFof5SL4RJy9pvOyyb0L_oEA&s"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUUM6wC2DpQa53LW9OlXVeXIIp0SilMDChAQ&s"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
@@ -222,7 +222,7 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt_w3vxbe-ZZPqsxcf1Oe_PqAfgRPlTe9Akzm53fn2tlHjrSvjuJXguyj3V8WkUU3OMdI&usqp=CAU"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd1RhFIuJmEy1L4TwOMmiJTDpNVnLvIHD7Qg&s"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
@@ -231,7 +231,7 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://banner2.cleanpng.com/20180510/wyw/kisspng-hotel-highway-king-bagru-jodhpur-restaurant-5af469d784d804.8287207815259673195441.jpg"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIUEh_iAU-it42JVdISwVwFe9_FhdoYwmxJg&s"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
@@ -240,7 +240,7 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Byt5v2L1W7-dKsgB7aJ2s7FVO_rl8BUMqA&usqp=CAU"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMtFjFHJxu3uFdR2YcqFhok_aUV7NWrKzgtw&s"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
@@ -249,7 +249,7 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://idealdesigns.in/wp-content/uploads/2020/08/best-hotels-logo-design-in-hyderabad-hotel-branding-bangalore-best-hotel-in-India-kaveri.jpg"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdURdkjiGCSzciELc10rNcp3IqZh4lCEl4cQ&s"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
@@ -258,7 +258,7 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://idealbranding.in/wp-content/uploads/2018/04/restaurant-logo-design-hotel-shubham-palace2.jpg"
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/This_is_the_logo_for_Rajasthan_Royals%2C_a_cricket_team_playing_in_the_Indian_Premier_League_%28IPL%29.svg/1200px-This_is_the_logo_for_Rajasthan_Royals%2C_a_cricket_team_playing_in_the_Indian_Premier_League_%28IPL%29.svg.png"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
@@ -267,37 +267,11 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-wLQ5SwTXIBf3pGOKezm3buZNBa0qpdwy7g&s"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6rK3_C04OQPKyyhnjPIbuwsKI8R-rATS1Vg&s"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
 
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://i.pinimg.com/originals/f6/f1/bc/f6f1bccf8d36edee548acb2c90db5e14.jpg"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
-
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://graphicdesigneye.com/images/hotel-logo-design-service.png"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
-
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTERlpItS51IO_Y8UBZ0aXQTeq3Drrjf-scnz_LeZzZKg&s"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
 
 
         </Typography>
