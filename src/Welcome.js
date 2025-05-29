@@ -263,7 +263,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <RiAdminFill size={100} color="#00ff00" />
+       <RiAdminFill size={100} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>ADMIN</b></span>
        </Button>
         </a>
@@ -278,7 +278,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <CiUser size={100} color="#00ff00" />
+       <CiUser size={100} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>CUSTOMER</b></span>
        </Button>
         </a>
@@ -292,7 +292,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <TbBrandGoogleAnalytics size={100} color="#00ff00" />
+       <TbBrandGoogleAnalytics size={100} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>ANALYTICS</b></span>
        </Button>
         </a>
@@ -306,7 +306,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <FaUsers size={100} color="#00ff00" />
+       <FaUsers size={100} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>CUSTOMER CARE</b></span>
        </Button>
         </a>
@@ -320,7 +320,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <FaFileInvoiceDollar size={100} color="#00ff00" />
+       <FaFileInvoiceDollar size={100} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>PROFILES</b></span>
        </Button>
         </a>
@@ -333,7 +333,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <IoSettingsOutline size={100} color="#00ff00" />
+       <IoSettingsOutline size={100} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>SETTINGS</b></span>
        </Button>
         </a>
