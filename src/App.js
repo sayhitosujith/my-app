@@ -2,6 +2,7 @@ import './App.css';
 import { Input, Typography } from "@material-tailwind/react";
 import React from 'react';
 import packageJson from '../package.json';
+import RCB from './assets/RCB.png'; // adjust the path as necessary
 
 import {
   Card,
@@ -120,7 +121,7 @@ function App() {
         </Card>
       </div>
        {/* <img style={{width: '70%', height: '100vh'}} src="https://media.glamour.com/photos/66b395f7626a69f05aa0b823/master/w_2560%2Cc_limit/0807-earlydinner.gif"   */}
-       <img style={{width: '40%', height: '80vh'}} src="https://images.seeklogo.com/logo-png/53/1/rcb-logo-png_seeklogo-531612.png"  
+       <img style={{width: '40%', height: '80vh'}} src={RCB}
       alt=" Lunch box"
       
         className="h-full w-full object-cover"
