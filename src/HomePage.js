@@ -188,7 +188,7 @@ function Welcome() {
 
       <div className='flex justify-center items-center'>
         <Typography variant="h2" color="Black">
-          <br></br>Official IPL Partners <br></br>
+          <br></br>Official Sports Partners <br></br>
 
           <br></br>
           <div></div>
@@ -267,11 +267,37 @@ function Welcome() {
             size="xxl"
             alt="avatar"
             variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6rK3_C04OQPKyyhnjPIbuwsKI8R-rATS1Vg&s"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAHw3dMTMDHL5yqLvg3tjwDzFRb0kp490XAQ&s"
             className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
           />
           <b>              </b>
 
+          <Avatar
+            size="xxl"
+            alt="avatar"
+            variant="circular"
+            src="https://i.pinimg.com/originals/f6/f1/bc/f6f1bccf8d36edee548acb2c90db5e14.jpg"
+            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+          />
+          <b>              </b>
+
+          <Avatar
+            size="xxl"
+            alt="avatar"
+            variant="circular"
+            src="https://graphicdesigneye.com/images/hotel-logo-design-service.png"
+            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+          />
+          <b>              </b>
+
+          <Avatar
+            size="xxl"
+            alt="avatar"
+            variant="circular"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTERlpItS51IO_Y8UBZ0aXQTeq3Drrjf-scnz_LeZzZKg&s"
+            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+          />
+          <b>              </b>
 
 
         </Typography>
