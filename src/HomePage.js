@@ -377,7 +377,7 @@ function Welcome() {
 
     <CardFooter className="pt-0 flex flex-col items-center">
       <img
-        style={{ width: '90%', height: '40vh' }} // Reduced height from 60vh to 40vh
+        style={{ width: '100%', height: '50vh' }} // Reduced height from 60vh to 40vh
         src={sujithImage}
         alt="sujith_Profile"
       />

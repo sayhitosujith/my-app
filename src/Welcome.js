@@ -142,6 +142,7 @@ function ChatWithBellaButton() {
 function Welcome() {
   return (
     <div className="p-10">
+       <div className="mb-6">
             <Breadcrumbs>
       <a href="#" className="opacity-60">
         <svg
@@ -162,13 +163,13 @@ function Welcome() {
       </a>
       <a href="#">Welcome</a>
     </Breadcrumbs>
-
+    </div>
     <div className="opacity-70">
   
 
   {/* Your content below */}
 </div>
-<div className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap" style={{ backgroundColor: '#a6ff00' }}>
+<div className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl" style={{ backgroundColor: '#e3f2bd' }}>
   {isBannerActive && (
     <>
       <h2>
@@ -176,18 +177,7 @@ function Welcome() {
           <i>
   🛍️ NEW ARRIVALS ALLERT ! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. Don’t miss out — shop your favorites now! 🍽️💫{' '}🔥✨
           </i>
-      
-      {/* cursol images */}
-          {/* <Carousel className="rounded-xl">
-<img style={{width: '100%', height: '30%'}} src="https://b.zmtcdn.com/data/o2_assets/e067a1cf0d3fe27b366402b98b994e9f1716296909.png" 
-alt="image 1"
-  className="h-full w-full object-cover"
-  />
-        <img style={{width: '100%', height: '20%'}} src="https://b.zmtcdn.com/data/o2_assets/85e14f93411a6b584888b6f3de3daf081716296829.png" 
-alt="image 1"
-  className="h-full w-full object-cover"
-  />
-      </Carousel> */}
+
 
 
 {/* Logout Icon */}
