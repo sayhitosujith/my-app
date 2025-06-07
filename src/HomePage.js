@@ -387,7 +387,7 @@ function Welcome() {
       color="white"
       className="mb-4 grid h-24 place-items-center"
     >
-      <b>Sujith Reddy</b>
+      <b>Vidhya Reddy</b>
     </CardHeader>
                 <CardBody className="flex flex-col gap-6">
                 </CardBody>
@@ -445,8 +445,6 @@ function Welcome() {
               <Button className="flex items-center gap-4">
                 <GrAndroid size={30} color="white" />
                 <RiAppleLine size={30} color="white" />
-                <MdOutlineDesktopMac size={30} color="white" />
-
               </Button>
             </div>
 
