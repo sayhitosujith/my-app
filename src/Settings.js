@@ -86,6 +86,7 @@ function Settings() {
             color="green"
             checked={settings[key]}
             onChange={() => handleSwitchChange(key)}
+            labelProps={{ className: "font-bold" }}
           />
         ))}
       </div>
@@ -93,40 +94,40 @@ function Settings() {
       {/* CUSTOMER SETTINGS */}
       <Typography className="font-bold mb-2">CUSTOMER SETTINGS</Typography>
       <div className="grid grid-cols-4 gap-4 mb-6">
-        <Switch label="Allow Customer Login" color="green" />
-        <Switch label="Allow Schedule Tasks" color="green" />
-        <Switch label="Allow Customer to Update Order Details" color="green" />
-        <Switch label="Allow Customer to Manage Users" color="green" />
-        <Switch label="Allow Customer for International Access" color="green" />
-        <Switch label="Allow Customer to Reject Order" color="green" />
+        <Switch label="Allow Customer Login" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Schedule Tasks" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Customer to Update Order Details" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Customer to Manage Users" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Customer for International Access" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Customer to Reject Order" color="green" labelProps={{ className: "font-bold" }} />
       </div>
 
       {/* ADMIN PAGE SETTINGS */}
       <Typography className="font-bold mb-2">ADMIN PAGE SETTINGS</Typography>
       <div className="grid grid-cols-4 gap-4 mb-6">
-        <Switch label="Allow Customer" color="green" />
-        <Switch label="Allow Analytics" color="green" />
-        <Switch label="Allow Customer Care" color="green" />
-        <Switch label="Allow Profiles" color="green" />
-        <Switch label="Allow Billing Details" color="green" />
-        <Switch label="Allow Adding Delivery Captain" color="green" />
-        <Switch label="Allow Adding Meal" color="green" />
-        <Switch label="Allow Updating Copyright" color="green" />
+        <Switch label="Allow Customer" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Analytics" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Customer Care" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Profiles" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Billing Details" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Adding Delivery Captain" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Adding Meal" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Updating Copyright" color="green" labelProps={{ className: "font-bold" }} />
       </div>
 
       {/* RESTAURANT SETTINGS */}
       <Typography className="font-bold mb-2">RESTAURANT SETTINGS</Typography>
       <div className="grid grid-cols-4 gap-4 mb-6">
-        <Switch label="Allow Add Meal" color="green" />
-        <Switch label="Enable 24/7" color="green" />
-        <Switch label="Allow Cancellation" color="green" />
-        <Switch label="Allow Access to Restaurant Number" color="green" />
-        <Switch label="Allow Payment Online" color="green" />
-        <Switch label="Enable COD" color="green" />
-        <Switch label="Enable Edit Order" color="green" />
-        <Switch label="Allow Restaurant Rating" color="green" />
-        <Switch label="Allow Add Tip" color="green" />
-        <Switch label="Allow Download Invoice" color="green" />
+        <Switch label="Allow Add Meal" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Enable 24/7" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Cancellation" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Access to Restaurant Number" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Payment Online" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Enable COD" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Enable Edit Order" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Restaurant Rating" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Add Tip" color="green" labelProps={{ className: "font-bold" }} />
+        <Switch label="Allow Download Invoice" color="green" labelProps={{ className: "font-bold" }} />
       </div>
 
       {/* Registered Users Table */}
