@@ -6,6 +6,8 @@ import Flag from 'react-world-flags';
 import { MdOutlineDesktopMac } from "react-icons/md";
 import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
 import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
+import awaiting from './assets/awaiting.png'; // adjust the path as necessary
+
 import logo from './assets/foodmaven.png'; // adjust the path as necessary
 import food_wallpaper from './assets/FOOODD.png'; // adjust the path as necessary
 import { TfiEmail } from "react-icons/tfi";
@@ -49,7 +51,7 @@ const currentYear = new Date().getFullYear();
 
 const CardItem = ({ item }) => (
 
-  <Card className="w-96">
+  <Card className="w-96 ">
 
     <CardHeader
       variant="gradient"
@@ -76,7 +78,7 @@ const CardItem = ({ item }) => (
 
 function Welcome() {
   return (
-    <div className="p-10">
+    <div className="p-10 bg-white-800">
       <img
         style={{ width: '15%', height: '15%' }}
         src={logo}
@@ -333,15 +335,15 @@ function Welcome() {
 
           <div className="flex gap-4 ">
           <Card className="w-92 bg-green-50">
-  <CardHeader
-    variant="gradient"
-    color="white"
-    className="grid h-24 place-items-center  mb-6"
-  >
-    <Typography variant="h5" className="font-bold text-black">
-      Sujith Reddy
-    </Typography>
-  </CardHeader>
+          <CardHeader
+  variant="gradient"
+  color="white"
+  className="grid h-24 place-items-center mb-6 bg-yellow-700"
+>
+  <Typography variant="h5" className="font-bold text-white">
+    SUJITH REDDY
+  </Typography>
+</CardHeader>
 
   <CardBody className="flex flex-col gap-4">
     {/* Add content here if needed, like bio or social links */}
@@ -376,15 +378,15 @@ function Welcome() {
               <br></br>
 
               <Card className="w-93 bg-green-50">
-  <CardHeader
-    variant="gradient"
-    color="white"
-    className="mb-4 grid h-24 place-items-center"
-  >
-    <Typography variant="h5" className="font-bold text-black">
-      Vidhya Reddy
-    </Typography>
-  </CardHeader>
+              <CardHeader
+  variant="gradient"
+  color="white"
+  className="grid h-24 place-items-center mb-6 bg-yellow-700"
+>
+  <Typography variant="h5" className="font-bold text-white">
+    VIDHYA REDDY
+  </Typography>
+</CardHeader>
 
   <CardBody className="flex flex-col gap-6">
     {/* Add body content here if needed */}
@@ -410,7 +412,10 @@ function Welcome() {
     </div>
   </CardFooter>
 </Card>
+
+
 </div>
+
             </div>
           </div>
         </Typography>
