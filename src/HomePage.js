@@ -187,93 +187,86 @@ function Welcome() {
       <b><hr class="separator" /></b>
 
       <div className='flex justify-center items-center'>
-        <Typography variant="h2" color="Black">
-          <br></br>Official Sports Partners <br></br>
+      <Typography variant="h2" color="Black">
+  <br />
+  Food Varieties at your Fingertips
+  <br /><br />
 
-          <br></br>
-          <div></div>
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-35G1TVAFg5ii-zc0AoU3V7Qpk9M9Kb5ihQ&s"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9yljJ1BxLYJGeJB999n6RefvnSJxN0w8bQw&s"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
+  <div className="flex flex-wrap gap-4">
+  <button className="hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Biryani.png"
+      alt="Biryani"
+      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+  </button>
 
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUUM6wC2DpQa53LW9OlXVeXIIp0SilMDChAQ&s"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
+  <button className="hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Burger.png"
+      alt="Burger"
+      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+  </button>
 
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd1RhFIuJmEy1L4TwOMmiJTDpNVnLvIHD7Qg&s"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
+  <button className="hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Noodles.png"
+      alt="Noodles"
+      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+  </button>
 
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIUEh_iAU-it42JVdISwVwFe9_FhdoYwmxJg&s"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
+  <button className="hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Dosa.png"
+      alt="Dosa"
+      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+  </button>
 
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMtFjFHJxu3uFdR2YcqFhok_aUV7NWrKzgtw&s"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
+  <button className="hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Pasta.png"
+      alt="Pasta"
+      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+  </button>
 
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdURdkjiGCSzciELc10rNcp3IqZh4lCEl4cQ&s"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
+  <button className="hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Momo.png"
+      alt="Momo"
+      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+  </button>
 
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/This_is_the_logo_for_Rajasthan_Royals%2C_a_cricket_team_playing_in_the_Indian_Premier_League_%28IPL%29.svg/1200px-This_is_the_logo_for_Rajasthan_Royals%2C_a_cricket_team_playing_in_the_Indian_Premier_League_%28IPL%29.svg.png"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          />
-          <b>              </b>
+  <button className="hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Parotta.png"
+      alt="Parotta"
+      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+  </button>
 
-          <Avatar
-            size="xxl"
-            alt="avatar"
-            variant="circular"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6rK3_C04OQPKyyhnjPIbuwsKI8R-rATS1Vg&s"
-            className="border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
-          /> 
-          <b>              </b>
+  <button className="hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Shawarma.png"
+      alt="Shawarma"
+      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+  </button>
 
+  <button className="hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Idli.png"
+      alt="Idli"
+      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+  </button>
+</div>
+</Typography>
 
-        </Typography>
       </div>
 
       <br></br>
