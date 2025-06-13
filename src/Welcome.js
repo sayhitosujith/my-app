@@ -187,7 +187,7 @@ function Welcome() {
     <IoIosNotificationsOutline color="black" size={40} />
  </Badge>
   </a>
-  <a href="/my-app">
+  <a href="/Logout">
     <FaPowerOff color="black" size={30} />
   </a>
 </div>

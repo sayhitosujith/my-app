@@ -32,6 +32,7 @@ import CheckoutForm from './CheckoutForm';
 import DeliveryBoy from './DeliveryBoy';
 import AddDeliveryCaptain from './AddDeliveryCaptain';
 import Settings from './Settings';
+import Logout from './Logout';
 
 
 const router = createBrowserRouter([
@@ -138,6 +139,10 @@ const router = createBrowserRouter([
   {
     path: "/Settings",
     element: <Settings/>,
+  },
+  {
+    path: "/Logout",
+    element: <Logout/>,
   },
   {
     path: "/AddDeliveryCaptain",

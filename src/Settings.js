@@ -1,10 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
   Typography,
   Button,
   Select,
@@ -13,17 +9,6 @@ import {
   Switch,
 } from "@material-tailwind/react";
 
-const data = [
-  {id: 1,  src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 2, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 3, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 4, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 5, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 6, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 7, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-  {id: 8, src: 'https://cdn-icons-png.flaticon.com/512/305/305976.png',},
-];
-
 const users = [
   { id: 1, name: 'Sujith', email: 'sayhitosujith@gmail.com' },
   { id: 2, name: 'Bob', email: 'bob@example.com' },
@@ -31,7 +16,6 @@ const users = [
 ];
 
 function Settings() {
-  // State to manage switch values
   const [settings, setSettings] = useState({
     allow24x7: false,
     allowCancellation: false,
@@ -44,7 +28,6 @@ function Settings() {
     enableQRCode: false,
   });
 
-  // Handle switch toggle
   const handleSwitchChange = (key) => {
     setSettings((prev) => ({
       ...prev,
@@ -52,230 +35,125 @@ function Settings() {
     }));
   };
 
-  // Handle save action
   const handleSave = () => {
     console.log("Saved Settings:", settings);
     alert("Settings saved successfully!");
-    // Here, you can send the `settings` object to your backend API
   };
 
   return (
     <div className="p-10">
+      {/* Breadcrumbs */}
       <Breadcrumbs>
-        <a href="#" className="opacity-60">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001-1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-          </svg>
-        </a>
-        <a href="#" className="opacity-60">
-          <a href="/Welcome">Welcome</a>
-        </a>
-        <a href="#">ADMIN SETTINGS</a>
+        <a href="/" className="opacity-60">Home</a>
+        <a href="/Welcome" className="opacity-60">Welcome</a>
+        <span>ADMIN SETTINGS</span>
       </Breadcrumbs>
 
-      <Typography variant="h2" color="green" className="mb-4">
-        ADMIN SETTINGS
-        <div style={{ float: 'right' }}>
+      {/* Header */}
+      <div className="flex justify-between items-center mt-4 mb-6">
+        <Typography variant="h2" color="green">
+          ADMIN SETTINGS
+        </Typography>
+        <div className="flex gap-4">
           <Button color="green">
             <a href="/AddDeliveryCaptain">+ ADD SUPER ADMIN</a>
           </Button>
-          <div className="w-74">
-            <Select label="Profile">
-              <Option>About</Option>
-              <Option>Change Password</Option>
-              <Option>Logout</Option>
-            </Select>
-          </div>
+          <Select label="Profile">
+            <Option>About</Option>
+            <Option>Change Password</Option>
+            <Option>Logout</Option>
+          </Select>
         </div>
-      </Typography>
-
-      {/* Customer Settings Section */}
-      <div className="grid grid-cols-4 gap-x-4 gap-y-4">
-        <Typography className="col-span-2 !font-bold" color="BLACK">
-          SUPER ADMIN SETTINGS
-        </Typography>
-      {/* Customer Settings Section */}
-      <b>
-</b>
-{/* Customer Settings Section */}
-<b>
-</b>
-<div className="grid grid-cols-4 gap-x-4 gap-y-4">
- 
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow 24/7" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Cancellation" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Access to Customer Care Number" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Payment Online" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow COD" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Edit Order" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Rating" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Add Tip" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Enable QR Code" color="green" />
-  </Typography>
-</div>
-
-      {/* Account Settings Section */}
-      <b>
-</b>
-<div className="grid grid-cols-4 gap-x-6 gap-y-4 mt-4"> {/* Added margin-top */}
-  <Typography className="col-span-2 !font-bold" color="BLACK">
-    CUSTOMER SETTINGS
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Customer Login" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Schedule Tasks" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Customer to Update Order Details" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Customer to Manage Users" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Customer for an International access" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Customer to Reject Order" color="green" />
-  </Typography>
-</div>
-
-      {/* Admin Page Settings Section */}
-      <b>
-</b>
-<div className="grid grid-cols-4 gap-x-6 gap-y-4 mt-4"> {/* Added margin-top */}
-  <Typography className="col-span-2 !font-bold" color="BLACK">
-    ADMIN SETTINGS
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Customer" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Analytics" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Customer Care" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Profiles" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Billing Details" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Adding Delivery Captain" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Adding Meal" color="green" />
-  </Typography>
-  <Typography className="!font-normal !text-gray-600" variant="small">
-    <Switch label="Allow Updating CopyRight" color="green" />
-  </Typography>
-</div>
-
-
-      {/* Restaurant Settings Section */}
-      <b>
-</b>
-
-<div className="w-full mb-3 mt-4"> {/* Added margin-top */}
-  <div className="grid grid-cols-4 gap-x-6 gap-y-4">
-    <Typography className="col-span-2 !font-bold" color="BLACK">
-      RESTAURANT SETTINGS
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Allow Add Meal" color="green" />
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Enable 24/7" color="green" />
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Allow Cancellation" />
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Allow Access to Restaurant Number" color="green" />
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Allow Payment Online" color="green" />
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Enable COD" color="green" />
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Enable Edit Order" color="green" />
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Allow Restaurant Rating" color="green" />
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Allow Add Tip" color="green" />
-    </Typography>
-    <Typography className="!font-normal !text-gray-600" variant="small">
-      <Switch label="Allow Download Invoice" color="green" />
-    </Typography>
-  </div>
-</div>
-
-
-
-        {/* Add other switches here... */}
       </div>
 
+      {/* SUPER ADMIN SETTINGS */}
+      <Typography className="font-bold mb-2">SUPER ADMIN SETTINGS</Typography>
+      <div className="grid grid-cols-4 gap-4 mb-6">
+        {[
+          { key: 'allow24x7', label: 'Allow 24/7' },
+          { key: 'allowCancellation', label: 'Allow Cancellation' },
+          { key: 'allowCustomerCare', label: 'Allow Access to Customer Care Number' },
+          { key: 'allowPaymentOnline', label: 'Allow Payment Online' },
+          { key: 'allowCOD', label: 'Allow COD' },
+          { key: 'allowEditOrder', label: 'Allow Edit Order' },
+          { key: 'allowRating', label: 'Allow Rating' },
+          { key: 'allowAddTip', label: 'Allow Add Tip' },
+          { key: 'enableQRCode', label: 'Enable QR Code' },
+        ].map(({ key, label }) => (
+          <Switch
+            key={key}
+            label={label}
+            color="green"
+            checked={settings[key]}
+            onChange={() => handleSwitchChange(key)}
+          />
+        ))}
+      </div>
 
-      {/* Users Table */}
-      <div className="w-full mb-3 mt-4">
-        <Typography variant="h6">Registered Users</Typography>
-        <table
-          border="1"
-          width="100%"
-          style={{
-            borderCollapse: 'collapse', // Ensures that borders between cells collapse into a single border
-          }}
-        >
+      {/* CUSTOMER SETTINGS */}
+      <Typography className="font-bold mb-2">CUSTOMER SETTINGS</Typography>
+      <div className="grid grid-cols-4 gap-4 mb-6">
+        <Switch label="Allow Customer Login" color="green" />
+        <Switch label="Allow Schedule Tasks" color="green" />
+        <Switch label="Allow Customer to Update Order Details" color="green" />
+        <Switch label="Allow Customer to Manage Users" color="green" />
+        <Switch label="Allow Customer for International Access" color="green" />
+        <Switch label="Allow Customer to Reject Order" color="green" />
+      </div>
+
+      {/* ADMIN PAGE SETTINGS */}
+      <Typography className="font-bold mb-2">ADMIN PAGE SETTINGS</Typography>
+      <div className="grid grid-cols-4 gap-4 mb-6">
+        <Switch label="Allow Customer" color="green" />
+        <Switch label="Allow Analytics" color="green" />
+        <Switch label="Allow Customer Care" color="green" />
+        <Switch label="Allow Profiles" color="green" />
+        <Switch label="Allow Billing Details" color="green" />
+        <Switch label="Allow Adding Delivery Captain" color="green" />
+        <Switch label="Allow Adding Meal" color="green" />
+        <Switch label="Allow Updating Copyright" color="green" />
+      </div>
+
+      {/* RESTAURANT SETTINGS */}
+      <Typography className="font-bold mb-2">RESTAURANT SETTINGS</Typography>
+      <div className="grid grid-cols-4 gap-4 mb-6">
+        <Switch label="Allow Add Meal" color="green" />
+        <Switch label="Enable 24/7" color="green" />
+        <Switch label="Allow Cancellation" color="green" />
+        <Switch label="Allow Access to Restaurant Number" color="green" />
+        <Switch label="Allow Payment Online" color="green" />
+        <Switch label="Enable COD" color="green" />
+        <Switch label="Enable Edit Order" color="green" />
+        <Switch label="Allow Restaurant Rating" color="green" />
+        <Switch label="Allow Add Tip" color="green" />
+        <Switch label="Allow Download Invoice" color="green" />
+      </div>
+
+      {/* Registered Users Table */}
+      <div className="mb-6">
+        <Typography variant="h6" className="mb-2">Registered Users</Typography>
+        <table className="w-full border border-black border-collapse">
           <thead>
             <tr>
-              <th style={{ border: '1px solid black', padding: '8px' }}>ID</th>
-              <th style={{ border: '1px solid black', padding: '8px' }}>Name</th>
-              <th style={{ border: '1px solid black', padding: '8px' }}>Email</th>
+              <th className="border border-black p-2">ID</th>
+              <th className="border border-black p-2">Name</th>
+              <th className="border border-black p-2">Email</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
               <tr key={user.id}>
-                <td style={{ border: '1px solid black', padding: '8px' }}>{user.id}</td>
-                <td style={{ border: '1px solid black', padding: '8px' }}>{user.name}</td>
-                <td style={{ border: '1px solid black', padding: '8px' }}>{user.email}</td>
+                <td className="border border-black p-2">{user.id}</td>
+                <td className="border border-black p-2">{user.name}</td>
+                <td className="border border-black p-2">{user.email}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <div style={{ float: 'right' }}>
-        
+      {/* Action Buttons */}
+      <div className="flex justify-end gap-4">
         <Button color="green" onClick={handleSave}>SAVE</Button>
         <a href="/Settings">
           <Button color="green">CANCEL</Button>

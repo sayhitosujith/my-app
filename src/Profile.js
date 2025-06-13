@@ -126,7 +126,7 @@ function Profile() {
   <a href="">
     <IoIosNotificationsOutline color="black" size={30} />
   </a>
-  <a href="/my-app">
+  <a href="/Logout">
     <FaPowerOff color="black" size={20} />
   </a>
 </div>

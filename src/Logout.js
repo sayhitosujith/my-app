@@ -14,7 +14,7 @@ import {
 } from "@material-tailwind/react";
 
 
-function App() {
+function Logout() {
   return (
     
     <div className="flex flex-row gap-5">
@@ -26,13 +26,12 @@ function App() {
   className="mb-4 grid h-28 place-items-center"
 >
   <Typography variant="h3" color="white">
-    ADMIN
+    LOGOUT
   </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
-            <Input label="Email" size="lg" />
-            <div className="w-[32rem]">
-      <Input type="password" label="Password" />
+          <div className="w-[32rem]">
+  
       <Typography
         variant="small"
         color="gray"
@@ -50,74 +49,25 @@ function App() {
             clipRule="evenodd"
           />
         </svg>
-        Use at least 8 characters, one uppercase, one lowercase and one number.
+       User has been successfully logged out. Thank you for using our service!
       </Typography>
     </div>            <div className="-ml-2.5">
-              <div></div>
-              <Checkbox label="Remember Me" /><div></div>
-              <a href="/ResetPassword">Forgot Password? Click here to <u><b>Reset</b></u>
-              </a>
+             
+            
             </div>
             
           </CardBody>
           <CardFooter className="pt-0 flex flex-col items-center gap-4">
          
-          <a href="/Welcome" className="w-full">
-  <Button variant="filled" color="green" fullWidth>
-    LOGIN
-  </Button>
-</a>
-
-  
-<Button
-  variant="gradient"
-  fullWidth
-  className="from-green-400 to-green-600 text-white"
->
-  <a href="/Logout">Cancel</a>
-</Button>
-
-  <Button
-    size="lg"
-    variant="outlined"
-    color="green"
-    className="flex items-center gap-4"
+          <div className="flex justify-center items-center h-full">
+  <a
+    href="/my-app"
+    className="underline text-green-700 text-lg font-medium"
   >
-    <a href="/Customer_Home">Continue with the Google</a>
-    <img
-      src="https://docs.material-tailwind.com/icons/google.svg"
-      alt="google"
-      className="h-6 w-6"
-    />
-  </Button>
+    Click here to LOGIN
+  </a>
+</div>
 
-  <Button
-    size="lg"
-    variant="gradient"
-    color="light-green"
-    className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
-  >
-    <a href="/Customer_Home">Continue with the Twitter</a>
-    <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-green-600 transition-colors group-hover:bg-light-green-700">
-      <img
-        src="https://docs.material-tailwind.com/icons/twitter.svg"
-        alt="twitter"
-        className="h-6 w-6"
-      />
-    </span>
-  </Button>
-
-  <Typography variant="small" className="mt-8 flex flex-col items-center">
-    Don&apos;t have an account? Click here to
-    <Typography
-      as="div"
-      variant="small"
-      color="blue-gray"
-      className="ml-1 font-bold"
-    >
-      <a href="/NewRegistration" className="underline">Sign up</a>
-    </Typography>
-  </Typography>
 
   {/* Centered Application Version */}
   <div className="mt-4">
@@ -139,5 +89,5 @@ function App() {
   );
 }
 
-export default App;
+export default Logout;
 
