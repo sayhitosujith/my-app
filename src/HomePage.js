@@ -6,7 +6,7 @@ import Flag from 'react-world-flags';
 import { MdOutlineDesktopMac } from "react-icons/md";
 import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
 import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
-import awaiting from './assets/awaiting.png'; // adjust the path as necessary
+import appbanner from './assets/swiggyApp_download_banner.avif'; // adjust the path as necessary
 
 import logo from './assets/foodmaven.png'; // adjust the path as necessary
 import food_wallpaper from './assets/FOOODD.png'; // adjust the path as necessary
@@ -78,7 +78,7 @@ const CardItem = ({ item }) => (
 
 function Welcome() {
   return (
-    <div className="p-10 bg-white-800">
+    <div className="p-10 bg-white-1000">
       <img
         style={{ width: '15%', height: '15%' }}
         src={logo}
@@ -280,45 +280,13 @@ function Welcome() {
       <br></br>
       <br></br>
 
-      <Popover placement="bottom">
-        News Letter
-
-        <audio controls>
-          <source src="horse.ogg" type="audio/ogg" />
-          <source src="horse.mp3" type="audio/mpeg" />
-          Your browser does not support the audio tag.
-        </audio>
-
-        <br></br>
-        <PopoverHandler>
-          <Button>Subscribe </Button>
-        </PopoverHandler>
-        <PopoverContent className="w-96">
-          <Typography variant="h6" color="blue-gray" className="mb-6">
-            Newsletter Subscription
-          </Typography>
-          <Typography
-            variant="small"
-            color="blue-gray"
-            className="mb-1 font-bold"
-          >
-            Your Name
-          </Typography>
-          <div className="flex gap-2">
-            <Input
-              size="lg"
-              placeholder="name@mail.com"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
-            <Button variant="gradient" className="flex-shrink-0">
-              Subscribe
-            </Button>
-          </div>
-        </PopoverContent>
-      </Popover>
+      <img
+      src={appbanner}
+      alt="App banner scanner"
+      style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+      className="rounded-lg shadow-md"
+    />
+     
       <br></br>
       <br></br>
       <br></br>
@@ -326,7 +294,7 @@ function Welcome() {
       <div className='flex justify-center items-center'>
         <Typography variant="h2" color="Black">
           <br></br>
-          Leadership Team
+         Meet Our Leadership Team
           <br></br>
           <br></br>
 
@@ -338,7 +306,7 @@ function Welcome() {
           <CardHeader
   variant="gradient"
   color="white"
-  className="grid h-24 place-items-center mb-6 bg-yellow-700"
+  className="grid h-24 place-items-center mb-6 bg-green-700"
 >
   <Typography variant="h5" className="font-bold text-white">
     SUJITH REDDY
@@ -381,7 +349,7 @@ function Welcome() {
               <CardHeader
   variant="gradient"
   color="white"
-  className="grid h-24 place-items-center mb-6 bg-yellow-700"
+  className="grid h-24 place-items-center mb-6 bg-green-700"
 >
   <Typography variant="h5" className="font-bold text-white">
     VIDHYA REDDY
