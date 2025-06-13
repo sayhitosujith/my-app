@@ -330,93 +330,87 @@ function Welcome() {
 
           <div className="flex flex-row gap-8"> {/* Increased gap for more spacing */}
           <div className="h-screen flex items-center justify-center">
-  <Card className="w-92"> {/* Reduced width from w-98 to w-72 */}
-    <CardHeader
-      variant="gradient"
-      color="white"
-      className="mb-4 grid h-24 place-items-center"
-    >
-      <b>Sujith Reddy</b>
-    </CardHeader>
 
-    <CardBody className="flex flex-col gap-4" />
+          <div className="flex gap-4">
+          <Card className="w-92 ">
+  <CardHeader
+    variant="gradient"
+    color="white"
+    className="grid h-24 place-items-center  mb-6"
+  >
+    <Typography variant="h5" className="font-bold text-black">
+      Sujith Reddy
+    </Typography>
+  </CardHeader>
 
-    <CardFooter className="pt-0 flex flex-col items-center">
-      <img
-        style={{ width: '100%', height: '50vh' }} // Reduced height from 60vh to 40vh
-        src={sujithImage}
-        alt="sujith_Profile"
-      />
+  <CardBody className="flex flex-col gap-4">
+    {/* Add content here if needed, like bio or social links */}
+  </CardBody>
 
-      <Typography variant="p" sx={{ letterSpacing: '1.5px', marginLeft: '4px' }}></Typography>
-    </CardFooter>
+  <CardFooter className="pt-0 flex flex-col items-center">
+    <img
+      src={sujithImage}
+      alt="Sujith Profile"
+      style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+      className="rounded-lg shadow-md"
+    />
 
-    <Typography variant="large" className="mt-4 flex justify-center">
-      <b>Founder and CEO</b>
+    <Typography variant="small" className="mt-6 text-center font-semibold">
+      Founder and CEO
     </Typography>
 
     <div className="flex justify-center items-center gap-2 mt-3">
-      <TfiEmail size={24} color="green" /> {/* Reduced icon size from 30 to 24 */}
-      <Typography variant="small">
-        <b>sayhitosujith@gmail.com</b>
+      <TfiEmail size={24} color="green" />
+      <Typography variant="small" className="font-medium">
+        sayhitosujith@gmail.com
       </Typography>
     </div>
+  </CardFooter>
 
-    <Typography
-      as="a"
-      href="#signup"
-      variant="small"
-      color="blue-gray"
-      className="ml-1 font-bold"
-    />
-  </Card>
+  {/* Optional footer link – removed empty Typography */}
+</Card>
+
+
               <br></br>
 
               <br></br>
 
               <Card className="w-93">
-              <CardHeader
-      variant="gradient"
-      color="white"
-      className="mb-4 grid h-24 place-items-center"
-    >
-      <b>Vidhya Reddy</b>
-    </CardHeader>
-                <CardBody className="flex flex-col gap-6">
-                </CardBody>
-                <CardFooter className="pt-0">
+  <CardHeader
+    variant="gradient"
+    color="white"
+    className="mb-4 grid h-24 place-items-center"
+  >
+    <Typography variant="h5" className="font-bold text-black">
+      Vidhya Reddy
+    </Typography>
+  </CardHeader>
 
-                  <img
-                    style={{ width: '100%', height: '50vh' }}
-                    src={vidhyaImage}
-                    alt="vidhya_Profile"
-                  />
+  <CardBody className="flex flex-col gap-6">
+    {/* Add body content here if needed */}
+  </CardBody>
 
-                  <Typography
-                    variant="p"
-                    sx={{ letterSpacing: '1.5px', marginLeft: '4px' }}>
-                  </Typography>
-                </CardFooter>
-                <Typography variant="small" className="mt-12 flex justify-center">
-                <br></br>
-                  <b>CO-Founder and HR Head</b>
-                  <div className="flex justify-center items-center gap-2 mt-5">
-                    <TfiEmail size={30} color="green" />
-                    <Typography variant="large">
-                      <b>MailtoVidhya@gmail.com</b>
-                    </Typography>
-                  </div>
+  <CardFooter className="pt-0 flex flex-col items-center">
+    <img
+      src={vidhyaImage}
+      alt="Vidhya Profile"
+      style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+      className="rounded-lg shadow-md"
+    />
 
+    <Typography variant="small" className="mt-6 text-center font-semibold">
+      CO-Founder and HR Head
+    </Typography>
 
-                  <Typography
-                    as="a"
-                    href="#signup"
-                    variant="small"
-                    color="blue-gray"
-                    className="ml-1 font-bold">
-                  </Typography>
-                </Typography>
-              </Card>
+    <div className="flex justify-center items-center gap-2 mt-4">
+      <TfiEmail size={24} color="green" />
+      <Typography variant="paragraph" className="text-sm font-medium">
+        MailtoVidhya@gmail.com
+      </Typography>
+    </div>
+  </CardFooter>
+</Card>
+</div>
             </div>
           </div>
         </Typography>
