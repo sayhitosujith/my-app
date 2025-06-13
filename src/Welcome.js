@@ -141,7 +141,7 @@ function ChatWithBellaButton() {
 
 function Welcome() {
   return (
-    <div className="p-10 bg-green-100">
+    <div className="p-10 bg-white-800">
        <div className="mb-6">
             <Breadcrumbs>
       <a href="#" className="opacity-60">
