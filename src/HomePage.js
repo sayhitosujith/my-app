@@ -331,8 +331,8 @@ function Welcome() {
           <div className="flex flex-row gap-8"> {/* Increased gap for more spacing */}
           <div className="h-screen flex items-center justify-center">
 
-          <div className="flex gap-4">
-          <Card className="w-92 ">
+          <div className="flex gap-4 ">
+          <Card className="w-92 bg-green-50">
   <CardHeader
     variant="gradient"
     color="white"
@@ -375,7 +375,7 @@ function Welcome() {
 
               <br></br>
 
-              <Card className="w-93">
+              <Card className="w-93 bg-green-50">
   <CardHeader
     variant="gradient"
     color="white"
