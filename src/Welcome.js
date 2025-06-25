@@ -15,6 +15,7 @@ import { GrAndroid } from "react-icons/gr";
 import packageJson from '../package.json';
 import { FaRobot } from "react-icons/fa";
 
+import emblem from './assets/emblem.png'; // adjust the path as necessary
 
 import {
   Card,
@@ -375,17 +376,47 @@ function Welcome() {
       <div className="absolute bottom-92 right-20 flex items-center gap-2 text-black text-sm">
       {/* Other left-aligned content */}
 
-  <div className="flex items-center gap-2 text-black text-sl ml-auto">
-    <Button className="flex items-center gap-4">
-      <GrAndroid size={30} color="white" />
-      <RiAppleLine size={30} color="white" />
-    </Button>
-  </div>
+      <Card className="max-w-sm w-full shadow-lg rounded-2xl p-4 bg-white">
+      <CardBody>
+        <h5 className="text-lg font-semibold mb-4 text-center text-gray-800">
+          Download the App
+        </h5>
+        <div className="flex items-center gap-4 justify-center">
+          <Button
+            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl shadow-md"
+            title="Download for Android"
+          >
+            <GrAndroid size={24} />
+            <span className="hidden md:inline">Android</span>
+          </Button>
+          <Button
+            className="flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-xl shadow-md"
+            title="Download for iOS"
+          >
+            <RiAppleLine size={24} />
+            <span className="hidden md:inline">iOS</span>
+          </Button>
+        </div>
+      </CardBody>
+    </Card>
+
+  <div className="p-10 bg-white-1000">
+      <img
+        style={{ width: '55%', height: '55%' }}
+        src={emblem}
+        alt="Application_logo"
+      />
+       <div className="flex items-center space-x-2">
+      <span className="text-lg font-semibold">MADE IN INDIA</span>
+      <Flag code="IN" style={{ width: 30, height: 20 }} />
+      </div>
+      </div>
 </div>
       <br></br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 
       </Typography>
     </div>
@@ -404,9 +435,7 @@ function Welcome() {
 >
   <FaRobot size={50} color="#6cdb04" />
   <span className="text-sm font-bold mt-4 text-black">Chat with AI</span>
-</button>
-          
-          
+</button> 
           </div>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
@@ -434,6 +463,7 @@ function Welcome() {
             ))}
           </div>
         </div>
+
         <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
@@ -442,10 +472,8 @@ function Welcome() {
             &copy; {currentYear}<a href="https://material-tailwind.com/"> - Food Maven</a>. All
             Rights Reserved.
             <br></br>
-            <div className="flex items-center space-x-2">
-      <span className="text-lg font-semibold">MADE IN INDIA</span>
-      <Flag code="IN" style={{ width: 30, height: 20 }} />
-      </div>
+            
+           
           </Typography>
           <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
             <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
@@ -488,6 +516,7 @@ function Welcome() {
                   clip-rule="evenodd"
                 />
               </svg>
+              
             </Typography>
           </div>
         </div>

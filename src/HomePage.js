@@ -78,8 +78,8 @@ const CardItem = ({ item }) => (
 
 function Welcome() {
   return (
-    <div className="p-10 bg-white-1000">
-      <img
+<div className="p-10 bg-white">
+<img
         style={{ width: '15%', height: '15%' }}
         src={logo}
         alt="Application_logo"
