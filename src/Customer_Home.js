@@ -6,9 +6,12 @@ import { IconButton } from "@material-tailwind/react";
 import { BsCart3 } from "react-icons/bs";
 import { IoCartOutline } from "react-icons/io5";
 import { CiWallet } from "react-icons/ci";
-import { IoLogOutOutline } from "react-icons/io5";
 import { FaPowerOff } from "react-icons/fa6";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { FaLocationDot } from "react-icons/fa6";
+import { PiLineVerticalThin } from "react-icons/pi";
+import logo from './assets/foodmaven.png'; // adjust the path as necessary
+
 
 import {
   Card,
@@ -113,6 +116,7 @@ const CardItem = ({ item }) => (
 
     <br></br>
 
+
     <Button color="black" appearance="primary" className="text-lg font-semibold">
       <a href="/MyCart" className="flex items-center gap-10">
         <span>ADD TO CART</span>
@@ -129,7 +133,13 @@ const CardItem = ({ item }) => (
 
 function App() {
   return (
-    <div className="p-10">
+    
+    <div className="p-10 bg-green-10">
+<img
+        style={{ width: '10%', height: '10%' }}
+        src={logo}
+        alt="Application_logo"
+      />
 
       <Breadcrumbs>
         <a href="#" className="opacity-60">
@@ -150,32 +160,79 @@ function App() {
         </a>
         <a href="#">Customer_Home</a>
       </Breadcrumbs>
+      <div style={{ float: 'right' }}>
+          <div className="w-74">
+            <Select label="Profile">
 
+              <Option>
+              </Option>
+              <Button>
+                <a href="/MyCart">
+                  <CiWallet size={20} color="white" /> My wallet
+                </a>
+
+              </Button>
+              <Option>
+                <a href="/HomePage">
+                  About
+                </a>
+              </Option>
+              <Option>
+                <a href="/ResetPassword">
+                  Change Password
+                </a>
+              </Option>
+
+            </Select>
+          </div>
+        </div>
+        
       <div className="absolute top-4 right-4 flex items-center space-x-3">
+      <Button size="sm" color="white" className="flex items-center gap-2">
+            <a href="/MyCart">
+              My cart
+            </a>
+            <IoCartOutline size={35} color="black" /> </Button>
+            <PiLineVerticalThin size={35} color="black"/>
+
   <a href="">
     <IoIosNotificationsOutline color="black" size={30} />
   </a>
+  <PiLineVerticalThin size={35} color="black" />
   <a href="/Logout">
     <FaPowerOff color="black" size={20} />
   </a>
 </div>
 
 {/* Location Button with Textbox */}
-<div className="mt-4 flex items-center space-x-4">
-  <button className="px-4 py-2 bg-red-600 text-white rounded hover:bg-green-700 transition">
+<div className="mt-4 flex items-center space-x-4 mb-4"> {/* Added mb-4 here */}
+  <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-red-700 transition">
     DELIVERY
   </button>
-  
-  <input
-    type="text"
-    placeholder="Enter your location"
-    className="px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
+
+  <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+  <FaLocationDot className="text-black mr-2" />
+  <select
+    className="outline-none w-full bg-white"
+    defaultValue=""
+  >
+    <option value="" disabled>
+      Select your location
+    </option>
+    <option value="Bangalore">Bangalore</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Chennai">Chennai</option>
+    <option value="Mumbai">Mumbai</option>
+    <option value="Hyderabad">Hyderabad</option>
+  </select>
 </div>
+</div>
+
+          
 
       <b><hr class="separator" /></b>
 
-      <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-yellow-800 overflow-x-auto whitespace-nowrap">
+      <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-orange-800 overflow-x-auto whitespace-nowrap">
         <Typography variant="h6" color="black" className="text-md inline-block"><i>
           <figure className="relative h-99 w-full">
 
@@ -270,45 +327,8 @@ function App() {
             </div>
           </div>
 
-
-          <Button size="sm" color="orange" className="flex items-center gap-2">
-            <a href="/MyCart">
-              My cart
-            </a>
-            <IoCartOutline size={35} color="white" /> </Button>
-
-  
         </div>
 
-
-
-        <br></br>
-        <div style={{ float: 'right' }}>
-          <div className="w-74">
-            <Select label="Profile">
-
-              <Option>
-              </Option>
-              <Button>
-                <a href="/MyCart">
-                  <CiWallet size={20} color="white" /> My wallet
-                </a>
-
-              </Button>
-              <Option>
-                <a href="/HomePage">
-                  About
-                </a>
-              </Option>
-              <Option>
-                <a href="/ResetPassword">
-                  Change Password
-                </a>
-              </Option>
-
-            </Select>
-          </div>
-        </div>
       </Typography>
 
       <b><hr class="separator" /></b>

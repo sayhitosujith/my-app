@@ -3,7 +3,6 @@ import { Badge } from "@material-tailwind/react";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import Flag from 'react-world-flags';
-import { MdOutlineDesktopMac } from "react-icons/md";
 import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
 import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
 import appbanner from './assets/swiggyApp_download_banner.avif'; // adjust the path as necessary
