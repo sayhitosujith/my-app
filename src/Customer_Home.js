@@ -188,16 +188,27 @@ function App() {
         </div>
       <div className="absolute top-4 right-4 flex items-center space-x-3">
       <Button size="sm" color="white" className="flex items-center gap-2">
-            <a href="/MyCart">
-              My cart
-            </a>
-            <IoCartOutline size={35} color="black" /> </Button>
+  <a href="/MyCart" className="text-black">
+    My cart
+  </a>
+  <div className="relative">
+    <IoCartOutline size={35} color="black" />
+    <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+      2
+    </span>
+  </div>
+</Button>
+
             <PiLineVerticalThin size={35} color="black"/>
 
   <a href="">
-    <IoIosNotificationsOutline color="black" size={30} />
-  </a>
-  <PiLineVerticalThin size={35} color="black" />
+  <div className="relative inline-block">
+  <IoIosNotificationsOutline color="black" size={30} />
+  <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+    1
+  </span>
+</div>  </a>
+  <PiLineVerticalThin size={50} color="black" />
   <a href="/Logout">
     <FaPowerOff color="black" size={20} />
   </a>
