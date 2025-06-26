@@ -52,7 +52,7 @@ const currentDate = new Date().getDate();
 
 
 const CardItem = ({ item }) => (
-  <Card className="w-96">
+  <Card className="w-96 bg-green-50">
     <CardHeader
       variant="gradient"
       color="green"
@@ -63,7 +63,7 @@ const CardItem = ({ item }) => (
     </CardHeader>
 
 
-    <div className='flex justify-center items-center '>
+    <div className='flex justify-center items-center'>
       <img style={{ width: '200px', height: '200px' }} src={item.src} />
     </div>
     <CardBody className="flex flex-col gap-4 ">
@@ -117,10 +117,10 @@ const CardItem = ({ item }) => (
     <br></br>
 
 
-    <div className="flex justify-end">
+    <div className="flex justify-end ">
   <Button color="white" appearance="primary" className="text-lg font-semibold">
     <a href="/MyCart">
-      <button className="text-red-600 border border-gray-500 px-4 py-2 rounded">
+      <button className="text-green-600 border se-4 py-2 rounded bg-green-50">
         ADD
       </button>
     </a>
@@ -205,8 +205,8 @@ function App() {
 
 {/* Location Button with Textbox */}
 <div className="mt-4 flex items-center space-x-4 mb-4"> {/* Added mb-4 here */}
-<button className="px-4 py-2 bg-white text-black border border-black rounded hover:bg-green-700 transition">
-  DELIVERY
+<button className="px-4 py-2 bg-green text-black border border-black rounded hover:bg-white-700 transition">
+  LOCATION
 </button>
 
   <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
@@ -280,7 +280,7 @@ function App() {
       <figcaption className="absolute bottom-8 left-1/2 flex w-[calc(100%-4rem)] -translate-x-1/2 justify-between rounded-xl border border-white bg-white/75 py-4 px-6 shadow-lg backdrop-blur-sm">
         <div>
           <Typography variant="h5" color="blue-gray">
-            Tasty Bites Await 🍽️ — Don't miss today's specials!
+            Exciting offers Await 🍽️ — Don't miss today's Deals!
           </Typography>
         </div>
       </figcaption>
