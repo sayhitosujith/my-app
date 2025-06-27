@@ -50,8 +50,8 @@ function Settings() {
       </Breadcrumbs>
 
       {/* Header */}
-      <div className="flex justify-between items-center mt-4 mb-6">
-        <Typography variant="h2" color="green">
+      <div className="flex justify-between items-center mt-6 mb-6">
+        <Typography variant="h5" color="green">
           ADMIN SETTINGS
         </Typography>
         <div className="flex gap-4">
@@ -65,6 +65,9 @@ function Settings() {
           </Select>
         </div>
       </div>
+
+      <b><hr class="separator" /></b>
+
 
       {/* SUPER ADMIN SETTINGS */}
       <Typography className="font-bold mb-2">SUPER ADMIN SETTINGS</Typography>
@@ -130,10 +133,13 @@ function Settings() {
         <Switch label="Allow Download Invoice" color="green" labelProps={{ className: "font-bold" }} />
       </div>
 
+      <b><hr class="separator" /></b>
+
+
       {/* Registered Users Table */}
       <div className="mb-6">
-        <Typography variant="h6" className="mb-2">Registered Users</Typography>
-        <table className="w-full border border-black border-collapse">
+      <Typography variant="h6" className="mb-8"><u><b>REGISTERED USERS</b></u></Typography>
+      <table className="w-full border border-black border-collapse">
           <thead>
             <tr>
               <th className="border border-black p-2">ID</th>

@@ -12,6 +12,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { PiLineVerticalThin } from "react-icons/pi";
 import logo from './assets/foodmaven.png'; // adjust the path as necessary
 import { Carousel } from "@material-tailwind/react";
+import { IoSettingsOutline } from "react-icons/io5";
 
 
 import {
@@ -22,7 +23,6 @@ import {
   Typography,
   Button,
   Checkbox,
-  Breadcrumbs,
   Rating,
   Switch
 } from "@material-tailwind/react";
@@ -140,7 +140,7 @@ function App() {
     
     <div className="p-5 bg-green-10">
 <img
-        style={{ width: '8%', height: '8%' }}
+        style={{ width: '10%', height: '10%' }}
         src={logo}
         alt="Application_logo"
       />
@@ -192,8 +192,21 @@ function App() {
             </Select>
           </div>
         </div>
+
+        
       <div className="absolute top-4 right-4 flex items-center space-x-3">
+
+        
       <Button size="sm" color="white" className="flex items-center gap-2">
+  <a href="/Settings"
+   className="text-black">
+  </a>
+  <div className="relative">
+    <IoSettingsOutline  size={35} color="black" />
+  </div>
+</Button>
+
+<Button size="sm" color="white" className="flex items-center gap-2">
   <a href="/MyCart" className="text-black">
     My cart
   </a>
@@ -205,7 +218,7 @@ function App() {
   </div>
 </Button>
 
-            <PiLineVerticalThin size={35} color="black"/>
+  <PiLineVerticalThin size={35} color="black"/>
 
   <a href="">
   <div className="relative inline-block">

@@ -28,12 +28,15 @@ function Customer_Login() {
           </CardHeader>
           &nbsp;
 
-            <Input label="Enter Email ID / Mobile Number" size="lg" />
-            &nbsp;
-            <Button variant="gradient" fullWidth>
-            <a href="/OTP">
-             Request OTP 
-               </a></Button>
+          <Input label="Enter your Mobile Number" size="md" />
+          &nbsp;
+            <a href="/OTP" className="block w-full">
+            <div className="flex justify-center">
+  <Button variant="gradient" color="green" className="w-40">
+    Get OTP
+  </Button>
+</div>
+</a>
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
@@ -53,17 +56,19 @@ function Customer_Login() {
 </div>
 
 
-            <Typography variant="small" className="mt-6 flex justify-center">
-              Don&apos;t have an account?
-              <Typography
-                as="a"
-                href="#signup"
-                variant="small"
-                color="blue-gray"
-                className="ml-1 font-bold">
-                Create New Account
-              </Typography>
-            </Typography>
+<Typography variant="small" className="mt-6 flex justify-center">
+  Don&apos;t have an account?
+  <Typography
+    as="a"
+    href="#signup"
+    variant="small"
+    color="red"
+    className="ml-1 font-bold"
+  >
+    REGISTER FOR FREE
+  </Typography>
+</Typography>
+
           
 
         </Card>

@@ -56,15 +56,17 @@ function Addprofile() {
 
           </CardBody>
           <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-            <a href="/Profile">
-             ADD 
-               </a>    
-            </Button>
-            <br></br>
-            <Button variant="gradient" fullWidth>
-             Cancel
-            </Button>
+          <div className="space-y-4">
+  <a href="/Profile" className="block">
+    <Button variant="gradient" fullWidth color="green">
+      ADD
+    </Button>
+  </a>
+
+  <Button variant="gradient" fullWidth color="red">
+    Cancel
+  </Button>
+</div>
             <Typography
           variant="p"
           sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>

@@ -27,17 +27,17 @@ function NewRegistration() {
             color="gray"
             className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
-            USER REGISTRATION 
+              USER REGISTRATION
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
-          <Avatar src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png" alt="avatar" size="xxl" />
+            <Avatar src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png" alt="avatar" size="xxl" />
 
-       
-<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image (JPEG,PNG)</label>
-<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"/>
 
-            
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image (JPEG,PNG)</label>
+            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" />
+
+
             <Input label="First Name *" size="lg" />
             <Input label="Last Name *" size="lg" />
             <Input label="Email *" size="lg" />
@@ -47,69 +47,69 @@ function NewRegistration() {
             <Input label="Zip Code *" size="lg" />
 
             <Checkbox
-          label={
-            <Typography
-              variant="small"
-              color="gray"
-              className="flex items-center font-normal"
-            >
-              I agree the
-              <a
-                href="#"
-                className="font-medium transition-colors hover:text-gray-900"
-              >
-                &nbsp;Terms and Conditions
-              </a>
-            </Typography>
-          }
-          containerProps={{ className: "-ml-2.5" }}
-        />
-            
+              label={
+                <Typography
+                  variant="small"
+                  color="gray"
+                  className="flex items-center font-normal"
+                >
+                  I agree the
+                  <a
+                    href="#"
+                    className="font-medium transition-colors hover:text-gray-900"
+                  >
+                    &nbsp;Terms and Conditions
+                  </a>
+                </Typography>
+              }
+              containerProps={{ className: "-ml-2.5" }}
+            />
+
           </CardBody>
           <CardFooter className="pt-0">
-          <Button variant="gradient" fullWidth>
-            <a href="/Success">
-               Register 
-               </a>   
+            <Button variant="gradient" color="green" fullWidth>
+              <a href="/Success" className="w-full text-center text-lg font-semibold">
+                Register
+              </a>
             </Button>
             <Typography
-          variant="p"
-          sx={{ letterSpacing: '1.5px', marginLeft: '4px'  }}>
-        </Typography>
-          
+              variant="p"
+              sx={{ letterSpacing: '1.5px', marginLeft: '4px' }}>
+            </Typography>
+
 
             <Typography variant="small" className="mt-6 flex justify-center">
               Already have an account?
               <Typography
                 as="a"
-                href="#signup"
+                href="/my-app#signup"
                 variant="small"
                 color="blue-gray"
-                className="ml-1 font-bold">
-               <u><a href="/my-app#signup">Login</a></u>
-
+                className="underline text-red-700 ml-1 font-bold underline hover:text-green-600 transition-colors duration-300"
+              >
+                LOGIN
               </Typography>
             </Typography>
           </CardFooter>
-          
-        <Typography variant="small" className="mt-6 flex justify-center">
-           <b>To verify your number, we will send you a text message with a temporary code. Message and data rates may apply</b>
-           <Typography
-                as="a"
-                href="#signup"
-                variant="small"
-                color="blue-gray"
-                className="ml-1 font-bold">
-              </Typography>
-           </Typography>
+
+          <Typography variant="small" className="mt-6 flex justify-center">
+            <b>To verify your number, we will send you a text message with a temporary code. Message and data rates may apply</b>
+            <Typography
+              as="a"
+              href="#signup"
+              variant="small"
+              color="blue-gray"
+              className="ml-1 font-bold">
+            </Typography>
+          </Typography>
 
         </Card>
       </div>
-      <img style={{width: '50%', height: '100vh'}} src="https://courseuniv.com/app/assets/images/register_02.gif" />
+      <img style={{ width: '50%', height: '100vh' }} src="https://courseuniv.com/app/assets/images/register_02.gif" />
     </div>
-   
 
-   
+
+
   );
 }
 

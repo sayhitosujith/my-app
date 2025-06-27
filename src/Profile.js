@@ -136,12 +136,13 @@ function Profile() {
     <Typography variant="h2" color="Black">
       Profiles  
       <br></br>
-   <Button> 
-   <a href="/Addprofile">
-             + ADD PROFILE 
-               </a>    
-    
-     </Button>
+
+<Button color="green">
+  <a href="/Addprofile" className="w-full h-full block text-white text-center">
+    + ADD PROFILE
+  </a>
+</Button>
+
     <div style={{float: 'right'}}>
       <div className="w-74">
       <Select label="Profile">

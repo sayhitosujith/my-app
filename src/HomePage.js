@@ -7,9 +7,10 @@ import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
 import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
 import appbanner from './assets/swiggyApp_download_banner.avif'; // adjust the path as necessary
 
-import logo from './assets/foodmaven.png'; // adjust the path as necessary
+import logo from './assets/New logo.png'; // adjust the path as necessary
 import food_wallpaper from './assets/FOOODD.png'; // adjust the path as necessary
 import { TfiEmail } from "react-icons/tfi";
+import { SiFoodpanda } from "react-icons/si";
 
 
 import {
@@ -77,12 +78,16 @@ const CardItem = ({ item }) => (
 
 function Welcome() {
   return (
-<div className="p-10 bg-white">
-<img
+<div className="p-7 bg-white">
+<SiFoodpanda size={50} color="green" />
+<Typography variant="h5" color="green">
+        Panda King
+         </Typography>
+{/* <img
         style={{ width: '15%', height: '15%' }}
         src={logo}
         alt="Application_logo"
-      />
+      /> */}
       <Typography variant="h2" color="Black">
         <Typography variant="small" className="mt-8 flex flex justify-center items-center">
           <Typography
