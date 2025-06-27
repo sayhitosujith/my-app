@@ -70,7 +70,7 @@ function Settings() {
 
 
       {/* SUPER ADMIN SETTINGS */}
-      <Typography className="font-bold mb-2">SUPER ADMIN SETTINGS</Typography>
+      <Typography className="font-bold mb-2 text-orange-800">SUPER ADMIN SETTINGS</Typography>
       <div className="grid grid-cols-4 gap-4 mb-6">
         {[
           { key: 'allow24x7', label: 'Allow 24/7' },
@@ -94,8 +94,11 @@ function Settings() {
         ))}
       </div>
 
+      <b><hr class="separator" /></b>
+
+
       {/* CUSTOMER SETTINGS */}
-      <Typography className="font-bold mb-2">CUSTOMER SETTINGS</Typography>
+      <Typography className="font-bold mb-2 text-orange-800">CUSTOMER SETTINGS</Typography>
       <div className="grid grid-cols-4 gap-4 mb-6">
         <Switch label="Allow Customer Login" color="green" labelProps={{ className: "font-bold" }} />
         <Switch label="Allow Schedule Tasks" color="green" labelProps={{ className: "font-bold" }} />
@@ -105,8 +108,11 @@ function Settings() {
         <Switch label="Allow Customer to Reject Order" color="green" labelProps={{ className: "font-bold" }} />
       </div>
 
+      <b><hr class="separator" /></b>
+
+
       {/* ADMIN PAGE SETTINGS */}
-      <Typography className="font-bold mb-2">ADMIN PAGE SETTINGS</Typography>
+      <Typography className="font-bold mb-2 text-orange-800">ADMIN PAGE SETTINGS</Typography>
       <div className="grid grid-cols-4 gap-4 mb-6">
         <Switch label="Allow Customer" color="green" labelProps={{ className: "font-bold" }} />
         <Switch label="Allow Analytics" color="green" labelProps={{ className: "font-bold" }} />
@@ -118,8 +124,10 @@ function Settings() {
         <Switch label="Allow Updating Copyright" color="green" labelProps={{ className: "font-bold" }} />
       </div>
 
+      <b><hr class="separator" /></b>
+
       {/* RESTAURANT SETTINGS */}
-      <Typography className="font-bold mb-2">RESTAURANT SETTINGS</Typography>
+      <Typography className="font-bold mb-2 text-orange-800">RESTAURANT SETTINGS</Typography>
       <div className="grid grid-cols-4 gap-4 mb-6">
         <Switch label="Allow Add Meal" color="green" labelProps={{ className: "font-bold" }} />
         <Switch label="Enable 24/7" color="green" labelProps={{ className: "font-bold" }} />
@@ -138,7 +146,7 @@ function Settings() {
 
       {/* Registered Users Table */}
       <div className="mb-6">
-      <Typography variant="h6" className="mb-8"><u><b>REGISTERED USERS</b></u></Typography>
+      <Typography variant="h6" className="mb-8 text-green-800 text-center"><u><b>REGISTERED USERS</b></u></Typography>
       <table className="w-full border border-black border-collapse">
           <thead>
             <tr>
