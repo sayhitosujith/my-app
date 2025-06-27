@@ -1,5 +1,6 @@
 import './App.css';
 import { Carousel } from "@material-tailwind/react";
+import { IoMdFingerPrint } from "react-icons/io";
 
 
 import {
@@ -40,9 +41,16 @@ function Customer_Login() {
             
         &nbsp;
 
+        <div className="flex justify-center items-center mt-4">
+      <IoMdFingerPrint className="text-6xl text-black hover:text-green-600 transition-colors duration-300 cursor-pointer" />
+       </div>
 
+
+        
+
+ <div className="flex justify-center items-center mt-4">
 <h1 style={{ color: 'Green' }}><b><div>Get access to your Orders, Wishlist and Recommendations </div></b></h1>
-
+</div>
 
 
             <Typography variant="small" className="mt-6 flex justify-center">

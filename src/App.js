@@ -3,6 +3,8 @@ import { Input, Typography } from "@material-tailwind/react";
 import React from 'react';
 import packageJson from '../package.json';
 import RCB from './assets/RCB.png'; // adjust the path as necessary
+import { IoMdFingerPrint } from "react-icons/io";
+import  { useState } from "react";
 
 import {
   Card,
@@ -15,6 +17,15 @@ import {
 
 
 function App() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleClick = () => {
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
   return (
     
     <div className="flex flex-row gap-5">
@@ -77,6 +88,32 @@ function App() {
   <a href="/Logout">Cancel</a>
 </Button>
 
+<div className="flex flex-col items-center mt-10">
+      {/* Fingerprint Button */}
+      <button
+        onClick={handleClick}
+        className="flex justify-center items-center p-4 rounded-full bg-white shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+      >
+        <IoMdFingerPrint className="text-6xl text-black hover:text-green-600 transition-colors duration-300" />
+      </button>
+
+      {/* Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-80 text-center">
+            <h2 className="text-xl font-semibold mb-4 text-green-800">Fingerprint Detected</h2>
+            <p className="text-gray-600">Authentication successful!</p>
+            <button
+onClick={() => window.location.href = "/Customer_Home"}
+className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+
   <Button
     size="lg"
     variant="outlined"
@@ -92,32 +129,38 @@ function App() {
   </Button>
 
   <Button
-    size="lg"
-    variant="gradient"
-    color="light-green"
-    className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
-  >
-    <a href="/Customer_Home">Continue with the Twitter</a>
-    <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-green-600 transition-colors group-hover:bg-light-green-700">
-      <img
-        src="https://docs.material-tailwind.com/icons/twitter.svg"
-        alt="twitter"
-        className="h-6 w-6"
-      />
-    </span>
-  </Button>
+  size="lg"
+  variant="gradient"
+  color="light-green"
+  className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
+>
+  <a href="/Customer_Home"> Continue with Facebook</a>
+  <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-green-600 transition-colors group-hover:bg-light-green-700">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_(2019).png"
+      alt="facebook"
+      className="h-6 w-6"
+    />
+  </span>
+</Button>
 
-  <Typography variant="small" className="mt-8 flex flex-col items-center">
-    Don&apos;t have an account? Click here to
-    <Typography
-      as="div"
-      variant="small"
-      color="blue-gray"
-      className="ml-1 font-bold"
+
+<Typography variant="small" className="mt-8 flex flex-col items-center">
+  Don&apos;t have an account? Click here to
+  <Typography
+    as="div"
+    variant="small"
+    color="blue-gray"
+    className="ml-1 font-bold"
+  >
+    <a
+      href="/NewRegistration"
+      className="underline text-red-700 hover:text-green-600 transition-colors duration-300"
     >
-      <a href="/NewRegistration" className="underline">Sign up</a>
-    </Typography>
+      REGISTER
+    </a>
   </Typography>
+</Typography>
 
   {/* Centered Application Version */}
   <div className="mt-4">

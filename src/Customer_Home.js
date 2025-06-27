@@ -43,6 +43,10 @@ const data = [
   { id: 13, name: 'veg Meal', src: 'https://tse3.mm.bing.net/th?id=OIP.1SxzeKMtZ9qeVnA1JQ8IqgHaE8&pid=Api&P=0&h=220', },
   { id: 14, name: 'Lemon Rice', src: 'https://indiancurrytrail.com/wp-content/uploads/2019/03/Lunchbox-Idea-1-1.jpg', },
   { id: 15, name: 'Cure Rice', src: 'https://i.ytimg.com/vi/B2ZO4tN_8-c/sddefault.jpg', },
+  { id: 16, name: 'Pav bhaji', src: 'https://assets.box8.co.in/rectangle-19x10/xhdpi/product/8997', },
+  { id: 17, name: 'Ghee Toor Dal Khichdi Thali', src: 'https://assets.box8.co.in/rectangle-19x10/xhdpi/product/12090', },
+  { id: 18, name: 'Desi Box', src: 'https://assets.box8.co.in/rectangle-19x10/xhdpi/product/5005', },
+
 
 ]
 
@@ -134,13 +138,13 @@ const CardItem = ({ item }) => (
 function App() {
   return (
     
-    <div className="p-10 bg-green-10">
+    <div className="p-5 bg-green-10">
 <img
-        style={{ width: '10%', height: '10%' }}
+        style={{ width: '8%', height: '8%' }}
         src={logo}
         alt="Application_logo"
       />
-
+{/* 
       <Breadcrumbs>
         <a href="#" className="opacity-60">
           <svg
@@ -159,7 +163,9 @@ function App() {
           </a>
         </a>
         <a href="#">Customer_Home</a>
-      </Breadcrumbs>
+      </Breadcrumbs> */}
+
+      
       <div style={{ float: 'right' }}>
           <div className="w-74">
             <Select label="Profile">
@@ -210,13 +216,19 @@ function App() {
 </div>  </a>
   <PiLineVerticalThin size={50} color="black" />
   <a href="/Logout">
-    <FaPowerOff color="black" size={20} />
+  <div className="relative group cursor-pointer">
+  <FaPowerOff color="black" size={30} />
+  <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+    Logout
+  </span>
+</div>
+
   </a>
 </div>
 
 {/* Location Button with Textbox */}
 <div className="mt-4 flex items-center space-x-4 mb-4"> {/* Added mb-4 here */}
-<button className="px-4 py-2 bg-green text-black border border-black rounded hover:bg-white-700 transition">
+<button className="px-4 py-2 bg-green text-black border border-gray rounded hover:bg-white-700 transition">
   LOCATION
 </button>
 
@@ -322,7 +334,7 @@ function App() {
           </div>
 
 
-          <div class="inline-flex left">
+          <div class="inline-flex left ">
             <Switch color="green" defaultChecked />
             <label htmlFor="desc" class="mt-px mb-0 ml-3 font-light text-gray-700 cursor-pointer select-none">
               <div>
@@ -370,22 +382,24 @@ function App() {
 
 
 
-      <div className='w-full flex mt-20 gap-5'>
+      <div className='w-full flex mt-20 gap-5 '>
         {
-          data.slice(0, 5).map((item) => <CardItem item={item} />)
+          data.slice(0, 6).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(6, 11).map((item) => <CardItem item={item} />)
+          data.slice(6, 12).map((item) => <CardItem item={item} />)
         }
       </div>
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(12, 15).map((item) => <CardItem item={item} />)
+          data.slice(12, 18).map((item) => <CardItem item={item} />)
         }
       </div>
     </div>
+
+    
 
   );
 
