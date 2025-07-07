@@ -171,14 +171,24 @@ function Welcome() {
 
   {/* Your content below */}
 </div>
-<div className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl" style={{ backgroundColor: '#a5f299' }}>
+
+<div
+  className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
+  style={{ backgroundColor: '#a5f299' }}
+>
   {isBannerActive && (
-    <>
-      <h2>
-      <Typography variant="h1" className="text-md inline-block text-black">
+    <div className="w-full overflow-hidden relative">
+      <div className="animate-scroll whitespace-nowrap inline-block">
+        <Typography variant="h1" className="text-md text-black">
           <i>
-  🛍️ NEW ARRIVALS ALLERT ! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. Don’t miss out — shop your favorites now! 🍽️💫{' '}🔥✨
+            🛍️ NEW ARRIVALS ALERT! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. Don’t miss out — shop your favorites now! 🍽️💫🔥✨
           </i>
+        </Typography>
+      </div>
+    </div>
+  )}
+</div>
+
 
 
 
@@ -192,11 +202,6 @@ function Welcome() {
   <a href="/Logout">
     <FaPowerOff color="black" size={30} />
   </a>
-</div>
-        </Typography>
-      </h2>
-    </>
-  )}
 </div>
 
 

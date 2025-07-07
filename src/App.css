@@ -1,0 +1,14 @@
+@keyframes scrollLeft {
+    0% {
+      transform: translateX(100%);
+    }
+  
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .animate-scroll {
+    display: inline-block;
+    animation: scrollLeft 20s linear infinite;
+  }
