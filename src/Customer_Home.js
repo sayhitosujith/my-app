@@ -144,7 +144,7 @@ function App() {
     
     <div className="p-5 bg-green-10">
 <img
-        style={{ width: '10%', height: '10%' }}
+        style={{ width: '6%', height: '6%' }}
         src={logo}
         alt="Application_logo"
       />
@@ -245,7 +245,7 @@ function App() {
 
 {/* Location Button with Textbox */}
 <div className="mt-4 flex items-center space-x-4 mb-4"> {/* Added mb-4 here */}
-<button className="px-4 py-2 bg-green text-black border border-gray rounded hover:bg-white-700 transition">
+<button className="px-4 py-2 bg-white text-black border border-gray rounded hover:bg-green-700 transition">
   LOCATION
 </button>
 
