@@ -36,7 +36,6 @@ import {
   const now = new Date();
   const startDate = new Date('2025-04-05T08:00:00'); // Start time
   const endDate = new Date('2026-04-08T23:59:59');   // End time
-
   const isBannerActive = now >= startDate && now <= endDate;
 
 const LINKS = [

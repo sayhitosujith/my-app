@@ -53,6 +53,10 @@ const data = [
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth() + 1; 
 const currentDate = new Date().getDate();
+const now = new Date();
+const startDate = new Date('2025-04-05T08:00:00'); // Start time
+const endDate = new Date('2026-04-08T23:59:59');   // End time
+const isBannerActive = now >= startDate && now <= endDate;
 
 
 const CardItem = ({ item }) => (
@@ -263,7 +267,23 @@ function App() {
 </div>
 </div>
 
-          
+
+   <div
+     className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
+     style={{ backgroundColor: '#65f740' }}
+   >
+     {isBannerActive && (
+       <div className="w-full overflow-hidden relative">
+         <div className="animate-scroll whitespace-nowrap inline-block">
+           <Typography variant="h1" className="text-md text-black">
+             <i>
+               🛍️ NEW ARRIVALS ALERT! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. Don’t miss out — shop your favorites now! 🍽️💫🔥✨
+             </i>
+           </Typography>
+         </div>
+       </div>
+     )}
+   </div>       
 
       <b><hr class="separator" /></b>
 
