@@ -174,7 +174,7 @@ function Welcome() {
 
 <div
   className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-  style={{ backgroundColor: '#a5f299' }}
+  style={{ backgroundColor: '#65f740' }}
 >
   {isBannerActive && (
     <div className="w-full overflow-hidden relative">
