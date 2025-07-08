@@ -10,5 +10,5 @@
   
   .animate-scroll {
     display: inline-block;
-    animation: scrollLeft 20s linear infinite;
+    animation: scrollLeft 50s linear infinite;
   }

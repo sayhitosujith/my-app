@@ -123,9 +123,12 @@ function MyCart() {
           <b><hr class="separator" /></b>
           </CardBody>
           <CardFooter className="pt-0">
-          <Button color="green" appearance="primary" > 
+          <Button   style={{ backgroundColor: '#ff5200' }}
+ appearance="primary" > 
            SAVE FOR LATER</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Button color="green" appearance="primary" > 
+            <Button   style={{ backgroundColor: '#ff5200' }}
+          
+ appearance="primary" > 
            CANCEL</Button> 
             <Typography
           variant="p"
@@ -186,11 +189,13 @@ function MyCart() {
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <Button color="orange" appearance="primary" > 
-    <a href="/BuyNow">
-    ADD TIP
- </a> 
-    </Button> 
+  <Button
+  style={{ backgroundColor: '#ff5200' }}
+  appearance="primary"
+  onClick={() => window.location.href = '/BuyNow'}
+>
+  ADD TIP
+</Button> 
   </b></h1>
   
 </div>
@@ -222,13 +227,13 @@ function MyCart() {
     <br></br>
     <b><hr class="separator"/></b>
 <br></br>
-    <Button color="green" appearance="primary" > 
+    <Button style={{ backgroundColor: '#ff5200' }} appearance="primary" > 
     <a href="/BuyNow">
     PLACE ORDER
  </a> 
     </Button> 
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <Button color="green" appearance="primary" > CANCEL</Button>
+           <Button style={{ backgroundColor: '#ff5200' }} appearance="primary" > CANCEL</Button>
      </div>
      <br></br>
             </CardBody>
