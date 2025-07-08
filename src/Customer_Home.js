@@ -14,8 +14,10 @@ import logo from './assets/foodmaven.png'; // adjust the path as necessary
 import { Carousel } from "@material-tailwind/react";
 import { IoSettingsOutline } from "react-icons/io5";
 import { GoComment } from "react-icons/go";
-import { IoIosPhonePortrait } from "react-icons/io";
-
+import { AiOutlinePhone } from "react-icons/ai";
+import { TfiEmail } from "react-icons/tfi";
+import { GrSkype } from "react-icons/gr";
+import { MdOutlineMyLocation } from "react-icons/md";
 
 import {
   Card,
@@ -250,16 +252,20 @@ function App() {
 </div>
 
 {/* Location Button with Textbox */}
-<div className="mt-4 flex items-center space-x-4 mb-4"> {/* Added mb-4 here */}
-<button className="px-4 py-2 bg-white text-black border border-gray rounded hover:bg-green-700 transition">
-  LOCATION
-</button>
+<div className="mt-4 flex items-center space-x-4 mb-4">
+  <button
+    className="px-4 py-2 bg-white border border-gray-400 rounded transition"
+    style={{ color: '#ff5200' }}
+  >
+    LOCATION
+  </button>
 
-  <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
-  <FaLocationDot className="text-black mr-2" />
+<div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+  <FaLocationDot className="mr-2" style={{ color: '#ff5200' }} />
   <select
     className="outline-none w-full bg-white"
     defaultValue=""
+    style={{ color: '#ff5200' }}
   >
     <option value="" disabled>
       Select your location
@@ -271,17 +277,25 @@ function App() {
     <option value="Hyderabad">Hyderabad</option>
   </select>
 </div>
+
+<button
+  onClick={() => alert("Maven Meal - would like to access your location")}
+  className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
+>
+  <MdOutlineMyLocation size={26} color="#ff5200" />
+</button>
+
 </div>
 
 
    <div
      className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-     style={{ backgroundColor: '#ff5200' }}
+     style={{ backgroundColor: '#91f748' }}
    >
      {isBannerActive && (
        <div className="w-full overflow-hidden relative">
          <div className="animate-scroll whitespace-nowrap inline-block">
-           <Typography variant="h6" className="text-md text-white">
+           <Typography variant="h6" className="text-md text-black">
              <i>
              NEW | 🛍️ Arrivals Alert! Fresh food, desserts and must-have picks just dropped. Shop now before they're gone....! Enjoy the Fresh Menu and Deals for thr Day🔥✨
              </i>
@@ -417,14 +431,25 @@ function App() {
 
         <div className="relative w-full h-16">
   <div className="absolute top-4 right-4">
-    <Typography variant="h5" color="blue-gray">
-      Contact Restaurant
+    <Typography variant="h5" style={{ color: '#ff5200' }}>
+      CONTACT RESTAURANT
     </Typography>
 
-    <div className="flex space-x-2 mt-2">
-      <GoComment size={35} color="orange" />
-      <IoIosPhonePortrait size={35} color="orange" />
-    </div>
+    <div className="flex space-x-4 mt-2">
+  <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+    <AiOutlinePhone size={28} color="black" />
+  </button>
+  <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+    <GoComment size={26} color="black" />
+  </button>
+  <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+    <TfiEmail size={26} color="black" />
+  </button>
+  <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+    <GrSkype size={26} color="black" />
+  </button>
+</div>
+
   </div>
 </div>
 

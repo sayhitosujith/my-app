@@ -1,7 +1,5 @@
 import './App.css';
 import { Badge } from "@material-tailwind/react";
-import { TrashIcon } from "@heroicons/react/24/solid";
-import Popup from 'reactjs-popup';
 import { FaPowerOff } from "react-icons/fa6";
 import { IoIosNotificationsOutline } from "react-icons/io";
 
@@ -11,12 +9,10 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Button,
   Select,
   Option,
   Breadcrumbs,
   Avatar,
-  Rating,
 
 } from "@material-tailwind/react";
 

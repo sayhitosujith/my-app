@@ -96,13 +96,8 @@ const data = [
 ];
  
 const currentYear = new Date().getFullYear();
-const Time =  new Date().toLocaleString();
 
-function Example() {
-  useEffect(() => {
-    document.title = 'Welcome';
-  }, []);
-}
+
 
 const CardItem = ({item}) => (
     
