@@ -2,7 +2,7 @@ import './App.css';
 import { Input, Typography } from "@material-tailwind/react";
 import React from 'react';
 import packageJson from '../package.json';
-import RCB from './assets/RCB.png'; // adjust the path as necessary
+import RCB from './assets/Rmw.png'; // adjust the path as necessary
 import { IoMdFingerPrint } from "react-icons/io";
 import  { useState } from "react";
 
@@ -29,7 +29,7 @@ function App() {
   return (
     
     <div className="flex flex-row gap-5">
-      <div className='w-1/2 h-screen flex items-center justify-center bg-green-100'>
+      <div className='w-1/2 h-screen flex items-center justify-center bg-white-100'>
         <Card className="w-92">
         <CardHeader
   variant="gradient"
@@ -173,7 +173,7 @@ className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 tra
         </Card>
       </div>
        {/* <img style={{width: '90%', height: '100vh'}} src="https://media.glamour.com/photos/66b395f7626a69f05aa0b823/master/w_2560%2Cc_limit/0807-earlydinner.gif"   */}
-       <img style={{width: '130vh', height: '100vh'}} src={RCB}
+       <img style={{width: '120vh', height: '100vh'}} src={RCB}
       alt=" Lunch box"
       
         className="h-full w-full object-cover"

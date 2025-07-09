@@ -1,5 +1,4 @@
 import './App.css';
-import { Badge } from "@material-tailwind/react";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import Flag from 'react-world-flags';
@@ -7,7 +6,6 @@ import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
 import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
 import appbanner from './assets/swiggyApp_download_banner.avif'; // adjust the path as necessary
 
-import logo from './assets/New logo.png'; // adjust the path as necessary
 import food_wallpaper from './assets/FOOODD.png'; // adjust the path as necessary
 import { TfiEmail } from "react-icons/tfi";
 import { SiFoodpanda } from "react-icons/si";
@@ -45,7 +43,11 @@ const LINKS = [
   },
 ];
 
+const now = new Date();
+const startDate = new Date('2025-04-05T08:00:00'); // Start time
+const endDate = new Date('2026-04-08T23:59:59');   // End time
 const currentYear = new Date().getFullYear();
+const isBannerActive = now >= startDate && now <= endDate;
 
 
 
@@ -79,7 +81,7 @@ const CardItem = ({ item }) => (
 function Welcome() {
   return (
 <div className="p-7 bg-white">
-<SiFoodpanda size={50} color="green" />
+<SiFoodpanda size={80} color="green" />
 <Typography variant="h5" color="green">
         Panda King
          </Typography>
@@ -118,6 +120,24 @@ function Welcome() {
           </a>
           <a href="#">HomePage</a>
         </Breadcrumbs>
+
+           <div
+             className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
+             style={{ backgroundColor: '#91f748' }}
+           >
+             {isBannerActive && (
+               <div className="w-full overflow-hidden relative">
+                 <div className="animate-scroll whitespace-nowrap inline-block">
+                   <Typography variant="h6" className="text-md text-black">
+                     <i>
+                     NEW | 🛍️ Arrivals Alert! Fresh food, desserts and must-have picks just dropped. Shop now before they're gone....! Enjoy the Fresh Menu and Deals for thr Day🔥✨
+                     </i>
+                   </Typography>
+                 </div>
+               </div>
+             )}
+           </div>       
+        
 
         <div style={{ float: 'right' }}>
           <Button color="green" appearance="primary">
