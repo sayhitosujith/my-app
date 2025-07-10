@@ -1,117 +1,290 @@
-import './App.css';
-import { Avatar } from "@material-tailwind/react";
-import { useCountries } from "use-react-countries";
-
-
+import React, { useState } from "react";
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
   Typography,
   Input,
   Button,
-  Checkbox,
 } from "@material-tailwind/react";
 
-
-
-
 function NewRegistration() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+    zipCode: "",
+  });
+
+  const [users, setUsers] = useState([]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      password,
+      confirmPassword,
+      zipCode,
+    } = formData;
+
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !phoneNumber ||
+      !password ||
+      !confirmPassword ||
+      !zipCode
+    ) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    setUsers((prevUsers) => [...prevUsers, formData]);
+
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+      zipCode: "",
+    });
+  };
+
   return (
-    <div className="flex flex-row gap-5">
-      <div className='w-1/2 h-screen flex items-center justify-center'>
-        <Card className="w-98">
-          <CardHeader
-            variant="gradient"
-            color="gray"
-            className="mb-4 grid h-28 place-items-center">
-            <Typography variant="h3" color="white">
-              USER REGISTRATION
-            </Typography>
-          </CardHeader>
-          <CardBody className="flex flex-col gap-4">
-            <Avatar src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png" alt="avatar" size="xxl" />
+<div
+  style={{
+    maxWidth: 900,
+    margin: "auto",
+    padding: 20,
+    backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyWafbIV28MtvNQPgj_81hd9fBEUKdTUopMw&s')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    borderRadius: 8,
+    color: "#fff", // to make text readable
+    boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
+  }}
+>      <h5>NEW REGISTRATION</h5>
+      <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
+  <Input
+    label="First Name *"
+    size="xl"
+    name="firstName"
+    value={formData.firstName}
+    onChange={handleChange}
+    required
+    className="mb-6"
+  />
+  <Input
+    label="Last Name *"
+    size="lg"
+    name="lastName"
+    value={formData.lastName}
+    onChange={handleChange}
+    required
+    className="mb-6"
+  />
+  <Input
+    label="Email *"
+    size="lg"
+    type="email"
+    name="email"
+    value={formData.email}
+    onChange={handleChange}
+    required
+    className="mb-6"
+  />
+  <Input
+    label="Phone Number *"
+    size="lg"
+    type="tel"
+    name="phoneNumber"
+    value={formData.phoneNumber}
+    onChange={handleChange}
+    required
+    className="mb-6"
+  />
+  <Input
+    label="Password *"
+    size="lg"
+    type="password"
+    name="password"
+    value={formData.password}
+    onChange={handleChange}
+    required
+    className="mb-6"
+  />
+  <Input
+    label="Confirm Password *"
+    size="lg"
+    type="password"
+    name="confirmPassword"
+    value={formData.confirmPassword}
+    onChange={handleChange}
+    required
+    className="mb-6"
+  />
+  <Input
+    label="Zip Code *"
+    size="lg"
+    name="zipCode"
+    value={formData.zipCode}
+    onChange={handleChange}
+    required
+    // Larger margin after last input
+    className="mb-12"
+  />
+
+  <Button type="submit" variant="gradient" color="green" fullWidth>
+    Register
+  </Button>
+</form>
 
 
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image (JPEG,PNG)</label>
-            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" />
+      <Button
+        variant="gradient"
+        color="red"
+        fullWidth
+        onClick={() =>
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phoneNumber: "",
+            password: "",
+            confirmPassword: "",
+            zipCode: "",
+          })
+        }
+      >
+        Cancel
+      </Button>
 
+      <Typography variant="small" className="mt-6 flex justify-center">
+        Already have an account?
+        <Typography
+          as="a"
+          href="/my-app#signup"
+          variant="small"
+          color="blue-gray"
+          className="underline text-red-700 ml-1 font-bold underline hover:text-green-600 transition-colors duration-300"
+        >
+          LOGIN
+        </Typography>
+      </Typography>
 
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" />
-            <Input label="Phone Number *" size="lg" />
-            <Input label="Password *" size="lg" />
-            <Input label="Confirm Password *" size="lg" />
-            <Input label="Zip Code *" size="lg" />
-
-            <Checkbox
-              label={
-                <Typography
-                  variant="small"
-                  color="gray"
-                  className="flex items-center font-normal"
+      {users.length > 0 && (
+        <>
+          <h3 className="mt-8">Registered Users</h3>
+          <table
+            style={{
+              border: "2px solid #4ade80",
+              borderCollapse: "collapse",
+              width: "100%",
+            }}
+            cellPadding="10"
+            cellSpacing="0"
+          >
+            <thead>
+              <tr>
+                <th
+                  style={{
+                    border: "1px solid #4ade80",
+                    padding: "12px 20px",
+                  }}
                 >
-                  I agree the
-                  <a
-                    href="#"
-                    className="font-medium transition-colors hover:text-gray-900"
-                  >
-                    &nbsp;Terms and Conditions
-                  </a>
-                </Typography>
-              }
-              containerProps={{ className: "-ml-2.5" }}
-            />
-
-          </CardBody>
-          <CardFooter className="pt-0">
-            <Button variant="gradient" color="green" fullWidth>
-              <a href="/Success" className="w-full text-center text-lg font-semibold">
-                Register
-              </a>
-            </Button>
-            <Typography
-              variant="p"
-              sx={{ letterSpacing: '1.5px', marginLeft: '4px' }}>
-            </Typography>
-
-
-            <Typography variant="small" className="mt-6 flex justify-center">
-              Already have an account?
-              <Typography
-                as="a"
-                href="/my-app#signup"
-                variant="small"
-                color="blue-gray"
-                className="underline text-red-700 ml-1 font-bold underline hover:text-green-600 transition-colors duration-300"
-              >
-                LOGIN
-              </Typography>
-            </Typography>
-          </CardFooter>
-
-          <Typography variant="small" className="mt-6 flex justify-center">
-            <b>To verify your number, we will send you a text message with a temporary code. Message and data rates may apply</b>
-            <Typography
-              as="a"
-              href="#signup"
-              variant="small"
-              color="blue-gray"
-              className="ml-1 font-bold">
-            </Typography>
-          </Typography>
-
-        </Card>
-      </div>
-      <img style={{ width: '50%', height: '100vh' }} src="https://courseuniv.com/app/assets/images/register_02.gif" />
+                  First Name
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #4ade80",
+                    padding: "12px 20px",
+                  }}
+                >
+                  Last Name
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #4ade80",
+                    padding: "12px 20px",
+                  }}
+                >
+                  Email
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #4ade80",
+                    padding: "12px 20px",
+                  }}
+                >
+                  Phone Number
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #4ade80",
+                    padding: "12px 20px",
+                  }}
+                >
+                  Zip Code
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #4ade80",
+                    padding: "12px 20px",
+                  }}
+                >
+                  Password
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user, idx) => (
+                <tr key={idx}>
+                  <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>
+                    {user.firstName}
+                  </td>
+                  <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>
+                    {user.lastName}
+                  </td>
+                  <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>
+                    {user.email}
+                  </td>
+                  <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>
+                    {user.phoneNumber}
+                  </td>
+                  <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>
+                    {user.zipCode}
+                  </td>
+                  <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>
+                    {user.password}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
     </div>
-
-
-
   );
 }
 
 export default NewRegistration;
-

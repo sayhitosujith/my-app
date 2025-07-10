@@ -18,11 +18,6 @@ import {
   CardFooter,
   Typography,
   Button,
-  Avatar,
-  Input,
-  PopoverHandler,
-  PopoverContent,
-  Popover,
   Select,
   Option,
   Breadcrumbs
@@ -65,7 +60,7 @@ const CardItem = ({ item }) => (
     </CardHeader>
 
     <div className='flex justify-center items-center'>
-      <img style={{ width: '200px', height: '200px' }} src={item.src} className='rounded-full' />
+      <img style={{ width: '100px', height: '100px' }} src={item.src} className='rounded-full' />
     </div>
     <CardBody className="flex flex-col gap-4">
       <div className="-mr-50">
@@ -81,7 +76,7 @@ const CardItem = ({ item }) => (
 function Welcome() {
   return (
 <div className="p-7 bg-white">
-<SiFoodpanda size={80} color="green" />
+<SiFoodpanda size={60} color="green" />
 <Typography variant="h5" color="green">
         Panda King
          </Typography>

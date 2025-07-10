@@ -173,7 +173,7 @@ className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 tra
         </Card>
       </div>
        {/* <img style={{width: '90%', height: '100vh'}} src="https://media.glamour.com/photos/66b395f7626a69f05aa0b823/master/w_2560%2Cc_limit/0807-earlydinner.gif"   */}
-       <img style={{width: '120vh', height: '100vh'}} src={RCB}
+       <img style={{width: '150vh', height: '100vh'}} src={RCB}
       alt=" Lunch box"
       
         className="h-full w-full object-cover"
