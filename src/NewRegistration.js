@@ -84,6 +84,8 @@ function NewRegistration() {
     color: "#f73e05", // to make text readable
     boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
   }}
+
+  
 >      <h5>NEW REGISTRATION</h5>
       <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
   <Input
@@ -168,7 +170,7 @@ function NewRegistration() {
 
       <Button
         variant="gradient"
-        color="orange"
+        color="green"
         fullWidth
         onClick={() =>
           setFormData({

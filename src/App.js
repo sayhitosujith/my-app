@@ -63,30 +63,41 @@ function App() {
         </svg>
         Use at least 8 characters, one uppercase, one lowercase and one number.
       </Typography>
-    </div>            <div className="-ml-2.5">
-              <div></div>
-              <Checkbox label="Remember Me" /><div></div>
-              <a href="/ResetPassword">Forgot Password? Click here to <u><b>Reset</b></u>
-              </a>
-            </div>
+    </div>          
+    
+    <div className="-ml-2.5 text-red-600">
+  <div></div>
+  <Checkbox label="Remember Me" />
+  <div></div>
+  <a href="/ResetPassword">
+    Forgot Password? Click here to <u><b>Reset</b></u>
+  </a>
+</div>
             
           </CardBody>
           <CardFooter className="pt-0 flex flex-col items-center gap-4">
          
-          <a href="/Welcome" className="w-full">
-  <Button variant="filled" color="green" fullWidth>
-    LOGIN
+          <div className="flex justify-center">
+  <Button
+    color="white"
+    appearance="primary"
+    className="relative overflow-hidden text-lg font-semibold text-white border-4 border-[#28a745] px-20 py-2 rounded bg-[#28a745] hover:bg-[#218838] transition"
+  >
+    <span className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-l-[40px] border-t-white border-l-transparent"></span>
+    <a href="/Welcome" className="relative z-10">Login</a>
   </Button>
-</a>
+</div>
+
 
   
 <Button
-  variant="gradient"
-  fullWidth
-  className="from-green-400 to-green-600 text-white"
->
-  <a href="/Logout">Cancel</a>
-</Button>
+    color="white"
+    appearance="primary"
+    className="relative overflow-hidden text-lg font-semibold text-white border-4 border-[#28a745] px-20 py-2 rounded bg-[#28a745] hover:bg-[#218838] transition"
+  >
+    <span className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-l-[40px] border-t-white border-l-transparent"></span>
+    <a href="/Logout" className="relative z-10">Cancel</a>
+  </Button>
 
 <div className="flex flex-col items-center mt-10">
       {/* Fingerprint Button */}

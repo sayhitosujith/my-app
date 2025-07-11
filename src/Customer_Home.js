@@ -133,11 +133,13 @@ const CardItem = ({ item }) => (
   <Button
     color="white"
     appearance="primary"
-    className="text-lg font-semibold text-[#ff5200] border-4 border-white px-4 py-2 rounded bg-orange-80"
+    className="relative overflow-hidden text-lg font-semibold text-white border-4 border-[#ff5200] px-4 py-2 rounded bg-[#ff5200] hover:bg-[#e64d00] transition"
   >
-    <a href="/MyCart">ADD TO CART</a>
+    <span className="absolute top-0 right-0 w-0 h-0 border-t-[23px] border-l-[40px] border-t-white border-l-transparent"></span>
+    <a href="/MyCart" className="relative z-10">ADD TO CART</a>
   </Button>
 </div>
+
 
 
 
@@ -277,6 +279,7 @@ function App() {
 
 <button
   onClick={() => alert("Maven Meal - would like to access your location")}
+  title="Get your current location"
   className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
 >
   <MdOutlineMyLocation size={26} color="#ff5200" />
