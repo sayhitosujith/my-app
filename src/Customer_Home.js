@@ -153,6 +153,7 @@ const CardItem = ({ item }) => (
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleCard = () => setIsOpen(!isOpen);
+  const Close_toggleCard = () => setIsOpen(prev => !prev);
 
   
   return (
@@ -241,7 +242,7 @@ function App() {
       <button
         className="focus:outline-none"
         aria-label="Notifications"
-        onClick={toggleCard}
+        onClick={Close_toggleCard}
       >
         <IoIosNotificationsOutline color="black" size={35} />
         <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
@@ -255,7 +256,7 @@ function App() {
           <div className="p-4">
             <p className="font-semibold mb-2">Notifications</p>
             <ul className="space-y-2 text-sm">
-              <li className="border-b pb-2">🔔 New comment on your post</li>
+              <li className="border-b pb-2">🔔 New Campaign has bee published</li>
               <li className="border-b pb-2">📦 Your order has shipped</li>
               <li>🎉 Welcome to our platform!</li>
             </ul>
@@ -278,7 +279,7 @@ function App() {
 {/* Location Button with Textbox */}
 <div className="mt-4 flex items-center space-x-4 mb-4">
   <button
-    className="px-4 py-2 bg-orange-900 text-white border border-green-900 rounded transition hover:bg-orange-600"
+    className="px-4 py-2 bg-orange-900 text-white border border-green-900 rounded transition hover:bg-green-600"
   >
     LOCATION
   </button>
