@@ -18,6 +18,7 @@ import { AiOutlinePhone } from "react-icons/ai";
 import { TfiEmail } from "react-icons/tfi";
 import { GrSkype } from "react-icons/gr";
 import { MdOutlineMyLocation } from "react-icons/md";
+import { useState } from "react";
 
 import {
   Card,
@@ -120,7 +121,7 @@ const CardItem = ({ item }) => (
   <div
     className="text-lg font-semibold text-black px-4 py-2 rounded"
   >
-    ₹ 199
+    ₹ 199 /-
   </div>
 </div>
       </Typography>
@@ -150,6 +151,10 @@ const CardItem = ({ item }) => (
 )
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleCard = () => setIsOpen(!isOpen);
+
+  
   return (
     
     <div className="p-5 bg-green-10">
@@ -225,20 +230,39 @@ function App() {
   <div className="relative">
     <IoCartOutline size={35} color="black" />
     <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
-      2
+      12
     </span>
   </div>
 </Button>
 
   <PiLineVerticalThin size={50} color="black"/>
 
-  <a href="">
   <div className="relative inline-block">
-  <IoIosNotificationsOutline color="black" size={30} />
-  <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
-    1
-  </span>
-</div>  </a>
+      <button
+        className="focus:outline-none"
+        aria-label="Notifications"
+        onClick={toggleCard}
+      >
+        <IoIosNotificationsOutline color="black" size={35} />
+        <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+          99+
+        </span>
+      </button>
+
+      {/* Notification Card */}
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-lg border z-10">
+          <div className="p-4">
+            <p className="font-semibold mb-2">Notifications</p>
+            <ul className="space-y-2 text-sm">
+              <li className="border-b pb-2">🔔 New comment on your post</li>
+              <li className="border-b pb-2">📦 Your order has shipped</li>
+              <li>🎉 Welcome to our platform!</li>
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
   <PiLineVerticalThin size={50} color="black" />
   <a href="/Logout">
   <div className="relative group cursor-pointer">
@@ -310,10 +334,10 @@ function App() {
       <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-white-900 overflow-x-auto whitespace-nowrap">
   <Carousel className="w-full">
     {/* Image 1 */}
-    <figure className="relative h-96 w-full">
+    <figure className="relative h-86 w-full">
       <img
         className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50"
-        src="https://b.zmtcdn.com/data/o2_assets/e067a1cf0d3fe27b366402b98b994e9f1716296909.png"
+        src="https://i.pinimg.com/736x/87/61/fd/8761fd586761358ae6c57c65a54eb358.jpg"
         alt="banner image 1"
       />
       <figcaption className="absolute bottom-8 left-1/2 flex w-[calc(100%-4rem)] -translate-x-1/2 justify-between rounded-xl border border-white bg-white/75 py-4 px-6 shadow-lg backdrop-blur-sm">
