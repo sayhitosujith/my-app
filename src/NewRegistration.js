@@ -4,6 +4,7 @@ import {
   Input,
   Button,
 } from "@material-tailwind/react";
+import packageJson from '../package.json';
 
 function NewRegistration() {
   const [formData, setFormData] = useState({
@@ -76,17 +77,17 @@ function NewRegistration() {
     maxWidth: 900,
     margin: "auto",
     padding: 20,
-    backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyWafbIV28MtvNQPgj_81hd9fBEUKdTUopMw&s')",
+    backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThtf6x74y1JWPIE_yX24FYk1RgTPvVJqbwDw&s')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     borderRadius: 8,
-    color: "#fff", // to make text readable
+    color: "#f73e05", // to make text readable
     boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
   }}
 >      <h5>NEW REGISTRATION</h5>
       <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
   <Input
-    label="First Name *"
+    label="First Name"
     size="xl"
     name="firstName"
     value={formData.firstName}
@@ -95,7 +96,7 @@ function NewRegistration() {
     className="mb-6"
   />
   <Input
-    label="Last Name *"
+    label="Last Name"
     size="lg"
     name="lastName"
     value={formData.lastName}
@@ -104,7 +105,7 @@ function NewRegistration() {
     className="mb-6"
   />
   <Input
-    label="Email *"
+    label="Email"
     size="lg"
     type="email"
     name="email"
@@ -114,7 +115,7 @@ function NewRegistration() {
     className="mb-6"
   />
   <Input
-    label="Phone Number *"
+    label="Phone Number"
     size="lg"
     type="tel"
     name="phoneNumber"
@@ -124,7 +125,7 @@ function NewRegistration() {
     className="mb-6"
   />
   <Input
-    label="Password *"
+    label="Password"
     size="lg"
     type="password"
     name="password"
@@ -134,7 +135,7 @@ function NewRegistration() {
     className="mb-6"
   />
   <Input
-    label="Confirm Password *"
+    label="Confirm Password"
     size="lg"
     type="password"
     name="confirmPassword"
@@ -144,7 +145,7 @@ function NewRegistration() {
     className="mb-6"
   />
   <Input
-    label="Zip Code *"
+    label="Zip Code"
     size="lg"
     name="zipCode"
     value={formData.zipCode}
@@ -153,16 +154,21 @@ function NewRegistration() {
     // Larger margin after last input
     className="mb-12"
   />
-
-  <Button type="submit" variant="gradient" color="green" fullWidth>
-    Register
-  </Button>
+<Button
+  type="submit"
+  variant="gradient"
+  color="green"
+  fullWidth
+  className="py-2 px-4 text-sm"
+>
+  Register
+</Button>
 </form>
 
 
       <Button
         variant="gradient"
-        color="red"
+        color="orange"
         fullWidth
         onClick={() =>
           setFormData({
@@ -179,18 +185,30 @@ function NewRegistration() {
         Cancel
       </Button>
 
-      <Typography variant="small" className="mt-6 flex justify-center">
-        Already have an account?
-        <Typography
-          as="a"
-          href="/my-app#signup"
-          variant="small"
-          color="blue-gray"
-          className="underline text-red-700 ml-1 font-bold underline hover:text-green-600 transition-colors duration-300"
-        >
-          LOGIN
-        </Typography>
-      </Typography>
+      <div className="mt-6 flex justify-center items-center text-sm">
+  <Typography variant="small">
+    Already have an account?
+  </Typography>
+  <Typography
+    as="a"
+    href="/my-app#signup"
+    variant="small"
+    color="blue-gray"
+    className="underline text-red-700 ml-1 font-bold hover:text-green-600 transition-colors duration-300"
+  >
+    LOGIN
+  </Typography>
+</div>
+
+{/* Centered Application Version */}
+<Typography
+  variant="small"
+  color="black"
+  className="mt-4 text-center"
+>
+  Application Build Version: {packageJson.version}
+</Typography>
+
 
       {users.length > 0 && (
         <>

@@ -210,17 +210,15 @@ function App() {
 
         
       <Button size="sm" color="white" className="flex items-center gap-2">
-  <a href="/Settings"
-   className="text-black">
-  </a>
-  <div className="relative">
-    <IoSettingsOutline  size={35} color="black" />
-  </div>
+      <a href="/Settings" className="flex items-center gap-2 text-black bg-white p-2 rounded text-sm">
+      <IoSettingsOutline size={25} />
+    </a>
 </Button>
+
+<PiLineVerticalThin size={50} color="black"/>
 
 <Button size="sm" color="white" className="flex items-center gap-2">
   <a href="/MyCart" className="text-black">
-    My cart
   </a>
   <div className="relative">
     <IoCartOutline size={35} color="black" />
@@ -230,7 +228,7 @@ function App() {
   </div>
 </Button>
 
-  <PiLineVerticalThin size={35} color="black"/>
+  <PiLineVerticalThin size={50} color="black"/>
 
   <a href="">
   <div className="relative inline-block">
@@ -254,8 +252,7 @@ function App() {
 {/* Location Button with Textbox */}
 <div className="mt-4 flex items-center space-x-4 mb-4">
   <button
-    className="px-4 py-2 bg-white border border-gray-400 rounded transition"
-    style={{ color: '#ff5200' }}
+    className="px-4 py-2 bg-orange-900 text-white border border-green-900 rounded transition hover:bg-orange-600"
   >
     LOCATION
   </button>
