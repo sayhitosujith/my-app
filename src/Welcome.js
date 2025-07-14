@@ -13,8 +13,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import packageJson from '../package.json';
-import { FaRobot } from "react-icons/fa";
-
+import { FaWhatsapp } from "react-icons/fa6";
 import emblem from './assets/emblem.png'; // adjust the path as necessary
 
 import {
@@ -434,8 +433,10 @@ function Welcome() {
   className="fixed bottom-3 right-3 z-30 p-4 bg-white rounded-full shadow-lg hover:scale-105 transition-transform flex flex-col items-center justify-center"
   aria-label="Open chat"
 >
-  <FaRobot size={50} color="#6cdb04" />
-  <span className="text-sm font-bold mt-4 text-black">Chat with AI</span>
+<a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">
+  <FaWhatsapp size={50} color="#6cdb04" />
+  <span className="text-sm font-bold mt-4 text-black"></span>
+</a>
 </button> 
           </div>
           <div className="grid grid-cols-3 justify-between gap-4">
@@ -457,6 +458,7 @@ function Welcome() {
                       className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
                     >
                       {link}
+          
                     </Typography>
                   </li>
                 ))}
