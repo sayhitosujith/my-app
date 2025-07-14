@@ -376,29 +376,30 @@ function Welcome() {
       <div className="absolute bottom-92 right-20 flex items-center gap-2 text-black text-sm">
       {/* Other left-aligned content */}
 
-      <Card className="max-w-sm w-full shadow-lg rounded-2xl p-4 bg-white">
-      <CardBody>
-        <h5 className="text-lg font-semibold mb-4 text-center text-gray-800">
-          Download the App
-        </h5>
-        <div className="flex items-center gap-4 justify-center">
-          <Button
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl shadow-md"
-            title="Download for Android"
-          >
-            <GrAndroid size={24} />
-            <span className="hidden md:inline">Android</span>
-          </Button>
-          <Button
-            className="flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-xl shadow-md"
-            title="Download for iOS"
-          >
-            <RiAppleLine size={24} />
-            <span className="hidden md:inline">iOS</span>
-          </Button>
-        </div>
-      </CardBody>
-    </Card>
+  <Card className="max-w-sm w-full shadow-lg rounded-2xl p-4 bg-green-600">
+  <CardBody>
+    <h5 className="text-lg font-semibold mb-4 text-center text-white">
+      Download the App
+    </h5>
+    <div className="flex items-center gap-4 justify-center">
+      <Button
+        className="flex items-center gap-2 bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-xl shadow-md"
+        title="Download for Android"
+      >
+        <GrAndroid size={24} />
+        <span className="hidden md:inline">Android</span>
+      </Button>
+      <Button
+        className="flex items-center gap-2 bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-xl shadow-md"
+        title="Download for iOS"
+      >
+        <RiAppleLine size={24} />
+        <span className="hidden md:inline">iOS</span>
+      </Button>
+    </div>
+  </CardBody>
+</Card>
+
 
   <div className="p-10 bg-white-1000">
       <img
