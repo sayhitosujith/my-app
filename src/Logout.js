@@ -62,7 +62,7 @@ function Logout() {
           <div className="flex justify-center items-center h-full">
   <a
     href="/my-app"
-    className="underline text-green-700 text-lg font-medium"
+    className="underline text-red-700 text-lg font-medium"
   >
     Click here to LOGIN
   </a>

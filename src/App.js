@@ -132,9 +132,6 @@ function App() {
   {/* Top-right white triangle */}
   <span className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-l-[40px] border-t-white border-l-transparent"></span>
 
-  {/* Bottom-left white triangle */}
-  <span className="absolute bottom-0 left-0 w-0 h-0 border-b-[40px] border-r-[40px] border-b-white border-r-transparent"></span>
-
   <span className="relative z-10">Login</span>
 </Button>
 
@@ -144,7 +141,6 @@ function App() {
               onClick={() => window.location.href = "/Logout"}
             >
               <span className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-l-[40px] border-t-white border-l-transparent"></span>
-              <span className="absolute bottom-0 left-0 w-0 h-0 border-b-[40px] border-r-[40px] border-b-white border-r-transparent"></span>
               <span className="relative z-10">Cancel</span>
             </Button>
 
