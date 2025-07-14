@@ -344,7 +344,7 @@ function App() {
       <figcaption className="absolute bottom-8 left-1/2 flex w-[calc(100%-4rem)] -translate-x-1/2 justify-between rounded-xl border border-white bg-white/75 py-4 px-6 shadow-lg backdrop-blur-sm">
         <div>
           <Typography variant="h5" color="blue-gray">
-          Astra vista 
+          Good Day
                    </Typography>
           <Typography color="gray" className="mt-2 font-normal">
             Date: {currentDate} - {currentMonth} - {currentYear}
