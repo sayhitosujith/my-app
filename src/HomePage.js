@@ -9,7 +9,7 @@ import appbanner from './assets/swiggyApp_download_banner.avif'; // adjust the p
 import food_wallpaper from './assets/FOOODD.png'; // adjust the path as necessary
 import { TfiEmail } from "react-icons/tfi";
 import { SiFoodpanda } from "react-icons/si";
-
+import { IoFastFood } from "react-icons/io5";
 
 import {
   Card,
@@ -135,11 +135,7 @@ function Welcome() {
         
 
         <div style={{ float: 'right' }}>
-          <Button color="green" appearance="primary">
-            <a href="/Customer_Home">
-              Order your Meal now
-            </a>
-          </Button>
+         
           <div className="w-74">
             <Select label="Profile">
 
@@ -172,7 +168,7 @@ function Welcome() {
       </Typography>
 
       <img
-        style={{ width: '80%', height: '100%', objectFit: 'cover' }}
+        style={{ width: '60%', height: '100%', objectFit: 'cover' }}
         src={food_wallpaper}
         alt="Profile"
       />
@@ -203,7 +199,33 @@ function Welcome() {
           </b>
         </h6>
       </div>
+        <div style={{ float: 'right' }}>
+ <Button  
+  color="green" 
+  appearance="primary"
+  style={{
+    padding: '30px 30px',
+    fontSize: '18px',
+    minWidth: '220px',
+    display: 'flex',           // ensure flex for icon + text
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px'                // space between icon and text
+  }}
+>
+  <IoFastFood size={34} />    {/* icon size */}
+  <a 
+    href="/Customer_Home"
+    style={{ 
+      color: 'inherit', 
+      textDecoration: 'none' 
+    }}
+  >
+    Order your Meal now
+  </a>
+</Button>
 
+</div>
       <br></br>
       <b><hr class="separator" /></b>
 
