@@ -236,7 +236,7 @@ function App() {
   <label htmlFor="desc" class="mt-px mb-0 ml-3 font-light text-gray-700 cursor-pointer select-none">
     <div>
       <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
-        Veg Only
+        Veg
       </p>
     </div>
   </label>

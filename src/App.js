@@ -59,16 +59,16 @@ function App() {
   };
 
   return (
-    <div className="flex flex-row gap-5">
+    <div className="flex flex-row gap-2">
       <div className='w-1/2 h-screen flex items-center justify-center bg-white-100'>
-        <Card className="w-92">
+<Card className="w-full max-w-sm p-4 shadow-md rounded-xl">
           <CardHeader variant="gradient" color="green" className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
               ADMIN
             </Typography>
           </CardHeader>
 
-          <CardBody className="flex flex-col gap-4">
+          <CardBody className="flex flex-col gap-1">
             <Input
               label="Email"
               size="lg"

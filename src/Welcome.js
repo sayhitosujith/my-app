@@ -15,6 +15,8 @@ import { GrAndroid } from "react-icons/gr";
 import packageJson from '../package.json';
 import { FaWhatsapp } from "react-icons/fa6";
 import emblem from './assets/emblem.png'; // adjust the path as necessary
+import { TfiAnnouncement } from "react-icons/tfi";
+
 
 import {
   Card,
@@ -166,15 +168,17 @@ function Welcome() {
 </div>
 
 <div
-  className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
+  className="mb-5 shadow-sm px-1 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-ls"
   style={{ backgroundColor: '#4df74d' }}
 >
   {isBannerActive && (
     <div className="w-full overflow-hidden relative">
-      <div className="animate-scroll whitespace-nowrap inline-block">
-        <Typography variant="h1" className="text-md text-black">
+      <div className="animate-scroll inline-block">
+        <Typography variant="h1" className="text-md text-black flex items-center gap-2">
+          <TfiAnnouncement />
           <i>
-            🛍️ NEW ARRIVALS ALERT! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. Don’t miss out — shop your favorites now! 🍽️💫🔥✨
+            🛍️ NEW ARRIVALS ALERT! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. 
+            Don’t miss out — shop your favorites now! 🍽️💫🔥✨
           </i>
         </Typography>
       </div>
@@ -185,15 +189,16 @@ function Welcome() {
 
 
 
+
 {/* Logout Icon */}
     <div className="absolute top-4 right-4 flex items-center space-x-8">
   <a href="">
   <Badge content="6">
-    <IoIosNotificationsOutline color="black" size={40} />
+    <IoIosNotificationsOutline color="black" size={20} />
  </Badge>
   </a>
   <a href="/Logout">
-    <FaPowerOff color="black" size={30} />
+    <FaPowerOff color="black" size={20} />
   </a>
 </div>
 
@@ -225,30 +230,21 @@ function Welcome() {
 
            
 
-    <div style={{float: 'right'}}>
-
-      <div className="w-74">
-      <Select label="Profile">
-       <Option>
-       <a href="/HomePage">
-             About 
-               </a>    
-       </Option>
-       
-       <Option>
-       <a href="/ResetPassword">
-             Change Password 
-               </a> 
-       </Option>
-       <Option>
-       <a href="/Settings">
-       Settings 
-               </a> 
-       </Option>
- 
-      </Select>
-    </div>
-            </div>
+<div style={{ float: 'right' }}>
+  <div className="w-32">
+    <Select label="Profile" className="text-sm py-1">
+      <Option>
+        <a href="/HomePage">About</a>
+      </Option>
+      <Option>
+        <a href="/ResetPassword">Change Password</a>
+      </Option>
+      <Option>
+        <a href="/Settings">Settings</a>
+      </Option>
+    </Select>
+  </div>
+</div>
         </Typography>
         <br></br>
 
@@ -263,7 +259,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <RiAdminFill size={100} color="#04354f" />
+       <RiAdminFill size={30} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>ADMIN</b></span>
        </Button>
         </a>
@@ -278,7 +274,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <CiUser size={100} color="#04354f" />
+       <CiUser size={30} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>CUSTOMER</b></span>
        </Button>
         </a>
@@ -292,7 +288,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <TbBrandGoogleAnalytics size={100} color="#04354f" />
+       <TbBrandGoogleAnalytics size={30} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>ANALYTICS</b></span>
        </Button>
         </a>
@@ -306,8 +302,8 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <FaUsers size={100} color="#04354f" />
-       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>CUSTOMER CARE</b></span>
+       <FaUsers size={30} color="#04354f" />
+       <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>SUPPORT</b></span>
        </Button>
         </a>
         <a class="MuiButtonBase-root MuiButton-root MuiButton-outlined AppButtonstyled__Button-sc-go28oe-1 eyWgKJ" style={{marginRight: "20px"}} role="button" aria-disabled="false" data-aid="tile"
@@ -320,7 +316,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <FaFileInvoiceDollar size={100} color="#04354f" />
+       <FaFileInvoiceDollar size={30} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>PROFILES</b></span>
        </Button>
         </a>
@@ -333,7 +329,7 @@ function Welcome() {
 
        <Button
        style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px",  backgroundColor: "#fcfeff", }}>
-       <IoSettingsOutline size={100} color="#04354f" />
+       <IoSettingsOutline size={30} color="#04354f" />
        <span class="AppButtonstyled__Name-sc-go28oe-0 fpuxxi"   style={{ color: "black" }}>&nbsp;&nbsp; <b>SETTINGS</b></span>
        </Button>
         </a>
@@ -375,29 +371,30 @@ function Welcome() {
       <div className="absolute bottom-92 right-20 flex items-center gap-2 text-black text-sm">
       {/* Other left-aligned content */}
 
-  <Card className="max-w-sm w-full shadow-lg rounded-2xl p-4 bg-green-600">
+<Card className="max-w-xs w-full shadow-lg rounded-xl p-2 bg-green-600 -mt-19">
   <CardBody>
-    <h5 className="text-lg font-semibold mb-4 text-center text-white">
+    <h5 className="text-md font-semibold mb-3 text-center text-white">
       Download the App
     </h5>
-    <div className="flex items-center gap-4 justify-center">
+    <div className="flex items-center gap-2 justify-center">
       <Button
-        className="flex items-center gap-2 bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-xl shadow-md"
+        className="flex items-center gap-1 bg-black hover:bg-gray-800 text-white px-2 py-1 rounded-lg shadow"
         title="Download for Android"
       >
-        <GrAndroid size={24} />
-        <span className="hidden md:inline">Android</span>
+        <GrAndroid size={20} />
+        <span className="hidden md:inline text-sm">Android</span>
       </Button>
       <Button
-        className="flex items-center gap-2 bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-xl shadow-md"
+        className="flex items-center gap-1 bg-black hover:bg-gray-800 text-white px-2 py-1 rounded-lg shadow"
         title="Download for iOS"
       >
-        <RiAppleLine size={24} />
-        <span className="hidden md:inline">iOS</span>
+        <RiAppleLine size={20} />
+        <span className="hidden md:inline text-sm">iOS</span>
       </Button>
     </div>
   </CardBody>
 </Card>
+
 
 
   <div className="p-10 bg-white-1000">
