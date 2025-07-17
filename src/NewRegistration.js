@@ -7,7 +7,7 @@ import {
 import packageJson from '../package.json';
 
 function NewRegistration() {
-  const [formData, setFormData] = useState({
+  const emptyForm = {
     firstName: "",
     lastName: "",
     email: "",
@@ -15,11 +15,12 @@ function NewRegistration() {
     password: "",
     confirmPassword: "",
     zipCode: "",
-  });
+  };
 
+  const [formData, setFormData] = useState(emptyForm);
   const [users, setUsers] = useState([]);
 
-  // ✅ Load users from localStorage on mount
+  // Load users from localStorage on mount
   useEffect(() => {
     const storedUsers = localStorage.getItem("registeredUsers");
     if (storedUsers) {
@@ -27,7 +28,7 @@ function NewRegistration() {
     }
   }, []);
 
-  // ✅ Save to localStorage whenever users changes
+  // Save users to localStorage on change
   useEffect(() => {
     localStorage.setItem("registeredUsers", JSON.stringify(users));
   }, [users]);
@@ -40,9 +41,10 @@ function NewRegistration() {
     }));
   };
 
+  const resetForm = () => setFormData(emptyForm);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const {
       firstName,
       lastName,
@@ -53,16 +55,19 @@ function NewRegistration() {
       zipCode,
     } = formData;
 
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !phoneNumber ||
-      !password ||
-      !confirmPassword ||
-      !zipCode
-    ) {
+    // Basic validations
+    if (!firstName || !lastName || !email || !phoneNumber || !password || !confirmPassword || !zipCode) {
       alert("Please fill all fields");
+      return;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      alert("Invalid email format");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(phoneNumber)) {
+      alert("Phone number must be 10 digits");
       return;
     }
 
@@ -71,27 +76,18 @@ function NewRegistration() {
       return;
     }
 
-    setUsers((prevUsers) => [...prevUsers, formData]);
+    if (users.some((user) => user.email === email)) {
+      alert("Email already registered");
+      return;
+    }
 
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
-      zipCode: "",
-    });
+    setUsers((prev) => [...prev, formData]);
+    resetForm();
   };
 
   return (
     <>
-      <h5 style={{
-        textAlign: "center",
-        marginTop: "20px",
-        fontWeight: "bold",
-        fontSize: "1.5rem"
-      }}>
+      <h5 className="text-center mt-6 font-bold text-2xl">
         NEW USER REGISTRATION
       </h5>
 
@@ -108,108 +104,35 @@ function NewRegistration() {
           boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
         }}
       >
-        <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
-          <Input
-            label="First Name"
-            size="xl"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-            className="mb-6"
-          />
-          <Input
-            label="Last Name"
-            size="lg"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-            className="mb-6"
-          />
-          <Input
-            label="Email"
-            size="lg"
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="mb-6"
-          />
-          <Input
-            label="Phone Number"
-            size="lg"
-            type="tel"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            required
-            className="mb-6"
-          />
-          <Input
-            label="Password"
-            size="lg"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            className="mb-6"
-          />
-          <Input
-            label="Confirm Password"
-            size="lg"
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-            className="mb-6"
-          />
-          <Input
-            label="Zip Code"
-            size="lg"
-            name="zipCode"
-            value={formData.zipCode}
-            onChange={handleChange}
-            required
-            className="mb-12"
-          />
-          <Button
-            type="submit"
-            variant="gradient"
-            color="green"
-            fullWidth
-            className="py-2 px-4 text-sm"
-          >
+        <form onSubmit={handleSubmit} className="mb-6">
+          <Input label="First Name" size="xl" name="firstName" value={formData.firstName} onChange={handleChange} required className="mb-6" />
+          <Input label="Last Name" size="lg" name="lastName" value={formData.lastName} onChange={handleChange} required className="mb-6" />
+          <Input label="Email" size="lg" type="email" name="email" value={formData.email} onChange={handleChange} required className="mb-6" />
+          <Input label="Phone Number" size="lg" type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required className="mb-6" />
+          <Input label="Password" size="lg" type="password" name="password" value={formData.password} onChange={handleChange} required className="mb-6" />
+          <Input label="Confirm Password" size="lg" type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required className="mb-6" />
+          <Input label="Zip Code" size="lg" name="zipCode" value={formData.zipCode} onChange={handleChange} required className="mb-12" />
+
+          <Button type="submit" variant="gradient" color="green" fullWidth className="py-2 px-4 text-sm">
             Register
           </Button>
         </form>
 
         <Button
-          variant="gradient"
-          color="green"
+          variant="outlined"
+          color="red"
           fullWidth
-          onClick={() =>
-            setFormData({
-              firstName: "",
-              lastName: "",
-              email: "",
-              phoneNumber: "",
-              password: "",
-              confirmPassword: "",
-              zipCode: "",
-            })
-          }
+          onClick={() => {
+            if (window.confirm("Clear the form?")) {
+              resetForm();
+            }
+          }}
         >
           Cancel
         </Button>
 
         <div className="mt-6 flex justify-center items-center text-sm">
-          <Typography variant="small">
-            Already have an account?
-          </Typography>
+          <Typography variant="small">Already have an account?</Typography>
           <Typography
             as="a"
             href="/my-app#signup"
@@ -221,50 +144,39 @@ function NewRegistration() {
           </Typography>
         </div>
 
-        <Typography
-          variant="small"
-          color="black"
-          className="mt-4 text-center"
-        >
+        <Typography variant="small" color="black" className="mt-4 text-center">
           Application Build Version: {packageJson.version}
         </Typography>
 
         {users.length > 0 && (
           <>
-            <h5 className="mt-8 text-center">REGISTERED USERS</h5>
-            <table
-              style={{
-                border: "2px solid #4ade80",
-                borderCollapse: "collapse",
-                fontWeight: "bold",
-                width: "100%",
-              }}
-              cellPadding="10"
-              cellSpacing="0"
-            >
-              <thead>
-                <tr>
-                  <th style={{ border: "1px solid #4ade80", padding: "12px 20px" }}>First Name</th>
-                  <th style={{ border: "1px solid #4ade80", padding: "12px 20px" }}>Last Name</th>
-                  <th style={{ border: "1px solid #4ade80", padding: "12px 20px" }}>Email</th>
-                  <th style={{ border: "1px solid #4ade80", padding: "12px 20px" }}>Phone Number</th>
-                  <th style={{ border: "1px solid #4ade80", padding: "12px 20px" }}>Zip Code</th>
-                  <th style={{ border: "1px solid #4ade80", padding: "12px 20px" }}>Password</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user, idx) => (
-                  <tr key={idx}>
-                    <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>{user.firstName}</td>
-                    <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>{user.lastName}</td>
-                    <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>{user.email}</td>
-                    <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>{user.phoneNumber}</td>
-                    <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>{user.zipCode}</td>
-                    <td style={{ border: "1px solid #4ade80", padding: "8px 20px" }}>{user.password}</td>
+            <h5 className="mt-10 text-center font-bold">REGISTERED USERS</h5>
+            <div className="overflow-x-auto mt-4">
+              <table className="min-w-full border border-green-400 text-sm text-black bg-white rounded-lg">
+                <thead className="bg-green-100">
+                  <tr>
+                    <th className="border border-green-300 px-4 py-2">First Name</th>
+                    <th className="border border-green-300 px-4 py-2">Last Name</th>
+                    <th className="border border-green-300 px-4 py-2">Email</th>
+                    <th className="border border-green-300 px-4 py-2">Phone</th>
+                    <th className="border border-green-300 px-4 py-2">Zip Code</th>
+                    <th className="border border-green-300 px-4 py-2">Password</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {users.map((user, idx) => (
+                    <tr key={idx} className="text-center">
+                      <td className="border border-green-300 px-4 py-2">{user.firstName}</td>
+                      <td className="border border-green-300 px-4 py-2">{user.lastName}</td>
+                      <td className="border border-green-300 px-4 py-2">{user.email}</td>
+                      <td className="border border-green-300 px-4 py-2">{user.phoneNumber}</td>
+                      <td className="border border-green-300 px-4 py-2">{user.zipCode}</td>
+                      <td className="border border-green-300 px-4 py-2">••••••</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </>
         )}
       </div>
