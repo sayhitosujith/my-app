@@ -315,7 +315,7 @@ function App() {
 
    <div
      className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-     style={{ backgroundColor: '#91f748' }}
+     style={{ backgroundColor: '#7be80dff' }}
    >
      {isBannerActive && (
        <div className="w-full overflow-hidden relative">
@@ -484,21 +484,39 @@ function App() {
 
 
 
-      <div className='w-full flex mt-20 gap-5 '>
-        {
-          data.slice(0, 6).map((item) => <CardItem item={item} />)
-        }
-      </div>
-      <div className='w-full flex mt-20 gap-5'>
-        {
-          data.slice(6, 12).map((item) => <CardItem item={item} />)
-        }
-      </div>
-      <div className='w-full flex mt-20 gap-5'>
-        {
-          data.slice(12, 18).map((item) => <CardItem item={item} />)
-        }
-      </div>
+<div className="w-full space-y-20">
+  {[0, 6, 12].map((startIndex, rowIndex) => (
+    <div key={rowIndex} className="w-full flex gap-5 border-t border-gray-300 pt-5">
+      {data.slice(startIndex, startIndex + 6).map((item, index) => (
+        <div key={index} className="border-r border-red-200 pr-5 last:border-none">
+          <CardItem item={item} />
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
+<div className="w-full space-y-20">
+  {[0, 6, 12].map((startIndex, rowIndex) => (
+    <div key={rowIndex} className="w-full flex gap-5 border-t border-gray-300 pt-5">
+      {data.slice(startIndex, startIndex + 6).map((item, index) => (
+        <div key={index} className="border-r border-red-200 pr-5 last:border-none">
+          <CardItem item={item} />
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
+  <div className="w-full space-y-20">
+  {[0, 6, 12].map((startIndex, rowIndex) => (
+    <div key={rowIndex} className="w-full flex gap-5 border-t border-gray-300 pt-5">
+      {data.slice(startIndex, startIndex + 6).map((item, index) => (
+        <div key={index} className="border-r border-red-200 pr-5 last:border-none">
+          <CardItem item={item} />
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
     </div>
 
     
