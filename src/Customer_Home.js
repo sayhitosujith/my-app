@@ -461,16 +461,16 @@ function App() {
     </Typography>
 
     <div className="flex space-x-4 mt-2">
-  <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+  <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300">
     <AiOutlinePhone size={28} color="black" />
   </button>
-  <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+  <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300">
     <GoComment size={26} color="black" />
   </button>
-  <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+  <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300">
     <TfiEmail size={26} color="black" />
   </button>
-  <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+  <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300">
     <GrSkype size={26} color="black" />
   </button>
 </div>
@@ -484,7 +484,7 @@ function App() {
 
 
 
-<div className="w-full space-y-20">
+<div className="w-full space-y-20 ">
   {[0, 6, 12].map((startIndex, rowIndex) => (
     <div key={rowIndex} className="w-full flex gap-5 border-t border-gray-300 pt-5">
       {data.slice(startIndex, startIndex + 6).map((item, index) => (
@@ -495,14 +495,18 @@ function App() {
     </div>
   ))}
 </div>
+      <b><hr class="separator" /></b>
+
       <div className='w-full flex mt-20 gap-5'>
         {
           data.slice(6, 12).map((item) => <CardItem item={item} />)
         }
       </div>
+            <b><hr class="separator" /></b>
+
       <div className='w-full flex mt-20 gap-5'>
         {
-          data.slice(12, 18).map((item) => <CardItem item={item} />)
+          data.slice(13, 18).map((item) => <CardItem item={item} />)
         }
       </div>
     </div>
