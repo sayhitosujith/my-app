@@ -1,17 +1,15 @@
-name: CI - Playwright Tests
+name: CI - React App with Playwright Tests
 
 on:
   push:
     branches: [master]
   pull_request:
     branches: [master]
-  # schedule:
-  #   - cron: '0 */5 * * *'  # Every 5 hours (UTC)
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 30  # Prevent long-running workflows
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
@@ -26,11 +24,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run Unit Tests (Jest)
+        run: npm test -- --ci
+
+      - name: Build React App
+        run: npm run build
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright Tests
-        run: npx playwright test --reporter=html,line
+      - name: Start App and Run Playwright Tests
+        run: |
+          npx http-server ./build -p 3000 &
+          npx playwright test --reporter=html,line
         continue-on-error: true
 
       - name: Upload HTML Report
