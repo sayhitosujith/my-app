@@ -50,21 +50,24 @@ function Settings() {
       </Breadcrumbs>
 
       {/* Header */}
-      <div className="flex justify-between items-center mt-6 mb-6">
-        <Typography variant="h5" color="green">
-          ADMIN SETTINGS
-        </Typography>
-        <div className="flex gap-4">
-          <Button color="green">
-            <a href="/AddDeliveryCaptain">+ ADD SUPER ADMIN</a>
-          </Button>
-          <Select label="Profile">
-            <Option>About</Option>
-            <Option>Change Password</Option>
-            <Option>Logout</Option>
-          </Select>
-        </div>
-      </div>
+<div className="flex justify-between items-center mt-6 mb-6">
+  <Typography variant="h5" color="green" className="font-bold">
+    ADMIN SETTINGS
+  </Typography>
+  <div className="flex gap-5 items-center">
+   <Button color="green" ripple={true} className="whitespace-nowrap">
+  <a href="/AddDeliveryCaptain" className="text-white no-underline text-lg">
+    + ADD SUPER ADMIN
+  </a>
+</Button>
+
+    <Select label="Profile" className="min-w-[150px]">
+      <Option>About</Option>
+      <Option>Change Password</Option>
+      <Option>Logout</Option>
+    </Select>
+  </div>
+</div>
 
       <b><hr class="separator" /></b>
 
@@ -141,31 +144,7 @@ function Settings() {
         <Switch label="Allow Download Invoice" color="green" labelProps={{ className: "font-bold" }} />
       </div>
 
-      <b><hr class="separator" /></b>
-
-
-      {/* Registered Users Table */}
-      <div className="mb-6">
-      <Typography variant="h6" className="mb-8 text-green-800 text-center"><u><b>REGISTERED USERS</b></u></Typography>
-      <table className="w-full border border-black border-collapse">
-          <thead>
-            <tr>
-              <th className="border border-black p-2">ID</th>
-              <th className="border border-black p-2">Name</th>
-              <th className="border border-black p-2">Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td className="border border-black p-2">{user.id}</td>
-                <td className="border border-black p-2">{user.name}</td>
-                <td className="border border-black p-2">{user.email}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <b><hr class="separator" /></b>   
 
       {/* Action Buttons */}
       <div className="flex justify-end gap-4">

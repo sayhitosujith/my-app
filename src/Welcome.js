@@ -15,7 +15,7 @@ import { GrAndroid } from "react-icons/gr";
 import packageJson from '../package.json';
 import { FaWhatsapp } from "react-icons/fa6";
 import emblem from './assets/emblem.png'; // adjust the path as necessary
-import { TfiAnnouncement } from "react-icons/tfi";
+import { HiSpeakerphone } from "react-icons/hi";
 
 
 import {
@@ -132,10 +132,15 @@ const CardItem = ({item}) => (
 
 function ChatWithBellaButton() {
   const handleClick = () => {
-    window.open("https://chatgpt.com", "_blank"); // opens in a new tab
+    window.open("https://chatgpt.com", "_blank");
   };
-}
 
+  return (
+    <button onClick={handleClick} className="bg-blue-500 text-white px-4 py-2 rounded">
+      Chat with Bella
+    </button>
+  );
+}
 function Welcome() {
   return (
     <div className="p-10 bg-white-800">
@@ -168,23 +173,24 @@ function Welcome() {
 </div>
 
 <div
-  className="mb-5 shadow-sm px-1 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-ls"
-  style={{ backgroundColor: '#4df74d' }}
+  className="mb-1 shadow-sm px-2 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-lg"
+  style={{ backgroundColor: '#4df74d', minHeight: '2px' }}
 >
   {isBannerActive && (
     <div className="w-full overflow-hidden relative">
       <div className="animate-scroll inline-block">
-        <Typography variant="h1" className="text-md text-black flex items-center gap-2">
-          <TfiAnnouncement />
+        <Typography variant="small" className="text-xs text-black flex items-center gap-1">
+          <HiSpeakerphone  className="text-sm" />
           <i>
-            🛍️ NEW ARRIVALS ALERT! 🥗 Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. 
-            Don’t miss out — shop your favorites now! 🍽️💫🔥✨
+            🛍️ NEW ARRIVALS ALERT! Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. 
+            Don’t miss out — shop your favorites now! 🍽️✨
           </i>
         </Typography>
       </div>
     </div>
   )}
 </div>
+
 
 
 
@@ -204,7 +210,7 @@ function Welcome() {
 
 
 
-    <Typography variant="h2" color="Black">
+    <Typography variant="h1" color="Black">
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
       <Typography variant="h3" className="mt-8 flex flex justify-center items-center">
       <h1 style={{ color: '#166602' }}><b><div>Welcome to Food Maven!</div></b></h1>
@@ -213,7 +219,7 @@ function Welcome() {
  
   
       <Typography variant="small" className="mt-8 flex flex justify-center items-center">
-      <Typography variant="h6" color="black">
+      <Typography variant="h9" color="black">
       <b>Access your provisioned services below. Switch services any time from the Apps icon in the middle of your screen.</b>
            <br></br></Typography>
 
@@ -245,8 +251,9 @@ function Welcome() {
     </Select>
   </div>
 </div>
+<br />
+
         </Typography>
-        <br></br>
 
 <div tilesnumber="4" class="grid grid-cols-1 gap-9 sm:grid-cols-2 md:grid-cols-6">
        
@@ -363,7 +370,7 @@ function Welcome() {
 
     <div className='flex justify-center items-center'>
        <Typography variant="h9" color="Black">
-       <h8>Application Build Version : {packageJson.version}</h8>
+       <h8>App Version : {packageJson.version}</h8>
 
       <br></br>
       <b><hr class="separator" /></b>

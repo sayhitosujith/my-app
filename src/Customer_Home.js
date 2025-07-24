@@ -19,6 +19,8 @@ import { TfiEmail } from "react-icons/tfi";
 import { GrSkype } from "react-icons/gr";
 import { MdOutlineMyLocation } from "react-icons/md";
 import { useState } from "react";
+import { RiShareForwardFill } from "react-icons/ri";
+
 
 import {
   Card,
@@ -125,6 +127,10 @@ const CardItem = ({ item }) => (
   </div>
 </div>
       </Typography>
+<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+  <RiShareForwardFill  size={48} color="orange"/>
+</div>
+
     </CardFooter>
 
 

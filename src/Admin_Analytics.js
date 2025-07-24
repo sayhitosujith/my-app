@@ -14,6 +14,13 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { FaFacebookF } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaInstagram } from "react-icons/fa";
+import { TbDeviceDesktopAnalytics } from "react-icons/tb";
+import { SiSimpleanalytics } from "react-icons/si";
+import { IoAnalytics } from "react-icons/io5";
+import { AiOutlineAreaChart } from "react-icons/ai";
+import { IoIosAnalytics } from "react-icons/io";
+import { AiOutlineDashboard } from "react-icons/ai";
+
 
 import {
   ArrowDownTrayIcon,
@@ -98,47 +105,87 @@ const TABLE_ROWS = [
   },
 ];
 
-const data = [
-  { id: 1, name: 'Registred Users', src: 'https://images.klipfolio.com/website/public/143ce3cb-0458-43af-a761-ce7b9673efe4/website-analytics-completions-metric.png', },
-  { id: 2, name: 'Todays Orders', src: 'https://media.licdn.com/dms/image/D5612AQERVZ2zcWRhUA/article-cover_image-shrink_720_1280/0/1683168912775?e=2147483647&v=beta&t=hZyQJXBr0hNXuf7KYighwiqkhIRoTgQlqqOP1Tipfi0', },
-  { id: 3, name: 'Added to Cart', src: 'https://images.klipfolio.com/website/public/cf3d1718-8c3e-4567-bbed-ec56cfd4c7d6/website-analytics-sessions-metric.png', },
-  { id: 4, name: 'Total Sales', src: 'https://lordicon.com/icons/wired/gradient/976-web-analytics.svg', },
-  { id: 5, name: 'Active Countries', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbk-T3O-4_zcnjU3F35X-SeiuAPTp9gUqzLw&usqp=CAU', },
 
-]
+const data = [
+  {
+    id: 1,
+    name: 'Registered Users',
+    src: <TbDeviceDesktopAnalytics  />, // replaced image URL with icon component
+  },
+  {
+    id: 2,
+    name: 'Todays Orders',
+    src: <SiSimpleanalytics />
+,
+  },
+  {
+    id: 3,
+    name: 'Added to Cart',
+    src: <IoAnalytics />
+,
+  },
+  {
+    id: 4,
+    name: 'Total Sales',
+    src: <AiOutlineAreaChart  />,
+  },
+  {
+    id: 5,
+    name: 'Active Countries',
+    src: <IoIosAnalytics  />
+,
+  },
+];
+
 
 const CardItem = ({ item }) => (
   <Card className="w-200">
     <CardHeader
       variant="gradient"
       color="green"
-      className="mb-5 grid h-10 place-items-center">
+      className="mb-5 grid h-10 place-items-center"
+    >
       <Typography variant="h3" color="white">
         {item.id} : {item.name}
       </Typography>
     </CardHeader>
 
-    <div className='flex justify-center items-center'>
-      <img style={{ width: '200px', height: '200px' }} src={item.src} className="h-96 w-full object-cover object-center" />
+    <div className="flex justify-center items-center" style={{ width: '200px', height: '200px' }}>
+      {typeof item.src === "string" ? (
+        <img
+          style={{ width: "200px", height: "200px" }}
+          src={item.src}
+          alt={item.name}
+          className="h-96 w-full object-cover object-center"
+        />
+      ) : (
+        <div style={{ fontSize: 100, color: "green" }}>
+          {item.src}
+        </div>
+      )}
     </div>
+
     <CardBody className="flex flex-col gap-4">
-      <div className="-mr-50">
-      </div>
+      <div className="-mr-50"></div>
     </CardBody>
+
     <CardFooter className="pt-0">
       <Typography variant="h10" color="black">
         <div className="w-72">
-          <Typography as="caption" variant="small" className="mt-2 text-center font-normal">
+          <Typography
+            as="caption"
+            variant="small"
+            className="mt-2 text-center font-normal"
+          >
             {/* Image caption */}
           </Typography>
         </div>
-        <label>
-        </label>
+        <label></label>
       </Typography>
     </CardFooter>
   </Card>
+);
 
-)
 
 
 function Admin_Analytics() {
@@ -199,7 +246,8 @@ function Admin_Analytics() {
       </div>
       <br></br>
       <Typography variant="h3" color="Black">
-        Dashboard
+      <AiOutlineDashboard />  Dashboard 
+
 
         <div style={{ float: 'right' }}>
           <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" size="xl" div style={{ float: 'right' }}></Avatar>
@@ -218,17 +266,17 @@ function Admin_Analytics() {
         </div>
       </Typography>
 
-      <div className='w-full flex mt-20 gap-7'>
+<div className="w-full flex flex-wrap justify-center mt-20 gap-7">
         {
           data.slice(0, 5).map((item) => <CardItem item={item} />)
         }
       </div>
-      <div className='w-full flex mt-20 gap-7'>
+<div className="w-full flex flex-wrap justify-center mt-20 gap-7">
         {
           data.slice(6, 10).map((item) => <CardItem item={item} />)
         }
       </div>
-      <div className='w-full flex mt-20 gap-7'>
+<div className="w-full flex flex-wrap justify-center mt-20 gap-7">
         {
           data.slice(11, 15).map((item) => <CardItem item={item} />)
         }

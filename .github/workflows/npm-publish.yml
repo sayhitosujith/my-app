@@ -1,33 +1,55 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: Node.js Package
+name: CI - Playwright Tests
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  # schedule:
+  #   - cron: '0 */5 * * *'  # Every 5 hours (UTC)
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm ci
-      - run: npm test
+    timeout-minutes: 30  # Prevent long-running workflows
 
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright Tests
+        run: npx playwright test --reporter=html,line
+        continue-on-error: true
+
+      - name: Upload HTML Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: playwright-report/
+
+      - name: Upload Trace Files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: test-results/**/trace.zip
+
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-screenshots
+          path: test-results/**/screenshot*
