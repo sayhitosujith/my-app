@@ -20,6 +20,7 @@ import { IoAnalytics } from "react-icons/io5";
 import { AiOutlineAreaChart } from "react-icons/ai";
 import { IoIosAnalytics } from "react-icons/io";
 import { AiOutlineDashboard } from "react-icons/ai";
+import { SiPagespeedinsights } from "react-icons/si";
 
 
 import {
@@ -127,7 +128,7 @@ const data = [
   {
     id: 4,
     name: 'Total Sales',
-    src: <AiOutlineAreaChart  />,
+    src: <SiPagespeedinsights   />,
   },
   {
     id: 5,
@@ -143,7 +144,7 @@ const CardItem = ({ item }) => (
     <CardHeader
       variant="gradient"
       color="green"
-      className="mb-5 grid h-10 place-items-center"
+      className="mb-10 grid h-10 place-items-center"
     >
       <Typography variant="h3" color="white">
         {item.id} : {item.name}
