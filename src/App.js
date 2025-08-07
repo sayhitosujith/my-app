@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import packageJson from '../package.json';
 import RCB from './assets/Rmw.png';
 import { IoMdFingerPrint } from "react-icons/io";
+import { CiUser } from "react-icons/ci";
 
 import {
   Card,
@@ -156,8 +157,13 @@ function App() {
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                   <div className="bg-white rounded-lg shadow-lg p-6 w-80 text-center">
                     <h2 className="text-xl font-semibold mb-4 text-green-800">User Detected</h2>
+
+                   <div className="flex justify-center items-center h-full">
+                   <CiUser   className="text-6xl" />
+                     </div>
                     <p className="text-gray-600">Authentication successful!</p>
                     <button
+
                       onClick={() => window.location.href = "/Customer_Home"}
                       className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
                     >
