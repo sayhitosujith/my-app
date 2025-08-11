@@ -128,7 +128,16 @@ const CardItem = ({ item }) => (
 </div>
       </Typography>
 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-  <RiShareForwardFill  size={48} color="orange"/>
+  <button
+    style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+    aria-label="Share"
+    onClick={() => {
+      // Your share logic here
+      alert("Share button clicked!");
+    }}
+  >
+    <RiShareForwardFill size={48} color="orange" />
+  </button>
 </div>
 
     </CardFooter>
@@ -328,7 +337,7 @@ function App() {
          <div className="animate-scroll whitespace-nowrap inline-block">
            <Typography variant="h6" className="text-md text-black">
              <i>
-             NEW | 🛍️ Arrivals Alert! Fresh food, desserts and must-have picks just dropped. Shop now before they're gone....! Enjoy the Fresh Menu and Deals for thr Day🔥✨
+             NEW | 🛍️ Independence Day Special....! Enjoy upto 50% off , order above 500/-🔥✨
              </i>
            </Typography>
          </div>
@@ -460,29 +469,30 @@ function App() {
 
         </div>
 
-        <div className="relative w-full h-16">
-  <div className="absolute top-4 right-4">
-    <Typography variant="h5" style={{ color: '#ff5200' }}>
-      CONTACT RESTAURANT
-    </Typography>
+<Card
+  className="w-full max-w-sm p-4"
+  style={{ backgroundColor: 'white', position: 'absolute', top: '1rem', right: '30rem' }}
+>      <CardBody>
+        <Typography variant="h5" style={{ color: '#0e0505ff' }} className="mb-4">
+          CONTACT RESTAURANT
+        </Typography>
 
-    <div className="flex space-x-4 mt-2">
-  <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300">
-    <AiOutlinePhone size={28} color="black" />
-  </button>
-  <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300">
-    <GoComment size={26} color="black" />
-  </button>
-  <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300">
-    <TfiEmail size={26} color="black" />
-  </button>
-  <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300">
-    <GrSkype size={26} color="black" />
-  </button>
-</div>
-
-  </div>
-</div>
+        <div className="flex space-x-4">
+          <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300 transition">
+            <AiOutlinePhone size={28} color="black" />
+          </button>
+          <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300 transition">
+            <GoComment size={26} color="black" />
+          </button>
+          <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300 transition">
+            <TfiEmail size={26} color="black" />
+          </button>
+          <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300 transition">
+            <GrSkype size={26} color="black" />
+          </button>
+        </div>
+      </CardBody>
+    </Card>
 
       </Typography>
 
