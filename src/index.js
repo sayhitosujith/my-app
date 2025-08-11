@@ -33,7 +33,7 @@ import DeliveryBoy from './DeliveryBoy';
 import AddDeliveryCaptain from './AddDeliveryCaptain';
 import Settings from './Settings';
 import Logout from './Logout';
-
+import DailySummary from './DailySummary.jsx'
 
 const router = createBrowserRouter([
   {
@@ -148,7 +148,10 @@ const router = createBrowserRouter([
     path: "/AddDeliveryCaptain",
     element: <AddDeliveryCaptain/>,
   },
-  AddDeliveryCaptain
+  {
+    path: "/DailySummary",
+    element: <DailySummary/>,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

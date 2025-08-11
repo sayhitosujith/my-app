@@ -4,7 +4,6 @@ import packageJson from '../package.json';
 import RCB from './assets/Rmw.png';
 import { IoMdFingerPrint } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
-<a href="https://reactjs.org">Learn React</a>
 import {
   Card,
   CardHeader,
@@ -15,6 +14,8 @@ import {
   Checkbox,
   Button,
 } from "@material-tailwind/react";
+<a href="https://reactjs.org">Learn React</a>
+
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -60,9 +61,10 @@ function App() {
   };
 
   return (
-    <div className="flex flex-row gap-2">
-      <div className='w-1/2 h-screen flex items-center justify-center bg-green-100'>
-<Card className="w-full max-w-sm p-4 shadow-md rounded-2xl">
+    <div className="flex flex-row gap-3">
+      <div className='w-1/2 h-screen flex items-center justify-center bg-green-200'>
+
+<Card className="w-full max-w-xl p-8 shadow-md rounded-2xl">
           <CardHeader variant="gradient" color="green" className="mb-4 grid h-28 place-items-center">
             <Typography variant="h3" color="white">
               ADMIN
