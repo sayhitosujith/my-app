@@ -67,11 +67,11 @@ const isBannerActive = now >= startDate && now <= endDate;
 
 
 const CardItem = ({ item }) => (
-  <Card className="w-96 bg-orange-50">
+  <Card className="w-96 bg-green-50">
     <CardHeader
       variant="gradient"
       className="mb-5 grid h-10 place-items-center"
-      style={{ background: "#ff5200" }} // Custom background color
+      style={{ background: "#3e7906ff" }} // Custom background color
     >
       <Typography variant="h3" color="white">
         {item.id} : {item.name}
@@ -92,7 +92,7 @@ const CardItem = ({ item }) => (
       </Typography>
     </CardBody>
     <CardFooter className="pt-0" >
-      <Typography variant="h10" color="orange">
+      <Typography variant="h10" color="green">
         <div>
 
           <b><hr class="separator" /></b>
@@ -136,7 +136,7 @@ const CardItem = ({ item }) => (
       alert("Share button clicked!");
     }}
   >
-    <RiShareForwardFill size={48} color="orange" />
+    <RiShareForwardFill size={48} color="green" />
   </button>
 </div>
 
@@ -145,16 +145,17 @@ const CardItem = ({ item }) => (
 
     <br></br>
 
-    <div className="flex justify-center">
+   <div className="flex justify-center">
   <Button
     color="white"
     appearance="primary"
-    className="relative overflow-hidden text-lg font-semibold text-white border-4 border-[#ff5200] px-4 py-2 rounded bg-[#ff5200] hover:bg-[#e64d00] transition"
+    className="relative overflow-hidden text-lg font-semibold text-white border-4 border-green-600 px-4 py-2 rounded bg-green-600 hover:bg-green-700 transition"
   >
     <span className="absolute top-0 right-0 w-0 h-0 border-t-[23px] border-l-[40px] border-t-white border-l-transparent"></span>
     <a href="/MyCart" className="relative z-10">ADD TO CART</a>
   </Button>
 </div>
+
 
 
 
@@ -294,7 +295,7 @@ function App() {
 {/* Location Button with Textbox */}
 <div className="mt-4 flex items-center space-x-4 mb-4">
   <button
-    className="px-4 py-2 bg-orange-900 text-white border border-green-900 rounded transition hover:bg-green-600"
+    className="px-4 py-2 bg-green-900 text-white border border-green-900 rounded transition hover:bg-green-600"
   >
     LOCATION
   </button>
@@ -470,7 +471,7 @@ function App() {
         </div>
 
 <Card
-  className="w-full max-w-sm p-4"
+  className="w-full max-w-sm p-2"
   style={{ backgroundColor: 'white', position: 'absolute', top: '1rem', right: '30rem' }}
 >      <CardBody>
         <Typography variant="h5" style={{ color: '#0e0505ff' }} className="mb-4">

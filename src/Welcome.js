@@ -243,6 +243,9 @@ function Welcome() {
         <a href="/HomePage">About</a>
       </Option>
       <Option>
+        <a href="/Dailysummary">Dailysummary</a>
+      </Option>
+      <Option>
         <a href="/ResetPassword">Change Password</a>
       </Option>
       <Option>
