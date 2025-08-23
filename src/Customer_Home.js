@@ -20,6 +20,7 @@ import { GrSkype } from "react-icons/gr";
 import { MdOutlineMyLocation } from "react-icons/md";
 import { useState } from "react";
 import { RiShareForwardFill } from "react-icons/ri";
+import { TbRefresh } from "react-icons/tb";
 
 
 import {
@@ -404,7 +405,19 @@ function App() {
     </figure>
   </Carousel>
 </div>
-      
+
+
+<div className="absolute top-35 right-9">
+  <button
+    onClick={() => window.location.reload()}
+    className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md hover:bg-gray-200 transition text-black"
+  >
+    <TbRefresh className="text-3xl" />
+    <span className="text-lg">Refresh</span>
+  </button>
+</div>
+
+
       <b><hr class="separator" /></b>
 
       <Typography variant="h3" style={{ color: "#ff5200" }}  className="flex items-center gap-4">
