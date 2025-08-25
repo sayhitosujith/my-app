@@ -48,12 +48,6 @@ const data = [
   { id: 10, name: 'Kids Dentistry', src: 'https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Kids-Dentistery.gif', },
   { id: 11, name: 'Mouth Ulcers', src: 'https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Mouth-ulcers-1-2.gif', },
   { id: 12, name: 'Mouth Trestment - Advanced', src: 'https://clovecontent.s3.ap-south-1.amazonaws.com/All/2017/05/Gum-Treatment.gif', },
-  { id: 13, name: 'veg Meal', src: 'https://tse3.mm.bing.net/th?id=OIP.1SxzeKMtZ9qeVnA1JQ8IqgHaE8&pid=Api&P=0&h=220', },
-  { id: 14, name: 'Lemon Rice', src: 'https://indiancurrytrail.com/wp-content/uploads/2019/03/Lunchbox-Idea-1-1.jpg', },
-  { id: 15, name: 'Cure Rice', src: 'https://i.ytimg.com/vi/B2ZO4tN_8-c/sddefault.jpg', },
-  { id: 16, name: 'Pav bhaji', src: 'https://assets.box8.co.in/rectangle-19x10/xhdpi/product/8997', },
-  { id: 17, name: 'Ghee Toor Dal Khichdi Thali', src: 'https://assets.box8.co.in/rectangle-19x10/xhdpi/product/12090', },
-  { id: 18, name: 'Desi Box', src: 'https://assets.box8.co.in/rectangle-19x10/xhdpi/product/5005', },
 
 
 ]
@@ -68,11 +62,11 @@ const isBannerActive = now >= startDate && now <= endDate;
 
 
 const CardItem = ({ item }) => (
-  <Card className="w-96 bg-green-50">
+  <Card className="w-96 " style={{ background: "#f8f8fcff" }}>
     <CardHeader
       variant="gradient"
       className="mb-5 grid h-10 place-items-center"
-      style={{ background: "#f97a04ff" }} // Custom background color
+      style={{ background: "#0e0906ff" }} // Custom background color
     >
       <Typography variant="h3" color="white">
         {item.id} : {item.name}
@@ -93,7 +87,7 @@ const CardItem = ({ item }) => (
       </Typography>
     </CardBody>
     <CardFooter className="pt-0" >
-      <Typography variant="h10" color="green">
+      <Typography variant="h10" color="#050302ff">
         <div>
 
           <b><hr class="separator" /></b>
@@ -137,7 +131,7 @@ const CardItem = ({ item }) => (
       alert("Share button clicked!");
     }}
   >
-    <RiShareForwardFill size={48} color="green" />
+    <RiShareForwardFill size={48} color="#3970f1ff" />
   </button>
 </div>
 
@@ -146,11 +140,11 @@ const CardItem = ({ item }) => (
 
     <br></br>
 
-   <div className="flex justify-center">
+   <div className="flex justify-center" >
   <Button
     color="white"
     appearance="primary"
-    className="relative overflow-hidden text-lg font-semibold text-white border-4 border-green-600 px-4 py-2 rounded bg-green-600 hover:bg-green-700 transition"
+    className="relative overflow-hidden text-lg font-semibold text-white border-4 border-blue-600 px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 transition"
   >
     <span className="absolute top-0 right-0 w-0 h-0 border-t-[23px] border-l-[40px] border-t-white border-l-transparent"></span>
     <a href="/MyCart" className="relative z-10">BOOK AN APPOINTMET</a>
