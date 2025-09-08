@@ -326,14 +326,15 @@ function App() {
 
    <div
      className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-     style={{ backgroundColor: 'rgba(245, 247, 243, 1)' }}
+     style={{ backgroundColor: 'rgba(82, 59, 132, 1)' }}
    >
      {isBannerActive && (
        <div className="w-full overflow-hidden relative">
          <div className="animate-scroll whitespace-nowrap inline-block">
-           <Typography variant="h6" className="text-md text-black">
+           <Typography variant="h6" className="text-md text-white">
              <i>
-             NEW | 🛍️ Independence Day Special....! Enjoy upto 50% off , order above 500/-🔥✨
+             NEW | 🛍️ Enjoy upto 50% off on Root canal Treatment
+🔥✨
              </i>
            </Typography>
          </div>
@@ -418,7 +419,7 @@ Creating Confident Smiles in Hervey Bay - A bright healthy smile can be yours Ca
 
       <b><hr class="separator" /></b>
 
-      <Typography variant="h3" style={{ color: "#ff5200" }}  className="flex items-center gap-4">
+      <Typography variant="h3" style={{ color: "#271b66ff" }}  className="flex items-center gap-4">
       <img
     className="h-30 w-50 object-cover"
     src="https://clovedental.in/images1/google.svg"
@@ -468,7 +469,7 @@ Creating Confident Smiles in Hervey Bay - A bright healthy smile can be yours Ca
   className="w-full max-w-sm p-2"
   style={{ backgroundColor: 'white', position: 'absolute', top: '1rem', right: '30rem' }}
 >      <CardBody>
-        <Typography variant="h5" style={{ color: '#0e0505ff' }} className="mb-4">
+        <Typography variant="h5" style={{ color: '#362787ff' }} className="mb-4">
           CONTACT CLINIC
         </Typography>
 
