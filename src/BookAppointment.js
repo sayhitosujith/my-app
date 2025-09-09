@@ -17,22 +17,24 @@ const departments = {
 
 const insuranceProviders = ["Provider A", "Provider B", "Provider C"];
 
+const initialFormData = {
+  firstName: "", middleName: "", lastName: "", gender: "", dob: "", age: "",
+  mobile: "", alternateContact: "", email: "", address: "", emergencyContactName: "",
+  emergencyContactNumber: "", patientID: "", department: "", doctor: "", time: "",
+  appointmentType: "", reason: "", previousVisit: "", existingConditions: [],
+  allergies: "", currentMedications: "", pastSurgeries: "", insuranceProvider: "",
+  policyNumber: "", cardHolderName: "", insuranceCard: null, paymentMethod: "",
+  termsAccepted: false, consentToShare: false
+};
+
 const BookAppointment = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [appointmentDetails, setAppointmentDetails] = useState(null);
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState(initialFormData);
 
-  const [formData, setFormData] = useState({
-    firstName: "", middleName: "", lastName: "", gender: "", dob: "", age: "",
-    mobile: "", alternateContact: "", email: "", address: "", emergencyContactName: "",
-    emergencyContactNumber: "", patientID: "", department: "", doctor: "", time: "",
-    appointmentType: "", reason: "", previousVisit: "", existingConditions: [],
-    allergies: "", currentMedications: "", pastSurgeries: "", insuranceProvider: "",
-    policyNumber: "", cardHolderName: "", insuranceCard: null, paymentMethod: "",
-    termsAccepted: false, consentToShare: false
-  });
+  const navigate = useNavigate();
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -40,12 +42,16 @@ const BookAppointment = () => {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const today = new Date();
 
+  // ✅ Auto-calculate Age from DOB
   useEffect(() => {
     if (formData.dob) {
       const birthDate = new Date(formData.dob);
       const ageDifMs = Date.now() - birthDate.getTime();
       const ageDate = new Date(ageDifMs);
-      setFormData(prev => ({ ...prev, age: Math.abs(ageDate.getUTCFullYear() - 1970) }));
+      setFormData(prev => ({
+        ...prev,
+        age: Math.abs(ageDate.getUTCFullYear() - 1970).toString()
+      }));
     }
   }, [formData.dob]);
 
@@ -56,7 +62,9 @@ const BookAppointment = () => {
   };
 
   const isToday = (day) =>
-    day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+    day === today.getDate() &&
+    month === today.getMonth() &&
+    year === today.getFullYear();
 
   const handleDayClick = (day) => {
     const date = new Date(year, month, day);
@@ -85,36 +93,42 @@ const BookAppointment = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!selectedDate || !formData.time) {
-      alert("Please select a date and time!");
+      alert("⚠️ Please select a date and time!");
       return;
     }
     setAppointmentDetails({ ...formData, date: selectedDate.toDateString() });
-    setFormData({
-      firstName: "", middleName: "", lastName: "", gender: "", dob: "", age: "",
-      mobile: "", alternateContact: "", email: "", address: "", emergencyContactName: "",
-      emergencyContactNumber: "", patientID: "", department: "", doctor: "", time: "",
-      appointmentType: "", reason: "", previousVisit: "", existingConditions: [],
-      allergies: "", currentMedications: "", pastSurgeries: "", insuranceProvider: "",
-      policyNumber: "", cardHolderName: "", insuranceCard: null, paymentMethod: "",
-      termsAccepted: false, consentToShare: false
-    });
+
+    // ✅ Reset form safely
+    setFormData(initialFormData);
     setSelectedDate(null);
-    alert("Appointment booked successfully!");
+    alert("✅ Appointment booked successfully!");
   };
 
   const handleCancel = () => navigate("/Profile");
 
   const renderDays = () => {
-    const cells = dayNames.map(day => <div className="day-name" key={day}>{day}</div>);
-    for (let i = 0; i < firstDay; i++) cells.push(<div key={`empty-${i}`} />);
+    const cells = dayNames.map(day => (
+      <div className="day-name" key={day}>{day}</div>
+    ));
+
+    for (let i = 0; i < firstDay; i++) {
+      cells.push(<div key={`empty-${i}`} />);
+    }
+
     for (let day = 1; day <= daysInMonth; day++) {
-      const isSelected = selectedDate &&
+      const isSelected =
+        selectedDate &&
         day === selectedDate.getDate() &&
         month === selectedDate.getMonth() &&
         year === selectedDate.getFullYear();
+
       cells.push(
-        <div key={day} className={`day ${isToday(day) ? "today" : ""} ${isSelected ? "selected" : ""}`}
-             onClick={() => handleDayClick(day)}>
+        <div
+          key={day}
+          role="button"
+          className={`day ${isToday(day) ? "today" : ""} ${isSelected ? "selected" : ""}`}
+          onClick={() => handleDayClick(day)}
+        >
           {day}
         </div>
       );
@@ -136,12 +150,12 @@ const BookAppointment = () => {
             <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleInputChange} required />
             <select name="gender" value={formData.gender} onChange={handleInputChange} required>
               <option value="">Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
             </select>
             <input type="date" name="dob" value={formData.dob} onChange={handleInputChange} required />
-            <input type="text" name="age" value={formData.age} placeholder="Age" onChange={handleInputChange} required  />
+            <input type="text" name="age" value={formData.age} placeholder="Age" onChange={handleInputChange} required />
             <input type="tel" name="mobile" placeholder="Mobile" value={formData.mobile} onChange={handleInputChange} required />
             <input type="tel" name="alternateContact" placeholder="Alternate Contact" value={formData.alternateContact} onChange={handleInputChange} />
             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required />
@@ -158,11 +172,13 @@ const BookAppointment = () => {
           <div className="grid-2">
             <select name="department" value={formData.department} onChange={handleInputChange} required>
               <option value="">Department</option>
-              {Object.keys(departments).map(dep => <option key={dep} value={dep}>{dep}</option>)}
+              {Object.keys(departments).map(dep => <option key={dep}>{dep}</option>)}
             </select>
             <select name="doctor" value={formData.doctor} onChange={handleInputChange} required>
               <option value="">Doctor</option>
-              {formData.department && departments[formData.department].map(doc => <option key={doc} value={doc}>{doc}</option>)}
+              {formData.department && departments[formData.department].map(doc => (
+                <option key={doc}>{doc}</option>
+              ))}
             </select>
             <div className="date-picker">
               <button type="button" onClick={() => setShowCalendar(!showCalendar)}>
@@ -182,13 +198,13 @@ const BookAppointment = () => {
             )}
             <select name="time" value={formData.time} onChange={handleInputChange} required>
               <option value="">Time Slot</option>
-              {timeSlots.map((slot, i) => <option key={i} value={slot}>{slot}</option>)}
+              {timeSlots.map((slot, i) => <option key={i}>{slot}</option>)}
             </select>
             <select name="appointmentType" value={formData.appointmentType} onChange={handleInputChange} required>
               <option value="">Appointment Type</option>
-              <option value="In-person">In-person</option>
-              <option value="Teleconsultation">Teleconsultation</option>
-              <option value="Home Visit">Home Visit</option>
+              <option>In-person</option>
+              <option>Teleconsultation</option>
+              <option>Home Visit</option>
             </select>
             <textarea name="reason" placeholder="Reason for Visit" value={formData.reason} onChange={handleInputChange} />
             <textarea name="previousVisit" placeholder="Previous Visit / Referral" value={formData.previousVisit} onChange={handleInputChange} />
@@ -214,16 +230,16 @@ const BookAppointment = () => {
           <div className="grid-2">
             <select name="insuranceProvider" value={formData.insuranceProvider} onChange={handleInputChange}>
               <option value="">Insurance Provider</option>
-              {insuranceProviders.map(p => <option key={p} value={p}>{p}</option>)}
+              {insuranceProviders.map(p => <option key={p}>{p}</option>)}
             </select>
             <input type="text" name="policyNumber" placeholder="Policy Number" value={formData.policyNumber} onChange={handleInputChange} />
             <input type="text" name="cardHolderName" placeholder="Card Holder Name" value={formData.cardHolderName} onChange={handleInputChange} />
             <input type="file" name="insuranceCard" onChange={handleInputChange} />
             <select name="paymentMethod" value={formData.paymentMethod} onChange={handleInputChange}>
               <option value="">Payment Method</option>
-              <option value="Cash">Cash</option>
-              <option value="Card">Card</option>
-              <option value="Online">Online Payment</option>
+              <option>Cash</option>
+              <option>Card</option>
+              <option>Online</option>
             </select>
           </div>
         </div>
@@ -231,10 +247,17 @@ const BookAppointment = () => {
         {/* CONSENT */}
         <div className="card-section">
           <h2>Consent & Confirmation</h2>
-          <label><input type="checkbox" name="termsAccepted" checked={formData.termsAccepted} onChange={handleInputChange} required /> I accept Terms & Conditions</label>
-          <label><input type="checkbox" name="consentToShare" checked={formData.consentToShare} onChange={handleInputChange} /> Consent to share medical data</label>
+          <label>
+            <input type="checkbox" name="termsAccepted" checked={formData.termsAccepted} onChange={handleInputChange} required />
+            I accept Terms & Conditions
+          </label>
+          <label>
+            <input type="checkbox" name="consentToShare" checked={formData.consentToShare} onChange={handleInputChange} />
+            Consent to share medical data
+          </label>
         </div>
 
+        {/* BUTTONS */}
         <div className="button-group">
           <button type="submit" className="submit-btn">Book Appointment</button>
           <button type="button" className="cancel-btn" onClick={handleCancel}>Cancel</button>

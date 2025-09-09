@@ -79,20 +79,30 @@ const CardItem = ({item}) => (
             <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
             
             <Popup trigger=
-                {<button>  Delete Profile </button>}
+                {<button> </button>}
                 position="right center">
                 <div>Profile Deleted Successfully</div>
                 <a href="/Welcome"/>
             </Popup>
             </Typography>
-
-              <Button color="Black">
-             <a href="/BookAppointment" className="w-full h-full block text-white text-center">
-              Book Appointment
-              <a href="/BookAppointment"/>
-                </a>
-                </Button>
           </Button>
+
+             <div className="flex space-x-4">
+  {/* Book Appointment */}
+  <Button color="black">
+    <a href="/BookAppointment" className="w-full h-full block text-white text-center">
+      Book Appointment
+    </a>
+  </Button>
+
+  {/* ✅ New Appointment History Button */}
+  <Button color="blue">
+    <a href="/AppointmentHistory" className="w-full h-full block text-white text-center">
+      Appointment History
+    </a>
+  </Button>
+</div>
+
             <br></br>
 
     </label>

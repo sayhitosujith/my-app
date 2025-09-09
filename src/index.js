@@ -35,6 +35,7 @@ import Settings from './Settings';
 import Logout from './Logout';
 import DailySummary from './DailySummary.jsx'
 import BookAppointment from './BookAppointment';
+import AppointmentHistory from './AppointmentHistory';
 
 const router = createBrowserRouter([
   {
@@ -157,6 +158,11 @@ const router = createBrowserRouter([
     path: "/BookAppointment",
     element: <BookAppointment/>,
   },
+
+  {
+    path: "/AppointmentHistory",
+    element: <AppointmentHistory/>,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
