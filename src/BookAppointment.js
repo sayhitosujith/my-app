@@ -275,7 +275,8 @@ return (
 
       </form>
 
-      {appointmentDetails && (
+      {
+      appointmentDetails && (
         <div className="appointment-details card-section">
           <h2>📌 Appointment Details</h2>
           <pre>{JSON.stringify(appointmentDetails, null, 2)}</pre>
