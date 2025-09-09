@@ -3,38 +3,103 @@
 .appointment-history {
   padding: 30px;
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background-color: #f9fafc;
   color: #333;
-  line-height: 1.6;
+  max-width: 800px;
+  margin: auto;
 }
 
 .appointment-history h2 {
   font-size: 28px;
   color: #0056b3;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-.appointment-history section {
-  background-color: #ffffff;
+.section {
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 15px 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
-.appointment-history h3 {
-  margin-top: 0;
-  color: #2c3e50;
+.section h3 {
   font-size: 20px;
+  color: #333;
+  margin-bottom: 15px;
   border-bottom: 1px solid #eee;
   padding-bottom: 5px;
 }
 
-.appointment-history p {
-  margin: 8px 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.appointment-history strong {
-  color: #000;
+td {
+  padding: 8px 10px;
+  vertical-align: top;
+}
+
+td.label {
+  font-weight: bold;
+  width: 35%;
+  color: #555;
+  background-color: #f5f5f5;
+  border-right: 1px solid #eee;
+}
+/* Print Styles */
+@media print {
+  body, .appointment-history {
+    background: white !important;
+    color: black !important;
+    max-width: 100% !important;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+  }
+
+  .appointment-history {
+    padding: 0 !important;
+  }
+
+  /* Remove shadows and borders for print clarity */
+  .section {
+    border: 1px solid black !important;
+    box-shadow: none !important;
+    margin-bottom: 20px;
+    padding: 10px !important;
+  }
+
+  h2, h3 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: avoid;
+  }
+
+  td {
+    border: 1px solid black !important;
+    padding: 8px !important;
+    color: black !important;
+  }
+
+  td.label {
+    background-color: #eee !important;
+    -webkit-print-color-adjust: exact; /* Ensure bg color prints on WebKit */
+  }
+
+  /* Avoid breaking rows across pages */
+  tr {
+    page-break-inside: avoid !important;
+  }
+
+  /* Hide anything unnecessary in print (like buttons, links, etc.) if you had any */
+  /* For now, nothing to hide */
 }

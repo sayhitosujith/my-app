@@ -1,4 +1,5 @@
 import React from 'react';
+import './AppointmentHistory.css'; // Import the CSS
 
 const AppointmentHistory = () => {
   const appointmentData = {
@@ -35,60 +36,104 @@ const AppointmentHistory = () => {
     date: "Thu Sep 11 2025"
   };
 
+  const renderRow = (label, value) => (
+    <tr>
+      <td className="label">{label}</td>
+      <td>{value}</td>
+    </tr>
+  );
+
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h2>📋 Appointment History</h2>
+<div>
+  <div className="appointment-history">
+    <h2>📋 Appointment History</h2>
 
-      <section>
-        <h3>🧑‍⚕️ Patient Information</h3>
-        <p><strong>Name:</strong> {appointmentData.firstName} {appointmentData.middleName} {appointmentData.lastName}</p>
-        <p><strong>Gender:</strong> {appointmentData.gender}</p>
-        <p><strong>Date of Birth:</strong> {appointmentData.dob}</p>
-        <p><strong>Age:</strong> {appointmentData.age}</p>
-        <p><strong>Mobile:</strong> {appointmentData.mobile}</p>
-        <p><strong>Email:</strong> {appointmentData.email}</p>
-        <p><strong>Address:</strong> {appointmentData.address}</p>
-      </section>
 
-      <section>
-        <h3>🏥 Appointment Details</h3>
-        <p><strong>Department:</strong> {appointmentData.department}</p>
-        <p><strong>Doctor:</strong> {appointmentData.doctor}</p>
-        <p><strong>Type:</strong> {appointmentData.appointmentType}</p>
-        <p><strong>Date & Time:</strong> {appointmentData.date} at {appointmentData.time}</p>
-        <p><strong>Reason:</strong> {appointmentData.reason || "Not specified"}</p>
-        <p><strong>Previous Visit:</strong> {appointmentData.previousVisit || "Not specified"}</p>
-      </section>
-
-      <section>
-        <h3>⚕️ Medical Information</h3>
-        <p><strong>Existing Conditions:</strong> {appointmentData.existingConditions.length > 0 ? appointmentData.existingConditions.join(", ") : "None reported"}</p>
-        <p><strong>Allergies:</strong> {appointmentData.allergies || "Not specified"}</p>
-        <p><strong>Current Medications:</strong> {appointmentData.currentMedications || "Not specified"}</p>
-        <p><strong>Past Surgeries:</strong> {appointmentData.pastSurgeries || "Not specified"}</p>
-      </section>
-
-      <section>
-        <h3>🆘 Emergency Contact</h3>
-        <p><strong>Name:</strong> {appointmentData.emergencyContactName || "Not provided"}</p>
-        <p><strong>Phone:</strong> {appointmentData.emergencyContactNumber || "Not provided"}</p>
-      </section>
-
-      <section>
-        <h3>💳 Insurance Details</h3>
-        <p><strong>Provider:</strong> {appointmentData.insuranceProvider || "Not provided"}</p>
-        <p><strong>Policy Number:</strong> {appointmentData.policyNumber || "Not provided"}</p>
-        <p><strong>Card Holder Name:</strong> {appointmentData.cardHolderName || "Not provided"}</p>
-        <p><strong>Insurance Card:</strong> {appointmentData.insuranceCard ? "Uploaded" : "Not uploaded"}</p>
-      </section>
-
-      <section>
-        <h3>💰 Payment & Consent</h3>
-        <p><strong>Payment Method:</strong> {appointmentData.paymentMethod || "Not specified"}</p>
-        <p><strong>Terms Accepted:</strong> {appointmentData.termsAccepted ? "✅ Yes" : "❌ No"}</p>
-        <p><strong>Consent to Share Info:</strong> {appointmentData.consentToShare ? "✅ Yes" : "❌ No"}</p>
-      </section>
+    <div className="section">
+      <h3>🧑‍⚕️ Patient Information</h3>
+      <table>
+        <tbody>
+          {renderRow("Name", `${appointmentData.firstName} ${appointmentData.middleName} ${appointmentData.lastName}`)}
+          {renderRow("Gender", appointmentData.gender)}
+          {renderRow("Date of Birth", appointmentData.dob)}
+          {renderRow("Age", appointmentData.age)}
+          {renderRow("Mobile", appointmentData.mobile)}
+          {renderRow("Email", appointmentData.email)}
+          {renderRow("Address", appointmentData.address)}
+        </tbody>
+      </table>
     </div>
+
+    <div className="section">
+      <h3>🏥 Appointment Details</h3>
+      <table>
+        <tbody>
+          {renderRow("Department", appointmentData.department)}
+          {renderRow("Doctor", appointmentData.doctor)}
+          {renderRow("Type", appointmentData.appointmentType)}
+          {renderRow("Date & Time", `${appointmentData.date} at ${appointmentData.time}`)}
+          {renderRow("Reason", appointmentData.reason || "Not specified")}
+          {renderRow("Previous Visit", appointmentData.previousVisit || "Not specified")}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="section">
+      <h3>⚕️ Medical Information</h3>
+      <table>
+        <tbody>
+          {renderRow("Existing Conditions", appointmentData.existingConditions.length > 0 ? appointmentData.existingConditions.join(", ") : "None reported")}
+          {renderRow("Allergies", appointmentData.allergies || "Not specified")}
+          {renderRow("Current Medications", appointmentData.currentMedications || "Not specified")}
+          {renderRow("Past Surgeries", appointmentData.pastSurgeries || "Not specified")}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="section">
+      <h3>🆘 Emergency Contact</h3>
+      <table>
+        <tbody>
+          {renderRow("Name", appointmentData.emergencyContactName || "Not provided")}
+          {renderRow("Phone", appointmentData.emergencyContactNumber || "Not provided")}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="section">
+      <h3>💳 Insurance Details</h3>
+      <table>
+        <tbody>
+          {renderRow("Provider", appointmentData.insuranceProvider || "Not provided")}
+          {renderRow("Policy Number", appointmentData.policyNumber || "Not provided")}
+          {renderRow("Card Holder Name", appointmentData.cardHolderName || "Not provided")}
+          {renderRow("Insurance Card", appointmentData.insuranceCard ? "Uploaded" : "Not uploaded")}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="section">
+      <h3>💰 Payment & Consent</h3>
+      <table>
+        <tbody>
+          {renderRow("Payment Method", appointmentData.paymentMethod || "Not specified")}
+          {renderRow("Terms Accepted", appointmentData.termsAccepted ? "✅ Yes" : "❌ No")}
+          {renderRow("Consent to Share Info", appointmentData.consentToShare ? "✅ Yes" : "❌ No")}
+        </tbody>
+      </table>
+    </div>
+
+   <button
+  onClick={() => window.print()}
+  style={{ marginBottom: '20px', padding: '8px 16px', cursor: 'pointer', backgroundColor: 'green' }}
+>
+  🖨️ Print / Export PDF
+</button>
+
+  </div>
+
+
+</div>
   );
 };
 
