@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Calendar.css";
 
@@ -9,18 +9,29 @@ const timeSlots = [
   "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM"
 ];
 
+const departments = {
+  Cardiology: ["Dr. Smith", "Dr. Johnson"],
+  Orthopedics: ["Dr. Lee", "Dr. Patel"],
+  Neurology: ["Dr. Brown", "Dr. Davis"]
+};
+
+const insuranceProviders = ["Provider A", "Provider B", "Provider C"];
+
 const BookAppointment = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
-
-  const [appointmentDetails, setAppointmentDetails] = useState(null); // ✅ Store booked appointment
+  const [appointmentDetails, setAppointmentDetails] = useState(null);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    time: "",
+    firstName: "", middleName: "", lastName: "", gender: "", dob: "", age: "",
+    mobile: "", alternateContact: "", email: "", address: "", emergencyContactName: "",
+    emergencyContactNumber: "", patientID: "", department: "", doctor: "", time: "",
+    appointmentType: "", reason: "", previousVisit: "", existingConditions: [],
+    allergies: "", currentMedications: "", pastSurgeries: "", insuranceProvider: "",
+    policyNumber: "", cardHolderName: "", insuranceCard: null, paymentMethod: "",
+    termsAccepted: false, consentToShare: false
   });
 
   const year = currentDate.getFullYear();
@@ -29,6 +40,15 @@ const BookAppointment = () => {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const today = new Date();
 
+  useEffect(() => {
+    if (formData.dob) {
+      const birthDate = new Date(formData.dob);
+      const ageDifMs = Date.now() - birthDate.getTime();
+      const ageDate = new Date(ageDifMs);
+      setFormData(prev => ({ ...prev, age: Math.abs(ageDate.getUTCFullYear() - 1970) }));
+    }
+  }, [formData.dob]);
+
   const changeMonth = (offset) => {
     const newDate = new Date(currentDate);
     newDate.setMonth(month + offset);
@@ -36,9 +56,7 @@ const BookAppointment = () => {
   };
 
   const isToday = (day) =>
-    day === today.getDate() &&
-    month === today.getMonth() &&
-    year === today.getFullYear();
+    day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
 
   const handleDayClick = (day) => {
     const date = new Date(year, month, day);
@@ -47,8 +65,21 @@ const BookAppointment = () => {
   };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked, files } = e.target;
+    if (type === "checkbox" && name === "existingConditions") {
+      setFormData(prev => {
+        const conditions = prev.existingConditions.includes(value)
+          ? prev.existingConditions.filter(c => c !== value)
+          : [...prev.existingConditions, value];
+        return { ...prev, existingConditions: conditions };
+      });
+    } else if (type === "checkbox") {
+      setFormData(prev => ({ ...prev, [name]: checked }));
+    } else if (type === "file") {
+      setFormData(prev => ({ ...prev, [name]: files[0] }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -57,45 +88,33 @@ const BookAppointment = () => {
       alert("Please select a date and time!");
       return;
     }
-
-    // Save appointment details
-    const newAppointment = {
-      ...formData,
-      date: selectedDate.toDateString(),
-    };
-    setAppointmentDetails(newAppointment);
-
-    // Reset form
-    setFormData({ name: "", phone: "", time: "" });
+    setAppointmentDetails({ ...formData, date: selectedDate.toDateString() });
+    setFormData({
+      firstName: "", middleName: "", lastName: "", gender: "", dob: "", age: "",
+      mobile: "", alternateContact: "", email: "", address: "", emergencyContactName: "",
+      emergencyContactNumber: "", patientID: "", department: "", doctor: "", time: "",
+      appointmentType: "", reason: "", previousVisit: "", existingConditions: [],
+      allergies: "", currentMedications: "", pastSurgeries: "", insuranceProvider: "",
+      policyNumber: "", cardHolderName: "", insuranceCard: null, paymentMethod: "",
+      termsAccepted: false, consentToShare: false
+    });
     setSelectedDate(null);
     alert("Appointment booked successfully!");
   };
 
-  const handleCancel = () => {
-    navigate("/Profile");
-  };
+  const handleCancel = () => navigate("/Profile");
 
   const renderDays = () => {
-    const cells = [];
-    dayNames.forEach((day) => cells.push(<div className="day-name" key={day}>{day}</div>));
-
-    for (let i = 0; i < firstDay; i++) {
-      cells.push(<div key={`empty-${i}`} />);
-    }
-
+    const cells = dayNames.map(day => <div className="day-name" key={day}>{day}</div>);
+    for (let i = 0; i < firstDay; i++) cells.push(<div key={`empty-${i}`} />);
     for (let day = 1; day <= daysInMonth; day++) {
-      const isSelected =
-        selectedDate &&
+      const isSelected = selectedDate &&
         day === selectedDate.getDate() &&
         month === selectedDate.getMonth() &&
         year === selectedDate.getFullYear();
-
       cells.push(
-        <div
-          key={day}
-          className={`day ${isToday(day) ? "today" : ""} ${isSelected ? "selected" : ""}`}
-          onClick={() => handleDayClick(day)}
-        >
+        <div key={day} className={`day ${isToday(day) ? "today" : ""} ${isSelected ? "selected" : ""}`}
+             onClick={() => handleDayClick(day)}>
           {day}
         </div>
       );
@@ -104,47 +123,117 @@ const BookAppointment = () => {
   };
 
   return (
-    <div className="appointment-card">
+    <div className="appointment-card container">
       <h1 className="book-appointment-header">Book Appointment</h1>
+      <form onSubmit={handleSubmit} className="appointment-form grid">
 
-      <form onSubmit={handleSubmit} className="appointment-form">
-        <label>
-          Patient Name:
-          <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
-        </label>
-
-        <label>
-          Phone Number:
-          <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required />
-        </label>
-
-        <div className="date-picker">
-          <button type="button" className="toggle-calendar-btn" onClick={() => setShowCalendar(!showCalendar)}>
-            {showCalendar ? "Close Calendar" : "Select Date"}
-          </button>
-          {selectedDate && <p className="selected-date">Selected Date: {selectedDate.toDateString()}</p>}
+        {/* PERSONAL INFO */}
+        <div className="card-section">
+          <h2>Patient Personal Information</h2>
+          <div className="grid-2">
+            <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleInputChange} required />
+            <input type="text" name="middleName" placeholder="Middle Name" value={formData.middleName} onChange={handleInputChange} />
+            <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleInputChange} required />
+            <select name="gender" value={formData.gender} onChange={handleInputChange} required>
+              <option value="">Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <input type="date" name="dob" value={formData.dob} onChange={handleInputChange} required />
+            <input type="text" name="age" value={formData.age} placeholder="Age" onChange={handleInputChange} required  />
+            <input type="tel" name="mobile" placeholder="Mobile" value={formData.mobile} onChange={handleInputChange} required />
+            <input type="tel" name="alternateContact" placeholder="Alternate Contact" value={formData.alternateContact} onChange={handleInputChange} />
+            <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required />
+            <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleInputChange} />
+            <input type="text" name="emergencyContactName" placeholder="Emergency Contact Name" value={formData.emergencyContactName} onChange={handleInputChange} />
+            <input type="tel" name="emergencyContactNumber" placeholder="Emergency Contact Number" value={formData.emergencyContactNumber} onChange={handleInputChange} />
+            <input type="text" name="patientID" placeholder="Patient ID / MRN" value={formData.patientID} onChange={handleInputChange} />
+          </div>
         </div>
 
-        {showCalendar && (
-          <div className="calendar">
-            <div className="calendar-header">
-              <button type="button" onClick={() => changeMonth(-1)}>←</button>
-              <h2>{currentDate.toLocaleString("default", { month: "long" })} {year}</h2>
-              <button type="button" onClick={() => changeMonth(1)}>→</button>
+        {/* APPOINTMENT DETAILS */}
+        <div className="card-section">
+          <h2>Appointment Details</h2>
+          <div className="grid-2">
+            <select name="department" value={formData.department} onChange={handleInputChange} required>
+              <option value="">Department</option>
+              {Object.keys(departments).map(dep => <option key={dep} value={dep}>{dep}</option>)}
+            </select>
+            <select name="doctor" value={formData.doctor} onChange={handleInputChange} required>
+              <option value="">Doctor</option>
+              {formData.department && departments[formData.department].map(doc => <option key={doc} value={doc}>{doc}</option>)}
+            </select>
+            <div className="date-picker">
+              <button type="button" onClick={() => setShowCalendar(!showCalendar)}>
+                {showCalendar ? "Close Calendar" : "Select Date"}
+              </button>
+              {selectedDate && <p>{selectedDate.toDateString()}</p>}
             </div>
-            <div className="calendar-grid">{renderDays()}</div>
+            {showCalendar && (
+              <div className="calendar">
+                <div className="calendar-header">
+                  <button type="button" onClick={() => changeMonth(-1)}>←</button>
+                  <h3>{currentDate.toLocaleString("default", { month: "long" })} {year}</h3>
+                  <button type="button" onClick={() => changeMonth(1)}>→</button>
+                </div>
+                <div className="calendar-grid">{renderDays()}</div>
+              </div>
+            )}
+            <select name="time" value={formData.time} onChange={handleInputChange} required>
+              <option value="">Time Slot</option>
+              {timeSlots.map((slot, i) => <option key={i} value={slot}>{slot}</option>)}
+            </select>
+            <select name="appointmentType" value={formData.appointmentType} onChange={handleInputChange} required>
+              <option value="">Appointment Type</option>
+              <option value="In-person">In-person</option>
+              <option value="Teleconsultation">Teleconsultation</option>
+              <option value="Home Visit">Home Visit</option>
+            </select>
+            <textarea name="reason" placeholder="Reason for Visit" value={formData.reason} onChange={handleInputChange} />
+            <textarea name="previousVisit" placeholder="Previous Visit / Referral" value={formData.previousVisit} onChange={handleInputChange} />
           </div>
-        )}
+        </div>
 
-        <label>
-          Time Slot:
-          <select name="time" value={formData.time} onChange={handleInputChange} required>
-            <option value="">-- Select a time --</option>
-            {timeSlots.map((slot, index) => (
-              <option key={index} value={slot}>{slot}</option>
-            ))}
-          </select>
-        </label>
+        {/* MEDICAL HISTORY */}
+        <div className="card-section">
+          <h2>Medical History</h2>
+          <div className="grid-2">
+            <label><input type="checkbox" name="existingConditions" value="Diabetes" checked={formData.existingConditions.includes("Diabetes")} onChange={handleInputChange} /> Diabetes</label>
+            <label><input type="checkbox" name="existingConditions" value="Hypertension" checked={formData.existingConditions.includes("Hypertension")} onChange={handleInputChange} /> Hypertension</label>
+            <label><input type="checkbox" name="existingConditions" value="Heart Disease" checked={formData.existingConditions.includes("Heart Disease")} onChange={handleInputChange} /> Heart Disease</label>
+            <input type="text" name="allergies" placeholder="Allergies" value={formData.allergies} onChange={handleInputChange} />
+            <input type="text" name="currentMedications" placeholder="Current Medications" value={formData.currentMedications} onChange={handleInputChange} />
+            <input type="text" name="pastSurgeries" placeholder="Past Surgeries / Hospitalizations" value={formData.pastSurgeries} onChange={handleInputChange} />
+          </div>
+        </div>
+
+        {/* INSURANCE & PAYMENT */}
+        <div className="card-section">
+          <h2>Insurance & Payment</h2>
+          <div className="grid-2">
+            <select name="insuranceProvider" value={formData.insuranceProvider} onChange={handleInputChange}>
+              <option value="">Insurance Provider</option>
+              {insuranceProviders.map(p => <option key={p} value={p}>{p}</option>)}
+            </select>
+            <input type="text" name="policyNumber" placeholder="Policy Number" value={formData.policyNumber} onChange={handleInputChange} />
+            <input type="text" name="cardHolderName" placeholder="Card Holder Name" value={formData.cardHolderName} onChange={handleInputChange} />
+            <input type="file" name="insuranceCard" onChange={handleInputChange} />
+            <select name="paymentMethod" value={formData.paymentMethod} onChange={handleInputChange}>
+              <option value="">Payment Method</option>
+              <option value="Cash">Cash</option>
+              <option value="Card">Card</option>
+              <option value="Online">Online Payment</option>
+            </select>
+          </div>
+        </div>
+
+        {/* CONSENT */}
+        <div className="card-section">
+          <h2>Consent & Confirmation</h2>
+          <label><input type="checkbox" name="termsAccepted" checked={formData.termsAccepted} onChange={handleInputChange} required /> I accept Terms & Conditions</label>
+          <label><input type="checkbox" name="consentToShare" checked={formData.consentToShare} onChange={handleInputChange} /> Consent to share medical data</label>
+        </div>
 
         <div className="button-group">
           <button type="submit" className="submit-btn">Book Appointment</button>
@@ -152,14 +241,10 @@ const BookAppointment = () => {
         </div>
       </form>
 
-      {/* ✅ Appointment Details Section */}
       {appointmentDetails && (
-        <div className="appointment-details">
+        <div className="appointment-details card-section">
           <h2>📌 Appointment Details</h2>
-          <p><strong>Patient Name:</strong> {appointmentDetails.name}</p>
-          <p><strong>Phone:</strong> {appointmentDetails.phone}</p>
-          <p><strong>Date:</strong> {appointmentDetails.date}</p>
-          <p><strong>Time:</strong> {appointmentDetails.time}</p>
+          <pre>{JSON.stringify(appointmentDetails, null, 2)}</pre>
         </div>
       )}
     </div>

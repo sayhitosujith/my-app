@@ -347,3 +347,122 @@ button.add-profile {
   display: inline-block;
   width: 120px;
 }
+/* Container to center everything */
+.appointment-card.container {
+  max-width: 1000px;  /* Increased from smaller width */
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Individual card sections */
+.card-section {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%; /* make full width inside container */
+  box-sizing: border-box;
+}
+
+/* Two-column grid for inputs */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive */
+  gap: 15px;
+}
+
+/* Inputs and selects full width */
+.card-section input,
+.card-section select,
+.card-section textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.submit-btn, .cancel-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Optional: responsive adjustments */
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr; /* stack on mobile */
+  }
+}
+/* Calendar styling */
+.calendar {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 10px;
+  width: 100%;        /* Make it stretch full width of the card */
+  max-width: 100%;    /* Ensure it doesn't exceed card width */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Calendar header */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 days a week */
+  gap: 5px;
+}
+
+.day-name {
+  text-align: center;
+  font-weight: bold;
+}
+
+.day {
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.day:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.today {
+  border: 2px solid #4caf50;
+}
+
+.selected {
+  background-color: #4caf50;
+  color: white;
+}
