@@ -85,6 +85,13 @@ const CardItem = ({item}) => (
                 <a href="/Welcome"/>
             </Popup>
             </Typography>
+
+              <Button color="Black">
+             <a href="/BookAppointment" className="w-full h-full block text-white text-center">
+              Book Appointment
+              <a href="/BookAppointment"/>
+                </a>
+                </Button>
           </Button>
             <br></br>
 

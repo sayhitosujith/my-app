@@ -34,6 +34,7 @@ import AddDeliveryCaptain from './AddDeliveryCaptain';
 import Settings from './Settings';
 import Logout from './Logout';
 import DailySummary from './DailySummary.jsx'
+import BookAppointment from './BookAppointment';
 
 const router = createBrowserRouter([
   {
@@ -151,6 +152,10 @@ const router = createBrowserRouter([
   {
     path: "/DailySummary",
     element: <DailySummary/>,
+  },
+    {
+    path: "/BookAppointment",
+    element: <BookAppointment/>,
   },
 ]);
 

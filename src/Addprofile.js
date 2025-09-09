@@ -79,8 +79,9 @@ function Addprofile() {
 
         </Card>
       </div>
-      <img style={{width: '60%', height: '100vh'}} src="https://user-images.githubusercontent.com/74038190/219923823-bf1ce878-c6b8-4faa-be07-93e6b1006521.gif"/>
-      Add meals image
+
+Notes / Complaints
+
     </div>
    
 

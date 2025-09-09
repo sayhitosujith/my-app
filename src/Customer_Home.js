@@ -314,7 +314,7 @@ function App() {
 </div>
 
 <button
-  onClick={() => alert("Maven Meal - would like to access your location")}
+  onClick={() => alert("Dental World - would like to access your location")}
   title="Get your current location"
   className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
 >
