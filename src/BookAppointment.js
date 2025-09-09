@@ -136,7 +136,8 @@ const BookAppointment = () => {
     return cells;
   };
 
-  return (
+return (
+
     <div className="appointment-card container">
       <h1 className="book-appointment-header">Book Appointment</h1>
       <form onSubmit={handleSubmit} className="appointment-form grid">
@@ -261,7 +262,17 @@ const BookAppointment = () => {
         <div className="button-group">
           <button type="submit" className="submit-btn">Book Appointment</button>
           <button type="button" className="cancel-btn" onClick={handleCancel}>Cancel</button>
+ <div className="ml-auto">
+    <button
+      type="button"
+      className="view-btn"
+      onClick={() => navigate("/AppointmentHistory")}
+    >
+      View Appointment History
+    </button>
+  </div>
         </div>
+
       </form>
 
       {appointmentDetails && (
