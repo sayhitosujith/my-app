@@ -46,3 +46,28 @@
   border: 2px solid #4a90e2;
   font-weight: bold;
 }
+.toggle-calendar-btn {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.day.selected {
+  background-color: #bcd4ec;
+  border: 2px solid #4a90e2;
+  font-weight: bold;
+}
+.toggle-calendar-btn {
+  background-color: #4a90e2;     /* Button background */
+  color: white;                 /* Text color */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;           /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.toggle-calendar-btn:hover {
+  background-color: #357ABD;    /* Slightly darker on hover */
+}

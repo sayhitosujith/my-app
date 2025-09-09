@@ -5,6 +5,8 @@ const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const BookAppointment = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [showCalendar, setShowCalendar] = useState(false);
+const [selectedDate, setSelectedDate] = useState(null); // Optional: Track selected date
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -58,20 +60,32 @@ const BookAppointment = () => {
   };
 
   return (
-    <div className="calendar">
-      <div className="calendar-header">
-        <button onClick={() => changeMonth(-1)}>←</button>
-        <h2>
-          {currentDate.toLocaleString("default", {
-            month: "long",
-          })}{" "}
-          {year}
-        </h2>
-        <button onClick={() => changeMonth(1)}>→</button>
+  <div className="calendar-container">
+    <button
+      className="toggle-calendar-btn"
+      onClick={() => setShowCalendar(!showCalendar)}
+    >
+      {showCalendar ? "Close Calendar" : "Select Date"}
+    </button>
+
+    {showCalendar && (
+      <div className="calendar">
+        <div className="calendar-header">
+          <button onClick={() => changeMonth(-1)}>←</button>
+          <h2>
+            {currentDate.toLocaleString("default", {
+              month: "long",
+            })}{" "}
+            {year}
+          </h2>
+          <button onClick={() => changeMonth(1)}>→</button>
+        </div>
+        <div className="calendar-grid">{renderDays()}</div>
       </div>
-      <div className="calendar-grid">{renderDays()}</div>
-    </div>
-  );
+    )}
+  </div>
+);
+
 };
 
 export default BookAppointment;
