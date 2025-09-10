@@ -1,4 +1,6 @@
 import './App.css';
+import React, { useState } from 'react';
+
 import { Badge } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import Popup from 'reactjs-popup';
@@ -113,6 +115,21 @@ const CardItem = ({item}) => (
 )
 
 function Profile() {
+  const [profiles, setProfiles] = React.useState(data);
+  React.useEffect(() => {
+    const newProfile = localStorage.getItem("newProfile");
+    if (newProfile) {
+      const parsedProfile = JSON.parse(newProfile);
+      const newProfileObj = {
+        id: profiles.length + 1,
+        name: parsedProfile.firstName + " " + parsedProfile.lastName,
+        src: parsedProfile.image || 'https://fellows.ias.ac.in/public/images/stock/avatar.svg?v=105894425',
+        ...parsedProfile
+      };
+      setProfiles([newProfileObj, ...data]);  // prepend new profile to the data
+      localStorage.removeItem("newProfile"); // Optional: clear after use
+    }
+  }, []);
   return (
     <div className="p-10">
        
