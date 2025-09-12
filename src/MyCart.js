@@ -166,7 +166,65 @@ function MyCart() {
             </div>
           )}
 
-          {/* 🖨️ Print Button */}
+         
+        </Card>
+      </div>
+
+{/* Right: Payment Summary */}
+<Card className="w-[24rem] h-[24rem] shadow-md rounded-lg">
+  <CardHeader
+    floated={false}
+    shadow={false}
+    className="flex justify-center p-3"
+  >
+    <img
+      className="h-36 w-36 rounded-md object-cover object-center"
+      src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi%3A%2F%2Fpay%3Fpa%3D9480860587%40mobile.npci%26pn%3Dfood%26cu%3DINR"
+      alt="QR Code"
+    />
+  </CardHeader>
+
+  <CardBody className="text-sm space-y-3 px-4 py-3">
+    <h1 className="text-green-700 font-semibold text-center text-base">
+      Scan QR to Pay via UPI
+    </h1>
+    <hr />
+    <div className="flex justify-between">
+      <span>Consultation Fee:</span>
+      <span>300/-</span>
+    </div>
+    <div className="flex justify-between">
+      <span>GST:</span>
+      <span>50/-</span>
+    </div>
+    <div className="flex justify-between font-bold text-base">
+      <span>Total To Pay:</span>
+      <span>350/-</span>
+    </div>
+    <p className="text-red-600 font-medium text-xs text-center">
+      <u>NOTE</u>: Cancel in 60 sec for 100% refund.
+      <br />
+      No refund after that.
+    </p>
+  </CardBody>
+
+  <CardFooter className="flex justify-center gap-3 pb-4">
+    <Button style={{ backgroundColor: "#ff5200" }} size="sm">
+      PAY NOW
+    </Button>
+    <Button style={{ backgroundColor: "#ff5200" }} size="sm">
+      CANCEL
+    </Button>
+
+     
+  </CardFooter>
+</Card>
+
+{/* Right: print Summary */}
+<Card className="w-[24rem] h-[24rem] shadow-md rounded-lg">
+   
+
+     {/* 🖨️ Print Button */}
           <div className="flex justify-center mt-4">
             <Button
               size="sm"
@@ -179,58 +237,8 @@ function MyCart() {
               </span>
             </Button>
           </div>
-        </Card>
-      </div>
+</Card>
 
-      {/* Right: Payment Summary */}
-      <Card className="w-[24rem] shadow-md rounded-lg">
-        <CardHeader
-          floated={false}
-          shadow={false}
-          className="flex justify-center p-3"
-        >
-          <img
-            className="h-36 w-36 rounded-md object-cover object-center"
-            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi%3A%2F%2Fpay%3Fpa%3D9480860587%40mobile.npci%26pn%3Dfood%26cu%3DINR"
-            alt="QR Code"
-          />
-        </CardHeader>
-
-        <CardBody className="text-sm space-y-3 px-4 py-3">
-          <h1 className="text-green-700 font-semibold text-center text-base">
-            Scan QR to Pay via UPI
-          </h1>
-          <hr />
-
-          <div className="flex justify-between">
-            <span>Consultation Fee:</span>
-            <span>300/-</span>
-          </div>
-          <div className="flex justify-between">
-            <span>GST:</span>
-            <span>50/-</span>
-          </div>
-          <div className="flex justify-between font-bold text-base">
-            <span>Total To Pay:</span>
-            <span>350/-</span>
-          </div>
-
-          <p className="text-red-600 font-medium text-xs text-center">
-            <u>NOTE</u>: Cancel in 60 sec for 100% refund.
-            <br />
-            No refund after that.
-          </p>
-        </CardBody>
-
-        <CardFooter className="flex justify-center gap-3 pb-4">
-          <Button style={{ backgroundColor: "#ff5200" }} size="sm">
-            PAY NOW
-          </Button>
-          <Button style={{ backgroundColor: "#ff5200" }} size="sm">
-            CANCEL
-          </Button>
-        </CardFooter>
-      </Card>
     </div>
   );
 }
