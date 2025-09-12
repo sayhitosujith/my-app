@@ -1,11 +1,7 @@
-import './App.css';
-import { Avatar } from "@material-tailwind/react";
-import React from 'react';
-import { TrashIcon } from "@heroicons/react/24/solid";
-import { Alert } from "@material-tailwind/react";
-import { useState } from 'react'; // Import useState
+import "./App.css";
+import React, { useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
-
+import { MdOutlineLocalPrintshop } from "react-icons/md";
 import {
   Card,
   CardHeader,
@@ -13,262 +9,230 @@ import {
   CardFooter,
   Typography,
   Button,
-  Checkbox,
-  Chip,
   Dialog,
   DialogHeader,
   DialogBody,
   DialogFooter,
   Textarea,
+  Alert,
 } from "@material-tailwind/react";
 
-
-
-
 function MyCart() {
-  const [open, setOpen] = React.useState(false);
-  const [count, setCount] = useState(1); // State to track the count
+  const printRef = React.useRef(null);
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleOpen = () => setOpen(!open);
-  const incrementCount = () => {
-    setCount(count + 1); // Increment the count
+
+  // ✅ Handle Submit
+  const handleSubmit = () => {
+    setSuccess(true);
+    setTimeout(() => setSuccess(false), 3000);
   };
 
-  const decrementCount = () => {
-    if (count > 1) {
-      setCount(count - 1); // Decrement the count, but not below 1
-    }
+  // ✅ Print Logic
+  const handlePrint = () => {
+    const printContents = printRef.current.innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    window.location.reload();
   };
 
   return (
-
     <div className="flex flex-row gap-5">
-
-      <div className='w-1/2 h-screen flex items-center fullWidth justify-center'>
-
-        <Card className="w-98">
-          <h1 style={{ color: 'Green' }}><b><div>APPOINTMENT DETAILS</div></b></h1>
-
-          <b><hr class="separator" /></b>
+      {/* Left: Appointment Form */}
+      <div className="w-1/2 h-screen flex items-center justify-center">
+        <Card className="w-[28rem] p-4" ref={printRef}>
+          <h1 className="text-green-700 text-lg font-bold text-center">
+            APPOINTMENT DETAILS
+          </h1>
+          <hr className="my-3" />
 
           <CardBody className="flex flex-col gap-5">
-            <b><div>Book a Clinic Appointment Near You</div></b>
-            <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
-              <FaLocationDot className="mr-2" style={{ color: '#ff5200' }} />
+            {/* 📍 Location */}
+            <div>
+              <b>Location:</b>
+              <div className="flex items-center border border-gray-300 rounded px-3 py-2 mt-1 focus-within:ring-2 focus-within:ring-green-500">
+                <FaLocationDot className="mr-2 text-orange-500" />
+                <select
+                  className="outline-none w-full bg-white"
+                  defaultValue=""
+                  style={{ color: "#f35208ff" }}
+                >
+                  <option value="" disabled>
+                    Select your location
+                  </option>
+                  <option value="Brisbane">Brisbane</option>
+                  <option value="Melbourne">Melbourne</option>
+                  <option value="Sydney">Sydney</option>
+                  <option value="Maryborough">Maryborough</option>
+                  <option value="Adelaide">Adelaide</option>
+                </select>
+              </div>
+            </div>
+
+            {/* 👤 Patient Details */}
+            <div>
+              <b>Patient Name:</b>
+              <input
+                type="text"
+                placeholder="Enter patient name"
+                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+              />
+            </div>
+
+            <div>
+              <b>Phone Number:</b>
+              <input
+                type="tel"
+                placeholder="Enter phone number"
+                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+              />
+            </div>
+
+            <div>
+              <b>Email ID:</b>
+              <input
+                type="email"
+                placeholder="Enter email address"
+                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+              />
+            </div>
+
+            {/* 📅 Appointment Details */}
+            <div>
+              <b>Appointment Date:</b>
+              <input
+                type="date"
+                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+              />
+            </div>
+
+            <div>
+              <b>Time Slot:</b>
               <select
-                className="outline-none w-full bg-white"
-                defaultValue=""
-                style={{ color: '#f35208ff' }}
+                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
               >
-                <option value="" disabled>
-                  Select your location
-                </option>
-                <option value="Bangalore">Brisbane</option>
-                <option value="Delhi">Melbourn</option>
-                <option value="Chennai">Sydney</option>
-                <option value="Mumbai">Maryborough</option>
-                <option value="Hyderabad">Adilade</option>
+                <option value="">Select time slot</option>
+                <option>10:00 AM - 11:00 AM</option>
+                <option>11:00 AM - 12:00 PM</option>
+                <option>2:00 PM - 3:00 PM</option>
+                <option>3:00 PM - 4:00 PM</option>
+                <option>4:00 PM - 5:00 PM</option>
               </select>
             </div>
 
-             <label>
-                      <b> Enter your Name:</b>
-                      <Textarea label="" />
-                    </label>
-            
-                   <label>
-                      <b> Enter Your Phone Number:</b>
-                      <Textarea label="" />
-                    </label>
-
-                    <label>
-                      <b> Enter your Email Id:</b>
-                      <Textarea label="" />
-                    </label>
-
-            <b>  <div>
-              <button
-                onClick={decrementCount}
-                style={{ fontSize: '24px', color: 'red', fontWeight: 'bold', background: 'none', border: 'none', cursor: 'pointer' }}
+            {/* 🦷 Doctor Selection */}
+            <div>
+              <b>Select Dentist:</b>
+              <select
+                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
               >
-                -
-              </button>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <span style={{ border: '1px solid black', padding: '5px 50px', borderRadius: '1px' }}>
-                {count}
-              </span>                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <button onClick={incrementCount} style={{ fontSize: '24px', color: 'red', fontWeight: 'bold' }}>
-                +
-              </button>
+                <option value="">Choose a dentist</option>
+                <option>Dr. Anitha</option>
+                <option>Dr. Ramesh</option>
+                <option>Dr. Priya</option>
+              </select>
             </div>
-            </b>
-            <Button
-              size="sm"
-              variant="text"
-              color="red"
-              className="flex items-center gap-2"
-            >
-              <TrashIcon className="h-4 w-4 text-red-500" />
-              <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
-                <Button onClick={handleOpen} variant="gradient">
-                  DELETE
-                </Button>
-                <Dialog
-                  open={open}
-                  handler={handleOpen}
-                  animate={{
-                    mount: { scale: 1, y: 0 },
-                    unmount: { scale: 0.9, y: -100 },
-                  }}
-                >
-                  <DialogHeader>REMOVE ITEM</DialogHeader>
-                  <DialogBody>
-                    Are you sure want to remove this item.?
-                  </DialogBody>
-                  <DialogFooter>
-                    <Button
-                      variant="text"
-                      color="red"
-                      onClick={handleOpen}
-                      className="mr-1"
-                    >
-                      <span>Cancel</span>
-                    </Button>
-                    <Button variant="gradient" color="green" onClick={handleOpen}>
-                      <a href="/MyCart">
-                        <span>Confirm</span>
-                      </a>
-                    </Button>
-                  </DialogFooter>
-                </Dialog>
 
-              </Typography>
-            </Button>
-
-            <b><hr class="separator" /></b>
+            {/* 📝 Symptoms */}
+            <div>
+              <b>Symptoms / Notes:</b>
+              <Textarea
+                rows={3}
+                placeholder="Describe your symptoms..."
+                className="mt-1"
+              />
+            </div>
           </CardBody>
-          <CardFooter className="pt-0">
-            <Button style={{ backgroundColor: '#ff5200' }}
-              appearance="primary" >
-              SUBMIT</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Button style={{ backgroundColor: '#ff5200' }}
 
-              appearance="primary" >
-              CANCEL</Button>
-            <Typography
-              variant="p"
-              sx={{ letterSpacing: '1.5px', marginLeft: '4px' }}>
-            </Typography>
+          {/* ✅ Submit + Cancel */}
+          <CardFooter className="pt-0 flex justify-center gap-4">
+            <Button
+              className="bg-green-600 hover:bg-green-700"
+              onClick={handleSubmit}
+            >
+              BOOK APPOINTMENT
+            </Button>
+            <Button className="bg-red-500 hover:bg-red-600">CANCEL</Button>
           </CardFooter>
 
-          <b><hr class="separator" /></b>
+          {/* ✅ Success Message */}
+          {success && (
+            <div className="mt-4">
+              <Alert color="green">✅ Appointment booked successfully!</Alert>
+            </div>
+          )}
 
-
-
-          <Typography
-            variant="p"
-            sx={{ letterSpacing: '1.5px', marginLeft: '4px' }}>
-          </Typography>
-
-
-          <b><u>NOTE</u>: From the Saved Address the order will be processed,Please add new Address if required </b>
-
-          <Typography variant="small" className="mt-6 flex justify-center">
-
-            <br></br>
-
-            <Typography
-              as="a"
-              href="#signup"
-              variant="small"
-              color="blue-gray"
-              className="ml-1 font-bold">
-            </Typography>
-          </Typography>
+          {/* 🖨️ Print Button */}
+          <div className="flex justify-center mt-4">
+            <Button
+              size="sm"
+              className="px-3 py-1 flex items-center gap-2 bg-white border rounded-md shadow-sm"
+              onClick={handlePrint}
+            >
+              <MdOutlineLocalPrintshop size={20} className="text-green-600" />
+              <span className="text-black font-semibold text-sm">
+                PRINT RECEIPT
+              </span>
+            </Button>
+          </div>
         </Card>
       </div>
-      <br></br>
-      <card >
-        <CardHeader >
-          <CardBody>
-            <br></br>
-            <img
-              className="h-96 w-100 rounded-lg object-cover object-center"
-              src="https://api.qrserver.com/v1/create-qr-code/?size=225x225&data=upi%3A%2F%2Fpay%3Fpa%3D9480860587%40mobile.npci%26pn%3Dfood%26cu%3DINR"
-              alt="nature image"
-            />
-            <b><hr class="w-1/2 flex items-center justify-center" /></b>
-            <br></br>
-            <div style={{ width: '38rem' }}>
-              <h1 style={{ color: 'Green' }}><b><div>Scan the QR Code from your mobile to pay via different UPI Apps Online</div></b></h1>
-              <b><hr class="separator" /></b>
-              <br></br>
-              <div>Item Total(1): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4500/- </div>
-              <br></br>
-              <b><hr class="separator" /></b>
-              <br></br>
-              <div>Delivery Tip :<h1 style={{ color: 'orange' }}><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Button
-                  style={{ backgroundColor: '#ff5200' }}
-                  appearance="primary"
-                  onClick={() => window.location.href = '/BuyNow'}
-                >
-                  ADD TIP
-                </Button>
-              </b></h1>
 
-              </div>
-              <br></br>
-              <div>Discount : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50/-</div>
-              <br></br>
-              <div>Consultation Charges: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;300/-</div>
-              <br></br>
-              <div>GST:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 50/-</div>
-              <br></br>
-              <b><hr class="separator" /></b>
-              <br></br>
-              <b><div>To Pay: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /-</div></b>
-              <br></br>
-              <b><hr class="separator" /></b>
-              <br></br>
-              <h1 style={{ color: 'Red' }}><b><div><u>NOTE</u>: If you cancel within 60 seconds of placing your order, a 100% refund will be issues </div></b></h1>
-
-              <br></br>
-              <h1 style={{ color: 'Red' }}><b><div>No refund for cancellation made after 60 seconds</div></b></h1>
-              <br></br>
-              <b><hr class="separator" /></b>
-              <br></br>
-              <Button style={{ backgroundColor: '#ff5200' }} appearance="primary" >
-                <a href="/BuyNow">
-                  BOOK APPOINTMENT
-                </a>
-              </Button>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Button style={{ backgroundColor: '#ff5200' }} appearance="primary" > CANCEL</Button>
-            </div>
-            <br></br>
-          </CardBody>
+      {/* Right: Payment Summary */}
+      <Card className="w-[24rem] shadow-md rounded-lg">
+        <CardHeader
+          floated={false}
+          shadow={false}
+          className="flex justify-center p-3"
+        >
+          <img
+            className="h-36 w-36 rounded-md object-cover object-center"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi%3A%2F%2Fpay%3Fpa%3D9480860587%40mobile.npci%26pn%3Dfood%26cu%3DINR"
+            alt="QR Code"
+          />
         </CardHeader>
-      </card>
 
+        <CardBody className="text-sm space-y-3 px-4 py-3">
+          <h1 className="text-green-700 font-semibold text-center text-base">
+            Scan QR to Pay via UPI
+          </h1>
+          <hr />
+
+          <div className="flex justify-between">
+            <span>Consultation Fee:</span>
+            <span>300/-</span>
+          </div>
+          <div className="flex justify-between">
+            <span>GST:</span>
+            <span>50/-</span>
+          </div>
+          <div className="flex justify-between font-bold text-base">
+            <span>Total To Pay:</span>
+            <span>350/-</span>
+          </div>
+
+          <p className="text-red-600 font-medium text-xs text-center">
+            <u>NOTE</u>: Cancel in 60 sec for 100% refund.
+            <br />
+            No refund after that.
+          </p>
+        </CardBody>
+
+        <CardFooter className="flex justify-center gap-3 pb-4">
+          <Button style={{ backgroundColor: "#ff5200" }} size="sm">
+            PAY NOW
+          </Button>
+          <Button style={{ backgroundColor: "#ff5200" }} size="sm">
+            CANCEL
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
-
   );
-
-
 }
 
 export default MyCart;
-

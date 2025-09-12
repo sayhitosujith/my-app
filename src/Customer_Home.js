@@ -62,7 +62,7 @@ const isBannerActive = now >= startDate && now <= endDate;
 
 
 const CardItem = ({ item }) => (
-  <Card className="w-96 " style={{ background: "#f8f8fcff" }}>
+  <Card className="w-72 " style={{ background: "#f8f8fcff" }}>
     <CardHeader
       variant="gradient"
       className="mb-5 grid h-10 place-items-center"
@@ -499,7 +499,7 @@ Creating Confident Smiles in Hervey Bay - A bright healthy smile can be yours Ca
 <div className="w-full space-y-20 ">
   {[0, 6, 12].map((startIndex, rowIndex) => (
     <div key={rowIndex} className="w-full flex gap-5 border-t border-gray-300 pt-5">
-      {data.slice(startIndex, startIndex + 6).map((item, index) => (
+      {data.slice(startIndex, startIndex + 12).map((item, index) => (
         <div key={index} className="border-r border-red-200 pr-5 last:border-none">
           <CardItem item={item} />
         </div>
