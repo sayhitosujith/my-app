@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import {
   Card, CardHeader, CardBody, CardFooter,
-  Typography, Button, Avatar, Select, Option, Breadcrumbs, Badge, Rating, Input, Tooltip
+  Typography, Button, Avatar, Badge, Rating, Input, Breadcrumbs,
+  Dialog, DialogHeader, DialogBody, DialogFooter
 } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { FaPowerOff } from "react-icons/fa6";
 
 const CardItem = ({ item, onDelete, searchTerm }) => {
-
   const highlightPhone = (phone, term) => {
     if (!term) return phone;
     const parts = phone.split(new RegExp(`(${term})`, 'gi'));
@@ -44,13 +44,9 @@ const CardItem = ({ item, onDelete, searchTerm }) => {
       </div>
 
       <CardBody className="flex flex-col gap-1 mt-2 text-sm">
-        <Tooltip content={item.email} placement="bottom">
-          <Typography className="truncate"><b>Email:</b> {item.email}</Typography>
-        </Tooltip>
+        <Typography><b>Email:</b> {item.email}</Typography>
         <Typography><b>Phone:</b> <a href={`tel:${item.phone}`} className="text-blue-600">{highlightPhone(item.phone, searchTerm)}</a></Typography>
-        <Tooltip content={item.address} placement="bottom">
-          <Typography className="truncate"><b>Address:</b> {item.address}</Typography>
-        </Tooltip>
+        <Typography><b>Address:</b> {item.address}</Typography>
         <Typography><b>Aadhar:</b> {item.aadhar}</Typography>
         <Typography><b>Zip Code:</b> {item.zip}</Typography>
         {item.referredBy && <Badge color="blue" size="sm">{item.referredBy}</Badge>}
@@ -58,25 +54,24 @@ const CardItem = ({ item, onDelete, searchTerm }) => {
         <Rating unratedColor="amber" ratedColor="amber" />
       </CardBody>
 
-      <CardFooter className="pt-3 flex flex-col gap-2">
-        <div className="flex justify-between items-center">
-          <Button
-            size="sm"
-            variant="text"
-            color="red"
-            className="flex items-center gap-2 hover:bg-red-50"
-            onClick={() => onDelete(item.patientId)}
-          >
-            <TrashIcon className="h-4 w-4 text-red-500" /> Delete
+      <CardFooter className="pt-3 flex justify-between items-center">
+        <Button
+          size="sm"
+          variant="text"
+          color="red"
+          className="flex items-center gap-2 hover:bg-red-50 p-2"
+          onClick={() => onDelete(item.patientId)}
+          title="Delete"
+        >
+          <TrashIcon className="h-5 w-5 text-red-500" />
+        </Button>
+        <div className="flex space-x-2">
+          <Button color="black" className="hover:scale-105 transition-transform">
+            <a href="/BookAppointment">Book Appointment</a>
           </Button>
-          <div className="flex space-x-2">
-            <Button color="black" className="hover:scale-105 transition-transform">
-              <a href="/BookAppointment">Book Appointment</a>
-            </Button>
-            <Button color="blue" className="hover:scale-105 transition-transform">
-              <a href="/AppointmentHistory">Appointment History</a>
-            </Button>
-          </div>
+          <Button color="blue" className="hover:scale-105 transition-transform">
+            <a href="/AppointmentHistory">Appointment History</a>
+          </Button>
         </div>
       </CardFooter>
     </Card>
@@ -86,6 +81,7 @@ const CardItem = ({ item, onDelete, searchTerm }) => {
 function Profile() {
   const [profiles, setProfiles] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [deleteId, setDeleteId] = useState(null);
   const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
@@ -93,10 +89,15 @@ function Profile() {
     setProfiles(stored);
   }, []);
 
-  const handleDelete = (patientId) => {
-    const filteredProfiles = profiles.filter(profile => profile.patientId !== patientId);
+  const confirmDelete = (id) => {
+    setDeleteId(id);
+  };
+
+  const handleDelete = () => {
+    const filteredProfiles = profiles.filter(profile => profile.patientId !== deleteId);
     setProfiles(filteredProfiles);
     localStorage.setItem('allProfiles', JSON.stringify(filteredProfiles));
+    setDeleteId(null);
     setShowToast(true);
     setTimeout(() => setShowToast(false), 2000);
   };
@@ -139,9 +140,25 @@ function Profile() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProfiles.map((item) => (
-          <CardItem key={item.patientId} item={item} onDelete={handleDelete} searchTerm={searchTerm} />
+          <CardItem key={item.patientId} item={item} onDelete={confirmDelete} searchTerm={searchTerm} />
         ))}
       </div>
+
+      {/* Confirmation Dialog */}
+      <Dialog open={!!deleteId} handler={() => setDeleteId(null)}>
+        <DialogHeader>Confirm Delete</DialogHeader>
+        <DialogBody divider>
+          Are you sure you want to delete this profile?
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="text" color="gray" onClick={() => setDeleteId(null)}>
+            Cancel
+          </Button>
+          <Button variant="gradient" color="red" onClick={handleDelete}>
+            Delete
+          </Button>
+        </DialogFooter>
+      </Dialog>
 
       {showToast && (
         <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-slideDown z-50">
