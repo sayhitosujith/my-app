@@ -1,139 +1,239 @@
-import React from 'react';
-import './AppointmentHistory.css'; // Import the CSS
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaEye, FaPrint, FaTrash, FaShareAlt, FaSyncAlt, FaClone, FaEdit } from "react-icons/fa";
+import { toast, Toaster } from "react-hot-toast";
+import "./Calendar.css";
 
 const AppointmentHistory = () => {
-  const appointmentData = {
-    firstName: "chadha",
-    middleName: "",
-    lastName: "s",
-    gender: "Male",
-    dob: "2025-09-11",
-    age: "1",
-    mobile: "7037937741",
-    alternateContact: "",
-    email: "sujithreddy1991@gmail.com",
-    address: "QA",
-    emergencyContactName: "",
-    emergencyContactNumber: "",
-    patientID: "",
-    department: "Cardiology",
-    doctor: "Dr. Smith",
-    time: "11:30 AM",
-    appointmentType: "In-person",
-    reason: "",
-    previousVisit: "",
-    existingConditions: [],
-    allergies: "",
-    currentMedications: "",
-    pastSurgeries: "",
-    insuranceProvider: "",
-    policyNumber: "",
-    cardHolderName: "",
-    insuranceCard: null,
-    paymentMethod: "",
-    termsAccepted: true,
-    consentToShare: true,
-    date: "Thu Sep 11 2025"
+  const [appointments, setAppointments] = useState([]);
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const [showPrintPreview, setShowPrintPreview] = useState(false);
+  const [appointmentsToPrint, setAppointmentsToPrint] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedIds, setSelectedIds] = useState([]);
+  const appointmentsPerPage = 10;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    setAppointments(storedAppointments);
+  }, []);
+
+  const totalPages = Math.ceil(appointments.length / appointmentsPerPage);
+  const indexOfLast = currentPage * appointmentsPerPage;
+  const indexOfFirst = indexOfLast - appointmentsPerPage;
+  const currentAppointments = appointments.slice(indexOfFirst, indexOfLast);
+
+  const openPrintPreview = (apts) => {
+    if (!apts || apts.length === 0) return alert("No appointments to print!");
+    setAppointmentsToPrint(apts);
+    setShowPrintPreview(true);
   };
 
-  const renderRow = (label, value) => (
-    <tr>
-      <td className="label">{label}</td>
-      <td>{value}</td>
-    </tr>
-  );
+  const handlePrint = () => {
+    const printWindow = window.open("", "_blank");
+    printWindow.document.write(generatePrintContent(appointmentsToPrint));
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    setShowPrintPreview(false);
+  };
+
+  const generatePrintContent = (apts) => `
+    <html>
+      <head>
+        <title>Appointments</title>
+        <style>
+          body { font-family: Arial, sans-serif; padding: 20px; }
+          h2 { color: #007BFF; }
+          section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+          section h3 { border-bottom: 1px solid #ddd; padding-bottom: 5px; color: #007BFF; }
+          p { margin: 5px 0; }
+        </style>
+      </head>
+      <body>
+        <h2>Appointment Report</h2>
+        ${apts.map(apt => `
+          <section>
+            <h3>Appointment ID: ${apt.appointmentID}</h3>
+            <p><strong>Date:</strong> ${apt.date} | <strong>Time:</strong> ${apt.time}</p>
+            <h4>Patient Info</h4>
+            <p><strong>Name:</strong> ${apt.firstName} ${apt.middleName} ${apt.lastName}</p>
+            <p><strong>Department:</strong> ${apt.department}</p>
+            <p><strong>Doctor:</strong> ${apt.doctor}</p>
+          </section>
+        `).join("")}
+      </body>
+    </html>
+  `;
+
+  const handleDeleteAppointment = (id) => {
+    if (!window.confirm("Are you sure you want to delete this appointment?")) return;
+    const updatedAppointments = appointments.filter(apt => apt.appointmentID !== id);
+    setAppointments(updatedAppointments);
+    localStorage.setItem("appointments", JSON.stringify(updatedAppointments));
+    if (selectedAppointment && selectedAppointment.appointmentID === id) {
+      setSelectedAppointment(null);
+    }
+    if (currentPage > Math.ceil(updatedAppointments.length / appointmentsPerPage)) {
+      setCurrentPage(prev => prev - 1);
+    }
+  };
+
+  const handleDeleteSelected = () => {
+    if (selectedIds.length === 0) return alert("No appointments selected!");
+    if (!window.confirm("Are you sure you want to delete selected appointments?")) return;
+    const updatedAppointments = appointments.filter(apt => !selectedIds.includes(apt.appointmentID));
+    setAppointments(updatedAppointments);
+    localStorage.setItem("appointments", JSON.stringify(updatedAppointments));
+    setSelectedIds([]);
+  };
+
+  const handleShare = (apt) => {
+    const shareText = `Appointment Details:\nID: ${apt.appointmentID}\nName: ${apt.firstName} ${apt.lastName}\nDate: ${apt.date}\nTime: ${apt.time}`;
+    navigator.clipboard.writeText(shareText);
+    alert("Appointment details copied to clipboard!");
+  };
+
+  // Clone appointment (only Appointment ID)
+  const handleClone = (apt) => {
+    const clonedApt = { 
+      ...apt, 
+      appointmentID: `Clone-${Date.now()}` // only change Appointment ID
+    };
+    const updatedAppointments = [...appointments, clonedApt];
+    setAppointments(updatedAppointments);
+    localStorage.setItem("appointments", JSON.stringify(updatedAppointments));
+    toast.success(`Appointment cloned! New ID: ${clonedApt.appointmentID}`);
+  };
+
+  const handleEdit = (apt) => {
+    navigate(`/BookAppointment`, { state: { appointment: apt } });
+  };
+
+  const handleRefresh = () => window.location.reload();
+
+  const toggleSelect = (id) => {
+    if (selectedIds.includes(id)) {
+      setSelectedIds(selectedIds.filter(sid => sid !== id));
+    } else {
+      setSelectedIds([...selectedIds, id]);
+    }
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedIds.length === currentAppointments.length) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(currentAppointments.map(apt => apt.appointmentID));
+    }
+  };
 
   return (
-<div>
-  <div className="appointment-history">
-    <h2>📋 Appointment History</h2>
+    <div className="appointment-card container">
+      <Toaster position="top-right" reverseOrder={false} />
+      <h1 className="book-appointment-header">Appointment History</h1>
 
+      {/* Top Buttons */}
+      <div style={{ marginBottom: "15px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div className="action-buttons">
+          <button className="submit-btn" onClick={() => navigate("/BookAppointment")}>➕ Add New Appointment</button>
+          <button className="submit-btn" onClick={() => openPrintPreview(appointments)}>🖨️ Print All</button>
+          <button className="cancel-btn" onClick={handleDeleteSelected}>🗑️ Delete Selected</button>
+        </div>
+        <button className="submit-btn" onClick={handleRefresh}><FaSyncAlt /> Refresh</button>
+      </div>
 
-    <div className="section">
-      <h3>🧑‍⚕️ Patient Information</h3>
-      <table>
-        <tbody>
-          {renderRow("Name", `${appointmentData.firstName} ${appointmentData.middleName} ${appointmentData.lastName}`)}
-          {renderRow("Gender", appointmentData.gender)}
-          {renderRow("Date of Birth", appointmentData.dob)}
-          {renderRow("Age", appointmentData.age)}
-          {renderRow("Mobile", appointmentData.mobile)}
-          {renderRow("Email", appointmentData.email)}
-          {renderRow("Address", appointmentData.address)}
-        </tbody>
-      </table>
+      {appointments.length === 0 ? (
+        <p>No appointments booked yet.</p>
+      ) : (
+        <>
+          <table className="appointment-table">
+            <thead>
+              <tr>
+                <th><input type="checkbox" onChange={toggleSelectAll} checked={selectedIds.length === currentAppointments.length} /></th>
+                <th>Sl No</th>
+                <th>Appointment ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Patient Name</th>
+                <th>Department</th>
+                <th>Doctor</th>
+                <th>Appointment Type</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentAppointments.map((apt, index) => (
+                <tr key={apt.appointmentID}>
+                  <td><input type="checkbox" checked={selectedIds.includes(apt.appointmentID)} onChange={() => toggleSelect(apt.appointmentID)} /></td>
+                  <td>{indexOfFirst + index + 1}</td>
+                  <td>{apt.appointmentID}</td>
+                  <td>{apt.date}</td>
+                  <td>{apt.time}</td>
+                  <td>{`${apt.firstName} ${apt.middleName} ${apt.lastName}`}</td>
+                  <td>{apt.department}</td>
+                  <td>{apt.doctor}</td>
+                  <td>{apt.appointmentType}</td>
+                  <td className="table-actions">
+                    <button className="icon-btn" style={{ color: "#007BFF" }} onClick={() => setSelectedAppointment(apt)}><FaEye /></button>
+                    <button className="icon-btn" style={{ color: "#28A745" }} onClick={() => openPrintPreview([apt])}><FaPrint /></button>
+                    <button className="icon-btn" style={{ color: "#DC3545" }} onClick={() => handleDeleteAppointment(apt.appointmentID)}><FaTrash /></button>
+                    <button className="icon-btn" style={{ color: "#FFA500" }} onClick={() => handleShare(apt)}><FaShareAlt /></button>
+                    <button className="icon-btn" style={{ color: "#6F42C1" }} onClick={() => handleClone(apt)}><FaClone /></button>
+                    <button className="icon-btn" style={{ color: "#17A2B8" }} onClick={() => handleEdit(apt)}><FaEdit /></button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Pagination */}
+          <div className="pagination">
+            <button disabled={currentPage === 1} onClick={() => setCurrentPage(prev => prev - 1)}>Prev</button>
+            <span>Page {currentPage} of {totalPages}</span>
+            <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(prev => prev + 1)}>Next</button>
+          </div>
+        </>
+      )}
+
+      {/* Appointment Details Modal */}
+      {selectedAppointment && (
+        <div className="modal-overlay" onClick={() => setSelectedAppointment(null)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <h2>📌 Appointment Details</h2>
+            <pre>{JSON.stringify(selectedAppointment, null, 2)}</pre>
+            <div className="button-group">
+              <button className="cancel-btn" onClick={() => setSelectedAppointment(null)}>Close</button>
+              <button className="submit-btn" onClick={() => openPrintPreview([selectedAppointment])}><FaPrint /> Print</button>
+              <button className="submit-btn" onClick={() => handleShare(selectedAppointment)}><FaShareAlt /> Share</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Print Preview Modal */}
+      {showPrintPreview && (
+        <div className="modal-overlay" onClick={() => setShowPrintPreview(false)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()} style={{ maxHeight: "80vh", overflowY: "auto" }}>
+            <h2>🖨️ Print Preview</h2>
+            {appointmentsToPrint.map((apt, idx) => (
+              <section key={idx} style={{ borderBottom: "1px solid #ccc", marginBottom: "15px", paddingBottom: "10px" }}>
+                <h3>Appointment ID: {apt.appointmentID}</h3>
+                <p><strong>Name:</strong> {`${apt.firstName} ${apt.middleName} ${apt.lastName}`}</p>
+                <p><strong>Date:</strong> {apt.date} | <strong>Time:</strong> {apt.time}</p>
+                <p><strong>Department:</strong> {apt.department} | <strong>Doctor:</strong> {apt.doctor}</p>
+                <p><strong>Appointment Type:</strong> {apt.appointmentType}</p>
+              </section>
+            ))}
+            <div className="button-group" style={{ marginTop: "15px" }}>
+              <button className="submit-btn" onClick={handlePrint}><FaPrint /> Print</button>
+              <button className="cancel-btn" onClick={() => setShowPrintPreview(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-
-    <div className="section">
-      <h3>🏥 Appointment Details</h3>
-      <table>
-        <tbody>
-          {renderRow("Department", appointmentData.department)}
-          {renderRow("Doctor", appointmentData.doctor)}
-          {renderRow("Type", appointmentData.appointmentType)}
-          {renderRow("Date & Time", `${appointmentData.date} at ${appointmentData.time}`)}
-          {renderRow("Reason", appointmentData.reason || "Not specified")}
-          {renderRow("Previous Visit", appointmentData.previousVisit || "Not specified")}
-        </tbody>
-      </table>
-    </div>
-
-    <div className="section">
-      <h3>⚕️ Medical Information</h3>
-      <table>
-        <tbody>
-          {renderRow("Existing Conditions", appointmentData.existingConditions.length > 0 ? appointmentData.existingConditions.join(", ") : "None reported")}
-          {renderRow("Allergies", appointmentData.allergies || "Not specified")}
-          {renderRow("Current Medications", appointmentData.currentMedications || "Not specified")}
-          {renderRow("Past Surgeries", appointmentData.pastSurgeries || "Not specified")}
-        </tbody>
-      </table>
-    </div>
-
-    <div className="section">
-      <h3>🆘 Emergency Contact</h3>
-      <table>
-        <tbody>
-          {renderRow("Name", appointmentData.emergencyContactName || "Not provided")}
-          {renderRow("Phone", appointmentData.emergencyContactNumber || "Not provided")}
-        </tbody>
-      </table>
-    </div>
-
-    <div className="section">
-      <h3>💳 Insurance Details</h3>
-      <table>
-        <tbody>
-          {renderRow("Provider", appointmentData.insuranceProvider || "Not provided")}
-          {renderRow("Policy Number", appointmentData.policyNumber || "Not provided")}
-          {renderRow("Card Holder Name", appointmentData.cardHolderName || "Not provided")}
-          {renderRow("Insurance Card", appointmentData.insuranceCard ? "Uploaded" : "Not uploaded")}
-        </tbody>
-      </table>
-    </div>
-
-    <div className="section">
-      <h3>💰 Payment & Consent</h3>
-      <table>
-        <tbody>
-          {renderRow("Payment Method", appointmentData.paymentMethod || "Not specified")}
-          {renderRow("Terms Accepted", appointmentData.termsAccepted ? "✅ Yes" : "❌ No")}
-          {renderRow("Consent to Share Info", appointmentData.consentToShare ? "✅ Yes" : "❌ No")}
-        </tbody>
-      </table>
-    </div>
-
-   <button
-  onClick={() => window.print()}
-  style={{ marginBottom: '20px', padding: '8px 16px', cursor: 'pointer', backgroundColor: 'green' }}
->
-  🖨️ Print / Export PDF
-</button>
-
-  </div>
-
-
-</div>
   );
 };
 
