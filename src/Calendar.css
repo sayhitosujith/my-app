@@ -1085,3 +1085,71 @@ input[type="checkbox"] {
   transform: scale(1.2);
   cursor: pointer;
 }
+/* Table Styling */
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.appointment-table th,
+.appointment-table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: center;  /* center-align all columns */
+  vertical-align: middle;
+}
+
+/* Specific alignment */
+.appointment-table th.date-col,
+.appointment-table td.date-col {
+  text-align: left; /* or center if you prefer */
+}
+
+/* Sl No column */
+.appointment-table th.sl-no,
+.appointment-table td.sl-no {
+  width: 50px;
+}
+
+/* Actions column */
+.appointment-table th.actions,
+.appointment-table td.actions {
+  width: 180px;
+}
+
+/* Optional: fix date width */
+.appointment-table th.date-col {
+  width: 120px;
+}
+/* Appointment card container */
+.appointment-card.container {
+  max-width: 1200px;   /* increase from 900px or default */
+  width: 95%;          /* responsive width */
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table adjustments */
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.appointment-table th,
+.appointment-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.date-col {
+  min-width: 130px; /* ensures date column is visible */
+}
+
+.actions {
+  min-width: 250px; /* more space for buttons */
+}
