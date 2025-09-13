@@ -6,16 +6,8 @@ import {
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { FaPowerOff } from "react-icons/fa6";
-import Popup from 'reactjs-popup';
 
 const CardItem = ({ item, onDelete, searchTerm }) => {
-  const [openPopup, setOpenPopup] = useState(false);
-
-  const handleDeleteClick = () => {
-    onDelete(item.patientId);
-    setOpenPopup(true);
-    setTimeout(() => setOpenPopup(false), 2000); // auto close popup after 2s
-  };
 
   // Highlight matching digits in phone
   const highlightPhone = (phone, term) => {
@@ -32,11 +24,7 @@ const CardItem = ({ item, onDelete, searchTerm }) => {
 
   return (
     <Card className="w-96">
-      <CardHeader
-        variant="gradient"
-        color="green"
-        className="mb-5 grid h-10 place-items-center"
-      >
+      <CardHeader variant="gradient" color="green" className="mb-5 grid h-10 place-items-center">
         <Typography variant="h5" color="white">
           {item.patientId} : {item.firstName} {item.lastName}
         </Typography>
@@ -70,7 +58,7 @@ const CardItem = ({ item, onDelete, searchTerm }) => {
               variant="text"
               color="red"
               className="flex items-center gap-2"
-              onClick={handleDeleteClick}
+              onClick={() => onDelete(item.patientId)}
             >
               <TrashIcon className="h-4 w-4 text-red-500" />
             </Button>
@@ -86,12 +74,6 @@ const CardItem = ({ item, onDelete, searchTerm }) => {
           </div>
         </Typography>
       </CardFooter>
-
-      <Popup open={openPopup} closeOnDocumentClick onClose={() => setOpenPopup(false)} modal nested>
-        <div className="p-5 text-center">
-          <h3>Profile Deleted Successfully!</h3>
-        </div>
-      </Popup>
     </Card>
   );
 };
@@ -99,6 +81,7 @@ const CardItem = ({ item, onDelete, searchTerm }) => {
 function Profile() {
   const [profiles, setProfiles] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('allProfiles')) || [];
@@ -109,15 +92,18 @@ function Profile() {
     const filteredProfiles = profiles.filter(profile => profile.patientId !== patientId);
     setProfiles(filteredProfiles);
     localStorage.setItem('allProfiles', JSON.stringify(filteredProfiles));
+
+    // Show toast
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
   };
 
-  // Filter profiles by search term
   const filteredProfiles = profiles.filter(profile =>
     profile.phone.includes(searchTerm)
   );
 
   return (
-    <div className="p-10">
+    <div className="p-10 relative">
       <Breadcrumbs>
         <a href="/Welcome" className="opacity-60">Welcome</a>
         <a href="#">Profiles</a>
@@ -138,17 +124,19 @@ function Profile() {
         Patient Profiles
       </Typography>
 
-      <Button color="green" className="mb-6">
-        <a href="/Addprofile">+ ADD PROFILE</a>
-      </Button>
+      <div className="flex items-center gap-4 mb-6">
+        <Button color="green">
+          <a href="/Addprofile">+ ADD PROFILE</a>
+        </Button>
 
-   <div className="mb-4 w-64">
-  <Input
-    label="Search by Phone"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-  />
-</div>
+        <div className="w-48">
+          <Input
+            label="Search by Phone"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
 
       <div style={{ float: 'right' }}>
         <div className="w-74">
@@ -168,8 +156,29 @@ function Profile() {
           <CardItem key={item.patientId} item={item} onDelete={handleDelete} searchTerm={searchTerm} />
         ))}
       </div>
+
+      {/* Toast Message */}
+      {showToast && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-slideDown z-50">
+          Profile Deleted Successfully!
+        </div>
+      )}
+
+      {/* Tailwind animation */}
+      <style>
+        {`
+          @keyframes slideDown {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+          .animate-slideDown {
+            animation: slideDown 0.3s ease-out;
+          }
+        `}
+      </style>
     </div>
   );
 }
 
 export default Profile;
+  
