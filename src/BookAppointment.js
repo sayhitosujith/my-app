@@ -33,6 +33,7 @@ const BookAppointment = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [appointmentDetails, setAppointmentDetails] = useState(null);
   const [formData, setFormData] = useState(initialFormData);
+
   const navigate = useNavigate();
 
   const year = currentDate.getFullYear();
@@ -41,18 +42,18 @@ const BookAppointment = () => {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const today = new Date();
 
+  // ✅ Auto-calculate Age from DOB
   useEffect(() => {
-    const selectedPatient = JSON.parse(localStorage.getItem("selectedPatient"));
-    if (selectedPatient) {
-      setFormData(prev => ({ ...prev, ...selectedPatient }));
-      if (selectedPatient.dob) {
-        const birthDate = new Date(selectedPatient.dob);
-        const ageDifMs = Date.now() - birthDate.getTime();
-        const ageDate = new Date(ageDifMs);
-        setFormData(prev => ({ ...prev, age: Math.abs(ageDate.getUTCFullYear() - 1970).toString() }));
-      }
+    if (formData.dob) {
+      const birthDate = new Date(formData.dob);
+      const ageDifMs = Date.now() - birthDate.getTime();
+      const ageDate = new Date(ageDifMs);
+      setFormData(prev => ({
+        ...prev,
+        age: Math.abs(ageDate.getUTCFullYear() - 1970).toString()
+      }));
     }
-  }, []);
+  }, [formData.dob]);
 
   const changeMonth = (offset) => {
     const newDate = new Date(currentDate);
@@ -66,7 +67,8 @@ const BookAppointment = () => {
     year === today.getFullYear();
 
   const handleDayClick = (day) => {
-    setSelectedDate(new Date(year, month, day));
+    const date = new Date(year, month, day);
+    setSelectedDate(date);
     setShowCalendar(false);
   };
 
@@ -94,24 +96,10 @@ const BookAppointment = () => {
       alert("⚠️ Please select a date and time!");
       return;
     }
+    setAppointmentDetails({ ...formData, date: selectedDate.toDateString() });
 
-    // Generate 10-digit numeric Appointment ID
-    const appointmentID = Math.floor(1000000000 + Math.random() * 9000000000);
-
-    const newAppointment = { ...formData, date: selectedDate.toDateString(), appointmentID };
-    setAppointmentDetails(newAppointment);
-
-    const existingAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
-    localStorage.setItem("appointments", JSON.stringify([...existingAppointments, newAppointment]));
-
-    setFormData(prev => ({
-      ...prev,
-      department: "", doctor: "", time: "", appointmentType: "",
-      reason: "", previousVisit: "", existingConditions: [], allergies: "",
-      currentMedications: "", pastSurgeries: "", insuranceProvider: "",
-      policyNumber: "", cardHolderName: "", insuranceCard: null,
-      paymentMethod: "", termsAccepted: false, consentToShare: false
-    }));
+    // ✅ Reset form safely
+    setFormData(initialFormData);
     setSelectedDate(null);
     alert("✅ Appointment booked successfully!");
   };
@@ -119,13 +107,21 @@ const BookAppointment = () => {
   const handleCancel = () => navigate("/Profile");
 
   const renderDays = () => {
-    const cells = dayNames.map(day => <div className="day-name" key={day}>{day}</div>);
-    for (let i = 0; i < firstDay; i++) cells.push(<div key={`empty-${i}`} />);
+    const cells = dayNames.map(day => (
+      <div className="day-name" key={day}>{day}</div>
+    ));
+
+    for (let i = 0; i < firstDay; i++) {
+      cells.push(<div key={`empty-${i}`} />);
+    }
+
     for (let day = 1; day <= daysInMonth; day++) {
-      const isSelected = selectedDate &&
+      const isSelected =
+        selectedDate &&
         day === selectedDate.getDate() &&
         month === selectedDate.getMonth() &&
         year === selectedDate.getFullYear();
+
       cells.push(
         <div
           key={day}
@@ -140,7 +136,8 @@ const BookAppointment = () => {
     return cells;
   };
 
-  return (
+return (
+
     <div className="appointment-card container">
       <h1 className="book-appointment-header">Book Appointment</h1>
       <form onSubmit={handleSubmit} className="appointment-form grid">
@@ -248,7 +245,7 @@ const BookAppointment = () => {
           </div>
         </div>
 
-        {/* CONSENT & BUTTONS */}
+        {/* CONSENT */}
         <div className="card-section">
           <h2>Consent & Confirmation</h2>
           <label>
@@ -261,18 +258,25 @@ const BookAppointment = () => {
           </label>
         </div>
 
+        {/* BUTTONS */}
         <div className="button-group">
           <button type="submit" className="submit-btn">Book Appointment</button>
           <button type="button" className="cancel-btn" onClick={handleCancel}>Cancel</button>
-          <div className="ml-auto">
-            <button type="button" className="view-btn" onClick={() => navigate("/AppointmentHistory")}>
-              View Appointment History
-            </button>
-          </div>
+ <div className="ml-auto">
+    <button
+      type="button"
+      className="view-btn"
+      onClick={() => navigate("/AppointmentHistory")}
+    >
+      View Appointment History
+    </button>
+  </div>
         </div>
+
       </form>
 
-      {appointmentDetails && (
+      {
+      appointmentDetails && (
         <div className="appointment-details card-section">
           <h2>📌 Appointment Details</h2>
           <pre>{JSON.stringify(appointmentDetails, null, 2)}</pre>

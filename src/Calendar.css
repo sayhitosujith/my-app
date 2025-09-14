@@ -901,7 +901,7 @@ button.add-profile {
 }
 /* Container */
 .container {
-  max-width: 1200px;
+  max-width: 300px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -1124,11 +1124,11 @@ input[type="checkbox"] {
 }
 /* Appointment card container */
 .appointment-card.container {
-  max-width: 1200px;   /* increase from 900px or default */
+  max-width: 2000px;   /* increase from 900px or default */
   width: 95%;          /* responsive width */
   margin: 20px auto;
   padding: 20px;
-  background: #fff;
+  background: #b1f2e9;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
