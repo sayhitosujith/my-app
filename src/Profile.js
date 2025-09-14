@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Card, CardHeader, CardBody, CardFooter,
+  Card, CardBody, CardFooter,
   Typography, Button, Avatar, Badge, Rating, Input, Breadcrumbs,
   Dialog, DialogHeader, DialogBody, DialogFooter, Switch
 } from "@material-tailwind/react";
@@ -26,53 +26,41 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
     <Card
       className={`rounded-xl shadow-sm transition-transform duration-300
         hover:shadow-lg hover:-translate-y-1
-        ${listView ? "w-full flex flex-row gap-4 items-center p-3" : "w-full md:w-80 flex flex-col"}`}
+        ${listView ? "w-full flex flex-row gap-4 items-center p-4 min-h-[120px]" : "w-full md:w-80 flex flex-col"}`}
     >
       {/* Avatar */}
-      <div className={`${listView ? "w-20 flex-shrink-0" : "flex justify-center items-center mt-2"}`}>
+      <div className={`${listView ? "w-24 flex-shrink-0" : "flex justify-center items-center mt-2"}`}>
         <Avatar
           src={item.image || "https://fellows.ias.ac.in/public/images/stock/avatar.svg?v=105894425"}
           alt="Profile"
-          size={listView ? "md" : "xl"}
+          size={listView ? "lg" : "xl"}
           variant="circular"
           className="border-2 border-gray-200"
         />
       </div>
 
       {/* Body */}
-      <CardBody className={`flex flex-col gap-1 text-sm ${listView ? "flex-1 py-0" : ""}`}>
+      <CardBody className={`flex flex-col gap-1 text-sm ${listView ? "flex-1 py-2" : ""}`}>
         <div className="flex justify-between items-start">
           <div>
-            <Typography className="font-semibold text-gray-800">{item.firstName} {item.lastName}</Typography>
-            <Typography className="text-xs text-gray-500">ID: {item.patientId}</Typography>
+            <Typography className="font-semibold text-gray-800 text-base">{item.firstName} {item.lastName}</Typography>
+            <Typography className="text-xs text-gray-500 mt-0.5">ID: {item.patientId}</Typography>
           </div>
-          {listView && (
+          {!listView && (
             <div className="flex gap-1">
-              <Button
-                size="xs"
-                variant="text"
-                color="blue"
-                className="p-1"
-                onClick={() => onEdit(item)}
-              >
+              <Button size="xs" variant="text" color="blue" className="p-1" onClick={() => onEdit(item)}>
                 <PencilIcon className="h-4 w-4 text-blue-500" />
               </Button>
-              <Button
-                size="xs"
-                variant="text"
-                color="red"
-                className="p-1"
-                onClick={() => onDelete(item.patientId)}
-              >
+              <Button size="xs" variant="text" color="red" className="p-1" onClick={() => onDelete(item.patientId)}>
                 <TrashIcon className="h-4 w-4 text-red-500" />
               </Button>
             </div>
           )}
         </div>
 
-        <Typography className="text-xs"><b>Email:</b> {item.email}</Typography>
-        <Typography className="text-xs"><b>Phone:</b> <a href={`tel:${item.phone}`} className="text-blue-600">{highlightPhone(item.phone, searchTerm)}</a></Typography>
-        <Typography className="text-xs"><b>Address:</b> {item.address}</Typography>
+        <Typography className="text-sm mt-1"><b>Email:</b> {item.email}</Typography>
+        <Typography className="text-sm"><b>Phone:</b> <a href={`tel:${item.phone}`} className="text-blue-600">{highlightPhone(item.phone, searchTerm)}</a></Typography>
+        <Typography className="text-sm"><b>Address:</b> {item.address}</Typography>
         <div className="flex flex-wrap gap-1 mt-1">
           {item.referredBy && <Badge color="blue" size="sm">{item.referredBy}</Badge>}
           {item.contactPreference && <Badge color="amber" size="sm">{item.contactPreference}</Badge>}
@@ -82,36 +70,22 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
         </div>
       </CardBody>
 
-      {/* Footer for grid view only */}
-      {!listView && (
-        <CardFooter className="pt-2 flex justify-between items-center">
+      {/* Footer: show buttons */}
+      <CardFooter className={`pt-2 flex ${listView ? "flex-col items-start gap-2" : "justify-between items-center"}`}>
+        {listView && (
           <div className="flex gap-2">
-            <Button
-              size="sm"
-              variant="text"
-              color="blue"
-              className="flex items-center gap-2 hover:bg-blue-50 p-2"
-              onClick={() => onEdit(item)}
-            >
-              <PencilIcon className="h-5 w-5 text-blue-500" />
+            <Button size="sm" variant="text" color="blue" className="flex items-center gap-2 hover:bg-blue-50 p-2" onClick={() => onEdit(item)}>
+              <PencilIcon className="h-5 w-5 text-blue-500" /> Edit
             </Button>
-            <Button
-              size="sm"
-              variant="text"
-              color="red"
-              className="flex items-center gap-2 hover:bg-red-50 p-2"
-              onClick={() => onDelete(item.patientId)}
-            >
-              <TrashIcon className="h-5 w-5 text-red-500" />
+            <Button size="sm" variant="text" color="red" className="flex items-center gap-2 hover:bg-red-50 p-2" onClick={() => onDelete(item.patientId)}>
+              <TrashIcon className="h-5 w-5 text-red-500" /> Delete
             </Button>
           </div>
-          <div className="flex space-x-2">
-            <Button color="black" className="hover:scale-105 transition-transform text-xs px-3">
-              <a href="/BookAppointment">Book Appointment</a>
-            </Button>
-          </div>
-        </CardFooter>
-      )}
+        )}
+        <Button color="black" className="hover:scale-105 transition-transform text-xs px-3">
+          <a href="/BookAppointment">Book Appointment</a>
+        </Button>
+      </CardFooter>
     </Card>
   );
 };
