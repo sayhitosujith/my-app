@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Card, CardBody, CardFooter,
+  Card, CardHeader, CardBody, CardFooter,
   Typography, Button, Avatar, Badge, Rating, Input, Breadcrumbs,
   Dialog, DialogHeader, DialogBody, DialogFooter, Switch
 } from "@material-tailwind/react";
@@ -105,9 +105,11 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
               <TrashIcon className="h-5 w-5 text-red-500" />
             </Button>
           </div>
-          <Button color="black" className="hover:scale-105 transition-transform text-xs px-3">
-            <a href="/BookAppointment">Book Appointment</a>
-          </Button>
+          <div className="flex space-x-2">
+            <Button color="black" className="hover:scale-105 transition-transform text-xs px-3">
+              <a href="/BookAppointment">Book Appointment</a>
+            </Button>
+          </div>
         </CardFooter>
       )}
     </Card>
@@ -187,8 +189,8 @@ function Profile() {
           </div>
         </div>
 
-        {/* Right side: Appointment History + Switch + Notifications + Logout + Avatar */}
-        <div className="flex items-center gap-3">
+        {/* Right side: Appointment History, Switch, notifications, logout, avatar */}
+        <div className="flex items-center gap-4">
           <Button color="blue" className="hover:scale-105 transition-transform text-xs px-3">
             <a href="/AppointmentHistory">Appointment History</a>
           </Button>
@@ -206,7 +208,7 @@ function Profile() {
 
       <Typography variant="h3" color="Black" className="mb-4">Patient Profiles</Typography>
 
-      <div className={`grid ${listView ? "grid-cols-1 gap-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"}`}>
+      <div className={`grid ${listView ? "grid-cols-1 gap-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"}`}>
         {filteredProfiles.map(item => (
           <CardItem
             key={item.patientId}
@@ -260,6 +262,7 @@ function Profile() {
         </div>
       )}
 
+      {/* Animation style */}
       <style>{`
         @keyframes slideDown {
           0% { transform: translateY(-50px); opacity: 0; }
