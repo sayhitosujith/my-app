@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Card, CardHeader, CardBody, CardFooter,
+  Card, CardBody, CardFooter,
   Typography, Button, Avatar, Badge, Rating, Input, Breadcrumbs,
   Dialog, DialogHeader, DialogBody, DialogFooter, Switch
 } from "@material-tailwind/react";
@@ -105,14 +105,9 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
               <TrashIcon className="h-5 w-5 text-red-500" />
             </Button>
           </div>
-          <div className="flex space-x-2">
-            <Button color="black" className="hover:scale-105 transition-transform text-xs px-3">
-              <a href="/BookAppointment">Book</a>
-            </Button>
-            <Button color="blue" className="hover:scale-105 transition-transform text-xs px-3">
-              <a href="/AppointmentHistory">History</a>
-            </Button>
-          </div>
+          <Button color="black" className="hover:scale-105 transition-transform text-xs px-3">
+            <a href="/BookAppointment">Book Appointment</a>
+          </Button>
         </CardFooter>
       )}
     </Card>
@@ -192,10 +187,14 @@ function Profile() {
           </div>
         </div>
 
-        {/* Right side: switch, notifications, logout, avatar */}
-        <div className="flex items-center gap-4">
+        {/* Right side: Appointment History + Switch + Notifications + Logout + Avatar */}
+        <div className="flex items-center gap-3">
+          <Button color="blue" className="hover:scale-105 transition-transform text-xs px-3">
+            <a href="/AppointmentHistory">Appointment History</a>
+          </Button>
           <Switch
             label="List View"
+            color="green"
             checked={listView}
             onChange={() => setListView(!listView)}
           />
@@ -261,7 +260,6 @@ function Profile() {
         </div>
       )}
 
-      {/* Animation style */}
       <style>{`
         @keyframes slideDown {
           0% { transform: translateY(-50px); opacity: 0; }

@@ -105,3 +105,10 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+/* Switch label green */
+.profile-switch .mt-2 .material-tailwind-switch .switch-thumb {
+  background-color: #22c55e; /* Tailwind green-500 */
+}
+.profile-switch .mt-2 .material-tailwind-switch .switch-track {
+  background-color: #bbf7d0; /* Tailwind green-200 */
+}
