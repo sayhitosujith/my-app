@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input, Typography, Avatar } from "@material-tailwind/react";
+import { Button, Input, Typography, Avatar, Breadcrumbs } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { Bars3Icon, Squares2X2Icon } from "@heroicons/react/24/solid";
 
@@ -41,6 +41,29 @@ function AddDoctor() {
 
   return (
     <div className="p-6 max-w-md mx-auto">
+      {/* Breadcrumbs */}
+      <Breadcrumbs className="mb-4">
+        <Typography
+          as="a"
+          href="/"
+          color="blue-gray"
+          className="cursor-pointer hover:underline"
+          onClick={() => navigate("/")}
+        >
+          Home
+        </Typography>
+        <Typography
+          as="a"
+          href="/DoctorList"
+          color="blue-gray"
+          className="cursor-pointer hover:underline"
+          onClick={() => navigate("/DoctorList")}
+        >
+          Doctors
+        </Typography>
+        <Typography color="blue-gray">Add Doctor</Typography>
+      </Breadcrumbs>
+
       {/* Back Button */}
       <Button color="blue" className="mb-4" onClick={() => navigate("/DoctorList")}>
         &larr; Back
