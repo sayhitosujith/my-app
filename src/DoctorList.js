@@ -141,7 +141,7 @@ function DoctorList() {
 
       {/* Back Button */}
       <Button color="blue" className="mb-4" onClick={() => navigate("/AddDoctor")}>
-        &larr; Back
+        + ADD DOCTOR
       </Button>
 
       <div className="flex items-center justify-between mb-4">

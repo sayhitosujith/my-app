@@ -105,10 +105,6 @@ function AddDoctor() {
         <Typography color="blue-gray">Add Doctor</Typography>
       </Breadcrumbs>
 
-      <Button color="blue" className="mb-4" onClick={() => navigate("/DoctorList")}>
-        &larr; Back
-      </Button>
-
       <Typography variant="h4" className="mb-4 text-center">
         Add Doctor
       </Typography>
