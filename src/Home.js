@@ -256,7 +256,7 @@ function App() {
         <br />
 
         <Button color="green" appearance="primary">
-          <a href="/DeliveryBoy">+ Add Delivery Captain</a>
+          <a href="/AddDoctor">+ Add Doctor</a>
         </Button>
 
         &nbsp;&nbsp;

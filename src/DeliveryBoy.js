@@ -105,11 +105,11 @@ function DeliveryBoy() {
       <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" size="xl" variant="square" style={{ float: 'right' }} />
 
       <Typography variant="h2" color="Black" className="mb-6">
-        DELIVERY CAPTAINS
+        Doctors List
       </Typography>
 
       <Button>
-        <a href="/AddDeliveryCaptain">+ ADD Delivery Captains</a>
+        <a href="/AddDeliveryCaptain">+ ADD Doctor</a>
       </Button>
 
       <div style={{ float: 'right' }}>

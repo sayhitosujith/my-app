@@ -30,12 +30,13 @@ import Success from './Success';
 import OrderDetails from './OrderDetails';
 import CheckoutForm from './CheckoutForm';
 import DeliveryBoy from './DeliveryBoy';
-import AddDeliveryCaptain from './AddDeliveryCaptain';
+import AddDoctor from './AddDoctor.js';
 import Settings from './Settings';
 import Logout from './Logout';
 import DailySummary from './DailySummary.jsx'
 import BookAppointment from './BookAppointment';
 import AppointmentHistory from './AppointmentHistory';
+import DoctorList from './DoctorList';
 
 const router = createBrowserRouter([
   {
@@ -147,8 +148,8 @@ const router = createBrowserRouter([
     element: <Logout/>,
   },
   {
-    path: "/AddDeliveryCaptain",
-    element: <AddDeliveryCaptain/>,
+    path: "/AddDoctor",
+    element: <AddDoctor/>,
   },
   {
     path: "/DailySummary",
@@ -162,6 +163,10 @@ const router = createBrowserRouter([
   {
     path: "/AppointmentHistory",
     element: <AppointmentHistory/>,
+  },
+  {
+    path: "/DoctorList",
+    element: <DoctorList/>,
   }
 ]);
 
