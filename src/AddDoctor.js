@@ -17,7 +17,9 @@ function AddDoctor() {
     address: "",
     image: "",
   });
-  const [previewGrid, setPreviewGrid] = useState(true); // true = large avatar, false = small card
+
+  const [errors, setErrors] = useState({});
+  const [previewGrid, setPreviewGrid] = useState(true);
 
   const handleChange = (e) => {
     setNewDoctor({ ...newDoctor, [e.target.name]: e.target.value });
@@ -32,7 +34,47 @@ function AddDoctor() {
     if (file) reader.readAsDataURL(file);
   };
 
+  // Validation function
+  const validate = () => {
+    const newErrors = {};
+
+    if (!newDoctor.firstName.trim()) newErrors.firstName = "First Name is required";
+    if (!newDoctor.lastName.trim()) newErrors.lastName = "Last Name is required";
+
+    if (!newDoctor.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newDoctor.email)) {
+      newErrors.email = "Invalid email format";
+    }
+
+    if (!newDoctor.phone.trim()) {
+      newErrors.phone = "Phone is required";
+    } else if (!/^\d{10}$/.test(newDoctor.phone)) {
+      newErrors.phone = "Phone must be 10 digits";
+    }
+
+    if (!newDoctor.specialization.trim()) newErrors.specialization = "Specialization is required";
+
+    if (!newDoctor.experience.trim()) {
+      newErrors.experience = "Experience is required";
+    } else if (isNaN(newDoctor.experience) || Number(newDoctor.experience) < 0) {
+      newErrors.experience = "Experience must be a positive number";
+    }
+
+    if (!newDoctor.clinic.trim()) newErrors.clinic = "Clinic is required";
+    if (!newDoctor.license.trim()) newErrors.license = "License is required";
+    if (!newDoctor.address.trim()) newErrors.address = "Address is required";
+
+    if (!newDoctor.image) newErrors.image = "Doctor image is required";
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSave = () => {
+    if (!validate()) return; // stop if validation fails
+
     const storedDoctors = JSON.parse(localStorage.getItem("doctors")) || [];
     storedDoctors.push(newDoctor);
     localStorage.setItem("doctors", JSON.stringify(storedDoctors));
@@ -41,7 +83,6 @@ function AddDoctor() {
 
   return (
     <div className="p-6 max-w-md mx-auto">
-      {/* Breadcrumbs */}
       <Breadcrumbs className="mb-4">
         <Typography
           as="a"
@@ -64,7 +105,6 @@ function AddDoctor() {
         <Typography color="blue-gray">Add Doctor</Typography>
       </Breadcrumbs>
 
-      {/* Back Button */}
       <Button color="blue" className="mb-4" onClick={() => navigate("/DoctorList")}>
         &larr; Back
       </Button>
@@ -74,23 +114,85 @@ function AddDoctor() {
       </Typography>
 
       <div className="flex flex-col gap-4">
-        <Input name="firstName" label="First Name" value={newDoctor.firstName} onChange={handleChange} />
-        <Input name="lastName" label="Last Name" value={newDoctor.lastName} onChange={handleChange} />
-        <Input name="email" label="Email" value={newDoctor.email} onChange={handleChange} />
-        <Input name="phone" label="Phone" value={newDoctor.phone} onChange={handleChange} />
-        <Input name="specialization" label="Specialization" value={newDoctor.specialization} onChange={handleChange} />
-        <Input name="experience" label="Experience (years)" value={newDoctor.experience} onChange={handleChange} />
-        <Input name="clinic" label="Clinic" value={newDoctor.clinic} onChange={handleChange} />
-        <Input name="license" label="License" value={newDoctor.license} onChange={handleChange} />
-        <Input name="address" label="Address" value={newDoctor.address} onChange={handleChange} />
+        <Input
+          name="firstName"
+          label="First Name"
+          value={newDoctor.firstName}
+          onChange={handleChange}
+          error={!!errors.firstName}
+          helperText={errors.firstName}
+        />
+        <Input
+          name="lastName"
+          label="Last Name"
+          value={newDoctor.lastName}
+          onChange={handleChange}
+          error={!!errors.lastName}
+          helperText={errors.lastName}
+        />
+        <Input
+          name="email"
+          label="Email"
+          value={newDoctor.email}
+          onChange={handleChange}
+          error={!!errors.email}
+          helperText={errors.email}
+        />
+        <Input
+          name="phone"
+          label="Phone"
+          value={newDoctor.phone}
+          onChange={handleChange}
+          error={!!errors.phone}
+          helperText={errors.phone}
+        />
+        <Input
+          name="specialization"
+          label="Specialization"
+          value={newDoctor.specialization}
+          onChange={handleChange}
+          error={!!errors.specialization}
+          helperText={errors.specialization}
+        />
+        <Input
+          name="experience"
+          label="Experience (years)"
+          value={newDoctor.experience}
+          onChange={handleChange}
+          error={!!errors.experience}
+          helperText={errors.experience}
+        />
+        <Input
+          name="clinic"
+          label="Clinic"
+          value={newDoctor.clinic}
+          onChange={handleChange}
+          error={!!errors.clinic}
+          helperText={errors.clinic}
+        />
+        <Input
+          name="license"
+          label="License"
+          value={newDoctor.license}
+          onChange={handleChange}
+          error={!!errors.license}
+          helperText={errors.license}
+        />
+        <Input
+          name="address"
+          label="Address"
+          value={newDoctor.address}
+          onChange={handleChange}
+          error={!!errors.address}
+          helperText={errors.address}
+        />
 
-        {/* Image Upload */}
         <div>
           <label className="block mb-1 font-medium">Upload Image:</label>
           <input type="file" accept="image/*" onChange={handleImageUpload} />
+          {errors.image && <Typography color="red" className="text-xs mt-1">{errors.image}</Typography>}
         </div>
 
-        {/* Preview Layout Toggle */}
         {newDoctor.image && (
           <div className="flex items-center justify-center gap-2 my-2">
             <button
@@ -110,7 +212,6 @@ function AddDoctor() {
           </div>
         )}
 
-        {/* Avatar Preview */}
         {newDoctor.image && (
           previewGrid ? (
             <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg mx-auto">

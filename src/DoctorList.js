@@ -107,14 +107,14 @@ function DoctorList() {
         {/* Icon Toggle */}
         <div className="flex items-center gap-2">
           <button
-            className={`p-2 rounded ${!gridView ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={`p-2 rounded ${!gridView ? "bg-blue-500 text-white" : "bg-gray-200"}`}
             onClick={() => setGridView(false)}
             title="List View"
           >
             <Bars3Icon className="w-5 h-5" />
           </button>
           <button
-            className={`p-2 rounded ${gridView ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={`p-2 rounded ${gridView ? "bg-blue-500 text-white" : "bg-gray-200"}`}
             onClick={() => setGridView(true)}
             title="Grid View"
           >
@@ -126,26 +126,42 @@ function DoctorList() {
       {doctors.length === 0 ? (
         <Typography>No doctors added yet.</Typography>
       ) : (
-        <div className={gridView ? "grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : "flex flex-col gap-4"}>
+        <div
+          className={
+            gridView
+              ? "grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+              : "flex flex-col gap-4"
+          }
+        >
           {doctors.map((doc, index) => (
-            <Card key={index} className={`p-4 flex ${gridView ? "flex-col items-center" : "flex-row items-center gap-4"}`}>
+            <Card
+              key={index}
+              className={`p-4 flex ${
+                gridView ? "flex-col items-center text-center" : "flex-row items-center gap-4"
+              }`}
+            >
               {doc.image && (
                 <Avatar
                   src={doc.image}
-                  size={gridView ? "xl" : "lg"}
+                  size={gridView ? "lg" : "xl"} // smaller avatar for grid
                   className="border-2 border-blue-500 mb-2 cursor-pointer transform transition-transform duration-200 hover:scale-105 hover:shadow-lg"
                   onClick={() => handleViewConfirm(doc)}
                 />
               )}
 
-              <div className="flex-1">
+              <div className="flex-1 w-full">
                 {editIndex === index ? (
                   <div className="flex flex-col gap-2">
                     <Input name="firstName" value={editDoctor.firstName} onChange={handleChange} label="First Name" />
                     <Input name="lastName" value={editDoctor.lastName} onChange={handleChange} label="Last Name" />
                     <Input name="email" value={editDoctor.email} onChange={handleChange} label="Email" />
                     <Input name="phone" value={editDoctor.phone} onChange={handleChange} label="Phone" />
-                    <Input name="specialization" value={editDoctor.specialization} onChange={handleChange} label="Specialization" />
+                    <Input
+                      name="specialization"
+                      value={editDoctor.specialization}
+                      onChange={handleChange}
+                      label="Specialization"
+                    />
                     <Input name="experience" value={editDoctor.experience} onChange={handleChange} label="Experience" />
                     <Input name="clinic" value={editDoctor.clinic} onChange={handleChange} label="Clinic" />
                     <Input name="license" value={editDoctor.license} onChange={handleChange} label="License" />
@@ -157,48 +173,51 @@ function DoctorList() {
                     </div>
 
                     {editDoctor.image && (
-                      <Avatar src={editDoctor.image} size="xl" className="border-2 border-blue-500 mt-2" />
+                      <Avatar src={editDoctor.image} size="lg" className="border-2 border-blue-500 mt-2" />
                     )}
 
                     <div className="flex gap-2 mt-2 justify-center">
                       <Button color="green" onClick={handleSave}>
                         <PencilIcon className="w-5 h-5 mr-1" /> Save
                       </Button>
-                      <Button color="red" onClick={() => setEditIndex(null)}>Cancel</Button>
+                      <Button color="red" onClick={() => setEditIndex(null)}>
+                        Cancel
+                      </Button>
                     </div>
                   </div>
                 ) : (
-                  <div className={`${gridView ? "text-center" : ""}`}>
-                    <Typography variant="h6">{doc.firstName} {doc.lastName}</Typography>
-                    <Typography>Email: {doc.email}</Typography>
-                    <Typography>Phone: {doc.phone}</Typography>
-                    <Typography>Specialization: {doc.specialization}</Typography>
-                    <Typography>Experience: {doc.experience} years</Typography>
-                    <Typography>Clinic: {doc.clinic}</Typography>
-                    <Typography>License: {doc.license}</Typography>
+                  <div className={`${gridView ? "space-y-1" : ""}`}>
+                    <Typography variant="h6" className="text-sm sm:text-base md:text-base lg:text-base">
+                      {doc.firstName} {doc.lastName}
+                    </Typography>
+                    <Typography className="text-xs sm:text-sm">Email: {doc.email}</Typography>
+                    <Typography className="text-xs sm:text-sm">Phone: {doc.phone}</Typography>
+                    <Typography className="text-xs sm:text-sm">Specialization: {doc.specialization}</Typography>
+                    <Typography className="text-xs sm:text-sm">Experience: {doc.experience} yrs</Typography>
+                    <Typography className="text-xs sm:text-sm">Clinic: {doc.clinic}</Typography>
+                    <Typography className="text-xs sm:text-sm">License: {doc.license}</Typography>
 
-                    {/* Icon CRUD Buttons */}
-                    <div className="flex gap-3 mt-3 justify-center">
+                    <div className="flex gap-2 mt-2 justify-center">
                       <button
                         className="p-2 bg-blue-500 rounded text-white hover:bg-blue-600"
                         onClick={() => handleEditConfirm(index)}
                         title="Edit"
                       >
-                        <PencilIcon className="w-5 h-5" />
+                        <PencilIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
                       <button
                         className="p-2 bg-red-500 rounded text-white hover:bg-red-600"
                         onClick={() => handleDeleteConfirm(index)}
                         title="Delete"
                       >
-                        <TrashIcon className="w-5 h-5" />
+                        <TrashIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
                       <button
                         className="p-2 bg-teal-500 rounded text-white hover:bg-teal-600"
                         onClick={() => handleViewConfirm(doc)}
                         title="View"
                       >
-                        <EyeIcon className="w-5 h-5" />
+                        <EyeIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
                     </div>
                   </div>
@@ -214,29 +233,31 @@ function DoctorList() {
         <Dialog open={Boolean(viewDoctor)} handler={() => setViewDoctor(null)} size="sm">
           <DialogBody className="flex flex-col gap-2 items-center">
             {viewDoctor.image && (
-              <Avatar
-                src={viewDoctor.image}
-                size="xxl"
-                className="border-2 border-blue-500 mb-2"
-              />
+              <Avatar src={viewDoctor.image} size="xl" className="border-2 border-blue-500 mb-2" />
             )}
             <Typography variant="h6">{viewDoctor.firstName} {viewDoctor.lastName}</Typography>
             <Typography>Email: {viewDoctor.email}</Typography>
             <Typography>Phone: {viewDoctor.phone}</Typography>
             <Typography>Specialization: {viewDoctor.specialization}</Typography>
-            <Typography>Experience: {viewDoctor.experience} years</Typography>
+            <Typography>Experience: {viewDoctor.experience} yrs</Typography>
             <Typography>Clinic: {viewDoctor.clinic}</Typography>
             <Typography>License: {viewDoctor.license}</Typography>
             <Typography>Address: {viewDoctor.address}</Typography>
           </DialogBody>
           <DialogFooter>
-            <Button variant="gradient" fullWidth onClick={() => setViewDoctor(null)}>Close</Button>
+            <Button variant="gradient" fullWidth onClick={() => setViewDoctor(null)}>
+              Close
+            </Button>
           </DialogFooter>
         </Dialog>
       )}
 
       {/* Confirmation Dialog */}
-      <Dialog open={confirmAction.open} handler={() => setConfirmAction({ ...confirmAction, open: false })} size="sm">
+      <Dialog
+        open={confirmAction.open}
+        handler={() => setConfirmAction({ ...confirmAction, open: false })}
+        size="sm"
+      >
         <DialogBody className="text-center">
           <Typography variant="h6" className="mb-4">
             {confirmAction.type === "delete" && "Are you sure you want to delete this doctor?"}
@@ -245,8 +266,12 @@ function DoctorList() {
           </Typography>
         </DialogBody>
         <DialogFooter className="flex justify-center gap-4">
-          <Button color="red" onClick={() => setConfirmAction({ ...confirmAction, open: false })}>Cancel</Button>
-          <Button color="green" onClick={executeAction}>Yes</Button>
+          <Button color="red" onClick={() => setConfirmAction({ ...confirmAction, open: false })}>
+            Cancel
+          </Button>
+          <Button color="green" onClick={executeAction}>
+            Yes
+          </Button>
         </DialogFooter>
       </Dialog>
     </div>
