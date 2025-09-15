@@ -139,7 +139,7 @@ function DoctorList() {
         <Typography color="blue-gray">Doctor List</Typography>
       </Breadcrumbs>
 
-      {/* Back Button */}
+      {/* Add Doctor Button */}
       <Button color="blue" className="mb-4" onClick={() => navigate("/AddDoctor")}>
         + ADD DOCTOR
       </Button>
@@ -171,7 +171,7 @@ function DoctorList() {
           <div
             className={
               gridView
-                ? "grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                ? "grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4"
                 : "flex flex-col gap-4"
             }
           >
@@ -191,9 +191,9 @@ function DoctorList() {
                     onClick={() => handleViewConfirm(doc)}
                   />
                 )}
-                <div className="flex-1 w-full">
+                <div className="flex-1 w-full flex flex-col items-start text-left space-y-1">
                   {editIndex === indexOfFirstDoctor + index ? (
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 w-full">
                       <Input name="firstName" value={editDoctor.firstName} onChange={handleChange} label="First Name" />
                       <Input name="lastName" value={editDoctor.lastName} onChange={handleChange} label="Last Name" />
                       <Input name="email" value={editDoctor.email} onChange={handleChange} label="Email" />
@@ -222,14 +222,58 @@ function DoctorList() {
                       </div>
                     </div>
                   ) : (
-                    <div className={`${gridView ? "space-y-1" : ""}`}>
-                      <Typography variant="h6">{doc.firstName} {doc.lastName}</Typography>
-                      <Typography className="text-xs sm:text-sm">Email: {doc.email}</Typography>
-                      <Typography className="text-xs sm:text-sm">Phone: {doc.phone}</Typography>
-                      <Typography className="text-xs sm:text-sm">Specialization: {doc.specialization}</Typography>
-                      <Typography className="text-xs sm:text-sm">Experience: {doc.experience} yrs</Typography>
-                      <Typography className="text-xs sm:text-sm">Clinic: {doc.clinic}</Typography>
-                      <Typography className="text-xs sm:text-sm">License: {doc.license}</Typography>
+                    <>
+                      <Typography variant="h6" className="font-semibold">{doc.firstName} {doc.lastName}</Typography>
+
+                      {doc.phone && (
+                        <Typography className="text-xs sm:text-sm">
+                          <span className="font-medium">Phone: </span>
+                          <a href={`tel:${doc.phone}`} className="text-blue-600 hover:underline">{doc.phone}</a>
+                        </Typography>
+                      )}
+
+                      {doc.email && (
+                        <Typography className="text-xs sm:text-sm">
+                          <span className="font-medium">Email: </span>{doc.email}
+                        </Typography>
+                      )}
+
+                      {doc.specialization && (
+                        <Typography className="text-xs sm:text-sm">
+                          <span className="font-medium">Specialization: </span>{doc.specialization}
+                        </Typography>
+                      )}
+
+                      {doc.experience && (
+                        <Typography className="text-xs sm:text-sm">
+                          <span className="font-medium">Experience: </span>{doc.experience} yrs
+                        </Typography>
+                      )}
+
+                      {doc.clinic && doc.clinic.length > 0 && (
+                        <Typography className="text-xs sm:text-sm break-words">
+                          <span className="font-medium">Clinics: </span>
+                          {doc.clinic.map((c, i) => (
+                            <span key={i}>
+                              <a
+                                href={`https://clinicapp.example.com/${encodeURIComponent(c)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 hover:underline"
+                              >
+                                {c}
+                              </a>
+                              {i < doc.clinic.length - 1 ? ", " : ""}
+                            </span>
+                          ))}
+                        </Typography>
+                      )}
+
+                      {doc.license && (
+                        <Typography className="text-xs sm:text-sm">
+                          <span className="font-medium">License: </span>{doc.license}
+                        </Typography>
+                      )}
 
                       {/* CRUD + Clone Buttons */}
                       <div className="flex gap-2 mt-2 justify-center flex-wrap">
@@ -255,14 +299,14 @@ function DoctorList() {
                           <EyeIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                         <button
-                          className="p-2 bg-yellow-500 rounded text-white hover:bg-yellow-600"
+                          className="p-2 bg-orange-500 rounded text-white hover:bg-orange-600"
                           onClick={() => handleCloneConfirm(indexOfFirstDoctor + index)}
                           title="Clone"
                         >
                           <DocumentDuplicateIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                       </div>
-                    </div>
+                    </>
                   )}
                 </div>
               </Card>
@@ -314,13 +358,31 @@ function DoctorList() {
           <DialogBody className="flex flex-col gap-2 items-center">
             {viewDoctor.image && <Avatar src={viewDoctor.image} size="xl" className="border-2 border-blue-500 mb-2" />}
             <Typography variant="h6">{viewDoctor.firstName} {viewDoctor.lastName}</Typography>
-            <Typography>Email: {viewDoctor.email}</Typography>
-            <Typography>Phone: {viewDoctor.phone}</Typography>
-            <Typography>Specialization: {viewDoctor.specialization}</Typography>
-            <Typography>Experience: {viewDoctor.experience} yrs</Typography>
-            <Typography>Clinic: {viewDoctor.clinic}</Typography>
-            <Typography>License: {viewDoctor.license}</Typography>
-            <Typography>Address: {viewDoctor.address}</Typography>
+            <Typography>
+              <span className="font-medium">Phone: </span>
+              <a href={`tel:${viewDoctor.phone}`} className="text-blue-600 hover:underline">{viewDoctor.phone}</a>
+            </Typography>
+            <Typography><span className="font-medium">Email: </span>{viewDoctor.email}</Typography>
+            <Typography><span className="font-medium">Specialization: </span>{viewDoctor.specialization}</Typography>
+            <Typography><span className="font-medium">Experience: </span>{viewDoctor.experience} yrs</Typography>
+            <Typography>
+              <span className="font-medium">Clinics: </span>
+              {viewDoctor.clinic.map((c, i) => (
+                <span key={i}>
+                  <a
+                    href={`https://clinicapp.example.com/${encodeURIComponent(c)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    {c}
+                  </a>
+                  {i < viewDoctor.clinic.length - 1 ? ", " : ""}
+                </span>
+              ))}
+            </Typography>
+            <Typography><span className="font-medium">License: </span>{viewDoctor.license}</Typography>
+            <Typography><span className="font-medium">Address: </span>{viewDoctor.address}</Typography>
           </DialogBody>
           <DialogFooter>
             <Button variant="gradient" fullWidth onClick={() => setViewDoctor(null)}>
