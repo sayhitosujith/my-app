@@ -1,15 +1,7 @@
 import './App.css';
 import { Avatar } from "@material-tailwind/react";
 import {
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-  Input,
-  Button,
-  Checkbox,
-  Select,
-  Option,
+  Card, CardBody, CardFooter, Typography, Input, Button, Checkbox, Select, Option
 } from "@material-tailwind/react";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -31,6 +23,7 @@ function Addprofile() {
     occupation: '',
     agreed: false,
     image: '',
+    xrayReports: [], // Array to hold multiple reports
   });
 
   const navigate = useNavigate();
@@ -61,6 +54,32 @@ function Addprofile() {
     }
   };
 
+  // Handle multiple x-ray uploads
+  const handleXrayUploads = (e) => {
+    const files = Array.from(e.target.files);
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setForm(prev => ({
+          ...prev,
+          xrayReports: [...prev.xrayReports, { name: file.name, type: file.type, data: reader.result }]
+        }));
+      };
+      reader.readAsDataURL(file);
+    });
+    // Reset file input to allow re-upload same file if needed
+    e.target.value = null;
+  };
+
+  // Remove one x-ray report by index
+  const removeXrayReport = (index) => {
+    setForm(prev => {
+      const newReports = [...prev.xrayReports];
+      newReports.splice(index, 1);
+      return { ...prev, xrayReports: newReports };
+    });
+  };
+
   const handleAdd = () => {
     setError('');
 
@@ -74,7 +93,6 @@ function Addprofile() {
       return;
     }
 
-    // Duplicate phone validation
     const profiles = JSON.parse(localStorage.getItem('allProfiles')) || [];
     const duplicate = profiles.find(profile => profile.phone === form.phone);
     if (duplicate) {
@@ -90,11 +108,10 @@ function Addprofile() {
 
   return (
     <div className="flex flex-row gap-5">
-      {/* Form Card */}
       <div className='w-1/2 h-screen overflow-y-auto flex items-center justify-center'>
         <Card className="w-full max-w-2xl shadow-lg rounded-2xl p-6">
           <CardBody className="flex flex-col gap-6">
-            {/* Avatar + Upload */}
+            {/* Avatar Upload */}
             <div className="flex flex-col items-center gap-3 col-span-2">
               <Avatar
                 src={form.image || "https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png"}
@@ -102,7 +119,7 @@ function Addprofile() {
                 size="xxl"
               />
               <label htmlFor="file_input" className="text-sm font-medium text-gray-900">
-                Upload Image (JPEG, PNG)
+                Upload Profile Image
               </label>
               <input
                 id="file_input"
@@ -113,7 +130,6 @@ function Addprofile() {
               />
             </div>
 
-            {/* Form Fields in 2 Columns */}
             <div className="grid grid-cols-2 gap-6">
               <Input label="Patient ID" size="lg" value={patientId} readOnly className="col-span-2" />
               <Input label="First Name *" size="lg" name="firstName" value={form.firstName} onChange={handleChange} />
@@ -137,6 +153,66 @@ function Addprofile() {
                 <Option>SMS</Option>
               </Select>
               <Input label="Occupation *" size="lg" name="occupation" value={form.occupation} onChange={handleChange} />
+
+              {/* Multiple X-ray Uploads */}
+              <div className="col-span-2">
+                <label className="block text-sm font-medium text-gray-900 mb-1">
+                  Upload X-ray Reports (PDF or Images) - Multiple
+                </label>
+                <input
+                  type="file"
+                  accept="image/*,application/pdf"
+                  multiple
+                  onChange={handleXrayUploads}
+                  className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+                />
+              </div>
+
+              {/* Preview uploaded X-rays */}
+              <div className="col-span-2 flex flex-wrap gap-4 mt-2 max-h-64 overflow-auto">
+                {form.xrayReports.length === 0 && (
+                  <Typography variant="small" color="gray">No X-ray reports uploaded</Typography>
+                )}
+                {form.xrayReports.map((file, idx) => (
+                  <div key={idx} className="border rounded p-2 relative w-32 h-32 flex flex-col items-center justify-center bg-white shadow-md">
+                    {file.type === "application/pdf" ? (
+                      <>
+                        <embed
+                          src={file.data}
+                          type="application/pdf"
+                          width="100%"
+                          height="100%"
+                          className="rounded"
+                        />
+                        <a
+                          href={file.data}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="absolute bottom-1 left-1 text-xs text-blue-600 underline"
+                        >
+                          View PDF
+                        </a>
+                      </>
+                    ) : (
+                      <img
+                        src={file.data}
+                        alt={file.name}
+                        className="max-w-full max-h-full object-contain rounded"
+                      />
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => removeXrayReport(idx)}
+                      className="absolute top-1 right-1 text-red-600 font-bold bg-white rounded-full px-1 hover:text-red-800"
+                      aria-label="Remove X-ray report"
+                    >
+                      ×
+                    </button>
+                    <Typography variant="small" className="mt-1 text-center break-words text-xs">{file.name}</Typography>
+                  </div>
+                ))}
+              </div>
+
               <div className="col-span-2">
                 <Checkbox
                   label={
@@ -155,7 +231,6 @@ function Addprofile() {
             </div>
           </CardBody>
 
-          {/* Buttons */}
           <CardFooter className="pt-4">
             <div className="flex gap-4">
               <Button variant="gradient" color="green" className="flex-1" onClick={handleAdd}>
@@ -172,7 +247,7 @@ function Addprofile() {
         </Card>
       </div>
 
-      {/* Side Image */}
+      {/* Right side Image */}
       <img
         style={{ width: '60%', height: '100vh', objectFit: 'cover' }}
         src="https://user-images.githubusercontent.com/74038190/219923823-bf1ce878-c6b8-4faa-be07-93e6b1006521.gif"

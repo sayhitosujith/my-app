@@ -65,6 +65,44 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
           {item.referredBy && <Badge color="blue" size="sm">{item.referredBy}</Badge>}
           {item.contactPreference && <Badge color="amber" size="sm">{item.contactPreference}</Badge>}
         </div>
+
+        {/* X-ray Reports Preview */}
+        {item.xrayReports && item.xrayReports.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-3">
+            {item.xrayReports.map((file, idx) => (
+              <div key={idx} className="relative w-20 h-20 border rounded overflow-hidden shadow-sm bg-white">
+                {file.type === "application/pdf" ? (
+                  <>
+                    <embed
+                      src={file.data}
+                      type="application/pdf"
+                      width="100%"
+                      height="100%"
+                      className="object-cover"
+                    />
+                    <a
+                      href={file.data}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-xs text-center truncate"
+                      title={file.name}
+                    >
+                      View PDF
+                    </a>
+                  </>
+                ) : (
+                  <img
+                    src={file.data}
+                    alt={`X-ray-${idx}`}
+                    className="w-full h-full object-cover"
+                    title={file.name}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="mt-1">
           <Rating unratedColor="amber" ratedColor="amber" size="sm" />
         </div>
@@ -138,6 +176,25 @@ function Profile() {
     }
   };
 
+  // New: handle multiple X-ray uploads in edit modal
+  const handleXrayChange = (e) => {
+    const files = Array.from(e.target.files);
+    if (files.length) {
+      Promise.all(files.map(file => {
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve({ data: reader.result, type: file.type, name: file.name });
+          reader.readAsDataURL(file);
+        });
+      })).then(newXrays => {
+        setEditProfile(prev => ({
+          ...prev,
+          xrayReports: prev.xrayReports ? [...prev.xrayReports, ...newXrays] : newXrays
+        }));
+      });
+    }
+  };
+
   const filteredProfiles = profiles.filter(profile =>
     profile.phone.includes(searchTerm)
   );
@@ -176,76 +233,152 @@ function Profile() {
           />
           <IoIosNotificationsOutline color="black" size={28} />
           <a href="/Logout"><FaPowerOff color="black" size={18} /></a>
-          <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" size="lg" variant="square" />
+          <Avatar src="https://fellows.ias.ac.in/public/images/stock/avatar.svg?v=105894425" alt="User" size="sm" />
         </div>
       </div>
 
-      <Typography variant="h3" color="Black" className="mb-4">Patient Profiles</Typography>
-
-      <div className={`grid ${listView ? "grid-cols-1 gap-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"}`}>
-        {filteredProfiles.map(item => (
-          <CardItem
-            key={item.patientId}
-            item={item}
-            onDelete={confirmDelete}
-            onEdit={setEditProfile}
-            searchTerm={searchTerm}
-            listView={listView}
-          />
-        ))}
+      {/* Profiles container */}
+      <div
+        className={`grid gap-6 ${listView ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}`}
+      >
+        {filteredProfiles.length > 0 ? (
+          filteredProfiles.map(item => (
+            <CardItem
+              key={item.patientId}
+              item={item}
+              onDelete={confirmDelete}
+              onEdit={setEditProfile}
+              searchTerm={searchTerm}
+              listView={listView}
+            />
+          ))
+        ) : (
+          <p className="col-span-full text-center text-gray-500 mt-10">No profiles found.</p>
+        )}
       </div>
 
-      {/* Delete Dialog */}
-      <Dialog open={!!deleteId} handler={() => setDeleteId(null)}>
-        <DialogHeader>Confirm Delete</DialogHeader>
-        <DialogBody divider>Are you sure you want to delete this profile?</DialogBody>
+      {/* Delete Confirmation Dialog */}
+      <Dialog open={deleteId !== null} handler={() => setDeleteId(null)} size="xs">
+        <DialogHeader>Confirm Deletion</DialogHeader>
+        <DialogBody divider>
+          Are you sure you want to delete this profile?
+        </DialogBody>
         <DialogFooter>
-          <Button variant="text" color="gray" onClick={() => setDeleteId(null)}>Cancel</Button>
-          <Button variant="gradient" color="red" onClick={handleDelete}>Delete</Button>
+          <Button variant="text" color="blue" onClick={() => setDeleteId(null)}>
+            Cancel
+          </Button>
+          <Button variant="gradient" color="red" onClick={handleDelete}>
+            Delete
+          </Button>
         </DialogFooter>
       </Dialog>
 
-      {/* Edit Dialog */}
-      <Dialog open={!!editProfile} handler={() => setEditProfile(null)} size="sm">
+      {/* Edit Profile Dialog */}
+      <Dialog open={!!editProfile} handler={() => setEditProfile(null)} size="md">
         <DialogHeader>Edit Profile</DialogHeader>
-        {editProfile && (
-          <DialogBody divider className="space-y-3">
-            <div className="flex flex-col items-center gap-3">
-              <Avatar src={editProfile.image || "https://fellows.ias.ac.in/public/images/stock/avatar.svg?v=105894425"} alt="Profile" size="xl" variant="circular" className="border-2 border-gray-300"/>
-              <input type="file" accept="image/*" onChange={handleImageChange}/>
+        <DialogBody divider>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input
+              label="First Name"
+              value={editProfile?.firstName || ''}
+              onChange={(e) => setEditProfile({ ...editProfile, firstName: e.target.value })}
+            />
+            <Input
+              label="Last Name"
+              value={editProfile?.lastName || ''}
+              onChange={(e) => setEditProfile({ ...editProfile, lastName: e.target.value })}
+            />
+            <Input
+              label="Email"
+              type="email"
+              value={editProfile?.email || ''}
+              onChange={(e) => setEditProfile({ ...editProfile, email: e.target.value })}
+            />
+            <Input
+              label="Phone"
+              value={editProfile?.phone || ''}
+              onChange={(e) => setEditProfile({ ...editProfile, phone: e.target.value })}
+            />
+            <Input
+              label="Address"
+              value={editProfile?.address || ''}
+              onChange={(e) => setEditProfile({ ...editProfile, address: e.target.value })}
+            />
+
+            {/* Image upload */}
+            <div>
+              <label className="block mb-1 font-medium">Profile Image</label>
+              <input type="file" accept="image/*" onChange={handleImageChange} />
+              {editProfile?.image && (
+                <img src={editProfile.image} alt="Profile Preview" className="mt-2 w-28 h-28 object-cover rounded" />
+              )}
             </div>
-            <Input label="First Name" value={editProfile.firstName} onChange={e => setEditProfile({ ...editProfile, firstName: e.target.value })}/>
-            <Input label="Last Name" value={editProfile.lastName} onChange={e => setEditProfile({ ...editProfile, lastName: e.target.value })}/>
-            <Input label="Email" value={editProfile.email} onChange={e => setEditProfile({ ...editProfile, email: e.target.value })}/>
-            <Input label="Phone" value={editProfile.phone} onChange={e => setEditProfile({ ...editProfile, phone: e.target.value })}/>
-            <Input label="Address" value={editProfile.address} onChange={e => setEditProfile({ ...editProfile, address: e.target.value })}/>
-            <Input label="Aadhar" value={editProfile.aadhar} onChange={e => setEditProfile({ ...editProfile, aadhar: e.target.value })}/>
-            <Input label="Zip Code" value={editProfile.zip} onChange={e => setEditProfile({ ...editProfile, zip: e.target.value })}/>
-          </DialogBody>
-        )}
+
+            {/* Multiple X-ray uploads */}
+            <div className="col-span-full">
+              <label className="block mb-1 font-medium">X-ray Reports (Images/PDFs)</label>
+              <input
+                type="file"
+                accept="image/*,application/pdf"
+                multiple
+                onChange={handleXrayChange}
+              />
+              <div className="mt-2 flex flex-wrap gap-2 max-h-40 overflow-auto border rounded p-2 bg-gray-50">
+                {editProfile?.xrayReports && editProfile.xrayReports.length > 0 ? (
+                  editProfile.xrayReports.map((file, idx) => (
+                    <div key={idx} className="relative w-20 h-20 border rounded overflow-hidden shadow-sm bg-white">
+                      {file.type === "application/pdf" ? (
+                        <>
+                          <embed
+                            src={file.data}
+                            type="application/pdf"
+                            width="100%"
+                            height="100%"
+                            className="object-cover"
+                          />
+                          <a
+                            href={file.data}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-xs text-center truncate"
+                            title={file.name}
+                          >
+                            View PDF
+                          </a>
+                        </>
+                      ) : (
+                        <img
+                          src={file.data}
+                          alt={`X-ray-${idx}`}
+                          className="w-full h-full object-cover"
+                          title={file.name}
+                        />
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-gray-400 text-xs">No X-rays uploaded.</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </DialogBody>
         <DialogFooter>
-          <Button variant="text" color="gray" onClick={() => setEditProfile(null)}>Cancel</Button>
-          <Button variant="gradient" color="green" onClick={handleEditSave}>Save</Button>
+          <Button variant="text" color="blue" onClick={() => setEditProfile(null)}>
+            Cancel
+          </Button>
+          <Button variant="gradient" color="green" onClick={handleEditSave}>
+            Save
+          </Button>
         </DialogFooter>
       </Dialog>
 
-      {/* Toast */}
+      {/* Toast notification */}
       {showToast && (
-        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-slideDown z-50">
+        <div className="fixed bottom-5 right-5 bg-green-500 text-white px-5 py-3 rounded shadow-lg animate-fade-in-out">
           {showToast}
         </div>
       )}
-
-      {/* Animation style */}
-      <style>{`
-        @keyframes slideDown {
-          0% { transform: translateY(-50px); opacity: 0; }
-          100% { transform: translateY(0); opacity: 1; }
-        }
-        .animate-slideDown {
-          animation: slideDown 0.3s ease-out;
-        }
-      `}</style>
     </div>
   );
 }

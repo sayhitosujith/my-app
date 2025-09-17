@@ -1,220 +1,128 @@
 import './App.css';
-import { Button, Input, Textarea, Breadcrumbs,Typography,Select ,Option,Badge,Avatar} from "@material-tailwind/react";
+import {
+  Button,
+  Input,
+  Textarea,
+  Breadcrumbs,
+  Typography,
+  Select,
+  Option,
+  Badge,
+  Avatar,
+} from "@material-tailwind/react";
 import { FaPowerOff } from "react-icons/fa6";
 import { IoIosNotificationsOutline } from "react-icons/io";
 
 function CustomerCare() {
   return (
-    <section className="px-8 py-8 lg:py-16">
-        <Breadcrumbs>
-      <a href="#" className="opacity-60">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-        </svg>
-      </a>
+    <section className="relative px-6 py-8 lg:py-16 bg-gray-50">
+      {/* Breadcrumbs */}
+      <Breadcrumbs>
+        <a href="/Welcome" className="opacity-60">Welcome</a>
+        <a href="#">Customer Care</a>
+      </Breadcrumbs>
 
-      <a href="#" className="opacity-60">
-      <a href="/Welcome">
-      Welcome 
- </a>    
-      </a>
-      <a href="#">CustomerCare</a>
-    </Breadcrumbs>
+      {/* Top-right icons */}
+      <div className="absolute top-6 right-6 flex items-center space-x-4">
+        <a href="#">
+          <IoIosNotificationsOutline className="text-black" size={28} />
+        </a>
+        <a href="/Logout">
+          <FaPowerOff className="text-black" size={20} />
+        </a>
+        <Avatar
+          src="https://docs.material-tailwind.com/img/face-2.jpg"
+          alt="avatar"
+          size="md"
+          variant="circular"
+        />
+        <Select label="My Profile" className="w-40">
+          <Option>
+            <a href="/MyCart" className="flex items-center gap-2">
+              <Badge content="6" color="red">My Cart</Badge>
+            </a>
+          </Option>
+          <Option><a href="/HomePage">About</a></Option>
+          <Option><a href="/ResetPassword">Change Password</a></Option>
+          <Option><a href="/">Logout</a></Option>
+        </Select>
+      </div>
 
-    <div className="absolute top-4 right-4 flex items-center space-x-3">
-  <a href="">
-    <IoIosNotificationsOutline color="black" size={30} />
-  </a>
-  <a href="/Logout">
-    <FaPowerOff color="black" size={20} />
-  </a>
-</div>
-
-
-    <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar"size="xl" div style={{float: 'right'}}></Avatar>
-    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-    <br></br>      
-  <div style={{ float: 'right' }}>
-  <div className="w-74">
-      <Select label="My Profile">
-        
-        <Option>    
-        </Option>
-    <Badge content="6" color="white">
-    <Button>
-    <a href="/MyCart">
-             MyCart 
-               </a> 
-      
-    </Button>
-    </Badge>
-       <Option>
-       <a href="/HomePage">
-             About 
-               </a> 
-       </Option>
-       <Option>
-       <a href="/ResetPassword">
-             Change Password 
-               </a> 
-       </Option>
-        <button><Option> 
-        <a href="/">
-             Logout 
-               </a>    
-          </Option></button>
-      </Select>
-       </div>
-        </div>
-      <div className="container mx-auto text-center">
+      {/* Page Title */}
+      <div className="container mx-auto text-center mt-20">
         <Typography
           variant="h1"
           color="blue-gray"
-          className="mb-4 !text-base lg:!text-2xl"
+          className="mb-2 text-xl lg:text-3xl font-bold"
         >
-         Welcome to Customer Care
+          Welcome to Customer Care
         </Typography>
         <Typography
           variant="h2"
           color="blue-gray"
-          className="mb-4 !text-3xl lg:!text-5xl"
+          className="mb-4 text-2xl lg:text-5xl font-extrabold"
         >
           We&apos;re Here to Help
         </Typography>
-        <Typography className="mb-10 font-normal !text-lg lg:mb-20 mx-auto max-w-3xl !text-gray-500">
+        <Typography className="mb-12 font-normal text-gray-600 max-w-3xl mx-auto">
           Whether it&apos;s a question about our services, a request for
           technical assistance, or suggestions for improvement, our team is
           eager to hear from you.
         </Typography>
-        <div className="grid grid-cols-1 gap-x-12 gap-y-6 lg:grid-cols-2 items-start">
+
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Left - Image */}
           <img
             src="https://thumbs.dreamstime.com/b/closeup-beautiful-business-customer-service-woman-smiling-30207893.jpg"
-            alt="map"
-            className="w-full h-full lg:max-h-[510px]"
+            alt="customer-care"
+            className="w-full h-auto rounded-lg shadow-md lg:max-h-[600px] object-cover"
           />
-          <form
-            action="#"
-            className="flex flex-col gap-4 lg:max-w-sm"
-          >
-            <Typography
-              variant="small"
-              className="text-left !font-semibold !text-gray-600"
-            >
+
+          {/* Right - Form */}
+          <form className="flex flex-col gap-6 text-left bg-white p-8 rounded-xl shadow-lg min-h-[600px]">
+            <Typography variant="small" className="!font-semibold text-gray-700">
               Select Options for Business Engagement
             </Typography>
+
             <div className="flex gap-4">
-              <Button variant="outlined" className="max-w-fit">
-                General inquiry
-              </Button>
-              <Button variant="outlined" className="max-w-fit">
-                Product Support
-              </Button>
+              <Button variant="outlined" className="flex-1">General Inquiry</Button>
+              <Button variant="outlined" className="flex-1">Product Support</Button>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+
+            {/* Name Fields */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <Typography
-                  variant="small"
-                  className="mb-2 text-left font-medium !text-gray-900"
-                >
-                  First Name
-                </Typography>
-                <Input
-                  color="gray"
-                  size="lg"
-                  placeholder="First Name"
-                  name="first-name"
-                  className="focus:border-t-gray-900"
-                  containerProps={{
-                    className: "min-w-full",
-                  }}
-                  labelProps={{
-                    className: "hidden",
-                  }}
-                />
+                <Typography variant="small" className="mb-1 font-medium text-gray-900">First Name</Typography>
+                <Input color="gray" size="lg" placeholder="First Name" />
               </div>
               <div>
-                <Typography
-                  variant="small"
-                  className="mb-2 text-left font-medium !text-gray-900"
-                >
-                  Last Name
-                </Typography>
-                <Input
-                  color="gray"
-                  size="lg"
-                  placeholder="Last Name"
-                  name="last-name"
-                  className="focus:border-t-gray-900"
-                  containerProps={{
-                    className: "!min-w-full",
-                  }}
-                  labelProps={{
-                    className: "hidden",
-                  }}
-                />
+                <Typography variant="small" className="mb-1 font-medium text-gray-900">Last Name</Typography>
+                <Input color="gray" size="lg" placeholder="Last Name" />
               </div>
             </div>
+
+            {/* Email */}
             <div>
-              <Typography
-                variant="small"
-                className="mb-2 text-left font-medium !text-gray-900"
-              >
-                Your Email
-              </Typography>
-              <Input
-                color="gray"
-                size="lg"
-                placeholder="name@email.com"
-                name="email"
-                className="focus:border-t-gray-900"
-                containerProps={{
-                  className: "!min-w-full",
-                }}
-                labelProps={{
-                  className: "hidden",
-                }}
-              />
+              <Typography variant="small" className="mb-1 font-medium text-gray-900">Your Email</Typography>
+              <Input color="gray" size="lg" placeholder="name@email.com" />
             </div>
+
+            {/* Message */}
             <div>
-              <Typography
-                variant="small"
-                className="mb-2 text-left font-medium !text-gray-900"
-              >
-                Your Message
-              </Typography>
-              <Textarea
-                rows={6}
-                color="gray"
-                placeholder="Message"
-                name="message"
-                className="focus:border-t-gray-900"
-                containerProps={{
-                  className: "!min-w-full",
-                }}
-                labelProps={{
-                  className: "hidden",
-                }}
-              />
+              <Typography variant="small" className="mb-1 font-medium text-gray-900">Your Message</Typography>
+              <Textarea rows={7} color="gray" placeholder="Write your message..." />
             </div>
-            <Button className="w-full" color="gray">
-              Send message
+
+            {/* Submit */}
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+              Send Message
             </Button>
-            
           </form>
         </div>
       </div>
     </section>
-
   );
 }
 
-
 export default CustomerCare;
-
-
-
