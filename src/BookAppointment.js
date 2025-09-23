@@ -31,7 +31,6 @@ const BookAppointment = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [appointmentDetails, setAppointmentDetails] = useState(null);
   const [formData, setFormData] = useState(initialFormData);
 
   const navigate = useNavigate();
@@ -96,12 +95,20 @@ const BookAppointment = () => {
       alert("⚠️ Please select a date and time!");
       return;
     }
-    setAppointmentDetails({ ...formData, date: selectedDate.toDateString() });
 
-    // ✅ Reset form safely
+    const newAppointment = { ...formData, date: selectedDate.toDateString() };
+
+    // ✅ Save to localStorage
+    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    storedAppointments.push(newAppointment);
+    localStorage.setItem("appointments", JSON.stringify(storedAppointments));
+
+    // ✅ Reset form
     setFormData(initialFormData);
     setSelectedDate(null);
+
     alert("✅ Appointment booked successfully!");
+    navigate("/AppointmentHistory"); // Redirect after booking
   };
 
   const handleCancel = () => navigate("/Profile");
@@ -136,8 +143,7 @@ const BookAppointment = () => {
     return cells;
   };
 
-return (
-
+  return (
     <div className="appointment-card container">
       <h1 className="book-appointment-header">Book Appointment</h1>
       <form onSubmit={handleSubmit} className="appointment-form grid">
@@ -262,26 +268,18 @@ return (
         <div className="button-group">
           <button type="submit" className="submit-btn">Book Appointment</button>
           <button type="button" className="cancel-btn" onClick={handleCancel}>Cancel</button>
- <div className="ml-auto">
-    <button
-      type="button"
-      className="view-btn"
-      onClick={() => navigate("/AppointmentHistory")}
-    >
-      View Appointment History
-    </button>
-  </div>
+          <div className="ml-auto">
+            <button
+              type="button"
+              className="view-btn"
+              onClick={() => navigate("/AppointmentHistory")}
+            >
+              View Appointment History
+            </button>
+          </div>
         </div>
 
       </form>
-
-      {
-      appointmentDetails && (
-        <div className="appointment-details card-section">
-          <h2>📌 Appointment Details</h2>
-          <pre>{JSON.stringify(appointmentDetails, null, 2)}</pre>
-        </div>
-      )}
     </div>
   );
 };

@@ -87,7 +87,7 @@ function App() {
         {/* Body */}
         <CardBody className="flex flex-col gap-1">
           <Input
-            label="Email"
+            label=""
             size="lg"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -97,7 +97,7 @@ function App() {
 
           <Input
             type="password"
-            label="Password"
+            label=""
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             error={!!passwordError}
@@ -176,10 +176,11 @@ function App() {
             <span className="relative z-10">Login</span>
           </Button>
 
+          {/* Cancel Button */}
           <Button
             color="white"
             className="relative overflow-hidden text-base font-semibold text-white border-2 border-[#28a745] px-12 py-2 rounded bg-[#28a745] hover:bg-[#218838] transition"
-            onClick={() => (window.location.href = "/Logout")}
+            onClick={() => (window.location.href = "/my-app")}
           >
             <span className="absolute top-0 right-0 w-0 h-0 border-t-[28px] border-l-[28px] border-t-white border-l-transparent"></span>
             <span className="relative z-10">Cancel</span>

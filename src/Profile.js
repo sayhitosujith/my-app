@@ -7,6 +7,8 @@ import {
 import { TrashIcon, PencilIcon } from "@heroicons/react/24/solid";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { FaPowerOff } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa";
+import { XMarkIcon } from "@heroicons/react/24/solid"; // Import the X icon (optional)
 
 // CardItem component
 const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
@@ -123,6 +125,16 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
         <Button color="black" className="hover:scale-105 transition-transform text-xs px-3">
           <a href="/BookAppointment">Book Appointment</a>
         </Button>
+
+        <Button
+  size="sm"
+  variant="outlined"
+  color="green"
+  className="flex items-center gap-h2"
+  onClick={() => window.open(`https://wa.me/${item.phone.replace(/\D/g, '')}`, '_blank')}
+>
+  <FaWhatsapp size={16} />
+</Button>
       </CardFooter>
     </Card>
   );
@@ -211,13 +223,24 @@ function Profile() {
           <Button color="green" className="whitespace-nowrap">
             <a href="/Addprofile">+ ADD PROFILE</a>
           </Button>
-          <div className="w-44">
-            <Input
-              label="Search by Phone"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
+          
+      <div className="relative w-44">
+  <Input
+    label="Search by Phone"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="pr-10"
+  />
+  {searchTerm && (
+    <button
+      onClick={() => setSearchTerm('')}
+      className="absolute right-2 top-2/4 transform -translate-y-1/2 text-gray-500 hover:text-black"
+      aria-label="Clear search"
+    >
+      <XMarkIcon className="h-5 w-5" />
+    </button>
+  )}
+</div>
         </div>
 
         {/* Right side: Appointment History, Switch, notifications, logout, avatar */}
