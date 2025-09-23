@@ -26,8 +26,9 @@ const AppointmentHistory = () => {
   useEffect(() => {
     const storedAppointments =
       JSON.parse(localStorage.getItem("appointments")) || [];
-    const updatedAppointments = storedAppointments.map((apt) => ({
+    const updatedAppointments = storedAppointments.map((apt, index) => ({
       ...apt,
+      appointmentID: apt.appointmentID || `APT-${index + 1}`,
       consultationCharges: apt.consultationCharges || 300,
     }));
     setAppointments(updatedAppointments);
@@ -361,9 +362,7 @@ const AppointmentHistory = () => {
                     {new Date(apt.date).toLocaleDateString()}
                   </td>
                   <td>{apt.time}</td>
-                  <td>{`${apt.firstName} ${apt.middleName || ""} ${
-                    apt.lastName
-                  }`}</td>
+                  <td>{`${apt.firstName} ${apt.middleName || ""} ${apt.lastName}`}</td>
                   <td>{apt.department}</td>
                   <td>{apt.doctor}</td>
                   <td>{apt.appointmentType}</td>
@@ -407,7 +406,7 @@ const AppointmentHistory = () => {
                     </button>
                     <button
                       className="icon-btn"
-                      style={{ backgroundColor: "#17A2B8" }}
+                      style={{ backgroundColor: "#aae1b0ff" }}
                       onClick={() => handleEdit(apt)}
                       title="Edit"
                     >
@@ -460,14 +459,8 @@ const AppointmentHistory = () => {
 
       {/* Selected Appointment Modal */}
       {selectedAppointment && (
-        <div
-          className="modal-overlay"
-          onClick={() => setSelectedAppointment(null)}
-        >
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <div className="modal-overlay" onClick={() => setSelectedAppointment(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h2>📌 Appointment Details</h2>
             <pre>
               {JSON.stringify(
@@ -482,10 +475,7 @@ const AppointmentHistory = () => {
               )}
             </pre>
             <div className="button-group">
-              <button
-                className="cancel-btn"
-                onClick={() => setSelectedAppointment(null)}
-              >
+              <button className="cancel-btn" onClick={() => setSelectedAppointment(null)}>
                 Close
               </button>
               <button
@@ -494,10 +484,7 @@ const AppointmentHistory = () => {
               >
                 <FaPrint /> Print
               </button>
-              <button
-                className="submit-btn"
-                onClick={() => handleShare(selectedAppointment)}
-              >
+              <button className="submit-btn" onClick={() => handleShare(selectedAppointment)}>
                 <FaShareAlt /> Share
               </button>
             </div>
@@ -507,35 +494,12 @@ const AppointmentHistory = () => {
 
       {/* Print Preview Modal */}
       {showPrintPreview && (
-        <div
-          className="modal-overlay"
-          onClick={() => setShowPrintPreview(false)}
-        >
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-            style={{ maxHeight: "80vh", overflowY: "auto" }}
-          >
-            <div
-              dangerouslySetInnerHTML={{
-                __html: generatePrintContent(appointmentsToPrint),
-              }}
-            />
-            <div
-              className="button-group"
-              style={{
-                marginTop: "15px",
-                gap: "10px",
-                display: "flex",
-                justifyContent: "flex-end",
-              }}
-            >
-              <button className="submit-btn" onClick={handlePrint}>
-                <FaPrint /> Print
-              </button>
-              <button className="cancel-btn" onClick={() => setShowPrintPreview(false)}>
-                Close
-              </button>
+        <div className="modal-overlay" onClick={() => setShowPrintPreview(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxHeight: "80vh", overflowY: "auto" }}>
+            <div dangerouslySetInnerHTML={{ __html: generatePrintContent(appointmentsToPrint) }} />
+            <div className="button-group" style={{ marginTop: "10px" }}>
+              <button className="submit-btn" onClick={handlePrint}>🖨 Print</button>
+              <button className="cancel-btn" onClick={() => setShowPrintPreview(false)}>Close</button>
             </div>
           </div>
         </div>
