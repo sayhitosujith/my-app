@@ -1,40 +1,28 @@
 // server.js
-const express = require('express');
-const { Pool } = require('pg');
-const cors = require('cors');
-
+const express = require("express");
+const fs = require("fs");
 const app = express();
-app.use(cors());
+const PORT = 4000;
+const FILE = "./appointments.json";
+
 app.use(express.json());
 
-const pool = new Pool({
-  connectionString: 'postgresql://neondb_owner:npg_V5LZpk0YIbrM@ep-quiet-cell-a85uzwl7-pooler.eastus2.azure.neon.tech/neondb?sslmode=require&channel_binding=require',
-  ssl: { rejectUnauthorized: false }
+// Read appointments
+app.get("/appointments", (req, res) => {
+  fs.readFile(FILE, "utf8", (err, data) => {
+    if (err) return res.status(500).send("Failed to load appointments");
+    res.json(JSON.parse(data || "[]"));
+  });
 });
 
-app.get('/users', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM Users');
-    res.json(result.rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Database query failed' });
-  }
+// Save appointment
+app.post("/appointments", (req, res) => {
+  const newApt = req.body;
+  fs.readFile(FILE, "utf8", (err, data) => {
+    const appointments = JSON.parse(data || "[]");
+    appointments.push(newApt);
+    fs.writeFile(FILE, JSON.stringify(appointments, null, 2), () => {
+      res.status(201).send("Saved");
+    });
+  });
 });
-
-app.post('/register', async (req, res) => {
-  try {
-    const { firstName, lastName, email, phoneNumber, password, zipCode } = req.body;
-    await pool.query(
-      `INSERT INTO Users (firstName, lastName, email, phoneNumber, password, zipCode)
-       VALUES ($1, $2, $3, $4, $5, $6)`,
-      [firstName, lastName, email, phoneNumber, password, zipCode]
-    );
-    res.json({ message: 'User registered successfully' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Insert failed' });
-  }
-});
-
-app.listen(5000, () => console.log('Server running on http://localhost:5000'));

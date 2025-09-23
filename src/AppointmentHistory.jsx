@@ -26,9 +26,12 @@ const AppointmentHistory = () => {
   useEffect(() => {
     const storedAppointments =
       JSON.parse(localStorage.getItem("appointments")) || [];
-    const updatedAppointments = storedAppointments.map((apt, index) => ({
+
+    // ✅ Normalize appointmentID
+    const updatedAppointments = storedAppointments.map((apt) => ({
       ...apt,
-      appointmentID: apt.appointmentID || `APT-${index + 1}`,
+      appointmentID:
+        apt.appointmentID || apt.appointmentId || `APT-${Date.now()}`,
       consultationCharges: apt.consultationCharges || 300,
     }));
     setAppointments(updatedAppointments);
@@ -71,7 +74,15 @@ const AppointmentHistory = () => {
           h2 { color: #007BFF; text-align:center; margin:15px 0; }
           section { margin-bottom:25px; border-bottom:1px solid #ccc; padding-bottom:15px; }
           h3 { margin-bottom:10px; color:#007BFF; font-size:1.1rem; }
-          .details-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; margin-bottom:15px; }
+          .details-grid { 
+            display:grid; 
+            grid-template-columns:1fr 1fr; 
+            gap:8px 20px; 
+            margin-bottom:15px; 
+            background-color:#f0f8ff; /* ✅ Light blue background */
+            padding:10px; 
+            border-radius:5px;
+          }
           p { margin:5px 0; font-size:0.95rem; }
           strong { color:#333; }
           footer { text-align:center; border-top:2px solid #007BFF; margin-top:30px; padding-top:10px; font-size:0.85rem; color:#555; background:#fff; }
@@ -362,7 +373,9 @@ const AppointmentHistory = () => {
                     {new Date(apt.date).toLocaleDateString()}
                   </td>
                   <td>{apt.time}</td>
-                  <td>{`${apt.firstName} ${apt.middleName || ""} ${apt.lastName}`}</td>
+                  <td>{`${apt.firstName} ${apt.middleName || ""} ${
+                    apt.lastName
+                  }`}</td>
                   <td>{apt.department}</td>
                   <td>{apt.doctor}</td>
                   <td>{apt.appointmentType}</td>
@@ -406,7 +419,7 @@ const AppointmentHistory = () => {
                     </button>
                     <button
                       className="icon-btn"
-                      style={{ backgroundColor: "#aae1b0ff" }}
+                      style={{ backgroundColor: "#17A2B8" }}
                       onClick={() => handleEdit(apt)}
                       title="Edit"
                     >
@@ -459,23 +472,37 @@ const AppointmentHistory = () => {
 
       {/* Selected Appointment Modal */}
       {selectedAppointment && (
-        <div className="modal-overlay" onClick={() => setSelectedAppointment(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="modal-overlay"
+          onClick={() => setSelectedAppointment(null)}
+        >
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h2>📌 Appointment Details</h2>
-            <pre>
-              {JSON.stringify(
-                {
-                  ...selectedAppointment,
-                  consultationCharges: formatCurrency(
-                    selectedAppointment.consultationCharges
-                  ),
-                },
-                null,
-                2
-              )}
-            </pre>
+            <div
+              className="details-grid"
+              style={{ backgroundColor: "#f0f8ff", padding: "10px", borderRadius: "5px" }}
+            >
+              <pre>
+                {JSON.stringify(
+                  {
+                    ...selectedAppointment,
+                    consultationCharges: formatCurrency(
+                      selectedAppointment.consultationCharges
+                    ),
+                  },
+                  null,
+                  2
+                )}
+              </pre>
+            </div>
             <div className="button-group">
-              <button className="cancel-btn" onClick={() => setSelectedAppointment(null)}>
+              <button
+                className="cancel-btn"
+                onClick={() => setSelectedAppointment(null)}
+              >
                 Close
               </button>
               <button
@@ -484,7 +511,10 @@ const AppointmentHistory = () => {
               >
                 <FaPrint /> Print
               </button>
-              <button className="submit-btn" onClick={() => handleShare(selectedAppointment)}>
+              <button
+                className="submit-btn"
+                onClick={() => handleShare(selectedAppointment)}
+              >
                 <FaShareAlt /> Share
               </button>
             </div>
@@ -494,12 +524,24 @@ const AppointmentHistory = () => {
 
       {/* Print Preview Modal */}
       {showPrintPreview && (
-        <div className="modal-overlay" onClick={() => setShowPrintPreview(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxHeight: "80vh", overflowY: "auto" }}>
-            <div dangerouslySetInnerHTML={{ __html: generatePrintContent(appointmentsToPrint) }} />
+        <div className="modal-overlay">
+          <div className="modal-content large">
+            <h2>🖨 Print Preview</h2>
+            <iframe
+              title="Print Preview"
+              style={{ width: "100%", height: "500px", border: "1px solid #ccc" }}
+              srcDoc={generatePrintContent(appointmentsToPrint)}
+            />
             <div className="button-group" style={{ marginTop: "10px" }}>
-              <button className="submit-btn" onClick={handlePrint}>🖨 Print</button>
-              <button className="cancel-btn" onClick={() => setShowPrintPreview(false)}>Close</button>
+              <button className="submit-btn" onClick={handlePrint}>
+                🖨 Print
+              </button>
+              <button
+                className="cancel-btn"
+                onClick={() => setShowPrintPreview(false)}
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
