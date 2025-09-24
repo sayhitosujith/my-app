@@ -86,7 +86,7 @@ function AddDoctor() {
       <Breadcrumbs className="mb-4">
         <Typography
           as="a"
-          href="/"
+          href="/Welcome"
           color="blue-gray"
           className="cursor-pointer hover:underline"
           onClick={() => navigate("/")}
