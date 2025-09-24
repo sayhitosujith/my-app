@@ -38,6 +38,10 @@ function DoctorList() {
     doctor: null,
   });
 
+  // ✅ Multi-select state
+  const [selectedDoctors, setSelectedDoctors] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
+
   useEffect(() => {
     const storedDoctors = JSON.parse(localStorage.getItem("doctors")) || [];
     setDoctors(storedDoctors);
@@ -105,6 +109,32 @@ function DoctorList() {
     setEditDoctor({});
   };
 
+  // ✅ Multi-select functions
+  const toggleDoctorSelect = (index) => {
+    if (selectedDoctors.includes(index)) {
+      setSelectedDoctors(selectedDoctors.filter((i) => i !== index));
+    } else {
+      setSelectedDoctors([...selectedDoctors, index]);
+    }
+  };
+
+  const toggleSelectAll = () => {
+    if (selectAll) {
+      setSelectedDoctors([]);
+    } else {
+      const allIndices = currentDoctors.map((_, i) => indexOfFirstDoctor + i);
+      setSelectedDoctors(allIndices);
+    }
+    setSelectAll(!selectAll);
+  };
+
+  const deleteSelectedDoctors = () => {
+    const updated = doctors.filter((_, i) => !selectedDoctors.includes(i));
+    saveDoctors(updated);
+    setSelectedDoctors([]);
+    setSelectAll(false);
+  };
+
   // Pagination
   const indexOfLastDoctor = currentPage * doctorsPerPage;
   const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
@@ -120,7 +150,7 @@ function DoctorList() {
       <Breadcrumbs className="mb-4">
         <Typography
           as="a"
-          href="/"
+          href="/Welcome"
           color="blue-gray"
           className="cursor-pointer hover:underline"
           onClick={() => navigate("/")}
@@ -139,14 +169,26 @@ function DoctorList() {
         <Typography color="blue-gray">Doctor List</Typography>
       </Breadcrumbs>
 
-      {/* Add Doctor Button */}
-      <Button color="blue" className="mb-4" onClick={() => navigate("/AddDoctor")}>
-        + ADD DOCTOR
-      </Button>
+      {/* Add Doctor + Multi-delete */}
+      <div className="flex justify-between items-center mb-4">
+        <Button color="blue" onClick={() => navigate("/AddDoctor")}>
+          + ADD DOCTOR
+        </Button>
+
+        {selectedDoctors.length > 0 && (
+          <Button color="red" onClick={deleteSelectedDoctors}>
+            🗑 Delete Selected ({selectedDoctors.length})
+          </Button>
+        )}
+      </div>
 
       <div className="flex items-center justify-between mb-4">
         <Typography variant="h4">Doctors List</Typography>
         <div className="flex items-center gap-2">
+          <label className="flex items-center gap-1 text-sm cursor-pointer">
+            <input type="checkbox" checked={selectAll} onChange={toggleSelectAll} />
+            Select All
+          </label>
           <button
             className={`p-2 rounded ${!gridView ? "bg-blue-500 text-white" : "bg-gray-200"}`}
             onClick={() => setGridView(false)}
@@ -175,142 +217,60 @@ function DoctorList() {
                 : "flex flex-col gap-4"
             }
           >
-            {currentDoctors.map((doc, index) => (
-              <Card
-                key={indexOfFirstDoctor + index}
-                ref={(el) => (cardRefs.current[index] = el)}
-                className={`p-4 flex ${
-                  gridView ? "flex-col items-center text-center" : "flex-row items-center gap-4"
-                }`}
-              >
-                {doc.image && (
-                  <Avatar
-                    src={doc.image}
-                    size={gridView ? "lg" : "xl"}
-                    className="border-2 border-blue-500 mb-2 cursor-pointer transform transition-transform duration-200 hover:scale-105 hover:shadow-lg"
-                    onClick={() => handleViewConfirm(doc)}
+            {currentDoctors.map((doc, index) => {
+              const realIndex = indexOfFirstDoctor + index;
+              return (
+                <Card
+                  key={realIndex}
+                  ref={(el) => (cardRefs.current[index] = el)}
+                  className={`p-4 flex relative border ${
+                    selectedDoctors.includes(realIndex) ? "border-red-500 bg-red-50" : ""
+                  } ${gridView ? "flex-col items-center text-center" : "flex-row items-center gap-4"}`}
+                >
+                  {/* Checkbox for multi-select */}
+                  <input
+                    type="checkbox"
+                    className="absolute top-2 left-2"
+                    checked={selectedDoctors.includes(realIndex)}
+                    onChange={() => toggleDoctorSelect(realIndex)}
                   />
-                )}
-                <div className="flex-1 w-full flex flex-col items-start text-left space-y-1">
-                  {editIndex === indexOfFirstDoctor + index ? (
-                    <div className="flex flex-col gap-2 w-full">
-                      <Input name="firstName" value={editDoctor.firstName} onChange={handleChange} label="First Name" />
-                      <Input name="lastName" value={editDoctor.lastName} onChange={handleChange} label="Last Name" />
-                      <Input name="email" value={editDoctor.email} onChange={handleChange} label="Email" />
-                      <Input name="phone" value={editDoctor.phone} onChange={handleChange} label="Phone" />
-                      <Input name="specialization" value={editDoctor.specialization} onChange={handleChange} label="Specialization" />
-                      <Input name="experience" value={editDoctor.experience} onChange={handleChange} label="Experience" />
-                      <Input name="clinic" value={editDoctor.clinic} onChange={handleChange} label="Clinic" />
-                      <Input name="license" value={editDoctor.license} onChange={handleChange} label="License" />
 
-                      <div>
-                        <label className="block mb-1">Update Image:</label>
-                        <input type="file" accept="image/*" onChange={handleEditImage} />
-                      </div>
-
-                      {editDoctor.image && (
-                        <Avatar src={editDoctor.image} size="lg" className="border-2 border-blue-500 mt-2" />
-                      )}
-
-                      <div className="flex gap-2 mt-2 justify-center">
-                        <Button color="green" onClick={handleSave}>
-                          <PencilIcon className="w-5 h-5 mr-1" /> Save
-                        </Button>
-                        <Button color="red" onClick={() => setEditIndex(null)}>
-                          Cancel
-                        </Button>
-                      </div>
-                    </div>
-                  ) : (
-                    <>
-                      <Typography variant="h6" className="font-semibold">{doc.firstName} {doc.lastName}</Typography>
-
-                      {doc.phone && (
-                        <Typography className="text-xs sm:text-sm">
-                          <span className="font-medium">Phone: </span>
-                          <a href={`tel:${doc.phone}`} className="text-blue-600 hover:underline">{doc.phone}</a>
-                        </Typography>
-                      )}
-
-                      {doc.email && (
-                        <Typography className="text-xs sm:text-sm">
-                          <span className="font-medium">Email: </span>{doc.email}
-                        </Typography>
-                      )}
-
-                      {doc.specialization && (
-                        <Typography className="text-xs sm:text-sm">
-                          <span className="font-medium">Specialization: </span>{doc.specialization}
-                        </Typography>
-                      )}
-
-                      {doc.experience && (
-                        <Typography className="text-xs sm:text-sm">
-                          <span className="font-medium">Experience: </span>{doc.experience} yrs
-                        </Typography>
-                      )}
-
-                      {doc.clinic && doc.clinic.length > 0 && (
-                        <Typography className="text-xs sm:text-sm break-words">
-                          <span className="font-medium">Clinics: </span>
-                          {doc.clinic.map((c, i) => (
-                            <span key={i}>
-                              <a
-                                href={`https://clinicapp.example.com/${encodeURIComponent(c)}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline"
-                              >
-                                {c}
-                              </a>
-                              {i < doc.clinic.length - 1 ? ", " : ""}
-                            </span>
-                          ))}
-                        </Typography>
-                      )}
-
-                      {doc.license && (
-                        <Typography className="text-xs sm:text-sm">
-                          <span className="font-medium">License: </span>{doc.license}
-                        </Typography>
-                      )}
-
-                      {/* CRUD + Clone Buttons */}
-                      <div className="flex gap-2 mt-2 justify-center flex-wrap">
-                        <button
-                          className="p-2 bg-blue-500 rounded text-white hover:bg-blue-600"
-                          onClick={() => handleEditConfirm(indexOfFirstDoctor + index)}
-                          title="Edit"
-                        >
-                          <PencilIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </button>
-                        <button
-                          className="p-2 bg-red-500 rounded text-white hover:bg-red-600"
-                          onClick={() => handleDeleteConfirm(indexOfFirstDoctor + index)}
-                          title="Delete"
-                        >
-                          <TrashIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </button>
-                        <button
-                          className="p-2 bg-teal-500 rounded text-white hover:bg-teal-600"
-                          onClick={() => handleViewConfirm(doc)}
-                          title="View"
-                        >
-                          <EyeIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </button>
-                        <button
-                          className="p-2 bg-orange-500 rounded text-white hover:bg-orange-600"
-                          onClick={() => handleCloneConfirm(indexOfFirstDoctor + index)}
-                          title="Clone"
-                        >
-                          <DocumentDuplicateIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </button>
-                      </div>
-                    </>
+                  {doc.image && (
+                    <Avatar
+                      src={doc.image}
+                      size={gridView ? "lg" : "xl"}
+                      className="border-2 border-blue-500 mb-2 cursor-pointer transform transition-transform duration-200 hover:scale-105 hover:shadow-lg"
+                      onClick={() => handleViewConfirm(doc)}
+                    />
                   )}
-                </div>
-              </Card>
-            ))}
+                  <div className="flex-1 w-full flex flex-col items-start text-left space-y-1">
+                    <Typography variant="h6" className="font-semibold">
+                      {doc.firstName} {doc.lastName}
+                    </Typography>
+                    {doc.phone && (
+                      <Typography className="text-xs sm:text-sm">
+                        <span className="font-medium">Phone: </span>
+                        <a href={`tel:${doc.phone}`} className="text-blue-600 hover:underline">
+                          {doc.phone}
+                        </a>
+                      </Typography>
+                    )}
+                    {doc.email && (
+                      <Typography className="text-xs sm:text-sm">
+                        <span className="font-medium">Email: </span>
+                        {doc.email}
+                      </Typography>
+                    )}
+                    {doc.specialization && (
+                      <Typography className="text-xs sm:text-sm">
+                        <span className="font-medium">Specialization: </span>
+                        {doc.specialization}
+                      </Typography>
+                    )}
+                  </div>
+                </Card>
+              );
+            })}
           </div>
 
           {/* Pagination */}
@@ -326,70 +286,6 @@ function DoctorList() {
             </Button>
           </div>
         </>
-      )}
-
-      {/* Confirmation Dialog */}
-      <Dialog
-        open={confirmAction.open}
-        handler={() => setConfirmAction({ ...confirmAction, open: false })}
-        size="sm"
-      >
-        <DialogBody className="text-center">
-          <Typography variant="h6" className="mb-4">
-            {confirmAction.type === "delete" && "Are you sure you want to delete this doctor?"}
-            {confirmAction.type === "edit" && "Do you want to edit this doctor?"}
-            {confirmAction.type === "view" && "Do you want to view this doctor?"}
-            {confirmAction.type === "clone" && "Do you want to clone this doctor?"}
-          </Typography>
-        </DialogBody>
-        <DialogFooter className="flex justify-center gap-4">
-          <Button color="red" onClick={() => setConfirmAction({ ...confirmAction, open: false })}>
-            Cancel
-          </Button>
-          <Button color="green" onClick={executeAction}>
-            Yes
-          </Button>
-        </DialogFooter>
-      </Dialog>
-
-      {/* View Doctor Modal */}
-      {viewDoctor && (
-        <Dialog open={Boolean(viewDoctor)} handler={() => setViewDoctor(null)} size="sm">
-          <DialogBody className="flex flex-col gap-2 items-center">
-            {viewDoctor.image && <Avatar src={viewDoctor.image} size="xl" className="border-2 border-blue-500 mb-2" />}
-            <Typography variant="h6">{viewDoctor.firstName} {viewDoctor.lastName}</Typography>
-            <Typography>
-              <span className="font-medium">Phone: </span>
-              <a href={`tel:${viewDoctor.phone}`} className="text-blue-600 hover:underline">{viewDoctor.phone}</a>
-            </Typography>
-            <Typography><span className="font-medium">Email: </span>{viewDoctor.email}</Typography>
-            <Typography><span className="font-medium">Specialization: </span>{viewDoctor.specialization}</Typography>
-            <Typography><span className="font-medium">Experience: </span>{viewDoctor.experience} yrs</Typography>
-            <Typography>
-              <span className="font-medium">Clinics: </span>
-              {viewDoctor.clinic.map((c, i) => (
-                <span key={i}>
-                  <a
-                    href={`https://clinicapp.example.com/${encodeURIComponent(c)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
-                  >
-                    {c}
-                  </a>
-                  {i < viewDoctor.clinic.length - 1 ? ", " : ""}
-                </span>
-              ))}
-            </Typography>
-            <Typography><span className="font-medium">License: </span>{viewDoctor.license}</Typography>
-            <Typography><span className="font-medium">Address: </span>{viewDoctor.address}</Typography>
-          </DialogBody>
-          <DialogFooter>
-            <Button variant="gradient" fullWidth onClick={() => setViewDoctor(null)}>
-              Close
-            </Button>
-          </DialogFooter>
-        </Dialog>
       )}
     </div>
   );

@@ -125,7 +125,7 @@ export default function Welcome() {
 
       {/* Tiles */}
       <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 md:grid-cols-6">
-        <a href="Home">
+        <a href="DoctorList">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
             <RiAdminFill size={30} color="#04354f" />
             <span style={{ color: "black" }}><b>&nbsp;ADMIN</b></span>
