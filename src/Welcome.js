@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { RiAdminFill } from "react-icons/ri";
 import { CiUser } from "react-icons/ci";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
@@ -24,7 +24,10 @@ import {
   Option,
   Breadcrumbs,
   Avatar,
-  Button
+  Button,
+  Dialog,
+  DialogBody,
+  DialogFooter,
 } from "@material-tailwind/react";
 
 // Banner Date
@@ -45,6 +48,18 @@ export default function Welcome() {
   // Get practice key from localStorage
   const selectedPracticeKey = localStorage.getItem("selectedPractice") || "";
   const selectedPracticeLabel = practiceNames[selectedPracticeKey] || "Hervy Dental" ;
+
+  // --- Logout Feedback States ---
+  const [open, setOpen] = useState(false);
+  const [rating, setRating] = useState(null);
+
+  const handleOpen = () => setOpen(!open);
+
+  const handleSubmit = () => {
+    console.log("Selected Rating:", rating);
+    // After saving feedback, redirect to Logout
+    window.location.href = "/Logout";
+  };
 
   return (
     <div className="p-10 bg-white-800">
@@ -80,9 +95,10 @@ export default function Welcome() {
             <IoIosNotificationsOutline color="black" size={20} />
           </Badge>
         </a>
-        <a href="/Logout">
+        {/* Logout Button opens Feedback Dialog */}
+        <button onClick={handleOpen}>
           <FaPowerOff color="black" size={20} />
-        </a>
+        </button>
       </div>
 
       {/* Welcome Heading */}
@@ -246,6 +262,50 @@ export default function Welcome() {
           </div>
         </div>
       </footer>
+
+      {/* --- Logout Feedback Dialog --- */}
+      <Dialog open={open} handler={handleOpen} size="xs" className="p-4">
+        <DialogBody>
+          <Typography variant="h6" className="text-center mb-4">
+            Based on your recent experience,<br />
+            How likely are you to recommend our service?
+          </Typography>
+
+          {/* Rating Buttons */}
+          <div className="flex justify-center gap-2 flex-wrap">
+            {[...Array(11).keys()].map((num) => (
+              <button
+                key={num}
+                onClick={() => setRating(num)}
+                className={`px-3 py-2 rounded-md text-white font-bold ${
+                  num <= 6
+                    ? "bg-red-500"
+                    : num === 7
+                    ? "bg-yellow-500"
+                    : "bg-green-500"
+                } ${rating === num ? "ring-4 ring-black" : ""}`}
+              >
+                {num}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex justify-between mt-2">
+            <span className="text-sm">Not at all Likely</span>
+            <span className="text-sm">Extremely Likely</span>
+          </div>
+        </DialogBody>
+
+        <DialogFooter>
+          <Button
+            onClick={handleSubmit}
+            disabled={rating === null}
+            className="bg-green-600 text-white w-full"
+          >
+            Submit
+          </Button>
+        </DialogFooter>
+      </Dialog>
     </div>
   );
 }

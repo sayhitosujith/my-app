@@ -28,7 +28,7 @@ function DoctorList() {
   const [viewDoctor, setViewDoctor] = useState(null);
   const [gridView, setGridView] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const doctorsPerPage = 8;
+  const doctorsPerPage = 32; // ✅ 4 columns × 8 rows
   const cardRefs = useRef([]);
 
   const [confirmAction, setConfirmAction] = useState({
@@ -142,7 +142,8 @@ function DoctorList() {
   const totalPages = Math.ceil(doctors.length / doctorsPerPage);
 
   const handlePrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
-  const handleNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  const handleNextPage = () =>
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
 
   return (
     <div className="p-6">
@@ -186,18 +187,26 @@ function DoctorList() {
         <Typography variant="h4">Doctors List</Typography>
         <div className="flex items-center gap-2">
           <label className="flex items-center gap-1 text-sm cursor-pointer">
-            <input type="checkbox" checked={selectAll} onChange={toggleSelectAll} />
+            <input
+              type="checkbox"
+              checked={selectAll}
+              onChange={toggleSelectAll}
+            />
             Select All
           </label>
           <button
-            className={`p-2 rounded ${!gridView ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+            className={`p-2 rounded ${
+              !gridView ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
             onClick={() => setGridView(false)}
             title="List View"
           >
             <Bars3Icon className="w-5 h-5" />
           </button>
           <button
-            className={`p-2 rounded ${gridView ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+            className={`p-2 rounded ${
+              gridView ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
             onClick={() => setGridView(true)}
             title="Grid View"
           >
@@ -224,8 +233,14 @@ function DoctorList() {
                   key={realIndex}
                   ref={(el) => (cardRefs.current[index] = el)}
                   className={`p-4 flex relative border ${
-                    selectedDoctors.includes(realIndex) ? "border-red-500 bg-red-50" : ""
-                  } ${gridView ? "flex-col items-center text-center" : "flex-row items-center gap-4"}`}
+                    selectedDoctors.includes(realIndex)
+                      ? "border-red-500 bg-red-50"
+                      : ""
+                  } ${
+                    gridView
+                      ? "flex-col items-center text-center"
+                      : "flex-row items-center gap-4"
+                  }`}
                 >
                   {/* Checkbox for multi-select */}
                   <input
@@ -236,13 +251,16 @@ function DoctorList() {
                   />
 
                   {doc.image && (
-                    <Avatar
-                      src={doc.image}
-                      size={gridView ? "lg" : "xl"}
-                      className="border-2 border-blue-500 mb-2 cursor-pointer transform transition-transform duration-200 hover:scale-105 hover:shadow-lg"
-                      onClick={() => handleViewConfirm(doc)}
-                    />
-                  )}
+  <img
+    src={doc.image}
+    alt="Doctor"
+    className={`${
+      gridView ? "w-24 h-24" : "w-28 h-28"
+    } object-cover border-2 border-blue-500 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-lg`}
+    onClick={() => handleViewConfirm(doc)}
+  />
+)}
+
                   <div className="flex-1 w-full flex flex-col items-start text-left space-y-1">
                     <Typography variant="h6" className="font-semibold">
                       {doc.firstName} {doc.lastName}
@@ -250,7 +268,10 @@ function DoctorList() {
                     {doc.phone && (
                       <Typography className="text-xs sm:text-sm">
                         <span className="font-medium">Phone: </span>
-                        <a href={`tel:${doc.phone}`} className="text-blue-600 hover:underline">
+                        <a
+                          href={`tel:${doc.phone}`}
+                          className="text-blue-600 hover:underline"
+                        >
                           {doc.phone}
                         </a>
                       </Typography>
@@ -268,6 +289,34 @@ function DoctorList() {
                       </Typography>
                     )}
                   </div>
+
+                  {/* Action Buttons */}
+                  <div className="absolute bottom-2 right-2 flex gap-2">
+                    <button
+                      onClick={() => handleEditConfirm(realIndex)}
+                      className="p-2 rounded bg-yellow-500 text-white"
+                    >
+                      <PencilIcon className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteConfirm(realIndex)}
+                      className="p-2 rounded bg-red-500 text-white"
+                    >
+                      <TrashIcon className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleViewConfirm(doc)}
+                      className="p-2 rounded bg-blue-500 text-white"
+                    >
+                      <EyeIcon className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleCloneConfirm(realIndex)}
+                      className="p-2 rounded bg-green-500 text-white"
+                    >
+                      <DocumentDuplicateIcon className="w-4 h-4" />
+                    </button>
+                  </div>
                 </Card>
               );
             })}
@@ -275,18 +324,113 @@ function DoctorList() {
 
           {/* Pagination */}
           <div className="flex justify-center gap-2 mt-4">
-            <Button color="blue" disabled={currentPage === 1} onClick={handlePrevPage}>
+            <Button
+              color="blue"
+              disabled={currentPage === 1}
+              onClick={handlePrevPage}
+            >
               Previous
             </Button>
             <Typography className="flex items-center px-2">
               Page {currentPage} of {totalPages}
             </Typography>
-            <Button color="blue" disabled={currentPage === totalPages} onClick={handleNextPage}>
+            <Button
+              color="blue"
+              disabled={currentPage === totalPages}
+              onClick={handleNextPage}
+            >
               Next
             </Button>
           </div>
         </>
       )}
+
+      {/* Confirm Dialog */}
+      <Dialog open={confirmAction.open} handler={() => setConfirmAction({ open: false })}>
+        <DialogBody>
+          Are you sure you want to{" "}
+          <span className="font-bold text-red-500">{confirmAction.type}</span> this doctor?
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="text" onClick={() => setConfirmAction({ open: false })}>
+            Cancel
+          </Button>
+          <Button color="blue" onClick={executeAction}>
+            Yes
+          </Button>
+        </DialogFooter>
+      </Dialog>
+
+      {/* Edit Dialog */}
+      <Dialog open={editIndex !== null} handler={() => setEditIndex(null)}>
+        <DialogBody>
+          <div className="flex flex-col gap-2">
+            <Input
+              label="First Name"
+              name="firstName"
+              value={editDoctor.firstName || ""}
+              onChange={handleChange}
+            />
+            <Input
+              label="Last Name"
+              name="lastName"
+              value={editDoctor.lastName || ""}
+              onChange={handleChange}
+            />
+            <Input
+              label="Phone"
+              name="phone"
+              value={editDoctor.phone || ""}
+              onChange={handleChange}
+            />
+            <Input
+              label="Email"
+              name="email"
+              value={editDoctor.email || ""}
+              onChange={handleChange}
+            />
+            <Input
+              label="Specialization"
+              name="specialization"
+              value={editDoctor.specialization || ""}
+              onChange={handleChange}
+            />
+            <input type="file" onChange={handleEditImage} />
+          </div>
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="text" onClick={() => setEditIndex(null)}>
+            Cancel
+          </Button>
+          <Button color="blue" onClick={handleSave}>
+            Save
+          </Button>
+        </DialogFooter>
+      </Dialog>
+
+      {/* View Dialog */}
+      <Dialog open={!!viewDoctor} handler={() => setViewDoctor(null)}>
+        <DialogBody>
+          {viewDoctor && (
+            <div className="flex flex-col items-center gap-3">
+              {viewDoctor.image && (
+                <Avatar src={viewDoctor.image} size="xl" className="border-2 border-blue-500" />
+              )}
+              <Typography variant="h5">
+                {viewDoctor.firstName} {viewDoctor.lastName}
+              </Typography>
+              <Typography>Email: {viewDoctor.email}</Typography>
+              <Typography>Phone: {viewDoctor.phone}</Typography>
+              <Typography>Specialization: {viewDoctor.specialization}</Typography>
+            </div>
+          )}
+        </DialogBody>
+        <DialogFooter>
+          <Button color="blue" onClick={() => setViewDoctor(null)}>
+            Close
+          </Button>
+        </DialogFooter>
+      </Dialog>
     </div>
   );
 }
