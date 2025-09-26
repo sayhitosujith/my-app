@@ -28,7 +28,7 @@ function DoctorList() {
   const [viewDoctor, setViewDoctor] = useState(null);
   const [gridView, setGridView] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const doctorsPerPage = 32; // ✅ 4 columns × 8 rows
+  const doctorsPerPage = 32; // 4 columns × 8 rows
   const cardRefs = useRef([]);
 
   const [confirmAction, setConfirmAction] = useState({
@@ -38,7 +38,6 @@ function DoctorList() {
     doctor: null,
   });
 
-  // ✅ Multi-select state
   const [selectedDoctors, setSelectedDoctors] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
@@ -109,7 +108,7 @@ function DoctorList() {
     setEditDoctor({});
   };
 
-  // ✅ Multi-select functions
+  // Multi-select
   const toggleDoctorSelect = (index) => {
     if (selectedDoctors.includes(index)) {
       setSelectedDoctors(selectedDoctors.filter((i) => i !== index));
@@ -232,17 +231,17 @@ function DoctorList() {
                 <Card
                   key={realIndex}
                   ref={(el) => (cardRefs.current[index] = el)}
-                  className={`p-4 flex relative border ${
+                  className={`p-4 flex relative border h-64 transition-transform duration-200 ${
                     selectedDoctors.includes(realIndex)
-                      ? "border-red-500 bg-red-50"
-                      : ""
+                      ? "border-red-500 bg-red-100"
+                      : "bg-gray-50 hover:bg-blue-50 hover:scale-105 shadow-md"
                   } ${
                     gridView
-                      ? "flex-col items-center text-center"
+                      ? "flex-col items-center text-center justify-between"
                       : "flex-row items-center gap-4"
                   }`}
                 >
-                  {/* Checkbox for multi-select */}
+                  {/* Checkbox */}
                   <input
                     type="checkbox"
                     className="absolute top-2 left-2"
@@ -250,16 +249,17 @@ function DoctorList() {
                     onChange={() => toggleDoctorSelect(realIndex)}
                   />
 
+                  {/* Squared Image */}
                   {doc.image && (
-  <img
-    src={doc.image}
-    alt="Doctor"
-    className={`${
-      gridView ? "w-24 h-24" : "w-28 h-28"
-    } object-cover border-2 border-blue-500 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-lg`}
-    onClick={() => handleViewConfirm(doc)}
-  />
-)}
+                    <img
+                      src={doc.image}
+                      alt="Doctor"
+                      className={`${
+                        gridView ? "w-24 h-24" : "w-28 h-28"
+                      } object-cover border-2 border-blue-500 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-lg`}
+                      onClick={() => handleViewConfirm(doc)}
+                    />
+                  )}
 
                   <div className="flex-1 w-full flex flex-col items-start text-left space-y-1">
                     <Typography variant="h6" className="font-semibold">
@@ -346,7 +346,10 @@ function DoctorList() {
       )}
 
       {/* Confirm Dialog */}
-      <Dialog open={confirmAction.open} handler={() => setConfirmAction({ open: false })}>
+      <Dialog
+        open={confirmAction.open}
+        handler={() => setConfirmAction({ open: false })}
+      >
         <DialogBody>
           Are you sure you want to{" "}
           <span className="font-bold text-red-500">{confirmAction.type}</span> this doctor?
@@ -414,7 +417,11 @@ function DoctorList() {
           {viewDoctor && (
             <div className="flex flex-col items-center gap-3">
               {viewDoctor.image && (
-                <Avatar src={viewDoctor.image} size="xl" className="border-2 border-blue-500" />
+                <Avatar
+                  src={viewDoctor.image}
+                  size="xl"
+                  className="border-2 border-blue-500"
+                />
               )}
               <Typography variant="h5">
                 {viewDoctor.firstName} {viewDoctor.lastName}
