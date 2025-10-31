@@ -10,7 +10,7 @@ import { FaPowerOff } from "react-icons/fa6";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { PiLineVerticalThin } from "react-icons/pi";
-import logo from './assets/foodmaven.png'; // adjust the path as necessary
+import logo from './assets/DentalWorld.png'; // adjust the path as necessary
 import { Carousel } from "@material-tailwind/react";
 import { IoSettingsOutline } from "react-icons/io5";
 import { GoComment } from "react-icons/go";
@@ -171,7 +171,7 @@ function App() {
     
     <div className="p-5 bg-green-10">
 <img
-        style={{ width: '6%', height: '6%' }}
+        style={{ width: '15%', height: '15%' }}
         src={logo}
         alt="Application_logo"
       />
@@ -347,10 +347,10 @@ function App() {
       <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-white-900 overflow-x-auto whitespace-nowrap">
   <Carousel className="w-full">
     {/* Image 1 */}
-    <figure className="relative h-56 w-full">
+    <figure className="relative h-20-full">
       <img
     className="w-full rounded-2xl object-cover object-center shadow-lg"
-    src="https://sdhb.com.au/wp-content/uploads/2024/12/dental-smile1-img.png"
+    src="https://aadhyadentalcare.com/assets/images/Banner.png"
     alt="Dental Smile Banner"
   />
 
@@ -374,7 +374,7 @@ Creating Confident Smiles in Hervey Bay - A bright healthy smile can be yours Ca
     <figure className="relative h-96 w-full">
       <img
         className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50"
-        src="https://assets.box8.co.in/horizontal-rectangle/web/banner/2288"
+        src="https://content.wepik.com/statics/15456878/preview-page0.jpg"
         alt="banner image 2"
       />
       <figcaption className="absolute bottom-8 left-1/2 flex w-[calc(100%-4rem)] -translate-x-1/2 justify-between rounded-xl border border-white bg-white/75 py-4 px-6 shadow-lg backdrop-blur-sm">
@@ -390,7 +390,7 @@ Creating Confident Smiles in Hervey Bay - A bright healthy smile can be yours Ca
     <figure className="relative h-96 w-full">
       <img
         className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50"
-        src="https://assets.box8.co.in/horizontal-rectangle/web/banner/1820"
+        src="https://thegooddentists.com.au/wp-content/uploads/2023/08/the-good-dentist-banners-02.jpg"
         alt="banner image 2"
       />
       <figcaption className="absolute bottom-8 left-1/2 flex w-[calc(100%-4rem)] -translate-x-1/2 justify-between rounded-xl border border-white bg-white/75 py-4 px-6 shadow-lg backdrop-blur-sm">

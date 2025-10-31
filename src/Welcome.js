@@ -78,10 +78,9 @@ export default function Welcome() {
             <div className="animate-scroll inline-block">
               <Typography variant="small" className="text-xs text-black flex items-center gap-1">
                 <HiSpeakerphone className="text-sm" />
-                <i>
-                  🛍️ NEW ARRIVALS ALERT! Fresh on the Menu! Tantalizing tastes and trendy treats have arrived. 
-                  Don’t miss out — shop your favorites now! 🍽️✨
-                </i>
+                <b><i>
+                  ALERT : Enjoy 20% off on Oral Treatment
+                </i></b>
               </Typography>
             </div>
           </div>
@@ -196,13 +195,16 @@ export default function Welcome() {
           <div className="absolute bottom-92 right-20 flex items-center gap-2 text-black text-sm">
             <Card className="max-w-xs w-full shadow-lg rounded-xl p-2 bg-green-600 -mt-19">
               <CardBody>
-                <h5 className="text-md font-semibold mb-3 text-center text-white">Download the App</h5>
-                <div className="flex items-center gap-2 justify-center">
+          <h5 className="text-md font-semibold mb-3 text-center text-white">
+             DOWNLOAD APP - <span className="text-yellow-500">Coming soon</span>
+            </h5>                
+            Hervy Dental
+            <div className="flex items-center gap-2 justify-center">
                   <Button className="flex items-center gap-1 bg-black text-white px-2 py-1 rounded-lg shadow">
                     <GrAndroid size={20} /> <span className="hidden md:inline text-sm">Android</span>
                   </Button>
                   <Button className="flex items-center gap-1 bg-black text-white px-2 py-1 rounded-lg shadow">
-                    <RiAppleLine size={20} /> <span className="hidden md:inline text-sm">iOS</span>
+                    <RiAppleLine size={20} /> <span className="hidden md:inline text-sm">ios</span>
                   </Button>
                 </div>
               </CardBody>
@@ -223,7 +225,7 @@ export default function Welcome() {
       <footer className="relative w-full mt-12">
         <div className="mx-auto w-full max-w-7xl px-8">
           <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-            <Typography variant="h8" className="mb-6">Food Maven</Typography>
+            <Typography variant="h8" className="mb-6">Hervy Dental</Typography>
             <div>
               {/* WhatsApp Button */}
               <button
@@ -257,7 +259,7 @@ export default function Welcome() {
 
           <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
             <Typography variant="small" className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0">
-              &copy; {currentYear} <a href="https://material-tailwind.com/">- Food Maven</a>. All Rights Reserved.
+              &copy; {currentYear} <a href="https://material-tailwind.com/">- Hervy Dental</a>. All Rights Reserved.
             </Typography>
           </div>
         </div>
