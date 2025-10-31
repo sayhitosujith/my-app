@@ -283,7 +283,6 @@ function App() {
     Logout
   </span>
 </div>
-
   </a>
 </div>
 

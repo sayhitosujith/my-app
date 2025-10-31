@@ -10,6 +10,9 @@ import {
   Avatar,
   Breadcrumbs,
 } from "@material-tailwind/react";
+import { FaPowerOff } from "react-icons/fa6";
+import { PiLineVerticalThin } from "react-icons/pi";
+import logo from "./assets/DentalWorld.png";
 import { useNavigate } from "react-router-dom";
 import {
   Bars3Icon,
@@ -28,7 +31,7 @@ function DoctorList() {
   const [viewDoctor, setViewDoctor] = useState(null);
   const [gridView, setGridView] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const doctorsPerPage = 32; // 4 columns × 8 rows
+  const doctorsPerPage = 32;
   const cardRefs = useRef([]);
 
   const [confirmAction, setConfirmAction] = useState({
@@ -108,13 +111,20 @@ function DoctorList() {
     setEditDoctor({});
   };
 
+  // Pagination
+  const indexOfLastDoctor = currentPage * doctorsPerPage;
+  const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
+  const currentDoctors = doctors.slice(indexOfFirstDoctor, indexOfLastDoctor);
+  const totalPages = Math.ceil(doctors.length / doctorsPerPage);
+
+  const handlePrevPage = () => setCurrentPage((p) => Math.max(p - 1, 1));
+  const handleNextPage = () => setCurrentPage((p) => Math.min(p + 1, totalPages));
+
   // Multi-select
   const toggleDoctorSelect = (index) => {
-    if (selectedDoctors.includes(index)) {
-      setSelectedDoctors(selectedDoctors.filter((i) => i !== index));
-    } else {
-      setSelectedDoctors([...selectedDoctors, index]);
-    }
+    setSelectedDoctors((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
 
   const toggleSelectAll = () => {
@@ -134,18 +144,28 @@ function DoctorList() {
     setSelectAll(false);
   };
 
-  // Pagination
-  const indexOfLastDoctor = currentPage * doctorsPerPage;
-  const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
-  const currentDoctors = doctors.slice(indexOfFirstDoctor, indexOfLastDoctor);
-  const totalPages = Math.ceil(doctors.length / doctorsPerPage);
-
-  const handlePrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
-  const handleNextPage = () =>
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-
   return (
-    <div className="p-6">
+    <div className="p-5 min-h-screen bg-blue-50">
+      {/* Header with Logo + Logout */}
+      <div className="flex justify-between items-center mb-4">
+        <img
+          style={{ width: "15%", height: "15%" }}
+          src={logo}
+          alt="Application_logo"
+        />
+
+        <div className="flex items-center gap-3">
+          <a href="/Logout">
+            <div className="relative group cursor-pointer">
+              <FaPowerOff color="black" size={28} />
+              <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                Logout
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+
       {/* Breadcrumbs */}
       <Breadcrumbs className="mb-4">
         <Typography
@@ -169,7 +189,7 @@ function DoctorList() {
         <Typography color="blue-gray">Doctor List</Typography>
       </Breadcrumbs>
 
-      {/* Add Doctor + Multi-delete */}
+      {/* Add Doctor / Delete Selected */}
       <div className="flex justify-between items-center mb-4">
         <Button color="blue" onClick={() => navigate("/AddDoctor")}>
           + ADD DOCTOR
@@ -182,8 +202,11 @@ function DoctorList() {
         )}
       </div>
 
+      {/* View Controls */}
       <div className="flex items-center justify-between mb-4">
-        <Typography variant="h4">Doctors List</Typography>
+        <Typography variant="h4" color="blue-gray">
+          Doctors List
+        </Typography>
         <div className="flex items-center gap-2">
           <label className="flex items-center gap-1 text-sm cursor-pointer">
             <input
@@ -195,7 +218,7 @@ function DoctorList() {
           </label>
           <button
             className={`p-2 rounded ${
-              !gridView ? "bg-blue-500 text-white" : "bg-gray-200"
+              !gridView ? "bg-blue-600 text-white" : "bg-gray-200"
             }`}
             onClick={() => setGridView(false)}
             title="List View"
@@ -204,7 +227,7 @@ function DoctorList() {
           </button>
           <button
             className={`p-2 rounded ${
-              gridView ? "bg-blue-500 text-white" : "bg-gray-200"
+              gridView ? "bg-blue-600 text-white" : "bg-gray-200"
             }`}
             onClick={() => setGridView(true)}
             title="Grid View"
@@ -214,6 +237,7 @@ function DoctorList() {
         </div>
       </div>
 
+      {/* Doctors Display */}
       {doctors.length === 0 ? (
         <Typography>No doctors added yet.</Typography>
       ) : (
@@ -234,7 +258,7 @@ function DoctorList() {
                   className={`p-4 flex relative border h-64 transition-transform duration-200 ${
                     selectedDoctors.includes(realIndex)
                       ? "border-red-500 bg-red-100"
-                      : "bg-gray-50 hover:bg-blue-50 hover:scale-105 shadow-md"
+                      : "border-blue-600 bg-blue-200 hover:bg-blue-300 hover:scale-105 shadow-lg"
                   } ${
                     gridView
                       ? "flex-col items-center text-center justify-between"
@@ -249,19 +273,20 @@ function DoctorList() {
                     onChange={() => toggleDoctorSelect(realIndex)}
                   />
 
-                  {/* Squared Image */}
+                  {/* Doctor Image */}
                   {doc.image && (
                     <img
                       src={doc.image}
                       alt="Doctor"
                       className={`${
                         gridView ? "w-24 h-24" : "w-28 h-28"
-                      } object-cover border-2 border-blue-500 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-lg`}
+                      } object-cover border-2 border-blue-700 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl`}
                       onClick={() => handleViewConfirm(doc)}
                     />
                   )}
 
-                  <div className="flex-1 w-full flex flex-col items-start text-left space-y-1">
+                  {/* Info */}
+                  <div className="flex-1 w-full flex flex-col items-start text-left space-y-1 text-blue-900">
                     <Typography variant="h6" className="font-semibold">
                       {doc.firstName} {doc.lastName}
                     </Typography>
@@ -270,7 +295,7 @@ function DoctorList() {
                         <span className="font-medium">Phone: </span>
                         <a
                           href={`tel:${doc.phone}`}
-                          className="text-blue-600 hover:underline"
+                          className="text-blue-800 hover:underline"
                         >
                           {doc.phone}
                         </a>
@@ -290,29 +315,29 @@ function DoctorList() {
                     )}
                   </div>
 
-                  {/* Action Buttons */}
+                  {/* Buttons */}
                   <div className="absolute bottom-2 right-2 flex gap-2">
                     <button
                       onClick={() => handleEditConfirm(realIndex)}
-                      className="p-2 rounded bg-yellow-500 text-white"
+                      className="p-2 rounded bg-yellow-500 text-white hover:bg-yellow-600"
                     >
                       <PencilIcon className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => handleDeleteConfirm(realIndex)}
-                      className="p-2 rounded bg-red-500 text-white"
+                      className="p-2 rounded bg-red-500 text-white hover:bg-red-600"
                     >
                       <TrashIcon className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => handleViewConfirm(doc)}
-                      className="p-2 rounded bg-blue-500 text-white"
+                      className="p-2 rounded bg-blue-600 text-white hover:bg-blue-700"
                     >
                       <EyeIcon className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => handleCloneConfirm(realIndex)}
-                      className="p-2 rounded bg-green-500 text-white"
+                      className="p-2 rounded bg-green-500 text-white hover:bg-green-600"
                     >
                       <DocumentDuplicateIcon className="w-4 h-4" />
                     </button>
@@ -324,11 +349,7 @@ function DoctorList() {
 
           {/* Pagination */}
           <div className="flex justify-center gap-2 mt-4">
-            <Button
-              color="blue"
-              disabled={currentPage === 1}
-              onClick={handlePrevPage}
-            >
+            <Button color="blue" disabled={currentPage === 1} onClick={handlePrevPage}>
               Previous
             </Button>
             <Typography className="flex items-center px-2">
@@ -352,7 +373,8 @@ function DoctorList() {
       >
         <DialogBody>
           Are you sure you want to{" "}
-          <span className="font-bold text-red-500">{confirmAction.type}</span> this doctor?
+          <span className="font-bold text-red-500">{confirmAction.type}</span>{" "}
+          this doctor?
         </DialogBody>
         <DialogFooter>
           <Button variant="text" onClick={() => setConfirmAction({ open: false })}>
@@ -368,36 +390,11 @@ function DoctorList() {
       <Dialog open={editIndex !== null} handler={() => setEditIndex(null)}>
         <DialogBody>
           <div className="flex flex-col gap-2">
-            <Input
-              label="First Name"
-              name="firstName"
-              value={editDoctor.firstName || ""}
-              onChange={handleChange}
-            />
-            <Input
-              label="Last Name"
-              name="lastName"
-              value={editDoctor.lastName || ""}
-              onChange={handleChange}
-            />
-            <Input
-              label="Phone"
-              name="phone"
-              value={editDoctor.phone || ""}
-              onChange={handleChange}
-            />
-            <Input
-              label="Email"
-              name="email"
-              value={editDoctor.email || ""}
-              onChange={handleChange}
-            />
-            <Input
-              label="Specialization"
-              name="specialization"
-              value={editDoctor.specialization || ""}
-              onChange={handleChange}
-            />
+            <Input label="First Name" name="firstName" value={editDoctor.firstName || ""} onChange={handleChange} />
+            <Input label="Last Name" name="lastName" value={editDoctor.lastName || ""} onChange={handleChange} />
+            <Input label="Phone" name="phone" value={editDoctor.phone || ""} onChange={handleChange} />
+            <Input label="Email" name="email" value={editDoctor.email || ""} onChange={handleChange} />
+            <Input label="Specialization" name="specialization" value={editDoctor.specialization || ""} onChange={handleChange} />
             <input type="file" onChange={handleEditImage} />
           </div>
         </DialogBody>
@@ -417,11 +414,7 @@ function DoctorList() {
           {viewDoctor && (
             <div className="flex flex-col items-center gap-3">
               {viewDoctor.image && (
-                <Avatar
-                  src={viewDoctor.image}
-                  size="xl"
-                  className="border-2 border-blue-500"
-                />
+                <Avatar src={viewDoctor.image} size="xl" className="border-2 border-blue-500" />
               )}
               <Typography variant="h5">
                 {viewDoctor.firstName} {viewDoctor.lastName}
