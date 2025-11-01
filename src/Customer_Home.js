@@ -98,28 +98,22 @@ const CardItem = ({ item }) => (
         </div>
         <Rating value={4} readonly />
 
-        <Checkbox label="Select Item" />
-        {
-          (
-            <div className="w-72">
-              <Select label="Select">
-                <Option>Chapati & Chatni</Option>
-                <Option>Poori & Saagu</Option>
-                <Option>Masala Dosa & Saagu</Option>
-                <Option>Idli and Uddina Vada</Option>
 
-              </Select>
-            </div>
-          )}
+<div className="w-62 mt-3">
+  <Select label="Select City">
+    <Option value="Brisbane">Brisbane</Option>
+    <Option value="Melbourne">Melbourne</Option>
+    <Option value="Sydney">Sydney</Option>
+    <Option value="Maryborough">Maryborough</Option>
+    <Option value="Adelaide">Adelaide</Option>
+  </Select>
+</div>
+
 
         <br></br>
 
         <div className="product-card-footer">
-  <div
-    className="text-lg font-semibold text-black px-4 py-2 rounded"
-  >
-    ₹ 199 /-
-  </div>
+
 </div>
       </Typography>
 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
