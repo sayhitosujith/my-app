@@ -1,7 +1,7 @@
-import './App.css';
-import React, { useState } from 'react';
-import packageJson from '../package.json';
-import RCB from './assets/D-logo.jpg';
+import "./App.css";
+import React, { useState } from "react";
+import packageJson from "../package.json";
+import RCB from "./assets/D-logo.jpg";
 import { IoMdFingerPrint } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import {
@@ -17,26 +17,26 @@ import {
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [practice, setPractice] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [practiceError, setPracticeError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [practice, setPractice] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [practiceError, setPracticeError] = useState("");
 
   const handleFingerprint = () => setShowPopup(true);
   const closePopup = () => setShowPopup(false);
 
   const handleLogin = () => {
-    setEmailError('');
-    setPasswordError('');
-    setPracticeError('');
+    setEmailError("");
+    setPasswordError("");
+    setPracticeError("");
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let valid = true;
 
     if (!email) {
-      setEmailError("Email is Required");
+      setEmailError("Email is required");
       valid = false;
     } else if (!emailPattern.test(email)) {
       setEmailError("Enter a valid email");
@@ -44,7 +44,7 @@ function App() {
     }
 
     if (!password) {
-      setPasswordError("Password is Required");
+      setPasswordError("Password is required");
       valid = false;
     } else if (
       password.length < 8 ||
@@ -52,7 +52,9 @@ function App() {
       !/[a-z]/.test(password) ||
       !/[0-9]/.test(password)
     ) {
-      setPasswordError("Password must be 8+ chars with uppercase, lowercase & number");
+      setPasswordError(
+        "Password must be 8+ chars with uppercase, lowercase & number"
+      );
       valid = false;
     }
 
@@ -71,8 +73,7 @@ function App() {
       className="flex items-center justify-center min-h-screen bg-cover bg-center px-2"
       style={{ backgroundImage: `url(${RCB})` }}
     >
-      <Card className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg p-4 shadow-xl rounded-xl bg-white bg-opacity-90">
-        
+      <Card className="w-full max-w-sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
         {/* Header */}
         <CardHeader
           variant="gradient"
@@ -87,7 +88,7 @@ function App() {
         {/* Body */}
         <CardBody className="flex flex-col gap-1">
           <Input
-            label=""
+            label="Enter Email Address"
             size="lg"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -97,37 +98,13 @@ function App() {
 
           <Input
             type="password"
-            label=""
+            label="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             error={!!passwordError}
           />
           {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
 
-          <Typography
-            variant="small"
-            color="gray"
-            className="mt-2 flex items-center gap-1 font-normal"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="-mt-px h-4 w-4"
-            >
-              <path
-                fillRule="evenodd"
-                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 
-                   9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442
-                   c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75
-                   0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836
-                   -.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 
-                   100-1.5.75.75 0 000 1.5z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Use at least 8 characters, one uppercase, one lowercase and one number.
-          </Typography>
 
           {/* Practice Dropdown */}
           <div className="mt-4">
@@ -140,7 +117,9 @@ function App() {
             <select
               id="practice"
               className={`w-full rounded border border-gray-300 px-3 py-2 focus:outline-none 
-                focus:ring-2 focus:ring-green-500 ${practiceError ? 'border-red-500' : ''}`}
+              focus:ring-2 focus:ring-green-500 ${
+                practiceError ? "border-red-500" : ""
+              }`}
               value={practice}
               onChange={(e) => setPractice(e.target.value)}
             >
@@ -167,12 +146,12 @@ function App() {
 
         {/* Footer */}
         <CardFooter className="pt-0 flex flex-col items-center gap-4">
+          {/* Login Button */}
           <Button
             color="white"
             className="relative overflow-hidden text-base font-semibold text-white border-2 border-[#28a745] px-12 py-2 rounded bg-[#28a745] hover:bg-[#218838] transition"
             onClick={handleLogin}
           >
-            <span className="absolute top-0 right-0 w-0 h-0 border-t-[28px] border-l-[28px] border-t-white border-l-transparent"></span>
             <span className="relative z-10">Login</span>
           </Button>
 
@@ -182,11 +161,10 @@ function App() {
             className="relative overflow-hidden text-base font-semibold text-white border-2 border-[#28a745] px-12 py-2 rounded bg-[#28a745] hover:bg-[#218838] transition"
             onClick={() => (window.location.href = "/my-app")}
           >
-            <span className="absolute top-0 right-0 w-0 h-0 border-t-[28px] border-l-[28px] border-t-white border-l-transparent"></span>
             <span className="relative z-10">Cancel</span>
           </Button>
 
-          {/* Fingerprint */}
+          {/* Fingerprint Section */}
           <div className="flex flex-col items-center mt-6">
             <button
               onClick={handleFingerprint}
@@ -204,7 +182,9 @@ function App() {
                   <div className="flex justify-center items-center h-full">
                     <CiUser className="text-5xl" />
                   </div>
-                  <p className="text-gray-600 mt-2">Authentication successful!</p>
+                  <p className="text-gray-600 mt-2">
+                    Authentication successful!
+                  </p>
                   <button
                     onClick={() => (window.location.href = "/Customer_Home")}
                     className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
@@ -217,7 +197,12 @@ function App() {
           </div>
 
           {/* Social Buttons */}
-          <Button size="md" variant="outlined" color="green" className="flex items-center gap-3">
+          <Button
+            size="md"
+            variant="outlined"
+            color="green"
+            className="flex items-center gap-3"
+          >
             <a href="/Customer_Home">Continue with Google</a>
             <img
               src="https://docs.material-tailwind.com/icons/google.svg"
@@ -243,7 +228,7 @@ function App() {
           </Button>
 
           <Typography variant="small" className="mt-6 text-center">
-            Don&apos;t have an account?{' '}
+            Don&apos;t have an account?{" "}
             <a
               href="/NewRegistration"
               className="underline text-red-700 hover:text-green-600 transition-colors duration-300 font-bold"
@@ -252,9 +237,7 @@ function App() {
             </a>
           </Typography>
 
-          <Typography variant="small" color="black" className="mt-3 text-center">
-            Application Build Version: {packageJson.version}
-          </Typography>
+    
         </CardFooter>
       </Card>
     </div>
