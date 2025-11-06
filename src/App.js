@@ -73,7 +73,7 @@ function App() {
       className="flex items-center justify-center min-h-screen bg-cover bg-center px-2"
       style={{ backgroundImage: `url(${RCB})` }}
     >
-      <Card className="w-full max-w-sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+<Card className="w-full max-w-xl p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
         {/* Header */}
         <CardHeader
           variant="gradient"
@@ -108,30 +108,33 @@ function App() {
 
           {/* Practice Dropdown */}
           <div className="mt-4">
-            <label
-              className="block mb-1 font-medium text-gray-700"
-              htmlFor="practice"
-            >
-              Practice
-            </label>
-            <select
-              id="practice"
-              className={`w-full rounded border border-gray-300 px-3 py-2 focus:outline-none 
-              focus:ring-2 focus:ring-green-500 ${
-                practiceError ? "border-red-500" : ""
-              }`}
-              value={practice}
-              onChange={(e) => setPractice(e.target.value)}
-            >
-              <option value="">-- Select Practice --</option>
-              <option value="HerveyBay">Hervey Bay Dental</option>
-              <option value="SunshineCoast">Sunshine Coast Dental</option>
-              <option value="Brisbane">Brisbane Dental Clinic</option>
-            </select>
-            {practiceError && (
-              <p className="text-red-500 text-sm mt-1">{practiceError}</p>
-            )}
-          </div>
+  <label
+    className="block mb-1 font-medium text-gray-700"
+    htmlFor="practice"
+  >
+    Select Practice City
+  </label>
+
+  <select
+    id="practice"
+    className={`w-full rounded-md border px-3 py-2 focus:outline-none 
+      focus:ring-2 focus:ring-green-500 ${
+        practiceError ? "border-red-500" : "border-gray-300"
+      }`}
+    value={practice}
+    onChange={(e) => setPractice(e.target.value)}
+  >
+    <option value="">-- Select Practice City --</option>
+    <option value="HerveyBay">Hervey Bay Dental</option>
+    <option value="SunshineCoast">Sunshine Coast Dental</option>
+    <option value="Brisbane">Brisbane Dental Clinic</option>
+  </select>
+
+  {practiceError && (
+    <p className="text-red-500 text-sm mt-1">{practiceError}</p>
+  )}
+</div>
+
 
           <div className="flex flex-col gap-2 text-sm mt-2">
             <Checkbox label="Remember Me" className="text-green-700" />

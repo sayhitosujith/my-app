@@ -162,8 +162,8 @@ function App() {
 
   
   return (
-    
-    <div className="p-5 bg-green-10">
+
+    <div className="p-5 bg-gray-100">
 <img
         style={{ width: '15%', height: '15%' }}
         src={logo}
@@ -459,7 +459,7 @@ Creating Confident Smiles in Hervey Bay - A bright healthy smile can be yours Ca
         </div>
 
 <Card
-  className="w-full max-w-sm p-2"
+  className="order border-gray-300 rounded-lg w-full max-w-sm p-2"
   style={{ backgroundColor: 'white', position: 'absolute', top: '1rem', right: '30rem' }}
 >      <CardBody>
         <Typography variant="h5" style={{ color: '#362787ff' }} className="mb-4">
