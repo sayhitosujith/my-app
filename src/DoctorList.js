@@ -23,6 +23,7 @@ import {
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/solid";
 import { VscArrowRight } from "react-icons/vsc";
+import { FcLeave } from "react-icons/fc";
 
 function DoctorList() {
   const navigate = useNavigate();
@@ -250,9 +251,9 @@ const handleViewSwipes = () => {
       {/* Add Doctor / Delete Selected */}
 <div className="flex justify-between items-center mb-4">
   {/* Left button */}
-  <Button color="blue" onClick={() => navigate("/AddDoctor")}>
+<Button color="blue" onClick={() => navigate("/AddDoctor")}>
     + ADD DOCTOR
-  </Button>
+</Button>
   
  <div className="w-full flex justify-end">
   <Card className="w-full max-w-md p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
@@ -273,9 +274,12 @@ const handleViewSwipes = () => {
 
 <div className="w-full flex justify-center">
   <Card className="w-full max-w-sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+        {/* ✅ View Swipes Link */}
+
     <Typography variant="h5" className="mb-4">
       Time & Shift Information
     </Typography>
+    
 
     <p className="text-gray-700 font-medium">
       {`${currentDay} | ${shiftObj.type} – ${shiftObj.start} to ${shiftObj.end}`}
@@ -285,7 +289,16 @@ const handleViewSwipes = () => {
       ⏱ {currentTime}
     </p>
 
-    <div className="mt-4">
+    <div className="mt-3 text-start">
+      <a
+        href="#"
+        className="text-blue-600 underline hover:text-blue-800"
+        onClick={handleViewSwipes}
+      >
+        VIEW SWIPES 
+      </a>
+    </div> 
+<div className="mt-6 flex justify-end">
       <Button
         color={isLoggedIn ? "red" : "green"}
         onClick={handleOpen}
@@ -294,25 +307,24 @@ const handleViewSwipes = () => {
       </Button>
     </div>
 
-    {/* ✅ View Swipes Link */}
-    <div className="mt-3 text-center">
-      <a
-        href="#"
-        className="text-blue-600 underline hover:text-blue-800"
-        onClick={handleViewSwipes}
-      >
-        View Swipes 
-      </a>
-    </div>
+
   </Card>
 </div>
 
 
 <div className="w-full flex justify-center">
-  <Card className="w-full max-w-sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+  <Card className="w-full max- -sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
     <Typography variant="h5" className="mb-4">
-      Upcoming Holidays
-  <VscArrowRight className="absolute top-10 right-10" />
+      Upcoming Holidays 
+<div>
+  <FcLeave size={42} />
+</div>
+
+<VscArrowRight
+  size={32}
+  className="absolute top-10 right-10"
+/>
+
 
     </Typography>
 
