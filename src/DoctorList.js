@@ -22,6 +22,7 @@ import {
   EyeIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/solid";
+import { VscArrowRight } from "react-icons/vsc";
 
 function DoctorList() {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ function DoctorList() {
   const [currentPage, setCurrentPage] = useState(1);
   const doctorsPerPage = 32;
   const cardRefs = useRef([]);
+const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [confirmAction, setConfirmAction] = useState({
     open: false,
@@ -69,6 +71,17 @@ function DoctorList() {
   const handleCloneConfirm = (index) => {
     setConfirmAction({ open: true, type: "clone", index });
   };
+
+  const [open, setOpen] = useState(false);
+const handleOpen = () => {
+  if (!isLoggedIn) {
+    // SIGN IN
+    setIsLoggedIn(true);
+  } else {
+    // SIGN OUT
+    setIsLoggedIn(false);
+  }
+};
 
   const executeAction = () => {
     const { type, index, doctor } = confirmAction;
@@ -144,6 +157,51 @@ function DoctorList() {
     setSelectAll(false);
   };
 
+  const [currentTime, setCurrentTime] = useState("");
+
+useEffect(() => {
+  const timer = setInterval(() => {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    setCurrentTime(timeString);
+  }, 1000);
+
+const getGreeting = () => {
+  const hour = new Date().getHours();
+
+  if (hour < 12) return "Good Morning";
+  if (hour < 18) return "Good Afternoon";
+  return "Good Evening";
+};
+  return () => clearInterval(timer);
+}, []);
+
+const currentDay = new Date().toLocaleDateString("en-US", {
+  weekday: "long",
+});
+
+const shiftObj = {
+  type: "Flexi Shift",
+  start: "10:00 AM",
+  end: "10:00 PM",
+};
+const [openSwipeModal, setOpenSwipeModal] = useState(false);
+
+
+const getGreeting = () => {
+  const hour = new Date().getHours();
+
+  if (hour < 12) return "Good Morning";
+  if (hour < 18) return "Good Afternoon";
+  return "Good Evening";
+};
+const handleViewSwipes = () => {
+  setOpenSwipeModal(true);
+};
   return (
     <div className="p-5 min-h-screen bg-blue-50">
       {/* Header with Logo + Logout */}
@@ -190,10 +248,83 @@ function DoctorList() {
       </Breadcrumbs>
 
       {/* Add Doctor / Delete Selected */}
-      <div className="flex justify-between items-center mb-4">
-        <Button color="blue" onClick={() => navigate("/AddDoctor")}>
-          + ADD DOCTOR
-        </Button>
+<div className="flex justify-between items-center mb-4">
+  {/* Left button */}
+  <Button color="blue" onClick={() => navigate("/AddDoctor")}>
+    + ADD DOCTOR
+  </Button>
+  
+ <div className="w-full flex justify-end">
+  <Card className="w-full max-w-md p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+    <Typography variant="h5" className="mb-4">
+      {getGreeting()}, Doctor
+    </Typography>
+
+    <Typography className="text-gray-700 italic text-sm">
+      “Don’t worry about failures, worry about the chances you miss
+      when you don’t even try.”
+      <br />— Jack Canfield
+    </Typography>
+  </Card>
+</div>
+
+
+
+
+<div className="w-full flex justify-center">
+  <Card className="w-full max-w-sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+    <Typography variant="h5" className="mb-4">
+      Time & Shift Information
+    </Typography>
+
+    <p className="text-gray-700 font-medium">
+      {`${currentDay} | ${shiftObj.type} – ${shiftObj.start} to ${shiftObj.end}`}
+    </p>
+
+    <p className="text-gray-900 font-semibold text-lg">
+      ⏱ {currentTime}
+    </p>
+
+    <div className="mt-4">
+      <Button
+        color={isLoggedIn ? "red" : "green"}
+        onClick={handleOpen}
+      >
+        {isLoggedIn ? "Sign Out" : "Sign In"}
+      </Button>
+    </div>
+
+    {/* ✅ View Swipes Link */}
+    <div className="mt-3 text-center">
+      <a
+        href="#"
+        className="text-blue-600 underline hover:text-blue-800"
+        onClick={handleViewSwipes}
+      >
+        View Swipes 
+      </a>
+    </div>
+  </Card>
+</div>
+
+
+<div className="w-full flex justify-center">
+  <Card className="w-full max-w-sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+    <Typography variant="h5" className="mb-4">
+      Upcoming Holidays
+  <VscArrowRight className="absolute top-10 right-10" />
+
+    </Typography>
+
+    <p className="text-gray-700 font-medium">
+<div className="mt-2 space-y-1">
+  <div className="font-semibold">25 Dec • Thursday</div>
+  <div className="text-gray-700">Christmas</div>
+</div>
+    </p>
+
+  </Card>
+</div>
 
         {selectedDoctors.length > 0 && (
           <Button color="red" onClick={deleteSelectedDoctors}>
@@ -342,7 +473,21 @@ function DoctorList() {
                       <DocumentDuplicateIcon className="w-4 h-4" />
                     </button>
                   </div>
+
+                  <Dialog open={open} handler={handleOpen}>
+  <DialogBody>
+    <h3 className="text-lg font-semibold mb-2">Login Time:</h3>
+    <p> {new Date().toLocaleString()}</p>
+  </DialogBody>
+  <DialogFooter>
+    <Button variant="text" color="red" onClick={handleOpen} className="mr-1">
+      Close
+    </Button>
+  </DialogFooter>
+</Dialog>
                 </Card>
+
+                
               );
             })}
           </div>
