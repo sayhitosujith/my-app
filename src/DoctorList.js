@@ -270,7 +270,7 @@ const handleViewSwipes = () => {
  <div className="w-full flex justify-end">
   <Card className="w-full max-w-md p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
     <Typography variant="h5" className="mb-4">
-      {getGreeting()}, Doctor
+     Hello, {getGreeting()}
     </Typography>
 
     <Typography className="text-gray-700 italic text-sm">
