@@ -268,7 +268,7 @@ const handleViewSwipes = () => {
 </Button>
   
  <div className="w-full flex justify-end">
-  <Card className="w-full max-w-md p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+  <Card className="w-full max-w-md p-8 shadow-xl rounded-xl bg-white bg-opacity-90">
     <Typography variant="h5" className="mb-4">
      Hello, {getGreeting()}
     </Typography>
@@ -285,7 +285,7 @@ const handleViewSwipes = () => {
 
 
 <div className="w-full flex justify-center">
-  <Card className="w-full max-w-sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+  <Card className="w-full max-w-sm p-2 shadow-xl rounded-xl bg-white bg-opacity-90">
         {/* ✅ View Swipes Link */}
 
     <Typography variant="h5" className="mb-4">
