@@ -273,10 +273,12 @@ const handleViewSwipes = () => {
      Hello, {getGreeting()}
     </Typography>
 
-    <Typography className="text-gray-700 italic text-sm">
+    <Typography className="text-gray-700 italic text-sl">
       “Don’t worry about failures, worry about the chances you miss
       when you don’t even try.”
       <br />— Jack Canfield
+
+     
     </Typography>
   </Card>
 </div>

@@ -147,6 +147,13 @@ export default function Welcome() {
           </Button>
         </a>
 
+          <a href="PatientPortal">
+          <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
+            <RiAdminFill size={30} color="#04354f" />
+            <span style={{ color: "black" }}><b>&nbsp;PatientPortal</b></span>
+          </Button>
+        </a>
+
         <a href="Customer_Login">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
             <CiUser size={30} color="#04354f" />

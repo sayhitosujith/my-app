@@ -37,6 +37,7 @@ import DailySummary from './DailySummary.jsx'
 import BookAppointment from './BookAppointment';
 import AppointmentHistory from './AppointmentHistory';
 import DoctorList from './DoctorList';
+import PatientPortal from './PatientPortal';
 
 const router = createBrowserRouter([
   {
@@ -167,6 +168,10 @@ const router = createBrowserRouter([
   {
     path: "/DoctorList",
     element: <DoctorList/>,
+  },
+  {
+    path: "/PatientPortal",
+    element: <PatientPortal/>,
   }
 ]);
 
