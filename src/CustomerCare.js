@@ -39,7 +39,8 @@ function CustomerCare() {
     if (!formData.firstName) tempErrors.firstName = "First Name is required";
     if (!formData.lastName) tempErrors.lastName = "Last Name is required";
     if (!formData.email) tempErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) tempErrors.email = "Email is invalid";
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
+      tempErrors.email = "Email is invalid";
     if (!formData.message) tempErrors.message = "Message is required";
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
@@ -67,18 +68,15 @@ function CustomerCare() {
     <section className="relative px-6 py-8 lg:py-16 bg-gray-50 min-h-screen">
       {/* Breadcrumbs */}
       <Breadcrumbs className="mb-6">
-        <Typography
-          as="a"
-          href="/Welcome"
-          className="opacity-60 hover:opacity-100 transition-opacity"
-        >
+        <a href="/HomePage">Home</a>
+        <Typography as="span" className="opacity-60">
           Welcome
         </Typography>
         <Typography>Customer Care</Typography>
       </Breadcrumbs>
 
       {/* Top-right icons */}
-      <div className="flex justify-end gap-4 mb-8">
+      <div className="flex justify-end items-center gap-4 mb-8">
         <IoIosNotificationsOutline className="text-black cursor-pointer" size={28} />
         <a href="/Logout">
           <FaPowerOff className="text-black" size={20} />
@@ -130,8 +128,9 @@ function CustomerCare() {
           We&apos;re Here to Help
         </Typography>
         <Typography className="text-gray-700">
-          Whether it&apos;s a question about our services, a request for technical assistance, or
-          suggestions for improvement, our team is eager to hear from you.
+          Whether it&apos;s a question about our services, a request for technical
+          assistance, or suggestions for improvement, our team is eager to hear from
+          you.
         </Typography>
       </div>
 

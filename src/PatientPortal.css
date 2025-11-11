@@ -12,8 +12,8 @@ body {
 
 /* Sidebar */
 .sidebar {
-  background-color: #a490f0;
-  color: white;
+  background-color: #0067C5;
+  color: rgb(252, 251, 251);
   width: 260px;
   display: flex;
   flex-direction: column;
@@ -44,12 +44,15 @@ body {
   transition: 0.3s;
 }
 
-.nav-item.active {
-  background-color: #12013f;
+.separator {
+  height: 1px;
+  background-color: #f8f9fa; /* Tailwind gray-200 */
+  margin: 8px 0; /* spacing above and below */
 }
 
+
 .nav-item:hover {
-  background-color: #200250;
+  background-color: #090231d0;
 }
 
 .sidebar-support {

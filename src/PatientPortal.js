@@ -1,5 +1,13 @@
 import React from "react";
 import "./PatientPortal.css";
+import packageJson from '../package.json';
+import { IoHomeOutline } from "react-icons/io5";
+import { SiGoogleforms } from "react-icons/si";
+import { IoIosFolder } from "react-icons/io";
+import { IoSettingsOutline } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
+import { BiSupport } from "react-icons/bi";
+import logo from "./assets/logo.png";
 
 // ✅ Add missing icon imports
 import { PiLineVerticalThin } from "react-icons/pi";
@@ -10,20 +18,42 @@ const PatientPortal = () => {
     <div className="portal-container">
       {/* Sidebar */}
       <aside className="sidebar">
-        <div className="sidebar-logo">
-          <h2>
-            Dental <span className="subtext">World</span>
-          </h2>
-        </div>
-
+         <img
+          style={{ width: "90%", height: "30%" }}
+          src={logo}
+          alt="Application_logo"
+        />
         <nav className="sidebar-nav">
-          <div className="nav-item">🏠 My Dashboard</div>
-          <div className="nav-item active">📄 Forms</div>
-          <div className="nav-item">🧳 Documents</div>
+              <div className="sidebar-support">
+  <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <IoHomeOutline />
+        <span>Home</span>
+      </div>              </div>
+            <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <SiGoogleforms  />
+        <span>Forms</span>
+      </div>
+           <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <IoIosFolder  />
+        <span>Documents</span>
+      </div>
+           <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <IoSettingsOutline  />
+        <span>Settings</span>
+      </div>
+  <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <CgProfile  />
+        <span>Profile</span>
+      </div>
+
         </nav>
 
+  <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <BiSupport  />
+        <span>Help</span>
+      </div>      
         <div className="sidebar-support">
-          <div className="nav-item">🆘 Help</div>
+          <h8>App Version : {packageJson.version}</h8>
         </div>
       </aside>
 
@@ -71,6 +101,8 @@ const PatientPortal = () => {
 
         {/* Forms Section */}
         <section className="forms-section">
+          <h1>Welcome back!</h1>
+
           <h2>Forms</h2>
           <p>
             Please complete all forms assigned to you in this section. Your
@@ -80,7 +112,7 @@ const PatientPortal = () => {
 
         {/* Help Box */}
         <aside className="help-box">
-          <h3>❓ Need help?</h3>
+          <h3>Need help?</h3>
           <p>
             Are you unsure about some of the questions? Don’t worry, we can help.
           </p>
