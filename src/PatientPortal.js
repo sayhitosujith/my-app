@@ -75,7 +75,7 @@ const PatientPortal = () => {
       {/* Sidebar */}
       <aside className="sidebar">
         <img
-          style={{ width: "90%", height: "30%" }}
+          style={{ width: "90%", height: "10%" }}
           src={logo}
           alt="Application_logo"
         />
