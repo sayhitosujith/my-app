@@ -9,7 +9,7 @@ import { CgProfile } from "react-icons/cg";
 import { BiSupport } from "react-icons/bi";
 import { PiLineVerticalThin } from "react-icons/pi";
 import { FaPowerOff, FaBell } from "react-icons/fa";
-import logo from "./assets/logo.png";
+import logo from "./assets/DentalWorld.png";
 
 const PatientPortal = () => {
   // 🌙 Dark mode (persistent)
@@ -83,7 +83,7 @@ const PatientPortal = () => {
           </div>
           <div className="nav-item">
             <IoIosFolder />
-            <span>Documents</span>
+            <span>Document Center</span>
           </div>
           <div className="nav-item">
             <IoSettingsOutline />
@@ -173,15 +173,15 @@ const PatientPortal = () => {
 
     <div className="stats-section">
       <div className="stat-box">
-        <h4>Total Forms</h4>
+<h4><strong><em>Total Forms</em></strong></h4>
         <p>{forms.length}</p>
       </div>
       <div className="stat-box">
-        <h4>Completed</h4>
+<h4><strong><em>Completed Forms</em></strong></h4>
         <p>{completedForms}</p>
       </div>
       <div className="stat-box">
-        <h4>Pending</h4>
+<h4><strong><em>Pending Forms</em></strong></h4>
         <p>{forms.length - completedForms}</p>
       </div>
     </div>
