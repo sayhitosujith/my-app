@@ -162,25 +162,32 @@ const PatientPortal = () => {
         </header>
 
         {/* 🔔 Alert Banner */}
-        <div className="alert-banner">
-          🕒 Reminder: You have {forms.length - completedForms} forms pending.
-        </div>
+        {/* <div className="alert-banner">
+          🕒 Alert : You have {forms.length - completedForms} forms pending.
+        </div> */}
 
-        {/* 📊 Stats */}
-        <section className="stats-section">
-          <div className="stat-box">
-            <h4>Total Forms</h4>
-            <p>{forms.length}</p>
-          </div>
-          <div className="stat-box">
-            <h4>Completed</h4>
-            <p>{completedForms}</p>
-          </div>
-          <div className="stat-box">
-            <h4>Pending</h4>
-            <p>{forms.length - completedForms}</p>
-          </div>
-        </section>
+{/* 📊 Stats */}
+<section className="stats-card">
+  <div className="card stats-container">
+    <h3 className="stats-title"> Forms KPI</h3>
+
+    <div className="stats-section">
+      <div className="stat-box">
+        <h4>Total Forms</h4>
+        <p>{forms.length}</p>
+      </div>
+      <div className="stat-box">
+        <h4>Completed</h4>
+        <p>{completedForms}</p>
+      </div>
+      <div className="stat-box">
+        <h4>Pending</h4>
+        <p>{forms.length - completedForms}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* 📈 Progress */}
         <section className="progress-section">
@@ -215,7 +222,6 @@ const PatientPortal = () => {
 
         {/* 🧾 Forms */}
         <section className="forms-section">
-          <h5>Welcome back, Sujith</h5>
 
           {filteredForms.map((form) => (
             <div key={form.id} className="card">

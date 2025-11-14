@@ -135,15 +135,49 @@ body {
 
 /* ---------------------- ALERT ---------------------- */
 .alert-banner {
-  background-color: #ffefc2;
-  color: #856404;
+  background-color: #ecdd83;
+  color: #a88006;
   padding: 10px;
   text-align: center;
   border-radius: 6px;
   margin: 20px auto;
-  max-width: 600px;
+  max-width: 1500px;
   font-weight: 500;
 }
+
+.stats-card {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.stats-card .card {
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.stats-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.stats-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.stat-box {
+  flex: 1;
+  text-align: center;
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 10px;
+}
+
 
 /* ---------------------- STATS ---------------------- */
 .stats-section {
@@ -167,7 +201,7 @@ body {
   color: white;
   padding: 20px;
   border-radius: 8px;
-  max-width: 1000px;
+  max-width: 1500px;
 }
 
 .progress-bar-container {
