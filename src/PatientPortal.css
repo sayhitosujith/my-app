@@ -1,65 +1,115 @@
-/* ---------- Base ---------- */
+/* ---------------------- GLOBAL ---------------------- */
 body {
   font-family: "Inter", sans-serif;
   background-color: #fff;
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .portal-container {
   display: flex;
   min-height: 100vh;
-  transition: background-color 0.3s ease;
 }
 
-/* ---------- Sidebar ---------- */
+/* ---------------------- SIDEBAR ---------------------- */
 .sidebar {
-  background-color: #0067c5;
-  color: #fcfbfb;
+  background-color: #0067C5;
+  color: white;
   width: 260px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar img {
+  margin-bottom: 20px;
+}
+
+.sidebar-nav {
+  flex: 1;
 }
 
 .nav-item {
+  padding: 12px 15px;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 15px;
-  margin-bottom: 8px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 0.95rem;
-  transition: background-color 0.3s;
+  margin-bottom: 10px;
+  background-color: transparent;
+  transition: 0.3s;
 }
 
 .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-support {
   margin-top: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding-top: 15px;
-  font-size: 0.8rem;
-  opacity: 0.9;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 10px;
 }
 
-/* ---------- Main Content ---------- */
+/* ---------------------- MAIN CONTENT ---------------------- */
 .main-content {
   flex: 1;
   padding: 30px 50px;
   position: relative;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Header actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notification-wrapper {
+  position: relative;
+}
+
+.notifications-dropdown {
+  position: absolute;
+  right: 0;
+  top: 28px;
+  width: 250px;
+  background: white;
+  color: black;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  padding: 10px;
+  z-index: 100;
+}
+
+.notification-item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  color: black;
+  width: 160px;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-dropdown a {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
 }
 
 .user-badge {
@@ -70,24 +120,20 @@ body {
   cursor: pointer;
 }
 
+/* User Icon */
 .user-icon {
-  background: #f2d9e6;
-  color: #aa7ef1;
+  background: #ead6ff;
+  color: #8c46df;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   font-weight: bold;
 }
 
-.username {
-  font-weight: 600;
-  color: #333;
-}
-
-/* ---------- Alert Banner ---------- */
+/* ---------------------- ALERT ---------------------- */
 .alert-banner {
   background-color: #ffefc2;
   color: #856404;
@@ -99,7 +145,7 @@ body {
   font-weight: 500;
 }
 
-/* ---------- Stats Section ---------- */
+/* ---------------------- STATS ---------------------- */
 .stats-section {
   display: flex;
   justify-content: center;
@@ -115,28 +161,17 @@ body {
   min-width: 100px;
 }
 
-/* ---------- Progress ---------- */
-.progress-section {
-  margin-top: 20px;
-}
-
+/* ---------------------- PROGRESS ---------------------- */
 .progress-box {
   background-color: #10292d;
-  border-radius: 8px;
   color: white;
   padding: 20px;
-  max-width: 1500px;
-  transition: background-color 0.3s;
-}
-
-.progress-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border-radius: 8px;
+  max-width: 1000px;
 }
 
 .progress-bar-container {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.2);
   height: 10px;
   border-radius: 5px;
   margin: 10px 0;
@@ -149,241 +184,103 @@ body {
   transition: width 0.5s ease;
 }
 
-.progress-note {
-  font-size: 0.85rem;
-  text-align: right;
+/* ---------------------- SEARCH BAR ---------------------- */
+.search-bar {
+  width: 100%;
+  max-width: 700px;
+  margin: 25px auto;
 }
 
-/* ---------- Forms ---------- */
-.forms-section {
-  margin-top: 30px;
-  max-width: 1500px;
+.search-bar input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  font-size: 1rem;
 }
 
+/* ---------------------- CARDS ---------------------- */
 .card {
-  background: #cff4f5;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 12px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.card-title {
-  color: #333;
-  margin-bottom: 10px;
+  background: white;
+  padding: 18px;
+  margin: 16px auto;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .form-btn {
-  background-color: #007bff;
-  color: white;
+  background: #007bff;
   border: none;
-  padding: 8px 14px;
+  padding: 10px 14px;
+  color: white;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
-}
-.form-btn:hover {
-  background-color: #0056b3;
-}
-.form-btn.completed {
-  background-color: #28a745;
+  margin-top: 10px;
 }
 
-/* ---------- Appointments ---------- */
-.appointments-section {
-  background: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 600px;
-  margin: 30px auto;
+.form-btn.completed {
+  background: #28a745;
 }
+
+/* ---------------------- RECENT + APPOINTMENTS SIDE BY SIDE ---------------------- */
+.activity-appointments-wrapper {
+  display: flex;
+  gap: 30px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.recent-activity,
+.appointments-section {
+  background: #b1c8df;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1;
+}
+
+.recent-activity ul,
 .appointments-section ul {
   padding-left: 20px;
 }
 
-/* ---------- Recent Activity ---------- */
-.recent-activity {
-  background: #abf3a8;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 600px;
-  margin: 30px auto;
-}
-.recent-activity ul {
-  padding-left: 20px;
-}
-.recent-activity li {
-  margin-bottom: 6px;
-}
-
-/* ---------- Search Bar ---------- */
-.search-bar {
-  max-width: 600px;
-  margin: 20px auto;
-}
-.search-bar input {
-  width: 100%;
-  padding: 8px 14px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  outline: none;
-  transition: 0.3s;
-}
-.search-bar input:focus {
-  border-color: #007bff;
-}
-
-/* ---------- Help Box ---------- */
+/* ---------------------- HELP BOX ---------------------- */
 .help-box {
-  position: absolute;
-  right: 50px;
-  bottom: 50px;
-  background-color: #fcecef;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  background: #fcecef;
+  padding: 12px 16px;
   border-radius: 8px;
-  padding: 20px;
-  max-width: 260px;
-  color: #701a2e;
-  transition: background-color 0.3s;
+  max-width: 170px;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .contact-btn {
-  margin-top: 10px;
   width: 100%;
-  padding: 10px;
-  border: 1px solid #701a2e;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+  margin-top: 8px;
   border-radius: 6px;
+  border: 1px solid #701a2e;
   background: transparent;
   color: #701a2e;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.contact-btn:hover {
-  background-color: #701a2e;
-  color: white;
 }
 
-/* ---------- Notifications ---------- */
-.notification-wrapper {
-  position: relative;
-}
-.notifications-dropdown {
-  position: absolute;
-  top: 30px;
-  right: 0;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  width: 240px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-}
-.notification-item {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-}
-.notification-item:last-child {
-  border-bottom: none;
-}
-
-/* ---------- Profile Dropdown ---------- */
-.profile-dropdown {
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 8px 0;
-  width: 160px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.profile-dropdown a {
-  display: block;
-  padding: 10px 15px;
-  color: black;
-  text-decoration: none;
-}
-.profile-dropdown a:hover {
-  background: #f5f5f5;
-}
-
-/* ---------- Dark Mode ---------- */
+/* ---------------------- DARK MODE ---------------------- */
 .dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
+  background: #121212;
+  color: #eee;
 }
 
-/* Sidebar Dark */
-.dark-mode .sidebar {
-  background-color: #1e1e1e;
-  color: #f5f5f5;
-}
-.dark-mode .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.dark-mode .card {
+  background: #1e1e1e;
 }
 
-/* Cards / Boxes Dark */
-.dark-mode .card,
-.dark-mode .appointments-section,
-.dark-mode .recent-activity {
-  background-color: #1e1e1e;
-  color: #18c7f3;
-  border: 1px solid #333;
-}
-
-/* Alerts / Stats */
-.dark-mode .alert-banner {
-  background-color: #333;
-  color: #ffd75e;
-}
-.dark-mode .stat-box {
-  background-color: #2a2a2a;
-  color: #f5f5f5;
-}
-
-/* Help Box */
-.dark-mode .help-box {
-  background-color: #2c1b2d;
-  color: #f0c0d0;
-  border: 1px solid #533;
-}
-
-/* Notifications / Dropdowns */
 .dark-mode .notifications-dropdown,
 .dark-mode .profile-dropdown {
-  background: #2a2a2a;
-  color: #f5f5f5;
-  border-color: #444;
-}
-
-/* Buttons */
-.dark-mode .form-btn {
-  background-color: #2196f3;
-}
-.dark-mode .form-btn:hover {
-  background-color: #1976d2;
-}
-.dark-mode .form-btn.completed {
-  background-color: #2e7d32;
-}
-
-/* Dark mode toggle button */
-.dark-mode-toggle {
-  position: fixed;
-  top: 110px;
-  right: 20px;
-  background: #333;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 100;
-  transition: background 0.3s;
-}
-.dark-mode-toggle:hover {
-  background: #555;
+  background: #2d2d2d;
+  color: white;
 }

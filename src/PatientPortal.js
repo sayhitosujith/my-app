@@ -64,14 +64,7 @@ const PatientPortal = () => {
 
   return (
     <div className={`portal-container ${darkMode ? "dark-mode" : ""}`}>
-      {/* 🌙 Dark mode toggle */}
-      <button
-        className="dark-mode-toggle"
-        onClick={() => setDarkMode(!darkMode)}
-      >
-        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-      </button>
-
+      
       {/* Sidebar */}
       <aside className="sidebar">
         <img
@@ -100,7 +93,18 @@ const PatientPortal = () => {
             <CgProfile />
             <span>Profile</span>
           </div>
+
+          {/* 🌙 Dark mode toggle */}
+      <button
+        className="dark-mode-toggle"
+        onClick={() => setDarkMode(!darkMode)}
+      >
+        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+      </button>
+
         </nav>
+
+
 
         <div className="nav-item">
           <BiSupport />
@@ -232,28 +236,31 @@ const PatientPortal = () => {
           ))}
         </section>
 
-        {/* 🕓 Recent Activity */}
-        <section className="recent-activity">
-          <h3>Recent Activity</h3>
-          <ul>
-            <li>✅ Completed Allergy Disclosure</li>
-            <li>📅 Scheduled check-up for Nov 20</li>
-            <li>📝 Updated emergency contact info</li>
-          </ul>
-        </section>
+  <div className="activity-appointments-wrapper">
+  {/* 🕓 Recent Activity */}
+  <section className="recent-activity">
+    <h3>Recent Activity</h3>
+    <ul>
+      <li>✅ Completed Allergy Disclosure</li>
+      <li>📅 Scheduled check-up for Nov 20</li>
+      <li>📝 Updated emergency contact info</li>
+    </ul>
+  </section>
 
-        {/* 📅 Appointments */}
-        <section className="appointments-section">
-          <h3>Upcoming Appointments</h3>
-          <ul>
-            <li>
-              <strong>Nov 20, 2025:</strong> Routine Check-up @ 10:00 AM
-            </li>
-            <li>
-              <strong>Dec 5, 2025:</strong> Follow-up @ 2:30 PM
-            </li>
-          </ul>
-        </section>
+  {/* 📅 Upcoming Appointments */}
+  <section className="appointments-section">
+    <h3>Upcoming Appointments</h3>
+    <ul>
+      <li>
+        <strong>Nov 20, 2025:</strong> Routine Check-up @ 10:00 AM
+      </li>
+      <li>
+        <strong>Dec 5, 2025:</strong> Follow-up @ 2:30 PM
+      </li>
+    </ul>
+  </section>
+</div>
+
 
         {/* 🆘 Help */}
         <aside className="help-box">
