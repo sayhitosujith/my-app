@@ -25,6 +25,8 @@ import {
 import { VscArrowRight } from "react-icons/vsc";
 import { FcLeave } from "react-icons/fc";
 import { CgProfile } from "react-icons/cg";
+import { FiUser } from "react-icons/fi";
+
 
 function DoctorList() {
   const navigate = useNavigate();
@@ -218,7 +220,7 @@ const handleViewSwipes = () => {
            <div className="flex items-center gap-3">
           <a href="/Profile">
             <div className="relative group cursor-pointer">
-              <CgProfile  color="black" size={28} />
+              <FiUser  color="black" size={28} />
               <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                 Profile
               </span>
@@ -227,7 +229,7 @@ const handleViewSwipes = () => {
         </div>
           <a href="/Logout">
             <div className="relative group cursor-pointer">
-              <FaPowerOff color="black" size={28} />
+              <FaPowerOff color="black" size={25} />
               <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                 Logout
               </span>

@@ -1,57 +1,115 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./PatientPortal.css";
-import packageJson from '../package.json';
+import packageJson from "../package.json";
 import { IoHomeOutline } from "react-icons/io5";
 import { SiGoogleforms } from "react-icons/si";
 import { IoIosFolder } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { BiSupport } from "react-icons/bi";
-import logo from "./assets/logo.png";
-
-// ✅ Add missing icon imports
 import { PiLineVerticalThin } from "react-icons/pi";
-import { FaPowerOff } from "react-icons/fa";
+import { FaPowerOff, FaBell } from "react-icons/fa";
+import logo from "./assets/DentalWorld.png";
 
 const PatientPortal = () => {
+  // 🌙 Dark mode (persistent)
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
+  // 🧾 Forms data
+  const [forms, setForms] = useState([
+    { id: 1, title: "Medical History Form", completed: false },
+    { id: 2, title: "Allergy Disclosure", completed: true },
+    { id: 3, title: "Insurance Details", completed: false },
+    { id: 4, title: "Emergency Contact Info", completed: false },
+    { id: 5, title: "Lifestyle Questionnaire", completed: false },
+  ]);
+
+  // 🔍 Search
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // 🔔 Notifications
+  const [showNotifications, setShowNotifications] = useState(false);
+  const notifications = [
+    "New message from your doctor",
+    "Your insurance form has been approved",
+    "Appointment rescheduled for Nov 20, 2025",
+  ];
+
+  // 👤 Profile Dropdown
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  // 📊 Progress calculation
+  const completedForms = forms.filter((f) => f.completed).length;
+  const progress = Math.round((completedForms / forms.length) * 100);
+
+  // ✅ Toggle form completion
+  const toggleFormCompletion = (id) => {
+    setForms((prev) =>
+      prev.map((form) =>
+        form.id === id ? { ...form, completed: !form.completed } : form
+      )
+    );
+  };
+
+  // 🔍 Filter forms based on search
+  const filteredForms = forms.filter((form) =>
+    form.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="portal-container">
+    <div className={`portal-container ${darkMode ? "dark-mode" : ""}`}>
+      
       {/* Sidebar */}
       <aside className="sidebar">
-         <img
-          style={{ width: "90%", height: "30%" }}
+        <img
+          style={{ width: "90%", height: "10%" }}
           src={logo}
           alt="Application_logo"
         />
         <nav className="sidebar-nav">
-              <div className="sidebar-support">
-  <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <IoHomeOutline />
-        <span>Home</span>
-      </div>              </div>
-            <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <SiGoogleforms  />
-        <span>Forms</span>
-      </div>
-           <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <IoIosFolder  />
-        <span>Documents</span>
-      </div>
-           <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <IoSettingsOutline  />
-        <span>Settings</span>
-      </div>
-  <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <CgProfile  />
-        <span>Profile</span>
-      </div>
+          <div className="nav-item">
+            <IoHomeOutline />
+            <span>Home</span>
+          </div>
+          <div className="nav-item">
+            <SiGoogleforms />
+            <span>Forms</span>
+          </div>
+          <div className="nav-item">
+            <IoIosFolder />
+            <span>Document Center</span>
+          </div>
+          <div className="nav-item">
+            <IoSettingsOutline />
+            <span>Settings</span>
+          </div>
+          <div className="nav-item">
+            <CgProfile />
+            <span>Profile</span>
+          </div>
+
+          {/* 🌙 Dark mode toggle */}
+      <button
+        className="dark-mode-toggle"
+        onClick={() => setDarkMode(!darkMode)}
+      >
+        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+      </button>
 
         </nav>
 
-  <div className="nav-item" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <BiSupport  />
-        <span>Help</span>
-      </div>      
+
+
+        <div className="nav-item">
+          <BiSupport />
+          <span>Help</span>
+        </div>
         <div className="sidebar-support">
           <h8>App Version : {packageJson.version}</h8>
         </div>
@@ -62,66 +120,167 @@ const PatientPortal = () => {
         <header className="main-header">
           <h1>My Patient Portal</h1>
 
-          <div className="user-badge">
-            <div className="user-icon">ss</div>
-            <span className="username">sujith s</span>
-            
-            {/* Vertical line icon */}
+          <div className="header-actions">
+            {/* 🔔 Notifications */}
+            <div className="notification-wrapper">
+              <FaBell
+                size={22}
+                color="black"
+                className="cursor-pointer"
+                onClick={() => setShowNotifications(!showNotifications)}
+              />
+              {showNotifications && (
+                <div className="notifications-dropdown">
+                  {notifications.map((note, index) => (
+                    <div key={index} className="notification-item">
+                      {note}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <PiLineVerticalThin size={24} color="black" />
 
-            {/* Logout button */}
-            <a href="/Logout" className="logout-link">
-              <div className="relative group cursor-pointer">
-                <FaPowerOff color="black" size={20} />
-                <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                  Logout
-                </span>
-              </div>
-            </a>
+            {/* 👤 User badge */}
+            <div
+              className="user-badge"
+              onClick={() => setShowProfileMenu(!showProfileMenu)}
+            >
+              <div className="user-icon">SS</div>
+              <span className="username">Sujith S</span>
+
+              {showProfileMenu && (
+                <div className="profile-dropdown">
+                  <a href="/Profile">Edit Profile</a>
+                  <a href="/Settings">Settings</a>
+                  <a href="/Logout">Logout</a>
+                </div>
+              )}
+            </div>
           </div>
         </header>
 
-        {/* Progress Section */}
+        {/* 🔔 Alert Banner */}
+        {/* <div className="alert-banner">
+          🕒 Alert : You have {forms.length - completedForms} forms pending.
+        </div> */}
+
+{/* 📊 Stats */}
+<section className="stats-card">
+  <div className="card stats-container">
+    <h3 className="stats-title"> Forms KPI</h3>
+
+    <div className="stats-section">
+      <div className="stat-box">
+<h4><strong><em>Total Forms</em></strong></h4>
+        <p>{forms.length}</p>
+      </div>
+      <div className="stat-box">
+<h4><strong><em>Completed Forms</em></strong></h4>
+        <p>{completedForms}</p>
+      </div>
+      <div className="stat-box">
+<h4><strong><em>Pending Forms</em></strong></h4>
+        <p>{forms.length - completedForms}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+        {/* 📈 Progress */}
         <section className="progress-section">
           <div className="progress-box">
             <div className="progress-info">
               <p>
                 <strong>Progress</strong>
               </p>
-              <p>0%</p>
+              <p>{progress}%</p>
             </div>
             <div className="progress-bar-container">
-              <div className="progress-bar" style={{ width: "0%" }}></div>
+              <div
+                className="progress-bar"
+                style={{ width: `${progress}%` }}
+              ></div>
             </div>
             <div className="progress-note">
-              Forms will be reviewed by staff when completed
+              Forms will be reviewed by staff when completed.
             </div>
           </div>
         </section>
 
-        {/* Forms Section */}
-        <section className="forms-section">
-          <h1>Welcome back!</h1>
+        {/* 🔍 Search Forms */}
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search forms..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
 
-          <h2>Forms</h2>
-          <p>
-            Please complete all forms assigned to you in this section. Your
-            responses help our team provide the most accurate and effective care.
-          </p>
+        {/* 🧾 Forms */}
+        <section className="forms-section">
+
+          {filteredForms.map((form) => (
+            <div key={form.id} className="card">
+              <div className="card-body">
+                <h2 className="card-title">{form.title}</h2>
+                <p className="card-text">
+                  Please complete all forms assigned to you. Your responses help
+                  our team provide the most accurate and effective care.
+                </p>
+                <button
+                  className={`form-btn ${form.completed ? "completed" : ""}`}
+                  onClick={() => toggleFormCompletion(form.id)}
+                >
+                  {form.completed ? "View / Edit" : "Start Form"}
+                </button>
+              </div>
+            </div>
+          ))}
         </section>
 
-        {/* Help Box */}
+  <div className="activity-appointments-wrapper">
+  {/* 🕓 Recent Activity */}
+  <section className="recent-activity">
+    <h3>Recent Activity</h3>
+    <ul>
+      <li>✅ Completed Allergy Disclosure</li>
+      <li>📅 Scheduled check-up for Nov 20</li>
+      <li>📝 Updated emergency contact info</li>
+    </ul>
+  </section>
+
+  {/* 📅 Upcoming Appointments */}
+  <section className="appointments-section">
+    <h3>Upcoming Appointments</h3>
+    <ul>
+      <li>
+        <strong>Nov 20, 2025:</strong> Routine Check-up @ 10:00 AM
+      </li>
+      <li>
+        <strong>Dec 5, 2025:</strong> Follow-up @ 2:30 PM
+      </li>
+    </ul>
+  </section>
+</div>
+
+
+        {/* 🆘 Help */}
         <aside className="help-box">
           <h3>Need help?</h3>
           <p>
-            Are you unsure about some of the questions? Don’t worry, we can help.
+            Are you unsure about some of the questions? Don’t worry, we can
+            help.
           </p>
-<button
-  className="contact-btn"
-  onClick={() => window.location.href = '/CustomerCare'}
->
-  Contact Us
-</button>
+          <button
+            className="contact-btn"
+            onClick={() => (window.location.href = "/CustomerCare")}
+          >
+            Contact Us
+          </button>
         </aside>
       </main>
     </div>
