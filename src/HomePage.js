@@ -6,10 +6,11 @@ import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
 import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
 import appbanner from './assets/swiggyApp_download_banner.avif'; // adjust the path as necessary
 
-import food_wallpaper from './assets/FOOODD.png'; // adjust the path as necessary
+import food_wallpaper from './assets/case3.png'; // Main Image
 import { TfiEmail } from "react-icons/tfi";
 import { SiFoodpanda } from "react-icons/si";
-import { IoFastFood } from "react-icons/io5";
+import { BsPlus } from "react-icons/bs";
+import logo from "./assets/logo-dd.jpg";
 
 import {
   Card,
@@ -76,15 +77,11 @@ const CardItem = ({ item }) => (
 function Welcome() {
   return (
 <div className="p-7 bg-white">
-<SiFoodpanda size={60} color="green" />
-<Typography variant="h5" color="green">
-        Panda King
-         </Typography>
-{/* <img
+<img
         style={{ width: '15%', height: '15%' }}
         src={logo}
         alt="Application_logo"
-      /> */}
+      />
       <Typography variant="h2" color="Black">
         <Typography variant="small" className="mt-8 flex flex justify-center items-center">
           <Typography
@@ -117,21 +114,23 @@ function Welcome() {
         </Breadcrumbs>
 
            <div
-             className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-             style={{ backgroundColor: '#91f748' }}
-           >
-             {isBannerActive && (
-               <div className="w-full overflow-hidden relative">
-                 <div className="animate-scroll whitespace-nowrap inline-block">
-                   <Typography variant="h6" className="text-md text-black">
-                     <i>
-                     NEW | 🛍️ Arrivals Alert! Fresh food, desserts and must-have picks just dropped. Shop now before they're gone....! Enjoy the Fresh Menu and Deals for thr Day🔥✨
-                     </i>
-                   </Typography>
-                 </div>
-               </div>
-             )}
-           </div>       
+  className="mb-5 shadow-sm px-4 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
+  style={{ backgroundColor: '#0f618c' }}
+>
+  {isBannerActive && (
+    <div className="w-full overflow-hidden relative">
+      <div className="animate-scroll whitespace-nowrap inline-block">
+        <Typography variant="h6" className="text-sm text-white">
+          <i>
+            NEW | Struggling to get a GP appointment? Fed up of long queues? Frustrated waiting? Don’t worry – we’re here to help. Book a same day or next day online consultation, with a UK, NHS-experienced GP, in just a few clicks.
+
+          </i>
+        </Typography>
+      </div>
+    </div>
+  )}
+</div>
+
         
 
         <div style={{ float: 'right' }}>
@@ -181,8 +180,8 @@ function Welcome() {
           height: '10vh', // Full viewport height
         }}
       >
-        <h1 style={{ color: '#2ae319', fontSize: '3rem' }}>
-          <i> <b>Bringing generational recipes that are unique to each home</b></i>
+        <h1 style={{ color: '#0f618c', fontSize: '3rem' }}>
+          <i> <b>Your personal online doctor</b></i>
         </h1>
       </div>
 
@@ -194,17 +193,21 @@ function Welcome() {
           height: '10vh', // Full viewport height
         }}
       >
-        <h6 style={{ color: '#0a0a0a', fontSize: '1.2rem' }}>
-          <b>      Our home chefs are from diverse backgrounds. From Dhoklas to Litti Chokha, and Ragi roti to Idiyappam, the regional delicacies available on Homeal is a fest to explore.And, regional dishes taste best when cooked at home!
+        <h6 style={{ color: '#0a0a0a', fontSize: '1rem' }}>
+          <b>       Struggling to get a GP appointment? Fed up of long queues? Frustrated waiting?
+
+Don’t worry – we’re here to help.
+
+Book a same day or next day online consultation, with a UK, NHS-experienced GP, in just a few clicks.
           </b>
         </h6>
       </div>
         <div style={{ float: 'right' }}>
  <Button  
-  color="green" 
+  color="blue" 
   appearance="primary"
   style={{
-    padding: '30px 30px',
+    padding: '10px 10px',
     fontSize: '18px',
     minWidth: '220px',
     display: 'flex',           // ensure flex for icon + text
@@ -213,7 +216,7 @@ function Welcome() {
     gap: '10px'                // space between icon and text
   }}
 >
-  <IoFastFood size={34} />    {/* icon size */}
+  <BsPlus  size={34} />    {/* icon size */}
   <a 
     href="/Customer_Home"
     style={{ 
@@ -221,7 +224,7 @@ function Welcome() {
       textDecoration: 'none' 
     }}
   >
-    Order your Meal now
+    Book an Appointment
   </a>
 </Button>
 
@@ -232,82 +235,122 @@ function Welcome() {
       <div className='flex justify-center items-center'>
       <Typography variant="h2" color="Black">
   <br />
-  Food Varieties at your Fingertips
+  Services we offer
   <br /><br />
 
-  <div className="flex flex-wrap gap-4">
-  <button className="hover:scale-105 transition-transform duration-200">
+<div className="flex flex-wrap gap-4">
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
     <img
-      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Biryani.png"
-      alt="Biryani"
-      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/RCT.gif"
+      alt="1 : Root canal Treatment"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
+    <p className="text-center mt-2 font-semibold text-sm">Root Canal Treatment</p>
   </button>
 
-  <button className="hover:scale-105 transition-transform duration-200">
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
     <img
-      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Burger.png"
-      alt="Burger"
-      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Crowns.gif"
+      alt="Dental Crowns"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
+    <p className="text-center mt-2 font-semibold text-sm">Dental Crowns</p>
   </button>
 
-  <button className="hover:scale-105 transition-transform duration-200">
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
     <img
-      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Noodles.png"
-      alt="Noodles"
-      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Dental-Fillings-1-1.gif"
+      alt="Laser"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
+    <p className="text-center mt-2 font-semibold text-sm">Laser Dentistry</p>
   </button>
 
-  <button className="hover:scale-105 transition-transform duration-200">
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
     <img
-      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Dosa.png"
-      alt="Dosa"
-      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2025/06/Invisible-Braces-1.gif"
+      alt="Invisible"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
+    <p className="text-center mt-2 font-semibold text-sm">Invisible Braces</p>
   </button>
 
-  <button className="hover:scale-105 transition-transform duration-200">
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
     <img
-      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Pasta.png"
-      alt="Pasta"
-      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Dental-Fillings-1-1.gif"
+      alt="Dental Fillings"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
+    <p className="text-center mt-2 font-semibold text-sm">Dental Fillings</p>
   </button>
 
-  <button className="hover:scale-105 transition-transform duration-200">
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
     <img
-      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Momo.png"
-      alt="Momo"
-      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Wisdom-Tooth-1.gif"
+      alt="Wisdom Tooth"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
+    <p className="text-center mt-2 font-semibold text-sm">Wisdom Tooth</p>
   </button>
 
-  <button className="hover:scale-105 transition-transform duration-200">
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
     <img
-      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Parotta.png"
-      alt="Parotta"
-      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2017/05/Braces-2.gif"
+      alt="Dental Braces"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
+    <p className="text-center mt-2 font-semibold text-sm">Dental Braces</p>
   </button>
 
-  <button className="hover:scale-105 transition-transform duration-200">
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
     <img
-      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Shawarma.png"
-      alt="Shawarma"
-      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Dental-Implants.gif"
+      alt="Dental Implants"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
+    <p className="text-center mt-2 font-semibold text-sm">Dental Implants</p>
   </button>
 
-  <button className="hover:scale-105 transition-transform duration-200">
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
     <img
-      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Idli.png"
-      alt="Idli"
-      className="w-48 h-48 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Dentures.gif"
+      alt="Dentures"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
     />
+    <p className="text-center mt-2 font-semibold text-sm">Dentures</p>
+  </button>
+
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Kids-Dentistery.gif"
+      alt="Kids"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+    <p className="text-center mt-2 font-semibold text-sm">Kids Dentistry</p>
+  </button>
+
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2019/02/Mouth-ulcers-1-2.gif"
+      alt="Mouth Ulcers"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+    <p className="text-center mt-2 font-semibold text-sm">Mouth Ulcers</p>
+  </button>
+
+  <button className="flex flex-col items-center hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://clovecontent.s3.ap-south-1.amazonaws.com/All/2017/05/Gum-Treatment.gif"
+      alt="Gum Treatment"
+      className="w-36 h-36 rounded-full border border-green-500 shadow-xl shadow-green-900/20 ring-4 ring-green-500/30"
+    />
+    <p className="text-center mt-2 font-semibold text-sm">Gum Treatment</p>
   </button>
 </div>
+
+
+
+
 </Typography>
 
       </div>
@@ -324,7 +367,7 @@ function Welcome() {
       <img
       src={appbanner}
       alt="App banner scanner"
-      style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+      style={{ width: '100%', height: '20vh', objectFit: 'cover' }}
       className="rounded-lg shadow-md"
     />
      
@@ -347,7 +390,7 @@ function Welcome() {
           <CardHeader
   variant="gradient"
   color="white"
-  className="grid h-24 place-items-center mb-6 bg-green-700"
+  className="grid h-24 place-items-center mb-6 bg-blue-700"
 >
   <Typography variant="h5" className="font-bold text-white">
     SUJITH REDDY
@@ -390,7 +433,7 @@ function Welcome() {
               <CardHeader
   variant="gradient"
   color="white"
-  className="grid h-24 place-items-center mb-6 bg-green-700"
+  className="grid h-24 place-items-center mb-6 bg-blue-700"
 >
   <Typography variant="h5" className="font-bold text-white">
     VIDHYA REDDY

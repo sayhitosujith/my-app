@@ -9,7 +9,7 @@ import { CgProfile } from "react-icons/cg";
 import { BiSupport } from "react-icons/bi";
 import { PiLineVerticalThin } from "react-icons/pi";
 import { FaPowerOff, FaBell } from "react-icons/fa";
-import logo from "./assets/DentalWorld.png";
+import logo from "./assets/logo-dd.jpg";
 
 const PatientPortal = () => {
   // 🌙 Dark mode (persistent)
