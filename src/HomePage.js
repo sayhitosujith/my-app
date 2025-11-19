@@ -92,26 +92,7 @@ function Welcome() {
             className="ml-1 font-bold">
           </Typography>
         </Typography>
-        <Breadcrumbs>
-          <a href="#" className="opacity-60">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-            </svg>
-          </a>
-          <a href="#" className="opacity-60">
-            <a href="#">
-              <a href="/Welcome">
-                Welcome
-              </a>
-            </a>
-          </a>
-          <a href="#">HomePage</a>
-        </Breadcrumbs>
+       
 
            <div
   className="mb-5 shadow-sm px-4 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
@@ -133,37 +114,7 @@ function Welcome() {
 
         
 
-        <div style={{ float: 'right' }}>
-         
-          <div className="w-74">
-            <Select label="Profile">
-
-              <Option>
-              </Option>
-              <Button>
-                <a href="/MyCart">
-                  MyCart
-                </a>
-
-              </Button>
-              <Option>
-                <a href="/HomePage">
-                  About
-                </a>
-              </Option>
-              <Option>
-                <a href="/ResetPassword">
-                  Change Password
-                </a>
-              </Option>
-              <button><Option>
-                <a href="/">
-                  Logout
-                </a>
-              </Option></button>
-            </Select>
-          </div>
-        </div>
+       
       </Typography>
 
       <img
@@ -204,7 +155,7 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
       </div>
         <div style={{ float: 'right' }}>
  <Button  
-  color="blue" 
+  color="green" 
   appearance="primary"
   style={{
     padding: '10px 10px',
@@ -224,7 +175,7 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
       textDecoration: 'none' 
     }}
   >
-    Book an Appointment
+    Book an Appointment Now
   </a>
 </Button>
 
@@ -482,7 +433,7 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
         <div className="mx-auto w-full max-w-7xl px-8">
           <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
             <Typography variant="h5" className="mb-6">
-              Food Maven
+             Duty Dentist
             </Typography>
 
             <div className="flex items-center gap-2 text-black text-sm ml-auto">
