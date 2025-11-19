@@ -432,9 +432,10 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
       <footer className="relative w-full">
         <div className="mx-auto w-full max-w-7xl px-8">
           <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-            <Typography variant="h5" className="mb-6">
-             Duty Dentist
-            </Typography>
+    <Typography variant="h5" className="mb-6">
+  <span className="text-blue-800">Duty</span>{''}
+  <span className="text-blue-400">Dentist</span>
+</Typography>
 
             <div className="flex items-center gap-2 text-black text-sm ml-auto">
               <b>
