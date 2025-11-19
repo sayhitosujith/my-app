@@ -11,6 +11,7 @@ import { TfiEmail } from "react-icons/tfi";
 import { SiFoodpanda } from "react-icons/si";
 import { BsPlus } from "react-icons/bs";
 import logo from "./assets/logo-dd.jpg";
+import { TbDental } from "react-icons/tb";
 
 import {
   Card,
@@ -432,9 +433,11 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
       <footer className="relative w-full">
         <div className="mx-auto w-full max-w-7xl px-8">
           <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-    <Typography variant="h5" className="mb-6">
-  <span className="text-blue-800">Duty</span>{''}
+            
+<Typography variant="h5" className="mb-6 flex items-center space-x-2">
+  <span className="text-blue-800">Duty</span>
   <span className="text-blue-400">Dentist</span>
+  <TbDental className="text-blue-500" />
 </Typography>
 
             <div className="flex items-center gap-2 text-black text-sm ml-auto">
