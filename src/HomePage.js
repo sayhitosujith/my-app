@@ -378,7 +378,7 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
       <div className='flex justify-center items-center'>
         <Typography variant="h2" color="Black">
           <br></br>
-         Meet Our Leadership Team
+         Meet Our Doctors
           <br></br>
           <br></br>
 
@@ -410,7 +410,7 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
     />
 
     <Typography variant="small" className="mt-6 text-center font-semibold">
-      Founder and CEO
+      Qualification - MDS (Oral Surgery)
     </Typography>
 
     <div className="flex justify-center items-center gap-2 mt-3">
@@ -453,7 +453,7 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
     />
 
     <Typography variant="small" className="mt-6 text-center font-semibold">
-      CO-Founder and HR Head
+      Qualification - MDS (Oral Medicine & Radiology)
     </Typography>
 
     <div className="flex justify-center items-center gap-2 mt-4">
@@ -463,7 +463,10 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
       </Typography>
     </div>
   </CardFooter>
+
+  
 </Card>
+
 
 
 </div>
