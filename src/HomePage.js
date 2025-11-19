@@ -4,7 +4,7 @@ import { GrAndroid } from "react-icons/gr";
 import Flag from 'react-world-flags';
 import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
 import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
-import appbanner from './assets/swiggyApp_download_banner.avif'; // adjust the path as necessary
+import appbanner from './assets/2-1.png'; // adjust the path as necessary
 
 import food_wallpaper from './assets/case3.png'; // Main Image
 import { TfiEmail } from "react-icons/tfi";
@@ -367,7 +367,7 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
       <img
       src={appbanner}
       alt="App banner scanner"
-      style={{ width: '100%', height: '20vh', objectFit: 'cover' }}
+      style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
       className="rounded-lg shadow-md"
     />
      
