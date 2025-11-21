@@ -143,7 +143,7 @@ export default function Welcome() {
         <a href="DoctorList">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
             <RiAdminFill size={30} color="#04354f" />
-            <span style={{ color: "black" }}><b>&nbsp;ADMIN</b></span>
+            <span style={{ color: "black" }}><b>&nbsp;DOCTOR Portal</b></span>
           </Button>
         </a>
 

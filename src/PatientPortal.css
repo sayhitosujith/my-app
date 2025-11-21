@@ -13,8 +13,8 @@ body {
 
 /* ---------------------- SIDEBAR ---------------------- */
 .sidebar {
-  background-color: #0067C5;
-  color: white;
+  background-color: #5aa4ee;
+  color: rgb(8, 1, 1);
   width: 260px;
   padding: 20px;
   display: flex;

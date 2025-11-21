@@ -38,6 +38,8 @@ import BookAppointment from './BookAppointment';
 import AppointmentHistory from './AppointmentHistory';
 import DoctorList from './DoctorList';
 import PatientPortal from './PatientPortal';
+import DocumentCenter from './DocumentCenter';
+
 
 const router = createBrowserRouter([
   {
@@ -155,6 +157,10 @@ const router = createBrowserRouter([
   {
     path: "/DailySummary",
     element: <DailySummary/>,
+  },
+    {
+    path: "/DocumentCenter",
+    element: <DocumentCenter/>,
   },
     {
     path: "/BookAppointment",

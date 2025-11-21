@@ -200,7 +200,7 @@ function App() {
           </div>
 
           {/* Social Buttons */}
-          <Button
+          {/* <Button
             size="md"
             variant="outlined"
             color="green"
@@ -213,7 +213,6 @@ function App() {
               className="h-5 w-5"
             />
           </Button>
-
           <Button
             size="md"
             variant="gradient"
@@ -228,7 +227,7 @@ function App() {
                 className="h-5 w-5"
               />
             </span>
-          </Button>
+          </Button> */}
 
           <Typography variant="small" className="mt-6 text-center">
             Don&apos;t have an account?{" "}

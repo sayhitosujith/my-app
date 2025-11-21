@@ -82,7 +82,7 @@ const PatientPortal = () => {
          <SiGoogleforms  size={20} />
          <span>Forms</span>
         </Link>
-          <Link to="/PatientPortal" className="nav-item">
+          <Link to="/DocumentCenter" className="nav-item">
          <MdOutlineDocumentScanner  size={20} />
          <span>Documents Center</span>
         </Link>

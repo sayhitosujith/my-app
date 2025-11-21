@@ -206,6 +206,33 @@ const getGreeting = () => {
 const handleViewSwipes = () => {
   setOpenSwipeModal(true);
 };
+
+// Sample holiday data
+const holidays =[
+  { date: "1 Jan 2026",  day: "Thursday",   name: "New Year's Day" },
+  { date: "3 Jan 2026",  day: "Saturday",   name: "Hazrat Ali's Birthday" },
+  { date: "14 Jan 2026", day: "Wednesday",  name: "Makar Sankranti / Pongal" },
+  { date: "23 Jan 2026", day: "Friday",     name: "Vasant Panchami" },
+  { date: "26 Jan 2026", day: "Monday",     name: "Republic Day" },
+  { date: "15 Feb 2026", day: "Sunday",     name: "Maha Shivaratri" },
+  { date: "4 Mar 2026",  day: "Wednesday",  name: "Holi" },
+  { date: "21 Mar 2026", day: "Saturday",   name: "Eid-ul-Fitr (Tentative)" },
+  { date: "26 Mar 2026", day: "Thursday",   name: "Ram Navami" },
+  { date: "31 Mar 2026", day: "Tuesday",    name: "Mahavir Jayanti" },
+  { date: "3 Apr 2026",  day: "Friday",     name: "Good Friday" },
+  { date: "1 May 2026",  day: "Friday",     name: "Labour Day / Buddha Purnima" },
+  { date: "27 May 2026", day: "Wednesday",  name: "Eid-ul-Zuha (Bakrid) (Tentative)" },
+  { date: "26 Jun 2026", day: "Friday",     name: "Muharram (Tentative)" },
+  { date: "15 Aug 2026", day: "Saturday",   name: "Independence Day" },
+  { date: "26 Aug 2026", day: "Wednesday",  name: "Milad-un-Nabi (Tentative)" },
+  { date: "4 Sep 2026",  day: "Friday",     name: "Janmashtami" },
+  { date: "2 Oct 2026",  day: "Friday",     name: "Gandhi Jayanti" },
+  { date: "20 Oct 2026", day: "Tuesday",    name: "Dussehra" },
+  { date: "8 Nov 2026",  day: "Sunday",     name: "Diwali" },
+  { date: "24 Nov 2026", day: "Tuesday",    name: "Guru Nanak Jayanti" },
+  { date: "25 Dec 2026", day: "Friday",     name: "Christmas" }
+]
+
   return (
     <div className="p-5 min-h-screen bg-blue-50">
       {/* Header with Logo + Logout */}
@@ -265,7 +292,11 @@ const handleViewSwipes = () => {
       {/* Add Doctor / Delete Selected */}
 <div className="flex justify-between items-center mb-4">
   {/* Left button */}
-<Button color="blue" onClick={() => navigate("/AddDoctor")}>
+<Button
+  color="green"
+  className="px-12 py-3 text-lg"
+  onClick={() => navigate("/AddDoctor")}
+>
     + ADD DOCTOR
 </Button>
   
@@ -328,31 +359,26 @@ const handleViewSwipes = () => {
 </div>
 
 
-<div className="w-full flex justify-center">
-  <Card className="w-full max- -sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
-    <Typography variant="h5" className="mb-4">
-      Upcoming Holidays 
-<div>
-  <FcLeave size={42} />
-</div>
+{/* Upcoming Holidays Card */}
+<Card className="w-full max-w-sm p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+  <Typography variant="h5" className="mb-4">
+    Upcoming Holidays
+    <div>
+      <FcLeave size={42} />
+    </div>
+    <VscArrowRight size={32} className="absolute top-10 right-10" />
+  </Typography>
 
-<VscArrowRight
-  size={32}
-  className="absolute top-10 right-10"
-/>
+  {holidays.length > 0 && (
+    <div className="mt-2 space-y-2 text-gray-700 border-b pb-2">
+      <div className="font-semibold">
+        {holidays[0].date} • {holidays[0].day}
+      </div>
+      <div>{holidays[0].name}</div>
+    </div>
+  )}
+</Card>
 
-
-    </Typography>
-
-    <p className="text-gray-700 font-medium">
-<div className="mt-2 space-y-1">
-  <div className="font-semibold">25 Dec • Thursday</div>
-  <div className="text-gray-700">Christmas</div>
-</div>
-    </p>
-
-  </Card>
-</div>
 
         {selectedDoctors.length > 0 && (
           <Button color="red" onClick={deleteSelectedDoctors}>
@@ -363,7 +389,7 @@ const handleViewSwipes = () => {
 
       {/* View Controls */}
       <div className="flex items-center justify-between mb-4">
-        <Typography variant="h4" color="blue-gray">
+        <Typography variant="h4" color="grey">
           Doctors List
         </Typography>
         <div className="flex items-center gap-2">
@@ -604,6 +630,52 @@ const handleViewSwipes = () => {
           </Button>
         </DialogFooter>
       </Dialog>
+      {/* Swipe Details Modal */}
+{/* Swipe Details Modal */}
+<Dialog open={openSwipeModal} handler={() => setOpenSwipeModal(false)}>
+  <DialogBody>
+    <div className="space-y-4 text-gray-900">
+      <h2 className="text-xl font-semibold mb-2">Swipe Details</h2>
+
+      {/* Date */}
+      <div className="border p-3 rounded-lg bg-gray-100">
+        <p><span className="font-bold">Date:</span> 21 Nov, 2025</p>
+        <p><span className="font-bold">Shift Time:</span> 10:00 AM – 10:00 PM</p>
+        <p><span className="font-bold">Shift Type:</span> FLEX</p>
+      </div>
+
+      {/* Swipe Time + Door / Address */}
+      <div className="border p-3 rounded-lg bg-white shadow-sm">
+        <h3 className="font-semibold mb-2 text-gray-800">Swipe Log</h3>
+
+        <div className="space-y-2">
+          <div className="p-2 border rounded bg-gray-50">
+            <p><span className="font-bold">Swipe Time:</span> 10:05 AM</p>
+            <p><span className="font-bold">Door / Address:</span> Main Gate – Reception Entry</p>
+          </div>
+
+          <div className="p-2 border rounded bg-gray-50">
+            <p><span className="font-bold">Swipe Time:</span> 01:15 PM</p>
+            <p><span className="font-bold">Door / Address:</span> Cafeteria – East Wing</p>
+          </div>
+
+          <div className="p-2 border rounded bg-gray-50">
+            <p><span className="font-bold">Swipe Time:</span> 08:50 PM</p>
+            <p><span className="font-bold">Door / Address:</span> Exit Gate – Parking Lot</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </DialogBody>
+
+  <DialogFooter>
+    <Button color="blue" onClick={() => setOpenSwipeModal(false)}>
+      Close
+    </Button>
+  </DialogFooter>
+</Dialog>
+
+
     </div>
   );
 }
