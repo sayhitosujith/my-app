@@ -5,7 +5,6 @@
   0% {
     transform: translateX(100%);
   }
-
   100% {
     transform: translateX(-100%);
   }
@@ -20,14 +19,12 @@
   letter-spacing: 0.5px;
 }
 
-/* Pause on hover */
 .animate-scroll:hover {
   animation-play-state: paused;
-  color: #ffd700; /* subtle gold effect on hover */
+  color: #ffd700;
   text-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
 }
 
-/* Responsive speed adjustments */
 @media (max-width: 768px) {
   .animate-scroll {
     animation-duration: 20s;
@@ -42,7 +39,6 @@
   }
 }
 
-/* Banner container polish */
 .announcement-banner {
   background: linear-gradient(90deg, #523b84, #2e236d);
   color: #ffffff;
@@ -54,7 +50,6 @@
   position: relative;
 }
 
-/* Glow effect at edges */
 .announcement-banner::before,
 .announcement-banner::after {
   content: "";
@@ -75,6 +70,7 @@
   right: 0;
   background: linear-gradient(to left, rgba(82,59,132,1), transparent);
 }
+
 /* ================================
    CONTACT CLINIC Card Styling
 ================================ */
@@ -88,14 +84,12 @@
   transition: all 0.4s ease;
 }
 
-/* Hover effect on card */
 .contact-clinic-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 25px rgba(55, 65, 81, 0.25);
   border-color: #4338ca;
 }
 
-/* Header */
 .contact-clinic-header {
   font-size: 1.4rem;
   font-weight: 700;
@@ -105,7 +99,6 @@
   letter-spacing: 0.5px;
 }
 
-/* Icon buttons */
 .contact-clinic-icons {
   display: flex;
   justify-content: center;
@@ -135,31 +128,13 @@
   color: #ffffff;
 }
 
-/* Responsive */
-@media (max-width: 640px) {
-  .contact-clinic-card {
-    width: 100%;
-    padding: 16px;
-  }
-
-  .contact-clinic-header {
-    font-size: 1.2rem;
-  }
-  /* App.css */
-
-/* Background gradient for the page */
+/* ================================
+   Global & App Styling
+================================ */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background: linear-gradient(135deg, #e0f7fa, #ffffff);
-}
-
-/* Centering card */
-.card-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 /* Upload file input */
@@ -182,39 +157,36 @@ body {
   border-radius: 50%;
   padding: 5px;
   background-color: #f0f9ff;
+  margin: 0 auto;
 }
 
 /* Add Doctor button */
-button.add-doctor-btn {
+.add-doctor-btn {
   background: linear-gradient(to right, #06b6d4, #3b82f6);
   font-weight: bold;
   transition: all 0.3s ease-in-out;
 }
 
-button.add-doctor-btn:hover {
+.add-doctor-btn:hover {
   background: linear-gradient(to right, #0284c7, #2563eb);
   transform: scale(1.02);
 }
 
 /* Cancel button */
-button.cancel-btn {
+.cancel-btn {
   background: linear-gradient(to right, #ef4444, #dc2626);
   font-weight: bold;
   transition: all 0.3s ease-in-out;
 }
 
-button.cancel-btn:hover {
+.cancel-btn:hover {
   background: linear-gradient(to right, #b91c1c, #7f1d1d);
   transform: scale(1.02);
 }
-/* Global background */
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #e0f7fa, #ffffff);
-}
 
-/* Main container */
+/* ================================
+   Add Doctor Page Layout
+================================ */
 .add-doctor-container {
   display: flex;
   flex-direction: row;
@@ -222,7 +194,6 @@ body {
   min-height: 100vh;
 }
 
-/* Left form section */
 .form-section {
   width: 50%;
   display: flex;
@@ -230,23 +201,20 @@ body {
   align-items: center;
 }
 
-/* Card styling */
 .doctor-card {
-  width: 500px;
-  padding: 20px;
+  width: 650px; /* Increased from 500px */
+  padding: 25px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   border-radius: 16px;
   background: #ffffff;
 }
 
-/* Title */
 .title-text {
   color: #0284c7;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-/* File input */
 .file-label {
   margin-top: 10px;
   font-size: 14px;
@@ -267,45 +235,11 @@ body {
   border-color: #3b82f6;
 }
 
-/* Avatar */
-.avatar-style {
-  border: 3px solid #3b82f6;
-  border-radius: 50%;
-  padding: 5px;
-  background-color: #f0f9ff;
-  margin: 0 auto;
-}
-
-/* Buttons */
-.add-doctor-btn {
-  background: linear-gradient(to right, #06b6d4, #3b82f6) !important;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-}
-
-.add-doctor-btn:hover {
-  background: linear-gradient(to right, #0284c7, #2563eb) !important;
-  transform: scale(1.02);
-}
-
-.cancel-btn {
-  background: linear-gradient(to right, #ef4444, #dc2626) !important;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-}
-
-.cancel-btn:hover {
-  background: linear-gradient(to right, #b91c1c, #7f1d1d) !important;
-  transform: scale(1.02);
-}
-
-/* Note text */
 .note-text {
   font-size: 13px;
   color: #6b7280;
 }
 
-/* Right illustration */
 .image-section {
   width: 50%;
   display: flex;
@@ -318,15 +252,4 @@ body {
   height: 100vh;
   object-fit: cover;
   border-radius: 0 0 0 60px;
-}
-/* Card styling */
-.doctor-card {
-  width: 650px;  /* ⬅️ Increased from 500px */
-  padding: 25px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  border-radius: 16px;
-  background: #ffffff;
-}
-
-
 }
