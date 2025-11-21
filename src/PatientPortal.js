@@ -3,13 +3,14 @@ import "./PatientPortal.css";
 import packageJson from "../package.json";
 import { IoHomeOutline } from "react-icons/io5";
 import { SiGoogleforms } from "react-icons/si";
-import { IoIosFolder } from "react-icons/io";
-import { IoSettingsOutline } from "react-icons/io5";
-import { CgProfile } from "react-icons/cg";
+import { FaRegUser } from "react-icons/fa6";
+import { TiSpanner } from "react-icons/ti";
+import { MdOutlineDocumentScanner } from "react-icons/md";
 import { BiSupport } from "react-icons/bi";
 import { PiLineVerticalThin } from "react-icons/pi";
 import { FaPowerOff, FaBell } from "react-icons/fa";
 import logo from "./assets/logo-dd.jpg";
+import { Link } from "react-router-dom";
 
 const PatientPortal = () => {
   // 🌙 Dark mode (persistent)
@@ -73,26 +74,26 @@ const PatientPortal = () => {
           alt="Application_logo"
         />
         <nav className="sidebar-nav">
-          <div className="nav-item">
-            <IoHomeOutline />
-            <span>Home</span>
-          </div>
-          <div className="nav-item">
-            <SiGoogleforms />
-            <span>Forms</span>
-          </div>
-          <div className="nav-item">
-            <IoIosFolder />
-            <span>Document Center</span>
-          </div>
-          <div className="nav-item">
-            <IoSettingsOutline />
-            <span>Settings</span>
-          </div>
-          <div className="nav-item">
-            <CgProfile />
-            <span>Profile</span>
-          </div>
+         <Link to="/Welcome" className="nav-item">
+         <IoHomeOutline size={20} />
+         <span>Home</span>
+        </Link>
+           <Link to="/PatientPortal" className="nav-item">
+         <SiGoogleforms  size={20} />
+         <span>Forms</span>
+        </Link>
+          <Link to="/PatientPortal" className="nav-item">
+         <MdOutlineDocumentScanner  size={20} />
+         <span>Documents Center</span>
+        </Link>
+            <Link to="/Settings" className="nav-item">
+         <TiSpanner size={25} />
+         <span>Settings</span>
+        </Link>
+           <Link to="/Profile" className="nav-item">
+         <FaRegUser  size={20} />
+         <span>Profile</span>
+        </Link>
 
           {/* 🌙 Dark mode toggle */}
       <button
