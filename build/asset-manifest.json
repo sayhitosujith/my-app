@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/my-app/static/css/main.f787b827.css",
+    "main.js": "/my-app/static/js/main.7d503141.js",
+    "static/js/787.d4aba7ab.chunk.js": "/my-app/static/js/787.d4aba7ab.chunk.js",
+    "static/media/Vidhya.jpg": "/my-app/static/media/Vidhya.bcf287013ea19838c9b6.jpg",
+    "static/media/2-1.png": "/my-app/static/media/2-1.aa404c680c71060b48a5.png",
+    "static/media/sujith.jpg": "/my-app/static/media/sujith.6b04e0dec1a0d6f5c682.jpg",
+    "static/media/campaign1.jpg": "/my-app/static/media/campaign1.c09825044bc8b448f99e.jpg",
+    "static/media/logo-dd.jpg": "/my-app/static/media/logo-dd.40749df3dc5d0a200797.jpg",
+    "static/media/DentalWorld.png": "/my-app/static/media/DentalWorld.662e555387eb6cfd2fe3.png",
+    "static/media/D-logo.jpg": "/my-app/static/media/D-logo.3109c71df0a5ed674329.jpg",
+    "static/media/RCB.png": "/my-app/static/media/RCB.b976216da393c7c03c4e.png",
+    "static/media/emblem.png": "/my-app/static/media/emblem.6c6874ed797e3ed6c422.png",
+    "static/media/case3.png": "/my-app/static/media/case3.72e8299975a95464d008.png",
+    "index.html": "/my-app/index.html",
+    "main.f787b827.css.map": "/my-app/static/css/main.f787b827.css.map",
+    "main.7d503141.js.map": "/my-app/static/js/main.7d503141.js.map",
+    "787.d4aba7ab.chunk.js.map": "/my-app/static/js/787.d4aba7ab.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f787b827.css",
+    "static/js/main.7d503141.js"
+  ]
+}
