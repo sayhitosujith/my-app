@@ -8,149 +8,146 @@ import { TiSpanner } from "react-icons/ti";
 import { MdOutlineDocumentScanner } from "react-icons/md";
 import { BiSupport } from "react-icons/bi";
 import { PiLineVerticalThin } from "react-icons/pi";
-import { FaPowerOff, FaBell } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
 import logo from "./assets/logo-dd.jpg";
 import { Link } from "react-router-dom";
 
 const PatientPortal = () => {
-  // 🌙 Dark mode (persistent)
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
+  useEffect(() => { localStorage.setItem("theme", darkMode ? "dark" : "light"); }, [darkMode]);
 
-  useEffect(() => {
-    localStorage.setItem("theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
-
-  // 🧾 Forms data
+  // Forms data with dynamic questions
   const [forms, setForms] = useState([
-    { id: 1, title: "Medical History Form", completed: false },
-    { id: 2, title: "Allergy Disclosure", completed: true },
-    { id: 3, title: "Insurance Details", completed: false },
-    { id: 4, title: "Emergency Contact Info", completed: false },
-    { id: 5, title: "Lifestyle Questionnaire", completed: false },
+    {
+      id: 1,
+      title: "Medical History Form",
+      completed: false,
+      responses: {},
+      questions: [
+        { id: "q1", type: "text", label: "Do you have any chronic illness?", required: true },
+        { id: "q2", type: "textarea", label: "Please list any medications you take:", required: false },
+      ]
+    },
+    {
+      id: 2,
+      title: "Allergy Disclosure",
+      completed: true,
+      responses: { q1: "Peanuts" },
+      questions: [
+        { id: "q1", type: "text", label: "List your allergies:", required: true },
+      ]
+    },
+    {
+      id: 3,
+      title: "Insurance Details",
+      completed: false,
+      responses: {},
+      questions: [
+        { id: "q1", type: "text", label: "Insurance Provider:", required: true },
+        { id: "q2", type: "text", label: "Policy Number:", required: true },
+      ]
+    },
+    {
+      id: 4,
+      title: "Emergency Contact Info",
+      completed: false,
+      responses: {},
+      questions: [
+        { id: "q1", type: "text", label: "Contact Name:", required: true },
+        { id: "q2", type: "text", label: "Contact Phone:", required: true },
+      ]
+    },
+    {
+      id: 5,
+      title: "Lifestyle Questionnaire",
+      completed: false,
+      responses: {},
+      questions: [
+        { id: "q1", type: "select", label: "Do you exercise regularly?", options: ["Yes", "No"], required: true },
+        { id: "q2", type: "checkbox", label: "Which of these do you consume?", options: ["Alcohol", "Tobacco", "Caffeine"], required: false }
+      ]
+    },
   ]);
 
-  // 🔍 Search
   const [searchTerm, setSearchTerm] = useState("");
-
-  // 🔔 Notifications
   const [showNotifications, setShowNotifications] = useState(false);
-  const notifications = [
-    "New message from your doctor",
-    "Your insurance form has been approved",
-    "Appointment rescheduled for Nov 20, 2025",
-  ];
-
-  // 👤 Profile Dropdown
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
-  // 📊 Progress calculation
-  const completedForms = forms.filter((f) => f.completed).length;
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeForm, setActiveForm] = useState(null);
+  const [formResponses, setFormResponses] = useState({});
+
+  const completedForms = forms.filter(f => f.completed).length;
   const progress = Math.round((completedForms / forms.length) * 100);
 
-  // ✅ Toggle form completion
-  const toggleFormCompletion = (id) => {
-    setForms((prev) =>
-      prev.map((form) =>
-        form.id === id ? { ...form, completed: !form.completed } : form
-      )
-    );
+  const handleStartForm = (form) => {
+    setActiveForm(form);
+    setFormResponses(form.responses || {});
+    setModalOpen(true);
   };
 
-  // 🔍 Filter forms based on search
-  const filteredForms = forms.filter((form) =>
-    form.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleCloseModal = () => {
+    setActiveForm(null);
+    setFormResponses({});
+    setModalOpen(false);
+  };
+
+  const handleInputChange = (questionId, value) => {
+    setFormResponses(prev => ({ ...prev, [questionId]: value }));
+  };
+
+  const handleSubmitForm = () => {
+    // Validate required fields
+    const missing = activeForm.questions.filter(q => q.required && !formResponses[q.id]);
+    if (missing.length > 0) {
+      alert("Please answer all required fields!");
+      return;
+    }
+
+    setForms(prev =>
+      prev.map(f =>
+        f.id === activeForm.id ? { ...f, completed: true, responses: formResponses } : f
+      )
+    );
+    handleCloseModal();
+  };
+
+  const filteredForms = forms.filter(form => form.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <div className={`portal-container ${darkMode ? "dark-mode" : ""}`}>
-      
       {/* Sidebar */}
       <aside className="sidebar">
-        <img
-          style={{ width: "90%", height: "10%" }}
-          src={logo}
-          alt="Application_logo"
-        />
+        <img style={{ width: "90%", height: "10%" }} src={logo} alt="Application_logo" />
         <nav className="sidebar-nav">
-         <Link to="/Welcome" className="nav-item">
-         <IoHomeOutline size={20} />
-         <span>Home</span>
-        </Link>
-           <Link to="/PatientPortal" className="nav-item">
-         <SiGoogleforms  size={20} />
-         <span>Forms</span>
-        </Link>
-          <Link to="/DocumentCenter" className="nav-item">
-         <MdOutlineDocumentScanner  size={20} />
-         <span>Documents Center</span>
-        </Link>
-            <Link to="/Settings" className="nav-item">
-         <TiSpanner size={25} />
-         <span>Settings</span>
-        </Link>
-           <Link to="/Profile" className="nav-item">
-         <FaRegUser  size={20} />
-         <span>Profile</span>
-        </Link>
-
-          {/* 🌙 Dark mode toggle */}
-      <button
-        className="dark-mode-toggle"
-        onClick={() => setDarkMode(!darkMode)}
-      >
-        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-      </button>
-
+          <Link to="/Welcome" className="nav-item"><IoHomeOutline size={20} /><span>Home</span></Link>
+          <Link to="/PatientPortal" className="nav-item"><SiGoogleforms size={20} /><span>Forms</span></Link>
+          <Link to="/DocumentCenter" className="nav-item"><MdOutlineDocumentScanner size={20} /><span>Documents Center</span></Link>
+          <Link to="/Settings" className="nav-item"><TiSpanner size={25} /><span>Settings</span></Link>
+          <Link to="/Profile" className="nav-item"><FaRegUser size={20} /><span>Profile</span></Link>
+          <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>{darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}</button>
         </nav>
-
-
-
-        <div className="nav-item">
-          <BiSupport />
-          <span>Help</span>
-        </div>
-        <div className="sidebar-support">
-          <h8>App Version : {packageJson.version}</h8>
-        </div>
+        <div className="nav-item"><BiSupport /><span>Help</span></div>
+        <div className="sidebar-support"><h8>App Version : {packageJson.version}</h8></div>
       </aside>
 
       {/* Main content */}
       <main className="main-content">
         <header className="main-header">
           <h1>My Patient Portal</h1>
-
           <div className="header-actions">
-            {/* 🔔 Notifications */}
             <div className="notification-wrapper">
-              <FaBell
-                size={22}
-                color="black"
-                className="cursor-pointer"
-                onClick={() => setShowNotifications(!showNotifications)}
-              />
+              <FaBell size={22} className="cursor-pointer" onClick={() => setShowNotifications(!showNotifications)} />
               {showNotifications && (
                 <div className="notifications-dropdown">
-                  {notifications.map((note, index) => (
-                    <div key={index} className="notification-item">
-                      {note}
-                    </div>
-                  ))}
+                  {["New message from your doctor", "Insurance approved", "Appointment rescheduled"].map((note, idx) => <div key={idx} className="notification-item">{note}</div>)}
                 </div>
               )}
             </div>
-
             <PiLineVerticalThin size={24} color="black" />
-
-            {/* 👤 User badge */}
-            <div
-              className="user-badge"
-              onClick={() => setShowProfileMenu(!showProfileMenu)}
-            >
+            <div className="user-badge" onClick={() => setShowProfileMenu(!showProfileMenu)}>
               <div className="user-icon">SS</div>
               <span className="username">Sujith S</span>
-
               {showProfileMenu && (
                 <div className="profile-dropdown">
                   <a href="/Profile">Edit Profile</a>
@@ -162,80 +159,39 @@ const PatientPortal = () => {
           </div>
         </header>
 
-        {/* 🔔 Alert Banner */}
-        {/* <div className="alert-banner">
-          🕒 Alert : You have {forms.length - completedForms} forms pending.
-        </div> */}
-
-{/* 📊 Stats */}
-<section className="stats-card">
-  <div className="card stats-container">
-    <h3 className="stats-title"> Forms KPI</h3>
-
-    <div className="stats-section">
-      <div className="stat-box">
-<h4><strong><em>Total Forms</em></strong></h4>
-        <p>{forms.length}</p>
-      </div>
-      <div className="stat-box">
-<h4><strong><em>Completed Forms</em></strong></h4>
-        <p>{completedForms}</p>
-      </div>
-      <div className="stat-box">
-<h4><strong><em>Pending Forms</em></strong></h4>
-        <p>{forms.length - completedForms}</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-        {/* 📈 Progress */}
-        <section className="progress-section">
-          <div className="progress-box">
-            <div className="progress-info">
-              <p>
-                <strong>Progress</strong>
-              </p>
-              <p>{progress}%</p>
-            </div>
-            <div className="progress-bar-container">
-              <div
-                className="progress-bar"
-                style={{ width: `${progress}%` }}
-              ></div>
-            </div>
-            <div className="progress-note">
-              Forms will be reviewed by staff when completed.
+        {/* Stats & Progress */}
+        <section className="stats-card">
+          <div className="card stats-container">
+            <h3 className="stats-title">Forms KPI</h3>
+            <div className="stats-section">
+              <div className="stat-box"><h4>Total Forms</h4><p>{forms.length}</p></div>
+              <div className="stat-box"><h4>Completed Forms</h4><p>{completedForms}</p></div>
+              <div className="stat-box"><h4>Pending Forms</h4><p>{forms.length - completedForms}</p></div>
             </div>
           </div>
         </section>
 
-        {/* 🔍 Search Forms */}
+        <section className="progress-section">
+          <div className="progress-box">
+            <div className="progress-info"><p><strong>Progress</strong></p><p>{progress}%</p></div>
+            <div className="progress-bar-container"><div className="progress-bar" style={{ width: `${progress}%` }}></div></div>
+            <div className="progress-note">Forms will be reviewed by staff when completed.</div>
+          </div>
+        </section>
+
+        {/* Search */}
         <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search forms..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+          <input type="text" placeholder="Search forms..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
         </div>
 
-        {/* 🧾 Forms */}
+        {/* Forms Section */}
         <section className="forms-section">
-
-          {filteredForms.map((form) => (
+          {filteredForms.map(form => (
             <div key={form.id} className="card">
               <div className="card-body">
                 <h2 className="card-title">{form.title}</h2>
-                <p className="card-text">
-                  Please complete all forms assigned to you. Your responses help
-                  our team provide the most accurate and effective care.
-                </p>
-                <button
-                  className={`form-btn ${form.completed ? "completed" : ""}`}
-                  onClick={() => toggleFormCompletion(form.id)}
-                >
+                <p className="card-text">Please complete all forms assigned to you. Your responses help our team provide the most accurate care.</p>
+                <button className={`form-btn ${form.completed ? "completed" : ""}`} onClick={() => handleStartForm(form)}>
                   {form.completed ? "View / Edit" : "Start Form"}
                 </button>
               </div>
@@ -243,46 +199,49 @@ const PatientPortal = () => {
           ))}
         </section>
 
-  <div className="activity-appointments-wrapper">
-  {/* 🕓 Recent Activity */}
-  <section className="recent-activity">
-    <h3>Recent Activity</h3>
-    <ul>
-      <li>✅ Completed Allergy Disclosure</li>
-      <li>📅 Scheduled check-up for Nov 20</li>
-      <li>📝 Updated emergency contact info</li>
-    </ul>
-  </section>
-
-  {/* 📅 Upcoming Appointments */}
-  <section className="appointments-section">
-    <h3>Upcoming Appointments</h3>
-    <ul>
-      <li>
-        <strong>Nov 20, 2025:</strong> Routine Check-up @ 10:00 AM
-      </li>
-      <li>
-        <strong>Dec 5, 2025:</strong> Follow-up @ 2:30 PM
-      </li>
-    </ul>
-  </section>
-</div>
-
-
-        {/* 🆘 Help */}
-        <aside className="help-box">
-          <h3>Need help?</h3>
-          <p>
-            Are you unsure about some of the questions? Don’t worry, we can
-            help.
-          </p>
-          <button
-            className="contact-btn"
-            onClick={() => (window.location.href = "/CustomerCare")}
-          >
-            Contact Us
-          </button>
-        </aside>
+        {/* Dynamic Modal */}
+        {modalOpen && activeForm && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <h2>{activeForm.title}</h2>
+              <div className="modal-body">
+                {activeForm.questions.map(q => {
+                  switch (q.type) {
+                    case "text":
+                      return <label key={q.id}>{q.label}: <input type="text" value={formResponses[q.id] || ""} onChange={e => handleInputChange(q.id, e.target.value)} /></label>;
+                    case "textarea":
+                      return <label key={q.id}>{q.label}: <textarea value={formResponses[q.id] || ""} onChange={e => handleInputChange(q.id, e.target.value)} /></label>;
+                    case "select":
+                      return <label key={q.id}>{q.label}: <select value={formResponses[q.id] || ""} onChange={e => handleInputChange(q.id, e.target.value)}>
+                        <option value="">Select</option>
+                        {q.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                      </select></label>;
+                    case "checkbox":
+                      return <fieldset key={q.id}>
+                        <legend>{q.label}:</legend>
+                        {q.options.map(opt => (
+                          <label key={opt}>
+                            <input type="checkbox" checked={formResponses[q.id]?.includes(opt)} onChange={e => {
+                              const prev = formResponses[q.id] || [];
+                              if (e.target.checked) handleInputChange(q.id, [...prev, opt]);
+                              else handleInputChange(q.id, prev.filter(v => v !== opt));
+                            }} />
+                            {opt}
+                          </label>
+                        ))}
+                      </fieldset>;
+                    default:
+                      return null;
+                  }
+                })}
+              </div>
+              <div className="modal-footer">
+                <button onClick={handleCloseModal} className="modal-btn cancel">Cancel</button>
+                <button onClick={handleSubmitForm} className="modal-btn submit">Submit</button>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );

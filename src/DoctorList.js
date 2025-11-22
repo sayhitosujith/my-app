@@ -26,7 +26,8 @@ import { VscArrowRight } from "react-icons/vsc";
 import { FcLeave } from "react-icons/fc";
 import { CgProfile } from "react-icons/cg";
 import { FiUser } from "react-icons/fi";
-
+import { AiOutlineDelete } from "react-icons/ai";
+import "./DoctorList.css";
 
 function DoctorList() {
   const navigate = useNavigate();
@@ -206,6 +207,8 @@ const getGreeting = () => {
 const handleViewSwipes = () => {
   setOpenSwipeModal(true);
 };
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
 
 // Sample holiday data
 const holidays =[
@@ -232,39 +235,36 @@ const holidays =[
   { date: "24 Nov 2026", day: "Tuesday",    name: "Guru Nanak Jayanti" },
   { date: "25 Dec 2026", day: "Friday",     name: "Christmas" }
 ]
+const [user, setUser] = useState(
+  JSON.parse(localStorage.getItem("loggedInUser")) || { name: "Sujith S", initials: "SS" }
+);
+const handleLogin = (userData) => {
+  localStorage.setItem("loggedInUser", JSON.stringify(userData));
+  setUser(userData);
+};
+
 
   return (
-    <div className="p-5 min-h-screen bg-blue-50">
-      {/* Header with Logo + Logout */}
+ <div className="p-5 min-h-screen bg-blue-50">
+      {/* Header */}
       <div className="flex justify-between items-center mb-4">
-        <img
-          style={{ width: "15%", height: "15%" }}
-          src={logo}
-          alt="Application_logo"
-        />
-
-        <div className="flex items-center gap-3">
-           <div className="flex items-center gap-3">
-          <a href="/Profile">
-            <div className="relative group cursor-pointer">
-              <FiUser  color="black" size={28} />
-              <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                Profile
-              </span>
+        <img style={{ width: "15%", height: "15%" }} src={logo} alt="Application_logo" />
+ <div className="user-badge" onClick={() => setShowProfileMenu(!showProfileMenu)}>
+  <div className="user-icon">
+    {user.initials || user.name.split(" ").map(n => n[0]).join("")}
+  </div>
+  <span className="username">{user.name}</span>
+          {showProfileMenu && (
+            <div className="profile-dropdown">
+              <a href="/Profile">Edit Profile</a>
+              <a href="/Settings">Settings</a>
+              <a href="/Logout">Logout</a>
             </div>
-          </a>
+          )}
         </div>
-          <a href="/Logout">
-            <div className="relative group cursor-pointer">
-              <FaPowerOff color="black" size={25} />
-              <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                Logout
-              </span>
-            </div>
-          </a>
-        </div>
-        
+       
       </div>
+
 
       {/* Breadcrumbs */}
       <Breadcrumbs className="mb-4">
@@ -277,6 +277,9 @@ const holidays =[
         >
           Home
         </Typography>
+
+      {/* Add Doctor / Delete Selected */}
+
         <Typography
           as="a"
           href="/AddDoctor"
@@ -289,12 +292,11 @@ const holidays =[
         <Typography color="blue-gray">Doctor List</Typography>
       </Breadcrumbs>
 
-      {/* Add Doctor / Delete Selected */}
 <div className="flex justify-between items-center mb-4">
   {/* Left button */}
 <Button
   color="green"
-  className="px-12 py-3 text-lg"
+  className="px-10 py-1 text-lg"
   onClick={() => navigate("/AddDoctor")}
 >
     + ADD DOCTOR
@@ -309,54 +311,65 @@ const holidays =[
     <Typography className="text-gray-700 italic text-sl">
       “Don’t worry about failures, worry about the chances you miss
       when you don’t even try.”
-      <br />— Jack Canfield
-
-     
+      <br />
     </Typography>
   </Card>
 </div>
 
 
 
-
 <div className="w-full flex justify-center">
-  <Card className="w-full max-w-sm p-2 shadow-xl rounded-xl bg-white bg-opacity-90">
-        {/* ✅ View Swipes Link */}
+  <Card className="w-full max-w-sm p-4 shadow-2xl rounded-2xl 
+                  bg-gradient-to-br from-white to-blue-50 backdrop-blur-md border border-blue-100">
 
-    <Typography variant="h5" className="mb-4">
+    {/* Title */}
+    <Typography 
+      variant="h5" 
+      className="mb-4 text-center font-bold text-blue-700 tracking-wide"
+    >
       Time & Shift Information
     </Typography>
-    
 
-    <p className="text-gray-700 font-medium">
-      {`${currentDay} | ${shiftObj.type} – ${shiftObj.start} to ${shiftObj.end}`}
-    </p>
+    {/* Day + Shift Info */}
+    <div className="bg-blue-100 p-3 rounded-xl shadow-inner mb-3">
+      <p className="text-gray-800 font-semibold text-center">
+        {`${currentDay} | ${shiftObj.type}`}
+      </p>
+      <p className="text-gray-600 text-center text-sm">
+        {`${shiftObj.start} – ${shiftObj.end}`}
+      </p>
+    </div>
 
-    <p className="text-gray-900 font-semibold text-lg">
+    {/* Time Display */}
+    <p className="text-blue-900 font-extrabold text-2xl text-center mt-2 tracking-wider">
       ⏱ {currentTime}
     </p>
 
-    <div className="mt-3 text-start">
+    {/* Link */}
+    <div className="mt-4 text-center">
       <a
         href="#"
-        className="text-blue-600 underline hover:text-blue-800"
+        className="text-blue-600 font-medium underline hover:text-blue-800 transition-colors"
         onClick={handleViewSwipes}
       >
-        VIEW SWIPES 
+        VIEW SWIPES
       </a>
-    </div> 
-<div className="mt-6 flex justify-end">
+    </div>
+
+    {/* Sign In / Out Button */}
+    <div className="mt-6 flex justify-end">
       <Button
-        color={isLoggedIn ? "red" : "green"}
+        className={`px-6 py-3 rounded-lg shadow-md transition-transform hover:scale-105 
+                    ${isLoggedIn ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}`}
         onClick={handleOpen}
       >
         {isLoggedIn ? "Sign Out" : "Sign In"}
       </Button>
     </div>
 
-
   </Card>
 </div>
+
 
 
 {/* Upcoming Holidays Card */}
@@ -382,7 +395,8 @@ const holidays =[
 
         {selectedDoctors.length > 0 && (
           <Button color="red" onClick={deleteSelectedDoctors}>
-            🗑 Delete Selected ({selectedDoctors.length})
+            <AiOutlineDelete size={20} />
+ Delete ({selectedDoctors.length})
           </Button>
         )}
       </div>
@@ -437,19 +451,22 @@ const holidays =[
             {currentDoctors.map((doc, index) => {
               const realIndex = indexOfFirstDoctor + index;
               return (
-                <Card
-                  key={realIndex}
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  className={`p-4 flex relative border h-64 transition-transform duration-200 ${
-                    selectedDoctors.includes(realIndex)
-                      ? "border-red-500 bg-red-100"
-                      : "border-blue-600 bg-blue-200 hover:bg-blue-300 hover:scale-105 shadow-lg"
-                  } ${
-                    gridView
-                      ? "flex-col items-center text-center justify-between"
-                      : "flex-row items-center gap-4"
-                  }`}
-                >
+         
+    /* Doctor Card */     
+<Card
+  key={realIndex}
+  ref={(el) => (cardRefs.current[index] = el)}
+  className={`p-4 flex relative border h-64 transition-transform duration-200 ${
+    selectedDoctors.includes(realIndex)
+      ? "border-red-500 bg-red-100"
+      : "border-white-600 bg-blue-100 hover:bg-blue-100 hover:scale-105 shadow-lg"
+  } ${
+    gridView
+      ? "flex-col items-center text-center justify-between"
+      : "flex-row items-center gap-4"
+  }`}
+>
+
                   {/* Checkbox */}
                   <input
                     type="checkbox"

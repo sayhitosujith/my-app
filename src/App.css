@@ -1,4 +1,19 @@
 /* ================================
+   Global Reset & Box Sizing
+================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+}
+
+/* ================================
    Banner Scroll Animation
 ================================ */
 @keyframes scrollLeft {
@@ -72,14 +87,113 @@
 }
 
 /* ================================
-   CONTACT CLINIC Card Styling
+   Add Doctor Page Layout
+================================ */
+.add-doctor-container {
+  display: flex;
+  flex-wrap: wrap; /* ensures responsiveness */
+  gap: 20px;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.form-section,
+.image-section {
+  flex: 1 1 400px; /* grow, shrink, base width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.doctor-card {
+  width: 100%;
+  max-width: 650px; /* flexible max-width */
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  background: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(55, 65, 81, 0.25);
+}
+
+.doctor-image {
+  width: 100%;
+  max-height: 80vh; /* avoids viewport overflow */
+  object-fit: cover;
+  border-radius: 0 0 0 60px;
+}
+
+/* ================================
+   Buttons
+================================ */
+.add-doctor-btn,
+.cancel-btn {
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.add-doctor-btn {
+  background: linear-gradient(to right, #06b6d4, #3b82f6);
+}
+
+.add-doctor-btn:hover {
+  background: linear-gradient(to right, #0284c7, #2563eb);
+  transform: scale(1.02);
+}
+
+.cancel-btn {
+  background: linear-gradient(to right, #ef4444, #dc2626);
+}
+
+.cancel-btn:hover {
+  background: linear-gradient(to right, #b91c1c, #7f1d1d);
+  transform: scale(1.02);
+}
+
+/* ================================
+   File Input & Avatar
+================================ */
+#file_input,
+.file-input {
+  padding: 0.4rem;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background-color: #f9fafb;
+  transition: border 0.2s ease-in-out;
+}
+
+#file_input:hover,
+.file-input:hover {
+  border-color: #3b82f6;
+}
+
+.avatar-style {
+  border: 3px solid #3b82f6;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: #f0f9ff;
+  margin: 0 auto;
+}
+
+/* ================================
+   Contact Clinic Card
 ================================ */
 .contact-clinic-card {
   background: linear-gradient(135deg, #ffffff, #f8f9ff);
   border: 2px solid #e5e7eb;
   border-radius: 16px;
   padding: 20px;
-  width: 300px;
+  max-width: 300px;
+  width: 100%;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
 }
@@ -88,15 +202,6 @@
   transform: translateY(-6px);
   box-shadow: 0 10px 25px rgba(55, 65, 81, 0.25);
   border-color: #4338ca;
-}
-
-.contact-clinic-header {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #362787;
-  margin-bottom: 16px;
-  text-align: center;
-  letter-spacing: 0.5px;
 }
 
 .contact-clinic-icons {
@@ -129,127 +234,20 @@
 }
 
 /* ================================
-   Global & App Styling
+   Responsive Adjustments
 ================================ */
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+@media (max-width: 1024px) {
+  .doctor-image {
+    border-radius: 0 0 0 30px;
+  }
 }
 
-/* Upload file input */
-#file_input {
-  padding: 0.4rem;
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
-  background-color: #f9fafb;
-  transition: border 0.2s ease-in-out;
-}
+@media (max-width: 768px) {
+  .add-doctor-container {
+    flex-direction: column;
+  }
 
-#file_input:hover {
-  border-color: #3b82f6;
-}
-
-/* Avatar styling */
-.avatar-style {
-  border: 3px solid #3b82f6;
-  border-radius: 50%;
-  padding: 5px;
-  background-color: #f0f9ff;
-  margin: 0 auto;
-}
-
-/* Add Doctor button */
-.add-doctor-btn {
-  background: linear-gradient(to right, #06b6d4, #3b82f6);
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-}
-
-.add-doctor-btn:hover {
-  background: linear-gradient(to right, #0284c7, #2563eb);
-  transform: scale(1.02);
-}
-
-/* Cancel button */
-.cancel-btn {
-  background: linear-gradient(to right, #ef4444, #dc2626);
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-}
-
-.cancel-btn:hover {
-  background: linear-gradient(to right, #b91c1c, #7f1d1d);
-  transform: scale(1.02);
-}
-
-/* ================================
-   Add Doctor Page Layout
-================================ */
-.add-doctor-container {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  min-height: 100vh;
-}
-
-.form-section {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.doctor-card {
-  width: 650px; /* Increased from 500px */
-  padding: 25px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  border-radius: 16px;
-  background: #ffffff;
-}
-
-.title-text {
-  color: #0284c7;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.file-label {
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #374151;
-}
-
-.file-input {
-  padding: 0.4rem;
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
-  background-color: #f9fafb;
-  transition: border 0.2s ease-in-out;
-}
-
-.file-input:hover {
-  border-color: #3b82f6;
-}
-
-.note-text {
-  font-size: 13px;
-  color: #6b7280;
-}
-
-.image-section {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.doctor-image {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  border-radius: 0 0 0 60px;
+  .doctor-card {
+    max-width: 100%;
+  }
 }
