@@ -4,6 +4,10 @@ import { GrAndroid } from "react-icons/gr";
 import Flag from 'react-world-flags';
 import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
 import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
+import adritaImage from './assets/Adrita.png'; // adjust the path as necessary
+import rajeshImage from './assets/Rajesh.png'; // adjust the path as necessary
+import RoyImage from './assets/Roy.png'; // adjust the path as necessary
+import ManishImage from './assets/Manish.png'; // adjust the path as necessary
 import appbanner from './assets/2-1.png'; // adjust the path as necessary
 
 import food_wallpaper from './assets/case3.png'; // Main Image
@@ -349,7 +353,7 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
   className="grid h-24 place-items-center mb-6 bg-blue-700"
 >
   <Typography variant="h5" className="font-bold text-white">
-    SUJITH REDDY
+    Dr. Manish Kaushik
   </Typography>
 </CardHeader>
 
@@ -359,31 +363,26 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
 
   <CardFooter className="pt-0 flex flex-col items-center">
     <img
-      src={sujithImage}
-      alt="Sujith Profile"
+      src={ManishImage}
+      alt="Dr. Manish Kaushik Profile"
       style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
       className="rounded-lg shadow-md"
     />
 
     <Typography variant="small" className="mt-6 text-center font-semibold">
-      Qualification - MDS (Oral Surgery)
+      Oral Surgery Specialist
     </Typography>
 
     <div className="flex justify-center items-center gap-2 mt-3">
-      <TfiEmail size={24} color="green" />
+      <TfiEmail size={24} color="green" />  
       <Typography variant="small" className="font-medium">
-        sayhitosujith@gmail.com
+       ManishKaushik@gmail.com
       </Typography>
     </div>
   </CardFooter>
 
   {/* Optional footer link – removed empty Typography */}
 </Card>
-
-
-              <br></br>
-
-              <br></br>
 
               <Card className="w-93 bg-green-50">
               <CardHeader
@@ -392,7 +391,7 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
   className="grid h-24 place-items-center mb-6 bg-blue-700"
 >
   <Typography variant="h5" className="font-bold text-white">
-    VIDHYA REDDY
+    Dr.Supriya Kumar Roy
   </Typography>
 </CardHeader>
 
@@ -402,20 +401,59 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
 
   <CardFooter className="pt-0 flex flex-col items-center">
     <img
-      src={vidhyaImage}
-      alt="Vidhya Profile"
+      src={RoyImage}
+      alt="Dr.Supriya Kumar Roy Profile"
       style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
       className="rounded-lg shadow-md"
     />
 
     <Typography variant="small" className="mt-6 text-center font-semibold">
-      Qualification - MDS (Oral Medicine & Radiology)
+      Senior Consultant Oral and Maxillofacial Surgeon
     </Typography>
 
     <div className="flex justify-center items-center gap-2 mt-4">
       <TfiEmail size={24} color="green" />
       <Typography variant="paragraph" className="text-sm font-medium">
-        MailtoVidhya@gmail.com
+        MailtoSupriyaKumarRoy@gmail.com
+      </Typography>
+    </div>
+  </CardFooter>
+
+  
+</Card>
+
+
+ <Card className="w-93 bg-green-50">
+              <CardHeader
+  variant="gradient"
+  color="white"
+  className="grid h-24 place-items-center mb-6 bg-blue-700"
+>
+  <Typography variant="h5" className="font-bold text-white">
+    Brigadier Dr. Rajesh Madan
+  </Typography>
+</CardHeader>
+
+  <CardBody className="flex flex-col gap-6">
+    {/* Add body content here if needed */}
+  </CardBody>
+
+  <CardFooter className="pt-0 flex flex-col items-center">
+    <img
+      src={rajeshImage}
+      alt="Brigadier Dr. Rajesh Madan Profile"
+      style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+      className="rounded-lg shadow-md"
+    />
+
+    <Typography variant="small" className="mt-6 text-center font-semibold">
+      Prosthodontist Expert
+    </Typography>
+
+    <div className="flex justify-center items-center gap-2 mt-4">
+      <TfiEmail size={24} color="green" />
+      <Typography variant="paragraph" className="text-sm font-medium">
+        BrigadierRajeshMadan@gmail.com
       </Typography>
     </div>
   </CardFooter>
@@ -425,6 +463,43 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
 
 
 
+ <Card className="w-93 bg-green-50">
+              <CardHeader
+  variant="gradient"
+  color="white"
+  className="grid h-24 place-items-center mb-6 bg-blue-700"
+>
+  <Typography variant="h5" className="font-bold text-white">
+Dr. Adrita Nag
+  </Typography>
+</CardHeader>
+
+  <CardBody className="flex flex-col gap-6">
+    {/* Add body content here if needed */}
+  </CardBody>
+
+  <CardFooter className="pt-0 flex flex-col items-center">
+    <img
+      src={adritaImage}
+      alt="Adrita Nag Profile"
+      style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+      className="rounded-lg shadow-md"
+    />
+
+    <Typography variant="small" className="mt-6 text-center font-semibold">
+      oral medicine and radiologist
+    </Typography>
+
+    <div className="flex justify-center items-center gap-2 mt-4">
+      <TfiEmail size={24} color="green" />
+      <Typography variant="paragraph" className="text-sm font-medium">
+        MailtoAdritaNag@gmail.com
+      </Typography>
+    </div>
+  </CardFooter>
+
+  
+</Card>
 </div>
 
             </div>
