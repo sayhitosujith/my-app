@@ -10,7 +10,7 @@ import food_wallpaper from './assets/case3.png'; // Main Image
 import { TfiEmail } from "react-icons/tfi";
 import { SiFoodpanda } from "react-icons/si";
 import { BsPlus } from "react-icons/bs";
-import logo from "./assets/logo-dd.jpg";
+import logo from "./assets/DutyDentist.png";
 import { TbDental } from "react-icons/tb";
 
 import {
@@ -137,26 +137,9 @@ function Welcome() {
         </h1>
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '10vh', // Full viewport height
-        }}
-      >
-        <h6 style={{ color: '#0a0a0a', fontSize: '1rem' }}>
-          <b>       Struggling to get a GP appointment? Fed up of long queues? Frustrated waiting?
-
-Don’t worry – we’re here to help.
-
-Book a same day or next day online consultation, with a UK, NHS-experienced GP, in just a few clicks.
-          </b>
-        </h6>
-      </div>
-        <div style={{ float: 'right' }}>
+<div style={{ float: 'right' }}>
  <Button  
-  color="green" 
+  color="blue" 
   appearance="primary"
   style={{
     padding: '10px 10px',
@@ -181,6 +164,27 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
 </Button>
 
 </div>
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '10vh', // Full viewport height
+        }}
+      >
+
+        
+        <h6 style={{ color: '#0a0a0a', fontSize: '1rem' }}>
+          <b>       Struggling to get a GP appointment? Fed up of long queues? Frustrated waiting?
+
+Don’t worry – we’re here to help.
+
+Book a same day or next day online consultation, with a UK, NHS-experienced GP, in just a few clicks.
+          </b>
+        </h6>
+      </div>
+        
       <br></br>
       <b><hr class="separator" /></b>
 
