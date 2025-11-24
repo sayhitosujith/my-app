@@ -9,7 +9,7 @@ import { MdOutlineDocumentScanner } from "react-icons/md";
 import { BiSupport } from "react-icons/bi";
 import { PiLineVerticalThin } from "react-icons/pi";
 import { FaBell } from "react-icons/fa";
-import logo from "./assets/logo-dd.jpg";
+import logo from "./assets/DutyDentist.png";
 import { Link } from "react-router-dom";
 
 const PatientPortal = () => {

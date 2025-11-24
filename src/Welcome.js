@@ -140,54 +140,61 @@ export default function Welcome() {
 
       {/* Tiles */}
       <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 md:grid-cols-6">
+                 <a href="SuperAdmin">
+          <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
+            <IoSettingsOutline size={30} color="#e66c0eff" />
+            <span style={{ color: "black" }}><b>&nbsp;SUPER ADMIN</b></span>
+          </Button>
+        </a>
         <a href="DoctorList">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
-            <RiAdminFill size={30} color="#04354f" />
+            <RiAdminFill size={30} color="#e66c0eff" />
             <span style={{ color: "black" }}><b>&nbsp;DOCTOR Portal</b></span>
           </Button>
         </a>
 
           <a href="PatientPortal">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
-            <RiAdminFill size={30} color="#04354f" />
+            <RiAdminFill size={30} color="#e66c0eff" />
             <span style={{ color: "black" }}><b>&nbsp;PatientPortal</b></span>
           </Button>
         </a>
 
         <a href="Customer_Login">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
-            <CiUser size={30} color="#04354f" />
+            <CiUser size={30} color="#e66c0eff" />
             <span style={{ color: "black" }}><b>&nbsp;CUSTOMER</b></span>
           </Button>
         </a>
 
         <a href="Admin_Analytics">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
-            <TbBrandGoogleAnalytics size={30} color="#04354f" />
+            <TbBrandGoogleAnalytics size={30} color="#e66c0eff" />
             <span style={{ color: "black" }}><b>&nbsp;ANALYTICS</b></span>
           </Button>
         </a>
 
         <a href="CustomerCare">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
-            <FaUsers size={30} color="#04354f" />
+            <FaUsers size={30} color="#e66c0eff" />
             <span style={{ color: "black" }}><b>&nbsp;SUPPORT</b></span>
           </Button>
         </a>
 
         <a href="Profile">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
-            <FaFileInvoiceDollar size={30} color="#04354f" />
+            <FaFileInvoiceDollar size={30} color="#e66c0eff" />
             <span style={{ color: "black" }}><b>&nbsp;PROFILES</b></span>
           </Button>
         </a>
 
         <a href="Settings">
           <Button style={{ border: "1px solid green", display: "flex", alignItems: "center", padding: "40px", backgroundColor: "#fcfeff" }}>
-            <IoSettingsOutline size={30} color="#04354f" />
+            <IoSettingsOutline size={30} color="#e66c0eff" />
             <span style={{ color: "black" }}><b>&nbsp;SETTINGS</b></span>
           </Button>
         </a>
+      
       </div>
 
       <b><hr className="separator" /></b>

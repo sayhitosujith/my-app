@@ -12,7 +12,7 @@ import {
 } from "@material-tailwind/react";
 import { FaPowerOff } from "react-icons/fa6";
 import { PiLineVerticalThin } from "react-icons/pi";
-import logo from "./assets/DentalWorld.png";
+import logo from "./assets/DutyDentist.png";
 import { useNavigate } from "react-router-dom";
 import {
   Bars3Icon,
@@ -277,18 +277,7 @@ const handleLogin = (userData) => {
         >
           Home
         </Typography>
-
-      {/* Add Doctor / Delete Selected */}
-
-        <Typography
-          as="a"
-          href="/AddDoctor"
-          color="blue-gray"
-          className="cursor-pointer hover:underline"
-          onClick={() => navigate("/AddDoctor")}
-        >
-          Add Doctor
-        </Typography>
+        
         <Typography color="blue-gray">Doctor List</Typography>
       </Breadcrumbs>
 

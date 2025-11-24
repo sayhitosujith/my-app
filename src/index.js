@@ -39,9 +39,13 @@ import AppointmentHistory from './AppointmentHistory';
 import DoctorList from './DoctorList';
 import PatientPortal from './PatientPortal';
 import DocumentCenter from './DocumentCenter';
-
+import SuperAdmin from './SuperAdmin';
 
 const router = createBrowserRouter([
+  {
+    path: "/SuperAdmin",
+    element: <SuperAdmin />,
+  },
   {
     path: "/my-app",
     element: <App />,

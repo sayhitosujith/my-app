@@ -56,8 +56,8 @@ function Settings() {
   </Typography>
   <div className="flex gap-5 items-center">
    <Button color="green" ripple={true} className="whitespace-nowrap">
-  <a href="/AddDeliveryCaptain" className="text-white no-underline text-lg">
-    + ADD SUPER ADMIN
+  <a href="/SuperAdmin" className="text-white no-underline text-lg">
+    SUPER ADMIN
   </a>
 </Button>
 

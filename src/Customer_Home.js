@@ -10,7 +10,7 @@ import { FaPowerOff } from "react-icons/fa6";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { PiLineVerticalThin } from "react-icons/pi";
-import logo from './assets/DentalWorld.png'; // adjust the path as necessary
+import logo from './assets/DutyDentist.png'; // adjust the path as necessary
 import { Carousel } from "@material-tailwind/react";
 import { IoSettingsOutline } from "react-icons/io5";
 import { GoComment } from "react-icons/go";
