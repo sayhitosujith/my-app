@@ -373,6 +373,10 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
       Oral Surgery Specialist
     </Typography>
 
+     <Typography variant="small" className="mt-6 text-center font-semibold">
+    Experience - 13 Years.
+    </Typography>
+
     <div className="flex justify-center items-center gap-2 mt-3">
       <TfiEmail size={24} color="green" />  
       <Typography variant="small" className="font-medium">
@@ -409,6 +413,10 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
 
     <Typography variant="small" className="mt-6 text-center font-semibold">
       Senior Consultant Oral and Maxillofacial Surgeon
+    </Typography>
+
+     <Typography variant="small" className="mt-6 text-center font-semibold">
+    Experience - 41 Years.
     </Typography>
 
     <div className="flex justify-center items-center gap-2 mt-4">
@@ -450,6 +458,11 @@ Book a same day or next day online consultation, with a UK, NHS-experienced GP, 
       Prosthodontist Expert
     </Typography>
 
+        <Typography variant="small" className="mt-6 text-center font-semibold">
+    Experience - 47 Years.
+    </Typography>
+
+
     <div className="flex justify-center items-center gap-2 mt-4">
       <TfiEmail size={24} color="green" />
       <Typography variant="paragraph" className="text-sm font-medium">
@@ -489,6 +502,11 @@ Dr. Adrita Nag
     <Typography variant="small" className="mt-6 text-center font-semibold">
       oral medicine and radiologist
     </Typography>
+
+        <Typography variant="small" className="mt-6 text-center font-semibold">
+    Experience - 23 Years.
+    </Typography>
+
 
     <div className="flex justify-center items-center gap-2 mt-4">
       <TfiEmail size={24} color="green" />
