@@ -93,7 +93,7 @@ function NewRegistration() {
 
       <div
         style={{
-          maxWidth: 2000,
+          maxWidth: 600,
           margin: "auto",
           padding: 20,
           backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThtf6x74y1JWPIE_yX24FYk1RgTPvVJqbwDw&s')",

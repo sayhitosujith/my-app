@@ -42,7 +42,7 @@ body {
 
 @media (max-width: 768px) {
   .animate-scroll {
-    animation-duration: 20s;
+    animation-duration: 40s;
     font-size: 0.9rem;
   }
 }
@@ -250,4 +250,174 @@ body {
   .doctor-card {
     max-width: 100%;
   }
+  /* slide down motion */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slideDown {
+  animation: slideDown 0.4s ease-out;
+}
+
+/* smooth fade */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* fingerprint popup animation */
+@keyframes popup {
+  0% { transform: scale(0.6); opacity: 0; }
+  80% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-popup {
+  animation: popup 0.3s ease-out;
+}
+
+/* slow pulse effect for user icon */
+@keyframes pulseSlow {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-pulseSlow {
+  animation: pulseSlow 2s infinite;
+}
+/* Slide down */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slideDown {
+  animation: slideDown 0.4s ease-out;
+}
+
+/* Popup scale animation */
+@keyframes popup {
+  0% { transform: scale(0.6); opacity: 0; }
+  80% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-popup {
+  animation: popup 0.3s ease-out;
+}
+
+/* Slow pulsing user icon */
+@keyframes pulseSlow {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-pulseSlow {
+  animation: pulseSlow 1.8s infinite;
+}
+/* Slide down */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slideDown {
+  animation: slideDown 0.4s ease-out;
+}
+
+/* Popup scale animation */
+@keyframes popup {
+  0% { transform: scale(0.6); opacity: 0; }
+  80% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-popup {
+  animation: popup 0.3s ease-out;
+}
+
+/* Slow pulsing user icon */
+@keyframes pulseSlow {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-pulseSlow {
+  animation: pulseSlow 1.8s infinite;
+}
+/* ---------- GLOBAL FIXES ---------- */
+
+/* Smooth horizontal scrolling text (banner) */
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-horizontal 30s linear infinite;
+}
+
+/* Horizontal line separator */
+.separator {
+  border: none;
+  border-top: 2px solid #cbd5e1; /* Tailwind gray-300 */
+  margin: 20px 0;
+}
+
+/* Fix float overlapping on avatar */
+.avatar-fix {
+  float: right;
+  margin-left: 10px;
+}
+
+/* Fix invalid Tailwind class bg-white-800 */
+.bg-white-800 {
+  background-color: #ffffff; /* Plain white */
+}
+
+/* If you intended a dark white-gray, adjust here */
+.bg-white-1000 {
+  background-color: #f8fafc; /* slate-50 */
+}
+
+/* Fix non-existing bottom-92 */
+.bottom-92 {
+  bottom: 92px;
+  position: absolute;
+}
+
+/* Fix invalid negative margin like -mt-19 */
+.mt-neg-19 {
+  margin-top: -19px;
+}
+
+/* Card styling enhancements */
+.download-card {
+  background-color: #16a34a; /* green-600 */
+  border-radius: 12px;
+  padding: 10px;
+}
+
+/* WhatsApp floating button */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 999;
+  background: white;
+  padding: 12px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease-in-out;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.07);
+}
+
+
 }

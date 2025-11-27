@@ -119,13 +119,15 @@ const PatientPortal = () => {
       {/* Sidebar */}
       <aside className="sidebar">
         <img style={{ width: "90%", height: "10%" }} src={logo} alt="Application_logo" />
+        <button className="dark-mode-toggle" onClick={() => 
+          setDarkMode(!darkMode)}>{darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}</button>
+
         <nav className="sidebar-nav">
           <Link to="/Welcome" className="nav-item"><IoHomeOutline size={20} /><span>Home</span></Link>
           <Link to="/PatientPortal" className="nav-item"><SiGoogleforms size={20} /><span>Forms</span></Link>
           <Link to="/DocumentCenter" className="nav-item"><MdOutlineDocumentScanner size={20} /><span>Documents Center</span></Link>
           <Link to="/Settings" className="nav-item"><TiSpanner size={25} /><span>Settings</span></Link>
           <Link to="/Profile" className="nav-item"><FaRegUser size={20} /><span>Profile</span></Link>
-          <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>{darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}</button>
         </nav>
         <div className="nav-item"><BiSupport /><span>Help</span></div>
         <div className="sidebar-support"><h8>App Version : {packageJson.version}</h8></div>

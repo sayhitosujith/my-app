@@ -1,0 +1,148 @@
+
+/* Separator style for HR */
+.separator {
+  border: 0;
+  height: 1px;
+  background: #0e0d0d;
+  margin: 1rem 0;
+}
+
+/* Card item hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Buttons */
+button {
+  outline: none;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Badge style for cart/notifications */
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #fff;
+  background-color: red;
+  border-radius: 50%;
+  text-align: center;
+}
+
+/* Notification card */
+.notification-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 0.5rem;
+  width: 16rem;
+  z-index: 50;
+}
+
+/* Input with icon */
+.input-with-icon {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.input-with-icon select,
+.input-with-icon input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 0.9rem;
+}
+
+/* Banner scroll */
+.animate-scroll {
+  display: inline-block;
+  animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Card image */
+.card img {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Book Appointment Button */
+.book-appointment-btn {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.book-appointment-btn span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 23px solid white;
+  border-left: 40px solid transparent;
+}
+
+/* Rating stars alignment */
+.rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Contact Clinic Card */
+.contact-clinic-card button {
+  transition: all 0.3s ease;
+}
+
+.contact-clinic-card button:hover {
+  background-color: #22c55e; /* Tailwind green-500 */
+  color: white;
+}
+
+/* Responsive overflow for cards */
+.cards-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+}
+
+.cards-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.cards-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.cards-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* General spacing for flex containers */
+.flex-gap {
+  gap: 0.5rem;
+}
+
+/* Hover effect on profile menu options */
+.profile-option:hover {
+  background-color: #f1f5f9; /* light gray */
+}

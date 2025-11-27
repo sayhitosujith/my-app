@@ -2,17 +2,14 @@ import './App.css';
 import { RiAppleLine } from "react-icons/ri";
 import { GrAndroid } from "react-icons/gr";
 import Flag from 'react-world-flags';
-import sujithImage from './assets/sujith.jpg'; // adjust the path as necessary
-import vidhyaImage from './assets/Vidhya.jpg'; // adjust the path as necessary
 import adritaImage from './assets/Adrita.png'; // adjust the path as necessary
 import rajeshImage from './assets/Rajesh.png'; // adjust the path as necessary
 import RoyImage from './assets/Roy.png'; // adjust the path as necessary
 import ManishImage from './assets/Manish.png'; // adjust the path as necessary
 import appbanner from './assets/2-1.png'; // adjust the path as necessary
 
-import food_wallpaper from './assets/case3.png'; // Main Image
+import food_wallpaper from './assets/Banner.png'; // Main Image
 import { TfiEmail } from "react-icons/tfi";
-import { SiFoodpanda } from "react-icons/si";
 import { BsPlus } from "react-icons/bs";
 import logo from "./assets/DutyDentist.png";
 import { TbDental } from "react-icons/tb";
@@ -82,6 +79,22 @@ const CardItem = ({ item }) => (
 function Welcome() {
   return (
 <div className="p-7 bg-white">
+             <div
+  className="mb-10 shadow-sm px-4 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
+  style={{ backgroundColor: '#0f618c' }}
+>
+  {(
+    <div className="relative">
+      <div className=" whitespace-nowrap inline-block ">
+        <Typography variant="h6" className="text-sm text-white">
+          <i>
+            info@dutydoctor.com Monday - Friday, 9am - 5pm
+          </i>
+        </Typography>
+      </div>
+    </div>
+  )}
+</div>
 <img
         style={{ width: '15%', height: '15%' }}
         src={logo}
@@ -99,34 +112,16 @@ function Welcome() {
         </Typography>
        
 
-           <div
-  className="mb-5 shadow-sm px-4 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-  style={{ backgroundColor: '#0f618c' }}
->
-  {isBannerActive && (
-    <div className="w-full overflow-hidden relative">
-      <div className="animate-scroll whitespace-nowrap inline-block">
-        <Typography variant="h6" className="text-sm text-white">
-          <i>
-            NEW | Struggling to get a GP appointment? Fed up of long queues? Frustrated waiting? Don’t worry – we’re here to help. Book a same day or next day online consultation, with a UK, NHS-experienced GP, in just a few clicks.
 
-          </i>
-        </Typography>
-      </div>
-    </div>
-  )}
-</div>
-
-        
-
-       
+   
       </Typography>
-
-      <img
-        style={{ width: '60%', height: '100%', objectFit: 'cover' }}
-        src={food_wallpaper}
-        alt="Profile"
-      />
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  <img
+    style={{ width: '60%', height: '100%', objectFit: 'cover' }}
+    src={food_wallpaper}
+    alt="Profile"
+  />
+</div>
 
       <div
         style={{
@@ -143,7 +138,7 @@ function Welcome() {
 
 <div style={{ float: 'right' }}>
  <Button  
-  color="blue" 
+  color="green" 
   appearance="primary"
   style={{
     padding: '10px 10px',
@@ -163,7 +158,7 @@ function Welcome() {
       textDecoration: 'none' 
     }}
   >
-    Book an Appointment Now
+    Book Appointment Now
   </a>
 </Button>
 

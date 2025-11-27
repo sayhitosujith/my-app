@@ -72,17 +72,17 @@ body {
 }
 
 .dark-mode-toggle {
-  margin-top: 15px;
+  margin-top: 10px;
   padding: 6px 12px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #f0f0f0;
   transition: background-color 0.3s;
 }
 
 .portal-container.dark-mode .dark-mode-toggle {
   background-color: #444;
+    align-self: flex-start;
   color: #fff;
 }
 
@@ -198,7 +198,7 @@ body {
 }
 
 .portal-container.dark-mode .progress-bar-container {
-  background-color: #444;
+  background-color: #444444;
 }
 
 .progress-bar {

@@ -1,4 +1,4 @@
-import './App.css';
+import './Customer_Home.css';
 import { Select, Option } from "@material-tailwind/react";
 import { Badge } from "@material-tailwind/react";
 import { Chip } from "@material-tailwind/react";
@@ -62,98 +62,60 @@ const isBannerActive = now >= startDate && now <= endDate;
 
 
 const CardItem = ({ item }) => (
-  <Card className="w-72 " style={{ background: "#f8f8fcff" }}>
+  <Card className="w-40 p-2" style={{ background: "#f8f8fcff" }}>
     <CardHeader
       variant="gradient"
-      className="mb-5 grid h-10 place-items-center"
-      style={{ background: "#0e0906ff" }} // Custom background color
+      className="mb-2 grid h-7 place-items-center"
+      style={{ background: "#0e0906ff" }}
     >
-      <Typography variant="h3" color="white">
+      <Typography variant="h6" color="white" className="text-xs truncate px-1">
         {item.id} : {item.name}
       </Typography>
     </CardHeader>
 
-
-    <div className='flex justify-center items-center'>
-      <img style={{ width: '200px', height: '200px' }} src={item.src} />
+    <div className="flex justify-center items-center">
+      <img style={{ width: '100px', height: '100px' }} src={item.src} alt={item.name} />
     </div>
-    <CardBody className="flex flex-col gap-4 ">
-      <div className="-mr-50">
+
+    <CardBody className="flex flex-col gap-1 p-2">
+      <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100 text-xs text-center">
+        Discount - 5%
+      </Typography>
+      <Rating value={4} readonly size="sm" />
+      <div className="w-full mt-2">
+        <Select label="Select City" size="sm">
+          <Option value="Brisbane">Brisbane</Option>
+          <Option value="Melbourne">Melbourne</Option>
+          <Option value="Sydney">Sydney</Option>
+          <Option value="Maryborough">Maryborough</Option>
+          <Option value="Adelaide">Adelaide</Option>
+        </Select>
       </div>
-      <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100 object-cover rounded-full">
-        <svg className="h-5 w-5" fill="red" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 21.638l-1.625-1.473C5.3F03 15.013 2 11.12 2 7.25 2 4.364 4.364 2 7.25 2c1.79 0 3.462 1.144 4.75 2.977C13.288 3.144 14.96 2 16.75 2 19.636 2 22 4.364 22 7.25c0 3.87-3.303 7.762-8.375 13.917L12 21.638z" />
-        </svg>
-      </Typography>
     </CardBody>
-    <CardFooter className="pt-0" >
-      <Typography variant="h10" color="#050302ff">
-        <div>
 
-          <b><hr class="separator" /></b>
-
-          <button> <Typography variant="h6"> Discount - 5%</Typography></button>
-          <b><hr class="separator" /></b>
-
-        </div>
-        <Rating value={4} readonly />
-
-
-<div className="w-62 mt-3">
-  <Select label="Select City">
-    <Option value="Brisbane">Brisbane</Option>
-    <Option value="Melbourne">Melbourne</Option>
-    <Option value="Sydney">Sydney</Option>
-    <Option value="Maryborough">Maryborough</Option>
-    <Option value="Adelaide">Adelaide</Option>
-  </Select>
-</div>
-
-
-        <br></br>
-
-        <div className="product-card-footer">
-
-</div>
-      </Typography>
-<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-  <button
-    style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-    aria-label="Share"
-    onClick={() => {
-      // Your share logic here
-      alert("Share button clicked!");
-    }}
-  >
-    <RiShareForwardFill size={48} color="#3970f1ff" />
-  </button>
-</div>
-
+    <CardFooter className="pt-1 px-2">
+      <div className="flex justify-between items-center">
+        <button
+          aria-label="Share"
+          className="p-1"
+          onClick={() => alert("Share button clicked!")}
+        >
+          <RiShareForwardFill size={20} color="#3970f1ff" />
+        </button>
+        <Button
+          size="sm"
+          color="blue"
+          className="text-xs px-2 py-1"
+          fullWidth={true}
+        >
+          <a href="/MyCart" className="relative z-10">BOOK</a>
+        </Button>
+      </div>
     </CardFooter>
-
-
-    <br></br>
-
-   <div className="flex justify-center" >
-  <Button
-    color="white"
-    appearance="primary"
-    className="relative overflow-hidden text-lg font-semibold text-white border-4 border-blue-600 px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 transition"
-  >
-    <span className="absolute top-0 right-0 w-0 h-0 border-t-[23px] border-l-[40px] border-t-white border-l-transparent"></span>
-    <a href="/MyCart" className="relative z-10">BOOK AN APPOINTMET</a>
-  </Button>
-</div>
-
-
-
-
-
-
-
   </Card>
+);
 
-)
+
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -318,7 +280,7 @@ function App() {
 
 
    <div
-     className="mb-5 shadow-sm px-4 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
+     className="mb-5 shadow-sm px-2 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
      style={{ backgroundColor: 'rgba(82, 59, 132, 1)' }}
    >
      {isBannerActive && (
@@ -326,8 +288,7 @@ function App() {
          <div className="animate-scroll whitespace-nowrap inline-block">
            <Typography variant="h6" className="text-md text-white">
              <i>
-             NEW | 🛍️ Enjoy upto 50% off on Root canal Treatment
-🔥✨
+             Struggling to get a GP appointment? Fed up of long queues? Frustrated waiting? Don’t worry – we’re here to help. Book a same day or next day consultation in just a few clicks.
              </i>
            </Typography>
          </div>
@@ -335,12 +296,11 @@ function App() {
      )}
    </div>       
 
-      <b><hr class="separator" /></b>
 
-      <div className="mb-4 shadow-sm px-4 py-2 flex justify-center items-center bg-white-900 overflow-x-auto whitespace-nowrap">
+      <div className="mb-4 shadow-sm px-2 py-2 flex justify-center items-center bg-white-900 overflow-x-auto whitespace-nowrap">
   <Carousel className="w-full">
     {/* Image 1 */}
-    <figure className="relative h-20-full">
+    <figure className="relative h-5-full">
       <img
     className="w-full rounded-2xl object-cover object-center shadow-lg"
     src="https://aadhyadentalcare.com/assets/images/Banner.png"
@@ -421,7 +381,7 @@ Creating Confident Smiles in Hervey Bay - A bright healthy smile can be yours Ca
  <Rating value={4} readonly />
 
        
-  <div className="p-4 bg-white shadow-md rounded-2xl text-center">
+  <div className="p-4 bg-white shadow-md rounded-xl text-center">
       <h2 className="text-xl font-bold mb-2">Business Hours</h2>
       <p className="text-lg text-gray-700">10:00 AM - 07:00 PM</p>
       <p className="text-md text-green-600 font-semibold">Open all 7 days</p>

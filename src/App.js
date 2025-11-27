@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import packageJson from "../package.json";
 import RCB from "./assets/D-logo.jpg";
 import { IoMdFingerPrint } from "react-icons/io";
@@ -24,8 +24,31 @@ function App() {
   const [passwordError, setPasswordError] = useState("");
   const [practiceError, setPracticeError] = useState("");
 
-  const handleFingerprint = () => setShowPopup(true);
-  const closePopup = () => setShowPopup(false);
+  // ---- Draggable Modal ---------- //
+  const modalRef = useRef(null);
+  const pos = useRef({ x: 0, y: 0, dx: 0, dy: 0 });
+
+  const startDrag = (e) => {
+    pos.current.x = e.clientX;
+    pos.current.y = e.clientY;
+    document.addEventListener("mousemove", drag);
+    document.addEventListener("mouseup", stopDrag);
+  };
+
+  const drag = (e) => {
+    if (!modalRef.current) return;
+    pos.current.dx = e.clientX - pos.current.x;
+    pos.current.dy = e.clientY - pos.current.y;
+
+    modalRef.current.style.transform = `translate(${pos.current.dx}px, ${pos.current.dy}px)`;
+  };
+
+  const stopDrag = () => {
+    document.removeEventListener("mousemove", drag);
+    document.removeEventListener("mouseup", stopDrag);
+  };
+
+  // -------------------------------- //
 
   const handleLogin = () => {
     setEmailError("");
@@ -70,178 +93,162 @@ function App() {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen bg-cover bg-center px-2"
+      className="relative min-h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${RCB})` }}
     >
-<Card className="w-full max-w-xl p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
-        {/* Header */}
-        <CardHeader
-          variant="gradient"
-          color="green"
-          className="mb-3 grid h-20 place-items-center"
+      {/* Background Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-md"></div>
+
+      {/* Floating Centered Modal */}
+      <div className="absolute inset-0 flex justify-center items-center px-3">
+
+        <div
+          ref={modalRef}
+          className="transition-transform duration-300 animate-slideDown"
+          onMouseDown={startDrag}
         >
-          <Typography variant="h4" color="white">
-            ADMIN
-          </Typography>
-        </CardHeader>
+<Card className="w-full max-w-sm p-1 shadow-xl rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200 animate-fadeIn">
 
-        {/* Body */}
-        <CardBody className="flex flex-col gap-1">
-          <Input
-            label="Enter Email Address"
-            size="lg"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            error={!!emailError}
-          />
-          {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
-
-          <Input
-            type="password"
-            label="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            error={!!passwordError}
-          />
-          {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
-
-
-          {/* Practice Dropdown */}
-          <div className="mt-4">
-  <label
-    className="block mb-1 font-medium text-gray-700"
-    htmlFor="practice"
-  >
-    Select Practice City
-  </label>
-
-  <select
-    id="practice"
-    className={`w-full rounded-md border px-3 py-2 focus:outline-none 
-      focus:ring-2 focus:ring-green-500 ${
-        practiceError ? "border-red-500" : "border-gray-300"
-      }`}
-    value={practice}
-    onChange={(e) => setPractice(e.target.value)}
-  >
-    <option value="">-- Select Practice City --</option>
-    <option value="HerveyBay">Hervey Bay Dental</option>
-    <option value="SunshineCoast">Sunshine Coast Dental</option>
-    <option value="Brisbane">Brisbane Dental Clinic</option>
-  </select>
-
-  {practiceError && (
-    <p className="text-red-500 text-sm mt-1">{practiceError}</p>
-  )}
-</div>
-
-
-          <div className="flex flex-col gap-2 text-sm mt-2">
-            <Checkbox label="Remember Me" className="text-green-700" />
-            <a
-              href="/ResetPassword"
-              className="text-red-700 hover:text-green-600 underline font-semibold transition-colors duration-200"
+            {/* Header */}
+            <CardHeader
+              variant="gradient"
+              color="green"
+              className="mb-1 grid h-12 place-items-center rounded-lg cursor-move"
             >
-              Forgot Password? Click here to Reset
-            </a>
-          </div>
-        </CardBody>
+              <Typography variant="h5" color="white">
+                Duty Dentist 
+              </Typography>
+            </CardHeader>
 
-        {/* Footer */}
-        <CardFooter className="pt-0 flex flex-col items-center gap-4">
-          {/* Login Button */}
-          <Button
-            color="white"
-            className="relative overflow-hidden text-base font-semibold text-white border-2 border-[#28a745] px-12 py-2 rounded bg-[#28a745] hover:bg-[#218838] transition"
-            onClick={handleLogin}
-          >
-            <span className="relative z-10">Login</span>
-          </Button>
+            {/* Body */}
+            <CardBody className="flex flex-col gap-1 p-2">
 
-          {/* Cancel Button */}
-          <Button
-            color="white"
-            className="relative overflow-hidden text-base font-semibold text-white border-2 border-[#28a745] px-12 py-2 rounded bg-[#28a745] hover:bg-[#218838] transition"
-            onClick={() => (window.location.href = "/my-app")}
-          >
-            <span className="relative z-10">Cancel</span>
-          </Button>
-
-          {/* Fingerprint Section */}
-          <div className="flex flex-col items-center mt-6">
-            <button
-              onClick={handleFingerprint}
-              className="flex justify-center items-center p-3 rounded-full bg-white shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
-            >
-              <IoMdFingerPrint className="text-5xl text-black hover:text-green-600 transition-colors duration-300" />
-            </button>
-
-            {showPopup && (
-              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                <div className="bg-white rounded-lg shadow-lg p-6 w-72 text-center">
-                  <h2 className="text-lg font-semibold mb-3 text-green-800">
-                    User Detected
-                  </h2>
-                  <div className="flex justify-center items-center h-full">
-                    <CiUser className="text-5xl" />
-                  </div>
-                  <p className="text-gray-600 mt-2">
-                    Authentication successful!
-                  </p>
-                  <button
-                    onClick={() => (window.location.href = "/Customer_Home")}
-                    className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Social Buttons */}
-          {/* <Button
-            size="md"
-            variant="outlined"
-            color="green"
-            className="flex items-center gap-3"
-          >
-            <a href="/Customer_Home">Continue with Google</a>
-            <img
-              src="https://docs.material-tailwind.com/icons/google.svg"
-              alt="google"
-              className="h-5 w-5"
-            />
-          </Button>
-          <Button
-            size="md"
-            variant="gradient"
-            color="light-green"
-            className="group relative flex items-center gap-3 overflow-hidden pr-[56px]"
-          >
-            <a href="/Customer_Home">Continue with Facebook</a>
-            <span className="absolute right-0 grid h-full w-10 place-items-center bg-light-green-600 transition-colors group-hover:bg-light-green-700">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_(2019).png"
-                alt="facebook"
-                className="h-5 w-5"
+              <Input
+                label="Email"
+                size="md"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                error={!!emailError}
+                className="!text-sm"
               />
-            </span>
-          </Button> */}
+              {emailError && (
+                <p className="text-red-500 text-xs">{emailError}</p>
+              )}
 
-          <Typography variant="small" className="mt-6 text-center">
-            Don&apos;t have an account?{" "}
-            <a
-              href="/NewRegistration"
-              className="underline text-red-700 hover:text-green-600 transition-colors duration-300 font-bold"
-            >
-              REGISTER
-            </a>
-          </Typography>
+              <Input
+                type="password"
+                label="Password"
+                size="md"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                error={!!passwordError}
+                className="!text-sm"
+              />
+              {passwordError && (
+                <p className="text-red-500 text-xs">{passwordError}</p>
+              )}
 
-    
-        </CardFooter>
-      </Card>
+              {/* Practice Dropdown */}
+              <div className="mt-1">
+                <label className="block mb-1 text-sm font-medium text-white">
+                  Practice City
+                </label>
+
+                <select
+                  id="practice"
+                  className={`w-full rounded-md border px-2 py-1 text-sm bg-white/50 backdrop-blur-md 
+                focus:outline-none focus:ring-1 focus:ring-green-600 ${
+                  practiceError ? "border-red-500" : "border-gray-300"
+                }`}
+                  value={practice}
+                  onChange={(e) => setPractice(e.target.value)}
+                >
+                  <option value="">Select City</option>
+                  <option value="HerveyBay">Hervey Bay Dental</option>
+                  <option value="SunshineCoast">Sunshine Coast Dental</option>
+                  <option value="Brisbane">Brisbane Dental Clinic</option>
+                </select>
+
+                {practiceError && (
+                  <p className="text-red-500 text-xs mt-1">{practiceError}</p>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-1 text-xs mt-2 text-white">
+                <Checkbox label="Remember Me" className="text-green-700" />
+                <a
+                  href="/ResetPassword"
+                  className="text-red-300 hover:text-green-300 underline font-semibold transition"
+                >
+                  Forgot Password? Reset Here
+                </a>
+              </div>
+            </CardBody>
+
+            {/* Footer */}
+            <CardFooter className="pt-1 flex flex-col items-center gap-3">
+
+              <Button
+                className="text-sm font-semibold text-white border border-green-600 px-8 py-1.5 rounded-lg bg-green-600/80 hover:bg-green-700 transition"
+                onClick={handleLogin}
+              >
+                Login
+              </Button>
+
+              <Button
+                className="text-sm font-semibold text-white border border-green-600 px-8 py-1.5 rounded-lg bg-green-600/80 hover:bg-green-700 transition"
+                onClick={() => (window.location.href = "/my-app")}
+              >
+                Cancel
+              </Button>
+
+              {/* Fingerprint Button */}
+              <button
+                onClick={() => setShowPopup(true)}
+                className="flex justify-center items-center p-3 rounded-full bg-white/40 backdrop-blur-xl shadow-lg hover:bg-white/60 transition"
+              >
+                <IoMdFingerPrint className="text-4xl text-black hover:text-green-600 transition" />
+              </button>
+
+              {/* Fingerprint Popup */}
+              {showPopup && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm z-50">
+                  <div className="bg-white rounded-xl shadow-xl p-6 w-72 text-center animate-popup">
+                    <h2 className="text-lg font-semibold mb-3 text-green-700">
+                      User Detected
+                    </h2>
+
+                    <CiUser className="text-5xl mx-auto animate-pulseSlow" />
+
+                    <p className="text-gray-600 mt-2">
+                      Authentication successful!
+                    </p>
+
+                    <button
+                      onClick={() =>
+                        (window.location.href = "/Customer_Home")
+                      }
+                      className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <Typography variant="small" className="mt-3 text-center text-white">
+                Don’t have an account?{" "}
+                <a
+                  href="/NewRegistration"
+                  className="underline text-red-300 hover:text-green-300 font-bold transition"
+                >
+                  REGISTER
+                </a>
+              </Typography>
+            </CardFooter>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }
