@@ -8,7 +8,7 @@ import RoyImage from './assets/Roy.png'; // adjust the path as necessary
 import ManishImage from './assets/Manish.png'; // adjust the path as necessary
 import appbanner from './assets/2-1.png'; // adjust the path as necessary
 
-import food_wallpaper from './assets/Banner.png'; // Main Image
+import Banner_wallpaper from './assets/Book_your_GP.png'; // Main Image
 import { TfiEmail } from "react-icons/tfi";
 import { BsPlus } from "react-icons/bs";
 import logo from "./assets/DutyDentist.png";
@@ -79,64 +79,21 @@ const CardItem = ({ item }) => (
 function Welcome() {
   return (
 <div className="p-7 bg-white">
-             <div
-  className="mb-10 shadow-sm px-4 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-  style={{ backgroundColor: '#0f618c' }}
->
-  {(
+  <div
+    className="mb-10 shadow-sm px-6 py-1 flex justify-end items-center overflow-x-auto whitespace-nowrap rounded-xl"
+    style={{ backgroundColor: '#0f618c' }}
+  >
     <div className="relative">
-      <div className=" whitespace-nowrap inline-block ">
-        <Typography variant="h6" className="text-sm text-white">
+      <div className="whitespace-nowrap inline-block">
+        <Typography variant="h6" className="text-sm text-white text-right">
           <i>
-            info@dutydoctor.com Monday - Friday, 9am - 5pm
+            info@DutyDentist.com  &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp;Monday - Sunday, 9am - 5pm
           </i>
         </Typography>
       </div>
     </div>
-  )}
-</div>
-<img
-        style={{ width: '15%', height: '15%' }}
-        src={logo}
-        alt="Application_logo"
-      />
-      <Typography variant="h2" color="Black">
-        <Typography variant="small" className="mt-8 flex flex justify-center items-center">
-          <Typography
-            as="a"
-            href="#signup"
-            variant="Medium"
-            color="blue-gray"
-            className="ml-1 font-bold">
-          </Typography>
-        </Typography>
-       
-
-
-   
-      </Typography>
-<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-  <img
-    style={{ width: '60%', height: '100%', objectFit: 'cover' }}
-    src={food_wallpaper}
-    alt="Profile"
-  />
-</div>
-
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '10vh', // Full viewport height
-        }}
-      >
-        <h1 style={{ color: '#0f618c', fontSize: '3rem' }}>
-          <i> <b>Your personal online doctor</b></i>
-        </h1>
-      </div>
-
-<div style={{ float: 'right' }}>
+  </div>
+  <div style={{ float: 'right' }}>
  <Button  
   color="green" 
   appearance="primary"
@@ -150,7 +107,7 @@ function Welcome() {
     gap: '10px'                // space between icon and text
   }}
 >
-  <BsPlus  size={34} />    {/* icon size */}
+  <BsPlus  size={20} />    {/* icon size */}
   <a 
     href="/Customer_Home"
     style={{ 
@@ -158,11 +115,57 @@ function Welcome() {
       textDecoration: 'none' 
     }}
   >
-    Book Appointment Now
+    Book Now
   </a>
 </Button>
 
 </div>
+
+<img
+        style={{ width: '15%', height: '15%' }}
+        src={logo}
+        alt="Application_logo"
+      />
+      
+      <Typography variant="h2" color="Black">
+        <Typography variant="small" className="mt-8 flex flex justify-center items-center">
+          <Typography
+            as="a"
+            href="#signup"
+            variant="Medium"
+            color="blue-gray"
+            className="ml-1 font-bold">
+          </Typography>
+          
+        </Typography>
+
+        
+   
+      </Typography>
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  <img
+    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+    src={Banner_wallpaper}
+    alt="Profile"
+  />
+</div>
+
+
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '10vh', // Full viewport height
+        }}
+      >
+        <h1 style={{ color: '#0f618c', fontSize: '3rem' }}>
+          <i> <b>Your personal online Dentist</b></i>
+        </h1>
+      </div>
+
+
 
       <div
         style={{
@@ -175,11 +178,11 @@ function Welcome() {
 
         
         <h6 style={{ color: '#0a0a0a', fontSize: '1rem' }}>
-          <b>       Struggling to get a GP appointment? Fed up of long queues? Frustrated waiting?
+          <b>       Struggling to get a Dentist appointment? Fed up of long queues? Frustrated waiting?
 
 Don’t worry – we’re here to help.
 
-Book a same day or next day online consultation, with a UK, NHS-experienced GP, in just a few clicks.
+Book a same day or next day online consultation, with a NHS-experienced Dentist, in just a few clicks.
           </b>
         </h6>
       </div>
@@ -521,7 +524,7 @@ Dr. Adrita Nag
       </div>
 
 
-
+<br></br>
       <footer className="relative w-full">
         <div className="mx-auto w-full max-w-7xl px-8">
           <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
@@ -529,7 +532,7 @@ Dr. Adrita Nag
 <Typography variant="h5" className="mb-6 flex items-center space-x-2">
   <span className="text-blue-800">Duty</span>
   <span className="text-blue-400">Dentist</span>
-  <TbDental className="text-blue-500" />
+  <TbDental className="text-blue-600" />
 </Typography>
 
             <div className="flex items-center gap-2 text-black text-sm ml-auto">

@@ -61,29 +61,43 @@ const endDate = new Date('2026-04-08T23:59:59');   // End time
 const isBannerActive = now >= startDate && now <= endDate;
 
 
+
 const CardItem = ({ item }) => (
-  <Card className="w-40 p-2" style={{ background: "#f8f8fcff" }}>
+  <Card
+    className="w-60 p-4"   // ⬅️ Increased width + padding
+    style={{ background: "#f8f8fcff" }}
+  >
     <CardHeader
       variant="gradient"
-      className="mb-2 grid h-7 place-items-center"
+      className="mb-5 grid h-10 place-items-center" // ⬅️ Taller header
       style={{ background: "#0e0906ff" }}
     >
-      <Typography variant="h6" color="white" className="text-xs truncate px-1">
+      <Typography variant="h6" color="white" className="text-sm truncate px-1">
         {item.id} : {item.name}
       </Typography>
     </CardHeader>
 
-    <div className="flex justify-center items-center">
-      <img style={{ width: '100px', height: '100px' }} src={item.src} alt={item.name} />
+    <div className="flex justify-center items-center mb-3">
+      <img
+        style={{ width: "140px", height: "140px" }} // ⬅️ Larger image
+        src={item.src}
+        alt={item.name}
+      />
     </div>
 
-    <CardBody className="flex flex-col gap-1 p-2">
-      <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100 text-xs text-center">
+    <CardBody className="flex flex-col gap-2 p-2">
+      <Typography
+        as="a"
+        href="#"
+        className="opacity-80 transition-opacity hover:opacity-100 text-sm text-center"
+      >
         Discount - 5%
       </Typography>
-      <Rating value={4} readonly size="sm" />
+
+      <Rating value={4} readonly size="md" /> {/* ⬅️ Bigger rating */}
+
       <div className="w-full mt-2">
-        <Select label="Select City" size="sm">
+        <Select label="Select City" size="md">  {/* ⬅️ Bigger dropdown */}
           <Option value="Brisbane">Brisbane</Option>
           <Option value="Melbourne">Melbourne</Option>
           <Option value="Sydney">Sydney</Option>
@@ -93,27 +107,25 @@ const CardItem = ({ item }) => (
       </div>
     </CardBody>
 
-    <CardFooter className="pt-1 px-2">
+    <CardFooter className="pt-3 px-2">
       <div className="flex justify-between items-center">
-        <button
-          aria-label="Share"
-          className="p-1"
-          onClick={() => alert("Share button clicked!")}
-        >
-          <RiShareForwardFill size={20} color="#3970f1ff" />
+        <button aria-label="Share" className="p-2">
+          <RiShareForwardFill size={22} color="#3970f1ff" /> {/* ⬅️ Bigger icon */}
         </button>
+
         <Button
-          size="sm"
+          size="md"
           color="blue"
-          className="text-xs px-2 py-1"
+          className="text-sm px-3 py-1.5"
           fullWidth={true}
         >
-          <a href="/MyCart" className="relative z-10">BOOK</a>
+          <a href="/MyCart">BOOK</a>
         </Button>
       </div>
     </CardFooter>
   </Card>
 );
+
 
 
 
@@ -219,7 +231,7 @@ function App() {
 
       {/* Notification Card */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-lg border z-10">
+        <div className="absolute right-0 mt-1 w-64 bg-white shadow-lg rounded-lg border z-10">
           <div className="p-4">
             <p className="font-semibold mb-2">Notifications</p>
             <ul className="space-y-2 text-sm">
@@ -245,7 +257,7 @@ function App() {
 {/* Location Button with Textbox */}
 <div className="mt-4 flex items-center space-x-4 mb-4">
   <button
-    className="px-4 py-2 bg-green-900 text-white border border-green-900 rounded transition hover:bg-green-600"
+    className="px-4 py-2 bg-blue-900 text-white border border-blue-900 rounded transition hover:bg-blue-900"
   >
     LOCATION
   </button>
@@ -280,8 +292,8 @@ function App() {
 
 
    <div
-     className="mb-5 shadow-sm px-2 py-4 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-     style={{ backgroundColor: 'rgba(82, 59, 132, 1)' }}
+     className="mb-5 shadow-sm px-2 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
+     style={{ backgroundColor: 'rgba(155, 158, 158, 1)' }}
    >
      {isBannerActive && (
        <div className="w-full overflow-hidden relative">
@@ -297,10 +309,10 @@ function App() {
    </div>       
 
 
-      <div className="mb-4 shadow-sm px-2 py-2 flex justify-center items-center bg-white-900 overflow-x-auto whitespace-nowrap">
+      <div className="mb-4 shadow-sm px-0 py-0 flex justify-center items-center bg-white-900 overflow-x-auto whitespace-nowrap">
   <Carousel className="w-full">
     {/* Image 1 */}
-    <figure className="relative h-5-full">
+    <figure className="relative h-2-full">
       <img
     className="w-full rounded-2xl object-cover object-center shadow-lg"
     src="https://aadhyadentalcare.com/assets/images/Banner.png"
@@ -419,29 +431,31 @@ Creating Confident Smiles in Hervey Bay - A bright healthy smile can be yours Ca
         </div>
 
 <Card
-  className="order border-gray-300 rounded-lg w-full max-w-sm p-2"
+  className="order border-gray-300 rounded-lg w-full max-w-xs p-1"
   style={{ backgroundColor: 'white', position: 'absolute', top: '1rem', right: '30rem' }}
->      <CardBody>
-        <Typography variant="h5" style={{ color: '#362787ff' }} className="mb-4">
-          CONTACT CLINIC
-        </Typography>
+>
+  <CardBody>
+    <Typography variant="h5" style={{ color: '#362787ff' }} className="mb-2">
+      CONTACT SUPPORT
+    </Typography>
 
-        <div className="flex space-x-4">
-          <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300 transition">
-            <AiOutlinePhone size={28} color="black" />
-          </button>
-          <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300 transition">
-            <GoComment size={26} color="black" />
-          </button>
-          <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300 transition">
-            <TfiEmail size={26} color="black" />
-          </button>
-          <button className="p-2 rounded-full bg-gray-200 hover:bg-green-300 transition">
-            <GrSkype size={26} color="black" />
-          </button>
-        </div>
-      </CardBody>
-    </Card>
+    <div className="flex space-x-2">
+      <button className="p-1 rounded-full bg-gray-200 hover:bg-green-300 transition">
+        <AiOutlinePhone size={22} color="black" />
+      </button>
+      <button className="p-1 rounded-full bg-gray-200 hover:bg-green-300 transition">
+        <GoComment size={20} color="black" />
+      </button>
+      <button className="p-1 rounded-full bg-gray-200 hover:bg-green-300 transition">
+        <TfiEmail size={20} color="black" />
+      </button>
+      <button className="p-1 rounded-full bg-gray-200 hover:bg-green-300 transition">
+        <GrSkype size={20} color="black" />
+      </button>
+    </div>
+  </CardBody>
+</Card>
+
 
       </Typography>
 

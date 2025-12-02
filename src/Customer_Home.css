@@ -1,5 +1,21 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* Separator style for HR */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+}
+
+/* =========================================
+   SEPARATOR LINE
+========================================= */
 .separator {
   border: 0;
   height: 1px;
@@ -7,22 +23,52 @@
   margin: 1rem 0;
 }
 
-/* Card item hover effect */
-.card:hover {
-  transform: translateY(-5px);
-  transition: transform 0.3s ease-in-out;
+/* =========================================
+   BANNER SCROLL
+========================================= */
+@keyframes scroll-horizontal {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
-/* Buttons */
+.animate-scroll {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-horizontal 25s linear infinite;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+  color: #ffd700;
+  text-shadow: 0 0 5px rgba(255,215,0,0.5);
+}
+
+/* RESPONSIVE SCROLL SPEED */
+@media (max-width: 768px) {
+  .animate-scroll { animation-duration: 35s; }
+}
+
+@media (min-width: 1200px) {
+  .animate-scroll { animation-duration: 20s; }
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
 button {
   outline: none;
+  transition: 0.3s ease-in-out;
 }
 
 button:hover {
   opacity: 0.9;
 }
 
-/* Badge style for cart/notifications */
+/* =========================================
+   BADGE
+========================================= */
 .badge {
   display: inline-block;
   padding: 2px 6px;
@@ -31,26 +77,17 @@ button:hover {
   color: #fff;
   background-color: red;
   border-radius: 50%;
-  text-align: center;
 }
 
-/* Notification card */
-.notification-card {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  padding: 0.5rem;
-  width: 16rem;
-  z-index: 50;
-}
-
-/* Input with icon */
+/* =========================================
+   INPUT WITH ICON
+========================================= */
 .input-with-icon {
   display: flex;
   align-items: center;
   border: 1px solid #ccc;
+  padding: .4rem .6rem;
   border-radius: 6px;
-  padding: 0.5rem;
 }
 
 .input-with-icon select,
@@ -59,35 +96,29 @@ button:hover {
   outline: none;
   width: 100%;
   background: transparent;
-  font-size: 0.9rem;
 }
 
-/* Banner scroll */
-.animate-scroll {
-  display: inline-block;
-  animation: scroll-left 15s linear infinite;
+/* =========================================
+   CARD STYLING
+========================================= */
+.card-item {
+  transition: transform 0.3s ease-in-out;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+.card-item:hover {
+  transform: translateY(-5px);
 }
 
-/* Card image */
-.card img {
+.card-item img {
   border-radius: 12px;
   object-fit: cover;
 }
 
-/* Book Appointment Button */
+/* =========================================
+   BOOK BUTTON CORNER EFFECT
+========================================= */
 .book-appointment-btn {
   position: relative;
-  overflow: hidden;
-  text-decoration: none;
 }
 
 .book-appointment-btn span {
@@ -100,24 +131,21 @@ button:hover {
   border-left: 40px solid transparent;
 }
 
-/* Rating stars alignment */
-.rating-stars {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-/* Contact Clinic Card */
+/* =========================================
+   CONTACT CLINIC BUTTONS
+========================================= */
 .contact-clinic-card button {
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .contact-clinic-card button:hover {
-  background-color: #22c55e; /* Tailwind green-500 */
-  color: white;
+  background-color: #22c55e;
+  color: rgb(248, 245, 245);
 }
 
-/* Responsive overflow for cards */
+/* =========================================
+   HORIZONTAL SCROLL FOR CARD ROWS
+========================================= */
 .cards-container {
   overflow-x: auto;
   white-space: nowrap;
@@ -137,12 +165,38 @@ button:hover {
   background: #f1f1f1;
 }
 
-/* General spacing for flex containers */
-.flex-gap {
-  gap: 0.5rem;
+/* =========================================
+   PROFILE DROPDOWN HOVER FIX
+========================================= */
+.profile-option:hover {
+  background-color: #f1f5f9;
 }
 
-/* Hover effect on profile menu options */
-.profile-option:hover {
-  background-color: #f1f5f9; /* light gray */
+/* =========================================
+   ANIMATIONS (SLIDE / POPUP / PULSE)
+========================================= */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slideDown {
+  animation: slideDown 6.9s ease-out;
+}
+
+@keyframes popup {
+  0% { transform: scale(0.6); opacity: 0; }
+  80% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-popup {
+  animation: popup 6.9s ease-out;
+}
+
+@keyframes pulseSlow {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-pulseSlow {
+  animation: pulseSlow 6.9s infinite;
 }

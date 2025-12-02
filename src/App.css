@@ -17,12 +17,8 @@ body {
    Banner Scroll Animation
 ================================ */
 @keyframes scrollLeft {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
 .animate-scroll {
@@ -60,7 +56,6 @@ body {
   font-size: 1rem;
   padding: 12px 24px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   overflow: hidden;
   position: relative;
 }
@@ -91,7 +86,7 @@ body {
 ================================ */
 .add-doctor-container {
   display: flex;
-  flex-wrap: wrap; /* ensures responsiveness */
+  flex-wrap: wrap;
   gap: 20px;
   min-height: 100vh;
   padding: 20px;
@@ -99,7 +94,7 @@ body {
 
 .form-section,
 .image-section {
-  flex: 1 1 400px; /* grow, shrink, base width */
+  flex: 1 1 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +102,7 @@ body {
 
 .doctor-card {
   width: 100%;
-  max-width: 650px; /* flexible max-width */
+  max-width: 650px;
   padding: 25px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   border-radius: 16px;
@@ -122,7 +117,7 @@ body {
 
 .doctor-image {
   width: 100%;
-  max-height: 80vh; /* avoids viewport overflow */
+  max-height: 80vh;
   object-fit: cover;
   border-radius: 0 0 0 60px;
 }
@@ -143,7 +138,6 @@ body {
 .add-doctor-btn {
   background: linear-gradient(to right, #06b6d4, #3b82f6);
 }
-
 .add-doctor-btn:hover {
   background: linear-gradient(to right, #0284c7, #2563eb);
   transform: scale(1.02);
@@ -152,7 +146,6 @@ body {
 .cancel-btn {
   background: linear-gradient(to right, #ef4444, #dc2626);
 }
-
 .cancel-btn:hover {
   background: linear-gradient(to right, #b91c1c, #7f1d1d);
   transform: scale(1.02);
@@ -168,7 +161,7 @@ body {
   border-radius: 8px;
   border: 1px solid #cbd5e1;
   background-color: #f9fafb;
-  transition: border 0.2s ease-in-out;
+  transition: border-color 0.2s;
 }
 
 #file_input:hover,
@@ -220,12 +213,12 @@ body {
 }
 
 .contact-clinic-icons button:hover {
-  background: #4338ca;
+  background: #1103b5;
   transform: scale(1.1);
 }
 
 .contact-clinic-icons button svg {
-  color: #111827;
+  color: hwb(221 2% 28%);
   transition: color 0.3s ease;
 }
 
@@ -234,175 +227,54 @@ body {
 }
 
 /* ================================
-   Responsive Adjustments
+   Animations (Cleaned)
 ================================ */
-@media (max-width: 1024px) {
-  .doctor-image {
-    border-radius: 0 0 0 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .add-doctor-container {
-    flex-direction: column;
-  }
-
-  .doctor-card {
-    max-width: 100%;
-  }
-  /* slide down motion */
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-40px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.animate-slideDown {
-  animation: slideDown 0.4s ease-out;
-}
+.animate-slideDown { animation: slideDown 0.4s ease-out; }
 
-/* smooth fade */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease-out;
-}
-
-/* fingerprint popup animation */
 @keyframes popup {
   0% { transform: scale(0.6); opacity: 0; }
   80% { transform: scale(1.05); opacity: 1; }
   100% { transform: scale(1); }
 }
-.animate-popup {
-  animation: popup 0.3s ease-out;
-}
+.animate-popup { animation: popup 0.3s ease-out; }
 
-/* slow pulse effect for user icon */
-@keyframes pulseSlow {
-  0% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.06); }
-  100% { opacity: 1; transform: scale(1); }
-}
-.animate-pulseSlow {
-  animation: pulseSlow 2s infinite;
-}
-/* Slide down */
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-slideDown {
-  animation: slideDown 0.4s ease-out;
-}
-
-/* Popup scale animation */
-@keyframes popup {
-  0% { transform: scale(0.6); opacity: 0; }
-  80% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); }
-}
-.animate-popup {
-  animation: popup 0.3s ease-out;
-}
-
-/* Slow pulsing user icon */
 @keyframes pulseSlow {
   0% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.7; transform: scale(1.08); }
   100% { opacity: 1; transform: scale(1); }
 }
-.animate-pulseSlow {
-  animation: pulseSlow 1.8s infinite;
-}
-/* Slide down */
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-slideDown {
-  animation: slideDown 0.4s ease-out;
-}
+.animate-pulseSlow { animation: pulseSlow 1.8s infinite; }
 
-/* Popup scale animation */
-@keyframes popup {
-  0% { transform: scale(0.6); opacity: 0; }
-  80% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); }
-}
-.animate-popup {
-  animation: popup 0.3s ease-out;
-}
-
-/* Slow pulsing user icon */
-@keyframes pulseSlow {
-  0% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.08); }
-  100% { opacity: 1; transform: scale(1); }
-}
-.animate-pulseSlow {
-  animation: pulseSlow 1.8s infinite;
-}
-/* ---------- GLOBAL FIXES ---------- */
-
-/* Smooth horizontal scrolling text (banner) */
-@keyframes scroll-horizontal {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.animate-scroll {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scroll-horizontal 30s linear infinite;
-}
-
-/* Horizontal line separator */
+/* ================================
+   Misc Utility Fixes
+================================ */
 .separator {
   border: none;
-  border-top: 2px solid #cbd5e1; /* Tailwind gray-300 */
+  border-top: 2px solid #cbd5e1;
   margin: 20px 0;
 }
 
-/* Fix float overlapping on avatar */
 .avatar-fix {
   float: right;
   margin-left: 10px;
 }
 
-/* Fix invalid Tailwind class bg-white-800 */
-.bg-white-800 {
-  background-color: #ffffff; /* Plain white */
-}
+.bg-white-800 { background-color: #ffffff; }
+.bg-white-1000 { background-color: #f8fafc; }
 
-/* If you intended a dark white-gray, adjust here */
-.bg-white-1000 {
-  background-color: #f8fafc; /* slate-50 */
-}
+.bottom-92 { bottom: 92px; position: absolute; }
+.mt-neg-19 { margin-top: -19px; }
 
-/* Fix non-existing bottom-92 */
-.bottom-92 {
-  bottom: 92px;
-  position: absolute;
-}
-
-/* Fix invalid negative margin like -mt-19 */
-.mt-neg-19 {
-  margin-top: -19px;
-}
-
-/* Card styling enhancements */
 .download-card {
-  background-color: #16a34a; /* green-600 */
+  background-color: #16a34a;
   border-radius: 12px;
   padding: 10px;
 }
 
-/* WhatsApp floating button */
 .whatsapp-btn {
   position: fixed;
   bottom: 18px;
@@ -419,5 +291,14 @@ body {
   transform: scale(1.07);
 }
 
+/* ================================
+   Responsive Layout Fixes
+================================ */
+@media (max-width: 1024px) {
+  .doctor-image { border-radius: 0 0 0 30px; }
+}
 
+@media (max-width: 768px) {
+  .add-doctor-container { flex-direction: column; }
+  .doctor-card { max-width: 100%; }
 }

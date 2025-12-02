@@ -87,13 +87,18 @@ export default function Welcome() {
             size="xl"
           />
 
-          <Typography variant="h3" className="text-green-700 font-bold mt-2">
-            Welcome to {selectedPractice}
-          </Typography>
+<div className="flex flex-col items-end text-right w-full">
+  <Typography variant="h3" className="text-green-700 font-bold mt-2">
+    Welcome to {selectedPractice}
+  </Typography>
 
-          <Typography className="max-w-lg text-black text-sm">
-            Access your provisioned services below. You can switch services anytime from the apps icon in the middle of your screen.
-          </Typography>
+  <Typography className="max-w-lg text-black text-sm">
+    Access your provisioned services below. You can switch services anytime 
+    from the apps icon in the middle of your screen.
+  </Typography>
+</div>
+
+
         </div>
 
         {/* RIGHT: Notifications + Logout + Profile */}
