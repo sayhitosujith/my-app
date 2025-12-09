@@ -277,9 +277,10 @@ function DoctorList() {
 
       </div>
 
-<div className="flex flex-row flex-wrap md:flex-nowrap gap-4 items-start justify-between mb-4 py-9">
+<div className="flex flex-col md:flex-row gap-6 items-stretch">
   {/* Greeting Card */}
-  <Card className="w-full md:w-1/3 p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+  <Card className="w-full md:w-1/3 p-6 shadow-xl rounded-2xl 
+                  bg-gradient-to-br from-white to-blue-50 backdrop-blur-md border border-blue-100">
     <Typography variant="h5" className="mb-4">
       Hello, {getGreeting()}
     </Typography>
@@ -289,7 +290,7 @@ function DoctorList() {
   </Card>
 
   {/* Time & Shift Card (moved next to greeting) */}
-  <Card className="w-full md:w-1/3 p-4 shadow-2xl rounded-2xl 
+  <Card className="w-full md:w-1/3 p-6 shadow-xl rounded-2xl 
                   bg-gradient-to-br from-white to-blue-50 backdrop-blur-md border border-blue-100">
     <Typography
       variant="h5"
@@ -328,7 +329,8 @@ function DoctorList() {
   </Card>
 
   {/* Upcoming Holidays (moved to right) */}
-  <Card className="w-full md:w-1/3 p-6 shadow-xl rounded-xl bg-white bg-opacity-90">
+  <Card className="w-full md:w-1/3 p-6 shadow-xl rounded-2xl 
+                  bg-gradient-to-br from-white to-blue-50 backdrop-blur-md border border-blue-100">
     <Typography variant="h5" className="mb-4 flex items-center justify-between">
       Upcoming Holidays
       <FcLeave size={32} />

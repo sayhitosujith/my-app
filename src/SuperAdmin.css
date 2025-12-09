@@ -122,7 +122,7 @@ body {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
@@ -133,7 +133,7 @@ body {
 
 .chart {
   height: 250px;
-  background-color: #f5f7fa;
+  background-color: #c5d7f3;
   border-radius: 8px;
   display: flex;
   justify-content: center;
@@ -173,7 +173,8 @@ body {
 }
 
 table {
-  width: 100%;
+  width: 50%;
+  height: 50%;
   border-collapse: collapse;
 }
 
