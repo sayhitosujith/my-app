@@ -66,6 +66,7 @@ function DoctorList() {
   };
 
   const holidays = [
+    { date: "25 Dec 2025", day: "Thursday", name: "Christmas" },
     { date: "1 Jan 2026", day: "Thursday", name: "New Year's Day" },
     { date: "3 Jan 2026", day: "Saturday", name: "Hazrat Ali's Birthday" },
     { date: "14 Jan 2026", day: "Wednesday", name: "Makar Sankranti / Pongal" },

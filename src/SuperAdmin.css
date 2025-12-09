@@ -21,7 +21,7 @@ body {
 /* Sidebar Styles */
 .sidebar {
   width: 250px;
-  background-color: #8674f8;
+  background-color: #430103;
   color: white;
   padding: 20px;
   display: flex;
@@ -55,7 +55,7 @@ body {
 }
 
 .menu li:hover {
-  background-color: #005b6f;
+  background-color: #f27474;
   color: white;
 }
 

@@ -1,16 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
 
-import { RiAdminFill } from "react-icons/ri";
-import { CiUser } from "react-icons/ci";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
-import { FaUsers, FaFileInvoiceDollar, FaWhatsapp, FaPowerOff } from "react-icons/fa6";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { IoSettingsOutline } from "react-icons/io5";
-import { RiAppleLine } from "react-icons/ri";
-import { GrAndroid } from "react-icons/gr";
-import { HiSpeakerphone } from "react-icons/hi";
-
 import {
   Card,
   CardBody,
@@ -26,10 +16,26 @@ import {
   Badge,
 } from "@material-tailwind/react";
 
+import {
+  RiAdminFill,
+  RiAppleLine,
+} from "react-icons/ri";
+import { CiUser } from "react-icons/ci";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import {
+  FaUsers,
+  FaFileInvoiceDollar,
+  FaWhatsapp,
+  FaPowerOff,
+} from "react-icons/fa6";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoSettingsOutline } from "react-icons/io5";
+import { GrAndroid } from "react-icons/gr";
+import { HiSpeakerphone } from "react-icons/hi";
+
 import Flag from "react-world-flags";
-import packageJson from "../package.json";
-import { practiceNames } from "./constants";
 import emblem from "./assets/emblem.png";
+import { practiceNames } from "./constants";
 
 // Banner Timing
 const now = new Date();
@@ -37,71 +43,70 @@ const startDate = new Date("2025-04-05T08:00:00");
 const endDate = new Date("2026-04-08T23:59:59");
 const isBannerActive = now >= startDate && now <= endDate;
 
+// Services Array
+const services = [
+  { label: "SUPER ADMIN", icon: <IoSettingsOutline size={35} />, link: "SuperAdmin" },
+  { label: "DOCTOR PORTAL", icon: <RiAdminFill size={35} />, link: "DoctorList" },
+  { label: "PATIENT PORTAL", icon: <RiAdminFill size={35} />, link: "PatientPortal" },
+  { label: "CUSTOMER", icon: <CiUser size={35} />, link: "Customer_Login" },
+  { label: "ANALYTICS", icon: <TbBrandGoogleAnalytics size={35} />, link: "Admin_Analytics" },
+  { label: "SUPPORT", icon: <FaUsers size={35} />, link: "CustomerCare" },
+  { label: "PROFILES", icon: <FaFileInvoiceDollar size={35} />, link: "Profile" },
+  { label: "SETTINGS", icon: <IoSettingsOutline size={35} />, link: "Settings" },
+];
+
 export default function Welcome() {
   const selectedPractice =
     practiceNames[localStorage.getItem("selectedPractice")] || "Duty Dentist";
 
-  // Logout feedback modal
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(null);
 
   const toggleDialog = () => setOpen(!open);
-
-  const handleSubmit = () => {
-    window.location.href = "/Logout";
-  };
+  const handleSubmit = () => (window.location.href = "/Logout");
 
   return (
     <div className="p-10 bg-white w-full min-h-screen">
 
-      {/* Breadcrumbs */}
-      <div className="mb-4">
-        <Breadcrumbs>
-          <a href="/HomePage">Home</a>
-          <a href="#">Welcome</a>
-        </Breadcrumbs>
-      </div>
+      {/* ====================== BREADCRUMBS ====================== */}
+      <Breadcrumbs className="mb-4">
+        <a href="/HomePage">Home</a>
+        <a href="#">Welcome</a>
+      </Breadcrumbs>
 
-      {/* Banner */}
+      {/* ====================== BANNER ====================== */}
       {isBannerActive && (
-        <div className="mb-3 shadow-sm px-3 py-2 flex justify-center items-center rounded-lg bg-lime-300">
-          <div className="animate-scroll whitespace-nowrap">
-            <Typography className="text-xs text-black flex items-center gap-1">
-              <HiSpeakerphone className="text-sm" />
-              <b>
-                ALERT : Enjoy 20% off on Oral Treatment
-              </b>
-            </Typography>
-          </div>
+        <div className="mb-3 shadow-sm px-4 py-2 flex justify-center items-center rounded-lg bg-lime-300">
+          <Typography className="text-xs text-black flex items-center gap-1">
+            <HiSpeakerphone size={14} />
+            <b>ALERT : Enjoy 20% off on Oral Treatment</b>
+          </Typography>
         </div>
       )}
 
-      {/* ====================== HEADER SECTION (Option C) ====================== */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full">
+      {/* ====================== HEADER ====================== */}
+      <div className="flex flex-col md:flex-row justify-between items-center w-full">
 
-        {/* LEFT: Avatar + Welcome text */}
-        <div className="flex flex-col items-start gap-3">
+        {/* Avatar + Welcome Text */}
+        <div className="flex flex-col items-center text-center w-full">
           <Avatar
             src="https://docs.material-tailwind.com/img/face-2.jpg"
             alt="avatar"
             size="xl"
+            className="mb-3"
           />
 
-<div className="flex flex-col items-end text-right w-full">
-  <Typography variant="h3" className="text-green-700 font-bold mt-2">
-    Welcome to {selectedPractice}
-  </Typography>
+          <Typography variant="h3" className="text-green-700 font-bold">
+            Welcome to {selectedPractice}
+          </Typography>
 
-  <Typography className="max-w-lg text-black text-sm">
-    Access your provisioned services below. You can switch services anytime 
-    from the apps icon in the middle of your screen.
-  </Typography>
-</div>
-
-
+          <Typography className="max-w-xl text-black text-sm mt-2 leading-relaxed">
+            Access your provisioned services below. You can switch services
+            anytime from the apps icon in the middle of your screen.
+          </Typography>
         </div>
 
-        {/* RIGHT: Notifications + Logout + Profile */}
+        {/* Notifications + Logout + Profile */}
         <div className="flex flex-col items-end gap-4 mt-6 md:mt-0">
 
           {/* Notifications + Logout */}
@@ -129,20 +134,10 @@ export default function Welcome() {
 
       <hr className="mt-6 mb-6 border-gray-400" />
 
-      {/* ====================== SERVICE TILES ====================== */}
+      {/* ====================== SERVICE CARDS ====================== */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-
-        {[
-          { label: "SUPER ADMIN", icon: <IoSettingsOutline size={35} />, link: "SuperAdmin" },
-          { label: "DOCTOR PORTAL", icon: <RiAdminFill size={35} />, link: "DoctorList" },
-          { label: "PATIENT PORTAL", icon: <RiAdminFill size={35} />, link: "PatientPortal" },
-          { label: "CUSTOMER", icon: <CiUser size={35} />, link: "Customer_Login" },
-          { label: "ANALYTICS", icon: <TbBrandGoogleAnalytics size={35} />, link: "Admin_Analytics" },
-          { label: "SUPPORT", icon: <FaUsers size={35} />, link: "CustomerCare" },
-          { label: "PROFILES", icon: <FaFileInvoiceDollar size={35} />, link: "Profile" },
-          { label: "SETTINGS", icon: <IoSettingsOutline size={35} />, link: "Settings" },
-        ].map((tile, idx) => (
-          <a href={tile.link} key={idx} className="w-full">
+        {services.map((tile, idx) => (
+          <a href={tile.link} key={idx}>
             <Button
               variant="outlined"
               className="
@@ -163,12 +158,12 @@ export default function Welcome() {
       {/* ====================== DOWNLOAD + EMBLEM ====================== */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-12 mt-8">
 
-        {/* Download Card */}
+        {/* App Download */}
         <Card className="max-w-xs w-full shadow-lg rounded-xl p-3 bg-green-600">
           <CardBody>
-            <h5 className="text-md font-semibold mb-3 text-center text-white">
+            <Typography className="text-md font-semibold mb-3 text-center text-white">
               DOWNLOAD APP - <span className="text-yellow-400">Coming soon</span>
-            </h5>
+            </Typography>
 
             <div className="flex items-center gap-2 justify-center">
               <Button className="flex items-center gap-2 bg-black text-white px-3 py-2 rounded-lg shadow">
@@ -182,7 +177,7 @@ export default function Welcome() {
           </CardBody>
         </Card>
 
-        {/* Emblem Section */}
+        {/* Emblem */}
         <div className="flex flex-col items-center">
           <img src={emblem} alt="Application_logo" className="w-32 h-32 object-contain" />
           <div className="flex items-center gap-2 mt-2">
@@ -194,16 +189,15 @@ export default function Welcome() {
 
       {/* ====================== FOOTER ====================== */}
       <footer className="mt-12 w-full border-t pt-6">
-
-        <div className="mb-8">
-          <Typography variant="h6" className="opacity-70">Duty Dentist</Typography>
-        </div>
+        <Typography variant="h6" className="opacity-70">Duty Dentist</Typography>
 
         {/* WhatsApp Floating Button */}
-        <button
-          className="fixed bottom-3 right-3 z-30 p-4 bg-white rounded-full shadow-lg hover:scale-105 transition-transform"
-        >
-          <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">
+        <button className="fixed bottom-3 right-3 z-30 p-4 bg-white rounded-full shadow-lg hover:scale-105 transition-transform">
+          <a
+            href="https://web.whatsapp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaWhatsapp size={50} color="#6cdb04" />
           </a>
         </button>
@@ -213,8 +207,8 @@ export default function Welcome() {
         </Typography>
       </footer>
 
-      {/* ====================== FEEDBACK DIALOG ====================== */}
-      <Dialog open={open} handler={toggleDialog} size="xs" className="p-4">
+      {/* ====================== FEEDBACK MODAL ====================== */}
+      <Dialog open={open} handler={toggleDialog} size="xs">
         <DialogBody>
           <Typography variant="h6" className="text-center mb-4">
             Based on your recent experience,<br />
