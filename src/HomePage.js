@@ -577,8 +577,8 @@ Dr. Adrita Nag
               variant="small"
               className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
             >
-              &copy; {currentYear} <a href="https://material-tailwind.com/">,DutyDentist</a>. All
-              Rights Reserved.
+              &copy; {new Date().getFullYear()} Duty Dentist — All Rights Reserved.
+
               <div className="flex items-center space-x-2">
                 <span className="text-lg font-semibold">MADE IN INDIA</span>
                 <Flag code="IN" style={{ width: 30, height: 20 }} />

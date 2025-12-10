@@ -32,6 +32,7 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import { GrAndroid } from "react-icons/gr";
 import { HiSpeakerphone } from "react-icons/hi";
+import { TbDental } from "react-icons/tb";
 
 import Flag from "react-world-flags";
 import emblem from "./assets/emblem.png";
@@ -75,14 +76,16 @@ export default function Welcome() {
       </Breadcrumbs>
 
       {/* ====================== BANNER ====================== */}
-      {isBannerActive && (
-        <div className="mb-3 shadow-sm px-4 py-2 flex justify-center items-center rounded-lg bg-lime-300">
-          <Typography className="text-xs text-black flex items-center gap-1">
-            <HiSpeakerphone size={14} />
-            <b>ALERT : Enjoy 20% off on Oral Treatment</b>
-          </Typography>
-        </div>
-      )}
+{isBannerActive && (
+  <div className="mb-3 shadow-sm px-4 py-2 rounded-lg bg-lime-300 overflow-hidden">
+    <div className="banner-scroll inline-flex items-center gap-2 whitespace-nowrap">
+      <b>ALERT : Enjoy 20% off on Oral Treatment</b>
+    </div>
+  </div>
+)}
+
+
+
 
       {/* ====================== HEADER ====================== */}
       <div className="flex flex-col md:flex-row justify-between items-center w-full">
@@ -97,7 +100,7 @@ export default function Welcome() {
           />
 
           <Typography variant="h3" className="text-green-700 font-bold">
-            Welcome to {selectedPractice}
+            Welcome to {selectedPractice} - ADMIN PORTAL
           </Typography>
 
           <Typography className="max-w-xl text-black text-sm mt-2 leading-relaxed">
@@ -153,43 +156,27 @@ export default function Welcome() {
         ))}
       </div>
 
-      <hr className="mt-10 mb-10 border-gray-400" />
-
-      {/* ====================== DOWNLOAD + EMBLEM ====================== */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-12 mt-8">
-
-        {/* App Download */}
-        <Card className="max-w-xs w-full shadow-lg rounded-xl p-3 bg-green-600">
-          <CardBody>
-            <Typography className="text-md font-semibold mb-3 text-center text-white">
-              DOWNLOAD APP - <span className="text-yellow-400">Coming soon</span>
-            </Typography>
-
-            <div className="flex items-center gap-2 justify-center">
-              <Button className="flex items-center gap-2 bg-black text-white px-3 py-2 rounded-lg shadow">
-                <GrAndroid size={18} /> Android
-              </Button>
-
-              <Button className="flex items-center gap-2 bg-black text-white px-3 py-2 rounded-lg shadow">
-                <RiAppleLine size={18} /> iOS
-              </Button>
-            </div>
-          </CardBody>
-        </Card>
-
-        {/* Emblem */}
-        <div className="flex flex-col items-center">
-          <img src={emblem} alt="Application_logo" className="w-32 h-32 object-contain" />
-          <div className="flex items-center gap-2 mt-2">
-            <span className="text-lg font-semibold">MADE IN INDIA</span>
-            <Flag code="IN" style={{ width: 30, height: 20 }} />
-          </div>
-        </div>
-      </div>
-
+    
       {/* ====================== FOOTER ====================== */}
       <footer className="mt-12 w-full border-t pt-6">
-        <Typography variant="h6" className="opacity-70">Duty Dentist</Typography>
+<Typography variant="h5" className="mb-6 flex items-center space-x-2">
+  <span className="text-blue-800">Duty</span>
+  <span className="text-blue-400">Dentist</span>
+  <TbDental className="text-blue-600" />
+</Typography>
+
+
+ <div className="w-full flex justify-end">
+  <div className="flex items-center gap-2 text-black text-sm">
+    <b>
+      <i className="text-xl">DOWNLOAD FOR FREE - </i>
+    </b>
+    <Button className="flex items-center gap-4">
+      <GrAndroid size={30} color="white" />
+      <RiAppleLine size={30} color="white" />
+    </Button>
+  </div>
+</div>
 
         {/* WhatsApp Floating Button */}
         <button className="fixed bottom-3 right-3 z-30 p-4 bg-white rounded-full shadow-lg hover:scale-105 transition-transform">
@@ -202,9 +189,20 @@ export default function Welcome() {
           </a>
         </button>
 
-        <Typography className="text-center mt-6 text-sm opacity-80">
-          © {new Date().getFullYear()} Duty Dentist — All Rights Reserved.
-        </Typography>
+<div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
+            <Typography
+              variant="small"
+              className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
+            >
+              &copy; {new Date().getFullYear()} Duty Dentist — All Rights Reserved.
+
+              <div className="flex items-center space-x-2">
+                <span className="text-lg font-semibold">MADE IN INDIA</span>
+                <Flag code="IN" style={{ width: 30, height: 20 }} />
+              </div>
+            </Typography>
+</div>
+
       </footer>
 
       {/* ====================== FEEDBACK MODAL ====================== */}
