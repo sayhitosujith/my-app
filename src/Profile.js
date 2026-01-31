@@ -4,11 +4,20 @@ import {
   Typography, Button, Avatar, Badge, Rating, Input, Breadcrumbs,
   Dialog, DialogHeader, DialogBody, DialogFooter, Switch
 } from "@material-tailwind/react";
-import { TrashIcon, PencilIcon } from "@heroicons/react/24/solid";
+import { TrashIcon, PencilIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { FaPowerOff } from "react-icons/fa6";
-import { FaWhatsapp } from "react-icons/fa";
-import { XMarkIcon } from "@heroicons/react/24/solid"; // Import the X icon (optional)
+import { FaPowerOff, FaWhatsapp } from "react-icons/fa";
+
+// Helper functions
+const validateAadhaar = (aadhaar) => /^[2-9][0-9]{11}$/.test(aadhaar);
+const maxDigits = (value, max) => value.replace(/\D/g,'').slice(0,max);
+const isProfileValid = (profile) => {
+  if (!profile) return false;
+  const phoneValid = profile.phone && profile.phone.length === 10;
+  const aadhaarValid = profile.aadhaar ? validateAadhaar(profile.aadhaar) : true;
+  const policyValid = profile.policyNumber ? profile.policyNumber.length <= 10 : true;
+  return phoneValid && aadhaarValid && policyValid;
+};
 
 // CardItem component
 const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
@@ -30,7 +39,6 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
         hover:shadow-lg hover:-translate-y-1
         ${listView ? "w-full flex flex-row gap-4 items-center p-4 min-h-[120px]" : "w-full md:w-80 flex flex-col"}`}
     >
-      {/* Avatar */}
       <div className={`${listView ? "w-24 flex-shrink-0" : "flex justify-center items-center mt-2"}`}>
         <Avatar
           src={item.image || "https://fellows.ias.ac.in/public/images/stock/avatar.svg?v=105894425"}
@@ -40,8 +48,6 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
           className="border-2 border-gray-200"
         />
       </div>
-
-      {/* Body */}
       <CardBody className={`flex flex-col gap-1 text-sm ${listView ? "flex-1 py-2" : ""}`}>
         <div className="flex justify-between items-start">
           <div>
@@ -63,42 +69,28 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
         <Typography className="text-sm mt-1"><b>Email:</b> {item.email}</Typography>
         <Typography className="text-sm"><b>Phone:</b> <a href={`tel:${item.phone}`} className="text-blue-600">{highlightPhone(item.phone, searchTerm)}</a></Typography>
         <Typography className="text-sm"><b>Address:</b> {item.address}</Typography>
+        <Typography className="text-sm"><b>Aadhaar:</b> {item.aadhaar || '-'}</Typography>
+        <Typography className="text-sm"><b>Policy No:</b> {item.policyNumber || '-'}</Typography>
+
         <div className="flex flex-wrap gap-1 mt-1">
           {item.referredBy && <Badge color="blue" size="sm">{item.referredBy}</Badge>}
           {item.contactPreference && <Badge color="amber" size="sm">{item.contactPreference}</Badge>}
         </div>
 
-        {/* X-ray Reports Preview */}
         {item.xrayReports && item.xrayReports.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-3">
             {item.xrayReports.map((file, idx) => (
               <div key={idx} className="relative w-20 h-20 border rounded overflow-hidden shadow-sm bg-white">
                 {file.type === "application/pdf" ? (
                   <>
-                    <embed
-                      src={file.data}
-                      type="application/pdf"
-                      width="100%"
-                      height="100%"
-                      className="object-cover"
-                    />
-                    <a
-                      href={file.data}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-xs text-center truncate"
-                      title={file.name}
-                    >
+                    <embed src={file.data} type="application/pdf" width="100%" height="100%" className="object-cover" />
+                    <a href={file.data} target="_blank" rel="noreferrer"
+                      className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-xs text-center truncate" title={file.name}>
                       View PDF
                     </a>
                   </>
                 ) : (
-                  <img
-                    src={file.data}
-                    alt={`X-ray-${idx}`}
-                    className="w-full h-full object-cover"
-                    title={file.name}
-                  />
+                  <img src={file.data} alt={`X-ray-${idx}`} className="w-full h-full object-cover" title={file.name} />
                 )}
               </div>
             ))}
@@ -110,7 +102,6 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
         </div>
       </CardBody>
 
-      {/* Footer: show buttons */}
       <CardFooter className={`pt-2 flex ${listView ? "flex-col items-start gap-2" : "justify-between items-center"}`}>
         {listView && (
           <div className="flex gap-2">
@@ -123,24 +114,24 @@ const CardItem = ({ item, onDelete, onEdit, searchTerm, listView }) => {
           </div>
         )}
         <Button color="black" className="hover:scale-105 transition-transform text-xs px-3">
-          <a href="/BookAppointment">Book Appointment</a>
+          <a href="/MyCart">Book Appointment</a>
         </Button>
 
         <Button
-  size="sm"
-  variant="outlined"
-  color="green"
-  className="flex items-center gap-h2"
-  onClick={() => window.open(`https://wa.me/${item.phone.replace(/\D/g, '')}`, '_blank')}
->
-  <FaWhatsapp size={16} />
-</Button>
+          size="sm"
+          variant="outlined"
+          color="green"
+          className="flex items-center gap-h2"
+          onClick={() => window.open(`https://wa.me/${item.phone.replace(/\D/g, '')}`, '_blank')}
+        >
+          <FaWhatsapp size={16} />
+        </Button>
       </CardFooter>
     </Card>
   );
 };
 
-// Profile component
+// Profile Component
 function Profile() {
   const [profiles, setProfiles] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -188,7 +179,6 @@ function Profile() {
     }
   };
 
-  // New: handle multiple X-ray uploads in edit modal
   const handleXrayChange = (e) => {
     const files = Array.from(e.target.files);
     if (files.length) {
@@ -221,29 +211,28 @@ function Profile() {
       <div className="flex justify-between items-center mb-4 flex-wrap gap-3">
         <div className="flex items-center gap-3 flex-wrap">
           <Button color="green" className="whitespace-nowrap">
-            <a href="/Addprofile">+ ADD PROFILE</a>
+            <a href="/Addprofile">+ ADD PATIENT PROFILE</a>
           </Button>
-          
-      <div className="relative w-44">
-  <Input
-    label="Search by Phone"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-    className="pr-10"
-  />
-  {searchTerm && (
-    <button
-      onClick={() => setSearchTerm('')}
-      className="absolute right-2 top-2/4 transform -translate-y-1/2 text-gray-500 hover:text-black"
-      aria-label="Clear search"
-    >
-      <XMarkIcon className="h-5 w-5" />
-    </button>
-  )}
-</div>
+
+          <div className="relative w-44">
+            <Input
+              label="Search by Phone"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pr-10"
+            />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm('')}
+                className="absolute right-2 top-2/4 transform -translate-y-1/2 text-gray-500 hover:text-black"
+                aria-label="Clear search"
+              >
+                <XMarkIcon className="h-5 w-5" />
+              </button>
+            )}
+          </div>
         </div>
 
-        {/* Right side: Appointment History, Switch, notifications, logout, avatar */}
         <div className="flex items-center gap-4">
           <Button color="blue" className="hover:scale-105 transition-transform text-xs px-3">
             <a href="/AppointmentHistory">Appointment History</a>
@@ -260,10 +249,7 @@ function Profile() {
         </div>
       </div>
 
-      {/* Profiles container */}
-      <div
-        className={`grid gap-6 ${listView ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}`}
-      >
+      <div className={`grid gap-6 ${listView ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}`}>
         {filteredProfiles.length > 0 ? (
           filteredProfiles.map(item => (
             <CardItem
@@ -296,7 +282,7 @@ function Profile() {
         </DialogFooter>
       </Dialog>
 
-      {/* Edit Profile Dialog */}
+      {/* Edit Profile Dialog with validation */}
       <Dialog open={!!editProfile} handler={() => setEditProfile(null)} size="md">
         <DialogHeader>Edit Profile</DialogHeader>
         <DialogBody divider>
@@ -320,7 +306,32 @@ function Profile() {
             <Input
               label="Phone"
               value={editProfile?.phone || ''}
-              onChange={(e) => setEditProfile({ ...editProfile, phone: e.target.value })}
+              maxLength={10}
+              onChange={(e) =>
+                setEditProfile({ ...editProfile, phone: maxDigits(e.target.value, 10) })
+              }
+              error={!editProfile?.phone || editProfile?.phone.length !== 10}
+              helperText={!editProfile?.phone ? "Required" : editProfile?.phone.length !== 10 ? "Must be 10 digits" : ""}
+            />
+            <Input
+              label="Policy Number"
+              value={editProfile?.policyNumber || ''}
+              maxLength={10}
+              onChange={(e) =>
+                setEditProfile({ ...editProfile, policyNumber: maxDigits(e.target.value, 10) })
+              }
+              error={editProfile?.policyNumber?.length > 10}
+              helperText={editProfile?.policyNumber?.length > 10 ? "Max 10 digits allowed" : ""}
+            />
+            <Input
+              label="Aadhaar Number"
+              value={editProfile?.aadhaar || ''}
+              maxLength={12}
+              onChange={(e) =>
+                setEditProfile({ ...editProfile, aadhaar: maxDigits(e.target.value, 12) })
+              }
+              error={editProfile?.aadhaar && !validateAadhaar(editProfile.aadhaar)}
+              helperText={editProfile?.aadhaar && !validateAadhaar(editProfile.aadhaar) ? "Invalid Aadhaar (12 digits, cannot start with 0 or 1)" : ""}
             />
             <Input
               label="Address"
@@ -328,7 +339,6 @@ function Profile() {
               onChange={(e) => setEditProfile({ ...editProfile, address: e.target.value })}
             />
 
-            {/* Image upload */}
             <div>
               <label className="block mb-1 font-medium">Profile Image</label>
               <input type="file" accept="image/*" onChange={handleImageChange} />
@@ -337,66 +347,74 @@ function Profile() {
               )}
             </div>
 
-            {/* Multiple X-ray uploads */}
-            <div className="col-span-full">
-              <label className="block mb-1 font-medium">X-ray Reports (Images/PDFs)</label>
-              <input
-                type="file"
-                accept="image/*,application/pdf"
-                multiple
-                onChange={handleXrayChange}
+           <div className="col-span-full">
+  <label className="block mb-1 font-medium">X-ray Reports (Images/PDFs)</label>
+  <input
+    type="file"
+    accept="image/*,application/pdf"
+    multiple
+    onChange={handleXrayChange}
+  />
+  <div className="mt-2 flex flex-wrap gap-2 max-h-40 overflow-auto border rounded p-2 bg-gray-50">
+    {editProfile?.xrayReports && editProfile.xrayReports.length > 0 ? (
+      editProfile.xrayReports.map((file, idx) => (
+        <div key={idx} className="relative w-20 h-20 border rounded overflow-hidden shadow-sm bg-white">
+          {/* Delete Button */}
+          <button
+            type="button"
+            className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs z-10"
+            onClick={() => {
+              const updatedXrays = editProfile.xrayReports.filter((_, i) => i !== idx);
+              setEditProfile({ ...editProfile, xrayReports: updatedXrays });
+            }}
+          >
+            X
+          </button>
+
+          {file.type === "application/pdf" ? (
+            <>
+              <embed
+                src={file.data}
+                type="application/pdf"
+                width="100%"
+                height="100%"
+                className="object-cover"
               />
-              <div className="mt-2 flex flex-wrap gap-2 max-h-40 overflow-auto border rounded p-2 bg-gray-50">
-                {editProfile?.xrayReports && editProfile.xrayReports.length > 0 ? (
-                  editProfile.xrayReports.map((file, idx) => (
-                    <div key={idx} className="relative w-20 h-20 border rounded overflow-hidden shadow-sm bg-white">
-                      {file.type === "application/pdf" ? (
-                        <>
-                          <embed
-                            src={file.data}
-                            type="application/pdf"
-                            width="100%"
-                            height="100%"
-                            className="object-cover"
-                          />
-                          <a
-                            href={file.data}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-xs text-center truncate"
-                            title={file.name}
-                          >
-                            View PDF
-                          </a>
-                        </>
-                      ) : (
-                        <img
-                          src={file.data}
-                          alt={`X-ray-${idx}`}
-                          className="w-full h-full object-cover"
-                          title={file.name}
-                        />
-                      )}
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-gray-400 text-xs">No X-rays uploaded.</p>
-                )}
-              </div>
-            </div>
-          </div>
+              <a
+                href={file.data}
+                target="_blank"
+                rel="noreferrer"
+                className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-xs text-center truncate"
+                title={file.name}
+              >
+                View PDF
+              </a>
+            </>
+          ) : (
+            <img
+              src={file.data}
+              alt={`X-ray-${idx}`}
+              className="w-full h-full object-cover"
+              title={file.name}
+            />
+          )}
+        </div>
+      ))
+    ) : (
+      <p className="text-gray-400 text-xs">No X-rays uploaded.</p>
+    )}
+  </div>
+</div>
+</div>
+
         </DialogBody>
+
         <DialogFooter>
-          <Button variant="text" color="blue" onClick={() => setEditProfile(null)}>
-            Cancel
-          </Button>
-          <Button variant="gradient" color="green" onClick={handleEditSave}>
-            Save
-          </Button>
+          <Button variant="text" color="blue" onClick={() => setEditProfile(null)}>Cancel</Button>
+          <Button variant="gradient" color="green" onClick={handleEditSave} disabled={!isProfileValid(editProfile)}>Save</Button>
         </DialogFooter>
       </Dialog>
 
-      {/* Toast notification */}
       {showToast && (
         <div className="fixed bottom-5 right-5 bg-green-500 text-white px-5 py-3 rounded shadow-lg animate-fade-in-out">
           {showToast}

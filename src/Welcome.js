@@ -1,215 +1,212 @@
 import "./App.css";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
-  Card,
-  CardBody,
   Typography,
-  Select,
-  Option,
   Breadcrumbs,
   Avatar,
   Button,
   Dialog,
   DialogBody,
   DialogFooter,
-  Badge,
 } from "@material-tailwind/react";
 
-import {
-  RiAdminFill,
-  RiAppleLine,
-} from "react-icons/ri";
+// Icons
+import { VscChevronDown } from "react-icons/vsc";
+import { RiAdminFill, RiAppleLine } from "react-icons/ri";
 import { CiUser } from "react-icons/ci";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
-import {
-  FaUsers,
-  FaFileInvoiceDollar,
-  FaWhatsapp,
-  FaPowerOff,
-} from "react-icons/fa6";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { TbBrandGoogleAnalytics, TbDental } from "react-icons/tb";
+import { FaUsers, FaFileInvoiceDollar, FaWhatsapp } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { GrAndroid } from "react-icons/gr";
-import { HiSpeakerphone } from "react-icons/hi";
-import { TbDental } from "react-icons/tb";
 
 import Flag from "react-world-flags";
-import emblem from "./assets/emblem.png";
-import { practiceNames } from "./constants";
+import logo from "./assets/DutyDentist.png";
 
-// Banner Timing
+// ====================== BANNER TIMING ======================
 const now = new Date();
 const startDate = new Date("2025-04-05T08:00:00");
 const endDate = new Date("2026-04-08T23:59:59");
 const isBannerActive = now >= startDate && now <= endDate;
 
-// Services Array
+// ====================== SERVICES ======================
 const services = [
-  { label: "SUPER ADMIN", icon: <IoSettingsOutline size={35} />, link: "SuperAdmin" },
-  { label: "DOCTOR PORTAL", icon: <RiAdminFill size={35} />, link: "DoctorList" },
-  { label: "PATIENT PORTAL", icon: <RiAdminFill size={35} />, link: "PatientPortal" },
-  { label: "CUSTOMER", icon: <CiUser size={35} />, link: "Customer_Login" },
-  { label: "ANALYTICS", icon: <TbBrandGoogleAnalytics size={35} />, link: "Admin_Analytics" },
-  { label: "SUPPORT", icon: <FaUsers size={35} />, link: "CustomerCare" },
-  { label: "PROFILES", icon: <FaFileInvoiceDollar size={35} />, link: "Profile" },
-  { label: "SETTINGS", icon: <IoSettingsOutline size={35} />, link: "Settings" },
+  { label: "SUPER ADMIN", icon: <IoSettingsOutline size={35} />, link: "/SuperAdmin" },
+  { label: "DOCTOR PORTAL", icon: <RiAdminFill size={35} />, link: "/DoctorList" },
+  { label: "PATIENT PORTAL", icon: <CiUser size={35} />, link: "/PatientPortal" },
+  { label: "CUSTOMER", icon: <CiUser size={35} />, link: "/Customer_Home" },
+  { label: "ANALYTICS", icon: <TbBrandGoogleAnalytics size={35} />, link: "/Admin_Analytics" },
+  { label: "SUPPORT", icon: <FaUsers size={35} />, link: "/CustomerCare" },
+  { label: "PROFILES", icon: <FaFileInvoiceDollar size={35} />, link: "/Profile" },
+  { label: "SETTINGS", icon: <IoSettingsOutline size={35} />, link: "/Settings" },
+  { label: "APPOINTMENT HISTORY", icon: <IoSettingsOutline size={35} />, link: "/AppointmentHistory" },
+  { label: "BOOK APPOINTMENT", icon: <IoSettingsOutline size={35} />, link: "/MyCart" },
 ];
 
 export default function Welcome() {
-  const selectedPractice =
-    practiceNames[localStorage.getItem("selectedPractice")] || "Duty Dentist";
+  const navigate = useNavigate();
 
+  const selectedPracticeCity =
+    localStorage.getItem("selectedPracticeCity") || "Hervy Bay Dental Clinic";
+
+  // Profile dropdown
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  // Feedback modal
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(null);
 
-  const toggleDialog = () => setOpen(!open);
-  const handleSubmit = () => (window.location.href = "/Logout");
+  const user = {
+    name: "Sujith",
+    initials: "SS",
+  };
+
+  const toggleDialog = () => setOpen((prev) => !prev);
+  const handleSubmit = () => navigate("/Logout");
 
   return (
-    <div className="p-10 bg-white w-full min-h-screen">
+    <div className="p-10 bg-white w-full min-h-screen relative">
+      {/* LOGO */}
+      <img
+        src={logo}
+        alt="App Logo"
+        className="absolute top-4 left-4 w-20 md:w-28 h-auto z-20"
+      />
 
       {/* ====================== BREADCRUMBS ====================== */}
-      <Breadcrumbs className="mb-4">
-        <a href="/HomePage">Home</a>
-        <a href="#">Welcome</a>
+      <Breadcrumbs className="mt-20 mb-6">
+        <button onClick={() => navigate("/HomePage")} className="text-blue-600">
+          Home
+        </button>
+        <span>Welcome</span>
       </Breadcrumbs>
 
-      {/* ====================== BANNER ====================== */}
-{isBannerActive && (
-  <div className="mb-3 shadow-sm px-4 py-2 rounded-lg bg-lime-300 overflow-hidden">
-    <div className="banner-scroll inline-flex items-center gap-2 whitespace-nowrap">
-      <b>ALERT : Enjoy 20% off on Oral Treatment</b>
-    </div>
-  </div>
-)}
+      {/* ====================== PROFILE MENU ====================== */}
+      <div className="flex justify-end mb-6">
+        <div className="relative">
+          <button
+            onClick={() => setShowProfileMenu((prev) => !prev)}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-900 font-semibold rounded-full shadow-sm hover:bg-blue-100 transition"
+          >
+            <div className="w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center font-bold">
+              {user.initials}
+            </div>
+            <span>{user.name}</span>
+            <VscChevronDown
+              className={`transition-transform ${
+                showProfileMenu ? "rotate-180" : ""
+              }`}
+            />
+          </button>
 
-
-
-
-      {/* ====================== HEADER ====================== */}
-      <div className="flex flex-col md:flex-row justify-between items-center w-full">
-
-        {/* Avatar + Welcome Text */}
-        <div className="flex flex-col items-center text-center w-full">
-          <Avatar
-            src="https://docs.material-tailwind.com/img/face-2.jpg"
-            alt="avatar"
-            size="xl"
-            className="mb-3"
-          />
-
-          <Typography variant="h3" className="text-green-700 font-bold">
-            Welcome to {selectedPractice} - ADMIN PORTAL
-          </Typography>
-
-          <Typography className="max-w-xl text-black text-sm mt-2 leading-relaxed">
-            Access your provisioned services below. You can switch services
-            anytime from the apps icon in the middle of your screen.
-          </Typography>
-        </div>
-
-        {/* Notifications + Logout + Profile */}
-        <div className="flex flex-col items-end gap-4 mt-6 md:mt-0">
-
-          {/* Notifications + Logout */}
-          <div className="flex items-center gap-6">
-            <Badge content="6">
-              <IoIosNotificationsOutline size={24} />
-            </Badge>
-
-            <button onClick={toggleDialog}>
-              <FaPowerOff size={22} />
-            </button>
-          </div>
-
-          {/* Profile Dropdown */}
-          <div className="w-40">
-            <Select label="Profile">
-              <Option><a href="/HomePage">About</a></Option>
-              <Option><a href="/Dailysummary">Dailysummary</a></Option>
-              <Option><a href="/ResetPassword">Change Password</a></Option>
-              <Option><a href="/Settings">Settings</a></Option>
-            </Select>
-          </div>
+          {showProfileMenu && (
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg z-10 overflow-hidden">
+              <button
+                onClick={() => navigate("/Profile")}
+                className="w-full px-4 py-3 text-left hover:bg-blue-50"
+              >
+                Edit Profile
+              </button>
+              <button
+                onClick={() => navigate("/Settings")}
+                className="w-full px-4 py-3 text-left hover:bg-blue-50"
+              >
+                Settings
+              </button>
+              <button
+                onClick={() => navigate("/Logout")}
+                className="w-full px-4 py-3 text-left text-red-600 hover:bg-red-50"
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
-      <hr className="mt-6 mb-6 border-gray-400" />
+      {/* ====================== BANNER ====================== */}
+      {isBannerActive && (
+        <div className="mb-6 shadow-sm px-4 py-2 rounded-lg bg-lime-300">
+          <b>
+            ALERT: Special Care Offer 🎉 Get 20% off on Oral Treatment – Because
+            your smile matters.
+          </b>
+        </div>
+      )}
+
+      {/* ====================== HEADER ====================== */}
+      <div className="flex flex-col items-center text-center mb-10">
+        <Avatar
+          src="https://docs.material-tailwind.com/img/face-2.jpg"
+          size="xl"
+          className="mb-3"
+        />
+
+        <Typography variant="h3" className="text-green-700 font-bold">
+          Welcome to Duty Dentist – {selectedPracticeCity}
+        </Typography>
+
+        <Typography className="max-w-xl text-black text-sm mt-2">
+          Access your provisioned services below. You can switch services anytime.
+        </Typography>
+      </div>
+
+      <hr className="mb-6" />
 
       {/* ====================== SERVICE CARDS ====================== */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
         {services.map((tile, idx) => (
-          <a href={tile.link} key={idx}>
-            <Button
-              variant="outlined"
-              className="
-                w-full flex flex-col items-center justify-center
-                border border-green-600 bg-white shadow-sm hover:shadow-md
-                py-8 rounded-xl text-black
-              "
-            >
-              {tile.icon}
-              <span className="pt-2 font-bold text-sm">{tile.label}</span>
-            </Button>
-          </a>
+          <Button
+            key={idx}
+            variant="outlined"
+            onClick={() => navigate(tile.link)}
+            className="flex flex-col items-center py-8 rounded-xl border-green-600"
+          >
+            {tile.icon}
+            <span className="pt-2 font-bold text-sm">{tile.label}</span>
+          </Button>
         ))}
       </div>
 
-    
       {/* ====================== FOOTER ====================== */}
-      <footer className="mt-12 w-full border-t pt-6">
-<Typography variant="h5" className="mb-6 flex items-center space-x-2">
-  <span className="text-blue-800">Duty</span>
-  <span className="text-blue-400">Dentist</span>
-  <TbDental className="text-blue-600" />
-</Typography>
+      <footer className="mt-16 border-t pt-6">
+        <Typography variant="h5" className="flex items-center gap-2 mb-4">
+          <span className="text-blue-800">Duty</span>
+          <span className="text-blue-400">Dentist</span>
+          <TbDental />
+        </Typography>
 
+        <div className="flex justify-end mb-6">
+          <Button className="flex gap-4">
+            <GrAndroid size={30} />
+            <RiAppleLine size={30} />
+          </Button>
+        </div>
 
- <div className="w-full flex justify-end">
-  <div className="flex items-center gap-2 text-black text-sm">
-    <b>
-      <i className="text-xl">DOWNLOAD FOR FREE - </i>
-    </b>
-    <Button className="flex items-center gap-4">
-      <GrAndroid size={30} color="white" />
-      <RiAppleLine size={30} color="white" />
-    </Button>
-  </div>
-</div>
-
-        {/* WhatsApp Floating Button */}
-        <button className="fixed bottom-3 right-3 z-30 p-4 bg-white rounded-full shadow-lg hover:scale-105 transition-transform">
-          <a
-            href="https://web.whatsapp.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaWhatsapp size={50} color="#6cdb04" />
-          </a>
-        </button>
-
-<div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
-            <Typography
-              variant="small"
-              className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
-            >
-              &copy; {new Date().getFullYear()} Duty Dentist — All Rights Reserved.
-
-              <div className="flex items-center space-x-2">
-                <span className="text-lg font-semibold">MADE IN INDIA</span>
-                <Flag code="IN" style={{ width: 30, height: 20 }} />
-              </div>
-            </Typography>
-</div>
-
+        <div className="flex flex-col md:flex-row items-center justify-between text-sm">
+          <span>© {new Date().getFullYear()} Duty Dentist — All Rights Reserved</span>
+          <div className="flex items-center gap-2">
+            <span>MADE IN INDIA</span>
+            <Flag code="IN" style={{ width: 30, height: 20 }} />
+          </div>
+        </div>
       </footer>
+
+      {/* ====================== WHATSAPP ====================== */}
+      <a
+        href="https://web.whatsapp.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-4 right-4 bg-white p-4 rounded-full shadow-lg"
+      >
+        <FaWhatsapp size={50} color="#6cdb04" />
+      </a>
 
       {/* ====================== FEEDBACK MODAL ====================== */}
       <Dialog open={open} handler={toggleDialog} size="xs">
         <DialogBody>
           <Typography variant="h6" className="text-center mb-4">
-            Based on your recent experience,<br />
             How likely are you to recommend our service?
           </Typography>
 
@@ -227,18 +224,13 @@ export default function Welcome() {
               </button>
             ))}
           </div>
-
-          <div className="flex justify-between mt-2 text-xs">
-            <span>Not at all Likely</span>
-            <span>Extremely Likely</span>
-          </div>
         </DialogBody>
 
         <DialogFooter>
           <Button
-            onClick={handleSubmit}
             disabled={rating === null}
-            className="bg-green-600 text-white w-full"
+            onClick={handleSubmit}
+            className="w-full bg-green-600"
           >
             Submit
           </Button>

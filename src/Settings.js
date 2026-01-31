@@ -8,6 +8,8 @@ import {
   Breadcrumbs,
   Switch,
 } from "@material-tailwind/react";
+import logo from "./assets/DutyDentist.png";
+
 
 const users = [
   { id: 1, name: 'Sujith', email: 'sayhitosujith@gmail.com' },
@@ -41,13 +43,22 @@ function Settings() {
   };
 
   return (
-    <div className="p-10">
-      {/* Breadcrumbs */}
-      <Breadcrumbs>
-        <a href="/" className="opacity-60">Home</a>
-        <a href="/Welcome" className="opacity-60">Welcome</a>
-        <span>ADMIN SETTINGS</span>
-      </Breadcrumbs>
+   <div className="p-10">
+  <img
+    src={logo}
+    alt="App Logo"
+    className="absolute top-4 left-4 w-20 md:w-28 h-auto z-20"
+  />
+
+  {/* Breadcrumbs */}
+  <div className="mt-20">
+    <Breadcrumbs>
+      <a href="/" className="opacity-60">Home</a>
+      <a href="/Welcome" className="opacity-60">Welcome</a>
+      <span>ADMIN SETTINGS</span>
+    </Breadcrumbs>
+  </div>
+
 
       {/* Header */}
 <div className="flex justify-between items-center mt-6 mb-6">

@@ -1,31 +1,32 @@
 /* ================================
    MyCart Page Styling
 ================================ */
+
 .mycart-container {
   display: flex;
-  flex-direction: row;
   gap: 1rem;
   padding: 1rem;
+  align-items: flex-start;
 }
 
-/* Left panel – Appointment details */
+/* LEFT – Appointment Form */
 .appointment-card {
   width: 50%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .appointment-card h1 {
   color: rgb(128, 0, 43);
   font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
+/* Separator */
 .separator {
-  border: none;
   border-top: 2px solid #ddd;
   margin: 0.8rem 0;
 }
@@ -54,61 +55,29 @@
   font-weight: 500;
 }
 
-/* Input fields */
+/* Labels */
 label {
   display: block;
   font-weight: 600;
-  margin-top: 0.5rem;
-  margin-bottom: 0.25rem;
-}
-
-/* Quantity counter */
-.qty-counter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.qty-counter button {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #dc2626;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.qty-counter button:hover {
-  transform: scale(1.2);
-}
-
-.qty-display {
-  border: 1px solid #000;
-  padding: 5px 40px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 4px;
-}
-
-/* Delete button */
-.delete-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #dc2626;
-  font-weight: 600;
-  cursor: pointer;
+  margin: 0.5rem 0 0.25rem;
 }
 
 /* Footer buttons */
+.appointment-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .appointment-actions button {
   background-color: #ff5200;
   color: #fff;
   font-weight: 600;
   padding: 8px 20px;
   border-radius: 6px;
+  border: none;
+  cursor: pointer;
   transition: background 0.3s ease;
 }
 
@@ -116,7 +85,7 @@ label {
   background-color: #e64900;
 }
 
-/* Right panel – QR & summary */
+/* RIGHT – Payment / Receipt */
 .payment-card {
   width: 50%;
 }
@@ -125,7 +94,7 @@ label {
   display: block;
   margin: 0 auto;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .payment-summary {
@@ -137,11 +106,13 @@ label {
   color: green;
   font-size: 1.2rem;
   font-weight: 700;
-  margin: 1rem 0;
+  text-align: center;
 }
 
 .payment-summary div {
-  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.4rem 0;
   font-size: 1rem;
 }
 
@@ -151,7 +122,8 @@ label {
   font-weight: 600;
   padding: 8px 20px;
   border-radius: 6px;
-  transition: background 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .payment-summary button:hover {
@@ -164,17 +136,47 @@ label {
   color: red;
   margin-top: 0.75rem;
   font-weight: 600;
-  line-height: 1.4;
+  text-align: center;
 }
 
-/* Responsive */
+/* ================================
+   PRINT STYLES
+================================ */
+
+.print-area {
+  padding: 1rem;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
 @media (max-width: 1024px) {
   .mycart-container {
     flex-direction: column;
   }
+
   .appointment-card,
   .payment-card {
     width: 100%;
-    height: auto;
+    min-height: auto;
   }
 }

@@ -11,63 +11,115 @@ import { PiLineVerticalThin } from "react-icons/pi";
 import { FaBell } from "react-icons/fa";
 import logo from "./assets/DutyDentist.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PatientPortal = () => {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
   useEffect(() => { localStorage.setItem("theme", darkMode ? "dark" : "light"); }, [darkMode]);
 
+  const navigate = useNavigate();
+
   // Forms data with dynamic questions
   const [forms, setForms] = useState([
+  {
+    id: 1,
+    title: "Medical History Form",
+    completed: false,
+    responses: {},
+    questions: [
+      {
+        id: "q1",
+        type: "select",
+        label: "Do you have any chronic illness?",
+        options: ["Yes", "No"],
+        required: true,
+      },
+      {
+        id: "q2",
+        type: "select",
+        label: "Please list any medications you take:",
+        options: [
+          "None",
+          "Blood Pressure Medication",
+          "Diabetes Medication",
+          "Painkillers",
+          "Antibiotics",
+          "Other",
+        ],
+        required: false,
+      },
+    ],
+  },
+
+  {
+  id: 3,
+  title: "Insurance Details",
+  completed: false,
+  responses: {},
+  questions: [
     {
-      id: 1,
-      title: "Medical History Form",
-      completed: false,
-      responses: {},
-      questions: [
-        { id: "q1", type: "text", label: "Do you have any chronic illness?", required: true },
-        { id: "q2", type: "textarea", label: "Please list any medications you take:", required: false },
-      ]
+      id: "q1",
+      type: "select",
+      label: "Insurance Provider:",
+      options: ["Aetna", "Cigna", "United Healthcare", "Blue Cross", "Other"],
+      required: true,
     },
     {
-      id: 2,
-      title: "Allergy Disclosure",
-      completed: true,
-      responses: { q1: "Peanuts" },
-      questions: [
-        { id: "q1", type: "text", label: "List your allergies:", required: true },
-      ]
+      id: "q2",
+      type: "text",
+      label: "Policy Number:",
+      required: true,
+    },
+  ],
+},
+
+
+  {
+  id: 4,
+  title: "Emergency Contact Info",
+  completed: false,
+  responses: {},
+  questions: [
+    {
+      id: "q1",
+      type: "select",
+      label: "Contact Name:",
+      options: ["Spouse", "Father", "Mother", "Friend", "Sibling"],
+      required: true,
     },
     {
-      id: 3,
-      title: "Insurance Details",
-      completed: false,
-      responses: {},
-      questions: [
-        { id: "q1", type: "text", label: "Insurance Provider:", required: true },
-        { id: "q2", type: "text", label: "Policy Number:", required: true },
-      ]
+      id: "q2",
+      type: "text",
+      label: "Contact Phone:",
+      required: true,
     },
-    {
-      id: 4,
-      title: "Emergency Contact Info",
-      completed: false,
-      responses: {},
-      questions: [
-        { id: "q1", type: "text", label: "Contact Name:", required: true },
-        { id: "q2", type: "text", label: "Contact Phone:", required: true },
-      ]
-    },
-    {
-      id: 5,
-      title: "Lifestyle Questionnaire",
-      completed: false,
-      responses: {},
-      questions: [
-        { id: "q1", type: "select", label: "Do you exercise regularly?", options: ["Yes", "No"], required: true },
-        { id: "q2", type: "checkbox", label: "Which of these do you consume?", options: ["Alcohol", "Tobacco", "Caffeine"], required: false }
-      ]
-    },
-  ]);
+  ],
+},
+
+  {
+    id: 5,
+    title: "Lifestyle Questionnaire",
+    completed: false,
+    responses: {},
+    questions: [
+      {
+        id: "q1",
+        type: "select",
+        label: "Do you exercise regularly?",
+        options: ["Yes", "No"],
+        required: true,
+      },
+      {
+        id: "q2",
+        type: "select",
+        label: "Which of these do you consume?",
+        options: ["Alcohol", "Tobacco", "Caffeine", "None"],
+        required: false,
+      },
+    ],
+  },
+]);
+
 
   const [searchTerm, setSearchTerm] = useState("");
   const [showNotifications, setShowNotifications] = useState(false);
@@ -77,8 +129,11 @@ const PatientPortal = () => {
   const [activeForm, setActiveForm] = useState(null);
   const [formResponses, setFormResponses] = useState({});
 
-  const completedForms = forms.filter(f => f.completed).length;
-  const progress = Math.round((completedForms / forms.length) * 100);
+const completedForms = forms.filter(f => f.completed).length;
+const progress = forms.length > 0
+  ? Math.round((completedForms / forms.length) * 100)
+  : 0;
+
 
   const handleStartForm = (form) => {
     setActiveForm(form);
@@ -93,8 +148,17 @@ const PatientPortal = () => {
   };
 
   const handleInputChange = (questionId, value) => {
-    setFormResponses(prev => ({ ...prev, [questionId]: value }));
-  };
+  // Limit Policy Number and Contact Phone to max 10 digits
+  if (questionId === "q2" && (activeForm.id === 3 || activeForm.id === 4)) {
+    // Remove non-digit characters
+    value = value.replace(/\D/g, "");
+    // Limit to 10 digits
+    if (value.length > 10) value = value.slice(0, 10);
+  }
+
+  setFormResponses(prev => ({ ...prev, [questionId]: value }));
+};
+
 
   const handleSubmitForm = () => {
     // Validate required fields
@@ -136,7 +200,7 @@ const PatientPortal = () => {
       {/* Main content */}
       <main className="main-content">
         <header className="main-header">
-          <h1>My Patient Portal</h1>
+          <b><h1>Patient Onboarding Portal</h1></b>
           <div className="header-actions">
             <div className="notification-wrapper">
               <FaBell size={22} className="cursor-pointer" onClick={() => setShowNotifications(!showNotifications)} />
@@ -176,7 +240,13 @@ const PatientPortal = () => {
         <section className="progress-section">
           <div className="progress-box">
             <div className="progress-info"><p><strong>Progress</strong></p><p>{progress}%</p></div>
-            <div className="progress-bar-container"><div className="progress-bar" style={{ width: `${progress}%` }}></div></div>
+<div className="progress-bar-container">
+  <div
+    className="progress-bar"
+    style={{ width: `${progress}%` }}
+  />
+</div>
+
             <div className="progress-note">Forms will be reviewed by staff when completed.</div>
           </div>
         </section>
@@ -197,9 +267,33 @@ const PatientPortal = () => {
                   {form.completed ? "View / Edit" : "Start Form"}
                 </button>
               </div>
-            </div>
+            </div>  
           ))}
         </section>
+
+<div className="fixed bottom-6 right-6 flex flex-col items-end gap-1 z-50">
+<button
+  disabled={completedForms !== forms.length}
+  onClick={() => navigate("/Profile")}
+  className={`px-4 py-2 rounded-lg shadow-lg transition-all duration-300 transform
+    ${completedForms === forms.length
+      ? "bg-red-600 text-white hover:bg-red-700 cursor-pointer animate-pulse scale-105"
+      : "bg-gray-400 text-gray-700 cursor-not-allowed"}
+  `}
+>
+  + ONBOARD NEW PATIENT
+</button>
+
+
+  {completedForms !== forms.length && (
+    <span className="text-xs text-red-600 font-medium">
+      <u>NOTE: complete all forms to enable this Button</u>
+    </span>
+  )}
+</div>
+
+
+
 
         {/* Dynamic Modal */}
         {modalOpen && activeForm && (
@@ -207,35 +301,76 @@ const PatientPortal = () => {
             <div className="modal-content">
               <h2>{activeForm.title}</h2>
               <div className="modal-body">
-                {activeForm.questions.map(q => {
-                  switch (q.type) {
-                    case "text":
-                      return <label key={q.id}>{q.label}: <input type="text" value={formResponses[q.id] || ""} onChange={e => handleInputChange(q.id, e.target.value)} /></label>;
-                    case "textarea":
-                      return <label key={q.id}>{q.label}: <textarea value={formResponses[q.id] || ""} onChange={e => handleInputChange(q.id, e.target.value)} /></label>;
-                    case "select":
-                      return <label key={q.id}>{q.label}: <select value={formResponses[q.id] || ""} onChange={e => handleInputChange(q.id, e.target.value)}>
-                        <option value="">Select</option>
-                        {q.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                      </select></label>;
-                    case "checkbox":
-                      return <fieldset key={q.id}>
-                        <legend>{q.label}:</legend>
-                        {q.options.map(opt => (
-                          <label key={opt}>
-                            <input type="checkbox" checked={formResponses[q.id]?.includes(opt)} onChange={e => {
-                              const prev = formResponses[q.id] || [];
-                              if (e.target.checked) handleInputChange(q.id, [...prev, opt]);
-                              else handleInputChange(q.id, prev.filter(v => v !== opt));
-                            }} />
-                            {opt}
-                          </label>
-                        ))}
-                      </fieldset>;
-                    default:
-                      return null;
-                  }
-                })}
+              {activeForm.questions.map(q => {
+  // Only show "medications" if chronic illness is "Yes"
+  if (q.id === "q2" && activeForm.id === 1 && formResponses["q1"] === "No") {
+    return null; // Hide this field
+  }
+
+  switch (q.type) {
+case "text":
+  return (
+    <label key={q.id}>
+      {q.label}: 
+      <input
+        type="text"
+        value={formResponses[q.id] || ""}
+        onChange={e => handleInputChange(q.id, e.target.value)}
+        inputMode={(q.id === "q2" && (activeForm.id === 3 || activeForm.id === 4)) ? "numeric" : "text"}
+        placeholder={(q.id === "q2" && (activeForm.id === 3 || activeForm.id === 4)) ? "Enter up to 10 digits" : ""}
+      />
+    </label>
+  );
+
+    case "select":
+      return (
+        <label key={q.id}>
+          {q.label}:
+          <select
+            value={formResponses[q.id] || ""}
+            onChange={e => handleInputChange(q.id, e.target.value)}
+          >
+            <option value="">Select</option>
+            {q.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+          </select>
+        </label>
+      );
+    case "textarea":
+      return (
+        <label key={q.id}>
+          {q.label}:
+          <textarea
+            value={formResponses[q.id] || ""}
+            onChange={e => handleInputChange(q.id, e.target.value)}
+          />
+        </label>
+      );
+    case "checkbox":
+      return (
+        <fieldset key={q.id}>
+          <legend>{q.label}:</legend>
+          {q.options.map(opt => (
+            <label key={opt}>
+              <input
+                type="checkbox"
+                checked={formResponses[q.id]?.includes(opt)}
+                onChange={e => {
+                  const prev = formResponses[q.id] || [];
+                  if (e.target.checked) handleInputChange(q.id, [...prev, opt]);
+                  else handleInputChange(q.id, prev.filter(v => v !== opt));
+                }}
+              />
+              {opt}
+            </label>
+          ))}
+        </fieldset>
+      );
+    default:
+      return null;
+  }
+})}
+
+
               </div>
               <div className="modal-footer">
                 <button onClick={handleCloseModal} className="modal-btn cancel">Cancel</button>
