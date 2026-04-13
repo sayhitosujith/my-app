@@ -803,15 +803,6 @@ function MyCart() {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
-  const selectedTreatments = appointment.type.filter(
-  (type) => type !== "Consultation"
-);
-
-const totalCost =
-  selectedTreatments.length === 0
-    ? 0
-    : getTotalPaid(["Consultation", ...selectedTreatments]);
-
   /* ---------------- PAGINATION LOGIC ---------------- */
   const sortedHistory = [...history].sort((a, b) => b.id - a.id);
   const totalPages = Math.ceil(sortedHistory.length / ITEMS_PER_PAGE);
@@ -1024,7 +1015,7 @@ const totalCost =
 {appointment.type && appointment.type.length > 0 && (
   <div className="mt-2">
     <p className="text-orange-600 font-bold">
-      Total Cost: ₹{totalCost}
+      Total Cost: ₹{getTotalPaid(appointment.type)}
     </p>
 
     <ul className="text-sm text-gray-600 mt-1 space-y-1">

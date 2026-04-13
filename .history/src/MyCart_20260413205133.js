@@ -803,15 +803,6 @@ function MyCart() {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
-  const selectedTreatments = appointment.type.filter(
-  (type) => type !== "Consultation"
-);
-
-const totalCost =
-  selectedTreatments.length === 0
-    ? 0
-    : getTotalPaid(["Consultation", ...selectedTreatments]);
-
   /* ---------------- PAGINATION LOGIC ---------------- */
   const sortedHistory = [...history].sort((a, b) => b.id - a.id);
   const totalPages = Math.ceil(sortedHistory.length / ITEMS_PER_PAGE);

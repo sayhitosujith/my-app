@@ -1020,21 +1020,18 @@ const totalCost =
               <option value="Whitening">Whitening</option>
             </select>
 
-           {/* Cost Display */}
+         {/* Cost Display */}
 {appointment.type && appointment.type.length > 0 && (
   <div className="mt-2">
-    <p className="text-orange-600 font-bold">
-      Total Cost: ₹{totalCost}
-    </p>
 
     <ul className="text-sm text-gray-600 mt-1 space-y-1">
       
-      {/* ✅ Always show Consultation ONCE */}
+      {/* Consultation (highlighted) */}
       <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
         🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
       </li>
 
-      {/* ✅ Show other treatments EXCEPT Consultation */}
+      {/* Other treatments */}
       {appointment.type
         .filter((type) => type !== "Consultation")
         .map((type) => (
@@ -1043,6 +1040,12 @@ const totalCost =
           </li>
         ))}
     </ul>
+
+    {/* ✅ MOVED TOTAL COST BELOW */}
+    <p className="text-orange-600 font-bold mt-2">
+      Total Cost: ₹{totalCost}
+    </p>
+
   </div>
 )}
 

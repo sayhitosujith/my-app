@@ -99,7 +99,7 @@ function MyCart() {
     consultationType: "",
     meetingUrl: "", // 👈 ADD THIS
     notes: "",
-    type: ["Consultation"], // ✅ default selected
+  type: ["Consultation"], // ✅ default selected
   });
 
   const handleReschedule = (item) => {
@@ -803,15 +803,6 @@ function MyCart() {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
-  const selectedTreatments = appointment.type.filter(
-  (type) => type !== "Consultation"
-);
-
-const totalCost =
-  selectedTreatments.length === 0
-    ? 0
-    : getTotalPaid(["Consultation", ...selectedTreatments]);
-
   /* ---------------- PAGINATION LOGIC ---------------- */
   const sortedHistory = [...history].sort((a, b) => b.id - a.id);
   const totalPages = Math.ceil(sortedHistory.length / ITEMS_PER_PAGE);
@@ -1000,6 +991,10 @@ const totalCost =
             </div>
           </div>
 
+<div className="bg-orange-100 text-orange-700 px-3 py-2 rounded mb-2 font-semibold">
+  ✅ Consultation (Included by default)
+</div>
+
           <div>
             <label className="font-semibold">Treatment Type</label>
 
@@ -1020,31 +1015,27 @@ const totalCost =
               <option value="Whitening">Whitening</option>
             </select>
 
-           {/* Cost Display */}
-{appointment.type && appointment.type.length > 0 && (
-  <div className="mt-2">
-    <p className="text-orange-600 font-bold">
-      Total Cost: ₹{totalCost}
-    </p>
+            {/* Cost Display */}
+            {appointment.type && appointment.type.length > 0 && (
+              <div className="mt-2">
+                <p className="text-orange-600 font-bold">
+                  Total Cost: ₹{getTotalPaid(appointment.type)}
+                </p>
 
-    <ul className="text-sm text-gray-600 mt-1 space-y-1">
-      
-      {/* ✅ Always show Consultation ONCE */}
-      <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
-        🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
-      </li>
+                <ul className="text-sm text-gray-600 mt-1">
+                  <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
+  🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
+</li>
 
-      {/* ✅ Show other treatments EXCEPT Consultation */}
-      {appointment.type
-        .filter((type) => type !== "Consultation")
-        .map((type) => (
-          <li key={type}>
-            {type}: ₹{APPOINTMENT_PRICING[type]}
-          </li>
-        ))}
-    </ul>
-  </div>
-)}
+                  {appointment.type.map((type) => (
+                    <li key={type}>
+                      {type}: ₹{APPOINTMENT_PRICING[type]}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
 
             {/* Consultation Type */}
             <div>

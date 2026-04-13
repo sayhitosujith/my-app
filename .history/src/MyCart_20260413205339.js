@@ -1023,16 +1023,16 @@ const totalCost =
            {/* Cost Display */}
 {appointment.type && appointment.type.length > 0 && (
   <div className="mt-2">
-    <p className="text-orange-600 font-bold">
-      Total Cost: ₹{totalCost}
-    </p>
-
+   
     <ul className="text-sm text-gray-600 mt-1 space-y-1">
       
       {/* ✅ Always show Consultation ONCE */}
       <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
         🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
       </li>
+ <p className="text-orange-600 font-bold">
+      Total Cost: ₹{totalCost}
+    </p>
 
       {/* ✅ Show other treatments EXCEPT Consultation */}
       {appointment.type

@@ -1024,7 +1024,7 @@ const totalCost =
 {appointment.type && appointment.type.length > 0 && (
   <div className="mt-2">
     <p className="text-orange-600 font-bold">
-      Total Cost: ₹{totalCost}
+      Total Cost: ₹{getTotalPaid(appointment.type)}
     </p>
 
     <ul className="text-sm text-gray-600 mt-1 space-y-1">

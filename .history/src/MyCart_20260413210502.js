@@ -121,46 +121,37 @@ function MyCart() {
   };
 
   const handleCancelAppointment = (item) => {
-    const confirmCancel = window.confirm(
-      "Are you sure you want to cancel this appointment?",
-    );
-
-    if (!confirmCancel) return;
-
-    // 🔄 Update history state
-    const updatedHistory = history.map((appt) =>
+  setHistory((prevHistory) => {
+    const updatedHistory = prevHistory.map((appt) =>
       appt.id === item.id
         ? {
             ...appt,
             status: "Cancelled",
             cancelledAt: new Date().toISOString(),
           }
-        : appt,
+        : appt
     );
 
-    setHistory(updatedHistory);
     localStorage.setItem("appointmentHistory", JSON.stringify(updatedHistory));
+    return updatedHistory;
+  });
 
-    // 🔄 (Optional) update profile appointments as well
-    let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+  let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
 
-    appointments = appointments.map((a) => {
-      if (String(a.phone).trim() === String(item.phone).trim()) {
-        return { ...a, status: "Cancelled" };
-      }
-      return a;
-    });
+  appointments = appointments.map((a) =>
+    String(a.phone).trim() === String(item.phone).trim()
+      ? { ...a, status: "Cancelled" }
+      : a
+  );
 
-    localStorage.setItem("appointments", JSON.stringify(appointments));
+  localStorage.setItem("appointments", JSON.stringify(appointments));
 
-    console.log("✅ Appointment cancelled:", item);
+  setToast("❌ Appointment Cancelled");
+  setToastType("error");
+  setTimeout(() => setToast(""), 3000);
+};
 
-    // 🔔 Optional toast
-    setToast("❌ Appointment Cancelled");
-    setToastType("error");
 
-    setTimeout(() => setToast(""), 3000);
-  };
   const [selectedTreatment, setSelectedTreatment] = useState("");
   const legends = [
     {
@@ -1020,21 +1011,18 @@ const totalCost =
               <option value="Whitening">Whitening</option>
             </select>
 
-           {/* Cost Display */}
+         {/* Cost Display */}
 {appointment.type && appointment.type.length > 0 && (
   <div className="mt-2">
-    <p className="text-orange-600 font-bold">
-      Total Cost: ₹{totalCost}
-    </p>
 
     <ul className="text-sm text-gray-600 mt-1 space-y-1">
       
-      {/* ✅ Always show Consultation ONCE */}
+      {/* Consultation (highlighted) */}
       <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
         🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
       </li>
 
-      {/* ✅ Show other treatments EXCEPT Consultation */}
+      {/* Other treatments */}
       {appointment.type
         .filter((type) => type !== "Consultation")
         .map((type) => (
@@ -1043,6 +1031,12 @@ const totalCost =
           </li>
         ))}
     </ul>
+
+    {/* ✅ MOVED TOTAL COST BELOW */}
+    <p className="text-orange-600 font-bold mt-2">
+      Total Cost: ₹{totalCost}
+    </p>
+
   </div>
 )}
 

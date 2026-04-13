@@ -70,8 +70,9 @@ function MyCart() {
   const phoneFromProfile = params.get("phone");
 
   /* ---------------- CUSTOMER HOME ---------------- */
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
-  const customerName = loggedInUser?.name || loggedInUser?.email || "";
+const loggedInUser =
+  JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+    const customerName = loggedInUser?.name || loggedInUser?.email || "";
 
   const [dentists, setDentists] = useState([]);
 
@@ -121,46 +122,39 @@ function MyCart() {
   };
 
   const handleCancelAppointment = (item) => {
-    const confirmCancel = window.confirm(
-      "Are you sure you want to cancel this appointment?",
-    );
+    setHistory((prevHistory) => {
+      const updatedHistory = prevHistory.map((appt) =>
+        appt.id === item.id
+          ? {
+              ...appt,
+              status: "Cancelled",
+              cancelledAt: new Date().toISOString(),
+            }
+          : appt,
+      );
 
-    if (!confirmCancel) return;
+      localStorage.setItem(
+        "appointmentHistory",
+        JSON.stringify(updatedHistory),
+      );
+      return updatedHistory;
+    });
 
-    // 🔄 Update history state
-    const updatedHistory = history.map((appt) =>
-      appt.id === item.id
-        ? {
-            ...appt,
-            status: "Cancelled",
-            cancelledAt: new Date().toISOString(),
-          }
-        : appt,
-    );
-
-    setHistory(updatedHistory);
-    localStorage.setItem("appointmentHistory", JSON.stringify(updatedHistory));
-
-    // 🔄 (Optional) update profile appointments as well
     let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
 
-    appointments = appointments.map((a) => {
-      if (String(a.phone).trim() === String(item.phone).trim()) {
-        return { ...a, status: "Cancelled" };
-      }
-      return a;
-    });
+    appointments = appointments.map((a) =>
+      String(a.phone).trim() === String(item.phone).trim()
+        ? { ...a, status: "Cancelled" }
+        : a,
+    );
 
     localStorage.setItem("appointments", JSON.stringify(appointments));
 
-    console.log("✅ Appointment cancelled:", item);
-
-    // 🔔 Optional toast
     setToast("❌ Appointment Cancelled");
     setToastType("error");
-
     setTimeout(() => setToast(""), 3000);
   };
+
   const [selectedTreatment, setSelectedTreatment] = useState("");
   const legends = [
     {
@@ -804,13 +798,10 @@ function MyCart() {
   };
 
   const selectedTreatments = appointment.type.filter(
-  (type) => type !== "Consultation"
-);
+    (type) => type !== "Consultation",
+  );
 
-const totalCost =
-  selectedTreatments.length === 0
-    ? 0
-    : getTotalPaid(["Consultation", ...selectedTreatments]);
+  const totalCost = getTotalPaid(["Consultation", ...selectedTreatments]);
 
   /* ---------------- PAGINATION LOGIC ---------------- */
   const sortedHistory = [...history].sort((a, b) => b.id - a.id);
@@ -928,7 +919,7 @@ const totalCost =
           {/* Name */}
           <input
             value={appointment.name || ""}
-            readOnly={phoneFromProfile}
+            readOnly={Boolean(phoneFromProfile)}
             onChange={(e) =>
               !phoneFromProfile &&
               setAppointment({ ...appointment, name: e.target.value })
@@ -940,7 +931,7 @@ const totalCost =
           {/* Phone */}
           <input
             value={appointment.phone || ""}
-            readOnly={phoneFromProfile}
+            readOnly={Boolean(phoneFromProfile)}
             onChange={(e) => {
               const value = e.target.value;
 
@@ -1020,31 +1011,31 @@ const totalCost =
               <option value="Whitening">Whitening</option>
             </select>
 
-           {/* Cost Display */}
-{appointment.type && appointment.type.length > 0 && (
-  <div className="mt-2">
-    <p className="text-orange-600 font-bold">
-      Total Cost: ₹{totalCost}
-    </p>
+            {/* Cost Display */}
+            {appointment.type && appointment.type.length > 0 && (
+              <div className="mt-2">
+                <ul className="text-sm text-gray-600 mt-1 space-y-1">
+                  {/* Consultation (highlighted) */}
+                  <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
+                    🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
+                  </li>
 
-    <ul className="text-sm text-gray-600 mt-1 space-y-1">
-      
-      {/* ✅ Always show Consultation ONCE */}
-      <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
-        🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
-      </li>
+                  {/* Other treatments */}
+                  {appointment.type
+                    .filter((type) => type !== "Consultation")
+                    .map((type) => (
+                      <li key={type}>
+                        {type}: ₹{APPOINTMENT_PRICING[type]}
+                      </li>
+                    ))}
+                </ul>
 
-      {/* ✅ Show other treatments EXCEPT Consultation */}
-      {appointment.type
-        .filter((type) => type !== "Consultation")
-        .map((type) => (
-          <li key={type}>
-            {type}: ₹{APPOINTMENT_PRICING[type]}
-          </li>
-        ))}
-    </ul>
-  </div>
-)}
+                {/* ✅ MOVED TOTAL COST BELOW */}
+                <p className="text-orange-600 font-bold mt-2">
+                  Total Cost: ₹{totalCost}
+                </p>
+              </div>
+            )}
 
             {/* Consultation Type */}
             <div>
@@ -1367,9 +1358,9 @@ const totalCost =
                                 <div className="flex gap-3 mt-2">
                                   <a
                                     href={
-                                      item.meetingUrl.startsWith("http")
+                                      item.meetingUrl?.startsWith("http")
                                         ? item.meetingUrl
-                                        : `https://${item.meetingUrl}`
+                                        : `https://${item.meetingUrl || ""}`
                                     }
                                     target="_blank"
                                     rel="noopener noreferrer"

@@ -99,7 +99,7 @@ function MyCart() {
     consultationType: "",
     meetingUrl: "", // 👈 ADD THIS
     notes: "",
-    type: ["Consultation"], // ✅ default selected
+    type: [],
   });
 
   const handleReschedule = (item) => {
@@ -226,18 +226,21 @@ function MyCart() {
   };
 
   const getTotalPaid = (type) => {
-    let total = APPOINTMENT_PRICING["Consultation"]; // ✅ always include base fee
+  let total = APPOINTMENT_PRICING["Consultation"]; // ✅ always include base fee
 
-    if (!type) return total;
+  if (!type) return total;
 
-    if (Array.isArray(type)) {
-      total += type.reduce((sum, t) => sum + (APPOINTMENT_PRICING[t] || 0), 0);
-    } else {
-      total += APPOINTMENT_PRICING[type] || 0;
-    }
+  if (Array.isArray(type)) {
+    total += type.reduce(
+      (sum, t) => sum + (APPOINTMENT_PRICING[t] || 0),
+      0
+    );
+  } else {
+    total += APPOINTMENT_PRICING[type] || 0;
+  }
 
-    return total;
-  };
+  return total;
+};
 
   const getTaxBreakdown = (amount) => {
     // Amount is GST inclusive
@@ -803,15 +806,6 @@ function MyCart() {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
-  const selectedTreatments = appointment.type.filter(
-  (type) => type !== "Consultation"
-);
-
-const totalCost =
-  selectedTreatments.length === 0
-    ? 0
-    : getTotalPaid(["Consultation", ...selectedTreatments]);
-
   /* ---------------- PAGINATION LOGIC ---------------- */
   const sortedHistory = [...history].sort((a, b) => b.id - a.id);
   const totalPages = Math.ceil(sortedHistory.length / ITEMS_PER_PAGE);
@@ -1020,28 +1014,21 @@ const totalCost =
               <option value="Whitening">Whitening</option>
             </select>
 
-           {/* Cost Display */}
-{appointment.type && appointment.type.length > 0 && (
+            {/* Cost Display */}
+            {appointment.type && appointment.type.length > 0 && (
   <div className="mt-2">
     <p className="text-orange-600 font-bold">
-      Total Cost: ₹{totalCost}
+      Total Cost: ₹{getTotalPaid(appointment.type)}
     </p>
 
-    <ul className="text-sm text-gray-600 mt-1 space-y-1">
-      
-      {/* ✅ Always show Consultation ONCE */}
-      <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
-        🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
-      </li>
+    <ul className="text-sm text-gray-600 mt-1">
+      <li>Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}</li>
 
-      {/* ✅ Show other treatments EXCEPT Consultation */}
-      {appointment.type
-        .filter((type) => type !== "Consultation")
-        .map((type) => (
-          <li key={type}>
-            {type}: ₹{APPOINTMENT_PRICING[type]}
-          </li>
-        ))}
+      {appointment.type.map((type) => (
+        <li key={type}>
+          {type}: ₹{APPOINTMENT_PRICING[type]}
+        </li>
+      ))}
     </ul>
   </div>
 )}
@@ -1423,6 +1410,8 @@ const totalCost =
                               </button>
                             </div>
                           )}
+
+                         
                         </div>
                       </>
                     )}
