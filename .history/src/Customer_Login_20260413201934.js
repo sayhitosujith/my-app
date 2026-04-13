@@ -165,7 +165,7 @@ function Customer_Login() {
             Welcome to Toothx
           </h2>
           <p style={{ fontSize: 14, color: "#666", marginBottom: 20 }}>
-             one-stop solution for all your dental care needs. Please login to continue.
+            Enter your mobile number to continue
           </p>
 
           <input

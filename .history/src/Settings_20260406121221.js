@@ -8,7 +8,7 @@ import {
   Breadcrumbs,
   Switch,
 } from "@material-tailwind/react";
-import logo from "./assets/Toothx_Logo.png";
+import logo from "./assets/DutyDentist.png";
 import { IoIosAdd } from "react-icons/io";
 
 const users = [
