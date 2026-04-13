@@ -142,7 +142,7 @@ const CardItem = ({ item }) => (
   <Card className="w-200">
     <CardHeader
       variant="gradient"
-      color="green"
+      color="orange"
       className="mb-10 grid h-10 place-items-center"
     >
       <Typography variant="h3" color="white">
@@ -159,7 +159,7 @@ const CardItem = ({ item }) => (
           className="h-96 w-full object-cover object-center"
         />
       ) : (
-        <div style={{ fontSize: 100, color: "green" }}>
+        <div style={{ fontSize: 100, color: "orange" }}>
           {item.src}
         </div>
       )}
@@ -296,7 +296,7 @@ function Admin_Analytics() {
 
   {/* Campaign Card Section */}
   <div className="flex justify-center gap-4">
-    <Card className="w-92 bg-green-50">
+    <Card className="w-92 bg-orange-50">
       <CardHeader
         variant="gradient"
         color="white"
@@ -326,7 +326,7 @@ function Admin_Analytics() {
         <div className="flex justify-center items-center gap-6 mt-4 flex-wrap">
   {/* Email */}
   <div className="flex items-center gap-2">
-    <TfiEmail size={24} color="green" />
+    <TfiEmail size={24} color="orange" />
     <Typography variant="small" className="font-medium">
       Mail
     </Typography>
@@ -378,7 +378,7 @@ function Admin_Analytics() {
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
             <div>
-              <Typography variant="h5" color="blue-gray">
+              <Typography variant="h5" color="orange-gray">
                 Recent Transactions
               </Typography>
               <Typography color="gray" className="mt-1 font-normal">
@@ -406,11 +406,11 @@ function Admin_Analytics() {
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
+                    className="border-y border-orange-gray-100 bg-orange-gray-50/50 p-4"
                   >
                     <Typography
                       variant="small"
-                      color="blue-gray"
+                      color="orange-gray"
                       className="font-normal leading-none opacity-70"
                     >
                       {head}
@@ -437,7 +437,7 @@ function Admin_Analytics() {
                   const isLast = index === TABLE_ROWS.length - 1;
                   const classes = isLast
                     ? "p-4"
-                    : "p-4 border-b border-blue-gray-50";
+                    : "p-4 border-b border-orange-gray-50";
 
                   return (
                     <tr key={name}>
@@ -447,11 +447,11 @@ function Admin_Analytics() {
                             src={img}
                             alt={name}
                             size="md"
-                            className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
+                            className="border border-orange-gray-50 bg-orange-gray-50/50 object-contain p-1"
                           />
                           <Typography
                             variant="small"
-                            color="blue-gray"
+                            color="orange-gray"
                             className="font-bold"
                           >
                             {name}
@@ -461,7 +461,7 @@ function Admin_Analytics() {
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          color="blue-gray"
+                          color="orange-gray"
                           className="font-normal"
                         >
                           {amount}
@@ -470,7 +470,7 @@ function Admin_Analytics() {
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          color="blue-gray"
+                          color="orange-gray"
                           className="font-normal"
                         >
                           {date}
@@ -484,7 +484,7 @@ function Admin_Analytics() {
                             value={status}
                             color={
                               status === "paid"
-                                ? "green"
+                                ? "orange"
                                 : status === "pending"
                                   ? "amber"
                                   : "red"
@@ -494,7 +494,7 @@ function Admin_Analytics() {
                       </td>
                       <td className={classes}>
                         <div className="flex items-center gap-3">
-                          <div className="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
+                          <div className="h-9 w-12 rounded-md border border-orange-gray-50 p-1">
                             <Avatar
                               src={
                                 account === "visa"
@@ -510,14 +510,14 @@ function Admin_Analytics() {
                           <div className="flex flex-col">
                             <Typography
                               variant="small"
-                              color="blue-gray"
+                              color="orange-gray"
                               className="font-normal capitalize"
                             >
                               {account.split("-").join(" ")} {accountNumber}
                             </Typography>
                             <Typography
                               variant="small"
-                              color="blue-gray"
+                              color="orange-gray"
                               className="font-normal opacity-70"
                             >
                               {expiry}
@@ -555,7 +555,7 @@ function Admin_Analytics() {
 
 
                         <Tooltip content="Clone User">
-                          <IconButton color="green" variant="text">
+                          <IconButton color="orange" variant="text">
                             <FaRegClone className="h-5 w-5" />
                           </IconButton>
                         </Tooltip>
@@ -567,7 +567,7 @@ function Admin_Analytics() {
             </tbody>
           </table>
         </CardBody>
-        <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+        <CardFooter className="flex items-center justify-between border-t border-orange-gray-50 p-4">
           <Button variant="outlined" size="sm">
             Previous
           </Button>

@@ -53,13 +53,13 @@ function Contact_us() {
           
           
         <Typography variant="small" className="mt-6 flex justify-center">
-           <h1 style={{ color: 'Green' }}><b><div>Registered Address : #290, Medahalli, Banglore - 560049 , info@mumbaidabbawala.in</div></b></h1>
+           <h1 style={{ color: 'orange' }}><b><div>Registered Address : #290, Medahalli, Banglore - 560049 , info@mumbaidabbawala.in</div></b></h1>
 
            <Typography
                 as="a"
                 href="#signup"
                 variant="small"
-                color="blue-gray"
+                color="orange-gray"
                 className="ml-1 font-bold">
               </Typography>
            </Typography>

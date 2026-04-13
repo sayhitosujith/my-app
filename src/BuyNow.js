@@ -74,12 +74,12 @@ function BuyNow() {
       <b><hr class="separator" /></b>
 
       <Typography variant="h3" color="Black">
-        <h1 style={{ color: 'Green' }}><b><div>Contact</div></b></h1> </Typography>  
+        <h1 style={{ color: 'orange' }}><b><div>Contact</div></b></h1> </Typography>  
           <b><hr class="separator" /></b>
 
           <CardBody className="flex flex-col gap-6">
           <Input label="Email or Mobile Number " size="lg" />
-          <h1 style={{ color: 'Green' }}><b><div>Delivery </div></b></h1>
+          <h1 style={{ color: 'orange' }}><b><div>Delivery </div></b></h1>
 
           <div className="w-72">
               <Select label="Country/Region">
@@ -109,7 +109,7 @@ function BuyNow() {
           
           <b><hr class="separator" /></b>
 
-          <h1 style={{ color: 'Green' }}><b><div>PAYMENT </div></b></h1>
+          <h1 style={{ color: 'orange' }}><b><div>PAYMENT </div></b></h1>
 
             <div className="flex gap-10">
       <Radio name="type" label=" Razorpay Secure (UPI, Cards, Wallets, NetBanking)" />
@@ -120,12 +120,12 @@ function BuyNow() {
 
           </CardBody>
           <CardFooter className="pt-0">
-          <Button color="green" appearance="primary" > 
+          <Button color="orange" appearance="primary" > 
            <a href="/CheckoutForm">
            PROCEED (Check-out)
                </a> 
            </Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Button color="green" appearance="primary" > 
+            <Button color="orange" appearance="primary" > 
 
            CANCEL</Button> 
            <br></br>
@@ -149,7 +149,7 @@ function BuyNow() {
               <ul key={title}>
                 <Typography
                   variant="small"
-                  color="blue-gray"
+                  color="orange-gray"
                   className="mb-3 font-medium opacity-40"
                 >
                   {title}
@@ -160,7 +160,7 @@ function BuyNow() {
                       as="a"
                       href="#"
                       color="gray"
-                      className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
+                      className="py-1.5 font-normal transition-colors hover:text-orange-gray-900"
                     >
                       {link}
                     </Typography>
@@ -170,17 +170,17 @@ function BuyNow() {
             ))}
           </div>
         </div>
-        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
+        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-orange-gray-50 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
+            className="mb-4 text-center font-normal text-orange-gray-900 md:mb-0"
           >
             &copy; {currentYear} <a href="https://material-tailwind.com/">Food Maven</a>. All
             Rights Reserved.
           </Typography>
-          <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
+          <div className="flex gap-4 text-orange-gray-900 sm:justify-center">
             <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
-              <svg className="h-5 w-5" fill="blue" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="h-5 w-5" fill="orange" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fill-rule="evenodd"
                   d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
@@ -198,7 +198,7 @@ function BuyNow() {
               </svg>
             </Typography>
             <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
-              <svg className="h-5 w-5" fill="green" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="h-5 w-5" fill="orange" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
               </svg>
             </Typography>
@@ -232,7 +232,7 @@ function BuyNow() {
                 as="a"
                 href="#signup"
                 variant="small"
-                color="blue-gray"
+                color="orange-gray"
                 className="ml-1 font-bold">
               </Typography>
            </Typography>

@@ -84,16 +84,16 @@ function EditDoctor() {
   return (
     <div className="p-6 max-w-md mx-auto">
       <Breadcrumbs className="mb-4">
-        <Typography as="a" color="blue-gray" className="cursor-pointer" onClick={() => navigate("/")}>
+        <Typography as="a" color="orange-gray" className="cursor-pointer" onClick={() => navigate("/")}>
           Home
         </Typography>
-        <Typography as="a" color="blue-gray" className="cursor-pointer" onClick={() => navigate("/DoctorList")}>
+        <Typography as="a" color="orange-gray" className="cursor-pointer" onClick={() => navigate("/DoctorList")}>
           Doctors
         </Typography>
-        <Typography color="blue-gray">Edit Doctor</Typography>
+        <Typography color="orange-gray">Edit Doctor</Typography>
       </Breadcrumbs>
 
-      <Button color="blue" className="mb-4" onClick={() => navigate("/DoctorList")}>
+      <Button color="orange" className="mb-4" onClick={() => navigate("/DoctorList")}>
         &larr; Back
       </Button>
 
@@ -146,12 +146,12 @@ function EditDoctor() {
         </div>
 
         {doctor.image && (
-          <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg mx-auto">
+          <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-orange-500 shadow-lg mx-auto">
             <img src={doctor.image} alt={`${doctor.firstName} ${doctor.lastName}`} className="w-full h-full object-cover" />
           </div>
         )}
 
-        <Button color="blue" className="mt-4" onClick={handleSave}>
+        <Button color="orange" className="mt-4" onClick={handleSave}>
           Save Changes
         </Button>
       </div>

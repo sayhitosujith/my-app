@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
           alt="App Logo"
           className="h-10 w-10 rounded-full shadow-md"
         />
-        <span className="text-green-700 font-bold text-xl">Dental App</span>
+        <span className="text-orange-700 font-bold text-xl">Dental App</span>
       </div>
 
       {/* Main Content */}

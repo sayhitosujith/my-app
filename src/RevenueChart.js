@@ -58,7 +58,7 @@ function RevenueChart({ revenueByDateType, treatmentTypes }) {
         <button
           onClick={() => setChartType("bar")}
           className={`px-3 py-1 rounded ${
-            chartType === "bar" ? "bg-green-600 text-white" : "bg-gray-200"
+            chartType === "bar" ? "bg-orange-600 text-white" : "bg-gray-200"
           }`}
         >
           Bar (Stacked)
@@ -66,7 +66,7 @@ function RevenueChart({ revenueByDateType, treatmentTypes }) {
         <button
           onClick={() => setChartType("line")}
           className={`px-3 py-1 rounded ${
-            chartType === "line" ? "bg-green-600 text-white" : "bg-gray-200"
+            chartType === "line" ? "bg-orange-600 text-white" : "bg-gray-200"
           }`}
         >
           Line

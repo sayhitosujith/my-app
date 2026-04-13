@@ -11,6 +11,7 @@ import {
   FaDownload,
 } from "react-icons/fa";
 import "./Calendar.css";
+import { Breadcrumbs } from "@material-tailwind/react";
 
 const AppointmentHistory = () => {
   const [appointments, setAppointments] = useState([]);
@@ -301,33 +302,70 @@ const AppointmentHistory = () => {
   };
 
   const handleRefresh = () => window.location.reload();
+  
 
   return (
     <div className="appointment-card container">
       <h1 className="book-appointment-header">Appointment History</h1>
 
       <div className="action-buttons">
-        <button
-          className="submit-btn"
-          onClick={() => navigate("/BookAppointment")}
-        >
-          ➕ Add New Appointment
-        </button>
-        <button
-          className="submit-btn"
-          onClick={() => openPrintPreview(appointments)}
-        >
-          <FaPrint /> Print All
-        </button>
-        <button className="submit-btn" onClick={downloadCSV}>
-          <FaDownload /> Download CSV
-        </button>
-        <button className="cancel-btn" onClick={handleDeleteSelected}>
-          🗑️ Delete Selected
-        </button>
-        <button className="submit-btn" onClick={handleRefresh}>
-          <FaSyncAlt /> Refresh
-        </button>
+         {
+        <Breadcrumbs>
+          <a href="#" className="opacity-60">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
+          </a>
+
+          <a href="#" className="opacity-60">
+            <a href="/HomePage">Home</a>
+          </a>
+
+          <a href="#" className="opacity-60">
+            <a href="/Welcome">Welcome</a>
+          </a>
+          <a href="#">Appointment History</a>
+        </Breadcrumbs>
+      }
+<button
+  className="flex items-center gap-2 px-4 py-2 rounded-lg text-white 
+             bg-purple-600 hover:bg-purple-700 transition"
+  onClick={() => navigate("/BookAppointment")}
+>
+  ➕ Add New Appointment
+</button>
+       <button
+  className="submit-btn bg-gradient-to-r from-purple-600 via-purple-700 to-purple-900 text-white shadow-lg hover:scale-105 transition duration-300 flex items-center gap-2"
+  onClick={() => openPrintPreview(appointments)}
+>
+  <FaPrint /> Print All
+</button>
+
+<button
+  className="submit-btn bg-gradient-to-r from-orange-600 via-orange-700 to-orange-900 text-white shadow-lg hover:scale-105 transition duration-300 flex items-center gap-2"
+  onClick={downloadCSV}
+>
+  <FaDownload /> Download CSV
+</button>
+
+<button
+  className="cancel-btn bg-gradient-to-r from-red-600 via-red-700 to-red-900 text-white shadow-lg hover:scale-105 transition duration-300 flex items-center gap-2"
+  onClick={handleDeleteSelected}
+>
+  🗑️ Delete Selected
+</button>
+
+<button
+  className="submit-btn bg-gradient-to-r from-orange-600 via-orange-700 to-orange-900 text-white shadow-lg hover:scale-105 transition duration-300 flex items-center gap-2"
+  onClick={handleRefresh}
+>
+  <FaSyncAlt /> Refresh
+</button>
       </div>
 
       {/* Table */}

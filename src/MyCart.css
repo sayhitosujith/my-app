@@ -1,5 +1,5 @@
 /* ================================
-   MyCart Page Styling
+   MyCart Page Styling (Orange Theme)
 ================================ */
 
 .mycart-container {
@@ -7,6 +7,8 @@
   gap: 1rem;
   padding: 1rem;
   align-items: flex-start;
+  min-height: 100vh;
+  background: linear-gradient(to right, #fff7ed, #ffedd5); /* optional page background */
 }
 
 /* LEFT – Appointment Form */
@@ -14,15 +16,33 @@
   width: 50%;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
 
 .appointment-card h1 {
-  color: rgb(128, 0, 43);
+  color: #80102b;
   font-size: 1.4rem;
   font-weight: 700;
   text-align: center;
+}
+
+/* Orange Gradient Header */
+.appointment-card .card-header {
+  min-height: 80px;
+  background: linear-gradient(to right, #fbbf24, #f97316, #fbbf24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 /* Separator */
@@ -35,15 +55,17 @@
 .location-select {
   display: flex;
   align-items: center;
-  border: 1px solid #0663ee;
-  border-radius: 6px;
+  border: 1px solid #f97316;
+  border-radius: 8px;
   padding: 0.5rem 0.75rem;
   transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
 }
 
 .location-select:focus-within {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
 }
 
 .location-select select {
@@ -51,15 +73,8 @@
   border: none;
   outline: none;
   background: transparent;
-  color: #f35208;
+  color: #f97316;
   font-weight: 500;
-}
-
-/* Labels */
-label {
-  display: block;
-  font-weight: 600;
-  margin: 0.5rem 0 0.25rem;
 }
 
 /* Footer buttons */
@@ -71,29 +86,54 @@ label {
 }
 
 .appointment-actions button {
-  background-color: #ff5200;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #fbbf24, #f97316, #fbbf24);
   color: #fff;
   font-weight: 600;
-  padding: 8px 20px;
-  border-radius: 6px;
+  padding: 10px 20px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
-  transition: background 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
 .appointment-actions button:hover {
-  background-color: #e64900;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* RIGHT – Payment / Receipt */
 .payment-card {
   width: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+/* Orange Gradient Header for Payment Card */
+.payment-card .card-header {
+  min-height: 80px;
+  background: linear-gradient(to right, #fbbf24, #f97316, #fbbf24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .payment-card img {
   display: block;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -103,7 +143,7 @@ label {
 }
 
 .payment-summary h1 {
-  color: green;
+  color: orange;
   font-size: 1.2rem;
   font-weight: 700;
   text-align: center;
@@ -117,17 +157,24 @@ label {
 }
 
 .payment-summary button {
-  background-color: #ff5200;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #fbbf24, #f97316, #fbbf24);
   color: #fff;
   font-weight: 600;
-  padding: 8px 20px;
-  border-radius: 6px;
+  padding: 10px 20px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
 .payment-summary button:hover {
-  background-color: #e64900;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Notes */
@@ -179,4 +226,4 @@ label {
     width: 100%;
     min-height: auto;
   }
-}
+} 

@@ -12,11 +12,27 @@ body {
   font-family: "Inter", sans-serif;
   background: linear-gradient(135deg, #e0f7fa, #ffffff);
 }
+/*------- Banner --------*/
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  min-width: 100%;
+  animation: marquee 70s linear infinite;
+}
+
 
 /* Color Variables */
 :root {
-  --primary-green: #16a34a;
-  --primary-blue: #3b82f6;
+  --primary-orange: #16a34a;
+  --primary-orange: #3b82f6;
   --primary-purple: #523b84;
   --primary-red: #ef4444;
   --transition: 0.3s ease-in-out;
@@ -206,11 +222,11 @@ body {
 
 .file-input:hover,
 #file_input:hover {
-  border-color: var(--primary-blue);
+  border-color: var(--primary-orange);
 }
 
 .avatar-style {
-  border: 3px solid var(--primary-blue);
+  border: 3px solid var(--primary-orange);
   border-radius: 50%;
   padding: 5px;
   background-color: #f0f9ff;
@@ -317,7 +333,7 @@ body {
 .mt-neg-19 { margin-top: -19px; }
 
 .download-card {
-  background-color: var(--primary-green);
+  background-color: var(--primary-orange);
   border-radius: 12px;
   padding: 10px;
 }

@@ -1,4 +1,7 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
+// Material Tailwind
 import {
   Card,
   Typography,
@@ -8,8 +11,8 @@ import {
   DialogFooter,
   Breadcrumbs,
 } from "@material-tailwind/react";
-import logo from "./assets/DutyDentist.png";
-import { useNavigate, Link } from "react-router-dom";
+
+// Icons
 import {
   Bars3Icon,
   Squares2X2Icon,
@@ -18,19 +21,29 @@ import {
   EyeIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/solid";
+
 import { VscArrowRight } from "react-icons/vsc";
 import { FcEngineering } from "react-icons/fc";
 import { AiOutlineDelete } from "react-icons/ai";
-import "./DoctorList.css";
+
+// ✅ Merge duplicate Md imports
 import {
-  FaFlag,
-  FaSun,
-  FaMoon,
-  FaStar,
-  FaChurch,
-} from "react-icons/fa";
+  MdOutlineFestival,
+  MdOutlineEditNote,
+  MdOutlineSettings,
+  MdOutlinePowerSettingsNew,
+} from "react-icons/md";
+
+import { FaFlag, FaSun, FaMoon, FaStar, FaChurch } from "react-icons/fa";
+
 import { GiPartyPopper, GiRam } from "react-icons/gi";
-import { MdOutlineFestival } from "react-icons/md";
+
+// Assets
+import logo from "./assets/Toothx_Logo.png";
+import painting from "./assets/Painting.jpg";
+
+// Styles
+import "./DoctorList.css";
 
 function DoctorList() {
   const navigate = useNavigate();
@@ -40,21 +53,24 @@ function DoctorList() {
   const [viewDoctor, setViewDoctor] = useState(null);
   const [gridView, setGridView] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+
   const doctorsPerPage = 32;
   const cardRefs = useRef([]);
-
+  const [timeZoneLabel, setTimeZoneLabel] = useState("");
   const [confirmAction, setConfirmAction] = useState({
     open: false,
     type: "",
     index: null,
     doctor: null,
   });
-
+  const [workReason, setWorkReason] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
   const [selectedDoctors, setSelectedDoctors] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(
-    JSON.parse(localStorage.getItem("isLoggedIn")) || false
+    JSON.parse(localStorage.getItem("isLoggedIn")) || false,
   );
 
   const [currentTime, setCurrentTime] = useState("");
@@ -62,15 +78,46 @@ function DoctorList() {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [sessionExpired, setSessionExpired] = useState(false);
 
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("loggedInUser")) || {
-      name: "Sujith S",
-      initials: "SS",
+  const getInitials = (firstName = "", lastName = "") => {
+    if (!firstName && !lastName) return "U";
+    return `${firstName[0] || ""}${lastName[0] || ""}`.toUpperCase();
+  };
+
+  const [user, setUser] = useState(() => {
+    try {
+      const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+      if (storedUser) {
+        const fullName =
+          storedUser.name ||
+          `${storedUser.firstName || ""} ${storedUser.lastName || ""}`.trim();
+
+        return {
+          name: fullName || "User",
+          email: storedUser.email || "user@email.com",
+          role: storedUser.role || "User",
+          initials: getInitials(storedUser.firstName, storedUser.lastName),
+        };
+      }
+
+      return {
+        name: "User",
+        email: "user@email.com",
+        role: "User",
+        initials: "U",
+      };
+    } catch {
+      return {
+        name: "User",
+        email: "user@email.com",
+        role: "User",
+        initials: "U",
+      };
     }
-  );
+  });
 
   const [swipeHistory, setSwipeHistory] = useState(
-    JSON.parse(localStorage.getItem("swipeHistory")) || []
+    JSON.parse(localStorage.getItem("swipeHistory")) || [],
   );
 
   const shiftObj = {
@@ -82,43 +129,255 @@ function DoctorList() {
   const RH_QUOTA = 2;
 
   const [leaveRequests, setLeaveRequests] = useState(
-    JSON.parse(localStorage.getItem("leaveRequests")) || []
+    JSON.parse(localStorage.getItem("leaveRequests")) || [],
   );
 
   const usedRH = leaveRequests.filter(
-    (l) => l.type === "RH" && l.status !== "Cancelled"
+    (l) => l.type === "RH" && l.status !== "Cancelled",
   ).length;
 
   const remainingRH = RH_QUOTA - usedRH;
 
   const holidays = [
-    { date: "1 Jan 2026", day: "Thursday", name: "New Year's Day", type: "NH", icon: <FaSun className="inline mr-1 text-yellow-500" /> },
-    { date: "3 Jan 2026", day: "Saturday", name: "Hazrat Ali's Birthday", type: "RH", icon: <FaMoon className="inline mr-1 text-blue-500" /> },
-    { date: "14 Jan 2026", day: "Wednesday", name: "Makar Sankranti / Pongal", type: "RH", icon: <FaStar className="inline mr-1 text-orange-500" /> },
-    { date: "23 Jan 2026", day: "Friday", name: "Vasant Panchami", type: "RH", icon: <MdOutlineFestival className="inline mr-1 text-yellow-400" /> },
-    { date: "26 Jan 2026", day: "Monday", name: "Republic Day", type: "NH", icon: <FaFlag className="inline mr-1 text-red-500" /> },
-    { date: "15 Feb 2026", day: "Sunday", name: "Maha Shivaratri", type: "RH", icon: <FaMoon className="inline mr-1 text-gray-700" /> },
-    { date: "4 Mar 2026", day: "Wednesday", name: "Holi", type: "NH", icon: <GiPartyPopper className="inline mr-1 text-pink-500" /> },
-    { date: "21 Mar 2026", day: "Saturday", name: "Eid-ul-Fitr (Tentative)", type: "RH", icon: <FaMoon className="inline mr-1 text-green-600" /> },
-    { date: "26 Mar 2026", day: "Thursday", name: "Ram Navami", type: "RH", icon: <GiRam className="inline mr-1 text-orange-400" /> },
-    { date: "31 Mar 2026", day: "Tuesday", name: "Mahavir Jayanti", type: "RH", icon: <FaStar className="inline mr-1 text-blue-400" /> },
-    { date: "3 Apr 2026", day: "Friday", name: "Good Friday", type: "NH", icon: <FaChurch className="inline mr-1 text-red-600" /> },
-    { date: "1 May 2026", day: "Friday", name: "Labour Day / Buddha Purnima", type: "NH", icon: <FaFlag className="inline mr-1 text-blue-500" /> },
-    { date: "27 May 2026", day: "Wednesday", name: "Eid-ul-Zuha (Bakrid) (Tentative)", type: "RH", icon: <FaMoon className="inline mr-1 text-green-700" /> },
-    { date: "26 Jun 2026", day: "Friday", name: "Muharram (Tentative)", type: "RH", icon: <FaMoon className="inline mr-1 text-gray-800" /> },
-    { date: "15 Aug 2026", day: "Saturday", name: "Independence Day", type: "NH", icon: <FaFlag className="inline mr-1 text-red-600" /> },
-    { date: "26 Aug 2026", day: "Wednesday", name: "Milad-un-Nabi (Tentative)", type: "RH", icon: <FaMoon className="inline mr-1 text-blue-600" /> },
-    { date: "4 Sep 2026", day: "Friday", name: "Janmashtami", type: "RH", icon: <GiRam className="inline mr-1 text-purple-500" /> },
-    { date: "2 Oct 2026", day: "Friday", name: "Gandhi Jayanti", type: "NH", icon: <FaFlag className="inline mr-1 text-green-600" /> },
-    { date: "20 Oct 2026", day: "Tuesday", name: "Dussehra", type: "RH", icon: <MdOutlineFestival className="inline mr-1 text-orange-600" /> },
-    { date: "8 Nov 2026", day: "Sunday", name: "Diwali", type: "NH", icon: <GiPartyPopper className="inline mr-1 text-yellow-500" /> },
-    { date: "24 Nov 2026", day: "Tuesday", name: "Guru Nanak Jayanti", type: "RH", icon: <FaStar className="inline mr-1 text-blue-500" /> },
-    { date: "25 Dec 2026", day: "Friday", name: "Christmas", type: "NH", icon: <FaChurch className="inline mr-1 text-red-500" /> },
+    {
+      date: "1 Jan 2026",
+      day: "Thursday",
+      name: "New Year's Day",
+      type: "NH",
+      icon: <FaSun className="inline mr-1 text-yellow-500" />,
+    },
+    {
+      date: "3 Jan 2026",
+      day: "Saturday",
+      name: "Hazrat Ali's Birthday",
+      type: "RH",
+      icon: <FaMoon className="inline mr-1 text-orange-500" />,
+    },
+    {
+      date: "14 Jan 2026",
+      day: "Wednesday",
+      name: "Makar Sankranti / Pongal",
+      type: "RH",
+      icon: <FaStar className="inline mr-1 text-orange-500" />,
+    },
+    {
+      date: "23 Jan 2026",
+      day: "Friday",
+      name: "Vasant Panchami",
+      type: "RH",
+      icon: <MdOutlineFestival className="inline mr-1 text-yellow-400" />,
+    },
+    {
+      date: "26 Jan 2026",
+      day: "Monday",
+      name: "Republic Day",
+      type: "NH",
+      icon: <FaFlag className="inline mr-1 text-red-500" />,
+    },
+    {
+      date: "15 Feb 2026",
+      day: "Sunday",
+      name: "Maha Shivaratri",
+      type: "RH",
+      icon: <FaMoon className="inline mr-1 text-gray-700" />,
+    },
+    {
+      date: "4 Mar 2026",
+      day: "Wednesday",
+      name: "Holi",
+      type: "NH",
+      icon: <GiPartyPopper className="inline mr-1 text-pink-500" />,
+    },
+    {
+      date: "21 Mar 2026",
+      day: "Saturday",
+      name: "Eid-ul-Fitr (Tentative)",
+      type: "RH",
+      icon: <FaMoon className="inline mr-1 text-orange-600" />,
+    },
+    {
+      date: "26 Mar 2026",
+      day: "Thursday",
+      name: "Ram Navami",
+      type: "RH",
+      icon: <GiRam className="inline mr-1 text-orange-400" />,
+    },
+    {
+      date: "31 Mar 2026",
+      day: "Tuesday",
+      name: "Mahavir Jayanti",
+      type: "RH",
+      icon: <FaStar className="inline mr-1 text-orange-400" />,
+    },
+    {
+      date: "3 Apr 2026",
+      day: "Friday",
+      name: "Good Friday",
+      type: "NH",
+      icon: <FaChurch className="inline mr-1 text-red-600" />,
+    },
+    {
+      date: "1 May 2026",
+      day: "Friday",
+      name: "Labour Day / Buddha Purnima",
+      type: "NH",
+      icon: <FaFlag className="inline mr-1 text-orange-500" />,
+    },
+    {
+      date: "27 May 2026",
+      day: "Wednesday",
+      name: "Eid-ul-Zuha (Bakrid) (Tentative)",
+      type: "RH",
+      icon: <FaMoon className="inline mr-1 text-orange-700" />,
+    },
+    {
+      date: "26 Jun 2026",
+      day: "Friday",
+      name: "Muharram (Tentative)",
+      type: "RH",
+      icon: <FaMoon className="inline mr-1 text-gray-800" />,
+    },
+    {
+      date: "15 Aug 2026",
+      day: "Saturday",
+      name: "Independence Day",
+      type: "NH",
+      icon: <FaFlag className="inline mr-1 text-red-600" />,
+    },
+    {
+      date: "26 Aug 2026",
+      day: "Wednesday",
+      name: "Milad-un-Nabi (Tentative)",
+      type: "RH",
+      icon: <FaMoon className="inline mr-1 text-orange-600" />,
+    },
+    {
+      date: "4 Sep 2026",
+      day: "Friday",
+      name: "Janmashtami",
+      type: "RH",
+      icon: <GiRam className="inline mr-1 text-purple-500" />,
+    },
+    {
+      date: "2 Oct 2026",
+      day: "Friday",
+      name: "Gandhi Jayanti",
+      type: "NH",
+      icon: <FaFlag className="inline mr-1 text-orange-600" />,
+    },
+    {
+      date: "20 Oct 2026",
+      day: "Tuesday",
+      name: "Dussehra",
+      type: "RH",
+      icon: <MdOutlineFestival className="inline mr-1 text-orange-600" />,
+    },
+    {
+      date: "8 Nov 2026",
+      day: "Sunday",
+      name: "Diwali",
+      type: "NH",
+      icon: <GiPartyPopper className="inline mr-1 text-yellow-500" />,
+    },
+    {
+      date: "24 Nov 2026",
+      day: "Tuesday",
+      name: "Guru Nanak Jayanti",
+      type: "RH",
+      icon: <FaStar className="inline mr-1 text-orange-500" />,
+    },
+    {
+      date: "25 Dec 2026",
+      day: "Friday",
+      name: "Christmas",
+      type: "NH",
+      icon: <FaChurch className="inline mr-1 text-red-500" />,
+    },
   ];
+
+  const handleDeleteSwipe = (index) => {
+    const updatedHistory = swipeHistory.filter((_, i) => i !== index);
+
+    setSwipeHistory(updatedHistory);
+    localStorage.setItem("swipeHistory", JSON.stringify(updatedHistory));
+  };
+
+  const completeSignAction = () => {
+    setSwipeHistory((prev) => {
+      const lastEntry = prev[prev.length - 1];
+      let updated;
+      let newLoginState;
+
+      if (!lastEntry || lastEntry.signOut) {
+        const loginTime = new Date().toISOString();
+
+        console.log("Saving Reason:", workReason);
+
+        updated = [
+          ...prev,
+          {
+            signIn: loginTime,
+            signOut: null,
+            location: workLocation,
+            reason: workReason,
+          },
+        ];
+
+        newLoginState = true;
+        setSuccessMsg("Successfully Signed In ✅");
+
+        localStorage.setItem("loginTime", loginTime);
+      } else {
+        updated = prev.map((entry, i) =>
+          i === prev.length - 1
+            ? { ...entry, signOut: new Date().toISOString() }
+            : entry,
+        );
+
+        newLoginState = false;
+        setSuccessMsg("Successfully Signed Out ✅");
+
+        localStorage.removeItem("loginTime");
+      }
+
+      setIsLoggedIn(newLoginState);
+      localStorage.setItem("isLoggedIn", JSON.stringify(newLoginState));
+      localStorage.setItem("swipeHistory", JSON.stringify(updated));
+
+      setWorkLocation("");
+      setWorkReason("");
+
+      return updated;
+    });
+  };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
 
   useEffect(() => {
     const storedDoctors = JSON.parse(localStorage.getItem("doctors")) || [];
-    setDoctors(storedDoctors);
+
+    const updatedDoctors = storedDoctors.map((doc, index) => ({
+      ...doc,
+      appointments:
+        index === 0
+          ? [
+              {
+                patientName: "Test Patient",
+                date: "09 April",
+                time: "11:00 AM",
+                type: "Cleaning",
+                consultationType: "ONLINE",
+                amount: 1700,
+                meetingUrl: "https://meet.google.com/test",
+                notes: "Office",
+              },
+            ]
+          : doc.appointments || [],
+    }));
+
+    setDoctors(updatedDoctors);
   }, []);
 
   const saveDoctors = (updated) => {
@@ -127,14 +386,51 @@ function DoctorList() {
   };
 
   useEffect(() => {
+    if (successMsg) {
+      const timer = setTimeout(() => {
+        setSuccessMsg("");
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [successMsg]);
+
+  useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
+
+      const systemTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+      let zone = "";
+
+      switch (systemTimeZone) {
+        case "Asia/Kolkata":
+          zone = "IST";
+          break;
+        case "America/New_York":
+          zone = "EST / EDT";
+          break;
+        case "America/Los_Angeles":
+          zone = "PST / PDT";
+          break;
+        case "America/Chicago":
+          zone = "CST / CDT";
+          break;
+        case "Europe/London":
+          zone = "GMT / BST";
+          break;
+        default:
+          zone = systemTimeZone;
+      }
+
       const timeString = now.toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
       });
+
       setCurrentTime(timeString);
+      setTimeZoneLabel(zone);
     }, 1000);
 
     return () => clearInterval(timer);
@@ -152,32 +448,11 @@ function DoctorList() {
   };
 
   const handleOpen = () => {
-    setSwipeHistory((prev) => {
-      const lastEntry = prev[prev.length - 1];
-      let updated;
-      let newLoginState;
-
-      if (!lastEntry || lastEntry.signOut) {
-        const loginTime = new Date().toISOString();
-        updated = [...prev, { signIn: loginTime, signOut: null }];
-        newLoginState = true;
-        localStorage.setItem("loginTime", loginTime);
-      } else {
-        updated = prev.map((entry, i) =>
-          i === prev.length - 1
-            ? { ...entry, signOut: new Date().toISOString() }
-            : entry
-        );
-        newLoginState = false;
-        localStorage.removeItem("loginTime");
-      }
-
-      setIsLoggedIn(newLoginState);
-      localStorage.setItem("isLoggedIn", JSON.stringify(newLoginState));
-      localStorage.setItem("swipeHistory", JSON.stringify(updated));
-
-      return updated;
-    });
+    if (!isLoggedIn) {
+      setOpenLocationModal(true); // show popup first
+    } else {
+      completeSignAction();
+    }
   };
 
   useEffect(() => {
@@ -202,46 +477,71 @@ function DoctorList() {
     }
   }, [isLoggedIn]);
 
-  const executeAction = () => {
-    const { type, index, doctor } = confirmAction;
+ const executeAction = () => {
+  const { type, index } = confirmAction;
 
-    if (type === "delete") {
-      const updated = doctors.filter((_, i) => i !== index);
-      saveDoctors(updated);
-    } else if (type === "edit") {
-      setEditIndex(index);
-      setEditDoctor(doctors[index]);
-    } else if (type === "view") {
-      setViewDoctor(doctor);
-    } else if (type === "clone") {
-      const cloned = { ...doctors[index] };
-      const updated = [...doctors, cloned];
-      saveDoctors(updated);
-    }
+  if (type === "edit") {
+    setEditIndex(index);
+    setEditDoctor(doctors[index]);
+  }
 
-    setConfirmAction({ open: false, type: "", index: null, doctor: null });
-  };
+  if (type === "delete") {
+    const updated = doctors.filter((_, i) => i !== index);
+    setDoctors(updated);
+    localStorage.setItem("doctors", JSON.stringify(updated));
+  }
 
+  // ✅ ADD THIS BLOCK
+  if (type === "clone") {
+    const doctorToClone = doctors[index];
+
+    const clonedDoctor = {
+  ...doctorToClone,
+  firstName: `${doctorToClone.firstName || ""} Copy`,
+};
+
+    const updated = [...doctors];
+    updated.splice(index + 1, 0, clonedDoctor); // insert below original
+
+    setDoctors(updated);
+    localStorage.setItem("doctors", JSON.stringify(updated));
+  }
+
+  setConfirmAction({ open: false, type: "", index: null });
+};
   const handleSave = () => {
     const updated = [...doctors];
     updated[editIndex] = editDoctor;
-    saveDoctors(updated);
+
+    setDoctors(updated);
+    localStorage.setItem("doctors", JSON.stringify(updated));
+
     setEditIndex(null);
-    setEditDoctor({});
   };
 
   const indexOfLastDoctor = currentPage * doctorsPerPage;
   const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
-  const currentDoctors = doctors.slice(indexOfFirstDoctor, indexOfLastDoctor);
-  const totalPages = Math.ceil(doctors.length / doctorsPerPage);
 
+  const filteredDoctors = useMemo(() => {
+    return doctors.filter((doctor) =>
+      `${doctor.firstName || ""} ${doctor.lastName || ""} ${doctor.email || ""}`
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()),
+    );
+  }, [doctors, searchTerm]);
+
+  const currentDoctors = filteredDoctors.slice(
+    indexOfFirstDoctor,
+    indexOfLastDoctor,
+  );
+  const totalPages = Math.ceil(filteredDoctors.length / doctorsPerPage);
   const handlePrevPage = () => setCurrentPage((p) => Math.max(p - 1, 1));
   const handleNextPage = () =>
     setCurrentPage((p) => Math.min(p + 1, totalPages));
 
   const toggleDoctorSelect = (index) => {
     setSelectedDoctors((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
   };
 
@@ -265,12 +565,17 @@ function DoctorList() {
   const [openHolidayDialog, setOpenHolidayDialog] = useState(false);
   const [openSettingsModal, setOpenSettingsModal] = useState(false);
   const [openLeaveHistory, setOpenLeaveHistory] = useState(false);
-
+  const [openLocationModal, setOpenLocationModal] = useState(false);
+  const [workLocation, setWorkLocation] = useState("");
   const today = new Date();
+
+  const upcomingHolidays = holidays
+    .filter((holiday) => new Date(holiday.date) >= today)
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const handleApplyLeave = (holiday) => {
     const isDuplicate = leaveRequests.some(
-      (l) => l.date === holiday.date && l.status !== "Cancelled"
+      (l) => l.date === holiday.date && l.status !== "Cancelled",
     );
 
     if (isDuplicate) {
@@ -297,33 +602,43 @@ function DoctorList() {
     localStorage.setItem("leaveRequests", JSON.stringify(updated));
   };
 
+  const [openSwipeDialog, setOpenSwipeDialog] = useState(false);
+
   const handleCancelLeave = (id) => {
     const updated = leaveRequests.map((l) =>
-      l.id === id ? { ...l, status: "Cancelled" } : l
+      l.id === id ? { ...l, status: "Cancelled" } : l,
     );
     setLeaveRequests(updated);
     localStorage.setItem("leaveRequests", JSON.stringify(updated));
   };
 
   return (
-    <div className="p-4 sm:p-6 min-h-screen bg-blue-50">
+    <div className="p-4 sm:p-6 min-h-screen bg-white-100">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-4 p-3 bg-white shadow-md rounded-xl">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-4 p-1 bg-white shadow-md rounded-xl">
         <img
-          className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain"
+          className="w-24 h-24 sm:w-40 sm:h-28 md:w-32 md:h-32 object-contain"
           src={logo}
           alt="Application Logo"
         />
+
+        {/* Painting Image (End / Right Side) */}
+        <div className="hidden md:flex flex-1 justify-end">
+          <img
+            src={painting}
+            alt="Painting"
+            className="h-28 md:h-32 object-contain"
+          />
+        </div>
 
         {/* User Badge */}
         <div className="relative">
           <button
             onClick={() => setShowProfileMenu(!showProfileMenu)}
-            className="flex items-center gap-2 px-3 py-2 bg-blue-50 text-blue-900 font-semibold rounded-full shadow-sm hover:bg-blue-100 transition"
+            className="flex items-center gap-2 px-3 py-2 bg-orange-50 text-orange-900 font-semibold rounded-full shadow-sm hover:bg-orange-100 transition"
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-blue-700 text-white flex items-center justify-center font-bold text-sm sm:text-base">
-              {user.initials ||
-                user.name.split(" ").map((n) => n[0]).join("")}
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-orange-700 text-white flex items-center justify-center font-bold text-sm sm:text-base">
+              {user.initials}
             </div>
             <span className="hidden sm:inline">{user.name}</span>
             <svg
@@ -344,25 +659,47 @@ function DoctorList() {
           </button>
 
           {showProfileMenu && (
-            <div className="absolute right-0 mt-2 w-44 sm:w-48 bg-white rounded-xl shadow-lg overflow-hidden z-10">
-              <a
-                href="/Profile"
-                className="block px-4 py-3 hover:bg-blue-50 transition font-medium"
+            <div className="absolute right-0 mt-3 w-64 bg-white rounded-xl shadow-lg border z-20 overflow-hidden">
+              {/* Profile Header */}
+              <div className="flex items-center gap-3 p-4 bg-orange-50 border-b">
+                <div className="w-12 h-12 rounded-full bg-orange-700 text-white flex items-center justify-center font-bold text-lg">
+                  {user.initials}
+                </div>
+
+                <div>
+                  <p className="font-semibold text-orange-900">{user.name}</p>
+                  <p className="text-xs text-gray-600">{user.email}</p>
+                  <p className="text-xs text-gray-500">{user.role}</p>
+                </div>
+              </div>
+
+              {/* Menu */}
+              <button
+                onClick={() => navigate("/NewRegistration")}
+                className="w-full px-4 py-3 text-left hover:bg-orange-50 flex items-center gap-2"
               >
+                <MdOutlineEditNote size={20} />
                 Edit Profile
-              </a>
-              <a
-                href="/Settings"
-                className="block px-4 py-3 hover:bg-blue-50 transition font-medium"
+              </button>
+
+              <button
+                onClick={() => navigate("/Settings")}
+                className="w-full px-4 py-3 text-left hover:bg-orange-50 flex items-center gap-2"
               >
+                <MdOutlineSettings size={20} />
                 Settings
-              </a>
-              <a
-                href="/Logout"
-                className="block px-4 py-3 hover:bg-blue-50 transition font-medium text-red-600"
+              </button>
+
+              <button
+                onClick={() => {
+                  setSuccessMsg("Successfully Signed Out ✅");
+                  navigate("/Logout");
+                }}
+                className="w-full px-4 py-3 text-left text-red-600 hover:bg-red-50 flex items-center gap-2"
               >
+                <MdOutlinePowerSettingsNew size={20} />
                 Logout
-              </a>
+              </button>
             </div>
           )}
         </div>
@@ -381,9 +718,17 @@ function DoctorList() {
         </Link>
       </Breadcrumbs>
 
+      {successMsg && (
+        <div className="flex justify-center mb-3">
+          <div className="bg-orange-100 text-orange-800 px-6 py-2 rounded-lg text-center font-semibold shadow max-w-md w-full">
+            {successMsg}
+          </div>
+        </div>
+      )}
+
       <div className="flex flex-col lg:flex-row gap-6 items-stretch">
         {/* Greeting Card */}
-        <Card className="w-full lg:w-1/3 p-5 shadow-xl rounded-2xl bg-gradient-to-br from-white to-blue-50 border border-blue-100">
+        <Card className="w-full lg:w-1/3 p-1 shadow-xl rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 border border-orange-100">
           <Typography variant="h5" className="mb-4">
             Hello, {getGreeting()}
           </Typography>
@@ -394,7 +739,7 @@ function DoctorList() {
         </Card>
 
         {/* Time & Shift Card */}
-        <Card className="relative w-full lg:w-1/3 p-5 shadow-xl rounded-2xl bg-gradient-to-br from-white to-blue-50 border border-blue-100">
+        <Card className="relative w-full lg:w-1/3 p-1 shadow-xl rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 border border-orange-100">
           <FcEngineering
             size={26}
             className="absolute top-4 right-4 cursor-pointer hover:scale-110 transition"
@@ -446,7 +791,7 @@ function DoctorList() {
                 Close
               </Button>
               <Button
-                color="green"
+                color="orange"
                 onClick={() => setOpenSettingsModal(false)}
               >
                 Save
@@ -456,49 +801,61 @@ function DoctorList() {
 
           <Typography
             variant="h5"
-            className="mb-4 text-center font-bold text-blue-700 tracking-wide"
+            className="mb-4 text-center font-bold tracking-wide 
+  bg-gradient-to-r from-white via-red-900 to-white-900 
+  bg-clip-text text-transparent"
           >
             Time & Shift Information
           </Typography>
 
-          <div className="bg-blue-100 p-3 rounded-xl shadow-inner mb-3">
-            <p className="text-gray-800 font-semibold text-center text-sm sm:text-base">
+          <div
+            className="bg-gradient-to-r from-orange-100 via-orange-50 to-orange-100 
+p-2 rounded-xl shadow-md mb-3 border border-orange-200"
+          >
+            <p className="text-orange-900 font-semibold text-center text-sm sm:text-base">
               {`Monday-Friday | ${shiftObj.type}`}
             </p>
-            <p className="text-gray-600 text-center text-xs sm:text-sm">
+
+            <p className="text-orange-700 text-center text-xs sm:text-sm mt-1">
               <b>
                 <u>{`${shiftObj.start} – ${shiftObj.end}`}</u>
               </b>
             </p>
           </div>
 
-          <p className="text-blue-900 font-extrabold text-xl sm:text-2xl text-center mt-2 tracking-wider">
-            ⏱ {currentTime} - <i>{currentDay}</i>
+          <p className="inline-block px-2 py-1 ">
+            <b>
+              {" "}
+              {currentTime} - <i>{currentDay}</i>
+            </b>
           </p>
 
-          {swipeHistory.length > 0 && (
-            <p className="text-gray-700 text-xs sm:text-sm text-center mt-1">
-              <span className="font-medium">Last Sign In:</span>{" "}
-              {new Date(
-                swipeHistory[swipeHistory.length - 1].signIn
-              ).toLocaleString()}
-              <br />
-              <span className="font-medium">Last Sign Out:</span>{" "}
-              {swipeHistory[swipeHistory.length - 1].signOut
-                ? new Date(
-                    swipeHistory[swipeHistory.length - 1].signOut
-                  ).toLocaleString()
-                : "-"}
+          <div className="text-center mt-2 space-y-1">
+            <Button
+              size="sm"
+              className="inline-flex items-center px-3 py-1 
+    text-white rounded-lg shadow-md 
+    bg-gradient-to-r from-green-300 via-green-700 to-green-900 
+    hover:scale-105 transition duration-300"
+              onClick={() => setOpenSwipeDialog(true)}
+            >
+              View Swipes
+            </Button>
+
+            <p className="text-red-700 text-sm sm:text-base font-semibold">
+              <u>Timezone:</u> {timeZoneLabel}
             </p>
-          )}
+          </div>
 
           <div className="mt-5 flex justify-center sm:justify-end">
             <Button
-              className={`px-5 py-2 sm:px-6 sm:py-3 rounded-lg shadow-md transition-transform hover:scale-105 ${
-                isLoggedIn
-                  ? "bg-red-600 hover:bg-red-700"
-                  : "bg-green-600 hover:bg-green-700"
-              }`}
+              className={`inline-flex items-center px-5 py-2 sm:px-6 sm:py-3 rounded-lg shadow-md 
+  text-white transition-transform hover:scale-105 
+  ${
+    isLoggedIn
+      ? "bg-gradient-to-r from-red-900 via-red-600 to-red-900"
+      : "bg-gradient-to-r from-green-900 via-green-600 to-green-900"
+  }`}
               onClick={handleOpen}
             >
               {isLoggedIn ? "Sign Out" : "Sign In"}
@@ -507,32 +864,103 @@ function DoctorList() {
         </Card>
 
         {/* Upcoming Holidays */}
-        <Card className="w-full lg:w-1/3 p-5 shadow-xl rounded-2xl bg-gradient-to-br from-white to-blue-50 border border-blue-100">
+        <Card className="relative w-full lg:w-1/3 p-1 shadow-xl rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 border border-orange-100">
           <Typography
             variant="h5"
-            className="mb-4 flex items-center justify-between"
+            className="mb-4 relative text-center font-bold tracking-wide 
+  bg-gradient-to-r from-white via-red-900 to-white-900 
+  bg-clip-text text-transparent"
           >
             Upcoming Holidays
             <VscArrowRight
               size={24}
-              className="cursor-pointer text-blue-600 hover:scale-110 transition"
+              className="absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer text-green-600 hover:scale-110 transition"
               title="View all holidays"
               onClick={() => setOpenHolidayDialog(true)}
             />
           </Typography>
 
-          <div className="mb-3 p-3 bg-blue-100 rounded-lg text-center shadow-inner">
-            <Typography className="font-semibold text-blue-800">
+          <div className="mb-3 p-1 bg-orange-100 rounded-lg text-center shadow-inner">
+            <Typography className="font-semibold text-red-800">
               RH Leave Balance: {remainingRH} / {RH_QUOTA}
             </Typography>
             <Button
               size="sm"
-              className="mt-2 bg-blue-600 hover:bg-blue-700 text-white"
+              className="inline-flex items-center mt-2 px-4 py-1.5 
+  text-white rounded-lg shadow-md 
+  bg-gradient-to-r from-green-600 via-green-700 to-green-900 
+  hover:scale-105 transition duration-300"
               onClick={() => setOpenLeaveHistory(true)}
             >
               View Leave History
             </Button>
           </div>
+
+          <Dialog
+            open={openSwipeDialog}
+            handler={() => setOpenSwipeDialog(false)}
+            size="md"
+          >
+            <DialogBody className="space-y-3 max-h-[70vh] overflow-y-auto">
+              <Typography variant="h5" className="text-center mb-3">
+                Swipe History
+              </Typography>
+
+              {swipeHistory.length === 0 && (
+                <p className="text-center text-gray-500">
+                  No swipe history available
+                </p>
+              )}
+
+              {swipeHistory.map((entry, index) => (
+                <div
+                  key={index}
+                  className="relative border rounded-lg p-3 bg-orange-50 shadow-sm text-sm space-y-1"
+                >
+                  {/* ✅ index is available here */}
+                  <button
+                    onClick={() => {
+                      if (window.confirm("Delete this swipe record?")) {
+                        handleDeleteSwipe(index);
+                      }
+                    }}
+                    className="absolute top-2 right-2 text-red-600 hover:text-red-800"
+                  >
+                    <AiOutlineDelete size={18} />
+                  </button>
+
+                  <p>
+                    <span className="font-bold">Date:</span>{" "}
+                    {new Date(entry.signIn).toLocaleDateString()}
+                  </p>
+
+                  <p>
+                    <span className="font-bold">Sign In:</span>{" "}
+                    {new Date(entry.signIn).toLocaleTimeString()}
+                  </p>
+
+                  <p>
+                    <span className="font-bold">Sign Out:</span>{" "}
+                    {entry.signOut ? (
+                      new Date(entry.signOut).toLocaleTimeString()
+                    ) : (
+                      <span className="text-red-500">Not Signed Out</span>
+                    )}
+                  </p>
+                </div>
+              ))}
+            </DialogBody>
+
+            <DialogFooter>
+              <Button
+                color="red"
+                variant="text"
+                onClick={() => setOpenSwipeDialog(false)}
+              >
+                Close
+              </Button>
+            </DialogFooter>
+          </Dialog>
 
           <Dialog
             open={openHolidayDialog}
@@ -544,61 +972,50 @@ function DoctorList() {
                 All Holidays
               </Typography>
 
-              {holidays
-                .filter((holiday) => new Date(holiday.date) >= today)
-                .sort(
-                  (a, b) =>
-                    new Date(a.date).getTime() -
-                    new Date(b.date).getTime()
-                )
-                .map((holiday, index) => {
-                  const isPast = new Date(holiday.date) < today;
-                  const alreadyApplied = leaveRequests.some(
-                    (l) =>
-                      l.date === holiday.date && l.status !== "Cancelled"
-                  );
+              {upcomingHolidays.slice(0, 3).map((holiday, index) => {
+                const alreadyApplied = leaveRequests.some(
+                  (l) => l.date === holiday.date && l.status !== "Cancelled",
+                );
 
-                  return (
-                    <div
-                      key={index}
-                      className="border-b pb-3 last:border-b-0 text-gray-700 flex justify-between items-center gap-2"
-                    >
-                      <div>
-                        <div className="font-semibold">
-                          {holiday.icon} {holiday.date} • {holiday.day}
-                        </div>
-                        <div>
-                          {holiday.name}{" "}
-                          <span className="text-xs text-gray-500">
-                            ({holiday.type})
-                          </span>
-                        </div>
+                return (
+                  <div
+                    key={index}
+                    className="mt-2 space-y-1 text-gray-700 border-b pb-2 flex justify-between items-center gap-2"
+                  >
+                    <div>
+                      <div className="font-semibold">
+                        {holiday.icon} {holiday.date} • {holiday.day}
                       </div>
-
-                      {holiday.type === "RH" && (
-                        <Button
-                          size="sm"
-                          color="green"
-                          disabled={
-                            isPast || alreadyApplied || remainingRH <= 0
-                          }
-                          onClick={() => handleApplyLeave(holiday)}
-                        >
-                          {alreadyApplied
-                            ? "Applied"
-                            : remainingRH <= 0
-                            ? "Quota Full"
-                            : "Apply Leave"}
-                        </Button>
-                      )}
+                      <div>
+                        {holiday.name}
+                        <span className="text-xs text-gray-500">
+                          ({holiday.type})
+                        </span>
+                      </div>
                     </div>
-                  );
-                })}
+
+                    {holiday.type === "RH" && (
+                      <Button
+                        size="sm"
+                        color="orange"
+                        disabled={alreadyApplied || remainingRH <= 0}
+                        onClick={() => handleApplyLeave(holiday)}
+                      >
+                        {alreadyApplied
+                          ? "Applied"
+                          : remainingRH <= 0
+                            ? "Quota Full"
+                            : "Apply"}
+                      </Button>
+                    )}
+                  </div>
+                );
+              })}
             </DialogBody>
 
             <DialogFooter>
               <Button
-                color="blue"
+                color="orange"
                 onClick={() => setOpenHolidayDialog(false)}
               >
                 Close
@@ -606,55 +1023,51 @@ function DoctorList() {
             </DialogFooter>
           </Dialog>
 
-          {holidays
-            ?.filter((holiday) => new Date(holiday.date) >= today)
-            .sort(
-              (a, b) =>
-                new Date(a.date).getTime() - new Date(b.date).getTime()
-            )
-            .slice(0, 3)
-            .map((holiday, index) => {
-              const isPast = new Date(holiday.date) < today;
-              const alreadyApplied = leaveRequests.some(
-                (l) => l.date === holiday.date && l.status !== "Cancelled"
-              );
+          {upcomingHolidays.slice(0, 5).map((holiday, index) => {
+            const alreadyApplied = leaveRequests.some(
+              (l) => l.date === holiday.date && l.status !== "Cancelled",
+            );
 
-              return (
-                <div
-                  key={index}
-                  className="mt-2 space-y-1 text-gray-700 border-b pb-2 last:border-b-0 text-sm sm:text-base flex justify-between items-center gap-2"
-                >
-                  <div>
-                    <div className="font-semibold">
-                      {holiday.icon} {holiday.date} • {holiday.day}
-                    </div>
-                    <div>
-                      {holiday.name}{" "}
-                      <span className="text-xs text-gray-500">
-                        ({holiday.type})
-                      </span>
-                    </div>
+            return (
+              <div
+                key={index}
+                className="border-b pb-3 flex justify-between items-center"
+              >
+                <div>
+                  <div className="font-semibold">
+                    {holiday.icon} {holiday.date} • {holiday.day}
                   </div>
-
-                  {holiday.type === "RH" && (
-                    <Button
-                      size="sm"
-                      color="green"
-                      disabled={
-                        isPast || alreadyApplied || remainingRH <= 0
-                      }
-                      onClick={() => handleApplyLeave(holiday)}
-                    >
-                      {alreadyApplied
-                        ? "Applied"
-                        : remainingRH <= 0
-                        ? "Quota Full"
-                        : "Apply"}
-                    </Button>
-                  )}
+                  <div>
+                    {holiday.name}
+                    <span className="text-xs text-gray-500">
+                      ({holiday.type})
+                    </span>
+                  </div>
                 </div>
-              );
-            })}
+
+                {holiday.type === "RH" && (
+                  <Button
+                    size="sm"
+                    disabled={alreadyApplied || remainingRH <= 0}
+                    onClick={() => handleApplyLeave(holiday)}
+                    className={`inline-flex items-center px-4 py-2 rounded-lg text-white shadow-md 
+  transition duration-300 hover:scale-105
+  ${
+    alreadyApplied || remainingRH <= 0
+      ? "bg-gray-400 cursor-not-allowed"
+      : "bg-gradient-to-r from-orange-600 via-orange-700 to-orange-900"
+  }`}
+                  >
+                    {alreadyApplied
+                      ? "Applied"
+                      : remainingRH <= 0
+                        ? "Quota Full"
+                        : "Apply Leave"}
+                  </Button>
+                )}
+              </div>
+            );
+          })}
         </Card>
       </div>
 
@@ -677,7 +1090,7 @@ function DoctorList() {
             leaveRequests.map((leave) => (
               <div
                 key={leave.id}
-                className="border p-3 rounded-lg bg-blue-50 shadow-sm flex justify-between items-center gap-2"
+                className="border p-1 rounded-lg bg-orange-50 shadow-sm flex justify-between items-center gap-2"
               >
                 <div>
                   <p className="font-semibold">
@@ -688,10 +1101,10 @@ function DoctorList() {
                     <span
                       className={`font-semibold ${
                         leave.status === "Approved"
-                          ? "text-green-600"
+                          ? "text-orange-600"
                           : leave.status === "Cancelled"
-                          ? "text-red-600"
-                          : "text-gray-600"
+                            ? "text-red-600"
+                            : "text-gray-600"
                       }`}
                     >
                       {leave.status}
@@ -716,7 +1129,7 @@ function DoctorList() {
           )}
         </DialogBody>
         <DialogFooter>
-          <Button color="blue" onClick={() => setOpenLeaveHistory(false)}>
+          <Button color="orange" onClick={() => setOpenLeaveHistory(false)}>
             Close
           </Button>
         </DialogFooter>
@@ -733,60 +1146,68 @@ function DoctorList() {
       )}
 
       {/* View Controls */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 mt-6">
-        <Typography variant="h4" color="grey" className="text-xl sm:text-2xl">
-          Doctors List
-        </Typography>
-        <div className="flex items-center gap-3 flex-wrap">
-          <label className="flex items-center gap-1 text-sm cursor-pointer">
-            <input
-              type="checkbox"
-              checked={selectAll}
-              onChange={toggleSelectAll}
-            />
-            Select All
-          </label>
-          <button
-            className={`p-2 rounded ${
-              !gridView ? "bg-blue-600 text-white" : "bg-gray-200"
-            }`}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 mt-6">
+        {/* Left Side */}
+        <div className="flex items-center gap-4 w-full sm:w-auto">
+          <Typography
+            variant="h4"
+            color="orange-gray"
+            className="text-xl sm:text-2xl font-semibold"
+          >
+            Dentist List
+          </Typography>
+
+          {/* Search Box */}
+          <input
+            type="text"
+            placeholder="Search Doctor..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border rounded-lg px-3 py-2 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-orange-400"
+          />
+        </div>
+
+        {/* Right Side Controls */}
+        <div className="flex gap-2">
+          <Button
+            variant={!gridView ? "filled" : "outlined"}
             onClick={() => setGridView(false)}
-            title="List View"
+            className="flex items-center gap-2"
           >
-            <Bars3Icon className="w-5 h-5" />
-          </button>
-          <button
-            className={`p-2 rounded ${
-              gridView ? "bg-blue-600 text-white" : "bg-gray-200"
-            }`}
+            <Bars3Icon className="h-5 w-5" />
+          </Button>
+
+          <Button
+            variant={gridView ? "filled" : "outlined"}
             onClick={() => setGridView(true)}
-            title="Grid View"
+            className="flex items-center gap-2"
           >
-            <Squares2X2Icon className="w-5 h-5" />
-          </button>
+            <Squares2X2Icon className="h-5 w-5" />
+          </Button>
         </div>
       </div>
-
-      {/* Add Doctor Button */}
+      {/* Add DENTIST Button */}
       <div className="flex justify-center sm:justify-end mb-4">
         <Button
-          color="green"
-          className="px-6 sm:px-10 py-2 text-sm sm:text-lg"
+          className="inline-flex items-center px-6 sm:px-10 py-2 text-sm sm:text-lg 
+    text-white rounded-lg shadow-md 
+    bg-gradient-to-r from-orange-600 via-orange-700 to-orange-900 
+    hover:scale-105 transition duration-300"
           onClick={() => navigate("/AddDoctor")}
         >
-          + ADD NEW DOCTOR
+          + ADD NEW DENTIST
         </Button>
       </div>
 
       {/* Doctors Display */}
       {doctors.length === 0 ? (
-        <Typography>No doctors added yet.</Typography>
+        <Typography>No Dentist added yet.</Typography>
       ) : (
         <>
           <div
             className={
               gridView
-                ? "grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                ? "grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
                 : "flex flex-col gap-4"
             }
           >
@@ -795,15 +1216,14 @@ function DoctorList() {
               return (
                 <Card
                   key={realIndex}
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  className={`p-4 flex relative border min-h-[240px] transition-transform duration-200 ${
+                  className={`p-1 flex relative border min-h-[170px] transition-transform duration-200 ${
                     selectedDoctors.includes(realIndex)
-                      ? "border-red-500 bg-red-100"
-                      : "border-white bg-blue-100 hover:bg-blue-100 hover:scale-105 shadow-lg"
+                      ? "border-red-100 bg-red-100"
+                      : "border-white bg-orange-100 hover:bg-orange-100 hover:scale-105 shadow-md"
                   } ${
                     gridView
                       ? "flex-col items-center text-center justify-between"
-                      : "flex-row items-center gap-4"
+                      : "flex-row items-center gap-3"
                   }`}
                 >
                   <input
@@ -819,26 +1239,26 @@ function DoctorList() {
                       alt="Doctor"
                       className={`${
                         gridView
-                          ? "w-20 h-20 sm:w-24 sm:h-24"
-                          : "w-24 h-24 sm:w-28 sm:h-28"
-                      } object-cover border-2 border-blue-700 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl`}
+                          ? "w-24 h-24 sm:w-28 sm:h-28"
+                          : "w-20 h-20 sm:w-24 sm:h-24"
+                      } object-cover border-2 border-orange-100 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl`}
                       onClick={() => setViewDoctor(doc)}
                     />
                   )}
 
-                  <div className="flex-1 w-full flex flex-col items-start text-left space-y-1 text-blue-900">
+                  <div className="flex-1 w-full flex flex-col items-start text-left space-y-1 text-orange-900">
                     <Typography
                       variant="h6"
                       className="font-semibold text-sm sm:text-base"
                     >
-                      {doc.firstName} {doc.lastName}
+                      DENTIST NAME - {doc.firstName} {doc.lastName}
                     </Typography>
                     {doc.phone && (
                       <Typography className="text-xs sm:text-sm">
-                        <span className="font-medium">Phone: </span>
+                        <span className="font-medium">PHONE: </span>
                         <a
                           href={`tel:${doc.phone}`}
-                          className="text-blue-800 hover:underline"
+                          className="text-orange-800 hover:underline"
                         >
                           {doc.phone}
                         </a>
@@ -846,49 +1266,125 @@ function DoctorList() {
                     )}
                     {doc.email && (
                       <Typography className="text-xs sm:text-sm break-all">
-                        <span className="font-medium">Email: </span>
+                        <span className="font-medium">EMAIL ID: </span>
                         <a
                           href={`mailto:${doc.email}`}
-                          className="text-blue-800 hover:underline"
+                          className="text-orange-800 hover:underline"
                         >
                           {doc.email}
                         </a>
                       </Typography>
+                      // eslint-disable-next-line react/jsx-no-comment-textnodes
                     )}
+
+                    {/* appointments */}
+                    <div className="w-full mt-2 bg-gray-50 border rounded-xl shadow-sm overflow-hidden">
+                      {/* Header */}
+                      <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 border-b">
+                        <div className="w-8 h-8 flex items-center justify-center rounded-md bg-gray-200">
+                          📅
+                        </div>
+                        <p className="font-semibold text-gray-800">
+                          Appointments
+                        </p>
+                      </div>
+
+                      {/* Body */}
+                      {!doc?.appointments || doc.appointments.length === 0 ? (
+                        <div className="flex flex-col items-center justify-center py-6 px-4 text-center">
+                          <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mb-3">
+                            <span className="text-pink-500 text-lg">✔</span>
+                          </div>
+
+                          <p className="text-gray-800 font-medium">
+                            All caught up
+                          </p>
+                          <p className="text-sm text-gray-500 mt-1">
+                            No appointments right now, we'll notify you when
+                            there's something new.
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="p-3 space-y-3 max-h-60 overflow-y-auto">
+                          {doc.appointments.map((appt, i) => (
+                            <div
+                              key={i}
+                              className="border rounded-lg p-3 bg-white shadow-sm space-y-2"
+                            >
+                              {/* Top */}
+                              <div className="flex justify-between items-center">
+                                <p className="font-semibold text-gray-800">
+                                  {appt?.patientName || "Patient"}
+                                </p>
+
+                                <span className="text-xs px-2 py-1 rounded-full bg-green-100 text-green-700">
+                                  {appt?.status || "Upcoming"}
+                                </span>
+                              </div>
+
+                              {/* Details */}
+                              <p className="text-sm text-gray-600">
+                                {appt?.date || "N/A"} • {appt?.time || ""}
+                              </p>
+
+                              <p className="text-xs text-gray-500">
+                                {appt?.type || "General"}
+                              </p>
+
+                              {/* Amount */}
+                              {appt?.amount && (
+                                <p className="text-sm font-medium text-gray-700">
+                                  ₹{appt.amount}
+                                </p>
+                              )}
+
+                              {/* ✅ Join Button (SAFE) */}
+                              {appt?.consultationType === "ONLINE" &&
+                                appt?.meetingUrl && (
+                                  <button
+                                    onClick={() =>
+                                      window.open(
+                                        appt.meetingUrl.startsWith("http")
+                                          ? appt.meetingUrl
+                                          : `https://${appt.meetingUrl}`,
+                                        "_blank",
+                                      )
+                                    }
+                                    className="text-xs px-3 py-1 bg-green-500 text-white rounded-md"
+                                  >
+                                    ▶ Join Call
+                                  </button>
+                                )}
+
+                              {/* Notes */}
+                              {appt?.notes && (
+                                <p className="text-xs text-gray-400">
+                                  Notes: {appt.notes}
+                                </p>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <div className="mt-2 flex justify-center gap-2 flex-wrap">
                     <Button
                       size="sm"
-                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs sm:text-sm"
-                      onClick={() =>
-                        setConfirmAction({
-                          open: true,
-                          type: "view",
-                          doctor: doc,
-                        })
-                      }
+                      className="flex items-center bg-green-500 text-white hover:bg-green-600 text-xs px-2 py-1"
+                      onClick={() => {
+                        setEditIndex(realIndex);
+                        setEditDoctor(doc);
+                      }}
                     >
-                      <EyeIcon className="w-4 h-4 mr-1" /> View
+                      <PencilIcon className="w-4 h-4 mr-1" />
+                      Edit
                     </Button>
 
                     <Button
                       size="sm"
-                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs sm:text-sm"
-                      onClick={() =>
-                        setConfirmAction({
-                          open: true,
-                          type: "edit",
-                          index: realIndex,
-                        })
-                      }
-                    >
-                      <PencilIcon className="w-4 h-4 mr-1" /> Edit
-                    </Button>
-
-                    <Button
-                      size="sm"
-                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs sm:text-sm"
+                      className="bg-red-500 text-white hover:bg-red-600 text-xs px-2 py-1"
                       onClick={() =>
                         setConfirmAction({
                           open: true,
@@ -902,7 +1398,7 @@ function DoctorList() {
 
                     <Button
                       size="sm"
-                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs sm:text-sm"
+                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
                       onClick={() =>
                         setConfirmAction({
                           open: true,
@@ -948,16 +1444,16 @@ function DoctorList() {
             <h2 className="text-xl font-semibold mb-2">Swipe History</h2>
 
             {swipeHistory.length > 0 && (
-              <div className="p-3 rounded-lg bg-blue-50 border-l-4 border-blue-400 shadow-sm">
-                <p className="font-semibold text-blue-700">Last Sign In:</p>
+              <div className="p-1 rounded-lg bg-orange-50 border-l-4 border-orange-400 shadow-sm">
+                <p className="font-semibold text-orange-700">Last Sign In:</p>
                 <p>
                   {new Date(
-                    swipeHistory[swipeHistory.length - 1].signIn
+                    swipeHistory[swipeHistory.length - 1].signIn,
                   ).toLocaleDateString()}
                 </p>
                 <p>
                   {new Date(
-                    swipeHistory[swipeHistory.length - 1].signIn
+                    swipeHistory[swipeHistory.length - 1].signIn,
                   ).toLocaleTimeString()}
                 </p>
               </div>
@@ -969,7 +1465,7 @@ function DoctorList() {
               swipeHistory.map((entry, idx) => (
                 <div
                   key={idx}
-                  className="border p-3 rounded-lg bg-gray-50 shadow-sm text-sm sm:text-base"
+                  className="border p-1 rounded-lg bg-gray-50 shadow-sm text-sm sm:text-base"
                 >
                   <p>
                     <span className="font-bold">Date:</span>{" "}
@@ -980,13 +1476,19 @@ function DoctorList() {
                     {new Date(entry.signIn).toLocaleTimeString()}
                   </p>
                   <p>
+                    <span className="font-bold">Location:</span>{" "}
+                    {entry.location || "Office"}
+                  </p>
+
+                  <p>
+                    <span className="font-bold">Reason:</span>{" "}
+                    {entry.reason || "-"}
+                  </p>
+                  <p>
                     <span className="font-bold">Sign Out:</span>{" "}
                     {entry.signOut
                       ? new Date(entry.signOut).toLocaleTimeString()
                       : "-"}
-                  </p>
-                  <p>
-                    <span className="font-bold">Door / Address:</span> Main Gate
                   </p>
                 </div>
               ))
@@ -994,7 +1496,7 @@ function DoctorList() {
           </div>
         </DialogBody>
         <DialogFooter>
-          <Button color="blue" onClick={() => setOpenSwipeModal(false)}>
+          <Button color="orange" onClick={() => setOpenSwipeModal(false)}>
             Close
           </Button>
         </DialogFooter>
@@ -1003,28 +1505,66 @@ function DoctorList() {
       {/* Confirm Action Modal */}
       <Dialog
         open={confirmAction.open}
-        handler={() =>
-          setConfirmAction({ ...confirmAction, open: false })
-        }
+        handler={() => setConfirmAction({ open: false, type: "", index: null })}
       >
-        <DialogBody className="text-sm sm:text-base">
+        <DialogBody>
           Are you sure you want to {confirmAction.type} this doctor?
         </DialogBody>
+
         <DialogFooter>
           <Button
             variant="text"
             color="red"
             onClick={() =>
-              setConfirmAction({ ...confirmAction, open: false })
+              setConfirmAction({ open: false, type: "", index: null })
             }
           >
             Cancel
           </Button>
-          <Button color="green" onClick={executeAction}>
+
+          <Button color="orange" onClick={executeAction}>
             Yes
           </Button>
         </DialogFooter>
       </Dialog>
+
+      {editIndex !== null && (
+        <Dialog open={true} handler={() => setEditIndex(null)}>
+          <DialogBody className="space-y-3">
+            <Typography variant="h6">Edit Doctor</Typography>
+
+            <input
+              type="text"
+              placeholder="First Name"
+              value={editDoctor.firstName || ""}
+              onChange={(e) =>
+                setEditDoctor({ ...editDoctor, firstName: e.target.value })
+              }
+              className="w-full border px-3 py-2 rounded"
+            />
+
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={editDoctor.lastName || ""}
+              onChange={(e) =>
+                setEditDoctor({ ...editDoctor, lastName: e.target.value })
+              }
+              className="w-full border px-3 py-2 rounded"
+            />
+          </DialogBody>
+
+          <DialogFooter>
+            <Button color="red" onClick={() => setEditIndex(null)}>
+              Cancel
+            </Button>
+
+            <Button color="orange" onClick={handleSave}>
+              Save
+            </Button>
+          </DialogFooter>
+        </Dialog>
+      )}
 
       {/* Session Expired Modal */}
       <Dialog open={sessionExpired} handler={() => {}}>
@@ -1033,7 +1573,8 @@ function DoctorList() {
             Session Expired ⏰
           </Typography>
           <Typography className="text-sm sm:text-base">
-            Your session has exceeded 5 minutes. Please log out to continue.
+            Your session has exceeded 5 minutes. Please Close the modal to
+            continue.
           </Typography>
         </DialogBody>
         <DialogFooter className="flex justify-center">
@@ -1044,7 +1585,71 @@ function DoctorList() {
               handleOpen();
             }}
           >
-            Logout Now
+            Close
+          </Button>
+        </DialogFooter>
+      </Dialog>
+
+      <Dialog
+        open={openLocationModal}
+        handler={() => setOpenLocationModal(false)}
+      >
+        <DialogBody className="space-y-4 text-center">
+          <div className="flex flex-col items-center gap-2">
+            <Typography variant="h6">Select Work Location</Typography>
+
+            <select
+              value={workLocation}
+              onChange={(e) => setWorkLocation(e.target.value)}
+              className="border border-orange-300 rounded-xl px-4 py-2 w-64 shadow-sm focus:ring-2 focus:ring-orange-400"
+            >
+              <option value="">Select Location</option>
+              <option value="Office">🏢 Office</option>
+              <option value="WFH">🏠 Work From Home</option>
+              <option value="OnDuty">🛠 On Duty</option>
+              <option value="ClientLocation">📍 Client Location</option>
+            </select>
+          </div>
+
+          {/* Reason Input */}
+          <div className="mt-3">
+            <Typography className="text-sm mb-1">Enter Reason</Typography>
+
+            <input
+              type="text"
+              placeholder="Example: Working from home today"
+              value={workReason}
+              onChange={(e) => setWorkReason(e.target.value)}
+              className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+            />
+          </div>
+        </DialogBody>
+
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={() => setOpenLocationModal(false)}
+          >
+            Cancel
+          </Button>
+
+          <Button
+            color="orange"
+            disabled={
+              !workLocation ||
+              ((workLocation === "WFH" ||
+                workLocation === "OnDuty" ||
+                workLocation === "ClientLocation") &&
+                !workReason)
+            }
+            title={!workLocation ? "Please select location" : ""}
+            onClick={() => {
+              setOpenLocationModal(false);
+              completeSignAction();
+            }}
+          >
+            Save & Sign In
           </Button>
         </DialogFooter>
       </Dialog>

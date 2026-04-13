@@ -24,7 +24,7 @@ const CardItem = ({ item, onDelete }) => {
 
   return (
     <Card className="w-96">
-      <CardHeader variant="gradient" color="green" className="mb-5 grid h-10 place-items-center">
+      <CardHeader variant="gradient" color="orange" className="mb-5 grid h-10 place-items-center">
         <Typography variant="h3" color="white">{item.id} : {item.name}</Typography>
       </CardHeader>
 
@@ -62,7 +62,7 @@ const CardItem = ({ item, onDelete }) => {
               </Typography>
               <div className="flex justify-center gap-4">
                 <Button
-                  color="green"
+                  color="orange"
                   onClick={() => {
                     onDelete(item.id); // call parent delete function
                     setOpen(false);    // close popup

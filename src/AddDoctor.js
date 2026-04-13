@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Button, Input, Typography, Avatar, Breadcrumbs } from "@material-tailwind/react";
+import {
+  Button,
+  Input,
+  Typography,
+  Avatar,
+  Breadcrumbs,
+} from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { Bars3Icon, Squares2X2Icon } from "@heroicons/react/24/solid";
 
@@ -38,8 +44,10 @@ function AddDoctor() {
   const validate = () => {
     const newErrors = {};
 
-    if (!newDoctor.firstName.trim()) newErrors.firstName = "First Name is required";
-    if (!newDoctor.lastName.trim()) newErrors.lastName = "Last Name is required";
+    if (!newDoctor.firstName.trim())
+      newErrors.firstName = "First Name is required";
+    if (!newDoctor.lastName.trim())
+      newErrors.lastName = "Last Name is required";
 
     if (!newDoctor.email.trim()) {
       newErrors.email = "Email is required";
@@ -53,11 +61,15 @@ function AddDoctor() {
       newErrors.phone = "Phone must be 10 digits";
     }
 
-    if (!newDoctor.specialization.trim()) newErrors.specialization = "Specialization is required";
+    if (!newDoctor.specialization.trim())
+      newErrors.specialization = "Specialization is required";
 
     if (!newDoctor.experience.trim()) {
       newErrors.experience = "Experience is required";
-    } else if (isNaN(newDoctor.experience) || Number(newDoctor.experience) < 0) {
+    } else if (
+      isNaN(newDoctor.experience) ||
+      Number(newDoctor.experience) < 0
+    ) {
       newErrors.experience = "Experience must be a positive number";
     }
 
@@ -87,7 +99,7 @@ function AddDoctor() {
         <Typography
           as="a"
           href="/Welcome"
-          color="blue-gray"
+          color="orange-gray"
           className="cursor-pointer hover:underline"
           onClick={() => navigate("/")}
         >
@@ -96,13 +108,13 @@ function AddDoctor() {
         <Typography
           as="a"
           href="/DoctorList"
-          color="blue-gray"
+          color="orange-gray"
           className="cursor-pointer hover:underline"
           onClick={() => navigate("/DoctorList")}
         >
           Doctors
         </Typography>
-        <Typography color="blue-gray">Add Doctor</Typography>
+        <Typography color="orange-gray">Add Doctor</Typography>
       </Breadcrumbs>
 
       <Typography variant="h4" className="mb-4 text-center">
@@ -138,7 +150,13 @@ function AddDoctor() {
           name="phone"
           label="Phone"
           value={newDoctor.phone}
-          onChange={handleChange}
+          onChange={(e) => {
+            const value = e.target.value.replace(/\D/g, ""); // remove non-digits
+            if (value.length <= 10) {
+              setNewDoctor({ ...newDoctor, phone: value });
+            }
+          }}
+          inputProps={{ maxLength: 10 }}
           error={!!errors.phone}
           helperText={errors.phone}
         />
@@ -167,13 +185,23 @@ function AddDoctor() {
           helperText={errors.clinic}
         />
         <Input
-          name="license"
-          label="License"
-          value={newDoctor.license}
-          onChange={handleChange}
-          error={!!errors.license}
-          helperText={errors.license}
-        />
+  name="license"
+  label="License"
+  value={newDoctor.license}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, ""); // allow only digits
+    if (value.length <= 10) {
+      setNewDoctor({ ...newDoctor, license: value });
+    }
+  }}
+  inputProps={{
+    maxLength: 10,
+    inputMode: "numeric",
+    pattern: "[0-9]*",
+  }}
+  error={!!errors.license}
+  helperText={errors.license}
+/>
         <Input
           name="address"
           label="Address"
@@ -186,20 +214,24 @@ function AddDoctor() {
         <div>
           <label className="block mb-1 font-medium">Upload Image:</label>
           <input type="file" accept="image/*" onChange={handleImageUpload} />
-          {errors.image && <Typography color="red" className="text-xs mt-1">{errors.image}</Typography>}
+          {errors.image && (
+            <Typography color="red" className="text-xs mt-1">
+              {errors.image}
+            </Typography>
+          )}
         </div>
 
         {newDoctor.image && (
           <div className="flex items-center justify-center gap-2 my-2">
             <button
-              className={`p-2 rounded ${!previewGrid ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+              className={`p-2 rounded ${!previewGrid ? "bg-orange-500 text-white" : "bg-gray-200"}`}
               onClick={() => setPreviewGrid(false)}
               title="List Preview"
             >
               <Bars3Icon className="w-5 h-5" />
             </button>
             <button
-              className={`p-2 rounded ${previewGrid ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+              className={`p-2 rounded ${previewGrid ? "bg-orange-500 text-white" : "bg-gray-200"}`}
               onClick={() => setPreviewGrid(true)}
               title="Grid Preview"
             >
@@ -208,9 +240,9 @@ function AddDoctor() {
           </div>
         )}
 
-        {newDoctor.image && (
-          previewGrid ? (
-            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg mx-auto">
+        {newDoctor.image &&
+          (previewGrid ? (
+            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-orange-500 shadow-lg mx-auto">
               <img
                 src={newDoctor.image}
                 alt={`${newDoctor.firstName} ${newDoctor.lastName}`}
@@ -219,16 +251,23 @@ function AddDoctor() {
             </div>
           ) : (
             <div className="flex items-center gap-2 border p-2 rounded shadow-sm">
-              <Avatar src={newDoctor.image} size="sm" className="border-2 border-blue-500" />
+              <Avatar
+                src={newDoctor.image}
+                size="sm"
+                className="border-2 border-orange-500"
+              />
               <div>
-                <Typography className="text-sm font-medium">{newDoctor.firstName} {newDoctor.lastName}</Typography>
-                <Typography className="text-xs">{newDoctor.specialization}</Typography>
+                <Typography className="text-sm font-medium">
+                  {newDoctor.firstName} {newDoctor.lastName}
+                </Typography>
+                <Typography className="text-xs">
+                  {newDoctor.specialization}
+                </Typography>
               </div>
             </div>
-          )
-        )}
+          ))}
 
-        <Button color="green" className="mt-4" onClick={handleSave}>
+        <Button color="orange" className="mt-4" onClick={handleSave}>
           Save Doctor
         </Button>
       </div>

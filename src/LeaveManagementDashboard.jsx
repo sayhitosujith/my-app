@@ -62,7 +62,7 @@ const LeaveManagementDashboard = () => {
   };
 
   return (
-    <div className="p-6 bg-blue-50 min-h-screen">
+    <div className="p-6 bg-orange-50 min-h-screen">
       <Typography variant="h4" className="mb-4">Leave Management Dashboard</Typography>
 
       {/* Leave Balances */}
@@ -70,7 +70,7 @@ const LeaveManagementDashboard = () => {
         {Object.entries(balances).map(([type, count]) => (
           <Card key={type} className="p-4 text-center">
             <Typography variant="h6">{type}</Typography>
-            <Typography variant="h4" color="blue">{count}</Typography>
+            <Typography variant="h4" color="orange">{count}</Typography>
           </Card>
         ))}
       </div>
@@ -96,7 +96,7 @@ const LeaveManagementDashboard = () => {
                     size="sm"
                     disabled={isPast || alreadyApplied || balances.RH <= 0}
                     onClick={() => applyLeave(holiday)}
-                    color="green"
+                    color="orange"
                   >
                     {alreadyApplied ? "Applied" : isPast ? "Expired" : "Apply Leave"}
                   </Button>
@@ -117,7 +117,7 @@ const LeaveManagementDashboard = () => {
             if (!leave) return null;
             return (
               <span
-                className={`block w-2 h-2 rounded-full mx-auto mt-1 ${leave.status === "approved" ? "bg-green-500" : leave.status === "rejected" ? "bg-red-500" : "bg-yellow-500"}`}
+                className={`block w-2 h-2 rounded-full mx-auto mt-1 ${leave.status === "approved" ? "bg-orange-500" : leave.status === "rejected" ? "bg-red-500" : "bg-yellow-500"}`}
               />
             );
           }}
@@ -125,7 +125,7 @@ const LeaveManagementDashboard = () => {
       </Card>
 
       {/* Leave History */}
-      <Button onClick={() => setOpenHistory(true)} color="blue">View Leave History</Button>
+      <Button onClick={() => setOpenHistory(true)} color="orange">View Leave History</Button>
 
       <Dialog open={openHistory} handler={() => setOpenHistory(false)} size="lg">
         <DialogBody>
@@ -145,7 +145,7 @@ const LeaveManagementDashboard = () => {
 
                 {isManagerOrAdmin && leave.status === "pending" && (
                   <>
-                    <Button size="sm" color="green" onClick={() => approveLeave(leave.id, "approved")}>Approve</Button>
+                    <Button size="sm" color="orange" onClick={() => approveLeave(leave.id, "approved")}>Approve</Button>
                     <Button size="sm" color="red" onClick={() => approveLeave(leave.id, "rejected")}>Reject</Button>
                   </>
                 )}
@@ -154,7 +154,7 @@ const LeaveManagementDashboard = () => {
           ))}
         </DialogBody>
         <DialogFooter>
-          <Button color="blue" onClick={() => setOpenHistory(false)}>Close</Button>
+          <Button color="orange" onClick={() => setOpenHistory(false)}>Close</Button>
         </DialogFooter>
       </Dialog>
     </div>
@@ -191,7 +191,7 @@ const AddUser = () => {
           <Option value="admin">Admin</Option>
         </Select>
 
-        <Button color="blue" fullWidth onClick={handleSubmit}>Add User</Button>
+        <Button color="orange" fullWidth onClick={handleSubmit}>Add User</Button>
       </div>
     </div>
   );

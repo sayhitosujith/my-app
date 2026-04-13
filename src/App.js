@@ -1,59 +1,63 @@
 import "./App.css";
 import React, { useState, useRef } from "react";
-import packageJson from "../package.json";
 import RCB from "./assets/D-logo.jpg";
-import { IoMdFingerPrint } from "react-icons/io";
-import { CiUser } from "react-icons/ci";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Input,
-  Typography,
-  Checkbox,
-  Button,
-} from "@material-tailwind/react";
+import logo from "./assets/Toothx_Logo.png";
+import { useNavigate } from "react-router-dom";
 
 function App() {
-  const [showPopup, setShowPopup] = useState(false);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [practice, setPractice] = useState("");
+  const [remember, setRemember] = useState(false);
+
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [practiceError, setPracticeError] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState("");
 
-  // ---- Draggable Modal ---------- //
-  const modalRef = useRef(null);
-  const pos = useRef({ x: 0, y: 0, dx: 0, dy: 0 });
+  // ---- Draggable Modal ---- //
+  const cardRef = useRef(null);
+  const drag = useRef({
+    isDragging: false,
+    startX: 0,
+    startY: 0,
+    dx: 0,
+    dy: 0,
+  });
 
   const startDrag = (e) => {
-    pos.current.x = e.clientX;
-    pos.current.y = e.clientY;
-    document.addEventListener("mousemove", drag);
+    if (["INPUT", "SELECT", "BUTTON", "LABEL"].includes(e.target.tagName))
+      return;
+    drag.current.isDragging = true;
+    drag.current.startX = e.clientX - drag.current.dx;
+    drag.current.startY = e.clientY - drag.current.dy;
+    document.addEventListener("mousemove", onDrag);
     document.addEventListener("mouseup", stopDrag);
   };
 
-  const drag = (e) => {
-    if (!modalRef.current) return;
-    pos.current.dx = e.clientX - pos.current.x;
-    pos.current.dy = e.clientY - pos.current.y;
-
-    modalRef.current.style.transform = `translate(${pos.current.dx}px, ${pos.current.dy}px)`;
+  const onDrag = (e) => {
+    if (!drag.current.isDragging || !cardRef.current) return;
+    drag.current.dx = e.clientX - drag.current.startX;
+    drag.current.dy = e.clientY - drag.current.startY;
+    cardRef.current.style.transform = `translate(${drag.current.dx}px, ${drag.current.dy}px)`;
   };
 
   const stopDrag = () => {
-    document.removeEventListener("mousemove", drag);
+    drag.current.isDragging = false;
+    document.removeEventListener("mousemove", onDrag);
     document.removeEventListener("mouseup", stopDrag);
   };
 
-  // -------------------------------- //
-
+  // ---- LOGIN ---- //
   const handleLogin = () => {
     setEmailError("");
     setPasswordError("");
     setPracticeError("");
+    setLoginError("");
+    setLoginSuccess("");
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let valid = true;
@@ -69,16 +73,6 @@ function App() {
     if (!password) {
       setPasswordError("Password is required");
       valid = false;
-    } else if (
-      password.length < 8 ||
-      !/[A-Z]/.test(password) ||
-      !/[a-z]/.test(password) ||
-      !/[0-9]/.test(password)
-    ) {
-      setPasswordError(
-        "Password must be 8+ chars with uppercase, lowercase & number"
-      );
-      valid = false;
     }
 
     if (!practice) {
@@ -86,167 +80,460 @@ function App() {
       valid = false;
     }
 
-    if (valid) {
-      window.location.href = "/Welcome";
+    if (!valid) return;
+
+    const storedUsers = JSON.parse(
+      localStorage.getItem("registeredUsers") || "[]",
+    );
+    const existingUser = storedUsers.find((u) => u.email === email);
+
+    if (!existingUser) {
+      setLoginError("User not registered");
+      return;
     }
+
+    if (existingUser.password !== password) {
+      setPasswordError("Invalid credentials");
+      return;
+    }
+
+    setLoginSuccess("Login successful! Redirecting...");
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        name: existingUser.name || email,
+        email: existingUser.email,
+        role: existingUser.role || "CUSTOMER",
+        practiceName: practice,
+      }),
+    );
+
+    setTimeout(() => navigate("/Welcome"), 2000);
   };
 
   return (
     <div
-      className="relative min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${RCB})` }}
+      style={{
+        backgroundImage: `url(${RCB})`,
+        minHeight: "100vh",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        fontFamily: "'Outfit', sans-serif",
+      }}
     >
-      {/* Background Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-md"></div>
+      {/* Blur overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0.65)",
+          backdropFilter: "blur(8px)",
+        }}
+      />
 
-      {/* Floating Centered Modal */}
-      <div className="absolute inset-0 flex justify-center items-center px-3">
+      {/* Background orbs */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+        @keyframes floatOrb {
+          0%, 100% { transform: translate(0,0) scale(1); }
+          50% { transform: translate(20px,20px) scale(1.05); }
+        }
+        .orb1 {
+          position: fixed; width: 500px; height: 500px; border-radius: 50%;
+          background: #7C3AED; filter: blur(80px); opacity: 0.15;
+          top: -100px; left: -100px; pointer-events: none;
+          animation: floatOrb 8s ease-in-out infinite;
+        }
+        .orb2 {
+          position: fixed; width: 400px; height: 400px; border-radius: 50%;
+          background: #F97316; filter: blur(80px); opacity: 0.15;
+          bottom: -80px; right: -80px; pointer-events: none;
+          animation: floatOrb 8s ease-in-out infinite; animation-delay: -4s;
+        }
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .login-card {
+          display: flex;
+          width: 860px;
+          max-width: 95vw;
+          min-height: 520px;
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+          animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) both;
+          position: relative; z-index: 10;
+          cursor: default;
+        }
+        .panel-left {
+          flex: 1;
+          background: linear-gradient(160deg, #1e1b4b 0%, #312e81 40%, #4c1d95 100%);
+          display: flex; flex-direction: column; justify-content: space-between;
+          padding: 40px; position: relative; overflow: hidden;
+        }
+        .panel-left::before {
+          content: ''; position: absolute; inset: 0;
+          background-image:
+            radial-gradient(circle at 20% 80%, rgba(249,115,22,0.2) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(124,58,237,0.3) 0%, transparent 50%);
+        }
+        .topo {
+          position: absolute; inset: 0; opacity: 0.06;
+          background-image: repeating-radial-gradient(
+            circle at 60% 40%,
+            transparent 0px, transparent 28px,
+            rgba(255,255,255,0.8) 28px, rgba(255,255,255,0.8) 30px
+          );
+        }
+        .panel-right {
+          width: 380px; background: #ffffff;
+          padding: 44px 40px; display: flex; flex-direction: column; justify-content: center;
+        }
+        .form-input {
+          width: 100%; background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+          padding: 12px 16px; color: #e2e8f0;
+          font-family: 'Outfit', sans-serif; font-size: 15px;
+          outline: none; transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+          appearance: none; box-sizing: border-box;
+        }
+        .form-input:focus {
+          border-color: #7C3AED;
+          box-shadow: 0 0 0 3px rgba(124,58,237,0.3);
+          background: rgba(124,58,237,0.08);
+        }
+        .form-input.error-field { border-color: #f87171; }
+        .form-input::placeholder { color: rgba(148,163,184,0.4); }
+        .form-select {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat; background-position: right 14px center; cursor: pointer;
+        }
+        .form-select option { background: #1a1a2e; }
+        .btn-primary {
+          width: 100%; border: none; border-radius: 10px; padding: 13px;
+          font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700;
+          letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+          background: linear-gradient(135deg, #7C3AED 0%, #C026D3 50%, #F97316 100%);
+          color: white; transition: opacity 0.2s, transform 0.1s;
+        }
+        .btn-primary:hover { opacity: 0.9; }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-secondary {
+          width: 100%; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 13px;
+          font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700;
+          letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+          background: rgba(255,255,255,0.05); color: #f77e02;
+          transition: background 0.2s, transform 0.1s;
+        }
+        .btn-secondary:hover { background: #fffff; }
+        .btn-secondary:active { transform: scale(0.98); }
+        @media (max-width: 640px) {
+          .panel-left { display: none; }
+          .panel-right { width: 100%; }
+        }
+      `}</style>
 
-        <div
-          ref={modalRef}
-          className="transition-transform duration-300 animate-slideDown"
-          onMouseDown={startDrag}
-        >
-<Card className="w-full max-w-sm p-1 shadow-xl rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200 animate-fadeIn">
+      <div className="orb1" />
+      <div className="orb2" />
 
-            {/* Header */}
-            <CardHeader
-              variant="gradient"
-              color="green"
-              className="mb-1 grid h-12 place-items-center rounded-lg cursor-move"
+      {/* Card */}
+      <div ref={cardRef} className="login-card" onMouseDown={startDrag}>
+        {/* Left Panel */}
+        <div className="panel-left">
+          <div className="topo" />
+          <div
+            style={{
+              position: "relative",
+              zIndex: 1,
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+              justifyContent: "space-between",
+            }}
+          >
+            {/* Brand */}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src={logo}
+                alt="ToothX"
+                style={{ height: 60, objectFit: "contain" }}
+              />
+            </div>
+
+            {/* Tagline */}
+            <div
+              style={{
+                color: "rgba(255,255,255,0.9)",
+                fontSize: 28,
+                fontWeight: 600,
+                lineHeight: 1.3,
+                letterSpacing: "-0.5px",
+              }}
             >
-              <Typography variant="h5" color="white">
-                Duty Dentist 
-              </Typography>
-            </CardHeader>
-
-            {/* Body */}
-            <CardBody className="flex flex-col gap-1 p-2">
-
-              <Input
-                label="Email"
-                size="md"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                error={!!emailError}
-                className="!text-sm"
-              />
-              {emailError && (
-                <p className="text-red-500 text-xs">{emailError}</p>
-              )}
-
-              <Input
-                type="password"
-                label="Password"
-                size="md"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                error={!!passwordError}
-                className="!text-sm"
-              />
-              {passwordError && (
-                <p className="text-red-500 text-xs">{passwordError}</p>
-              )}
-
-              {/* Practice Dropdown */}
-              <div className="mt-1">
-                <label className="block mb-1 text-sm font-medium text-white">
-                  Practice City
-                </label>
-
-                <select
-                  id="practice"
-                  className={`w-full rounded-md border px-2 py-1 text-sm bg-white/50 backdrop-blur-md 
-                focus:outline-none focus:ring-1 focus:ring-green-600 ${
-                  practiceError ? "border-red-500" : "border-gray-300"
-                }`}
-                  value={practice}
-                  onChange={(e) => setPractice(e.target.value)}
-                >
-                  <option value="">Select City</option>
-                  <option value="HerveyBay">Hervey Bay Dental</option>
-                  <option value="SunshineCoast">Sunshine Coast Dental</option>
-                  <option value="Brisbane">Brisbane Dental Clinic</option>
-                </select>
-
-                {practiceError && (
-                  <p className="text-red-500 text-xs mt-1">{practiceError}</p>
-                )}
-              </div>
-
-              <div className="flex flex-col gap-1 text-xs mt-2 text-white">
-                <Checkbox label="Remember Me" className="text-green-700" />
-                <a
-                  href="/ResetPassword"
-                  className="text-red-300 hover:text-green-300 underline font-semibold transition"
-                >
-                  Forgot Password? Reset Here
-                </a>
-              </div>
-            </CardBody>
-
-            {/* Footer */}
-            <CardFooter className="pt-1 flex flex-col items-center gap-3">
-
-              <Button
-                className="text-sm font-semibold text-white border border-green-600 px-8 py-1.5 rounded-lg bg-green-600/80 hover:bg-green-700 transition"
-                onClick={handleLogin}
+              Modern dental care,
+              <br />
+              <span
+                style={{
+                  background: "linear-gradient(135deg,#7C3AED,#F97316)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
               >
-                Login
-              </Button>
+                reimagined
+              </span>{" "}
+              for
+              <br />
+              your practice.
+            </div>
 
-              <Button
-                className="text-sm font-semibold text-white border border-green-600 px-8 py-1.5 rounded-lg bg-green-600/80 hover:bg-green-700 transition"
-                onClick={() => (window.location.href = "/my-app")}
-              >
-                Cancel
-              </Button>
+            <div
+              style={{
+                color: "rgba(255,255,255,0.3)",
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+              }}
+            >
+              Dental Practice Portal
+            </div>
+          </div>
+        </div>
 
-              {/* Fingerprint Button */}
-              <button
-                onClick={() => setShowPopup(true)}
-                className="flex justify-center items-center p-3 rounded-full bg-white/40 backdrop-blur-xl shadow-lg hover:bg-white/60 transition"
-              >
-                <IoMdFingerPrint className="text-4xl text-black hover:text-green-600 transition" />
-              </button>
+        {/* Right Panel */}
+        <div className="panel-right">
+          <div style={{ marginBottom: 28 }}>
+            <div
+              style={{
+                fontSize: 24,
+                fontWeight: 700,
+                color: "#f77e02",
+                letterSpacing: "-0.5px",
+              }}
+            >
+              Welcome Back!
+            </div>
+            <div style={{ color: "#1c6906", fontSize: 14, marginTop: 6 }}>
+              Sign in to your ToothX portal
+            </div>
+          </div>
 
-              {/* Fingerprint Popup */}
-              {showPopup && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm z-50">
-                  <div className="bg-white rounded-xl shadow-xl p-6 w-72 text-center animate-popup">
-                    <h2 className="text-lg font-semibold mb-3 text-green-700">
-                      User Detected
-                    </h2>
+          {/* Alerts */}
+          {loginError && (
+            <div
+              style={{
+                background: "rgba(248,113,113,0.1)",
+                border: "1px solid rgba(248,113,113,0.3)",
+                color: "#f87171",
+                borderRadius: 8,
+                padding: "10px 14px",
+                fontSize: 13,
+                fontWeight: 500,
+                marginBottom: 12,
+              }}
+            >
+              {loginError}
+            </div>
+          )}
+          {loginSuccess && (
+            <div
+              style={{
+                background: "rgba(52,211,153,0.1)",
+                border: "1px solid rgba(52,211,153,0.3)",
+                color: "#34d399",
+                borderRadius: 8,
+                padding: "10px 14px",
+                fontSize: 13,
+                fontWeight: 500,
+                marginBottom: 12,
+              }}
+            >
+              {loginSuccess}
+            </div>
+          )}
 
-                    <CiUser className="text-5xl mx-auto animate-pulseSlow" />
+          {/* Email */}
+          <div style={{ marginBottom: 14 }}>
+            <label
+              style={{
+                display: "block",
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "0.5px",
+                color: "#94a3b8",
+                textTransform: "uppercase",
+                marginBottom: 6,
+              }}
+            >
+              Email
+            </label>
+            <input
+              className={`form-input${emailError ? " error-field" : ""}`}
+              type="email"
+              placeholder="you@practice.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setLoginError("");
+                setEmailError("");
+              }}
+            />
+            {emailError && (
+              <p style={{ color: "#f87171", fontSize: 12, marginTop: 4 }}>
+                {emailError}
+              </p>
+            )}
+          </div>
 
-                    <p className="text-gray-600 mt-2">
-                      Authentication successful!
-                    </p>
+          {/* Password */}
+          <div style={{ marginBottom: 14 }}>
+            <label
+              style={{
+                display: "block",
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "0.5px",
+                color: "#94a3b8",
+                textTransform: "uppercase",
+                marginBottom: 6,
+              }}
+            >
+              Password
+            </label>
+            <input
+              className={`form-input${passwordError ? " error-field" : ""}`}
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setPasswordError("");
+              }}
+            />
+            {passwordError && (
+              <p style={{ color: "#f87171", fontSize: 12, marginTop: 4 }}>
+                {passwordError}
+              </p>
+            )}
+          </div>
 
-                    <button
-                      onClick={() =>
-                        (window.location.href = "/Customer_Home")
-                      }
-                      className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
-                    >
-                      Close
-                    </button>
-                  </div>
-                </div>
-              )}
+          {/* Practice */}
+          <div style={{ marginBottom: 14 }}>
+            <label
+              style={{
+                display: "block",
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "0.5px",
+                color: "#94a3b8",
+                textTransform: "uppercase",
+                marginBottom: 6,
+              }}
+            >
+              Practice
+            </label>
+            <select
+              className={`form-input form-select${practiceError ? " error-field" : ""}`}
+              value={practice}
+              onChange={(e) => {
+                setPractice(e.target.value);
+                setPracticeError("");
+              }}
+            >
+              <option value="">Select Practice</option>
+              <option value="Hervey Bay Dental">Hervey Bay Dental</option>
+              <option value="Sunshine Coast Dental">
+                Sunshine Coast Dental
+              </option>
+              <option value="Brisbane Dental Clinic">
+                Brisbane Dental Clinic
+              </option>
+            </select>
+            {practiceError && (
+              <p style={{ color: "#f87171", fontSize: 12, marginTop: 4 }}>
+                {practiceError}
+              </p>
+            )}
+          </div>
 
-              <Typography variant="small" className="mt-3 text-center text-white">
-                Don’t have an account?{" "}
-                <a
-                  href="/NewRegistration"
-                  className="underline text-red-300 hover:text-green-300 font-bold transition"
-                >
-                  REGISTER
-                </a>
-              </Typography>
-            </CardFooter>
-          </Card>
+          {/* Remember Me */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              marginBottom: 20,
+            }}
+          >
+            <input
+              type="checkbox"
+              id="remember"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+              style={{
+                width: 16,
+                height: 16,
+                accentColor: "#7C3AED",
+                cursor: "pointer",
+              }}
+            />
+            <label
+              htmlFor="remember"
+              style={{
+                fontSize: 13,
+                color: "#94a3b8",
+                cursor: "pointer",
+                textTransform: "none",
+                letterSpacing: "normal",
+              }}
+            >
+              Remember Me
+            </label>
+          </div>
+
+          <button className="btn-primary" onClick={handleLogin}>
+            Login
+          </button>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              margin: "10px 0 14px",
+              color: "rgba(148,163,184,0.3)",
+              fontSize: 12,
+            }}
+          >
+            <div
+              style={{
+                flex: 1,
+                height: 1,
+                background: "rgba(255,255,255,0.06)",
+              }}
+            />
+            or
+            <div
+              style={{
+                flex: 1,
+                height: 1,
+                background: "rgba(255,255,255,0.06)",
+              }}
+            />
+          </div>
+
+          <button
+            className="btn-secondary"
+            onClick={() => navigate("/NewRegistration")}
+          >
+            Register
+          </button>
         </div>
       </div>
     </div>

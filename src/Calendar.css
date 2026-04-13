@@ -61,7 +61,7 @@
   padding: 12px;
   font-size: 16px;
   font-weight: bold;
-  background: #007bff;
+  background: hsl(120, 100%, 50%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -619,7 +619,7 @@ button.add-profile {
 }
 /* Icon buttons in the table and modals */
 .icon-btn {
-  background-color: #ede8e8; /* Blue background */
+  background-color: #ede8e8; /* orange background */
   color: rgb(16, 1, 1); /* White icon */
   border: none;
   border-radius: 50%; /* Circular buttons */
@@ -634,7 +634,7 @@ button.add-profile {
 }
 
 .icon-btn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; /* Darker orange on hover */
   transform: scale(1.1); /* Slight zoom effect */
 }
 
@@ -784,7 +784,7 @@ button.add-profile {
 .icon-btn.refresh { background-color: #6c757d; }
 
 .selected-row {
-  background-color: #f0f8ff; /* light blue highlight */
+  background-color: #f0f8ff; /* light orange highlight */
 }
 .action-buttons {
   display: flex;
@@ -806,7 +806,7 @@ button.add-profile {
 }
 
 .selected-row {
-  background-color: #f0f8ff; /* light blue highlight */
+  background-color: #f0f8ff; /* light orange highlight */
 }
 
 .pagination {
@@ -1017,7 +1017,7 @@ button.add-profile {
 
 .modal-content h2 {
   margin-bottom: 15px;
-  color: #007BFF;
+  color: #00ff59;
 }
 
 /* Button group inside modals */
@@ -1128,7 +1128,7 @@ input[type="checkbox"] {
   width: 95%;          /* responsive width */
   margin: 20px auto;
   padding: 20px;
-  background: #b1f2e9;
+  background: #ece8e6;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

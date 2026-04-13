@@ -18,7 +18,7 @@ export default function DocumentCenter() {
     { title: "Documents", icon: <DocumentTextIcon className="h-8 w-8 text-purple-500" />, link: "#" },
     { title: "Payslips", icon: <DocumentDuplicateIcon className="h-8 w-8 text-orange-500" />, link: "#" },
     { title: "Form 16", icon: <ClipboardDocumentCheckIcon className="h-8 w-8 text-pink-500" />, link: "#" },
-    { title: "Company Policies", icon: <ClipboardDocumentListIcon className="h-8 w-8 text-green-500" />, link: "#" },
+    { title: "Company Policies", icon: <ClipboardDocumentListIcon className="h-8 w-8 text-orange-500" />, link: "#" },
     { title: "Forms", icon: <ClipboardDocumentListIcon className="h-8 w-8 text-red-400" />, link: "#" },
   ];
 
@@ -51,7 +51,7 @@ export default function DocumentCenter() {
         <Typography
           as="a"
           href="/Welcome"
-          color="blue-gray"
+          color="orange-gray"
           className="cursor-pointer hover:underline"
           onClick={() => navigate("/")}
         >
@@ -60,13 +60,13 @@ export default function DocumentCenter() {
         <Typography
           as="a"
           href="/PatientPortal"
-          color="blue-gray"
+          color="orange-gray"
           className="cursor-pointer hover:underline"
           onClick={() => navigate("/PatientPortal")}
         >
           Patient Portal
         </Typography>
-        <Typography color="blue-gray">Doctor List</Typography>
+        <Typography color="orange-gray">Doctor List</Typography>
       </Breadcrumbs>
 
       {/* Top Banner */}
@@ -107,7 +107,7 @@ export default function DocumentCenter() {
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-between">
           <div className="flex items-center space-x-3">
-            <EnvelopeIcon className="h-8 w-8 text-blue-500" />
+            <EnvelopeIcon className="h-8 w-8 text-orange-500" />
             <span className="text-gray-700 font-medium">Letters</span>
           </div>
 

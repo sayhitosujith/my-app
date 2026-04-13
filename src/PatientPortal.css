@@ -20,12 +20,17 @@ body {
 /* ---------------------- Sidebar ---------------------- */
 .sidebar {
   width: 220px;
-  background-color: #2082eb; /* Change to your preferred color */
+  background-color: #0485b0; /* Change to your preferred color */
   display: flex;
   flex-direction: column;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
   color: #fff; /* Make text/icons visible */
+}
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 12px 0;
 }
 
 .sidebar a.nav-item {
@@ -80,6 +85,26 @@ body {
   transition: background-color 0.3s;
 }
 
+.stat-box {
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Card Colors */
+.total-box {
+  background-color: #1256e7; /* orange */
+}
+
+.completed-box {
+  background-color: #67db82; /* orange */
+}
+
+.pending-box {
+  background-color: #d9795f; /* Orange */
+}
 .portal-container.dark-mode .dark-mode-toggle {
   background-color: #444;
     align-self: flex-start;
@@ -224,21 +249,27 @@ body {
 }
 
 .form-btn {
-  padding: 8px 12px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  background-color: #7492b5;
-  color: #fff;
-  transition: background 0.3s;
-}
-
-.form-btn.completed {
-  background-color: #92c99f;
+  font-weight: 500;
+  background-color: #007bff; /* orange for Start Form */
+  color: white;
+  transition: 0.3s;
 }
 
 .form-btn:hover {
-  background-color: #05468d;
+  background-color: #0056b3;
+}
+
+/* Completed form button */
+.form-btn.completed {
+  background-color: #28a745; /* orange for View/Edit */
+}
+
+.form-btn.completed:hover {
+  background-color: #1e7e34;
 }
 
 .portal-container.dark-mode .form-btn {

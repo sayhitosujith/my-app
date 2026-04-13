@@ -76,7 +76,7 @@ const WhatWeTreatPage = () => {
 
     {/* ===== NAVBAR ===== */}
 <div className="flex items-center justify-between px-6 py-4 shadow-sm">
-  <div className="flex items-center gap-2 text-xl font-bold text-blue-600">
+  <div className="flex items-center gap-2 text-xl font-bold text-orange-600">
     <img src={logo} alt="DutyDentist Logo" className="w-28 h-auto" />
   </div>
 
@@ -84,7 +84,7 @@ const WhatWeTreatPage = () => {
     <button onClick={() => navigate("/HomePage")}>Home</button>
     <button onClick={() => navigate("/gallery")}>Gallery</button>
     <button
-      className="text-green-600 font-semibold"
+      className="text-orange-600 font-semibold"
       onClick={() => navigate("/treatments")}
     >
       What We Treat
@@ -92,7 +92,7 @@ const WhatWeTreatPage = () => {
     <button onClick={() => navigate("/CustomerCare")}>Support</button>
 
     <button
-      className="flex items-center gap-3 px-5 py-2 rounded-full shadow-lg cursor-pointer bg-green-600 hover:bg-green-700 text-white"
+      className="flex items-center gap-3 px-5 py-2 rounded-full shadow-lg cursor-pointer bg-orange-600 hover:bg-orange-700 text-white"
       onClick={() => navigate("/Customer_Home")}
     >
       <BsPlus size={22} />
@@ -105,7 +105,7 @@ const WhatWeTreatPage = () => {
       {/* ===== WHAT WE TREAT SECTION ===== */}
       <section className="bg-[#004E8C] text-white py-16 px-6">
         <h2 className="text-3xl font-bold text-center mb-4">What we treat</h2>
-        <p className="text-center text-sm text-blue-100 mb-10">
+        <p className="text-center text-sm text-orange-100 mb-10">
           We help with a wide range of dental concerns — from routine checkups to
           advanced treatments.
         </p>
@@ -117,9 +117,9 @@ const WhatWeTreatPage = () => {
               className="bg-white text-gray-800 rounded-lg px-4 py-3 flex items-center justify-between shadow"
             >
               <span className="flex items-center gap-2 text-sm font-medium">
-                <span className="text-green-600">📄</span> {item}
+                <span className="text-orange-600">📄</span> {item}
               </span>
-              <MdAddCircle className="text-blue-600 text-xl cursor-pointer hover:scale-110 transition" />
+              <MdAddCircle className="text-orange-600 text-xl cursor-pointer hover:scale-110 transition" />
             </div>
           ))}
         </div>
@@ -127,7 +127,7 @@ const WhatWeTreatPage = () => {
 
       {/* ===== SERVICES SECTION ===== */}
       <section className="bg-gray-50 py-16 px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">
+        <h2 className="text-3xl font-bold text-center mb-12 text-orange-900">
           Services
         </h2>
 
@@ -137,7 +137,7 @@ const WhatWeTreatPage = () => {
               key={index}
               className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition"
             >
-              <h3 className="text-lg font-semibold mb-2 text-blue-900">
+              <h3 className="text-lg font-semibold mb-2 text-orange-900">
                 {service.title}
               </h3>
               <p className="text-sm text-gray-600">{service.desc}</p>
@@ -152,12 +152,12 @@ const WhatWeTreatPage = () => {
           {/* Logo + Trust */}
           <div>
             <div className="flex items-center gap-2 text-xl font-bold mb-3">
-              DutyDentist<span className="text-blue-300">🦷</span>
+              DutyDentist<span className="text-orange-300">🦷</span>
             </div>
-            <p className="text-sm text-blue-100 mb-4">
+            <p className="text-sm text-orange-100 mb-4">
               Trusted. Caring. Affordable.
             </p>
-            <p className="text-xs text-blue-200 leading-relaxed">
+            <p className="text-xs text-orange-200 leading-relaxed">
               Fully qualified dental professionals providing safe and reliable
               oral healthcare services.
             </p>
@@ -166,7 +166,7 @@ const WhatWeTreatPage = () => {
           {/* About */}
           <div>
             <h4 className="font-semibold mb-3">About us</h4>
-            <ul className="space-y-2 text-sm text-blue-100">
+            <ul className="space-y-2 text-sm text-orange-100">
               <li>Book an appointment</li>
               <li>About us</li>
               <li>Contact us</li>
@@ -176,7 +176,7 @@ const WhatWeTreatPage = () => {
           {/* Services */}
           <div>
             <h4 className="font-semibold mb-3">Services</h4>
-            <ul className="space-y-2 text-sm text-blue-100">
+            <ul className="space-y-2 text-sm text-orange-100">
               <li>Dental Consultation</li>
               <li>Prescription Advice</li>
               <li>Dental Certificates</li>
@@ -187,7 +187,7 @@ const WhatWeTreatPage = () => {
           </div>
         </div>
 
-        <div className="border-t border-blue-300/30 mt-10 pt-4 text-center text-xs text-blue-200">
+        <div className="border-t border-orange-300/30 mt-10 pt-4 text-center text-xs text-orange-200">
           © DutyDentist &nbsp; | &nbsp; Privacy Policy &nbsp; | &nbsp; Terms &
           Conditions &nbsp; | &nbsp; Cookies
         </div>

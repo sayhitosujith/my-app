@@ -14,13 +14,13 @@ export function OrderDetails() {
       <img style={{width: '60%', height: '50vh'}} src="https://i.ytimg.com/vi/ln_P2jNCSA0/maxresdefault.jpg" />  
         <div>
           <Typography className="mb-4" variant="h3">
-          Veg Green Salad 
+          Veg orange Salad 
           </Typography>
           <b><hr class="separator" /></b>
-          <h1 style={{ color: 'Green' }}><b><div>Special Price </div></b></h1>
+          <h1 style={{ color: 'orange' }}><b><div>Special Price </div></b></h1>
           <Typography variant="h5">₹199</Typography>
           <Typography className="mt-4 text-base font-normal leading-[27px] !text-gray-500">
-          A refreshing vegetable salad using all different kinds of vegetables. You can use whatever you like, but the tomatoes and cucumbers make it taste great. It is very much like an Israeli salad. The homemade dressing is very good for any green salad.
+          A refreshing vegetable salad using all different kinds of vegetables. You can use whatever you like, but the tomatoes and cucumbers make it taste great. It is very much like an Israeli salad. The homemade dressing is very good for any orange salad.
           </Typography>
           <div className="my-8 flex items-center gap-2">
             <Rating value={4} className="text-amber-500" />
@@ -28,16 +28,16 @@ export function OrderDetails() {
               4.0/5 (100 reviews)
             </Typography>
           </div>
-          <Typography color="blue-gray" variant="h6">
+          <Typography color="orange-gray" variant="h6">
             Box Color
           </Typography>
           <div className="my-8 mt-3 flex items-center gap-2">
-            <div className="h-5 w-5 rounded border border-gray-900 bg-blue-gray-600 "></div>
-            <div className="h-5 w-5 rounded border border-blue-gray-100 "></div>
-            <div className="h-5 w-5 rounded border border-blue-red-100 bg-red-900 "></div>
+            <div className="h-5 w-5 rounded border border-gray-900 bg-orange-gray-600 "></div>
+            <div className="h-5 w-5 rounded border border-orange-gray-100 "></div>
+            <div className="h-5 w-5 rounded border border-orange-red-100 bg-red-900 "></div>
           </div>
           <div className="mb-4 flex w-full items-center gap-3 md:w-1/2 ">
-    <Button color="green" appearance="primary"> 
+    <Button color="orange" appearance="primary"> 
               <a href="/MyCart">
               Add to Cart
                </a> 
@@ -55,9 +55,9 @@ export function OrderDetails() {
       <div class="relative flex w-full gap-2 md:w-max">
         <div class="relative h-10 w-full  min-w-[288px]">
           <input type="Enter Delivery Pincode" placeholder="Enter Delivery Pincode"
-            class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent !border-t-blue-gray-300 bg-transparent px-3 py-2.5 pl-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder:text-blue-gray-300 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2  focus:!border-blue-gray-300 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50" />
+            class="peer h-full w-full rounded-[7px] border border-orange-gray-200 border-t-transparent !border-t-orange-gray-300 bg-transparent px-3 py-2.5 pl-9 font-sans text-sm font-normal text-orange-gray-700 outline outline-0 transition-all placeholder:text-orange-gray-300 placeholder-shown:border placeholder-shown:border-orange-gray-200 placeholder-shown:border-t-orange-gray-200 focus:border-2  focus:!border-orange-gray-300 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-orange-gray-50" />
           <label
-            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all before:content-none after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all after:content-none peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"></label>
+            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-orange-gray-200 before:transition-all before:content-none after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-orange-gray-200 after:transition-all after:content-none peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-orange-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-orange-gray-500"></label>
         </div>
         <div class="!absolute left-3 top-[13px]">
           <svg width="13" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">

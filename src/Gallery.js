@@ -19,7 +19,7 @@ function Gallery() {
     <div className="p-6 md:p-10 bg-white min-h-screen">
       {/* Page Title */}
       <div className="text-center mb-8">
-        <Typography variant="h2" className="font-bold text-blue-900">
+        <Typography variant="h2" className="font-bold text-orange-900">
           Our Gallery
         </Typography>
         <Typography variant="small" className="text-gray-700 mt-2">
@@ -45,7 +45,7 @@ function Gallery() {
       <div className="mt-10 text-center">
         <button
           onClick={() => navigate("/HomePage")}
-          className="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors font-semibold"
+          className="bg-orange-700 text-white px-6 py-2 rounded-lg hover:bg-orange-800 transition-colors font-semibold"
         >
           Back to Home
         </button>

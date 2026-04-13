@@ -14,7 +14,8 @@ function Addprofile() {
     lastName: '',
     email: '',
     phone: '',
-    password: '',
+    sex: '',
+    pregnancyStatus: '',  
     aadhar: '',
     address: '',
     zip: '',
@@ -88,7 +89,7 @@ function Addprofile() {
       return;
     }
 
-    if (!form.firstName || !form.lastName || !form.email || !form.phone || !form.password) {
+    if (!form.firstName || !form.lastName || !form.email || !form.phone || !form.sex) {
       setError('Please fill in all required fields');
       return;
     }
@@ -136,22 +137,63 @@ function Addprofile() {
               <Input label="Last Name *" size="lg" name="lastName" value={form.lastName} onChange={handleChange} />
               <Input label="Email *" size="lg" name="email" type="email" value={form.email} onChange={handleChange} />
               <Input label="Phone Number *" size="lg" name="phone" value={form.phone} onChange={handleChange} />
-              <Input label="Password *" size="lg" name="password" type="password" value={form.password} onChange={handleChange} />
-              <Input label="Aadhar Number *" size="lg" name="aadhar" value={form.aadhar} onChange={handleChange} />
+             
+          <Select
+  label="Sex *"
+  value={form.sex}
+  onChange={(value) => handleSelectChange("sex", value)}
+>
+  <Option value="Male">Male</Option>
+  <Option value="Female">Female</Option>
+  <Option value="Other">Other</Option>
+</Select>
+
+{form.sex === "Female" && (
+  <Select
+    label="Pregnancy Status"
+    value={form.pregnancyStatus}
+    onChange={(value) => handleSelectChange("pregnancyStatus", value)}
+  >
+        <Option value="Pregnant">Pregnant</Option>
+        <Option value="Not Pregnant">Not Pregnant</Option>
+
+  </Select>
+)}
+<Select
+  label="Referred By *"
+  value={form.referredBy}
+  onChange={(value) => handleSelectChange("referredBy", value)}
+>
+  <Option value="Friend">Friend</Option>
+  <Option value="Doctor">Doctor</Option>
+  <Option value="Online">Online</Option>
+  <Option value="Other">Other</Option>
+</Select>
+
+<Input
+  label="Aadhar Number *"
+  size="lg"
+  name="aadhar"
+  value={form.aadhar}
+  maxLength={12}
+  onChange={(e) =>
+    setForm({ ...form, aadhar: e.target.value.replace(/\D/g, "").slice(0, 12) })
+  }
+/>
+
+
               <Input label="Address *" size="lg" name="address" value={form.address} onChange={handleChange} className="col-span-2" />
               <Input label="Zip Code *" size="lg" name="zip" value={form.zip} onChange={handleChange} />
-              <Select label="Referred By *" value={form.referredBy} onChange={(value) => handleSelectChange('referredBy', value)}>
-                <Option>Friend</Option>
-                <Option>Doctor</Option>
-                <Option>Online</Option>
-                <Option>Other</Option>
-              </Select>
-              <Select label="Contact Preference *" value={form.contactPreference} onChange={(value) => handleSelectChange('contactPreference', value)}>
-                <Option>Email</Option>
-                <Option>Phone</Option>
-                <Option>WhatsApp</Option>
-                <Option>SMS</Option>
-              </Select>
+           <Select
+  label="Contact Preference *"
+  value={form.contactPreference}
+  onChange={(value) => handleSelectChange("contactPreference", value)}
+>
+  <Option value="Email">Email</Option>
+  <Option value="Phone">Phone</Option>
+  <Option value="WhatsApp">WhatsApp</Option>
+  <Option value="SMS">SMS</Option>
+</Select>
               <Input label="Occupation *" size="lg" name="occupation" value={form.occupation} onChange={handleChange} />
 
               {/* Multiple X-ray Uploads */}
@@ -188,7 +230,7 @@ function Addprofile() {
                           href={file.data}
                           target="_blank"
                           rel="noreferrer"
-                          className="absolute bottom-1 left-1 text-xs text-blue-600 underline"
+                          className="absolute bottom-1 left-1 text-xs text-orange-600 underline"
                         >
                           View PDF
                         </a>
@@ -233,7 +275,7 @@ function Addprofile() {
 
           <CardFooter className="pt-4">
             <div className="flex gap-4">
-              <Button variant="gradient" color="green" className="flex-1" onClick={handleAdd}>
+              <Button variant="gradient" color="orange" className="flex-1" onClick={handleAdd}>
                 ADD
               </Button>
               <Button variant="outlined" color="red" className="flex-1" onClick={() => navigate('/Profile')}>

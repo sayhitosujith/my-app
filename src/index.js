@@ -43,10 +43,43 @@ import SuperAdmin from './SuperAdmin';
 import { SettingsProvider } from "./context/SettingsContext";
 import RevenueChart from './RevenueChart.js';
 import WhatWeTreatPage from './WhatWeTreatPage.js';
+import ServicePage from "./ServicePage";
+import PatientList from "./PatientList";
+import RootCanalTreatment from "./RootCanalTreatment.js";
+import Subscriptions from "./Subscriptions.js";
+import ScanProduct from "./ScanProduct.js";
+import Jalavastra from "./Jalavastra.js";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const router = createBrowserRouter([
- {
+  
+  {
+    path: "/Jalavastra",
+    element: <Jalavastra />,
+  },
+  {
+    path: "/Subscriptions",
+    element: <Subscriptions />,
+  },
+  {
+    path: "/ScanProduct",
+    element: <ScanProduct />,
+  },
+  {
+    path: "/PatientList",
+    element: <PatientList />,
+  },
+  {
+    path: "/RootCanalTreatment",
+    element: <RootCanalTreatment />,
+  },
+   {
+    path: "/ServicePage",
+    element: <ServicePage />,
+  },
+  {
     path: "/WhatWeTreatPage",
     element: <WhatWeTreatPage />,
   },
@@ -204,7 +237,7 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

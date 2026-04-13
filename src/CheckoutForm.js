@@ -104,7 +104,7 @@ export default function CheckoutForm() {
                 <div>
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    color="orange-gray"
                     className="mb-2 font-medium"
                   >
                     Your Email
@@ -112,7 +112,7 @@ export default function CheckoutForm() {
                   <Input
                     type="email"
                     placeholder="name@mail.com"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                    className=" !border-t-orange-gray-200 focus:!border-t-gray-900"
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
@@ -122,7 +122,7 @@ export default function CheckoutForm() {
                 <div className="my-3">
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    color="orange-gray"
                     className="mb-2 font-medium "
                   >
                     Card Details
@@ -133,10 +133,10 @@ export default function CheckoutForm() {
                     value={formatCardNumber(cardNumber)}
                     onChange={(event) => setCardNumber(event.target.value)}
                     icon={
-                      <CreditCardIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
+                      <CreditCardIcon className="absolute left-0 h-4 w-4 text-orange-gray-300" />
                     }
                     placeholder="XXXX XXXX XXXX XXXX"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                    className=" !border-t-orange-gray-200 focus:!border-t-gray-900"
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
@@ -145,7 +145,7 @@ export default function CheckoutForm() {
                     <div>
                       <Typography
                         variant="small"
-                        color="blue-gray"
+                        color="orange-gray"
                         className="mb-2 font-medium"
                       >
                         Expires
@@ -156,7 +156,7 @@ export default function CheckoutForm() {
                         onChange={(event) => setCardExpires(event.target.value)}
                         containerProps={{ className: "min-w-[72px]" }}
                         placeholder="00/00"
-                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                        className=" !border-t-orange-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                           className: "before:content-none after:content-none",
                         }}
@@ -165,7 +165,7 @@ export default function CheckoutForm() {
                     <div>
                       <Typography
                         variant="small"
-                        color="blue-gray"
+                        color="orange-gray"
                         className="mb-2 font-medium"
                       >
                         CVC
@@ -174,7 +174,7 @@ export default function CheckoutForm() {
                         maxLength={4}
                         containerProps={{ className: "min-w-[72px]" }}
                         placeholder="000"
-                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                        className=" !border-t-orange-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                           className: "before:content-none after:content-none",
                         }}
@@ -183,14 +183,14 @@ export default function CheckoutForm() {
                   </div>
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    color="orange-gray"
                     className="mb-2 font-medium"
                   >
                     Holder Name
                   </Typography>
                   <Input
                     placeholder="name@mail.com"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                    className=" !border-t-orange-gray-200 focus:!border-t-gray-900"
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
@@ -215,14 +215,14 @@ export default function CheckoutForm() {
                 <div>
                   <Typography
                     variant="paragraph"
-                    color="blue-gray"
+                    color="orange-gray"
                     className="mb-4 font-medium"
                   >
                     Personal Details
                   </Typography>
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    color="orange-gray"
                     className="mb-2 font-medium"
                   >
                     Your Email
@@ -230,7 +230,7 @@ export default function CheckoutForm() {
                   <Input
                     type="email"
                     placeholder="name@mail.com"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                    className=" !border-t-orange-gray-200 focus:!border-t-gray-900"
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
@@ -240,21 +240,21 @@ export default function CheckoutForm() {
                 <div className="my-6">
                   <Typography
                     variant="paragraph"
-                    color="blue-gray"
+                    color="orange-gray"
                     className="mb-4 font-medium"
                   >
                     Billing Address
                   </Typography>
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    color="orange-gray"
                     className="mb-2 font-medium"
                   >
                     Country
                   </Typography>
                   <Select
                     placeholder="USA"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                    className=" !border-t-orange-gray-200 focus:!border-t-gray-900"
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
@@ -275,14 +275,14 @@ export default function CheckoutForm() {
                   </Select>
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    color="orange-gray"
                     className="mt-4 -mb-2 font-medium"
                   >
                     Postal Code
                   </Typography>
                   <Input
                     placeholder="0000"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                    className=" !border-t-orange-gray-200 focus:!border-t-gray-900"
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}

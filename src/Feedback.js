@@ -30,7 +30,7 @@ function Feedback() {
               <Button
                 key={num}
                 onClick={() => handleRating(num)}
-                color={selectedRating === num ? "green" : "gray"}
+                color={selectedRating === num ? "orange" : "gray"}
                 className="rounded-full w-10 h-10 p-0"
               >
                 {num}

@@ -25,7 +25,7 @@ function Logout() {
   const getRatingColor = () => {
     if (rating <= 6) return "text-red-600";     
     if (rating === 7) return "text-yellow-600"; 
-    return "text-green-600";                    
+    return "text-orange-600";                    
   };
 
   const getEmoji = () => {
@@ -37,11 +37,11 @@ function Logout() {
   return (
     <div className="flex flex-row gap-5">
       {/* Left Section */}
-      <div className="w-1/2 h-screen flex items-center justify-center bg-green-100">
+      <div className="w-1/2 h-screen flex items-center justify-center bg-orange-100">
         <Card className="w-92">
           <CardHeader
             variant="gradient"
-            color="green"
+            color="orange"
             className="mb-4 grid h-28 place-items-center"
           >
             <Typography variant="h3" color="white">
