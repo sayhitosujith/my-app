@@ -262,7 +262,7 @@ function App() {
               <img
                 src={logo}
                 alt="ToothX"
-                style={{ height: 60, objectFit: "contain" }}
+                style={{ height: 100, objectFit: "contain" }}
               />
             </div>
 
