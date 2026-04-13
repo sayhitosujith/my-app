@@ -311,11 +311,11 @@ function Welcome() {
             Your personal online Dentist
           </h1>
           <p className="text-white text-sm md:text-lg font-medium drop-shadow-md leading-relaxed">
-            Struggling to get a dentist appointment? Fed up with long queues?
+            Struggling to get a Dentist appointment? Fed up of long queues?
             Frustrated waiting? <br />
-            Don’t worry – ToothX is here to help <br />
+            Don’t worry – we’re here to help. <br />
             Book a same day or next day online consultation, with a
-            experienced Dentist, in just a few clicks.
+            NHS-experienced Dentist, in just a few clicks.
           </p>
 
           <Button

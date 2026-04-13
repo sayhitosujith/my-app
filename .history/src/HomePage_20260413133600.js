@@ -315,7 +315,7 @@ function Welcome() {
             Frustrated waiting? <br />
             Don’t worry – ToothX is here to help <br />
             Book a same day or next day online consultation, with a
-            experienced Dentist, in just a few clicks.
+            NHS-experienced Dentist, in just a few clicks.
           </p>
 
           <Button
