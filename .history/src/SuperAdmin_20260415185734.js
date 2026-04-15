@@ -93,6 +93,7 @@ export default function SuperAdmin({
 
     window.dispatchEvent(new Event("storage"));
   };
+  /* ---------------- USERS ---------------- */
 
   const [appointments, setAppointments] = useState([]);
 
