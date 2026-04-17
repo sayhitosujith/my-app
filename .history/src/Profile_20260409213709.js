@@ -22,6 +22,7 @@ import { FaPowerOff, FaWhatsapp } from "react-icons/fa";
 import { Select, Option } from "@material-tailwind/react";
 import { HiOutlineRefresh } from "react-icons/hi";
 
+
 // Helper functions
 const validateAadhaar = (aadhaar) => /^[2-9][0-9]{11}$/.test(aadhaar);
 const maxDigits = (value, max) => value.replace(/\D/g, "").slice(0, max);
@@ -75,18 +76,18 @@ const CardItem = ({
   return (
     <Card
       className={`rounded-xl shadow-sm border border-gray-200
-  transition-all duration-300 hover:shadow-lg hover:-translate-y-1
-  ${
-    item.pregnancyStatus === "Pregnant"
-      ? "border-pink-400 bg-pink-50"
-      : "border-gray-200"
-  }
+transition-all duration-300 hover:shadow-lg hover:-translate-y-1
+${
+  item.pregnancyStatus === "Pregnant"
+    ? "border-pink-400 bg-pink-50"
+    : "border-gray-200"
+}
 
-  ${
-    listView
-      ? "w-full flex flex-row gap-4 items-start p-4"
-      : "w-full flex flex-col p-4 min-h-[420px]"
-  }`}
+${
+  listView
+    ? "w-full flex flex-row gap-4 items-start p-4"
+    : "w-full flex flex-col p-4 min-h-[420px]"
+}`}
     >
       {/* Avatar */}
       <div
@@ -101,7 +102,7 @@ const CardItem = ({
           alt="Profile"
           variant={listView ? "circular" : "square"}
           className={`border-4 border-gray-300 shadow-md object-cover
-  ${listView ? "w-20 h-20 rounded-full" : "w-36 h-36 md:w-52 md:h-52 rounded-lg"}          `}
+${listView ? "w-20 h-20 rounded-full" : "w-36 h-36 md:w-52 md:h-52 rounded-lg"}          `}
         />
       </div>
 
@@ -123,26 +124,26 @@ const CardItem = ({
           </div>
 
           {/* Medical Badges
-      <div className="flex flex-wrap gap-2 mt-2">
-        {item?.pregnancyStatus === "Pregnant" && (
-          <AlertBadge color="bg-pink-100 text-pink-700" text="🤰 Pregnant" />
-        )}
+    <div className="flex flex-wrap gap-2 mt-2">
+      {item?.pregnancyStatus === "Pregnant" && (
+        <AlertBadge color="bg-pink-100 text-pink-700" text="🤰 Pregnant" />
+      )}
 
-        {item?.diabetes && (
-          <AlertBadge color="bg-yellow-100 text-yellow-700" text="💊 Diabetes" />
-        )}
+      {item?.diabetes && (
+        <AlertBadge color="bg-yellow-100 text-yellow-700" text="💊 Diabetes" />
+      )}
 
-        {item?.hypertension && (
-          <AlertBadge color="bg-red-100 text-red-700" text="❤️ Hypertension" />
-        )}
+      {item?.hypertension && (
+        <AlertBadge color="bg-red-100 text-red-700" text="❤️ Hypertension" />
+      )}
 
-        {item?.bloodThinners && (
-          <AlertBadge
-            color="bg-purple-100 text-purple-700"
-            text="🩸 Blood Thinners"
-          />
-        )}
-      </div> */}
+      {item?.bloodThinners && (
+        <AlertBadge
+          color="bg-purple-100 text-purple-700"
+          text="🩸 Blood Thinners"
+        />
+      )}
+    </div> */}
         </div>
 
         {/* Contact Info */}
@@ -607,11 +608,7 @@ function Profile() {
           Are you sure you want to delete this profile?
         </DialogBody>
         <DialogFooter>
-          <Button
-            variant="text"
-            color="orange"
-            onClick={() => setDeleteId(null)}
-          >
+          <Button variant="text" color="orange" onClick={() => setDeleteId(null)}>
             Cancel
           </Button>
           <Button variant="gradient" color="red" onClick={handleDelete}>
@@ -627,12 +624,8 @@ function Profile() {
         size="md"
       >
         <DialogHeader>Edit Profile</DialogHeader>
-        <DialogBody
-          divider
-          className="flex-1 overflow-y-auto max-h-[70vh] px-4"
-        >
-          {" "}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <DialogBody divider>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Medical Conditions */}
             <div className="col-span-full grid grid-cols-2 gap-4 mt-3">
               <div className="flex items-center gap-2">
@@ -832,7 +825,7 @@ function Profile() {
                   policyNumber: maxDigits(e.target.value, 10),
                 })
               }
-              error={editProfile?.policyNumber?.length >= 10}
+error={editProfile?.policyNumber?.length >= 10}
               helperText={
                 editProfile?.policyNumber?.length > 10
                   ? "Max 10 digits allowed"
@@ -952,8 +945,7 @@ function Profile() {
           </div>
         </DialogBody>
 
-        <DialogFooter className="shrink-0">
-          {" "}
+        <DialogFooter>
           <Button
             variant="text"
             color="orange"
@@ -1007,6 +999,7 @@ function Profile() {
                 className="px-4 py-2 rounded bg-gradient-to-r from-orange-600 via-orange-700 to-orange-900 text-white shadow-md hover:scale-105 transition duration-300"
               >
                 <HiOutlineRefresh size={24} />
+
               </button>
             </div>
           </div>
