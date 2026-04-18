@@ -439,11 +439,6 @@ function DoctorList() {
     return "Good Evening";
   };
 
-  const [weather, setWeather] = useState({
-    city: "",
-    temp: null,
-  });
-
   const handleOpen = () => {
     if (!isLoggedIn) {
       setOpenLocationModal(true); // show popup first
@@ -451,49 +446,6 @@ function DoctorList() {
       completeSignAction();
     }
   };
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        try {
-          const { latitude, longitude } = position.coords;
-
-          const res = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=YOUR_API_KEY`,
-          );
-
-          const data = await res.json();
-
-          if (!res.ok) {
-            console.log("Weather API Error:", data);
-            setWeather({
-              city: "Unknown City",
-              temp: null,
-            });
-            return;
-          }
-
-          setWeather({
-            city: data.name,
-            temp: data.main.temp,
-          });
-        } catch (err) {
-          console.log("Fetch error:", err);
-          setWeather({
-            city: "Unknown City",
-            temp: null,
-          });
-        }
-      },
-      (error) => {
-        console.log("Location denied", error);
-        setWeather({
-          city: "Unknown City",
-          temp: null,
-        });
-      },
-    );
-  }, []);
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -563,12 +515,10 @@ function DoctorList() {
   const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
 
   const filteredDoctors = useMemo(() => {
-    const term = searchTerm.toLowerCase();
-
     return doctors.filter((doctor) =>
       `${doctor.firstName || ""} ${doctor.lastName || ""} ${doctor.email || ""}`
         .toLowerCase()
-        .includes(term),
+        .includes(searchTerm.toLowerCase()),
     );
   }, [doctors, searchTerm]);
 
@@ -771,16 +721,9 @@ function DoctorList() {
       <div className="flex flex-col lg:flex-row gap-6 items-stretch">
         {/* Greeting Card */}
         <Card className="w-full lg:w-1/3 p-1 shadow-xl rounded-2xl bg-white border border-gray-200">
-          <Typography variant="h5" className="mb-2">
+          <Typography variant="h5" className="mb-4">
             Hello, {getGreeting()}
           </Typography>
-
-          {/* 🌍 Weather Info
-          <p className="text-sm text-gray-600 mb-2">
-            📍 {weather.city || "Detecting location..."} • 🌡{" "}
-            {weather.temp !== null ? `${weather.temp}°C` : "Loading..."}
-          </p> */}
-
           <Typography className="text-gray-700 italic text-sm sm:text-base">
             “Don’t worry about failures, worry about the chances you miss when
             you don’t even try.”
@@ -1376,23 +1319,18 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                                   <p className="text-[11px] text-gray-500">
                                     Booked on:{" "}
                                     {appt?.date
-                                      ? new Date(appt.date).toLocaleDateString(
-                                          "en-GB",
-                                          {
-                                            day: "2-digit",
-                                            month: "short",
-                                            year: "numeric",
-                                          },
-                                        )
+                                      ? `${appt.date} ${new Date().getFullYear()}`
                                       : "Not available"}
                                   </p>
 
                                   <p className="font-semibold text-gray-800 flex items-center gap-1">
-                                    <FaUserNurse />
+                                    <FaUserNurse />:
                                     <span>
                                       {appt?.patientName || "Patient"}
                                     </span>
                                   </p>
+
+                                  
                                 </div>
 
                                 <span className="text-xs px-2 py-1 rounded-full bg-green-900 text-green-100">
@@ -1406,14 +1344,12 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                               </div>
 
                               {/* Details */}
-                              <p className="text-sm text-gray-600 flex items-center gap-1">
-                                <SlCalender />
-                                <span>
-                                  {appt?.date || "N/A"} • {appt?.time || ""}
-                                </span>
+                              <p className="text-sm text-gray-600">
+                               <SlCalender />
+ {appt?.date || "N/A"} • {appt?.time || ""}
                               </p>
 
-                              <p className="text-xs text-gray-500 mt-1">
+                              <p className="text-xs text-gray-500">
                                 {appt?.type || "General"}
                               </p>
 
@@ -1465,20 +1401,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                       }}
                     >
                       <PencilIcon className="w-4 h-4 mr-1" />
-                    </Button>
-
-                     <Button
-                      size="sm"
-                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
-                      onClick={() =>
-                        setConfirmAction({
-                          open: true,
-                          type: "clone",
-                          index: realIndex,
-                        })
-                      }
-                    >
-                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> 
+                      Edit
                     </Button>
 
                     <Button
@@ -1492,10 +1415,22 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                         })
                       }
                     >
-                      <TrashIcon className="w-4 h-4 mr-1" /> 
+                      <TrashIcon className="w-4 h-4 mr-1" /> Delete
                     </Button>
 
-                   
+                    <Button
+                      size="sm"
+                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
+                      onClick={() =>
+                        setConfirmAction({
+                          open: true,
+                          type: "clone",
+                          index: realIndex,
+                        })
+                      }
+                    >
+                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> Clone
+                    </Button>
                   </div>
                 </Card>
               );

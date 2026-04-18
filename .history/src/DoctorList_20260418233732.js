@@ -563,12 +563,10 @@ function DoctorList() {
   const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
 
   const filteredDoctors = useMemo(() => {
-    const term = searchTerm.toLowerCase();
-
     return doctors.filter((doctor) =>
       `${doctor.firstName || ""} ${doctor.lastName || ""} ${doctor.email || ""}`
         .toLowerCase()
-        .includes(term),
+        .includes(searchTerm.toLowerCase()),
     );
   }, [doctors, searchTerm]);
 
@@ -775,11 +773,11 @@ function DoctorList() {
             Hello, {getGreeting()}
           </Typography>
 
-          {/* 🌍 Weather Info
+          {/* 🌍 Weather Info */}
           <p className="text-sm text-gray-600 mb-2">
             📍 {weather.city || "Detecting location..."} • 🌡{" "}
             {weather.temp !== null ? `${weather.temp}°C` : "Loading..."}
-          </p> */}
+          </p>
 
           <Typography className="text-gray-700 italic text-sm sm:text-base">
             “Don’t worry about failures, worry about the chances you miss when
@@ -1407,15 +1405,15 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
 
                               {/* Details */}
                               <p className="text-sm text-gray-600 flex items-center gap-1">
-                                <SlCalender />
-                                <span>
-                                  {appt?.date || "N/A"} • {appt?.time || ""}
-                                </span>
-                              </p>
+  <SlCalender />
+  <span>
+    {appt?.date || "N/A"} • {appt?.time || ""}
+  </span>
+</p>
 
-                              <p className="text-xs text-gray-500 mt-1">
-                                {appt?.type || "General"}
-                              </p>
+                             <p className="text-xs text-gray-500 mt-1">
+  {appt?.type || "General"}
+</p>
 
                               {/* Amount */}
                               {appt?.amount && (
@@ -1465,20 +1463,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                       }}
                     >
                       <PencilIcon className="w-4 h-4 mr-1" />
-                    </Button>
-
-                     <Button
-                      size="sm"
-                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
-                      onClick={() =>
-                        setConfirmAction({
-                          open: true,
-                          type: "clone",
-                          index: realIndex,
-                        })
-                      }
-                    >
-                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> 
+                      Edit
                     </Button>
 
                     <Button
@@ -1492,10 +1477,22 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                         })
                       }
                     >
-                      <TrashIcon className="w-4 h-4 mr-1" /> 
+                      <TrashIcon className="w-4 h-4 mr-1" /> Delete
                     </Button>
 
-                   
+                    <Button
+                      size="sm"
+                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
+                      onClick={() =>
+                        setConfirmAction({
+                          open: true,
+                          type: "clone",
+                          index: realIndex,
+                        })
+                      }
+                    >
+                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> Clone
+                    </Button>
                   </div>
                 </Card>
               );

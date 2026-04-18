@@ -21,7 +21,6 @@ import {
   EyeIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/solid";
-import { FaUserMd } from "react-icons/fa";
 
 import { VscArrowRight } from "react-icons/vsc";
 import { FcEngineering } from "react-icons/fc";
@@ -37,16 +36,12 @@ import {
 } from "react-icons/md";
 
 import { FaFlag, FaSun, FaMoon, FaStar, FaChurch } from "react-icons/fa";
-import { MdOutlinePhoneIphone } from "react-icons/md";
 
 import { GiPartyPopper, GiRam } from "react-icons/gi";
-import { FaUserNurse } from "react-icons/fa";
 
 // Assets
 import logo from "./assets/Toothx_Logo.png";
 import painting from "./assets/Painting.jpg";
-import { MdOutlineEmail } from "react-icons/md";
-import { SlCalender } from "react-icons/sl";
 
 // Styles
 import "./DoctorList.css";
@@ -364,9 +359,23 @@ function DoctorList() {
   useEffect(() => {
     const storedDoctors = JSON.parse(localStorage.getItem("doctors")) || [];
 
-    const updatedDoctors = storedDoctors.map((doc) => ({
+    const updatedDoctors = storedDoctors.map((doc, index) => ({
       ...doc,
-      appointments: doc.appointments || [],
+      appointments:
+        index === 0
+          ? [
+              {
+                patientName: "Test Patient",
+                date: "09 April",
+                time: "11:00 AM",
+                type: "Cleaning",
+                consultationType: "ONLINE",
+                amount: 1700,
+                meetingUrl: "https://meet.google.com/test",
+                notes: "Office",
+              },
+            ]
+          : doc.appointments || [],
     }));
 
     setDoctors(updatedDoctors);
@@ -439,11 +448,6 @@ function DoctorList() {
     return "Good Evening";
   };
 
-  const [weather, setWeather] = useState({
-    city: "",
-    temp: null,
-  });
-
   const handleOpen = () => {
     if (!isLoggedIn) {
       setOpenLocationModal(true); // show popup first
@@ -451,49 +455,6 @@ function DoctorList() {
       completeSignAction();
     }
   };
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        try {
-          const { latitude, longitude } = position.coords;
-
-          const res = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=YOUR_API_KEY`,
-          );
-
-          const data = await res.json();
-
-          if (!res.ok) {
-            console.log("Weather API Error:", data);
-            setWeather({
-              city: "Unknown City",
-              temp: null,
-            });
-            return;
-          }
-
-          setWeather({
-            city: data.name,
-            temp: data.main.temp,
-          });
-        } catch (err) {
-          console.log("Fetch error:", err);
-          setWeather({
-            city: "Unknown City",
-            temp: null,
-          });
-        }
-      },
-      (error) => {
-        console.log("Location denied", error);
-        setWeather({
-          city: "Unknown City",
-          temp: null,
-        });
-      },
-    );
-  }, []);
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -563,12 +524,10 @@ function DoctorList() {
   const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
 
   const filteredDoctors = useMemo(() => {
-    const term = searchTerm.toLowerCase();
-
     return doctors.filter((doctor) =>
       `${doctor.firstName || ""} ${doctor.lastName || ""} ${doctor.email || ""}`
         .toLowerCase()
-        .includes(term),
+        .includes(searchTerm.toLowerCase()),
     );
   }, [doctors, searchTerm]);
 
@@ -771,16 +730,9 @@ function DoctorList() {
       <div className="flex flex-col lg:flex-row gap-6 items-stretch">
         {/* Greeting Card */}
         <Card className="w-full lg:w-1/3 p-1 shadow-xl rounded-2xl bg-white border border-gray-200">
-          <Typography variant="h5" className="mb-2">
+          <Typography variant="h5" className="mb-4">
             Hello, {getGreeting()}
           </Typography>
-
-          {/* 🌍 Weather Info
-          <p className="text-sm text-gray-600 mb-2">
-            📍 {weather.city || "Detecting location..."} • 🌡{" "}
-            {weather.temp !== null ? `${weather.temp}°C` : "Loading..."}
-          </p> */}
-
           <Typography className="text-gray-700 italic text-sm sm:text-base">
             “Don’t worry about failures, worry about the chances you miss when
             you don’t even try.”
@@ -1262,17 +1214,15 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
               return (
                 <Card
                   key={realIndex}
-                  className={`p-1 flex relative border min-h-[170px]
-  ${
-    selectedDoctors.includes(realIndex)
-      ? "border-red-100 bg-red-100"
-      : "border-white bg-blue-100 shadow-md"
-  }
-  ${
-    gridView
-      ? "flex-col items-center text-center justify-between"
-      : "flex-row items-center gap-3"
-  }`}
+                  className={`p-1 flex relative border min-h-[170px] transition-transform duration-200 ${
+                    selectedDoctors.includes(realIndex)
+                      ? "border-red-100 bg-red-100"
+                      : "border-white bg-orange-100 hover:bg-orange-100 hover:scale-105 shadow-md"
+                  } ${
+                    gridView
+                      ? "flex-col items-center text-center justify-between"
+                      : "flex-row items-center gap-3"
+                  }`}
                 >
                   <input
                     type="checkbox"
@@ -1294,48 +1244,37 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                     />
                   )}
 
-                  <div className="flex-1 w-full flex flex-col items-start text-left space-y-1 text-black">
+                  <div className="flex-1 w-full flex flex-col items-start text-left space-y-1 text-orange-900">
                     <Typography
-                      variant="h3"
+                      variant="h6"
                       className="font-semibold text-sm sm:text-base"
                     >
-                      <div className="flex items-center gap-1">
-                        <FaUserMd color="blue" /> :
-                        <span>
-                          {doc.firstName} {doc.lastName}
-                        </span>
-                      </div>{" "}
+                      DENTIST NAME - {doc.firstName} {doc.lastName}
                     </Typography>
-
                     {doc.phone && (
-                      <Typography className="text-xs sm:text-sm flex items-center gap-1">
-                        <span className="flex items-center gap-1 font-medium">
-                          <MdOutlinePhoneIphone color="blue" />:
-                        </span>
-
+                      <Typography className="text-xs sm:text-sm">
+                        <span className="font-medium">PHONE: </span>
                         <a
                           href={`tel:${doc.phone}`}
-                          className="text-black hover:underline"
+                          className="text-orange-800 hover:underline"
                         >
                           {doc.phone}
                         </a>
                       </Typography>
                     )}
-
                     {doc.email && (
-                      <Typography className="text-xs sm:text-sm flex items-center gap-1 break-all">
-                        <span className="flex items-center gap-1 font-medium">
-                          <MdOutlineEmail color="blue" />:
-                        </span>
-
+                      <Typography className="text-xs sm:text-sm break-all">
+                        <span className="font-medium">EMAIL ID: </span>
                         <a
                           href={`mailto:${doc.email}`}
-                          className="text-black hover:underline"
+                          className="text-orange-800 hover:underline"
                         >
                           {doc.email}
                         </a>
                       </Typography>
+                      // eslint-disable-next-line react/jsx-no-comment-textnodes
                     )}
+
                     {/* appointments */}
                     <div className="w-full mt-2 bg-gray-50 border rounded-xl shadow-sm overflow-hidden">
                       {/* Header */}
@@ -1371,34 +1310,15 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                               className="border rounded-lg p-3 bg-white shadow-sm space-y-2"
                             >
                               {/* Top */}
-                              <div className="flex justify-between items-start">
-                                <div>
-                                  <p className="text-[11px] text-gray-500">
-                                    Booked on:{" "}
-                                    {appt?.date
-                                      ? new Date(appt.date).toLocaleDateString(
-                                          "en-GB",
-                                          {
-                                            day: "2-digit",
-                                            month: "short",
-                                            year: "numeric",
-                                          },
-                                        )
-                                      : "Not available"}
-                                  </p>
-
-                                  <p className="font-semibold text-gray-800 flex items-center gap-1">
-                                    <FaUserNurse />
-                                    <span>
-                                      {appt?.patientName || "Patient"}
-                                    </span>
-                                  </p>
-                                </div>
+                              <div className="flex justify-between items-center">
+                                <p className="font-semibold text-gray-800">
+                                  {appt?.patientName || "Patient"}
+                                </p>
 
                                 <span className="text-xs px-2 py-1 rounded-full bg-green-900 text-green-100">
                                   {appt?.status || (
                                     <>
-                                      <FaArrowTrendUp className="inline mr-1 text-green-400" />
+                                      <FaArrowTrendUp className="inline mr-1" />
                                       Upcoming
                                     </>
                                   )}
@@ -1406,14 +1326,11 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                               </div>
 
                               {/* Details */}
-                              <p className="text-sm text-gray-600 flex items-center gap-1">
-                                <SlCalender />
-                                <span>
-                                  {appt?.date || "N/A"} • {appt?.time || ""}
-                                </span>
+                              <p className="text-sm text-gray-600">
+                                {appt?.date || "N/A"} • {appt?.time || ""}
                               </p>
 
-                              <p className="text-xs text-gray-500 mt-1">
+                              <p className="text-xs text-gray-500">
                                 {appt?.type || "General"}
                               </p>
 
@@ -1465,20 +1382,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                       }}
                     >
                       <PencilIcon className="w-4 h-4 mr-1" />
-                    </Button>
-
-                     <Button
-                      size="sm"
-                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
-                      onClick={() =>
-                        setConfirmAction({
-                          open: true,
-                          type: "clone",
-                          index: realIndex,
-                        })
-                      }
-                    >
-                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> 
+                      Edit
                     </Button>
 
                     <Button
@@ -1492,10 +1396,22 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                         })
                       }
                     >
-                      <TrashIcon className="w-4 h-4 mr-1" /> 
+                      <TrashIcon className="w-4 h-4 mr-1" /> Delete
                     </Button>
 
-                   
+                    <Button
+                      size="sm"
+                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
+                      onClick={() =>
+                        setConfirmAction({
+                          open: true,
+                          type: "clone",
+                          index: realIndex,
+                        })
+                      }
+                    >
+                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> Clone
+                    </Button>
                   </div>
                 </Card>
               );
@@ -1620,33 +1536,6 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
           <DialogBody className="space-y-3">
             <Typography variant="h6">Edit Doctor</Typography>
 
-            {/* Image Preview */}
-            {editDoctor.image && (
-              <img
-                src={editDoctor.image}
-                alt="Doctor"
-                className="w-24 h-24 object-cover rounded-lg border"
-              />
-            )}
-
-            {/* Upload Image */}
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                if (file) {
-                  const reader = new FileReader();
-                  reader.onloadend = () => {
-                    setEditDoctor({ ...editDoctor, image: reader.result });
-                  };
-                  reader.readAsDataURL(file);
-                }
-              }}
-              className="w-full border px-3 py-2 rounded"
-            />
-
-            {/* First Name */}
             <input
               type="text"
               placeholder="First Name"
@@ -1657,35 +1546,12 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
               className="w-full border px-3 py-2 rounded"
             />
 
-            {/* Last Name */}
             <input
               type="text"
               placeholder="Last Name"
               value={editDoctor.lastName || ""}
               onChange={(e) =>
                 setEditDoctor({ ...editDoctor, lastName: e.target.value })
-              }
-              className="w-full border px-3 py-2 rounded"
-            />
-
-            {/* Phone */}
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              value={editDoctor.phone || ""}
-              onChange={(e) =>
-                setEditDoctor({ ...editDoctor, phone: e.target.value })
-              }
-              className="w-full border px-3 py-2 rounded"
-            />
-
-            {/* Email */}
-            <input
-              type="email"
-              placeholder="Email ID"
-              value={editDoctor.email || ""}
-              onChange={(e) =>
-                setEditDoctor({ ...editDoctor, email: e.target.value })
               }
               className="w-full border px-3 py-2 rounded"
             />

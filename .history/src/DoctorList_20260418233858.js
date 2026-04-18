@@ -1465,20 +1465,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                       }}
                     >
                       <PencilIcon className="w-4 h-4 mr-1" />
-                    </Button>
-
-                     <Button
-                      size="sm"
-                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
-                      onClick={() =>
-                        setConfirmAction({
-                          open: true,
-                          type: "clone",
-                          index: realIndex,
-                        })
-                      }
-                    >
-                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> 
+                      Edit
                     </Button>
 
                     <Button
@@ -1492,10 +1479,22 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                         })
                       }
                     >
-                      <TrashIcon className="w-4 h-4 mr-1" /> 
+                      <TrashIcon className="w-4 h-4 mr-1" /> Delete
                     </Button>
 
-                   
+                    <Button
+                      size="sm"
+                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
+                      onClick={() =>
+                        setConfirmAction({
+                          open: true,
+                          type: "clone",
+                          index: realIndex,
+                        })
+                      }
+                    >
+                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> Clone
+                    </Button>
                   </div>
                 </Card>
               );
