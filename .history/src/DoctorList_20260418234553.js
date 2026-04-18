@@ -1373,7 +1373,17 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                               {/* Top */}
                               <div className="flex justify-between items-start">
                                 <div>
-                                  <p className="text-[11px] text-orange-900">
+                              
+
+                                  <p className="font-semibold text-gray-800 flex items-center gap-1">
+                                    <FaUserNurse />
+                                    <span>
+                                      {appt?.patientName || "Patient"}
+                                    </span>
+                                  </p>
+                                </div>
+
+    <p className="text-[11px] text-gray-500">
                                     Booked on:{" "}
                                     {appt?.date
                                       ? new Date(appt.date).toLocaleDateString(
@@ -1386,15 +1396,6 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                                         )
                                       : "Not available"}
                                   </p>
-
-                                  <p className="font-semibold text-gray-800 flex items-center gap-1">
-                                    <FaUserNurse />
-                                    <span>
-                                      {appt?.patientName || "Patient"}
-                                    </span>
-                                  </p>
-                                </div>
-
                                 <span className="text-xs px-2 py-1 rounded-full bg-green-900 text-green-100">
                                   {appt?.status || (
                                     <>

@@ -1373,7 +1373,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                               {/* Top */}
                               <div className="flex justify-between items-start">
                                 <div>
-                                  <p className="text-[11px] text-orange-900">
+                                  <p className="text-[11px] text-blue-900">
                                     Booked on:{" "}
                                     {appt?.date
                                       ? new Date(appt.date).toLocaleDateString(
