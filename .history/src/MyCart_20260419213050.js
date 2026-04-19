@@ -226,20 +226,22 @@ function MyCart() {
   };
 
   const getTotalPaid = (types) => {
-    if (!types) return APPOINTMENT_PRICING["Consultation"];
+  if (!types) return APPOINTMENT_PRICING["Consultation"];
 
-    const uniqueTypes = Array.isArray(types) ? [...new Set(types)] : [types];
+  const uniqueTypes = Array.isArray(types)
+    ? [...new Set(types)]
+    : [types];
 
-    let total = 0;
+  let total = 0;
 
-    uniqueTypes.forEach((t) => {
-      if (APPOINTMENT_PRICING[t]) {
-        total += APPOINTMENT_PRICING[t];
-      }
-    });
+  uniqueTypes.forEach((t) => {
+    if (APPOINTMENT_PRICING[t]) {
+      total += APPOINTMENT_PRICING[t];
+    }
+  });
 
-    return total;
-  };
+  return total;
+};
 
   const getTaxBreakdown = (amount) => {
     // Amount is GST inclusive
@@ -806,12 +808,15 @@ function MyCart() {
   };
 
   // ✅ Always include Consultation ONCE
-  const selectedTreatments = (appointment.type || []).filter(
-    (type) => type !== "Consultation",
-  );
+const selectedTreatments = (appointment.type || []).filter(
+  (type) => type !== "Consultation"
+);
 
-  // ✅ Always calculate with Consultation included
-  const totalCost = getTotalPaid(["Consultation", ...selectedTreatments]);
+// ✅ Always calculate with Consultation included
+const totalCost = getTotalPaid([
+  "Consultation",
+  ...selectedTreatments,
+]);
 
   /* ---------------- PAGINATION LOGIC ---------------- */
   const sortedHistory = [...history].sort((a, b) => b.id - a.id);
@@ -1005,52 +1010,51 @@ function MyCart() {
             <label className="font-semibold">Treatment Type</label>
 
             <select
-              multiple
-              value={appointment.type || []}
-              onChange={(e) => {
-                const selectedOptions = Array.from(
-                  e.target.selectedOptions,
-                  (option) => option.value,
-                );
-                handleChange("type", selectedOptions);
-              }}
-              className="border p-2 rounded w-full h-32"
-            >
-              <option value="Cleaning">Cleaning</option>
-              <option value="Extraction">Extraction</option>
-              <option value="Whitening">Whitening</option>
-            </select>
+  multiple
+  value={appointment.type || []}
+  onChange={(e) => {
+    const selectedOptions = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value
+    );
+    handleChange("type", selectedOptions);
+  }}
+  className="border p-2 rounded w-full h-32"
+>
+  <option value="Cleaning">Cleaning</option>
+  <option value="Extraction">Extraction</option>
+  <option value="Whitening">Whitening</option>
+</select>
 
-            {/* Cost Display */}
-            <div className="mt-2">
-              <ul className="text-sm text-gray-600 mt-1 space-y-1">
-                {/* ✅ Always show Consultation ONCE */}
-                <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
-                  🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
-                </li>
+           {/* Cost Display */}
+{/* Cost Display */}
+<div className="mt-2">
+  <p className="text-orange-600 font-bold">
+    Total Cost: ₹{totalCost}
+  </p>
 
-                {/* ✅ Show selected treatments */}
-                {selectedTreatments.map((type) => (
-                  <li key={type}>
-                    {type}: ₹{APPOINTMENT_PRICING[type]}
-                  </li>
-                ))}
+  <ul className="text-sm text-gray-600 mt-1 space-y-1">
+    
+    {/* ✅ Always show Consultation ONCE */}
+    <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
+      🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
+    </li>
 
-                <hr className="my-2 border-orange-300" />
+    {/* ✅ Show selected treatments */}
+    {selectedTreatments.map((type) => (
+      <li key={type}>
+        {type}: ₹{APPOINTMENT_PRICING[type]}
+      </li>
+    ))}
 
-                <p className="text-orange-600 font-bold">
-                  Total Cost: ₹{totalCost}
-                </p>
-                <hr className="my-2 border-orange-300" />
-
-                {/* ✅ Empty state */}
-                {selectedTreatments.length === 0 && (
-                  <li className="text-gray-400 italic">
-                    No additional treatments selected
-                  </li>
-                )}
-              </ul>
-            </div>
+    {/* ✅ Empty state */}
+    {selectedTreatments.length === 0 && (
+      <li className="text-gray-400 italic">
+        No additional treatments selected
+      </li>
+    )}
+  </ul>
+</div>
 
             {/* Consultation Type */}
             <div>

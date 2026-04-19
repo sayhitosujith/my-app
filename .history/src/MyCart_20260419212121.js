@@ -225,18 +225,16 @@ function MyCart() {
     ).padStart(2, "0")}-${d.getFullYear()}`;
   };
 
-  const getTotalPaid = (types) => {
-    if (!types) return APPOINTMENT_PRICING["Consultation"];
+  const getTotalPaid = (type) => {
+    let total = APPOINTMENT_PRICING["Consultation"]; // ✅ always include base fee
 
-    const uniqueTypes = Array.isArray(types) ? [...new Set(types)] : [types];
+    if (!type) return total;
 
-    let total = 0;
-
-    uniqueTypes.forEach((t) => {
-      if (APPOINTMENT_PRICING[t]) {
-        total += APPOINTMENT_PRICING[t];
-      }
-    });
+    if (Array.isArray(type)) {
+      total += type.reduce((sum, t) => sum + (APPOINTMENT_PRICING[t] || 0), 0);
+    } else {
+      total += APPOINTMENT_PRICING[type] || 0;
+    }
 
     return total;
   };
@@ -805,13 +803,14 @@ function MyCart() {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
-  // ✅ Always include Consultation ONCE
-  const selectedTreatments = (appointment.type || []).filter(
-    (type) => type !== "Consultation",
-  );
+  const selectedTreatments = appointment.type.filter(
+  (type) => type !== "Consultation"
+);
 
-  // ✅ Always calculate with Consultation included
-  const totalCost = getTotalPaid(["Consultation", ...selectedTreatments]);
+const totalCost =
+  selectedTreatments.length === 0
+    ? 0
+    : getTotalPaid(["Consultation", ...selectedTreatments]);
 
   /* ---------------- PAGINATION LOGIC ---------------- */
   const sortedHistory = [...history].sort((a, b) => b.id - a.id);
@@ -950,7 +949,7 @@ function MyCart() {
                 setAppointment({ ...appointment, phone: value });
               }
             }}
-            placeholder="Enter Patient Phone Number"
+            placeholder="Enter Patient Phone number"
             className="border px-3 py-2 rounded w-full text-gray-500"
           />
           {/* Email */}
@@ -1021,36 +1020,31 @@ function MyCart() {
               <option value="Whitening">Whitening</option>
             </select>
 
-            {/* Cost Display */}
-            <div className="mt-2">
-              <ul className="text-sm text-gray-600 mt-1 space-y-1">
-                {/* ✅ Always show Consultation ONCE */}
-                <li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
-                  🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"]}
-                </li>
+           {/* Cost Display */}
+{appointment.type && appointment.type.length > 0 && (
+  <div className="mt-2">
+    <p className="text-orange-600 font-bold">
+      Total Cost: ₹{totalCost}
+    </p>
 
-                {/* ✅ Show selected treatments */}
-                {selectedTreatments.map((type) => (
-                  <li key={type}>
-                    {type}: ₹{APPOINTMENT_PRICING[type]}
-                  </li>
-                ))}
+    <ul className="text-sm text-gray-600 mt-1 space-y-1">
+      
+      {/* ✅ Always show Consultation ONCE */}
+<li className="bg-orange-100 text-orange-800 font-semibold px-3 py-1 rounded-md border border-orange-300">
+  🩺 Consultation: ₹{APPOINTMENT_PRICING["Consultation"] || 0}
+</li>
 
-                <hr className="my-2 border-orange-300" />
-
-                <p className="text-orange-600 font-bold">
-                  Total Cost: ₹{totalCost}
-                </p>
-                <hr className="my-2 border-orange-300" />
-
-                {/* ✅ Empty state */}
-                {selectedTreatments.length === 0 && (
-                  <li className="text-gray-400 italic">
-                    No additional treatments selected
-                  </li>
-                )}
-              </ul>
-            </div>
+{/* ✅ Show other treatments EXCEPT Consultation */}
+{(appointment?.type || [])
+  .filter((type) => type !== "Consultation")
+  .map((type) => (
+    <li key={type}>
+      {type}: ₹{APPOINTMENT_PRICING[type] || 0}
+    </li>
+  ))}
+    </ul>
+  </div>
+)}
 
             {/* Consultation Type */}
             <div>

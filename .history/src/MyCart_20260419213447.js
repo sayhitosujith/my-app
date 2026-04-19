@@ -1036,13 +1036,11 @@ function MyCart() {
                   </li>
                 ))}
 
-                <hr className="my-2 border-orange-300" />
+                  <hr className="my-2 border-orange-300" />
 
                 <p className="text-orange-600 font-bold">
                   Total Cost: ₹{totalCost}
                 </p>
-                <hr className="my-2 border-orange-300" />
-
                 {/* ✅ Empty state */}
                 {selectedTreatments.length === 0 && (
                   <li className="text-gray-400 italic">
