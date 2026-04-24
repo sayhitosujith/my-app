@@ -18,7 +18,6 @@ import { MdOutlineWorkHistory } from "react-icons/md";
 import logo from "./assets/Toothx_Logo.png";
 import { Link } from "react-router-dom";
 import QRCode from "qrcode"; // make sure to `npm install qrcode`
-import { IoRocketSharp } from "react-icons/io5";
 
 /* ---------------- CHART IMPORTS ---------------- */
 import {
@@ -217,12 +216,12 @@ function MyCart() {
     {
       label: "PAID (UPI Scanner)",
       code: "UPI",
-      color: "bg-green-100 text-green-700",
+      color: "bg-orange-100 text-orange-700",
     },
     {
       label: "PAID (Cash)",
       code: "CASH",
-      color: "bg-green-100 text-green-700",
+      color: "bg-orange-100 text-orange-700",
     },
     { label: "Pending", code: "P", color: "bg-orange-100 text-orange-700" },
     { label: "Cancelled", code: "X", color: "bg-red-100 text-red-700" },
@@ -546,19 +545,13 @@ function MyCart() {
   /* ---------------- PRINT SINGLE APPOINTMENT ---------------- */
   const handlePrintAppointment = (appointment) => {
     const baseAmount = getTotalPaid(appointment.type);
-    const gstAmount = baseAmount * GST_RATE;
-const tax = {
-  base: baseAmount.toFixed(2),
-  gst: gstAmount.toFixed(2),
-  cgst: (gstAmount / 2).toFixed(2),
-  sgst: (gstAmount / 2).toFixed(2),
-};   
- const invoiceNumber = `INV-${Date.now()}`;
+    const tax = getTaxBreakdown(baseAmount);
+    const invoiceNumber = `INV-${Date.now()}`;
 
     const isPaid = paidAppointments[appointment.id];
 
     // ✅ Calculate Grand Total
-const grandTotal = baseAmount + gstAmount;
+    const grandTotal = baseAmount; // already GST inclusive
 
     const content = `
       <div style="font-family: Arial, sans-serif; max-width: 700px; margin: auto; padding: 20px; border: 1px solid #ccc;">
@@ -597,25 +590,14 @@ const grandTotal = baseAmount + gstAmount;
             </tr>
           </thead>
           <tbody>
-  ${
-    ["Consultation", ...(Array.isArray(appointment.type) ? appointment.type : [appointment.type])]
-      .filter(Boolean)
-      .map(
-        (t) => `
-        <tr>
-          <td style="border:1px solid #ccc; padding:8px;">${formatDate(appointment.date)}</td>
-          <td style="border:1px solid #ccc; padding:8px;">${appointment.time || "-"}</td>
-          <td style="border:1px solid #ccc; padding:8px;">${appointment.dentist || "-"}</td>
-          <td style="border:1px solid #ccc; padding:8px;">${t}</td>
-          <td style="border:1px solid #ccc; padding:8px; text-align:right;">
-            ₹${APPOINTMENT_PRICING[t] || 0}
-          </td>
-        </tr>
-      `
-      )
-      .join("")
-  }
-</tbody>
+            <tr>
+              <td style="border:1px solid #ccc; padding:8px;">${formatDate(appointment.date)}</td>
+              <td style="border:1px solid #ccc; padding:8px;">${appointment.time || "-"}</td>
+              <td style="border:1px solid #ccc; padding:8px;">${appointment.dentist || "-"}</td>
+              <td style="border:1px solid #ccc; padding:8px;">${appointment.type || "-"}</td>
+              <td style="border:1px solid #ccc; padding:8px; text-align:right;">₹${baseAmount}</td>
+            </tr>
+          </tbody>
         </table>
 
         ${
@@ -661,7 +643,7 @@ const grandTotal = baseAmount + gstAmount;
             2. Cancellations within 24 hours may not be refunded.<br>
             3. Payments made are non-transferable.<br>
             4. Follow all safety and hygiene instructions provided by the clinic.<br>
-            5. DutyDentist is not responsible for complicaltions outside its treatment scope.<br>
+            5. DutyDentist is not responsible for complications outside its treatment scope.<br>
           </p>
         </div>
 
@@ -1307,7 +1289,7 @@ const grandTotal = baseAmount + gstAmount;
       <div className="w-full mt-10">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <IoRocketSharp     size={32} className="text-orange-900" />
+            <MdOutlineWorkHistory size={32} className="text-orange-900" />
             <h2 className="text-xl font-bold text-orange-900">
               APPOINTMENTS HISTORY
             </h2>
@@ -1346,12 +1328,12 @@ const grandTotal = baseAmount + gstAmount;
                 className="p-3 mb-3 relative bg-gradient-to-r from-yellow-100 via-orange-100 to-orange-200 rounded-lg"
               >
                 <Card
-                  className="p-3 shadow-sm rounded-lg flex flex-col md:flex-row justify-between items-start md:items-center border-l-8 bg-white"
+  className="p-3 shadow-sm rounded-lg flex flex-col md:flex-row justify-between items-start md:items-center border-l-8 bg-white"
                   style={{ borderLeftColor: borderColor }}
                 >
                   {/* LEFT CONTENT */}
-                  <div className="flex flex-col gap-1 w-full md:w-2/3 text-sm">
-                    <div className="flex justify-between items-center">
+<div className="flex flex-col gap-1 w-full md:w-2/3 text-sm">    
+                <div className="flex justify-between items-center">
                       <p className="text-lg font-semibold">
                         {item.customerName || item.name || ""}
                       </p>
@@ -1373,8 +1355,8 @@ const grandTotal = baseAmount + gstAmount;
                       </span>
                     </div>
 
-                    <hr className="my-1 border-gray-200" />
-                    <p className="text-xs text-gray-700 leading-tight">
+<hr className="my-1 border-gray-200" />
+                    <p className="text-sm text-gray-700">
                       <b>Appointment:</b>{" "}
                       {new Date(item.date).toLocaleDateString("en-GB", {
                         weekday: "long",
@@ -1426,7 +1408,7 @@ const grandTotal = baseAmount + gstAmount;
                     <Button
                       size="sm"
                       variant="text"
-                      className="py-1 px-2 text-xs text-blue-900"
+                      className="w-fit px-1 text-red-900"
                       onClick={() => toggleExpand(item.id)}
                     >
                       {expandedId === item.id
@@ -1438,11 +1420,11 @@ const grandTotal = baseAmount + gstAmount;
                       <>
                         <hr className="my-2 border-gray-200" />
 
-                        <div className="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-0 text-xs">
-                          {" "}
+                        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-sm">
                           <p>
                             <b>Consultation:</b> {item.consultationType || "-"}
                           </p>
+
                           {item.consultationType === "ONLINE" && (
                             <div className="col-span-2 space-y-1">
                               <p className="font-semibold text-gray-800">
@@ -1484,7 +1466,7 @@ const grandTotal = baseAmount + gstAmount;
                                           onClick={() =>
                                             handleCancelAppointment(item)
                                           }
-                                          className="bg-orange-500 text-white px-4 py-1.5 rounded-lg hover:bg-orange-600 transition"
+                                          className="bg-red-500 text-white px-4 py-1.5 rounded-lg hover:bg-red-600 transition"
                                         >
                                           Cancel Appointment
                                         </button>
@@ -1503,19 +1485,21 @@ const grandTotal = baseAmount + gstAmount;
                               )}
                             </div>
                           )}
+
                           {item.notes && (
                             <p className="col-span-2">
                               <b>Notes:</b> {item.notes}
                             </p>
                           )}
+
                           {/* Cancel button for OFFLINE or general case */}
                           {item.consultationType !== "ONLINE" && (
                             <div className="col-span-2 mt-3">
                               <button
                                 onClick={() => handleCancel(item)}
-                                className="bg-red-500 text-white px-3 py-1 rounded-md text-sm hover:bg-red-900 transition"
+                                className="bg-red-500 text-white px-3 py-1 rounded-md text-sm hover:bg-red-600 transition"
                               >
-                                CANCEL APPOINTMENT
+                                Cancel Appointment
                               </button>
                             </div>
                           )}
@@ -1548,7 +1532,7 @@ const grandTotal = baseAmount + gstAmount;
                       className={`${
                         paidAppointments[item.id] || item.status === "Cancelled"
                           ? "bg-gray-400"
-                          : "bg-green-600 text-white"
+                          : "bg-orange-600 text-white"
                       }`}
                     >
                       {paidAppointments[item.id] ? "PAID ✅" : "PAY NOW"}

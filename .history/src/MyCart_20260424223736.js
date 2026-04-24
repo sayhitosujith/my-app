@@ -18,7 +18,6 @@ import { MdOutlineWorkHistory } from "react-icons/md";
 import logo from "./assets/Toothx_Logo.png";
 import { Link } from "react-router-dom";
 import QRCode from "qrcode"; // make sure to `npm install qrcode`
-import { IoRocketSharp } from "react-icons/io5";
 
 /* ---------------- CHART IMPORTS ---------------- */
 import {
@@ -1307,7 +1306,7 @@ const grandTotal = baseAmount + gstAmount;
       <div className="w-full mt-10">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <IoRocketSharp     size={32} className="text-orange-900" />
+            <MdOutlineWorkHistory size={32} className="text-orange-900" />
             <h2 className="text-xl font-bold text-orange-900">
               APPOINTMENTS HISTORY
             </h2>
@@ -1426,7 +1425,7 @@ const grandTotal = baseAmount + gstAmount;
                     <Button
                       size="sm"
                       variant="text"
-                      className="py-1 px-2 text-xs text-blue-900"
+                      className="py-1 px-2 text-xs text-red-900"
                       onClick={() => toggleExpand(item.id)}
                     >
                       {expandedId === item.id
@@ -1513,9 +1512,9 @@ const grandTotal = baseAmount + gstAmount;
                             <div className="col-span-2 mt-3">
                               <button
                                 onClick={() => handleCancel(item)}
-                                className="bg-red-500 text-white px-3 py-1 rounded-md text-sm hover:bg-red-900 transition"
+                                className="bg-orange-100 text-white px-3 py-1 rounded-md text-sm hover:bg-orange-100 transition"
                               >
-                                CANCEL APPOINTMENT
+                                Cancel Appointment
                               </button>
                             </div>
                           )}

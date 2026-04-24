@@ -52,25 +52,6 @@ import { SlCalender } from "react-icons/sl";
 import "./DoctorList.css";
 
 function DoctorList() {
-  const getAppointmentStatus = (appt) => {
-  // If backend already provides status → respect it
-  if (appt?.status) return appt.status;
-
-  if (!appt?.date) return "Upcoming";
-
-  const today = new Date();
-  const apptDate = new Date(appt.date);
-
-  // Remove time for accurate comparison
-  today.setHours(0, 0, 0, 0);
-  apptDate.setHours(0, 0, 0, 0);
-
-  if (apptDate < today) {
-    return "Completed";
-  }
-
-  return "Upcoming";
-};
   const navigate = useNavigate();
   const [doctors, setDoctors] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
@@ -152,25 +133,25 @@ function DoctorList() {
   };
 
   const getDayLabel = (dateStr) => {
-    if (!dateStr) return "";
+  if (!dateStr) return "";
 
-    const today = new Date();
-    const apptDate = new Date(dateStr);
+  const today = new Date();
+  const apptDate = new Date(dateStr);
 
-    const todayDate = today.toDateString();
-    const tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
+  const todayDate = today.toDateString();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
 
-    if (apptDate.toDateString() === todayDate) {
-      return "Today";
-    }
+  if (apptDate.toDateString() === todayDate) {
+    return "Today";
+  }
 
-    if (apptDate.toDateString() === tomorrow.toDateString()) {
-      return "Tomorrow";
-    }
+  if (apptDate.toDateString() === tomorrow.toDateString()) {
+    return "Tomorrow";
+  }
 
-    return "";
-  };
+  return "";
+};
   const RH_QUOTA = 2;
 
   const [leaveRequests, setLeaveRequests] = useState(
@@ -1448,11 +1429,6 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                               <p className="text-sm text-gray-600 flex items-center gap-1">
                                 <SlCalender />
                                 <span>
-                                  {getDayLabel(appt?.date) && (
-                                    <span className="text-green-600 font-semibold mr-1">
-                                      {getDayLabel(appt?.date)} •
-                                    </span>
-                                  )}
                                   {appt?.date || "N/A"} • {appt?.time || ""}
                                 </span>
                               </p>
@@ -1511,7 +1487,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                       <PencilIcon className="w-4 h-4 mr-1" />
                     </Button>
 
-                    <Button
+                     <Button
                       size="sm"
                       className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
                       onClick={() =>
@@ -1522,7 +1498,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                         })
                       }
                     >
-                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" />
+                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> 
                     </Button>
 
                     <Button
@@ -1536,8 +1512,10 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                         })
                       }
                     >
-                      <TrashIcon className="w-4 h-4 mr-1" />
+                      <TrashIcon className="w-4 h-4 mr-1" /> 
                     </Button>
+
+                   
                   </div>
                 </Card>
               );

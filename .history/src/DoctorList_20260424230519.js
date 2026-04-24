@@ -1434,14 +1434,25 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                                   </p>
                                 </div>
 
-                                <span className="text-xs px-2 py-1 rounded-full bg-green-900 text-green-100">
-                                  {appt?.status || (
-                                    <>
-                                      <FaArrowTrendUp className="inline mr-1 text-green-400" />
-                                      Upcoming
-                                    </>
-                                  )}
-                                </span>
+                                const status = getAppointmentStatus(appt);
+
+<span
+  className={`text-xs px-2 py-1 rounded-full flex items-center gap-1
+    ${
+      status === "Completed"
+        ? "bg-gray-300 text-gray-800"
+        : "bg-green-900 text-green-100"
+    }`}
+>
+  {status === "Completed" ? (
+    <>✔ Completed</>
+  ) : (
+    <>
+      <FaArrowTrendUp className="inline text-green-400" />
+      Upcoming
+    </>
+  )}
+</span>
                               </div>
 
                               {/* Details */}

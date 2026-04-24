@@ -18,7 +18,6 @@ import { MdOutlineWorkHistory } from "react-icons/md";
 import logo from "./assets/Toothx_Logo.png";
 import { Link } from "react-router-dom";
 import QRCode from "qrcode"; // make sure to `npm install qrcode`
-import { IoRocketSharp } from "react-icons/io5";
 
 /* ---------------- CHART IMPORTS ---------------- */
 import {
@@ -546,19 +545,13 @@ function MyCart() {
   /* ---------------- PRINT SINGLE APPOINTMENT ---------------- */
   const handlePrintAppointment = (appointment) => {
     const baseAmount = getTotalPaid(appointment.type);
-    const gstAmount = baseAmount * GST_RATE;
-const tax = {
-  base: baseAmount.toFixed(2),
-  gst: gstAmount.toFixed(2),
-  cgst: (gstAmount / 2).toFixed(2),
-  sgst: (gstAmount / 2).toFixed(2),
-};   
- const invoiceNumber = `INV-${Date.now()}`;
+    const tax = getTaxBreakdown(baseAmount);
+    const invoiceNumber = `INV-${Date.now()}`;
 
     const isPaid = paidAppointments[appointment.id];
 
     // ✅ Calculate Grand Total
-const grandTotal = baseAmount + gstAmount;
+    const grandTotal = baseAmount; // already GST inclusive
 
     const content = `
       <div style="font-family: Arial, sans-serif; max-width: 700px; margin: auto; padding: 20px; border: 1px solid #ccc;">
@@ -661,7 +654,7 @@ const grandTotal = baseAmount + gstAmount;
             2. Cancellations within 24 hours may not be refunded.<br>
             3. Payments made are non-transferable.<br>
             4. Follow all safety and hygiene instructions provided by the clinic.<br>
-            5. DutyDentist is not responsible for complicaltions outside its treatment scope.<br>
+            5. DutyDentist is not responsible for complications outside its treatment scope.<br>
           </p>
         </div>
 
@@ -1307,7 +1300,7 @@ const grandTotal = baseAmount + gstAmount;
       <div className="w-full mt-10">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <IoRocketSharp     size={32} className="text-orange-900" />
+            <MdOutlineWorkHistory size={32} className="text-orange-900" />
             <h2 className="text-xl font-bold text-orange-900">
               APPOINTMENTS HISTORY
             </h2>
@@ -1426,7 +1419,7 @@ const grandTotal = baseAmount + gstAmount;
                     <Button
                       size="sm"
                       variant="text"
-                      className="py-1 px-2 text-xs text-blue-900"
+                      className="py-1 px-2 text-xs text-red-900"
                       onClick={() => toggleExpand(item.id)}
                     >
                       {expandedId === item.id
@@ -1484,7 +1477,7 @@ const grandTotal = baseAmount + gstAmount;
                                           onClick={() =>
                                             handleCancelAppointment(item)
                                           }
-                                          className="bg-orange-500 text-white px-4 py-1.5 rounded-lg hover:bg-orange-600 transition"
+                                          className="bg-red-500 text-white px-4 py-1.5 rounded-lg hover:bg-red-600 transition"
                                         >
                                           Cancel Appointment
                                         </button>
@@ -1513,9 +1506,9 @@ const grandTotal = baseAmount + gstAmount;
                             <div className="col-span-2 mt-3">
                               <button
                                 onClick={() => handleCancel(item)}
-                                className="bg-red-500 text-white px-3 py-1 rounded-md text-sm hover:bg-red-900 transition"
+                                className="bg-red-500 text-white px-3 py-1 rounded-md text-sm hover:bg-red-600 transition"
                               >
-                                CANCEL APPOINTMENT
+                                Cancel Appointment
                               </button>
                             </div>
                           )}
