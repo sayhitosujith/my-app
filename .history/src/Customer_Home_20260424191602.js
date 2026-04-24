@@ -145,27 +145,27 @@ const clinicData = {
 };
 
 
-const CardItem = ({ item, navigate }) => {
-  const [country, setCountry] = useState("");
+const CardItem = ({ item, navigate }) => {  const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const [clinic, setClinic] = useState("");
-
+const [clinic, setClinic] = useState("");
   const handleBook = () => {
-    if (!country || !city || !clinic) {
-      alert("Please select country, city and clinic first");
-      return;
-    }
+  if (!country || !city) {
+    alert("Please select country and city first");
+    return;
+  }
 
-    const bookingData = {
-      item,
-      country,
-      city,
-      clinic,
-    };
-
-    localStorage.setItem("booking", JSON.stringify(bookingData));
-    navigate("/MyCart");
+  // optional: store selected data
+  const bookingData = {
+    item,
+    country,
+    city,
   };
+
+  localStorage.setItem("booking", JSON.stringify(bookingData));
+
+  // navigate to cart page
+  navigate("/MyCart");
+};
 
   return (
     <Card className="w-72 p-4 rounded-xl shadow-md" style={{ background: "#f8f8fcff" }}>
@@ -194,7 +194,6 @@ const CardItem = ({ item, navigate }) => {
           onChange={(e) => {
             setCountry(e.target.value);
             setCity("");
-            setClinic("");
           }}
         >
           <option value="">Select Country</option>
@@ -209,10 +208,7 @@ const CardItem = ({ item, navigate }) => {
         <select
           className="border p-2 rounded w-full"
           value={city}
-          onChange={(e) => {
-            setCity(e.target.value);
-            setClinic("");
-          }}
+          onChange={(e) => setCity(e.target.value)}
           disabled={!country}
         >
           <option value="">Select City</option>
@@ -223,28 +219,12 @@ const CardItem = ({ item, navigate }) => {
               </option>
             ))}
         </select>
-
-        {/* CLINIC */}
-        <select
-          className="border p-2 rounded w-full"
-          value={clinic}
-          onChange={(e) => setClinic(e.target.value)}
-          disabled={!city}
-        >
-          <option value="">Select Clinic</option>
-          {city &&
-            clinicData[city]?.map((cl, i) => (
-              <option key={i} value={cl}>
-                {cl}
-              </option>
-            ))}
-        </select>
       </CardBody>
 
       <CardFooter>
         <Button
           onClick={handleBook}
-          disabled={!country || !city || !clinic}
+          disabled={!country || !city}
           className="w-full text-white font-bold uppercase tracking-wide
                      bg-gradient-to-r from-purple-600 to-orange-500
                      hover:shadow-lg hover:scale-[1.02] transition-all"
@@ -255,7 +235,6 @@ const CardItem = ({ item, navigate }) => {
     </Card>
   );
 };
-
 
 
 
