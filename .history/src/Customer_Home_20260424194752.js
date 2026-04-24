@@ -321,12 +321,12 @@ const CardItem = ({ item, navigate }) => {
 
         {/* 🔥 HOVER DETAILS POPUP */}
         {booked && showHover && booking && (
-          <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-green-400 shadow-xl border rounded-lg p-3 z-20">
+          <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-green-200 shadow-xl border rounded-lg p-3 z-20">
             <Typography className="font-bold text-sm mb-2 text-purple-700">
               Booking Details
             </Typography>
 
-            <div className="text-sm space-y-1 text-yellow-700">
+            <div className="text-sm space-y-1 text-gray-700">
               <p>
                 <b>Country:</b> {booking.country}
               </p>

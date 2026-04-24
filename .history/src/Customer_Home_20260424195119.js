@@ -326,7 +326,7 @@ const CardItem = ({ item, navigate }) => {
               Booking Details
             </Typography>
 
-            <div className="text-sm space-y-1 text-yellow-700">
+            <div className="text-sm space-y-1 text-red-700">
               <p>
                 <b>Country:</b> {booking.country}
               </p>
