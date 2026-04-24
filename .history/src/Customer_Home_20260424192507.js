@@ -18,7 +18,7 @@ import { AiOutlinePhone } from "react-icons/ai";
 import { TfiEmail } from "react-icons/tfi";
 import { GrSkype } from "react-icons/gr";
 import { MdOutlineMyLocation } from "react-icons/md";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { RiShareForwardFill } from "react-icons/ri";
 import { TbRefresh } from "react-icons/tb";
 import { RiStethoscopeLine } from "react-icons/ri";
@@ -144,42 +144,11 @@ const clinicData = {
   Liverpool: ["Liverpool Dental Studio"],
 };
 
+
 const CardItem = ({ item, navigate }) => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [clinic, setClinic] = useState("");
-  const [showHover, setShowHover] = useState(false);
-  const [bookings, setBookings] = useState([]);
-  const getBooking = () => {
-    const saved = JSON.parse(localStorage.getItem("bookings")) || [];
-    return saved.find((b) => b.item.id === item.id);
-  };
-  const [booked, setBooked] = useState(false);
-  const [booking, setBooking] = useState(null);
-
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("bookings")) || [];
-
-    const found = saved.find((b) => b.item.id === item.id);
-
-    if (found) {
-      setBooked(true);
-      setBooking(found);
-      {
-        bookings.map((b, i) => (
-          <div key={i}>
-            <p>{b.item.name}</p>
-            <p>
-              {b.country} → {b.city} → {b.clinic}
-            </p>
-          </div>
-        ));
-      }
-    } else {
-      setBooked(false);
-      setBooking(null);
-    }
-  }, [item.id]);
 
   const handleBook = () => {
     if (!country || !city || !clinic) {
@@ -192,165 +161,151 @@ const CardItem = ({ item, navigate }) => {
       country,
       city,
       clinic,
-      id: Date.now(), // unique booking id
     };
 
-    // get existing bookings
-    const existing = JSON.parse(localStorage.getItem("bookings")) || [];
+    localStorage.setItem("booking", JSON.stringify(bookingData));
+    navigate("/MyCart");
+  };
 
-    // add new booking
-    const updatedBookings = [...existing, bookingData];
+  return (
+    const CardItem = ({ item, navigate }) => {
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [clinic, setClinic] = useState("");
 
-    localStorage.setItem("bookings", JSON.stringify(updatedBookings));
+  // 🔥 check if already booked
+  const isBooked = () => {
+    const saved = JSON.parse(localStorage.getItem("booking"));
+    return saved?.item?.id === item.id;
+  };
 
-    setBooked(true);
-    setBooking(bookingData);
+  const [booked, setBooked] = useState(isBooked());
+
+  const handleBook = () => {
+    if (!country || !city || !clinic) {
+      alert("Please select country, city and clinic first");
+      return;
+    }
+
+    const bookingData = {
+      item,
+      country,
+      city,
+      clinic,
+    };
+
+    localStorage.setItem("booking", JSON.stringify(bookingData));
+
+    setBooked(true); // ✅ update UI immediately
 
     navigate("/MyCart");
   };
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setShowHover(true)}
-      onMouseLeave={() => setShowHover(false)}
-    >
-      <Card
-        className="w-72 p-4 rounded-xl shadow-md relative"
-        style={{ background: "#f8f8fcff" }}
-      >
-        <CardHeader
-          variant="gradient"
-          className="mb-5 grid h-12 w-full place-items-center px-3 rounded-lg"
-          style={{ background: "linear-gradient(to right, #912d7d, #64459b)" }}
-        >
-          <Typography
-            variant="h6"
-            color="white"
-            className="text-sm text-center"
-          >
-            {item.id} : {item.name}
-          </Typography>
-        </CardHeader>
-
-        <div className="flex justify-center mb-3">
-          <img
-            style={{ width: "150px", height: "150px" }}
-            src={item.src}
-            alt={item.name}
+    <Card className="w-72 p-4 rounded-xl shadow-md relative" style={{ background: "#f8f8fcff" }}>
+      
+      {/* 🔥 BOOKED BADGE */}
+      {booked && (
+        <div className="absolute top-2 right-2 z-10">
+          <Chip
+            value="BOOKED"
+            color="green"
+            className="text-white font-bold"
           />
         </div>
+      )}
 
-        <CardBody className="flex flex-col gap-3 p-2">
-          <Rating value={4} readonly />
+      <CardHeader
+        variant="gradient"
+        className="mb-5 grid h-12 w-full place-items-center px-3 rounded-lg"
+        style={{ background: "linear-gradient(to right, #912d7d, #64459b)" }}
+      >
+        <Typography variant="h6" color="white" className="text-sm text-center">
+          {item.id} : {item.name}
+        </Typography>
+      </CardHeader>
 
-          {/* COUNTRY */}
-          <select
-            className="border p-2 rounded w-full"
-            value={country}
-            onChange={(e) => {
-              setCountry(e.target.value);
-              setCity("");
-              setClinic("");
-            }}
-          >
-            <option value="">Select Country</option>
-            {Object.keys(locationData).map((c, i) => (
-              <option key={i} value={c}>
-                {c}
-              </option>
+      <div className="flex justify-center mb-3">
+        <img style={{ width: "150px", height: "150px" }} src={item.src} alt={item.name} />
+      </div>
+
+      <CardBody className="flex flex-col gap-3 p-2">
+        <Rating value={4} readonly />
+
+        {/* COUNTRY */}
+        <select
+          className="border p-2 rounded w-full"
+          value={country}
+          onChange={(e) => {
+            setCountry(e.target.value);
+            setCity("");
+            setClinic("");
+          }}
+        >
+          <option value="">Select Country</option>
+          {Object.keys(locationData).map((c, i) => (
+            <option key={i} value={c}>{c}</option>
+          ))}
+        </select>
+
+        {/* CITY */}
+        <select
+          className="border p-2 rounded w-full"
+          value={city}
+          onChange={(e) => {
+            setCity(e.target.value);
+            setClinic("");
+          }}
+          disabled={!country}
+        >
+          <option value="">Select City</option>
+          {country &&
+            locationData[country].map((ct, i) => (
+              <option key={i} value={ct}>{ct}</option>
             ))}
-          </select>
+        </select>
 
-          {/* CITY */}
-          <select
-            className="border p-2 rounded w-full"
-            value={city}
-            onChange={(e) => {
-              setCity(e.target.value);
-              setClinic("");
-            }}
-            disabled={!country}
-          >
-            <option value="">Select City</option>
-            {country &&
-              locationData[country].map((ct, i) => (
-                <option key={i} value={ct}>
-                  {ct}
-                </option>
-              ))}
-          </select>
+        {/* CLINIC */}
+        <select
+          className="border p-2 rounded w-full"
+          value={clinic}
+          onChange={(e) => setClinic(e.target.value)}
+          disabled={!city}
+        >
+          <option value="">Select Clinic</option>
+          {city &&
+            clinicData[city]?.map((cl, i) => (
+              <option key={i} value={cl}>{cl}</option>
+            ))}
+        </select>
+      </CardBody>
 
-          {/* CLINIC */}
-          <select
-            className="border p-2 rounded w-full"
-            value={clinic}
-            onChange={(e) => setClinic(e.target.value)}
-            disabled={!city}
-          >
-            <option value="">Select Clinic</option>
-            {city &&
-              clinicData[city]?.map((cl, i) => (
-                <option key={i} value={cl}>
-                  {cl}
-                </option>
-              ))}
-          </select>
-        </CardBody>
-        {/* 🔥 BOOKED BADGE */}
-        {booked && (
-          <div className="absolute top-2 right-2 z-10">
-            <Chip
-              value="BOOKED"
-              color="green"
-              className="text-white font-bold"
-            />
-          </div>
-        )}
-        <CardFooter>
-          <Button
-            onClick={handleBook}
-            disabled={!country || !city || !clinic || booked}
-            className="w-full text-white font-bold uppercase tracking-wide
-                       bg-gradient-to-r from-purple-600 to-orange-500
-                       hover:shadow-lg hover:scale-[1.02] transition-all"
-          >
-            {booked ? "BOOKED" : "BOOK NOW"}
-          </Button>
-        </CardFooter>
-
-        {/* 🔥 HOVER DETAILS POPUP */}
-        {booked && showHover && booking && (
-          <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-white shadow-xl border rounded-lg p-3 z-20">
-            <Typography className="font-bold text-sm mb-2 text-purple-700">
-              Booking Details
-            </Typography>
-
-            <div className="text-sm space-y-1 text-gray-700">
-              <p>
-                <b>Country:</b> {booking.country}
-              </p>
-              <p>
-                <b>City:</b> {booking.city}
-              </p>
-              <p>
-                <b>Clinic:</b> {booking.clinic}
-              </p>
-            </div>
-          </div>
-        )}
-      </Card>
-    </div>
+      <CardFooter>
+        <Button
+          onClick={handleBook}
+          disabled={!country || !city || !clinic || booked}
+          className="w-full text-white font-bold uppercase tracking-wide
+                     bg-gradient-to-r from-purple-600 to-orange-500
+                     hover:shadow-lg hover:scale-[1.02] transition-all"
+        >
+          {booked ? "BOOKED" : "BOOK NOW"}
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
+
+
+
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [city, setCity] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const toggleCard = () => {
-    setIsOpen((prev) => !prev);
-  };
+  setIsOpen((prev) => !prev);
+  
+};
   // ✅ SEARCH FILTER
   const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -435,8 +390,7 @@ function App() {
           <button
             className="focus:outline-none"
             aria-label="Notifications"
-            onClick={toggleCard}
-          >
+onClick={toggleCard}          >
             <IoIosNotificationsOutline color="black" size={35} />
             <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
               99+
@@ -696,84 +650,83 @@ function App() {
         ) : (
           <div className="flex flex-wrap gap-6">
             {filteredData.map((item) => (
-              <CardItem key={item.id} item={item} navigate={navigate} />
-            ))}
+<CardItem key={item.id} item={item} navigate={navigate} />            ))}
           </div>
         )}
       </div>
 
-      <footer className="mt-10 w-full bg-gradient-to-r from-orange-900 via-purple-900 to-purple-800 text-gray-300 shadow-lg">
-        {" "}
-        <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Logo + Description */}
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <h3 className="text-lg font-semibold">
-                <img src={logo} alt="logo" className="w-28 mb-2" />
-              </h3>
-            </div>
-            <p className="text-sm">
-              Providing trusted dental treatments with modern technology and
-              expert dentists. Your smile is our priority.
-            </p>
-          </div>
-
-          <div className="justify-self-start text-left">
-            <h3 className="text-white font-semibold mb-3">Company</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="/HomePage" className="hover:text-white">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="hover:text-white">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="/careers" className="hover:text-white">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="/blog" className="hover:text-white">
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Treatments */}
-          <div>
-            <h3 className="text-white font-semibold mb-3">Treatments</h3>
-            <ul className="space-y-2 text-sm">
-              <li>Dental Implants</li>
-              <li>Root Canal</li>
-              <li>Braces</li>
-              <li>Teeth Whitening</li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-white font-semibold mb-3">Contact</h3>
-            <ul className="space-y-2 text-sm">
-              <li>📍Head Office - WTC , Bangalore, India</li>
-              <li>📞 HR - +91 - 8618860059</li>
-              <li>
-                <a href="mailto:supportblr@dutydentist.com">
-                  ✉ supportblr@dutydentist.com
-                </a>
-              </li>{" "}
-            </ul>
-          </div>
-        </div>
-        {/* Bottom Section */}
-        <div className="border-t border-gray-700 text-center py-4 text-sm">
-          © {new Date().getFullYear()} ToothX. All rights reserved.
-        </div>
-      </footer>
+     <footer className="mt-10 w-full bg-gradient-to-r from-orange-900 via-purple-900 to-purple-800 text-gray-300 shadow-lg">
+              {" "}
+              <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                {/* Logo + Description */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-lg font-semibold">
+                      <img src={logo} alt="logo" className="w-28 mb-2" />
+                    </h3>
+                  </div>
+                  <p className="text-sm">
+                    Providing trusted dental treatments with modern technology and
+                    expert dentists. Your smile is our priority.
+                  </p>
+                </div>
+      
+                <div className="justify-self-start text-left">
+                  <h3 className="text-white font-semibold mb-3">Company</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <a href="/HomePage" className="hover:text-white">
+                        Home
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/about" className="hover:text-white">
+                        About Us
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/careers" className="hover:text-white">
+                        Careers
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/blog" className="hover:text-white">
+                        Blog
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+      
+                {/* Treatments */}
+                <div>
+                  <h3 className="text-white font-semibold mb-3">Treatments</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>Dental Implants</li>
+                    <li>Root Canal</li>
+                    <li>Braces</li>
+                    <li>Teeth Whitening</li>
+                  </ul>
+                </div>
+      
+                {/* Contact */}
+                <div>
+                  <h3 className="text-white font-semibold mb-3">Contact</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>📍Head Office - WTC , Bangalore, India</li>
+                    <li>📞 HR - +91 - 8618860059</li>
+                    <li>
+                      <a href="mailto:supportblr@dutydentist.com">
+                        ✉ supportblr@dutydentist.com
+                      </a>
+                    </li>{" "}
+                  </ul>
+                </div>
+              </div>
+              {/* Bottom Section */}
+              <div className="border-t border-gray-700 text-center py-4 text-sm">
+                © {new Date().getFullYear()} ToothX. All rights reserved.
+              </div>
+            </footer>
     </div>
   );
 }
