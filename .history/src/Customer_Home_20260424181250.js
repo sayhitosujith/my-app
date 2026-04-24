@@ -36,6 +36,7 @@ import {
   Breadcrumbs,
 } from "@material-tailwind/react";
 
+
 const data = [
   {
     id: 1,
@@ -117,83 +118,82 @@ const CardItem = ({ item }) => {
     }
     window.location.href = "/MyCart";
   };
-
-  return (
-    <Card
-      className="w-72 p-4 rounded-xl shadow-md"
-      style={{ background: "#f8f8fcff" }}
+  
+  <Card
+  className="w-72 p-4 rounded-xl shadow-md" // ⬅️ Increased width + better UI
+  style={{ background: "#f8f8fcff" }}
+>
+  <CardHeader
+    variant="gradient"
+    className="mb-5 grid h-12 w-full place-items-center px-3 rounded-lg"
+    style={{ background: "linear-gradient(to right, #912d7d, #64459b)" }}
+  >
+    <Typography
+      variant="h6"
+      color="white"
+      className="text-sm text-center break-words leading-tight"
     >
-      <CardHeader
-        variant="gradient"
-        className="mb-5 grid h-12 w-full place-items-center px-3 rounded-lg"
-        style={{ background: "linear-gradient(to right, #912d7d, #64459b)" }}
+      {item.id} : {item.name}
+    </Typography>
+  </CardHeader>
+
+  <div className="flex justify-center items-center mb-3">
+    <img
+      style={{ width: "150px", height: "150px" }} // ⬅️ Slightly bigger
+      src={item.src}
+      alt={item.name}
+    />
+  </div>
+
+  <CardBody className="flex flex-col gap-3 p-2">
+    <Typography
+      as="a"
+      href="#"
+      className="opacity-80 transition-opacity hover:opacity-100 text-sm text-center text-purple-700 font-medium"
+    >
+      Discount - 5%
+    </Typography>
+
+    <Rating value={4} readonly size="md" />
+
+    <div className="w-full mt-2">
+      <Select
+  label="Select City"
+  size="md"
+  color="purple"
+  value={city}
+  onChange={(val) => setCity(val)}
+>
+  <Option value="Brisbane">Brisbane</Option>
+  <Option value="Melbourne">Melbourne</Option>
+  <Option value="Sydney">Sydney</Option>
+  <Option value="Maryborough">Maryborough</Option>
+  <Option value="Adelaide">Adelaide</Option>
+</Select>
+    </div>
+  </CardBody>
+
+  <CardFooter className="pt-3 px-2">
+    <div className="flex justify-between items-center">
+      <button
+        aria-label="Share"
+        className="p-2 rounded-full hover:bg-purple-100 transition"
       >
-        <Typography
-          variant="h6"
-          color="white"
-          className="text-sm text-center break-words leading-tight"
-        >
-          {item.id} : {item.name}
-        </Typography>
-      </CardHeader>
+        <RiShareForwardFill size={22} color="#7c3aed" />
+      </button>
 
-      <div className="flex justify-center items-center mb-3">
-        <img
-          style={{ width: "150px", height: "150px" }}
-          src={item.src}
-          alt={item.name}
-        />
-      </div>
-
-      <CardBody className="flex flex-col gap-3 p-2">
-        <Typography className="text-sm text-center text-purple-700 font-medium">
-          Discount - 5%
-        </Typography>
-
-        <Rating value={4} readonly size="md" />
-
-        <div className="w-full mt-2">
-          <Select
-            label="Select City"
-            size="md"
-            color="purple"
-            value={city}
-            onChange={(val) => setCity(val)}
-          >
-            <Option value="Brisbane">Brisbane</Option>
-            <Option value="Melbourne">Melbourne</Option>
-            <Option value="Sydney">Sydney</Option>
-            <Option value="Maryborough">Maryborough</Option>
-            <Option value="Adelaide">Adelaide</Option>
-          </Select>
-        </div>
-      </CardBody>
-
-      <CardFooter className="pt-3 px-2">
-        <div className="flex justify-between items-center gap-2">
-          <button className="p-2 rounded-full hover:bg-purple-100 transition">
-            <RiShareForwardFill size={22} color="#7c3aed" />
-          </button>
-
-          <Button
-            size="md"
-            onClick={handleBook}
-            disabled={!city}
-            className={`w-full text-sm px-4 py-2 text-white font-bold uppercase tracking-wide
-              bg-gradient-to-r from-purple-600 to-orange-500 rounded-md transition-all
-              ${
-                !city
-                  ? "opacity-50 cursor-not-allowed"
-                  : "hover:shadow-lg hover:scale-[1.02]"
-              }`}
-          >
-            BOOK
-          </Button>
-        </div>
-      </CardFooter>
-    </Card>
-  );
-};
+      <Button
+  size="md"
+   className="block w-full text-center text-sm px-4 py-2 text-white font-bold uppercase tracking-wide
+             bg-gradient-to-r from-purple-600 to-orange-500
+             hover:shadow-lg hover:scale-[1.02] transition-all rounded-md"
+>
+  <a href="/MyCart">BOOK</a>
+</Button>
+    </div>
+  </CardFooter>
+</Card>
+);
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -226,8 +226,8 @@ function App() {
             </svg>
           </a>
 
-          <a href="/HomePage" className="opacity-60">
-            Home
+          <a href="#" className="opacity-60">
+            <a href="/HomePage">Home</a>
           </a>
 
           <a href="#" className="opacity-60">
@@ -444,7 +444,7 @@ function App() {
       </div>
 
       <b>
-        <hr className="separator" />
+        <hr class="separator" />
       </b>
 
       <Typography
@@ -459,8 +459,8 @@ function App() {
     </div> */}
 
         <div className="flex gap-2">
-          <div className="relative flex w-full justify-end gap-2 md:w-max">
-            <div className="relative h-10 w-full  min-w-[288px]">
+          <div class="relative flex w-full justify-end gap-2 md:w-max">
+            <div class="relative h-10 w-full  min-w-[288px]">
               <input
                 type="text"
                 placeholder="Search for Treatment ....."
@@ -471,9 +471,9 @@ function App() {
     outline-0 transition-all"
               />
 
-              <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-orange-gray-200 before:transition-all before:content-none after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-orange-gray-200 after:transition-all after:content-none peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-orange-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-orange-gray-500"></label>
+              <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-orange-gray-200 before:transition-all before:content-none after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-orange-gray-200 after:transition-all after:content-none peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-orange-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-orange-gray-500"></label>
             </div>
-            <div className="!absolute left-3 top-[13px]">
+            <div class="!absolute left-3 top-[13px]">
               <svg
                 width="13"
                 height="16"
@@ -515,8 +515,8 @@ function App() {
               CONTACT SUPPORT
             </Typography>
 
-            <div className="flex space-x-2 text-orange-500">
-              <button className="p-1 rounded-full bg-gray-200 hover:bg-orange-300 transition">
+<div className="flex space-x-2 text-orange-500">
+                <button className="p-1 rounded-full bg-gray-200 hover:bg-orange-300 transition">
                 <AiOutlinePhone size={22} color="black" />
               </button>
               <button className="p-1 rounded-full bg-gray-200 hover:bg-orange-300 transition">
@@ -534,7 +534,7 @@ function App() {
       </Typography>
 
       <b>
-        <hr className="separator" />
+        <hr class="separator" />
       </b>
 
       <div className="w-full mt-6">

@@ -9,24 +9,24 @@ import "slick-carousel/slick/slick-theme.css";
 
 function NewRegistration() {
   const sendRegistrationEmail = async (user) => {
-    const templateParams = {
-      first_name: user.firstName,
-      email: user.email,
-      phone: user.phoneNumber,
-    };
-
-    try {
-      await emailjs.send(
-        "service_xxxxx",
-        "template_xxxxx",
-        templateParams,
-        "public_xxxxx",
-      );
-      console.log("✅ Email sent successfully");
-    } catch (error) {
-      console.error("❌ Email failed:", error);
-    }
+  const templateParams = {
+    first_name: user.firstName,
+    email: user.email,
+    phone: user.phoneNumber,
   };
+
+  try {
+    await emailjs.send(
+      "service_xxxxx",
+      "template_xxxxx",
+      templateParams,
+      "public_xxxxx"
+    );
+    console.log("✅ Email sent successfully");
+  } catch (error) {
+    console.error("❌ Email failed:", error);
+  }
+};
 
   const emptyForm = {
     firstName: "",
@@ -42,8 +42,8 @@ function NewRegistration() {
   };
   const [showGrid, setShowGrid] = useState(true);
   useEffect(() => {
-    localStorage.setItem("showRegisteredUsersGrid", JSON.stringify(showGrid));
-  }, [showGrid]);
+  localStorage.setItem("showRegisteredUsersGrid", JSON.stringify(showGrid));
+}, [showGrid]);
   useEffect(() => {
     const savedSetting = localStorage.getItem("showRegisteredUsersGrid");
     if (savedSetting !== null) {
@@ -51,9 +51,9 @@ function NewRegistration() {
     }
   }, []);
   const [users, setUsers] = useState(() => {
-    const storedUsers = localStorage.getItem("registeredUsers");
-    return storedUsers ? JSON.parse(storedUsers) : [];
-  });
+  const storedUsers = localStorage.getItem("registeredUsers");
+  return storedUsers ? JSON.parse(storedUsers) : [];
+});
 
   const [formData, setFormData] = useState(emptyForm);
   const [editIndex, setEditIndex] = useState(null);
@@ -390,12 +390,7 @@ function NewRegistration() {
             </select>
 
             <div className="md:col-span-2 flex gap-4 mt-4">
-              <Button
-                type="submit"
-                className="flex-1 text-white font-semibold py-2 rounded-md 
-             bg-gradient-to-r from-purple-600 to-orange-500 
-             hover:opacity-90 transition"
-              >
+              <Button type="submit" color="orange" className="flex-1">
                 {editIndex !== null ? "Update User" : "Register"}
               </Button>
               <Button
@@ -417,9 +412,7 @@ function NewRegistration() {
             Already have an account?{" "}
             <Link
               to="/my-app"
-              className="inline-block text-white font-bold uppercase tracking-wide px-6 py-2 rounded-md
-             bg-gradient-to-r from-purple-600 to-orange-500
-             hover:shadow-lg hover:scale-[1.02] transition-all"
+              className="text-orange-700 font-bold underline hover:text-orange-900"
             >
               Login
             </Link>

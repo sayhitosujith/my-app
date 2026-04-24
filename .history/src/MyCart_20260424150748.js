@@ -72,7 +72,7 @@ function MyCart() {
   /* ---------------- CUSTOMER HOME ---------------- */
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
   const customerName = loggedInUser?.name || loggedInUser?.email || "";
-  const [errors, setErrors] = useState({});
+
   const [dentists, setDentists] = useState([]);
 
   const user = {
@@ -87,52 +87,6 @@ function MyCart() {
         : "G",
   };
 
-  const validateAppointment = () => {
-    const newErrors = {};
-
-    if (!appointment.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!appointment.phone.trim()) {
-      newErrors.phone = "Phone is required";
-    } else if (!/^\d{10}$/.test(appointment.phone)) {
-      newErrors.phone = "Enter valid 10-digit phone number";
-    }
-
-    if (!appointment.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!isValidEmail(appointment.email)) {
-      newErrors.email = "Invalid email format";
-    }
-
-    if (!appointment.date) {
-      newErrors.date = "Date is required";
-    }
-
-    if (!appointment.time) {
-      newErrors.time = "Time is required";
-    }
-
-    if (!appointment.dentist) {
-      newErrors.dentist = "Select a dentist";
-    }
-
-    if (!appointment.consultationType) {
-      newErrors.consultationType = "Select consultation type";
-    }
-
-    if (appointment.type.length === 0) {
-      newErrors.type = "Select at least one treatment";
-    }
-
-    if (appointment.consultationType === "ONLINE" && !appointment.meetingUrl) {
-      newErrors.meetingUrl = "Meeting link required for online consultation";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
   /* ---------------- STATE ---------------- */
   const [appointment, setAppointment] = useState({
     location: "",
@@ -301,12 +255,13 @@ function MyCart() {
 
   /* ---------------- SUBMIT / EDIT ---------------- */
   const handleSubmit = () => {
-    if (!validateAppointment()) {
-      setToast("❌ Please fix the highlighted fields");
+    if (!isAppointmentComplete()) {
+      setToast("❌ Please fill all required details correctly");
       setToastType("error");
       setTimeout(() => setToast(""), 3000);
       return;
     }
+
     const cleanedUrl =
       appointment.meetingUrl && !appointment.meetingUrl.startsWith("http")
         ? "https://" + appointment.meetingUrl
