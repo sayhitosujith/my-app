@@ -156,59 +156,34 @@ const CardItem = ({ item, navigate }) => {
   };
   const [booked, setBooked] = useState(false);
   const [booking, setBooking] = useState(null);
+const [refresh, setRefresh] = useState(0);
+ const handleBook = () => {
+  if (!country || !city || !clinic) {
+    alert("Please select country, city and clinic first");
+    return;
+  }
 
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("bookings")) || [];
-
-    const found = saved.find((b) => b.item.id === item.id);
-
-    if (found) {
-      setBooked(true);
-      setBooking(found);
-      {
-        bookings.map((b, i) => (
-          <div key={i}>
-            <p>{b.item.name}</p>
-            <p>
-              {b.country} → {b.city} → {b.clinic}
-            </p>
-          </div>
-        ));
-      }
-    } else {
-      setBooked(false);
-      setBooking(null);
-    }
-  }, [item.id]);
-
-  const handleBook = () => {
-    if (!country || !city || !clinic) {
-      alert("Please select country, city and clinic first");
-      return;
-    }
-
-    const bookingData = {
-      item,
-      country,
-      city,
-      clinic,
-      id: Date.now(), // unique booking id
-    };
-
-    // get existing bookings
-    const existing = JSON.parse(localStorage.getItem("bookings")) || [];
-
-    // add new booking
-    const updatedBookings = [...existing, bookingData];
-
-    localStorage.setItem("bookings", JSON.stringify(updatedBookings));
-
-    setBooked(true);
-    setBooking(bookingData);
-
-    navigate("/MyCart");
+  const bookingData = {
+    item,
+    country,
+    city,
+    clinic,
+    id: Date.now(),
   };
 
+  const existing = JSON.parse(localStorage.getItem("bookings")) || [];
+
+  const updatedBookings = [...existing, bookingData];
+
+  localStorage.setItem("bookings", JSON.stringify(updatedBookings));
+
+  setBooked(true);
+  setBooking(bookingData);
+
+  setRefresh((prev) => prev + 1); // 🔥 IMPORTANT FIX
+
+  navigate("/MyCart");
+};
   return (
     <div
       className="relative"
@@ -309,8 +284,8 @@ const CardItem = ({ item, navigate }) => {
         )}
         <CardFooter>
           <Button
-  onClick={handleBook}
-  disabled={!country || !city || !clinic}
+            onClick={handleBook}
+            disabled={!country || !city || !clinic || booked}
             className="w-full text-white font-bold uppercase tracking-wide
                        bg-gradient-to-r from-purple-600 to-orange-500
                        hover:shadow-lg hover:scale-[1.02] transition-all"
@@ -355,6 +330,7 @@ function App() {
   const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
+  const [refresh, setRefresh] = useState(0);
   const navigate = useNavigate();
   return (
     <div className="p-5 bg-white">

@@ -309,8 +309,8 @@ const CardItem = ({ item, navigate }) => {
         )}
         <CardFooter>
           <Button
-  onClick={handleBook}
-  disabled={!country || !city || !clinic}
+            onClick={handleBook}
+            disabled={!country || !city || !clinic || booked}
             className="w-full text-white font-bold uppercase tracking-wide
                        bg-gradient-to-r from-purple-600 to-orange-500
                        hover:shadow-lg hover:scale-[1.02] transition-all"

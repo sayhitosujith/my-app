@@ -111,7 +111,7 @@ const now = new Date();
 const startDate = new Date("2025-04-05T08:00:00"); // Start time
 const endDate = new Date("2026-04-08T23:59:59"); // End time
 const isBannerActive = now >= startDate && now <= endDate;
-
+const [refresh, setRefresh] = useState(0);
 const locationData = {
   Australia: ["Brisbane", "Melbourne", "Sydney", "Adelaide", "Perth"],
   India: ["Bangalore", "Delhi", "Mumbai", "Chennai", "Hyderabad"],
@@ -158,28 +158,19 @@ const CardItem = ({ item, navigate }) => {
   const [booking, setBooking] = useState(null);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("bookings")) || [];
+  const saved = JSON.parse(localStorage.getItem("bookings")) || [];
 
-    const found = saved.find((b) => b.item.id === item.id);
+  // check if THIS item is already booked
+  const found = saved.find((b) => b.item.id === item.id);
 
-    if (found) {
-      setBooked(true);
-      setBooking(found);
-      {
-        bookings.map((b, i) => (
-          <div key={i}>
-            <p>{b.item.name}</p>
-            <p>
-              {b.country} → {b.city} → {b.clinic}
-            </p>
-          </div>
-        ));
-      }
-    } else {
-      setBooked(false);
-      setBooking(null);
-    }
-  }, [item.id]);
+  if (found) {
+    setBooked(true);
+    setBooking(found);
+  } else {
+    setBooked(false);
+    setBooking(null);
+  }
+}, [item.id, localStorage.getItem("bookings")]);
 
   const handleBook = () => {
     if (!country || !city || !clinic) {
@@ -309,8 +300,8 @@ const CardItem = ({ item, navigate }) => {
         )}
         <CardFooter>
           <Button
-  onClick={handleBook}
-  disabled={!country || !city || !clinic}
+            onClick={handleBook}
+            disabled={!country || !city || !clinic || booked}
             className="w-full text-white font-bold uppercase tracking-wide
                        bg-gradient-to-r from-purple-600 to-orange-500
                        hover:shadow-lg hover:scale-[1.02] transition-all"
