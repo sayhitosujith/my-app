@@ -116,7 +116,7 @@ const locationData = {
   Australia: ["Brisbane", "Melbourne", "Sydney", "Adelaide", "Perth"],
   India: ["Bangalore", "Delhi", "Mumbai", "Chennai", "Hyderabad"],
   USA: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
-  UnitedKingdom: ["London", "Manchester", "Birmingham", "Liverpool"],
+  UK: ["London", "Manchester", "Birmingham", "Liverpool"],
 };
 
 
@@ -183,15 +183,13 @@ const CardItem = ({ item, country, city, setCountry, setCity }) => {
       </CardBody>
 
       <CardFooter>
-       <Button
-  onClick={handleBook}
-  disabled={!country || !city}
-  className="w-full text-white font-bold uppercase tracking-wide
-             bg-gradient-to-r from-purple-600 to-orange-500
-             hover:shadow-lg hover:scale-[1.02] transition-all"
->
-  BOOK NOW
-</Button>
+        <Button
+          onClick={handleBook}
+          disabled={!country || !city}
+          className="w-full bg-purple-600 text-white"
+        >
+          BOOK
+        </Button>
       </CardFooter>
     </Card>
   );
@@ -200,13 +198,11 @@ const CardItem = ({ item, country, city, setCountry, setCity }) => {
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const toggleCard = () => setIsOpen(!isOpen);
+  const Close_toggleCard = () => setIsOpen((prev) => !prev);
   const [searchTerm, setSearchTerm] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const toggleCard = () => {
-  setIsOpen((prev) => !prev);
-  
-};
   // ✅ SEARCH FILTER
   const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -290,7 +286,8 @@ function App() {
           <button
             className="focus:outline-none"
             aria-label="Notifications"
-onClick={toggleCard}          >
+            onClick={Close_toggleCard}
+          >
             <IoIosNotificationsOutline color="black" size={35} />
             <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
               99+
@@ -550,91 +547,84 @@ onClick={toggleCard}          >
         ) : (
           <div className="flex flex-wrap gap-6">
             {filteredData.map((item) => (
-             <CardItem
-  key={item.id}
-  item={item}
-  country={country}
-  city={city}
-  setCountry={setCountry}
-  setCity={setCity}
-/>
+              <CardItem key={item.id} item={item} />
             ))}
           </div>
         )}
       </div>
 
-     <footer className="mt-10 w-full bg-gradient-to-r from-orange-900 via-purple-900 to-purple-800 text-gray-300 shadow-lg">
-              {" "}
-              <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                {/* Logo + Description */}
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-lg font-semibold">
-                      <img src={logo} alt="logo" className="w-28 mb-2" />
-                    </h3>
-                  </div>
-                  <p className="text-sm">
-                    Providing trusted dental treatments with modern technology and
-                    expert dentists. Your smile is our priority.
-                  </p>
-                </div>
-      
-                <div className="justify-self-start text-left">
-                  <h3 className="text-white font-semibold mb-3">Company</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>
-                      <a href="/HomePage" className="hover:text-white">
-                        Home
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/about" className="hover:text-white">
-                        About Us
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/careers" className="hover:text-white">
-                        Careers
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/blog" className="hover:text-white">
-                        Blog
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-      
-                {/* Treatments */}
-                <div>
-                  <h3 className="text-white font-semibold mb-3">Treatments</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>Dental Implants</li>
-                    <li>Root Canal</li>
-                    <li>Braces</li>
-                    <li>Teeth Whitening</li>
-                  </ul>
-                </div>
-      
-                {/* Contact */}
-                <div>
-                  <h3 className="text-white font-semibold mb-3">Contact</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>📍Head Office - WTC , Bangalore, India</li>
-                    <li>📞 HR - +91 - 8618860059</li>
-                    <li>
-                      <a href="mailto:supportblr@dutydentist.com">
-                        ✉ supportblr@dutydentist.com
-                      </a>
-                    </li>{" "}
-                  </ul>
-                </div>
-              </div>
-              {/* Bottom Section */}
-              <div className="border-t border-gray-700 text-center py-4 text-sm">
-                © {new Date().getFullYear()} ToothX. All rights reserved.
-              </div>
-            </footer>
+      <footer className="mt-10 w-full bg-gradient-to-r from-orange-900 via-purple-900 to-purple-800 text-gray-300 shadow-lg">
+        {" "}
+        <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Logo + Description */}
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <h3 className="text-lg font-semibold">
+                <img src={logo} alt="logo" className="w-28 mb-2" />
+              </h3>
+            </div>
+            <p className="text-sm">
+              Providing trusted dental treatments with modern technology and
+              expert dentists. Your smile is our priority.
+            </p>
+          </div>
+
+          <div className="justify-self-start text-left">
+            <h3 className="text-white font-semibold mb-3">Company</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="/HomePage" className="hover:text-white">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="hover:text-white">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/careers" className="hover:text-white">
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a href="/blog" className="hover:text-white">
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Treatments */}
+          <div>
+            <h3 className="text-white font-semibold mb-3">Treatments</h3>
+            <ul className="space-y-2 text-sm">
+              <li>Dental Implants</li>
+              <li>Root Canal</li>
+              <li>Braces</li>
+              <li>Teeth Whitening</li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-white font-semibold mb-3">Contact</h3>
+            <ul className="space-y-2 text-sm">
+              <li>📍Head Office - WTC , Bangalore, India</li>
+              <li>📞 HR - +91 - 8618860059</li>
+              <li>
+                <a href="mailto:supportblr@dutydentist.com">
+                  ✉ supportblr@dutydentist.com
+                </a>
+              </li>{" "}
+            </ul>
+          </div>
+        </div>
+        {/* Bottom Section */}
+        <div className="border-t border-gray-700 text-center py-4 text-sm">
+          © {new Date().getFullYear()} ToothX. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }

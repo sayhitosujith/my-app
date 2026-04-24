@@ -426,6 +426,8 @@ function Welcome() {
                   >
                     Experience - {doc.experience}
                   </Typography>
+
+                  
                 </CardFooter>
               </Card>
             </div>
@@ -571,78 +573,117 @@ function Welcome() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-10 w-full bg-gradient-to-r from-orange-900 via-purple-900 to-purple-800 text-gray-300 shadow-lg">
-              {" "}
-              <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                {/* Logo + Description */}
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-lg font-semibold">
-                      <img src={logo} alt="logo" className="w-28 mb-2" />
-                    </h3>
-                  </div>
-                  <p className="text-sm">
-                    Providing trusted dental treatments with modern technology and
-                    expert dentists. Your smile is our priority.
-                  </p>
-                </div>
-      
-                <div className="justify-self-start text-left">
-                  <h3 className="text-white font-semibold mb-3">Company</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>
-                      <a href="/HomePage" className="hover:text-white">
-                        Home
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/about" className="hover:text-white">
-                        About Us
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/careers" className="hover:text-white">
-                        Careers
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/blog" className="hover:text-white">
-                        Blog
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-      
-                {/* Treatments */}
-                <div>
-                  <h3 className="text-white font-semibold mb-3">Treatments</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>Dental Implants</li>
-                    <li>Root Canal</li>
-                    <li>Braces</li>
-                    <li>Teeth Whitening</li>
-                  </ul>
-                </div>
-      
-                {/* Contact */}
-                <div>
-                  <h3 className="text-white font-semibold mb-3">Contact</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>📍Head Office - WTC , Bangalore, India</li>
-                    <li>📞 HR - +91 - 8618860059</li>
-                    <li>
-                      <a href="mailto:supportblr@dutydentist.com">
-                        ✉ supportblr@dutydentist.com
-                      </a>
-                    </li>{" "}
-                  </ul>
-                </div>
+      <footer className="relative w-full bg-orange-900 text-white">
+        <div className="mx-auto w-full max-w-7xl px-6 py-10">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+              <Typography
+              variant="h5"
+              className="mb-6 flex items-center space-x-2 text-white"
+            >
+              <img
+                src={logo}
+                alt="App Logo"
+                className="absolute -top-4 left-4 w-65 md:w-52 h-auto z-20"
+              />
+            </Typography>
+
+            <div className="flex items-center gap-3 text-white text-sm md:text-base ml-auto">
+              <b>
+                <i className="text-lg">DOWNLOAD FOR FREE - </i>
+              </b>
+
+              <div className="relative border border-white/30 rounded-xl p-2">
+                <Button
+                  disabled
+                  className="flex items-center gap-3 bg-orange-900 hover:bg-orange-900 opacity-70 cursor-not-allowed"
+                >
+                  <GrAndroid size={28} color="white" />
+                  <RiAppleLine size={28} color="white" />
+                </Button>
+
+                {/* Animated Coming Soon Tag */}
+                <span className="absolute -top-3 -right-3 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full shadow-md animate-pulse">
+                  Coming Soon
+                </span>
               </div>
-              {/* Bottom Section */}
-              <div className="border-t border-gray-700 text-center py-4 text-sm">
-                © {new Date().getFullYear()} ToothX. All rights reserved.
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {LINKS.map(({ title, items }) => (
+                <ul key={title}>
+                  <Typography
+                    variant="small"
+                    className="mb-3 font-medium text-white opacity-100"
+                  >
+                    {title}
+                  </Typography>
+                  {items.map((link) => (
+                    <li key={link}>
+                      <button
+                        onClick={() => {
+                          const path = footerLinkMap[link];
+                          if (path) navigate(path);
+                        }}
+                        className="py-1.5 font-normal text-white/80 transition-colors hover:text-white cursor-pointer"
+                      >
+                        {link}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-white/20 py-4 md:flex-row md:justify-between">
+            <Typography
+              variant="small"
+              className="mb-4 text-center font-normal text-white md:mb-0"
+            >
+              &copy; {new Date().getFullYear()} ToothX — All Rights Reserved.
+              <div className="flex items-center space-x-2 mt-2 justify-center md:justify-start">
+                <span className="text-sm font-semibold">MADE IN INDIA</span>
+                <Flag code="IN" style={{ width: 30, height: 20 }} />
               </div>
-            </footer>
+            </Typography>
+
+            <div className="flex gap-4 text-white sm:justify-center">
+              <button
+                onClick={() =>
+                  window.open("https://www.facebook.com/YourPage", "_blank")
+                }
+                className="opacity-80 transition-opacity hover:opacity-100 cursor-pointer"
+              >
+                Facebook
+              </button>
+              <button
+                onClick={() =>
+                  window.open("https://www.youtube.com/YourChannel", "_blank")
+                }
+                className="opacity-80 transition-opacity hover:opacity-100 cursor-pointer"
+              >
+                YouTube
+              </button>
+              <button
+                onClick={() =>
+                  window.open("https://twitter.com/YourProfile", "_blank")
+                }
+                className="opacity-80 transition-opacity hover:opacity-100 cursor-pointer"
+              >
+                Twitter
+              </button>
+              <button
+                onClick={() =>
+                  window.open("https://github.com/YourProfile", "_blank")
+                }
+                className="opacity-80 transition-opacity hover:opacity-100 cursor-pointer"
+              >
+                GitHub
+              </button>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

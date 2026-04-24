@@ -563,78 +563,78 @@ onClick={toggleCard}          >
         )}
       </div>
 
-     <footer className="mt-10 w-full bg-gradient-to-r from-orange-900 via-purple-900 to-purple-800 text-gray-300 shadow-lg">
-              {" "}
-              <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                {/* Logo + Description */}
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-lg font-semibold">
-                      <img src={logo} alt="logo" className="w-28 mb-2" />
-                    </h3>
-                  </div>
-                  <p className="text-sm">
-                    Providing trusted dental treatments with modern technology and
-                    expert dentists. Your smile is our priority.
-                  </p>
-                </div>
-      
-                <div className="justify-self-start text-left">
-                  <h3 className="text-white font-semibold mb-3">Company</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>
-                      <a href="/HomePage" className="hover:text-white">
-                        Home
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/about" className="hover:text-white">
-                        About Us
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/careers" className="hover:text-white">
-                        Careers
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/blog" className="hover:text-white">
-                        Blog
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-      
-                {/* Treatments */}
-                <div>
-                  <h3 className="text-white font-semibold mb-3">Treatments</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>Dental Implants</li>
-                    <li>Root Canal</li>
-                    <li>Braces</li>
-                    <li>Teeth Whitening</li>
-                  </ul>
-                </div>
-      
-                {/* Contact */}
-                <div>
-                  <h3 className="text-white font-semibold mb-3">Contact</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>📍Head Office - WTC , Bangalore, India</li>
-                    <li>📞 HR - +91 - 8618860059</li>
-                    <li>
-                      <a href="mailto:supportblr@dutydentist.com">
-                        ✉ supportblr@dutydentist.com
-                      </a>
-                    </li>{" "}
-                  </ul>
-                </div>
-              </div>
-              {/* Bottom Section */}
-              <div className="border-t border-gray-700 text-center py-4 text-sm">
-                © {new Date().getFullYear()} ToothX. All rights reserved.
-              </div>
-            </footer>
+      <footer className="mt-10 w-full bg-gradient-to-r from-orange-900 via-purple-900 to-purple-800 text-gray-300 shadow-lg">
+        {" "}
+        <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Logo + Description */}
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <h3 className="text-lg font-semibold">
+                <img src={logo} alt="logo" className="w-28 mb-2" />
+              </h3>
+            </div>
+            <p className="text-sm">
+              Providing trusted dental treatments with modern technology and
+              expert dentists. Your smile is our priority.
+            </p>
+          </div>
+
+          <div className="justify-self-start text-left">
+            <h3 className="text-white font-semibold mb-3">Company</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="/HomePage" className="hover:text-white">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="hover:text-white">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/careers" className="hover:text-white">
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a href="/blog" className="hover:text-white">
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Treatments */}
+          <div>
+            <h3 className="text-white font-semibold mb-3">Treatments</h3>
+            <ul className="space-y-2 text-sm">
+              <li>Dental Implants</li>
+              <li>Root Canal</li>
+              <li>Braces</li>
+              <li>Teeth Whitening</li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-white font-semibold mb-3">Contact</h3>
+            <ul className="space-y-2 text-sm">
+              <li>📍Head Office - WTC , Bangalore, India</li>
+              <li>📞 HR - +91 - 8618860059</li>
+              <li>
+                <a href="mailto:supportblr@dutydentist.com">
+                  ✉ supportblr@dutydentist.com
+                </a>
+              </li>{" "}
+            </ul>
+          </div>
+        </div>
+        {/* Bottom Section */}
+        <div className="border-t border-gray-700 text-center py-4 text-sm">
+          © {new Date().getFullYear()} ToothX. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }
