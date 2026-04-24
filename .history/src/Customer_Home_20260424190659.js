@@ -22,7 +22,7 @@ import { useState } from "react";
 import { RiShareForwardFill } from "react-icons/ri";
 import { TbRefresh } from "react-icons/tb";
 import { RiStethoscopeLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+
 import {
   Card,
   CardHeader,
@@ -120,31 +120,17 @@ const locationData = {
 };
 
 
-const CardItem = ({ item, navigate }) => {  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
-
+const CardItem = ({ item, country, city, setCountry, setCity }) => {
   const handleBook = () => {
-  if (!country || !city) {
-    alert("Please select country and city first");
-    return;
-  }
-
-  // optional: store selected data
-  const bookingData = {
-    item,
-    country,
-    city,
+    if (!country || !city) {
+      alert("Please select country and city first");
+      return;
+    }
+    alert(`Booking for ${item.name} in ${city}, ${country}`);
   };
-
-  localStorage.setItem("booking", JSON.stringify(bookingData));
-
-  // navigate to cart page
-  navigate("/MyCart");
-};
 
   return (
     <Card className="w-72 p-4 rounded-xl shadow-md" style={{ background: "#f8f8fcff" }}>
-      
       <CardHeader
         variant="gradient"
         className="mb-5 grid h-12 w-full place-items-center px-3 rounded-lg"
@@ -197,26 +183,24 @@ const CardItem = ({ item, navigate }) => {  const [country, setCountry] = useSta
       </CardBody>
 
       <CardFooter>
-        <Button
-          onClick={handleBook}
-          disabled={!country || !city}
-          className="w-full text-white font-bold uppercase tracking-wide
-                     bg-gradient-to-r from-purple-600 to-orange-500
-                     hover:shadow-lg hover:scale-[1.02] transition-all"
-        >
-          BOOK NOW
-        </Button>
+       <Button
+  onClick={handleBook}
+  disabled={!country || !city}
+  className="w-full text-white font-bold uppercase tracking-wide
+             bg-gradient-to-r from-purple-600 to-orange-500
+             hover:shadow-lg hover:scale-[1.02] transition-all"
+>
+  BOOK NOW
+</Button>
       </CardFooter>
     </Card>
   );
 };
 
 
-
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [city, setCity] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
   const toggleCard = () => {
   setIsOpen((prev) => !prev);
   
@@ -225,7 +209,6 @@ function App() {
   const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
-  const navigate = useNavigate();
   return (
     <div className="p-5 bg-white">
       <div className="flex items-center gap-2 mb-2">
@@ -565,7 +548,15 @@ onClick={toggleCard}          >
         ) : (
           <div className="flex flex-wrap gap-6">
             {filteredData.map((item) => (
-<CardItem key={item.id} item={item} navigate={navigate} />            ))}
+             <CardItem
+  key={item.id}
+  item={item}
+  country={country}
+  city={city}
+  setCountry={setCountry}
+  setCity={setCity}
+/>
+            ))}
           </div>
         )}
       </div>

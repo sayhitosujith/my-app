@@ -22,7 +22,7 @@ import { useState } from "react";
 import { RiShareForwardFill } from "react-icons/ri";
 import { TbRefresh } from "react-icons/tb";
 import { RiStethoscopeLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+
 import {
   Card,
   CardHeader,
@@ -120,27 +120,17 @@ const locationData = {
 };
 
 
-const CardItem = ({ item, navigate }) => {  const [country, setCountry] = useState("");
+const CardItem = ({ item }) => {
+  const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
 
   const handleBook = () => {
-  if (!country || !city) {
-    alert("Please select country and city first");
-    return;
-  }
-
-  // optional: store selected data
-  const bookingData = {
-    item,
-    country,
-    city,
+    if (!country || !city) {
+      alert("Please select country and city first");
+      return;
+    }
+    alert(`Booking for ${item.name} in ${city}, ${country}`);
   };
-
-  localStorage.setItem("booking", JSON.stringify(bookingData));
-
-  // navigate to cart page
-  navigate("/MyCart");
-};
 
   return (
     <Card className="w-72 p-4 rounded-xl shadow-md" style={{ background: "#f8f8fcff" }}>
@@ -225,7 +215,6 @@ function App() {
   const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
-  const navigate = useNavigate();
   return (
     <div className="p-5 bg-white">
       <div className="flex items-center gap-2 mb-2">
@@ -565,7 +554,8 @@ onClick={toggleCard}          >
         ) : (
           <div className="flex flex-wrap gap-6">
             {filteredData.map((item) => (
-<CardItem key={item.id} item={item} navigate={navigate} />            ))}
+            <CardItem key={item.id} item={item} />
+            ))}
           </div>
         )}
       </div>
