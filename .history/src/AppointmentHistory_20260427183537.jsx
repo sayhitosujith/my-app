@@ -469,8 +469,7 @@ const AppointmentHistory = () => {
                     </button>
                   </td>
                 </tr>
-                );
-              })}
+              ))}
             </tbody>
             <tfoot>
               <tr>

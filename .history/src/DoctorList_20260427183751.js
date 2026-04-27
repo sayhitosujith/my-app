@@ -606,6 +606,16 @@ function DoctorList() {
     );
   };
 
+  const toggleSelectAll = () => {
+    if (selectAll) {
+      setSelectedDoctors([]);
+    } else {
+      const allIndices = currentDoctors.map((_, i) => indexOfFirstDoctor + i);
+      setSelectedDoctors(allIndices);
+    }
+    setSelectAll(!selectAll);
+  };
+
   const deleteSelectedDoctors = () => {
     const updated = doctors.filter((_, i) => !selectedDoctors.includes(i));
     saveDoctors(updated);

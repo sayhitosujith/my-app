@@ -396,13 +396,7 @@ const AppointmentHistory = () => {
               </tr>
             </thead>
             <tbody>
-              {currentAppointments.map((apt, index) => {
-                // Get patient name from various possible field names
-                const patientName = apt.firstName || apt.patientName || apt.name || "N/A";
-                const patientLastName = apt.lastName || "";
-                const fullName = `${patientName} ${patientLastName}`.trim();
-                
-                return (
+              {currentAppointments.map((apt, index) => (
                 <tr key={apt.appointmentID}>
                   <td>
                     <input
@@ -417,7 +411,9 @@ const AppointmentHistory = () => {
                     {new Date(apt.date).toLocaleDateString()}
                   </td>
                   <td>{apt.time}</td>
-                  <td>{fullName}</td>
+                  <td>{`${apt.firstName} ${apt.middleName || ""} ${
+                    apt.lastName
+                  }`}</td>
                   <td>{apt.department}</td>
                   <td>{apt.doctor}</td>
                   <td>{apt.appointmentType}</td>
@@ -469,8 +465,7 @@ const AppointmentHistory = () => {
                     </button>
                   </td>
                 </tr>
-                );
-              })}
+              ))}
             </tbody>
             <tfoot>
               <tr>

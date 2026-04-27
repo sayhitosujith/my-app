@@ -105,7 +105,7 @@ function DoctorList() {
     return `${firstName[0] || ""}${lastName[0] || ""}`.toUpperCase();
   };
 
-  const [user] = useState(() => {
+  const [user, setUser] = useState(() => {
     try {
       const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
@@ -506,6 +506,11 @@ function DoctorList() {
     return "Good Evening";
   };
 
+  const [weather, setWeather] = useState({
+    city: "",
+    temp: null,
+  });
+
   const handleOpen = () => {
     if (!isLoggedIn) {
       setOpenLocationModal(true); // show popup first
@@ -513,6 +518,49 @@ function DoctorList() {
       completeSignAction();
     }
   };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+
+          const res = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=YOUR_API_KEY`,
+          );
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            console.log("Weather API Error:", data);
+            setWeather({
+              city: "Unknown City",
+              temp: null,
+            });
+            return;
+          }
+
+          setWeather({
+            city: data.name,
+            temp: data.main.temp,
+          });
+        } catch (err) {
+          console.log("Fetch error:", err);
+          setWeather({
+            city: "Unknown City",
+            temp: null,
+          });
+        }
+      },
+      (error) => {
+        console.log("Location denied", error);
+        setWeather({
+          city: "Unknown City",
+          temp: null,
+        });
+      },
+    );
+  }, []);
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -604,6 +652,16 @@ function DoctorList() {
     setSelectedDoctors((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
+  };
+
+  const toggleSelectAll = () => {
+    if (selectAll) {
+      setSelectedDoctors([]);
+    } else {
+      const allIndices = currentDoctors.map((_, i) => indexOfFirstDoctor + i);
+      setSelectedDoctors(allIndices);
+    }
+    setSelectAll(!selectAll);
   };
 
   const deleteSelectedDoctors = () => {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 // Material Tailwind
@@ -18,6 +18,7 @@ import {
   Squares2X2Icon,
   PencilIcon,
   TrashIcon,
+  EyeIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/solid";
 import { FaUserMd } from "react-icons/fa";
@@ -26,6 +27,7 @@ import { VscArrowRight } from "react-icons/vsc";
 import { FcEngineering } from "react-icons/fc";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaArrowTrendUp } from "react-icons/fa6";
+
 // ✅ Merge duplicate Md imports
 import {
   MdOutlineFestival,
@@ -73,11 +75,13 @@ function DoctorList() {
   const [doctors, setDoctors] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [editDoctor, setEditDoctor] = useState({});
+  const [viewDoctor, setViewDoctor] = useState(null);
   const [gridView, setGridView] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
 
   const doctorsPerPage = 32;
+  const cardRefs = useRef([]);
   const [timeZoneLabel, setTimeZoneLabel] = useState("");
   const [confirmAction, setConfirmAction] = useState({
     open: false,
@@ -98,14 +102,13 @@ function DoctorList() {
   const [openSwipeModal, setOpenSwipeModal] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [sessionExpired, setSessionExpired] = useState(false);
-  const [appointments, setAppointments] = useState([]);
 
   const getInitials = (firstName = "", lastName = "") => {
     if (!firstName && !lastName) return "U";
     return `${firstName[0] || ""}${lastName[0] || ""}`.toUpperCase();
   };
 
-  const [user] = useState(() => {
+  const [user, setUser] = useState(() => {
     try {
       const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
@@ -413,13 +416,6 @@ function DoctorList() {
     setCurrentPage(1);
   }, [searchTerm]);
 
-  // Load Appointments History
-  useEffect(() => {
-    const storedAppointments =
-      JSON.parse(localStorage.getItem("appointments")) || [];
-    setAppointments(storedAppointments);
-  }, []);
-
   useEffect(() => {
     const storedDoctors = getDoctorsFromStorage();
 
@@ -506,6 +502,11 @@ function DoctorList() {
     return "Good Evening";
   };
 
+  const [weather, setWeather] = useState({
+    city: "",
+    temp: null,
+  });
+
   const handleOpen = () => {
     if (!isLoggedIn) {
       setOpenLocationModal(true); // show popup first
@@ -513,6 +514,49 @@ function DoctorList() {
       completeSignAction();
     }
   };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+
+          const res = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=YOUR_API_KEY`,
+          );
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            console.log("Weather API Error:", data);
+            setWeather({
+              city: "Unknown City",
+              temp: null,
+            });
+            return;
+          }
+
+          setWeather({
+            city: data.name,
+            temp: data.main.temp,
+          });
+        } catch (err) {
+          console.log("Fetch error:", err);
+          setWeather({
+            city: "Unknown City",
+            temp: null,
+          });
+        }
+      },
+      (error) => {
+        console.log("Location denied", error);
+        setWeather({
+          city: "Unknown City",
+          temp: null,
+        });
+      },
+    );
+  }, []);
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -604,6 +648,16 @@ function DoctorList() {
     setSelectedDoctors((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
+  };
+
+  const toggleSelectAll = () => {
+    if (selectAll) {
+      setSelectedDoctors([]);
+    } else {
+      const allIndices = currentDoctors.map((_, i) => indexOfFirstDoctor + i);
+      setSelectedDoctors(allIndices);
+    }
+    setSelectAll(!selectAll);
   };
 
   const deleteSelectedDoctors = () => {
@@ -1190,91 +1244,6 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
         </DialogFooter>
       </Dialog>
 
-      {/* 📅 APPOINTMENTS HISTORY SECTION */}
-      {appointments.length > 0 && (
-        <Card className="mb-6 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-purple-50 shadow-lg border border-blue-200">
-          <div className="flex items-center justify-between mb-4">
-            <Typography variant="h5" className="font-bold text-blue-900 flex items-center gap-2">
-              📅 APPOINTMENTS HISTORY
-              <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">
-                {appointments.length}
-              </span>
-            </Typography>
-            <Button
-              size="sm"
-              className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-900 text-white hover:scale-105 transition"
-              onClick={() => navigate("/AppointmentHistory")}
-            >
-              View All →
-            </Button>
-          </div>
-
-          {/* Recent Appointments Table */}
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b-2 border-blue-300 bg-blue-100">
-                  <th className="px-3 py-2 text-left text-blue-900 font-semibold">Sl No</th>
-                  <th className="px-3 py-2 text-left text-blue-900 font-semibold">Patient Name</th>
-                  <th className="px-3 py-2 text-left text-blue-900 font-semibold">Date</th>
-                  <th className="px-3 py-2 text-left text-blue-900 font-semibold">Time</th>
-                  <th className="px-3 py-2 text-left text-blue-900 font-semibold">Doctor</th>
-                  <th className="px-3 py-2 text-left text-blue-900 font-semibold">Department</th>
-                  <th className="px-3 py-2 text-center text-blue-900 font-semibold">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {appointments.slice(0, 5).map((apt, index) => {
-                  // Get patient name from various possible field names
-                  const patientName = apt.firstName || apt.patientName || apt.name || "N/A";
-                  const patientLastName = apt.lastName || "";
-                  const fullName = `${patientName} ${patientLastName}`.trim();
-                  
-                  return (
-                  <tr key={index} className="border-b border-blue-200 hover:bg-blue-50 transition">
-                    <td className="px-3 py-2 text-gray-700">{index + 1}</td>
-                    <td className="px-3 py-2 font-medium text-gray-800">
-                      {fullName || "Unknown Patient"}
-                    </td>
-                    <td className="px-3 py-2 text-gray-700">
-                      {apt.date ? new Date(apt.date).toLocaleDateString("en-GB") : "N/A"}
-                    </td>
-                    <td className="px-3 py-2 text-gray-700">{apt.time || "N/A"}</td>
-                    <td className="px-3 py-2 text-gray-700">{apt.doctor || "N/A"}</td>
-                    <td className="px-3 py-2 text-gray-700">{apt.department || "N/A"}</td>
-                    <td className="px-3 py-2 text-center">
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                          getAppointmentStatus(apt) === "Completed"
-                            ? "bg-gray-600 text-white"
-                            : "bg-green-600 text-white"
-                        }`}
-                      >
-                        {getAppointmentStatus(apt)}
-                      </span>
-                    </td>
-                  </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          {appointments.length > 5 && (
-            <div className="mt-4 text-center">
-              <Button
-                variant="text"
-                color="blue"
-                onClick={() => navigate("/AppointmentHistory")}
-                className="text-blue-600 hover:text-blue-800 font-semibold"
-              >
-                View All {appointments.length} Appointments →
-              </Button>
-            </div>
-          )}
-        </Card>
-      )}
-
       {/* Delete Selected */}
       {selectedDoctors.length > 0 && (
         <div className="mt-4 flex justify-end">
@@ -1376,6 +1345,12 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                   />
 
                   <div className="flex-1 w-full flex flex-col items-start text-left space-y-1 text-black">
+                  <Button
+                    color="orange"
+                    onClick={() => setOpenAllAppointments(true)}
+                  >
+                    View All Appointments
+                  </Button>
                   <Typography
                     variant="h3"
                     className="font-semibold text-sm sm:text-base"

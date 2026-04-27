@@ -25,7 +25,7 @@ import { FaUserMd } from "react-icons/fa";
 import { VscArrowRight } from "react-icons/vsc";
 import { FcEngineering } from "react-icons/fc";
 import { AiOutlineDelete } from "react-icons/ai";
-import { FaArrowTrendUp } from "react-icons/fa6";
+
 // ✅ Merge duplicate Md imports
 import {
   MdOutlineFestival,
@@ -88,7 +88,6 @@ function DoctorList() {
   const [workReason, setWorkReason] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [selectedDoctors, setSelectedDoctors] = useState([]);
-  const [selectAll, setSelectAll] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("isLoggedIn")) || false,
@@ -1460,7 +1459,6 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                             ? "w-24 h-24 sm:w-28 sm:h-28"
                             : "w-20 h-20 sm:w-24 sm:h-24"
                           } object-cover border-2 border-orange-100 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl`}
-                          onClick={() => setViewDoctor(doc)}
                         />
                         )}
                         {/* Top */}

@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 // Material Tailwind
@@ -18,6 +18,7 @@ import {
   Squares2X2Icon,
   PencilIcon,
   TrashIcon,
+  EyeIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/solid";
 import { FaUserMd } from "react-icons/fa";
@@ -26,6 +27,7 @@ import { VscArrowRight } from "react-icons/vsc";
 import { FcEngineering } from "react-icons/fc";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaArrowTrendUp } from "react-icons/fa6";
+
 // ✅ Merge duplicate Md imports
 import {
   MdOutlineFestival,
@@ -73,11 +75,13 @@ function DoctorList() {
   const [doctors, setDoctors] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [editDoctor, setEditDoctor] = useState({});
+  const [viewDoctor, setViewDoctor] = useState(null);
   const [gridView, setGridView] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
 
   const doctorsPerPage = 32;
+  const cardRefs = useRef([]);
   const [timeZoneLabel, setTimeZoneLabel] = useState("");
   const [confirmAction, setConfirmAction] = useState({
     open: false,
@@ -105,7 +109,7 @@ function DoctorList() {
     return `${firstName[0] || ""}${lastName[0] || ""}`.toUpperCase();
   };
 
-  const [user] = useState(() => {
+  const [user, setUser] = useState(() => {
     try {
       const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
@@ -506,6 +510,11 @@ function DoctorList() {
     return "Good Evening";
   };
 
+  const [weather, setWeather] = useState({
+    city: "",
+    temp: null,
+  });
+
   const handleOpen = () => {
     if (!isLoggedIn) {
       setOpenLocationModal(true); // show popup first
@@ -513,6 +522,49 @@ function DoctorList() {
       completeSignAction();
     }
   };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+
+          const res = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=YOUR_API_KEY`,
+          );
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            console.log("Weather API Error:", data);
+            setWeather({
+              city: "Unknown City",
+              temp: null,
+            });
+            return;
+          }
+
+          setWeather({
+            city: data.name,
+            temp: data.main.temp,
+          });
+        } catch (err) {
+          console.log("Fetch error:", err);
+          setWeather({
+            city: "Unknown City",
+            temp: null,
+          });
+        }
+      },
+      (error) => {
+        console.log("Location denied", error);
+        setWeather({
+          city: "Unknown City",
+          temp: null,
+        });
+      },
+    );
+  }, []);
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -604,6 +656,16 @@ function DoctorList() {
     setSelectedDoctors((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
+  };
+
+  const toggleSelectAll = () => {
+    if (selectAll) {
+      setSelectedDoctors([]);
+    } else {
+      const allIndices = currentDoctors.map((_, i) => indexOfFirstDoctor + i);
+      setSelectedDoctors(allIndices);
+    }
+    setSelectAll(!selectAll);
   };
 
   const deleteSelectedDoctors = () => {
@@ -1224,17 +1286,11 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                 </tr>
               </thead>
               <tbody>
-                {appointments.slice(0, 5).map((apt, index) => {
-                  // Get patient name from various possible field names
-                  const patientName = apt.firstName || apt.patientName || apt.name || "N/A";
-                  const patientLastName = apt.lastName || "";
-                  const fullName = `${patientName} ${patientLastName}`.trim();
-                  
-                  return (
+                {appointments.slice(0, 5).map((apt, index) => (
                   <tr key={index} className="border-b border-blue-200 hover:bg-blue-50 transition">
                     <td className="px-3 py-2 text-gray-700">{index + 1}</td>
                     <td className="px-3 py-2 font-medium text-gray-800">
-                      {fullName || "Unknown Patient"}
+                      {apt.firstName || "N/A"} {apt.lastName || ""}
                     </td>
                     <td className="px-3 py-2 text-gray-700">
                       {apt.date ? new Date(apt.date).toLocaleDateString("en-GB") : "N/A"}
@@ -1254,8 +1310,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                       </span>
                     </td>
                   </tr>
-                  );
-                })}
+                ))}
               </tbody>
             </table>
           </div>

@@ -25,7 +25,7 @@ import { FaUserMd } from "react-icons/fa";
 import { VscArrowRight } from "react-icons/vsc";
 import { FcEngineering } from "react-icons/fc";
 import { AiOutlineDelete } from "react-icons/ai";
-import { FaArrowTrendUp } from "react-icons/fa6";
+
 // ✅ Merge duplicate Md imports
 import {
   MdOutlineFestival,
