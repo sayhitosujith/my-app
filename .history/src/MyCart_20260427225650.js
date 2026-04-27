@@ -1432,8 +1432,9 @@ const grandTotal = baseAmount + gstAmount;
                               ? "bg-orange-100 text-orange-700 border border-orange-300"
                               : "bg-gray-100 text-gray-500 border border-gray-300"}
                         `}
+                        title={item.consultationType || "-"}
                       >
-                        {item.consultationType || "-"}
+                        *
                       </span>
                     </p>
 

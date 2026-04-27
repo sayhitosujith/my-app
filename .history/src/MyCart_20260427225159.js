@@ -1422,19 +1422,8 @@ const grandTotal = baseAmount + gstAmount;
                         : item.type || "-"}
                     </p>
 
-                    <p className="flex items-center gap-2">
-                      <b>Consultation Mode:</b>
-                      <span
-                        className={`px-3 py-1 rounded-full font-semibold shadow transition-all duration-500 animate-pulse 
-                          ${item.consultationType === "ONLINE"
-                            ? "bg-blue-100 text-blue-700 border border-blue-300"
-                            : item.consultationType === "OFFLINE"
-                              ? "bg-orange-100 text-orange-700 border border-orange-300"
-                              : "bg-gray-100 text-gray-500 border border-gray-300"}
-                        `}
-                      >
-                        {item.consultationType || "-"}
-                      </span>
+                    <p>
+                      <b>Consultation Mode:</b> {item.consultationType || "-"}
                     </p>
 
                     {item.consultationType === "ONLINE" && item.meetingUrl && (
