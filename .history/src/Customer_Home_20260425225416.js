@@ -145,20 +145,6 @@ const clinicData = {
 };
 
 const CardItem = ({ item, navigate }) => {
-  const dentistData = {
-  "ToothX Brisbane Central": ["Dr. koyes", "Dr. Alex"],
-  "ToothX Bangalore Main": ["Dr. Reddy", "Dr. Sharma"],
-  "Smile Dental Bangalore": ["Dr. Mehta"],
-  "Smile Care Brisbane": ["Dr. Mehta"],
-  "Delhi Dental Hub": ["Dr. Gupta"],
-  "ToothX Delhi Center": ["Dr. Verma"],
-  "Mumbai Smile Clinic": ["Dr. Khan"],
-  "Chennai Dental Care": ["Dr. Iyer"],
-  "Hyderabad ToothX Clinic": ["Dr. Rao"],
-};
-
-  const [dentist, setDentist] = useState("");
-
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [clinic, setClinic] = useState("");
@@ -172,32 +158,27 @@ const CardItem = ({ item, navigate }) => {
   const [booking, setBooking] = useState(null);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("bookings")) || [];
+  const saved = JSON.parse(localStorage.getItem("bookings")) || [];
+  const found = saved.find((b) => b.item.id === item.id);
 
-    const found = saved.find((b) => b.item.id === item.id);
+  if (found) {
+    setBooked(true);
+    setBooking(found);
+  } else {
+    setBooked(false);
+    setBooking(null);
+  }
+}, [item.id]);
 
-    if (found) {
-      setBooked(true);
-      setBooking(found);
-      {
-        bookings.map((b, i) => (
-          <div key={i}>
-            <p>{b.item.name}</p>
-            <p>
-              {b.country} → {b.city} → {b.clinic}
-            </p>
-          </div>
-        ));
-      }
-    } else {
-      setBooked(false);
-      setBooking(null);
-    }
-  }, [item.id]);
-
+  const [dentist, setDentist] = useState("");
+  const dentistData = {
+    "ToothX Bangalore Main": ["Dr. Reddy", "Dr. Sharma"],
+    "Smile Dental Bangalore": ["Dr. Priya"],  
+    "Delhi Dental Hub": ["Dr. Khan"],
+  };
   const handleBook = () => {
-    if (!country || !city || !clinic || !dentist) {
-      alert("Please select country, city, clinic and dentist");
+    if (!country || !city || !clinic) {
+      alert("Please select country, city and clinic first");
       return;
     }
 
@@ -206,11 +187,14 @@ const CardItem = ({ item, navigate }) => {
       country,
       city,
       clinic,
-      dentistName: dentist, // ✅ FIXED
-      id: Date.now(),
+      dentist,
+      id: Date.now(), // unique booking id
     };
 
+    // get existing bookings
     const existing = JSON.parse(localStorage.getItem("bookings")) || [];
+
+    // add new booking
     const updatedBookings = [...existing, bookingData];
 
     localStorage.setItem("bookings", JSON.stringify(updatedBookings));
@@ -264,7 +248,6 @@ const CardItem = ({ item, navigate }) => {
               setCountry(e.target.value);
               setCity("");
               setClinic("");
-                setDentist(""); // reset
             }}
           >
             <option value="">Select Country</option>
@@ -283,7 +266,7 @@ const CardItem = ({ item, navigate }) => {
               setCity(e.target.value);
               setClinic("");
             }}
-            disabled={!country}
+            disabled={!country || !city || !clinic || !dentist}
           >
             <option value="">Select City</option>
             {country &&
@@ -309,25 +292,10 @@ const CardItem = ({ item, navigate }) => {
                 </option>
               ))}
           </select>
-
-          <select
-            className="border p-2 rounded w-full"
-            value={dentist}
-            onChange={(e) => setDentist(e.target.value)}
-            disabled={!clinic}
-          >
-            <option value="">Select Dentist</option>
-            {clinic &&
-              dentistData[clinic]?.map((d, i) => (
-                <option key={i} value={d}>
-                  {d}
-                </option>
-              ))}
-          </select>
         </CardBody>
         {/* 🔥 BOOKED BADGE */}
         {booked && (
-          <div className="absolute top-0 right-2 z-10">
+          <div className="absolute top-2 right-2 z-10">
             <Chip
               value="BOOKED"
               color="green"
@@ -356,9 +324,6 @@ const CardItem = ({ item, navigate }) => {
 
             <div className="text-sm space-y-1 text-yellow-100">
               <p>
-                <b>Dentist:</b> {booking?.dentistName || "N/A"}
-              </p>
-              <p>
                 <b>Country:</b> {booking.country}
               </p>
               <p>
@@ -366,6 +331,9 @@ const CardItem = ({ item, navigate }) => {
               </p>
               <p>
                 <b>Clinic:</b> {booking.clinic}
+              </p>
+              <p>
+                <b>Dentist:</b> {booking.dentist || "Not Selected"}
               </p>
             </div>
           </div>
@@ -376,15 +344,13 @@ const CardItem = ({ item, navigate }) => {
 };
 
 function App() {
+  const [dentist, setDentist] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [city, setCity] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const toggleCard = () => {
     setIsOpen((prev) => !prev);
   };
-
-  const [dentist, setDentist] = useState("");
-
   // ✅ SEARCH FILTER
   const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()),

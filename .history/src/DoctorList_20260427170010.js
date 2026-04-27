@@ -53,24 +53,24 @@ import "./DoctorList.css";
 
 function DoctorList() {
   const getAppointmentStatus = (appt) => {
-    // If backend already provides status → respect it
-    if (appt?.status) return appt.status;
+  // If backend already provides status → respect it
+  if (appt?.status) return appt.status;
 
-    if (!appt?.date) return "Upcoming";
+  if (!appt?.date) return "Upcoming";
 
-    const today = new Date();
-    const apptDate = new Date(appt.date);
+  const today = new Date();
+  const apptDate = new Date(appt.date);
 
-    // Remove time for accurate comparison
-    today.setHours(0, 0, 0, 0);
-    apptDate.setHours(0, 0, 0, 0);
+  // Remove time for accurate comparison
+  today.setHours(0, 0, 0, 0);
+  apptDate.setHours(0, 0, 0, 0);
 
-    if (apptDate < today) {
-      return "Completed";
-    }
+  if (apptDate < today) {
+    return "Completed";
+  }
 
-    return "Upcoming";
-  };
+  return "Upcoming";
+};
   const navigate = useNavigate();
   const [doctors, setDoctors] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
@@ -347,22 +347,6 @@ function DoctorList() {
     localStorage.setItem("swipeHistory", JSON.stringify(updatedHistory));
   };
 
-  const allAppointments = useMemo(() => {
-    return doctors.flatMap((doc) =>
-      (doc.appointments || []).map((appt) => ({
-        ...appt,
-        doctorName: `${doc.firstName || ""} ${doc.lastName || ""}`,
-        doctorId: doc.id,
-      })),
-    );
-  }, [doctors]);
-
-  const sortedAppointments = useMemo(() => {
-    return [...allAppointments].sort(
-      (a, b) => new Date(a.date) - new Date(b.date),
-    );
-  }, [allAppointments]);
-
   const completeSignAction = () => {
     setSwipeHistory((prev) => {
       const lastEntry = prev[prev.length - 1];
@@ -417,23 +401,16 @@ function DoctorList() {
   }, [searchTerm]);
 
   useEffect(() => {
-    const storedDoctors = getDoctorsFromStorage();
+    const storedDoctors = JSON.parse(localStorage.getItem("doctors")) || [];
+const doctors = JSON.parse(localStorage.getItem("doctors")) || [];
 
-    const normalized = storedDoctors.map((doc) => ({
+    const updatedDoctors = storedDoctors.map((doc) => ({
       ...doc,
-      appointments: Array.isArray(doc.appointments) ? doc.appointments : [],
+      appointments: [...(doc.appointments || []), newAppointment],
     }));
 
-    setDoctors(normalized);
+    setDoctors(updatedDoctors);
   }, []);
-
-  const getDoctorsFromStorage = () => {
-    try {
-      return JSON.parse(localStorage.getItem("doctors")) || [];
-    } catch {
-      return [];
-    }
-  };
 
   const saveDoctors = (updated) => {
     setDoctors(updated);
@@ -590,7 +567,8 @@ function DoctorList() {
 
     if (type === "delete") {
       const updated = doctors.filter((_, i) => i !== index);
-      saveDoctors(updated);
+      setDoctors(updated);
+      localStorage.setItem("doctors", JSON.stringify(updated));
     }
 
     // ✅ ADD THIS BLOCK
@@ -600,7 +578,6 @@ function DoctorList() {
       const clonedDoctor = {
         ...doctorToClone,
         firstName: `${doctorToClone.firstName || ""} Copy`,
-        appointments: [...(doctorToClone.appointments || [])],
       };
 
       const updated = [...doctors];
@@ -708,7 +685,7 @@ function DoctorList() {
   };
 
   const [openSwipeDialog, setOpenSwipeDialog] = useState(false);
-  const [openAllAppointments, setOpenAllAppointments] = useState(false);
+
   const handleCancelLeave = (id) => {
     const updated = leaveRequests.map((l) =>
       l.id === id ? { ...l, status: "Cancelled" } : l,
@@ -1322,334 +1299,249 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
           >
             {currentDoctors.map((doc, index) => {
               const realIndex = indexOfFirstDoctor + index;
-                return (
+              return (
                 <Card
                   key={realIndex}
                   className={`p-1 flex relative border min-h-[170px]
-          ${
-          selectedDoctors.includes(realIndex)
-            ? "border-red-100 bg-red-100"
-            : "border-white bg-blue-100 shadow-md"
-          }
-          ${
-          gridView
-            ? "flex-col items-center text-center justify-between"
-            : "flex-row items-center gap-3"
-          }`}
+  ${
+    selectedDoctors.includes(realIndex)
+      ? "border-red-100 bg-red-100"
+      : "border-white bg-blue-100 shadow-md"
+  }
+  ${
+    gridView
+      ? "flex-col items-center text-center justify-between"
+      : "flex-row items-center gap-3"
+  }`}
                 >
                   <input
-                  type="checkbox"
-                  className="absolute top-2 left-2"
-                  checked={selectedDoctors.includes(realIndex)}
-                  onChange={() => toggleDoctorSelect(realIndex)}
+                    type="checkbox"
+                    className="absolute top-2 left-2"
+                    checked={selectedDoctors.includes(realIndex)}
+                    onChange={() => toggleDoctorSelect(realIndex)}
                   />
 
                   <div className="flex-1 w-full flex flex-col items-start text-left space-y-1 text-black">
-                  <Button
-                    color="orange"
-                    onClick={() => setOpenAllAppointments(true)}
-                  >
-                    View All Appointments
-                  </Button>
-                  <Typography
-                    variant="h3"
-                    className="font-semibold text-sm sm:text-base"
-                  >
-                    <div className="flex items-center gap-1">
-                    <FaUserMd color="blue" /> :
-                    <span>
-                      {doc.firstName} {doc.lastName}
-                    </span>
-                    </div>{" "}
-                  </Typography>
-
-                  {doc.phone && (
-                    <Typography className="text-xs sm:text-sm flex items-center gap-1">
-                    <span className="flex items-center gap-1 font-medium">
-                      <MdOutlinePhoneIphone color="blue" />:
-                    </span>
-
-                    <a
-                      href={`tel:${doc.phone}`}
-                      className="text-black hover:underline"
+                    <Typography
+                      variant="h3"
+                      className="font-semibold text-sm sm:text-base"
                     >
-                      {doc.phone}
-                    </a>
+                      <div className="flex items-center gap-1">
+                        <FaUserMd color="blue" /> :
+                        <span>
+                          {doc.firstName} {doc.lastName}
+                        </span>
+                      </div>{" "}
                     </Typography>
-                  )}
 
-                  {doc.email && (
-                    <Typography className="text-xs sm:text-sm flex items-center gap-1 break-all">
-                    <span className="flex items-center gap-1 font-medium">
-                      <MdOutlineEmail color="blue" />:
-                    </span>
 
-                    <a
-                      href={`mailto:${doc.email}`}
-                      className="text-black hover:underline"
-                    >
-                      {doc.email}
-                    </a>
-                    </Typography>
-                  )}
-                  {/* appointments */}
-                  <div className="w-full mt-2 bg-gray-50 border rounded-xl shadow-sm overflow-hidden">
-                    {/* Header */}
-                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 border-b">
-                    <div className="w-8 h-8 flex items-center justify-center rounded-md bg-gray-200">
-                      📅
-                    </div>
-                    <p className="font-semibold text-gray-800">
-                      Scheduled Appointments
-                    </p>
-                    </div>
+                    {doc.phone && (
+                      <Typography className="text-xs sm:text-sm flex items-center gap-1">
+                        <span className="flex items-center gap-1 font-medium">
+                          <MdOutlinePhoneIphone color="blue" />:
+                        </span>
 
-                    {/* Body */}
-                    {!doc?.appointments || doc.appointments.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center py-6 px-4 text-center">
-                      <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mb-3">
-                      <span className="text-pink-500 text-lg">✔</span>
+                        <a
+                          href={`tel:${doc.phone}`}
+                          className="text-black hover:underline"
+                        >
+                          {doc.phone}
+                        </a>
+                      </Typography>
+                    )}
+
+                    {doc.email && (
+                      <Typography className="text-xs sm:text-sm flex items-center gap-1 break-all">
+                        <span className="flex items-center gap-1 font-medium">
+                          <MdOutlineEmail color="blue" />:
+                        </span>
+
+                        <a
+                          href={`mailto:${doc.email}`}
+                          className="text-black hover:underline"
+                        >
+                          {doc.email}
+                        </a>
+                      </Typography>
+                    )}
+                    {/* appointments */}
+                    <div className="w-full mt-2 bg-gray-50 border rounded-xl shadow-sm overflow-hidden">
+                      {/* Header */}
+                      <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 border-b">
+                        <div className="w-8 h-8 flex items-center justify-center rounded-md bg-gray-200">
+                          📅
+                        </div>
+                        <p className="font-semibold text-gray-800">
+                          Scheduled Appointments
+                        </p>
                       </div>
 
-                      <p className="text-gray-800 font-medium">
-                      All caught up
-                      </p>
-                      <p className="text-sm text-gray-500 mt-1">
-                      No appointments right now, we'll notify you when
-                      there's something new.
-                      </p>
-                    </div>
-                    ) : (
-                    <div className="p-3 space-y-3">
-                      {doc.appointments.map((appt, i) => (
-                      <div
-                        key={i}
-                        className="border rounded-lg p-3 bg-white shadow-sm space-y-2"
-                      >
-                        {doc.image && (
-                        <img
-                          src={doc.image}
-                          alt="Doctor"
-                          className={`${
-                          gridView
-                            ? "w-24 h-24 sm:w-28 sm:h-28"
-                            : "w-20 h-20 sm:w-24 sm:h-24"
-                          } object-cover border-2 border-orange-100 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl`}
-                          onClick={() => setViewDoctor(doc)}
-                        />
-                        )}
-                        {/* Top */}
-                        <div className="flex justify-between items-start">
-                        <div>
-                          <p className="text-[11px] text-orange-900">
-                          Booked on:{" "}
-                          {appt?.date
-                            ? new Date(appt.date).toLocaleDateString(
-                              "en-GB",
-                              {
-                              day: "2-digit",
-                              month: "short",
-                              year: "numeric",
-                              },
-                            )
-                            : "Not available"}
-                          </p>
+                      {/* Body */}
+                      {!doc?.appointments || doc.appointments.length === 0 ? (
+                        <div className="flex flex-col items-center justify-center py-6 px-4 text-center">
+                          <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mb-3">
+                            <span className="text-pink-500 text-lg">✔</span>
+                          </div>
 
-                          <p className="font-semibold text-gray-800 flex items-center gap-1">
-                          <FaUserNurse />
-                          <span>
-                            {appt?.patientName || "Patient"}
-                          </span>
+                          <p className="text-gray-800 font-medium">
+                            All caught up
+                          </p>
+                          <p className="text-sm text-gray-500 mt-1">
+                            No appointments right now, we'll notify you when
+                            there's something new.
                           </p>
                         </div>
-
-                        <span
-                          className={`text-xs px-2 py-1 rounded-full ${
-                          getAppointmentStatus(appt) === "Completed"
-                            ? "bg-gray-600 text-white"
-                            : "bg-green-700 text-green-100"
-                          }`}
-                        >
-                          {getAppointmentStatus(appt)}
-                        </span>
-                        </div>
-
-                        {/* Details */}
-                        <p className="text-sm text-gray-600 flex items-center gap-1">
-                        <SlCalender />
-                        <span>
-                          {getDayLabel(appt?.date) && (
-                          <span className="text-green-600 font-semibold mr-1">
-                            {getDayLabel(appt?.date)} •
-                          </span>
-                          )}
-                          {appt?.date || "N/A"} • {appt?.time || ""}
-                        </span>
-                        </p>
-
-                        <p className="text-xs text-gray-500 mt-1">
-                        {appt?.type || "General"}
-                        </p>
-
-                        {/* Amount */}
-                        {appt?.amount && (
-                        <p className="text-sm font-medium text-gray-700">
-                          ₹{appt.amount}
-                        </p>
-                        )}
-
-                        {/* ✅ Join Button (SAFE) */}
-                        {appt?.consultationType === "ONLINE" &&
-                        appt?.meetingUrl && (
-                          <button
-                          onClick={() =>
-                            window.open(
-                            appt.meetingUrl.startsWith("http")
-                              ? appt.meetingUrl
-                              : `https://${appt.meetingUrl}`,
-                            "_blank",
-                            )
-                          }
-                          className="text-xs px-3 py-1 bg-green-500 text-white rounded-md"
-                          >
-                          ▶ Join Call
-                          </button>
-                        )}
-
-                        {/* Notes */}
-                        {appt?.notes && (
-                        <p className="text-xs text-gray-400">
-                          Notes: {appt.notes}
-                        </p>
-                        )}
-                        <Dialog
-                        open={openAllAppointments}
-                        handler={() => setOpenAllAppointments(false)}
-                        size="lg"
-                        >
-                        <DialogBody className="max-h-[70vh] overflow-y-auto">
-                          <Typography
-                          variant="h5"
-                          className="text-center mb-4"
-                          >
-                          All Appointments
-                          </Typography>
-
-                          {sortedAppointments.length === 0 ? (
-                          <p className="text-center text-gray-500">
-                            No appointments available
-                          </p>
-                          ) : (
-                          <div className="space-y-3">
-                            {sortedAppointments.map((appt, i) => (
+                      ) : (
+                        <div className="p-3 space-y-3 max-h-60 overflow-y-auto">
+                          {doc.appointments.map((appt, i) => (
                             <div
                               key={i}
-                              className="border rounded-lg p-3 bg-white shadow-sm"
+                              className="border rounded-lg p-3 bg-white shadow-sm space-y-2"
                             >
-                              <div className="flex justify-between">
-                              <div>
-                                <p className="font-semibold text-gray-800">
-                                {appt.patientName || "Patient"}
-                                </p>
-                                <p className="text-sm text-gray-500">
-                                Doctor: {appt.doctorName}
-                                </p>
+                              {doc.image && (
+                    <img
+                      src={doc.image}
+                      alt="Doctor"
+                      className={`${
+                        gridView
+                          ? "w-24 h-24 sm:w-28 sm:h-28"
+                          : "w-20 h-20 sm:w-24 sm:h-24"
+                      } object-cover border-2 border-orange-100 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl`}
+                      onClick={() => setViewDoctor(doc)}
+                    />
+                  )}
+                              {/* Top */}
+                              <div className="flex justify-between items-start">
+                                <div>
+                                  <p className="text-[11px] text-orange-900">
+                                    Booked on:{" "}
+                                    {appt?.date
+                                      ? new Date(appt.date).toLocaleDateString(
+                                          "en-GB",
+                                          {
+                                            day: "2-digit",
+                                            month: "short",
+                                            year: "numeric",
+                                          },
+                                        )
+                                      : "Not available"}
+                                  </p>
+
+                                  <p className="font-semibold text-gray-800 flex items-center gap-1">
+                                    <FaUserNurse />
+                                    <span>
+                                      {appt?.patientName || "Patient"}
+                                    </span>
+                                  </p>
+                                </div>
+
+                                <span className="text-xs px-2 py-1 rounded-full bg-green-700 text-green-100">
+                                  {appt?.status || (
+                                    <>
+                                      <FaArrowTrendUp className="inline mr-1 text-green-400" />
+                                      BOOKED
+                                    </>
+                                  )}
+                                </span>
                               </div>
 
-                              <span
-                                className={`text-xs px-2 py-1 rounded-full ${
-                                getAppointmentStatus(appt) ===
-                                "Completed"
-                                  ? "bg-gray-500 text-white"
-                                  : "bg-green-600 text-white"
-                                }`}
-                              >
-                                {getAppointmentStatus(appt)}
-                              </span>
-                              </div>
-
-                              <p className="text-sm mt-2">
-                              📅 {appt.date || "N/A"} •{" "}
-                              {appt.time || ""}
+                              {/* Details */}
+                              <p className="text-sm text-gray-600 flex items-center gap-1">
+                                <SlCalender />
+                                <span>
+                                  {getDayLabel(appt?.date) && (
+                                    <span className="text-green-600 font-semibold mr-1">
+                                      {getDayLabel(appt?.date)} •
+                                    </span>
+                                  )}
+                                  {appt?.date || "N/A"} • {appt?.time || ""}
+                                </span>
                               </p>
 
-                              {appt.amount && (
-                              <p className="text-sm font-medium">
-                                ₹{appt.amount}
+                              <p className="text-xs text-gray-500 mt-1">
+                                {appt?.type || "General"}
                               </p>
+
+                              {/* Amount */}
+                              {appt?.amount && (
+                                <p className="text-sm font-medium text-gray-700">
+                                  ₹{appt.amount}
+                                </p>
                               )}
 
-                              {appt.notes && (
-                              <p className="text-xs text-gray-500">
-                                Notes: {appt.notes}
-                              </p>
+                              {/* ✅ Join Button (SAFE) */}
+                              {appt?.consultationType === "ONLINE" &&
+                                appt?.meetingUrl && (
+                                  <button
+                                    onClick={() =>
+                                      window.open(
+                                        appt.meetingUrl.startsWith("http")
+                                          ? appt.meetingUrl
+                                          : `https://${appt.meetingUrl}`,
+                                        "_blank",
+                                      )
+                                    }
+                                    className="text-xs px-3 py-1 bg-green-500 text-white rounded-md"
+                                  >
+                                    ▶ Join Call
+                                  </button>
+                                )}
+
+                              {/* Notes */}
+                              {appt?.notes && (
+                                <p className="text-xs text-gray-400">
+                                  Notes: {appt.notes}
+                                </p>
                               )}
                             </div>
-                            ))}
-                          </div>
-                          )}
-                        </DialogBody>
-
-                        <DialogFooter>
-                          <Button
-                          color="red"
-                          onClick={() =>
-                            setOpenAllAppointments(false)
-                          }
-                          >
-                          Close
-                          </Button>
-                        </DialogFooter>
-                        </Dialog>
-                      </div>
-                      ))}
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    )}
-                  </div>
                   </div>
 
                   <div className="mt-2 flex justify-center gap-2 flex-wrap">
-                  <Button
-                    size="sm"
-                    className="flex items-center bg-green-500 text-white hover:bg-green-600 text-xs px-2 py-1"
-                    onClick={() => {
-                    setEditIndex(realIndex);
-                    setEditDoctor(doc);
-                    }}
-                  >
-                    <PencilIcon className="w-4 h-4 mr-1" />
-                  </Button>
+                    <Button
+                      size="sm"
+                      className="flex items-center bg-green-500 text-white hover:bg-green-600 text-xs px-2 py-1"
+                      onClick={() => {
+                        setEditIndex(realIndex);
+                        setEditDoctor(doc);
+                      }}
+                    >
+                      <PencilIcon className="w-4 h-4 mr-1" />
+                    </Button>
 
-                  <Button
-                    size="sm"
-                    className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
-                    onClick={() =>
-                    setConfirmAction({
-                      open: true,
-                      type: "clone",
-                      index: realIndex,
-                    })
-                    }
-                  >
-                    <DocumentDuplicateIcon className="w-4 h-4 mr-1" />
-                  </Button>
+                    <Button
+                      size="sm"
+                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
+                      onClick={() =>
+                        setConfirmAction({
+                          open: true,
+                          type: "clone",
+                          index: realIndex,
+                        })
+                      }
+                    >
+                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" />
+                    </Button>
 
-                  <Button
-                    size="sm"
-                    className="bg-red-500 text-white hover:bg-red-600 text-xs px-2 py-1"
-                    onClick={() =>
-                    setConfirmAction({
-                      open: true,
-                      type: "delete",
-                      index: realIndex,
-                    })
-                    }
-                  >
-                    <TrashIcon className="w-4 h-4 mr-1" />
-                  </Button>
+                    <Button
+                      size="sm"
+                      className="bg-red-500 text-white hover:bg-red-600 text-xs px-2 py-1"
+                      onClick={() =>
+                        setConfirmAction({
+                          open: true,
+                          type: "delete",
+                          index: realIndex,
+                        })
+                      }
+                    >
+                      <TrashIcon className="w-4 h-4 mr-1" />
+                    </Button>
                   </div>
                 </Card>
-                );
+              );
             })}
           </div>
 

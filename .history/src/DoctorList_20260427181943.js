@@ -52,6 +52,17 @@ import { SlCalender } from "react-icons/sl";
 import "./DoctorList.css";
 
 function DoctorList() {
+
+const Doctorlist = () => {
+  const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    const data =
+      JSON.parse(localStorage.getItem("appointmentHistory")) || [];
+
+    setAppointments(data);
+  }, []);
+  const sortedAppointments = [...appointments].sort((a, b) => b.id - a.id);
   const getAppointmentStatus = (appt) => {
     // If backend already provides status → respect it
     if (appt?.status) return appt.status;
@@ -1393,16 +1404,75 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                     </Typography>
                   )}
                   {/* appointments */}
-                  <div className="w-full mt-2 bg-gray-50 border rounded-xl shadow-sm overflow-hidden">
-                    {/* Header */}
-                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 border-b">
-                    <div className="w-8 h-8 flex items-center justify-center rounded-md bg-gray-200">
-                      📅
-                    </div>
-                    <p className="font-semibold text-gray-800">
-                      Scheduled Appointments
-                    </p>
-                    </div>
+                 <h2 className="text-xl font-bold text-orange-800 mb-4">
+  🦷 All Appointments History
+</h2>
+
+{sortedAppointments.length === 0 ? (
+  <p className="text-gray-500">No appointments found</p>
+) : (
+  sortedAppointments.map((item) => (
+    <div
+      key={item.id}
+      className="bg-white shadow-md rounded-lg p-4 mb-4 border-l-4 border-orange-500"
+    >
+      <div className="flex justify-between items-center">
+        <h3 className="font-semibold text-lg">
+          {item.customerName || item.name}
+        </h3>
+
+        <span
+          className={`px-3 py-1 rounded-full text-xs font-bold ${
+            item.status === "Cancelled"
+              ? "bg-red-100 text-red-700"
+              : "bg-orange-100 text-orange-700"
+          }`}
+        >
+          {item.status || "Pending"}
+        </span>
+      </div>
+
+      <hr className="my-2" />
+
+      <p>
+        <b>Date:</b>{" "}
+        {new Date(item.date).toLocaleDateString("en-GB")}
+      </p>
+
+      <p>
+        <b>Time:</b> {item.time}
+      </p>
+
+      <p>
+        <b>Dentist:</b> {item.dentist}
+      </p>
+
+      <p>
+        <b>Treatment:</b>{" "}
+        {Array.isArray(item.type)
+          ? item.type.join(", ")
+          : item.type}
+      </p>
+
+      <p>
+        <b>Consultation:</b> {item.consultationType}
+      </p>
+
+      {item.meetingUrl && (
+        <p className="text-blue-600">
+          <b>Meeting:</b>{" "}
+          <a href={item.meetingUrl} target="_blank">
+            {item.meetingUrl}
+          </a>
+        </p>
+      )}
+
+      <p>
+        <b>Notes:</b> {item.notes || "-"}
+      </p>
+    </div>
+  ))
+)}
 
                     {/* Body */}
                     {!doc?.appointments || doc.appointments.length === 0 ? (

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 103,
+            "activePatchIndex": 106,
             "patches": [
                 {
                     "date": 1776092744100,
@@ -420,6 +420,18 @@
                 {
                     "date": 1777051391617,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n import { MdOutlineWorkHistory } from \"react-icons/md\";\r\n import logo from \"./assets/Toothx_Logo.png\";\r\n import { Link } from \"react-router-dom\";\r\n import QRCode from \"qrcode\"; // make sure to `npm install qrcode`\r\n-import { AiOutlinePaperClip } from \"react-icons/ai\";\r\n+import { IoRocketSharp } from \"react-icons/io5\";\r\n \r\n /* ---------------- CHART IMPORTS ---------------- */\r\n import {\r\n   Chart as ChartJS,\r\n@@ -1306,9 +1306,9 @@\n       {/* ================= APPOINTMENT HISTORY ================= */}\r\n       <div className=\"w-full mt-10\">\r\n         <div className=\"flex items-center justify-between mb-4\">\r\n           <div className=\"flex items-center gap-2\">\r\n-            <AiOutlinePaperClip    size={32} className=\"text-orange-900\" />\r\n+            <IoRocketSharp     size={32} className=\"text-orange-900\" />\r\n             <h2 className=\"text-xl font-bold text-orange-900\">\r\n               APPOINTMENTS HISTORY\r\n             </h2>\r\n           </div>\r\n"
+                },
+                {
+                    "date": 1777290509307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -887,12 +887,9 @@\n   /* ---------------- PAGINATION LOGIC ---------------- */\r\n   const sortedHistory = [...history].sort((a, b) => b.id - a.id);\r\n   const totalPages = Math.ceil(sortedHistory.length / ITEMS_PER_PAGE);\r\n   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;\r\n-  const currentAppointments = sortedHistory.slice(\r\n-    startIndex,\r\n-    startIndex + ITEMS_PER_PAGE,\r\n-  );\r\n+  const currentAppointments = sortedHistory;\r\n \r\n   /* ====================== UI ====================== */\r\n   return (\r\n     <div className=\"p-4 relative\">\r\n"
+                },
+                {
+                    "date": 1777290641791,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1576,9 +1576,9 @@\n             );\r\n           })\r\n         )}\r\n \r\n-        {/* 🔽 PAGINATION CONTROLS */}\r\n+        {/* 🔽 PAGINATION CONTROLS\r\n         {totalPages > 1 && (\r\n           <div className=\"flex justify-center items-center gap-2 mt-6\">\r\n             <Button\r\n               size=\"sm\"\r\n@@ -1612,9 +1612,9 @@\n             >\r\n               Next ▶\r\n             </Button>\r\n           </div>\r\n-        )}\r\n+        )} */}\r\n       </div>\r\n       {/* ================= LEGENDS ================= */}\r\n       <Card className=\"border rounded-xl p-6 bg-white shadow-sm sticky top-4 z-40 mt-10\">\r\n         <div className=\"mb-6\">\r\n"
+                },
+                {
+                    "date": 1777290663771,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -887,9 +887,12 @@\n   /* ---------------- PAGINATION LOGIC ---------------- */\r\n   const sortedHistory = [...history].sort((a, b) => b.id - a.id);\r\n   const totalPages = Math.ceil(sortedHistory.length / ITEMS_PER_PAGE);\r\n   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;\r\n-  const currentAppointments = sortedHistory;\r\n+  const currentAppointments = sortedHistory.slice(\r\n+    startIndex,\r\n+    startIndex + ITEMS_PER_PAGE,\r\n+  );\r\n \r\n   /* ====================== UI ====================== */\r\n   return (\r\n     <div className=\"p-4 relative\">\r\n@@ -1576,9 +1579,9 @@\n             );\r\n           })\r\n         )}\r\n \r\n-        {/* 🔽 PAGINATION CONTROLS\r\n+        {/* 🔽 PAGINATION CONTROLS */}\r\n         {totalPages > 1 && (\r\n           <div className=\"flex justify-center items-center gap-2 mt-6\">\r\n             <Button\r\n               size=\"sm\"\r\n@@ -1612,9 +1615,9 @@\n             >\r\n               Next ▶\r\n             </Button>\r\n           </div>\r\n-        )} */}\r\n+        )}\r\n       </div>\r\n       {/* ================= LEGENDS ================= */}\r\n       <Card className=\"border rounded-xl p-6 bg-white shadow-sm sticky top-4 z-40 mt-10\">\r\n         <div className=\"mb-6\">\r\n"
                 }
             ],
             "date": 1776092744099,

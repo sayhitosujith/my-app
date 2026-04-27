@@ -264,7 +264,6 @@ const CardItem = ({ item, navigate }) => {
               setCountry(e.target.value);
               setCity("");
               setClinic("");
-                setDentist(""); // reset
             }}
           >
             <option value="">Select Country</option>

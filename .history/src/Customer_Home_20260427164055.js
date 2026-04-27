@@ -146,16 +146,10 @@ const clinicData = {
 
 const CardItem = ({ item, navigate }) => {
   const dentistData = {
-  "ToothX Brisbane Central": ["Dr. koyes", "Dr. Alex"],
-  "ToothX Bangalore Main": ["Dr. Reddy", "Dr. Sharma"],
-  "Smile Dental Bangalore": ["Dr. Mehta"],
-  "Smile Care Brisbane": ["Dr. Mehta"],
-  "Delhi Dental Hub": ["Dr. Gupta"],
-  "ToothX Delhi Center": ["Dr. Verma"],
-  "Mumbai Smile Clinic": ["Dr. Khan"],
-  "Chennai Dental Care": ["Dr. Iyer"],
-  "Hyderabad ToothX Clinic": ["Dr. Rao"],
-};
+    "ToothX Bangalore Main": ["Dr. Reddy", "Dr. Sharma"],
+    "Smile Dental Bangalore": ["Dr. Mehta"],
+    "Delhi Dental Hub": ["Dr. Gupta"],
+  };
 
   const [dentist, setDentist] = useState("");
 
@@ -264,7 +258,6 @@ const CardItem = ({ item, navigate }) => {
               setCountry(e.target.value);
               setCity("");
               setClinic("");
-                setDentist(""); // reset
             }}
           >
             <option value="">Select Country</option>

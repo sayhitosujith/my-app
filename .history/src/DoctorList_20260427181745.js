@@ -52,6 +52,17 @@ import { SlCalender } from "react-icons/sl";
 import "./DoctorList.css";
 
 function DoctorList() {
+
+const Doctorlist = () => {
+  const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    const data =
+      JSON.parse(localStorage.getItem("appointmentHistory")) || [];
+
+    setAppointments(data);
+  }, []);
+  const sortedAppointments = [...appointments].sort((a, b) => b.id - a.id);
   const getAppointmentStatus = (appt) => {
     // If backend already provides status → respect it
     if (appt?.status) return appt.status;

@@ -145,20 +145,6 @@ const clinicData = {
 };
 
 const CardItem = ({ item, navigate }) => {
-  const dentistData = {
-  "ToothX Brisbane Central": ["Dr. koyes", "Dr. Alex"],
-  "ToothX Bangalore Main": ["Dr. Reddy", "Dr. Sharma"],
-  "Smile Dental Bangalore": ["Dr. Mehta"],
-  "Smile Care Brisbane": ["Dr. Mehta"],
-  "Delhi Dental Hub": ["Dr. Gupta"],
-  "ToothX Delhi Center": ["Dr. Verma"],
-  "Mumbai Smile Clinic": ["Dr. Khan"],
-  "Chennai Dental Care": ["Dr. Iyer"],
-  "Hyderabad ToothX Clinic": ["Dr. Rao"],
-};
-
-  const [dentist, setDentist] = useState("");
-
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [clinic, setClinic] = useState("");
@@ -196,8 +182,8 @@ const CardItem = ({ item, navigate }) => {
   }, [item.id]);
 
   const handleBook = () => {
-    if (!country || !city || !clinic || !dentist) {
-      alert("Please select country, city, clinic and dentist");
+    if (!country || !city || !clinic) {
+      alert("Please select country, city and clinic first");
       return;
     }
 
@@ -206,11 +192,13 @@ const CardItem = ({ item, navigate }) => {
       country,
       city,
       clinic,
-      dentistName: dentist, // ✅ FIXED
-      id: Date.now(),
+      id: Date.now(), // unique booking id
     };
 
+    // get existing bookings
     const existing = JSON.parse(localStorage.getItem("bookings")) || [];
+
+    // add new booking
     const updatedBookings = [...existing, bookingData];
 
     localStorage.setItem("bookings", JSON.stringify(updatedBookings));
@@ -264,7 +252,6 @@ const CardItem = ({ item, navigate }) => {
               setCountry(e.target.value);
               setCity("");
               setClinic("");
-                setDentist(""); // reset
             }}
           >
             <option value="">Select Country</option>
@@ -309,21 +296,6 @@ const CardItem = ({ item, navigate }) => {
                 </option>
               ))}
           </select>
-
-          <select
-            className="border p-2 rounded w-full"
-            value={dentist}
-            onChange={(e) => setDentist(e.target.value)}
-            disabled={!clinic}
-          >
-            <option value="">Select Dentist</option>
-            {clinic &&
-              dentistData[clinic]?.map((d, i) => (
-                <option key={i} value={d}>
-                  {d}
-                </option>
-              ))}
-          </select>
         </CardBody>
         {/* 🔥 BOOKED BADGE */}
         {booked && (
@@ -337,8 +309,8 @@ const CardItem = ({ item, navigate }) => {
         )}
         <CardFooter>
           <Button
-            onClick={handleBook}
-            disabled={!country || !city || !clinic}
+  onClick={handleBook}
+  disabled={!country || !city || !clinic}
             className="w-full text-white font-bold uppercase tracking-wide
                        bg-gradient-to-r from-purple-600 to-orange-500
                        hover:shadow-lg hover:scale-[1.02] transition-all"
@@ -349,27 +321,29 @@ const CardItem = ({ item, navigate }) => {
 
         {/* 🔥 HOVER DETAILS POPUP */}
         {booked && showHover && booking && (
-          <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-green-400 shadow-xl border rounded-lg p-3 z-20">
-            <Typography className="font-bold text-sm mb-2 text-purple-700">
-              Booking Details
-            </Typography>
+  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-green-400 shadow-xl border rounded-lg p-3 z-20">
+    <Typography className="font-bold text-sm mb-2 text-purple-700">
+      Booking Details
+    </Typography>
 
-            <div className="text-sm space-y-1 text-yellow-100">
-              <p>
-                <b>Dentist:</b> {booking?.dentistName || "N/A"}
-              </p>
-              <p>
-                <b>Country:</b> {booking.country}
-              </p>
-              <p>
-                <b>City:</b> {booking.city}
-              </p>
-              <p>
-                <b>Clinic:</b> {booking.clinic}
-              </p>
-            </div>
-          </div>
-        )}
+    <div className="text-sm space-y-1 text-yellow-100">
+      <p>
+<p>
+  <b>Dentist:</b>{" "}
+  {booking.dentistName || booking.doctorName || booking.dentist || "N/A"}
+</p>      </p>
+      <p>
+        <b>Country:</b> {booking.country}
+      </p>
+      <p>
+        <b>City:</b> {booking.city}
+      </p>
+      <p>
+        <b>Clinic:</b> {booking.clinic}
+      </p>
+    </div>
+  </div>
+)}
       </Card>
     </div>
   );
@@ -383,7 +357,14 @@ function App() {
     setIsOpen((prev) => !prev);
   };
 
-  const [dentist, setDentist] = useState("");
+  const dentistData = {
+  "ToothX Bangalore Main": ["Dr. Reddy", "Dr. Sharma"],
+  "Smile Dental Bangalore": ["Dr. Mehta"],
+  "Delhi Dental Hub": ["Dr. Gupta"],
+  // add for other clinics
+};
+
+const [dentist, setDentist] = useState("");
 
   // ✅ SEARCH FILTER
   const filteredData = data.filter((item) =>
