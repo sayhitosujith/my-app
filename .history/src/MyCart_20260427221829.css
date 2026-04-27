@@ -92,7 +92,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #25d302, #25d302, #25d302);
+  background: linear-gradient(to right, #fbbf24, #f97316, #fbbf24);
   color: #fff;
   font-weight: 600;
   padding: 10px 20px;
@@ -146,7 +146,7 @@
 }
 
 .payment-summary h1 {
-  color: rgb(0, 255, 0);
+  color: orange;
   font-size: 1.2rem;
   font-weight: 700;
   text-align: center;
@@ -164,7 +164,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #25d302, #25d302, #25d302);
+  background: linear-gradient(to right, #fbbf24, #f97316, #fbbf24);
   color: #fff;
   font-weight: 600;
   padding: 10px 20px;

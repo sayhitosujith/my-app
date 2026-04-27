@@ -872,34 +872,6 @@ const grandTotal = baseAmount + gstAmount;
     ],
   };
 
-  const handleMarkCompleted = (item) => {
-  const updatedHistory = history.map((appt) =>
-    appt.id === item.id
-      ? { ...appt, status: "Completed", completedAt: new Date().toISOString() }
-      : appt
-  );
-
-  setHistory(updatedHistory);
-  localStorage.setItem("appointmentHistory", JSON.stringify(updatedHistory));
-
-  // Optional: update profile appointments
-  let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-
-  appointments = appointments.map((a) => {
-    if (String(a.phone).trim() === String(item.phone).trim()) {
-      return { ...a, status: "Completed" };
-    }
-    return a;
-  });
-
-  localStorage.setItem("appointments", JSON.stringify(appointments));
-
-  setToast("✅ Appointment marked as Completed");
-  setToastType("success");
-
-  setTimeout(() => setToast(""), 3000);
-};
-
   const toggleExpand = (id) => {
     setExpandedId((prev) => (prev === id ? null : id));
   };
@@ -1504,7 +1476,35 @@ const grandTotal = baseAmount + gstAmount;
                                     ▶ JOIN CALL
                                   </a>
 
-                                  <Button
+                                  {item.consultationType === "ONLINE" && (
+                                    <div className="flex gap-3 mt-2">
+                                      {/* If NOT cancelled → show Cancel */}
+                                      {item.status !== "Cancelled" ? (
+                                        <button
+                                          onClick={() =>
+                                            handleCancelAppointment(item)
+                                          }
+                                          className="bg-orange-500 text-white px-4 py-1.5 rounded-lg hover:bg-orange-600 transition"
+                                        >
+                                          CANCEL APPOINTMENT
+                                        </button>
+                                      ) : (
+                                        /* If Cancelled → show Reschedule */
+                                        <button
+                                          onClick={() => handleReschedule(item)}
+                                          className="bg-blue-600 text-white px-4 py-1.5 rounded-lg hover:bg-blue-700 transition"
+                                        >
+                                          Reschedule Appointment
+                                        </button>
+                                      )}
+                                    </div>
+                                  )}
+
+                                 
+                                </div>
+                              )}
+                               <div className="flex flex-col gap-2 mt-4 md:mt-0 w-full md:w-auto">
+                                    <Button
   size="sm"
   disabled={
     item.status === "Cancelled" ||
@@ -1519,32 +1519,6 @@ const grandTotal = baseAmount + gstAmount;
 >
   {item.status === "Completed" ? "COMPLETED ✅" : "MARK COMPLETED"}
 </Button>
-
-                                  {item.consultationType === "ONLINE" && (
-                                    <div className="flex gap-3 mt-2">
-                                      {/* If NOT cancelled → show Cancel */}
-                                      {item.status !== "Cancelled" ? (
-                                        <button
-                                          onClick={() =>
-                                            handleCancelAppointment(item)
-                                          }
-                                          className="bg-orange-500 text-white px-4 py-1.5 rounded-lg hover:bg-orange-600 transition"
-                                        >
-                                          CANCEL
-                                        </button>
-                                      ) : (
-                                        /* If Cancelled → show Reschedule */
-                                        <button
-                                          onClick={() => handleReschedule(item)}
-                                          className="bg-blue-600 text-white px-4 py-1.5 rounded-lg hover:bg-blue-700 transition"
-                                        >
-                                          Reschedule Appointment
-                                        </button>
-                                      )}
-                                    </div>
-                                  )}
-                                </div>
-                              )}
                             </div>
                           )}
                           {item.notes && (

@@ -872,34 +872,6 @@ const grandTotal = baseAmount + gstAmount;
     ],
   };
 
-  const handleMarkCompleted = (item) => {
-  const updatedHistory = history.map((appt) =>
-    appt.id === item.id
-      ? { ...appt, status: "Completed", completedAt: new Date().toISOString() }
-      : appt
-  );
-
-  setHistory(updatedHistory);
-  localStorage.setItem("appointmentHistory", JSON.stringify(updatedHistory));
-
-  // Optional: update profile appointments
-  let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-
-  appointments = appointments.map((a) => {
-    if (String(a.phone).trim() === String(item.phone).trim()) {
-      return { ...a, status: "Completed" };
-    }
-    return a;
-  });
-
-  localStorage.setItem("appointments", JSON.stringify(appointments));
-
-  setToast("✅ Appointment marked as Completed");
-  setToastType("success");
-
-  setTimeout(() => setToast(""), 3000);
-};
-
   const toggleExpand = (id) => {
     setExpandedId((prev) => (prev === id ? null : id));
   };
@@ -1503,22 +1475,6 @@ const grandTotal = baseAmount + gstAmount;
                                   >
                                     ▶ JOIN CALL
                                   </a>
-
-                                  <Button
-  size="sm"
-  disabled={
-    item.status === "Cancelled" ||
-    item.status === "Completed"
-  }
-  onClick={() => handleMarkCompleted(item)}
-  className={`${
-    item.status === "Completed"
-      ? "bg-gray-400"
-      : "bg-blue-600 text-white"
-  }`}
->
-  {item.status === "Completed" ? "COMPLETED ✅" : "MARK COMPLETED"}
-</Button>
 
                                   {item.consultationType === "ONLINE" && (
                                     <div className="flex gap-3 mt-2">

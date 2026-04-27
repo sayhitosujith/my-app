@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 106,
+            "activePatchIndex": 109,
             "patches": [
                 {
                     "date": 1776092744100,
@@ -432,6 +432,18 @@
                 {
                     "date": 1777290663771,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -887,9 +887,12 @@\n   /* ---------------- PAGINATION LOGIC ---------------- */\r\n   const sortedHistory = [...history].sort((a, b) => b.id - a.id);\r\n   const totalPages = Math.ceil(sortedHistory.length / ITEMS_PER_PAGE);\r\n   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;\r\n-  const currentAppointments = sortedHistory;\r\n+  const currentAppointments = sortedHistory.slice(\r\n+    startIndex,\r\n+    startIndex + ITEMS_PER_PAGE,\r\n+  );\r\n \r\n   /* ====================== UI ====================== */\r\n   return (\r\n     <div className=\"p-4 relative\">\r\n@@ -1576,9 +1579,9 @@\n             );\r\n           })\r\n         )}\r\n \r\n-        {/* 🔽 PAGINATION CONTROLS\r\n+        {/* 🔽 PAGINATION CONTROLS */}\r\n         {totalPages > 1 && (\r\n           <div className=\"flex justify-center items-center gap-2 mt-6\">\r\n             <Button\r\n               size=\"sm\"\r\n@@ -1612,9 +1615,9 @@\n             >\r\n               Next ▶\r\n             </Button>\r\n           </div>\r\n-        )} */}\r\n+        )}\r\n       </div>\r\n       {/* ================= LEGENDS ================= */}\r\n       <Card className=\"border rounded-xl p-6 bg-white shadow-sm sticky top-4 z-40 mt-10\">\r\n         <div className=\"mb-6\">\r\n"
+                },
+                {
+                    "date": 1777309234398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1470,9 +1470,9 @@\n                                         : `https://${item.meetingUrl}`\r\n                                     }\r\n                                     target=\"_blank\"\r\n                                     rel=\"noopener noreferrer\"\r\n-                                    className=\"bg-green-400 text-white px-4 py-1.5 rounded-lg hover:bg-green-700 transition\"\r\n+                                    className=\"bg-green-400 text-white px-2 py-1.5 rounded-lg hover:bg-green-700 transition\"\r\n                                   >\r\n                                     ▶ JOIN CALL\r\n                                   </a>\r\n \r\n"
+                },
+                {
+                    "date": 1777309262376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1485,9 +1485,9 @@\n                                             handleCancelAppointment(item)\r\n                                           }\r\n                                           className=\"bg-orange-500 text-white px-4 py-1.5 rounded-lg hover:bg-orange-600 transition\"\r\n                                         >\r\n-                                          Cancel Appointment\r\n+                                          CANCEL APPOINTMENT\r\n                                         </button>\r\n                                       ) : (\r\n                                         /* If Cancelled → show Reschedule */\r\n                                         <button\r\n"
+                },
+                {
+                    "date": 1777309396207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1502,9 +1502,11 @@\n \r\n                                  \r\n                                 </div>\r\n                               )}\r\n-                               <div className=\"flex flex-col gap-2 mt-4 md:mt-0 w-full md:w-auto\">\r\n+                              \r\n+                            </div>\r\n+                             <div className=\"flex flex-col gap-2 mt-4 md:mt-0 w-full md:w-auto\">\r\n                                     <Button\r\n   size=\"sm\"\r\n   disabled={\r\n     item.status === \"Cancelled\" ||\r\n@@ -1518,9 +1520,8 @@\n   }`}\r\n >\r\n   {item.status === \"Completed\" ? \"COMPLETED ✅\" : \"MARK COMPLETED\"}\r\n </Button>\r\n-                            </div>\r\n                           )}\r\n                           {item.notes && (\r\n                             <p className=\"col-span-2\">\r\n                               <b>Notes:</b> {item.notes}\r\n"
                 }
             ],
             "date": 1776092744099,

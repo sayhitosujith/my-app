@@ -1537,24 +1537,21 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
                         )}
 
                         {/* ✅ Join Button (SAFE) */}
-                        {appt?.consultationType === "ONLINE" && appt?.meetingUrl && (
-                          getAppointmentStatus(appt) === "Completed" ? (
-                            <span className="text-xs px-3 py-1 bg-gray-400 text-white rounded-md">Completed</span>
-                          ) : (
-                            <button
-                              onClick={() =>
-                                window.open(
-                                  appt.meetingUrl.startsWith("http")
-                                    ? appt.meetingUrl
-                                    : `https://${appt.meetingUrl}`,
-                                  "_blank"
-                                )
-                              }
-                              className="text-xs px-3 py-1 bg-green-500 text-white rounded-md"
-                            >
-                              ▶ Join Call
-                            </button>
-                          )
+                        {appt?.consultationType === "ONLINE" &&
+                        appt?.meetingUrl && (
+                          <button
+                          onClick={() =>
+                            window.open(
+                            appt.meetingUrl.startsWith("http")
+                              ? appt.meetingUrl
+                              : `https://${appt.meetingUrl}`,
+                            "_blank",
+                            )
+                          }
+                          className="text-xs px-3 py-1 bg-green-500 text-white rounded-md"
+                          >
+                          ▶ Join Call
+                          </button>
                         )}
 
                         {/* Notes */}
