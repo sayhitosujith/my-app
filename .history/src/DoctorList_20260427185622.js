@@ -169,7 +169,7 @@ function DoctorList() {
     return "";
   };
   const RH_QUOTA = 2;
-const [viewDoctor, setViewDoctor] = useState(null);
+
   const [leaveRequests, setLeaveRequests] = useState(
     JSON.parse(localStorage.getItem("leaveRequests")) || [],
   );
@@ -657,7 +657,7 @@ const [viewDoctor, setViewDoctor] = useState(null);
       status: "Approved",
       appliedOn: new Date().toLocaleString(),
     };
-
+const [viewDoctor, setViewDoctor] = useState(null);
     const updated = [...leaveRequests, newLeave];
     setLeaveRequests(updated);
     localStorage.setItem("leaveRequests", JSON.stringify(updated));

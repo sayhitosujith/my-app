@@ -169,7 +169,7 @@ function DoctorList() {
     return "";
   };
   const RH_QUOTA = 2;
-const [viewDoctor, setViewDoctor] = useState(null);
+
   const [leaveRequests, setLeaveRequests] = useState(
     JSON.parse(localStorage.getItem("leaveRequests")) || [],
   );
