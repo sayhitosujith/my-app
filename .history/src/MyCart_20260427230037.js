@@ -504,7 +504,7 @@ function MyCart() {
   if (!window.confirm("Cancel this appointment?")) return;
 
   const updatedHistory = history.map((a) =>
-    a.id == app.id
+    a.id === app.id
       ? { ...a, status: "Cancelled", cancelledAt: new Date().toISOString() }
       : a
   );
@@ -512,26 +512,27 @@ function MyCart() {
   setHistory(updatedHistory);
   localStorage.setItem("appointmentHistory", JSON.stringify(updatedHistory));
 
-  // ✅ update appointments properly
   let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
 
   appointments = appointments.map((a) =>
-    a.id == app.id ? { ...a, status: "Cancelled" } : a
+    a.id === app.id ? { ...a, status: "Cancelled" } : a
   );
 
   localStorage.setItem("appointments", JSON.stringify(appointments));
 
-  // ✅ remove payment
-  if (paidAppointments[app.id]) {
+  if (paidAppointments[app.id] && canRefund(app)) {
     const updatedPaid = { ...paidAppointments };
     delete updatedPaid[app.id];
 
     setPaidAppointments(updatedPaid);
     localStorage.setItem("paidAppointments", JSON.stringify(updatedPaid));
-  }
 
-  setToast("❌ Appointment Cancelled");
-  setToastType("error");
+    setToast("💸 Appointment Cancelled & Refund will be provided");
+    setToastType("success");
+  } else {
+    setToast("❌ Appointment Cancelled (No Refund)");
+    setToastType("error");
+  }
 
   setTimeout(() => setToast(""), 3000);
 };
