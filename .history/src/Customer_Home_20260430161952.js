@@ -576,12 +576,12 @@ const [currentCity, setCurrentCity] = useState("");
     title="Get your current location"
     className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
   >
-    <MdOutlineMyLocation size={26} color="#ed300e" />
+    <MdOutlineMyLocation size={26} color="#0a5201" />
   </button>
 
   {/* SHOW CURRENT CITY */}
   {currentCity && (
-  <span className="flex items-center gap-2 text-sm font-semibold text-white whitespace-nowrap border border-green-900 rounded-lg px-3 py-1 bg-green-500">
+  <span className="flex items-center gap-2 text-sm font-semibold text-white whitespace-nowrap border border-orange-900 rounded-lg px-3 py-1 bg-orange-900">
   <MdLocationPin size={30} className="inline" />
   {currentCity}
 </span>

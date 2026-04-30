@@ -543,7 +543,7 @@ const [currentCity, setCurrentCity] = useState("");
       </div>
 
       {/* Location Button with Textbox */}
-      <div className="mt-4 flex items-center space-x-4 mb-4">
+      {/* <div className="mt-4 flex items-center space-x-4 mb-4"> */}
   {/* LABEL */}
   {/* <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded hover:bg-orange-900">
     LOCATION
@@ -576,12 +576,12 @@ const [currentCity, setCurrentCity] = useState("");
     title="Get your current location"
     className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
   >
-    <MdOutlineMyLocation size={26} color="#ed300e" />
+    <MdOutlineMyLocation size={26} color="#ff5200" />
   </button>
 
   {/* SHOW CURRENT CITY */}
   {currentCity && (
-  <span className="flex items-center gap-2 text-sm font-semibold text-white whitespace-nowrap border border-green-900 rounded-lg px-3 py-1 bg-green-500">
+   <span className="flex items-center gap-1 text-sm font-semibold text-gray-700 whitespace-nowrap">
   <MdLocationPin size={30} className="inline" />
   {currentCity}
 </span>

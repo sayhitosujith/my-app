@@ -545,12 +545,12 @@ const [currentCity, setCurrentCity] = useState("");
       {/* Location Button with Textbox */}
       <div className="mt-4 flex items-center space-x-4 mb-4">
   {/* LABEL */}
-  {/* <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded hover:bg-orange-900">
+  <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded hover:bg-orange-900">
     LOCATION
-  </button> */}
+  </button>
 
   {/* DROPDOWN */}
-  {/* <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-orange-500">
+  <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-orange-500">
     <FaLocationDot className="mr-2" style={{ color: "#ff5200" }} />
 
     <select
@@ -568,7 +568,7 @@ const [currentCity, setCurrentCity] = useState("");
       <option value="Maryborough">Maryborough</option>
       <option value="Adelaide">Adelaide</option>
     </select>
-  </div> */}
+  </div>
 
   {/* CURRENT LOCATION BUTTON */}
   <button
@@ -576,15 +576,15 @@ const [currentCity, setCurrentCity] = useState("");
     title="Get your current location"
     className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
   >
-    <MdOutlineMyLocation size={26} color="#ed300e" />
+    <MdOutlineMyLocation size={26} color="#ff5200" />
   </button>
 
   {/* SHOW CURRENT CITY */}
   {currentCity && (
-  <span className="flex items-center gap-2 text-sm font-semibold text-white whitespace-nowrap border border-green-900 rounded-lg px-3 py-1 bg-green-500">
-  <MdLocationPin size={30} className="inline" />
-  {currentCity}
-</span>
+    <span className="text-sm font-semibold text-gray-700">
+      <MdLocationPin />
+: {currentCity}
+    </span>
   )}
 </div>
 

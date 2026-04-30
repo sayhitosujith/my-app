@@ -581,7 +581,7 @@ const [currentCity, setCurrentCity] = useState("");
 
   {/* SHOW CURRENT CITY */}
   {currentCity && (
-  <span className="flex items-center gap-2 text-sm font-semibold text-white whitespace-nowrap border border-green-900 rounded-lg px-3 py-1 bg-green-500">
+  <span className="flex items-center gap-2 text-sm font-semibold text-white whitespace-nowrap border border-green-500 rounded-lg px-3 py-1 bg-green-900">
   <MdLocationPin size={30} className="inline" />
   {currentCity}
 </span>
