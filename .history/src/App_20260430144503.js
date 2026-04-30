@@ -533,7 +533,7 @@ function App() {
             onClick={() => navigate("/NewRegistration")}
           >
             <span style={{ color: '#000', textTransform: 'none' }}>New User?</span>{' '}
-            <span style={{ textDecoration: 'underline' }}>Register Here</span>
+            <span style={{ textDecoration: 'underline' }}>Registration Here</span>
           </button>
         </div>
       </div>

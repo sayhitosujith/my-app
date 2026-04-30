@@ -146,7 +146,7 @@ function Customer_Login() {
       <div ref={cardRef} className="login-card" onMouseDown={startDrag}>
         {/* LEFT SIDE */}
         <div className="left-panel">
-          <img src={logo} alt="logo" style={{ width: 200 }} />
+          <img src={logo} alt="logo" style={{ width: 100 }} />
 
           <div style={{ fontSize: 26, fontWeight: 600 }}>
             Fast, secure access

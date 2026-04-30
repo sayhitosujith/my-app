@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1776091740461,
@@ -24,6 +24,22 @@
                 {
                     "date": 1776091838677,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -164,9 +164,9 @@\n           <h2 style={{ fontSize: 24, fontWeight: 700, color: \"#f77e02\" }}>\r\n             Welcome to Toothx\r\n           </h2>\r\n           <p style={{ fontSize: 14, color: \"#666\", marginBottom: 20 }}>\r\n-            One Stop solution for all your dental care needs. Please login to continue.\r\n+             one-stop solution for all your dental care needs. Please login to continue.\r\n           </p>\r\n \r\n           <input\r\n             className=\"input\"\r\n"
+                },
+                {
+                    "date": 1777540646122,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -202,14 +202,14 @@\n           <p style={{ textAlign: \"center\", marginTop: 10, color: \"#f77e02\" }}>\r\n             Quick & secure login\r\n           </p>\r\n \r\n-          <p style={{ textAlign: \"center\", marginTop: 20 }}>\r\n+          {/* <p style={{ textAlign: \"center\", marginTop: 20 }}>\r\n             Don't have an account?{\" \"}\r\n             <Link to=\"/register\" style={{ color: \"red\", fontWeight: \"bold\" }}>\r\n               Register\r\n             </Link>\r\n-          </p>\r\n+          </p> */}\r\n         </div>\r\n       </div>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1777540723807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -145,9 +145,9 @@\n \r\n       <div ref={cardRef} className=\"login-card\" onMouseDown={startDrag}>\r\n         {/* LEFT SIDE */}\r\n         <div className=\"left-panel\">\r\n-          <img src={logo} alt=\"logo\" style={{ width: 140 }} />\r\n+          <img src={logo} alt=\"logo\" style={{ width: 160 }} />\r\n \r\n           <div style={{ fontSize: 26, fontWeight: 600 }}>\r\n             Fast, secure access\r\n             <br />\r\n"
+                },
+                {
+                    "date": 1777540743253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -145,9 +145,9 @@\n \r\n       <div ref={cardRef} className=\"login-card\" onMouseDown={startDrag}>\r\n         {/* LEFT SIDE */}\r\n         <div className=\"left-panel\">\r\n-          <img src={logo} alt=\"logo\" style={{ width: 160 }} />\r\n+          <img src={logo} alt=\"logo\" style={{ width: 100 }} />\r\n \r\n           <div style={{ fontSize: 26, fontWeight: 600 }}>\r\n             Fast, secure access\r\n             <br />\r\n"
+                },
+                {
+                    "date": 1777540761133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -145,9 +145,9 @@\n \r\n       <div ref={cardRef} className=\"login-card\" onMouseDown={startDrag}>\r\n         {/* LEFT SIDE */}\r\n         <div className=\"left-panel\">\r\n-          <img src={logo} alt=\"logo\" style={{ width: 100 }} />\r\n+          <img src={logo} alt=\"logo\" style={{ width: 200 }} />\r\n \r\n           <div style={{ fontSize: 26, fontWeight: 600 }}>\r\n             Fast, secure access\r\n             <br />\r\n"
                 }
             ],
             "date": 1776091740461,

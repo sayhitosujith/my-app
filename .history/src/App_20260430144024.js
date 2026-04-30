@@ -301,7 +301,7 @@ function App() {
                 textTransform: "uppercase",
               }}
             >
-              A Dental Practice Portal
+              Dental Practice Portal
             </div>
           </div>
         </div>
@@ -499,13 +499,13 @@ function App() {
 
           <button className="btn-primary" onClick={handleLogin}>
             Login
+          <button
+            className="btn-secondary"
+            onClick={() => navigate("/NewRegistration")}
+          >
+            <span style={{ color: '#000', textTransform: 'lowercase' }}>new user?</span>{' '}
+            <span style={{ textDecoration: 'underline' }}>Registration Here</span>
           </button>
-
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
               margin: "10px 0 14px",
               color: "rgba(148,163,184,0.3)",
               fontSize: 12,
@@ -532,7 +532,7 @@ function App() {
             className="btn-secondary"
             onClick={() => navigate("/NewRegistration")}
           >
-            <span style={{ color: '#000', textTransform: 'none' }}>New User?</span>{' '}
+            New User?{' '}
             <span style={{ textDecoration: 'underline' }}>Register Here</span>
           </button>
         </div>
