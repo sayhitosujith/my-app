@@ -384,6 +384,7 @@ function App() {
   };
 
  const [selectedCity, setSelectedCity] = useState("");
+  const [currentCity, setCurrentCity] = useState("");  
 
 
   const getCurrentLocation = () => {

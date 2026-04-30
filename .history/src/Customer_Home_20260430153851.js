@@ -383,41 +383,7 @@ function App() {
     setIsOpen((prev) => !prev);
   };
 
- const [selectedCity, setSelectedCity] = useState("");
-
-
-  const getCurrentLocation = () => {
-  if (!navigator.geolocation) {
-    alert("Geolocation not supported");
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    async (position) => {
-      const { latitude, longitude } = position.coords;
-
-      try {
-        const res = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-        );
-        const data = await res.json();
-
-        const city =
-          data.address.city ||
-          data.address.town ||
-          data.address.village ||
-          "";
-
-        setCurrentCity(city);
-        setSelectedCity(city); // auto select
-      } catch (err) {
-        console.error(err);
-        alert("Failed to fetch city");
-      }
-    },
-    () => alert("Location permission denied")
-  );
-};
+  const [selectedCity, setSelectedCity] = useState("");
 const [currentCity, setCurrentCity] = useState("");
   const [dentist, setDentist] = useState("");
 

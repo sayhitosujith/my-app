@@ -383,42 +383,6 @@ function App() {
     setIsOpen((prev) => !prev);
   };
 
- const [selectedCity, setSelectedCity] = useState("");
-
-
-  const getCurrentLocation = () => {
-  if (!navigator.geolocation) {
-    alert("Geolocation not supported");
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    async (position) => {
-      const { latitude, longitude } = position.coords;
-
-      try {
-        const res = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-        );
-        const data = await res.json();
-
-        const city =
-          data.address.city ||
-          data.address.town ||
-          data.address.village ||
-          "";
-
-        setCurrentCity(city);
-        setSelectedCity(city); // auto select
-      } catch (err) {
-        console.error(err);
-        alert("Failed to fetch city");
-      }
-    },
-    () => alert("Location permission denied")
-  );
-};
-const [currentCity, setCurrentCity] = useState("");
   const [dentist, setDentist] = useState("");
 
   // ✅ SEARCH FILTER
@@ -427,8 +391,7 @@ const [currentCity, setCurrentCity] = useState("");
   );
   const navigate = useNavigate();
   return (
-    <div className="p-5 bg-white">
-      <div className="flex items-center gap-2 mb-2">
+<div className="p-5 min-h-screen bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#312e81]">      <div className="flex items-center gap-2 mb-2">
         <span className="text-xl font-bold">
           <img src={logo} alt="logo" className="w-28 mb-2" />
         </span>
@@ -542,52 +505,42 @@ const [currentCity, setCurrentCity] = useState("");
 
       {/* Location Button with Textbox */}
       <div className="mt-4 flex items-center space-x-4 mb-4">
-  {/* LABEL */}
-  <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded hover:bg-orange-900">
-    LOCATION
-  </button>
+        <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded transition hover:bg-orange-900">
+          LOCATION
+        </button>
 
-  {/* DROPDOWN */}
-  <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-orange-500">
-    <FaLocationDot className="mr-2" style={{ color: "#ff5200" }} />
+        <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-orange-500">
+          <FaLocationDot className="mr-2" style={{ color: "#ff5200" }} />
+          <select
+            className="outline-none w-full bg-white"
+            defaultValue=""
+            style={{ color: "#f35208ff" }}
+          >
+            <option value="" disabled>
+              Select your location
+            </option>
+            <option value="Bangalore">Brisbane</option>
+            <option value="Delhi">Melbourn</option>
+            <option value="Chennai">Sydney</option>
+            <option value="Mumbai">Maryborough</option>
+            <option value="Hyderabad">Adilade</option>
+          </select>
+        </div>
 
-    <select
-      className="outline-none w-full bg-white"
-      value={selectedCity}
-      onChange={(e) => setSelectedCity(e.target.value)}
-      style={{ color: "#f35208ff" }}
-    >
-      <option value="" disabled>
-        Select your location
-      </option>
-      <option value="Bangalore">Bangalore</option>
-      <option value="Melbourne">Melbourne</option>
-      <option value="Sydney">Sydney</option>
-      <option value="Maryborough">Maryborough</option>
-      <option value="Adelaide">Adelaide</option>
-    </select>
-  </div>
-
-  {/* CURRENT LOCATION BUTTON */}
-  <button
-    onClick={getCurrentLocation}
-    title="Get your current location"
-    className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
-  >
-    <MdOutlineMyLocation size={26} color="#ff5200" />
-  </button>
-
-  {/* SHOW CURRENT CITY */}
-  {currentCity && (
-    <span className="text-sm font-semibold text-gray-700">
-      📍 {currentCity}
-    </span>
-  )}
-</div>
+        <button
+          onClick={() =>
+            alert("Dental World - would like to access your location")
+          }
+          title="Get your current location"
+          className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
+        >
+          <MdOutlineMyLocation size={26} color="#ff5200" />
+        </button>
+      </div>
 
       <div
         className="mb-5 shadow-sm px-2 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-        style={{ backgroundColor: "#fafafa" }}
+        style={{ backgroundColor: "#0077B5" }}
       >
         {isBannerActive && (
           <div className="w-full overflow-hidden relative">

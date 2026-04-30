@@ -207,20 +207,6 @@ const stopDrag = () => {
     border-radius: 16px;
   }
 
-  .input {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 14px;
-  font-size: 16px;
-}
-
-.btn-primary {
-  width: 100%;
-  padding: 14px;
-  font-size: 16px;
-}
-
   .left-panel {
     padding: 20px;
     text-align: center;

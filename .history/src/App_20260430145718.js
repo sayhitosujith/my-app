@@ -29,41 +29,27 @@ function App() {
   });
 
   const startDrag = (e) => {
-  if (e.target.closest("input, button, a")) return;
+    if (["INPUT", "SELECT", "BUTTON", "LABEL"].includes(e.target.tagName))
+      return;
+    drag.current.isDragging = true;
+    drag.current.startX = e.clientX - drag.current.dx;
+    drag.current.startY = e.clientY - drag.current.dy;
+    document.addEventListener("mousemove", onDrag);
+    document.addEventListener("mouseup", stopDrag);
+  };
 
-  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  const onDrag = (e) => {
+    if (!drag.current.isDragging || !cardRef.current) return;
+    drag.current.dx = e.clientX - drag.current.startX;
+    drag.current.dy = e.clientY - drag.current.startY;
+    cardRef.current.style.transform = `translate(${drag.current.dx}px, ${drag.current.dy}px)`;
+  };
 
-  drag.current.isDragging = true;
-  drag.current.startX = clientX - drag.current.dx;
-  drag.current.startY = clientY - drag.current.dy;
-
-  document.addEventListener("mousemove", onDrag);
-  document.addEventListener("mouseup", stopDrag);
-  document.addEventListener("touchmove", onDrag);
-  document.addEventListener("touchend", stopDrag);
-};
-
-const onDrag = (e) => {
-  if (!drag.current.isDragging || !cardRef.current) return;
-
-  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-  drag.current.dx = clientX - drag.current.startX;
-  drag.current.dy = clientY - drag.current.startY;
-
-  cardRef.current.style.transform = `translate(${drag.current.dx}px, ${drag.current.dy}px)`;
-};
-
-const stopDrag = () => {
-  drag.current.isDragging = false;
-
-  document.removeEventListener("mousemove", onDrag);
-  document.removeEventListener("mouseup", stopDrag);
-  document.removeEventListener("touchmove", onDrag);
-  document.removeEventListener("touchend", stopDrag);
-};
+  const stopDrag = () => {
+    drag.current.isDragging = false;
+    document.removeEventListener("mousemove", onDrag);
+    document.removeEventListener("mouseup", stopDrag);
+  };
 
   // ---- LOGIN ---- //
   const handleLogin = () => {
@@ -128,11 +114,6 @@ const stopDrag = () => {
 
   return (
     <div
-      ref={cardRef}
-  className="login-card"
-  onMouseDown={startDrag}
-  onTouchStart={startDrag}
->
       style={{
         backgroundImage: `url(${RCB})`,
         minHeight: "100vh",
@@ -199,42 +180,14 @@ const stopDrag = () => {
   justify-content: space-between;
 }
 
-/* 📱 MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-  .login-card {
-    flex-direction: column;
-    width: 100%;
-    border-radius: 16px;
-  }
-
-  .input {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 14px;
-  font-size: 16px;
+.right-panel {
+  width: 380px;
+  background: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-.btn-primary {
-  width: 100%;
-  padding: 14px;
-  font-size: 16px;
-}
-
-  .left-panel {
-    padding: 20px;
-    text-align: center;
-  }
-
-  .right-panel {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .left-panel img {
-    width: 140px !important;
-    margin: 0 auto;
-  }
         .topo {
           position: absolute; inset: 0; opacity: 0.06;
           background-image: repeating-radial-gradient(

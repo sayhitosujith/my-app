@@ -34,7 +34,11 @@ import {
   Rating,
   Switch,
   Breadcrumbs,
+  showProfileMenu,
+user,
 } from "@material-tailwind/react";
+import { VscChevronDown } from "react-icons/vsc";
+import { MdOutlineEditNote, MdOutlineSettings, MdOutlinePowerSettingsNew } from "react-icons/md";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 
@@ -158,6 +162,12 @@ const CardItem = ({ item, navigate }) => {
 };
 
   const [dentist, setDentist] = useState("");
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+const user = {
+  name: "Sujith",
+  initials: "S",
+};
 
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -383,42 +393,6 @@ function App() {
     setIsOpen((prev) => !prev);
   };
 
- const [selectedCity, setSelectedCity] = useState("");
-
-
-  const getCurrentLocation = () => {
-  if (!navigator.geolocation) {
-    alert("Geolocation not supported");
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    async (position) => {
-      const { latitude, longitude } = position.coords;
-
-      try {
-        const res = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-        );
-        const data = await res.json();
-
-        const city =
-          data.address.city ||
-          data.address.town ||
-          data.address.village ||
-          "";
-
-        setCurrentCity(city);
-        setSelectedCity(city); // auto select
-      } catch (err) {
-        console.error(err);
-        alert("Failed to fetch city");
-      }
-    },
-    () => alert("Location permission denied")
-  );
-};
-const [currentCity, setCurrentCity] = useState("");
   const [dentist, setDentist] = useState("");
 
   // ✅ SEARCH FILTER
@@ -427,8 +401,8 @@ const [currentCity, setCurrentCity] = useState("");
   );
   const navigate = useNavigate();
   return (
-    <div className="p-5 bg-white">
-      <div className="flex items-center gap-2 mb-2">
+<div className="p-5 min-h-screen bg-gradient-to-br from-[hsl(210,33%,99%)] via-[#fdfdfd] to-[#ffffff]">
+        <div className="flex items-center gap-2 mb-2">
         <span className="text-xl font-bold">
           <img src={logo} alt="logo" className="w-28 mb-2" />
         </span>
@@ -451,31 +425,54 @@ const [currentCity, setCurrentCity] = useState("");
             Home
           </a>
 
-          <a href="#" className="opacity-60">
-            <a href="/Welcome">Welcome</a>
-          </a>
+         <a href="/Welcome" className="opacity-60">
+  Welcome
+</a>
           <a href="#">Customer_Home</a>
         </Breadcrumbs>
       }
 
-      <div style={{ float: "right" }}>
-        <div className="w-74">
-          <Select label="Profile">
-            <Option></Option>
-            <Button>
-              <a href="/MyCart">
-                <CiWallet size={20} color="white" /> My wallet
-              </a>
-            </Button>
-            <Option>
-              <a href="/HomePage">About</a>
-            </Option>
-            <Option>
-              <a href="/ResetPassword">Change Password</a>
-            </Option>
-          </Select>
-        </div>
-      </div>
+      {/* ================= PROFILE ================= */}
+<div className="absolute top-4 right-4 z-20">              <button
+                onClick={() => setShowProfileMenu(!showProfileMenu)}
+                className="flex items-center gap-2 bg-orange-50 px-4 py-2 rounded-full"
+              >
+                <div className="w-10 h-10 rounded-full bg-orange-700 text-white flex items-center justify-center">
+                  {user.initials}
+                </div>
+      
+                {user.name}
+      
+                <VscChevronDown
+                  className={`${showProfileMenu ? "rotate-180" : ""}`}
+                />
+              </button>
+      
+              {showProfileMenu && (
+                <div className="absolute right-0 mt-2 bg-white shadow rounded-xl w-48">
+                  <button
+                    onClick={() => navigate("/NewRegistration")}
+                    className="flex items-center gap-2 w-full px-4 py-3 hover:bg-orange-50"
+                  >
+                    <MdOutlineEditNote /> Edit Profile
+                  </button>
+      
+                  <button
+                    onClick={() => navigate("/Settings")}
+                    className="flex items-center gap-2 w-full px-4 py-3 hover:bg-orange-50"
+                  >
+                    <MdOutlineSettings /> Settings
+                  </button>
+      
+                  <button
+                    onClick={() => navigate("/Logout")}
+                    className="flex items-center gap-2 w-full px-4 py-3 text-red-600 hover:bg-red-50"
+                  >
+                    <MdOutlinePowerSettingsNew /> Logout
+                  </button>
+                </div>
+              )}
+            </div>
 
       <div className="absolute top-4 right-4 flex items-center space-x-3">
         <Button size="sm" color="white" className="flex items-center gap-2">
@@ -542,52 +539,42 @@ const [currentCity, setCurrentCity] = useState("");
 
       {/* Location Button with Textbox */}
       <div className="mt-4 flex items-center space-x-4 mb-4">
-  {/* LABEL */}
-  <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded hover:bg-orange-900">
-    LOCATION
-  </button>
+        <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded transition hover:bg-orange-900">
+          LOCATION
+        </button>
 
-  {/* DROPDOWN */}
-  <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-orange-500">
-    <FaLocationDot className="mr-2" style={{ color: "#ff5200" }} />
+        <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-orange-500">
+          <FaLocationDot className="mr-2" style={{ color: "#ff5200" }} />
+          <select
+            className="outline-none w-full bg-white"
+            defaultValue=""
+            style={{ color: "#f35208ff" }}
+          >
+            <option value="" disabled>
+              Select your location
+            </option>
+            <option value="Bangalore">Brisbane</option>
+            <option value="Delhi">Melbourn</option>
+            <option value="Chennai">Sydney</option>
+            <option value="Mumbai">Maryborough</option>
+            <option value="Hyderabad">Adilade</option>
+          </select>
+        </div>
 
-    <select
-      className="outline-none w-full bg-white"
-      value={selectedCity}
-      onChange={(e) => setSelectedCity(e.target.value)}
-      style={{ color: "#f35208ff" }}
-    >
-      <option value="" disabled>
-        Select your location
-      </option>
-      <option value="Bangalore">Bangalore</option>
-      <option value="Melbourne">Melbourne</option>
-      <option value="Sydney">Sydney</option>
-      <option value="Maryborough">Maryborough</option>
-      <option value="Adelaide">Adelaide</option>
-    </select>
-  </div>
-
-  {/* CURRENT LOCATION BUTTON */}
-  <button
-    onClick={getCurrentLocation}
-    title="Get your current location"
-    className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
-  >
-    <MdOutlineMyLocation size={26} color="#ff5200" />
-  </button>
-
-  {/* SHOW CURRENT CITY */}
-  {currentCity && (
-    <span className="text-sm font-semibold text-gray-700">
-      📍 {currentCity}
-    </span>
-  )}
-</div>
+        <button
+          onClick={() =>
+            alert("Dental World - would like to access your location")
+          }
+          title="Get your current location"
+          className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
+        >
+          <MdOutlineMyLocation size={26} color="#ff5200" />
+        </button>
+      </div>
 
       <div
         className="mb-5 shadow-sm px-2 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
-        style={{ backgroundColor: "#fafafa" }}
+        style={{ backgroundColor: "#0077B5" }}
       >
         {isBannerActive && (
           <div className="w-full overflow-hidden relative">

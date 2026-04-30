@@ -383,9 +383,7 @@ function App() {
     setIsOpen((prev) => !prev);
   };
 
- const [selectedCity, setSelectedCity] = useState("");
-
-
+  const [selectedCity, setSelectedCity] = useState("");
   const getCurrentLocation = () => {
   if (!navigator.geolocation) {
     alert("Geolocation not supported");
