@@ -177,6 +177,7 @@ const CardItem = ({ item, navigate }) => {
   const [booking, setBooking] = useState(null);
 
   useEffect(() => {
+    
     const saved = JSON.parse(localStorage.getItem("bookings")) || [];
 
     const found = saved.find((b) => b.item.id === item.id);
@@ -570,7 +571,13 @@ function App() {
     </select>
   </div> */}
 
-
+  {/* 📍 AUTO LOCATION DISPLAY */}
+  {currentCity && (
+    <span className="flex items-center gap-2 text-sm font-semibold text-orange-900 border border-orange-400 rounded-lg px-3 py-1 bg-orange-50">
+      <MdLocationPin size={20} />
+      {currentCity}
+    </span>
+  )}
         {/* CURRENT LOCATION BUTTON */}
         <button
           onClick={getCurrentLocation}

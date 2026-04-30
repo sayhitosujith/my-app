@@ -177,6 +177,7 @@ const CardItem = ({ item, navigate }) => {
   const [booking, setBooking] = useState(null);
 
   useEffect(() => {
+    
     const saved = JSON.parse(localStorage.getItem("bookings")) || [];
 
     const found = saved.find((b) => b.item.id === item.id);
@@ -544,33 +545,29 @@ function App() {
 
       {/* Location Button with Textbox */}
       <div className="mt-4 flex items-center space-x-4 mb-4">
-        {/* LABEL */}
-        {/* <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded hover:bg-orange-900">
-    LOCATION
-  </button> */}
 
-        {/* DROPDOWN */}
-        {/* <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-orange-500">
-    <FaLocationDot className="mr-2" style={{ color: "#ff5200" }} />
+  {/* 📍 AUTO LOCATION DISPLAY */}
+  {currentCity ? (
+    <span className="flex items-center gap-2 text-sm font-semibold text-orange-900 border border-orange-400 rounded-lg px-3 py-1 bg-orange-50">
+      <MdLocationPin size={20} />
+      {currentCity}
+    </span>
+  ) : (
+    <span className="text-sm text-gray-500">
+      Detecting location...
+    </span>
+  )}
 
-    <select
-      className="outline-none w-full bg-white"
-      value={selectedCity}
-      onChange={(e) => setSelectedCity(e.target.value)}
-      style={{ color: "#f35208ff" }}
-    >
-      <option value="" disabled>
-        Select your location
-      </option>
-      <option value="Bangalore">Bangalore</option>
-      <option value="Melbourne">Melbourne</option>
-      <option value="Sydney">Sydney</option>
-      <option value="Maryborough">Maryborough</option>
-      <option value="Adelaide">Adelaide</option>
-    </select>
-  </div> */}
+  {/* BUTTON (optional manual refresh) */}
+  <button
+    onClick={getCurrentLocation}
+    title="Refresh location"
+    className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
+  >
+    <MdOutlineMyLocation size={26} color="#ed300e" />
+  </button>
 
-
+</div>
         {/* CURRENT LOCATION BUTTON */}
         <button
           onClick={getCurrentLocation}

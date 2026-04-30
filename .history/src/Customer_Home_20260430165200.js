@@ -432,7 +432,7 @@ function App() {
     <div className="p-5 bg-white">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-xl font-bold">
-          <img src={logo} alt="logo" className="w-40 mb-2" />
+          <img src={logo} alt="logo" className="w-28 mb-2" />
         </span>
       </div>
 
@@ -569,7 +569,6 @@ function App() {
       <option value="Adelaide">Adelaide</option>
     </select>
   </div> */}
-
 
         {/* CURRENT LOCATION BUTTON */}
         <button
@@ -795,7 +794,7 @@ function App() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <h3 className="text-lg font-semibold">
-                <img src={logo} alt="logo" className="w-40 mb-2" />
+                <img src={logo} alt="logo" className="w-28 mb-2" />
               </h3>
             </div>
             <p className="text-sm">
@@ -861,7 +860,7 @@ function App() {
                   className="flex items-center gap-2"
                 >
                   <MdMailOutline size={20} />
-                  <span>support@toothx.com</span>
+                  <span>- support@toothx.com</span>
                 </a>
               </li>{" "}
             </ul>

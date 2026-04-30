@@ -570,7 +570,6 @@ function App() {
     </select>
   </div> */}
 
-
         {/* CURRENT LOCATION BUTTON */}
         <button
           onClick={getCurrentLocation}

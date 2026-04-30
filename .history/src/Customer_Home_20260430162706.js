@@ -24,9 +24,6 @@ import { TbRefresh } from "react-icons/tb";
 import { RiStethoscopeLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { MdLocationPin } from "react-icons/md";
-import { MdMailOutline } from "react-icons/md";
-import { FaPhoneAlt } from "react-icons/fa";
-import { CiLocationOn } from "react-icons/ci";
 
 import {
   Card,
@@ -151,16 +148,16 @@ const clinicData = {
 
 const CardItem = ({ item, navigate }) => {
   const dentistData = {
-    "ToothX Brisbane Central": ["Dr. koyes", "Dr. Alex"],
-    "ToothX Bangalore Main": ["Dr. Reddy", "Dr. Sharma"],
-    "Smile Dental Bangalore": ["Dr. Mehta"],
-    "Smile Care Brisbane": ["Dr. Mehta"],
-    "Delhi Dental Hub": ["Dr. Gupta"],
-    "ToothX Delhi Center": ["Dr. Verma"],
-    "Mumbai Smile Clinic": ["Dr. Khan"],
-    "Chennai Dental Care": ["Dr. Iyer"],
-    "Hyderabad ToothX Clinic": ["Dr. Rao"],
-  };
+  "ToothX Brisbane Central": ["Dr. koyes", "Dr. Alex"],
+  "ToothX Bangalore Main": ["Dr. Reddy", "Dr. Sharma"],
+  "Smile Dental Bangalore": ["Dr. Mehta"],
+  "Smile Care Brisbane": ["Dr. Mehta"],
+  "Delhi Dental Hub": ["Dr. Gupta"],
+  "ToothX Delhi Center": ["Dr. Verma"],
+  "Mumbai Smile Clinic": ["Dr. Khan"],
+  "Chennai Dental Care": ["Dr. Iyer"],
+  "Hyderabad ToothX Clinic": ["Dr. Rao"],
+};
 
   const [dentist, setDentist] = useState("");
 
@@ -269,7 +266,7 @@ const CardItem = ({ item, navigate }) => {
               setCountry(e.target.value);
               setCity("");
               setClinic("");
-              setDentist(""); // reset
+                setDentist(""); // reset
             }}
           >
             <option value="">Select Country</option>
@@ -388,39 +385,42 @@ function App() {
     setIsOpen((prev) => !prev);
   };
 
-  const [currentCity, setCurrentCity] = useState("");
-  const [selectedCity, setSelectedCity] = useState("");
+ const [selectedCity, setSelectedCity] = useState("");
 
-  // ✅ ADD THIS FUNCTION HERE
+
   const getCurrentLocation = () => {
-    if (!navigator.geolocation) return;
+  if (!navigator.geolocation) {
+    alert("Geolocation not supported");
+    return;
+  }
 
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const { latitude, longitude } = position.coords;
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      const { latitude, longitude } = position.coords;
 
-        try {
-          const res = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
-          );
-          const data = await res.json();
+      try {
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+        );
+        const data = await res.json();
 
-          const city =
-            data.address.city ||
-            data.address.town ||
-            data.address.village ||
-            "";
+        const city =
+          data.address.city ||
+          data.address.town ||
+          data.address.village ||
+          "";
 
-          setCurrentCity(city);
-          setSelectedCity(city);
-        } catch (err) {
-          console.error(err);
-        }
-      },
-      () => console.log("Permission denied"),
-    );
-  };
-
+        setCurrentCity(city);
+        setSelectedCity(city); // auto select
+      } catch (err) {
+        console.error(err);
+        alert("Failed to fetch city");
+      }
+    },
+    () => alert("Location permission denied")
+  );
+};
+const [currentCity, setCurrentCity] = useState("");
   const [dentist, setDentist] = useState("");
 
   // ✅ SEARCH FILTER
@@ -432,7 +432,7 @@ function App() {
     <div className="p-5 bg-white">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-xl font-bold">
-          <img src={logo} alt="logo" className="w-40 mb-2" />
+          <img src={logo} alt="logo" className="w-28 mb-2" />
         </span>
       </div>
 
@@ -544,13 +544,13 @@ function App() {
 
       {/* Location Button with Textbox */}
       <div className="mt-4 flex items-center space-x-4 mb-4">
-        {/* LABEL */}
-        {/* <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded hover:bg-orange-900">
+  {/* LABEL */}
+  {/* <button className="px-4 py-2 bg-orange-800 text-white border border-orange-900 rounded hover:bg-orange-900">
     LOCATION
   </button> */}
 
-        {/* DROPDOWN */}
-        {/* <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-orange-500">
+  {/* DROPDOWN */}
+  {/* <div className="flex items-center border border-gray-300 rounded px-3 py-2 focus-within:ring-2 focus-within:ring-orange-500">
     <FaLocationDot className="mr-2" style={{ color: "#ff5200" }} />
 
     <select
@@ -570,26 +570,24 @@ function App() {
     </select>
   </div> */}
 
+  {/* CURRENT LOCATION BUTTON */}
+  <<button
+  onClick={getCurrentLocation}
+  title="Get your current location"
+  className="flex flex-col items-center p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
+>
+  <MdOutlineMyLocation size={26} color="#ed300e" />
+  <span className="text-xs mt-1">Click to fetch the location</span>
+</button>
 
-        {/* CURRENT LOCATION BUTTON */}
-        <button
-          onClick={getCurrentLocation}
-          title="Get your current location"
-          className="flex flex-col items-center p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
-        >
-          <MdOutlineMyLocation size={26} color="#ed300e" />
-        </button>
-
-        {/* <span className="text-xs mt-1">Click for the location</span> */}
-
-        {/* SHOW CURRENT CITY */}
-        {currentCity && (
-          <span className="flex items-center gap-2 text-sm font-semibold text-white whitespace-nowrap border border-green-900 rounded-lg px-3 py-1 bg-green-500">
-            <MdLocationPin size={30} className="inline" />
-            {currentCity}
-          </span>
-        )}
-      </div>
+  {/* SHOW CURRENT CITY */}
+  {currentCity && (
+  <span className="flex items-center gap-2 text-sm font-semibold text-white whitespace-nowrap border border-green-900 rounded-lg px-3 py-1 bg-green-500">
+  <MdLocationPin size={30} className="inline" />
+  {currentCity}
+</span>
+  )}
+</div>
 
       <div
         className="mb-5 shadow-sm px-2 py-1 flex justify-center items-center overflow-x-auto whitespace-nowrap rounded-xl"
@@ -668,6 +666,16 @@ function App() {
             </figcaption>
           </figure>
         </Carousel>
+      </div>
+
+      <div className="absolute top-35 right-5">
+        <button
+          onClick={() => window.location.reload()}
+          className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md hover:bg-gray-200 transition text-black"
+        >
+          <TbRefresh className="text-3xl" />
+          <span className="text-lg">REFRESH</span>
+        </button>
       </div>
 
       <b>
@@ -778,16 +786,6 @@ function App() {
         )}
       </div>
 
-      <div className="absolute top-35 right-5">
-        <button
-          onClick={() => window.location.reload()}
-          className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md hover:bg-gray-200 transition text-black"
-        >
-          <TbRefresh className="text-3xl" />
-          <span className="text-lg">REFRESH</span>
-        </button>
-      </div>
-
       <footer className="mt-10 w-full bg-gradient-to-r from-orange-900 via-purple-900 to-purple-800 text-gray-300 shadow-lg">
         {" "}
         <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -795,7 +793,7 @@ function App() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <h3 className="text-lg font-semibold">
-                <img src={logo} alt="logo" className="w-40 mb-2" />
+                <img src={logo} alt="logo" className="w-28 mb-2" />
               </h3>
             </div>
             <p className="text-sm">
@@ -845,23 +843,11 @@ function App() {
           <div>
             <h3 className="text-white font-semibold mb-3">Contact</h3>
             <ul className="space-y-2 text-sm">
-              <li className="flex items-center gap-2">
-                <CiLocationOn size={20} />
-                <span>WTC 12th floor, Bangalore, India</span>
-              </li>
-
-              <li className="flex items-center gap-2">
-                <FaPhoneAlt size={20} />
-                <span>+91 - 8618860059</span>
-              </li>
-
+              <li>📍Head Office - WTC , Bangalore, India</li>
+              <li>📞 HR - +91 - 8618860059</li>
               <li>
-                <a
-                  href="mailto:supportblr@dutydentist.com"
-                  className="flex items-center gap-2"
-                >
-                  <MdMailOutline size={20} />
-                  <span>support@toothx.com</span>
+                <a href="mailto:supportblr@dutydentist.com">
+                  ✉ supportblr@dutydentist.com
                 </a>
               </li>{" "}
             </ul>
