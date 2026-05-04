@@ -52,9 +52,9 @@ import "./DoctorList.css";
 function DoctorList() {
   const getAppointmentStatus = (appt) => {
     // If backend already provides status → respect it
-    if (appt?.status) return appt.status === "Upcoming" ? "Pending" : appt.status;
+    if (appt?.status) return appt.status;
 
-    if (!appt?.date) return "Pending";
+    if (!appt?.date) return "Upcoming";
 
     const today = new Date();
     const apptDate = new Date(appt.date);
@@ -67,7 +67,7 @@ function DoctorList() {
       return "Completed";
     }
 
-    return "Pending";
+    return "Upcoming";
   };
   const navigate = useNavigate();
   const [doctors, setDoctors] = useState([]);
@@ -88,7 +88,7 @@ function DoctorList() {
   const [workReason, setWorkReason] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [selectedDoctors, setSelectedDoctors] = useState([]);
-  // const [selectAll, setSelectAll] = useState(false);
+  const [selectAll, setSelectAll] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("isLoggedIn")) || false,
@@ -620,7 +620,7 @@ function DoctorList() {
     const updated = doctors.filter((_, i) => !selectedDoctors.includes(i));
     saveDoctors(updated);
     setSelectedDoctors([]);
-    // setSelectAll(false);
+    setSelectAll(false);
   };
 
   const [openHolidayDialog, setOpenHolidayDialog] = useState(false);
@@ -1236,41 +1236,38 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200 text-center">
               </thead>
               <tbody>
                 {appointments.slice(0, 5).map((apt, index) => {
-                  // Improved Patient Name fallback
-                  let patientName = apt.firstName || apt.patientName || apt.name || "";
-                  let patientLastName = apt.lastName || "";
-                  let fullName = `${patientName} ${patientLastName}`.trim();
-                  if (!fullName || fullName === "N/A" || fullName === "") {
-                    fullName = "Unknown";
-                  }
-
+                  // Get patient name from various possible field names
+                  const patientName = apt.firstName || apt.patientName || apt.name || "N/A";
+                  const patientLastName = apt.lastName || "";
+                  const fullName = `${patientName} ${patientLastName}`.trim();
+                  
                   return (
-                    <tr
-                      key={index}
-                      className={`border-b border-blue-200 hover:bg-blue-50 transition ${getAppointmentStatus(apt) === "Completed" ? "bg-gray-200" : ""}`}
-                    >
-                      <td className="px-3 py-2 text-gray-700">{index + 1}</td>
-                      <td className="px-3 py-2 font-medium text-gray-800">
-                        {fullName}
-                      </td>
-                      <td className="px-3 py-2 text-gray-700">
-                        {apt.date ? new Date(apt.date).toLocaleDateString("en-GB") : "N/A"}
-                      </td>
-                      <td className="px-3 py-2 text-gray-700">{apt.time || "N/A"}</td>
-                      <td className="px-3 py-2 text-gray-700">{apt.doctor || "N/A"}</td>
-                      <td className="px-3 py-2 text-gray-700">{apt.department || "N/A"}</td>
-                      <td className="px-3 py-2 text-center">
-                        <span
-                          className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            getAppointmentStatus(apt) === "Completed"
-                              ? "bg-gray-600 text-white"
-                              : "bg-green-600 text-white"
-                          }`}
-                        >
-                          {getAppointmentStatus(apt)}
-                        </span>
-                      </td>
-                    </tr>
+                  <tr
+                    key={index}
+                    className={`border-b border-blue-200 hover:bg-blue-50 transition ${getAppointmentStatus(apt) === "Completed" ? "bg-gray-200" : ""}`}
+                  >
+                    <td className="px-3 py-2 text-gray-700">{index + 1}</td>
+                    <td className="px-3 py-2 font-medium text-gray-800">
+                      {fullName || "Unknown Patient"}
+                    </td>
+                    <td className="px-3 py-2 text-gray-700">
+                      {apt.date ? new Date(apt.date).toLocaleDateString("en-GB") : "N/A"}
+                    </td>
+                    <td className="px-3 py-2 text-gray-700">{apt.time || "N/A"}</td>
+                    <td className="px-3 py-2 text-gray-700">{apt.doctor || "N/A"}</td>
+                    <td className="px-3 py-2 text-gray-700">{apt.department || "N/A"}</td>
+                    <td className="px-3 py-2 text-center">
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                          getAppointmentStatus(apt) === "Completed"
+                            ? "bg-gray-600 text-white"
+                            : "bg-green-600 text-white"
+                        }`}
+                      >
+                        {getAppointmentStatus(apt)}
+                      </span>
+                    </td>
+                  </tr>
                   );
                 })}
               </tbody>
@@ -1402,7 +1399,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200 text-center">
                           ? "w-24 h-24 sm:w-28 sm:h-28"
                           : "w-20 h-20 sm:w-24 sm:h-24"
                       } object-cover border-2 border-orange-100 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl`}
-                      // onClick={() => setViewDoctor(doc)}
+                      onClick={() => setViewDoctor(doc)}
                     />
                   )}
 

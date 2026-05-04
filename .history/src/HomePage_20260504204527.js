@@ -307,9 +307,9 @@ function Welcome() {
 
         {/* Text + Book Now */}
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 md:px-20 z-10">
-          <i><h1 className="text-white text-2xl md:text-4xl font-bold mb-4 drop-shadow-lg">
+          <h1 className="text-white text-2xl md:text-4xl font-bold mb-4 drop-shadow-lg">
             Your personal online Dentist
-          </h1></i>
+          </h1>
           <p className="text-white text-sm md:text-lg font-medium drop-shadow-md leading-relaxed">
             Struggling to get a dentist appointment? Fed up with long queues?
             Frustrated waiting? <br />
@@ -320,7 +320,7 @@ function Welcome() {
 
           <Button
             size="lg"
-            className="flex items-center gap-3 mt-6 cursor-pointer text-white shadow-md bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:scale-105 transition duration-300"
+            className="flex items-center gap-3 mt-6 cursor-pointer text-black shadow-md bg-gradient-to-r from-white via-white to-orange-900 hover:scale-105 transition duration-300"
             onClick={() => navigate("/Customer_home")}
           >
             <BsPlus size={22} />
@@ -370,16 +370,12 @@ function Welcome() {
       </div>
 
       {/* App Banner */}
-    <div className="relative w-full aspect-[3/1] rounded-lg overflow-hidden shadow-md">
-  <img
-    src={appbanner}
-    alt="App banner scanner"
-    className="w-full h-full object-cover"
-  />
+      <img
+        src={appbanner}
+        alt="App banner scanner"
+        className="w-full h-[30vh] md:h-[50vh] object-cover rounded-lg shadow-md"
+      />
 
-  {/* Light overlay */}
-  <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent"></div>
-</div>
       {/* Doctors */}
       <div className="flex items-center justify-center my-10">
         <div className="flex-grow h-[1px] bg-orange-100"></div>
@@ -575,7 +571,7 @@ function Welcome() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-10 w-full bg-gradient-to-r from-orange-700 via-purple-800 to-purple-800 text-gray-300 shadow-lg">
+      <footer className="mt-10 w-full bg-gradient-to-r from-purple-900 via-purple-900 to-purple-800 text-gray-300 shadow-lg">
               {" "}
               <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 {/* Logo + Description */}

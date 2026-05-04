@@ -50,24 +50,22 @@ import { SlCalender } from "react-icons/sl";
 import "./DoctorList.css";
 
 function DoctorList() {
+  // Status logic as per MyCart
   const getAppointmentStatus = (appt) => {
-    // If backend already provides status → respect it
-    if (appt?.status) return appt.status === "Upcoming" ? "Pending" : appt.status;
-
-    if (!appt?.date) return "Pending";
-
+    if (appt?.status) {
+      const s = appt.status.toUpperCase();
+      if (["CANCELLED", "PAID", "PENDING", "COMPLETED"].includes(s)) return s;
+      if (s === "UPCOMING") return "PENDING";
+      return s;
+    }
+    if (appt?.paid || appt?.isPaid) return "PAID";
+    if (!appt?.date) return "PENDING";
     const today = new Date();
     const apptDate = new Date(appt.date);
-
-    // Remove time for accurate comparison
     today.setHours(0, 0, 0, 0);
     apptDate.setHours(0, 0, 0, 0);
-
-    if (apptDate < today) {
-      return "Completed";
-    }
-
-    return "Pending";
+    if (apptDate < today) return "COMPLETED";
+    return "PENDING";
   };
   const navigate = useNavigate();
   const [doctors, setDoctors] = useState([]);
@@ -76,7 +74,7 @@ function DoctorList() {
   const [gridView, setGridView] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-
+const [appointments, setAppointments] = useState([]);
   const doctorsPerPage = 32;
   const [timeZoneLabel, setTimeZoneLabel] = useState("");
   const [confirmAction, setConfirmAction] = useState({
@@ -89,6 +87,13 @@ function DoctorList() {
   const [successMsg, setSuccessMsg] = useState("");
   const [selectedDoctors, setSelectedDoctors] = useState([]);
   // const [selectAll, setSelectAll] = useState(false);
+  const updateStatus = (id, newStatus) => {
+  const updated = appointments.map((appt) =>
+    appt.id === id ? { ...appt, status: newStatus } : appt
+  );
+  setAppointments(updated);
+};
+
 
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("isLoggedIn")) || false,
@@ -1261,11 +1266,13 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200 text-center">
                       <td className="px-3 py-2 text-gray-700">{apt.department || "N/A"}</td>
                       <td className="px-3 py-2 text-center">
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            getAppointmentStatus(apt) === "Completed"
-                              ? "bg-gray-600 text-white"
+                          className={`px-3 py-1 rounded-full text-xs font-semibold
+                            ${getAppointmentStatus(apt) === "CANCELLED" ? "bg-red-100 text-red-700"
+                              : getAppointmentStatus(apt) === "PAID" ? "bg-orange-100 text-orange-700"
+                              : getAppointmentStatus(apt) === "COMPLETED" ? "bg-gray-600 text-white"
                               : "bg-green-600 text-white"
-                          }`}
+                            }
+                          `}
                         >
                           {getAppointmentStatus(apt)}
                         </span>

@@ -1,210 +1,105 @@
 import { useEffect, useState, useMemo } from "react";
-import { useNavigate, Link } from "react-router-dom";
-
-// Material Tailwind
-import {
-  Card,
-  Typography,
-  Button,
-  Dialog,
-  DialogBody,
-  DialogFooter,
-  Breadcrumbs,
-} from "@material-tailwind/react";
-
-// Icons
-import {
-  Bars3Icon,
-  Squares2X2Icon,
-  PencilIcon,
-  TrashIcon,
-  DocumentDuplicateIcon,
-} from "@heroicons/react/24/solid";
-import { FaUserMd } from "react-icons/fa";
-
-import { VscArrowRight } from "react-icons/vsc";
-import { FcEngineering } from "react-icons/fc";
-import { AiOutlineDelete } from "react-icons/ai";
-// import { FaArrowTrendUp } from "react-icons/fa6";
-// ✅ Merge duplicate Md imports
-import {
-  MdOutlineFestival,
-  MdOutlineEditNote,
-  MdOutlineSettings,
-  MdOutlinePowerSettingsNew,
-} from "react-icons/md";
-
-import { FaFlag, FaSun, FaMoon, FaStar, FaChurch } from "react-icons/fa";
-import { MdOutlinePhoneIphone } from "react-icons/md";
-
-import { GiPartyPopper, GiRam } from "react-icons/gi";
-import { FaUserNurse } from "react-icons/fa";
-
-// Assets
-import logo from "./assets/Toothx_Logo.png";
-import painting from "./assets/Painting.jpg";
-import { MdOutlineEmail } from "react-icons/md";
-import { SlCalender } from "react-icons/sl";
-
-// Styles
-import "./DoctorList.css";
-
-function DoctorList() {
-  const getAppointmentStatus = (appt) => {
-    // If backend already provides status → respect it
-    if (appt?.status) return appt.status === "Upcoming" ? "Pending" : appt.status;
-
-    if (!appt?.date) return "Pending";
-
-    const today = new Date();
-    const apptDate = new Date(appt.date);
-
-    // Remove time for accurate comparison
-    today.setHours(0, 0, 0, 0);
-    apptDate.setHours(0, 0, 0, 0);
-
-    if (apptDate < today) {
-      return "Completed";
-    }
-
-    return "Pending";
-  };
-  const navigate = useNavigate();
-  const [doctors, setDoctors] = useState([]);
-  const [editIndex, setEditIndex] = useState(null);
-  const [editDoctor, setEditDoctor] = useState({});
-  const [gridView, setGridView] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const doctorsPerPage = 32;
-  const [timeZoneLabel, setTimeZoneLabel] = useState("");
-  const [confirmAction, setConfirmAction] = useState({
-    open: false,
-    type: "",
-    index: null,
-    doctor: null,
-  });
-  const [workReason, setWorkReason] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
-  const [selectedDoctors, setSelectedDoctors] = useState([]);
-  // const [selectAll, setSelectAll] = useState(false);
-
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    JSON.parse(localStorage.getItem("isLoggedIn")) || false,
-  );
-
-  const [currentTime, setCurrentTime] = useState("");
-  const [openSwipeModal, setOpenSwipeModal] = useState(false);
-  const [showProfileMenu, setShowProfileMenu] = useState(false);
-  const [sessionExpired, setSessionExpired] = useState(false);
-  const [appointments, setAppointments] = useState([]);
-
-  const getInitials = (firstName = "", lastName = "") => {
-    if (!firstName && !lastName) return "U";
-    return `${firstName[0] || ""}${lastName[0] || ""}`.toUpperCase();
-  };
-
-  const [user] = useState(() => {
-    try {
-      const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
-
-      if (storedUser) {
-        const fullName =
-          storedUser.name ||
-          `${storedUser.firstName || ""} ${storedUser.lastName || ""}`.trim();
-
-        return {
-          name: fullName || "User",
-          email: storedUser.email || "user@email.com",
-          role: storedUser.role || "User",
-          initials: getInitials(storedUser.firstName, storedUser.lastName),
-        };
-      }
-
-      return {
-        name: "User",
-        email: "user@email.com",
-        role: "User",
-        initials: "U",
-      };
-    } catch {
-      return {
-        name: "User",
-        email: "user@email.com",
-        role: "User",
-        initials: "U",
-      };
-    }
-  });
-
-  const [swipeHistory, setSwipeHistory] = useState(
-    JSON.parse(localStorage.getItem("swipeHistory")) || [],
-  );
-
-  const shiftObj = {
-    type: "Flexi Shift",
-    start: "10:00 AM",
-    end: "10:00 PM",
-  };
-
-  const getDayLabel = (dateStr) => {
-    if (!dateStr) return "";
-
-    const today = new Date();
-    const apptDate = new Date(dateStr);
-
-    const todayDate = today.toDateString();
-    const tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
-
-    if (apptDate.toDateString() === todayDate) {
-      return "Today";
-    }
-
-    if (apptDate.toDateString() === tomorrow.toDateString()) {
-      return "Tomorrow";
-    }
-
-    return "";
-  };
-  const RH_QUOTA = 2;
-// const [viewDoctor, setViewDoctor] = useState(null);
-  const [leaveRequests, setLeaveRequests] = useState(
-    JSON.parse(localStorage.getItem("leaveRequests")) || [],
-  );
-
-  const usedRH = leaveRequests.filter(
-    (l) => l.type === "RH" && l.status !== "Cancelled",
-  ).length;
-
-  const remainingRH = RH_QUOTA - usedRH;
-
-  const holidays = [
-    {
-      date: "1 Jan 2026",
-      day: "Thursday",
-      name: "New Year's Day",
-      type: "NH",
-      icon: <FaSun className="inline mr-1 text-yellow-500" />,
-    },
-    {
-      date: "3 Jan 2026",
-      day: "Saturday",
-      name: "Hazrat Ali's Birthday",
-      type: "RH",
-      icon: <FaMoon className="inline mr-1 text-orange-500" />,
-    },
-    {
-      date: "14 Jan 2026",
-      day: "Wednesday",
-      name: "Makar Sankranti / Pongal",
-      type: "RH",
-      icon: <FaStar className="inline mr-1 text-orange-500" />,
-    },
-    {
-      date: "23 Jan 2026",
-      day: "Friday",
+                  <div className="w-full mt-2 bg-gray-50 border rounded-xl shadow-sm overflow-hidden">
+                    {/* Header */}
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 border-b">
+                      <div className="w-8 h-8 flex items-center justify-center rounded-md bg-gray-200">
+                        📅
+                      </div>
+                      <p className="font-semibold text-gray-800">
+                        Scheduled Appointments
+                      </p>
+                    </div>
+                    {/* Body */}
+                    {Array.isArray(doc.appointments) && doc.appointments.length > 0 ? (
+                      <div className="p-3 space-y-3">
+                        {doc.appointments.map((appt, i) => {
+                          // Patient name fallback
+                          let patientName = appt.firstName || appt.patientName || appt.name || "";
+                          let patientLastName = appt.lastName || "";
+                          let fullName = `${patientName} ${patientLastName}`.trim();
+                          if (!fullName || fullName === "N/A" || fullName === "") {
+                            fullName = "Unknown";
+                          }
+                          return (
+                            <div
+                              key={i}
+                              className="border rounded-lg p-3 bg-white shadow-sm space-y-2"
+                            >
+                              <div className="flex justify-between items-start">
+                                <div>
+                                  <p className="text-[11px] text-orange-900">
+                                    Booked on: {appt?.date ? new Date(appt.date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }) : "Not available"}
+                                  </p>
+                                  <p className="font-semibold text-gray-800 flex items-center gap-1">
+                                    <FaUserNurse />
+                                    <span>{fullName}</span>
+                                  </p>
+                                </div>
+                                <span
+                                  className={`text-xs px-2 py-1 rounded-full font-bold
+                                    ${getAppointmentStatus(appt) === "CANCELLED" ? "bg-red-100 text-red-700"
+                                      : getAppointmentStatus(appt) === "PAID" ? "bg-orange-100 text-orange-700"
+                                      : getAppointmentStatus(appt) === "COMPLETED" ? "bg-gray-600 text-white"
+                                      : "bg-green-700 text-green-100"
+                                    }
+                                  `}
+                                >
+                                  {getAppointmentStatus(appt)}
+                                </span>
+                              </div>
+                              <p className="text-sm text-gray-600 flex items-center gap-1">
+                                <SlCalender />
+                                <span>
+                                  {getDayLabel(appt?.date) && (
+                                    <span className="text-green-600 font-semibold mr-1">
+                                      {getDayLabel(appt?.date)} •
+                                    </span>
+                                  )}
+                                  {appt?.date || "N/A"} • {appt?.time || ""}
+                                </span>
+                              </p>
+                              <p className="text-xs text-gray-500 mt-1">
+                                {appt?.type || "General"}
+                              </p>
+                              {appt?.amount && (
+                                <p className="text-sm font-medium text-gray-700">₹{appt.amount}</p>
+                              )}
+                              {appt?.consultationType === "ONLINE" && appt?.meetingUrl && (
+                                getAppointmentStatus(appt) === "COMPLETED" ? (
+                                  <span className="text-xs px-3 py-1 bg-gray-400 text-white rounded-md">Completed</span>
+                                ) : (
+                                  <button
+                                    onClick={() =>
+                                      window.open(
+                                        appt.meetingUrl.startsWith("http")
+                                          ? appt.meetingUrl
+                                          : `https://${appt.meetingUrl}`,
+                                        "_blank"
+                                      )
+                                    }
+                                    className="text-xs px-3 py-1 bg-green-500 text-white rounded-md"
+                                  >
+                                    ▶ Join Call
+                                  </button>
+                                )
+                              )}
+                              {appt?.notes && (
+                                <p className="text-xs text-gray-400">Notes: {appt.notes}</p>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center justify-center py-6 px-4 text-center">
+                        <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mb-3">
+                          <span className="text-pink-500 text-lg">✔</span>
+                        </div>
+                        <p className="text-gray-800 font-medium">All caught up</p>
+                        <p className="text-sm text-gray-500 mt-1">No appointments right now, we'll notify you when there's something new.</p>
+                      </div>
+                    )}
+                  </div>
       name: "Vasant Panchami",
       type: "RH",
       icon: <MdOutlineFestival className="inline mr-1 text-yellow-400" />,
@@ -1261,11 +1156,13 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200 text-center">
                       <td className="px-3 py-2 text-gray-700">{apt.department || "N/A"}</td>
                       <td className="px-3 py-2 text-center">
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            getAppointmentStatus(apt) === "Completed"
-                              ? "bg-gray-600 text-white"
+                          className={`px-3 py-1 rounded-full text-xs font-semibold
+                            ${getAppointmentStatus(apt) === "CANCELLED" ? "bg-red-100 text-red-700"
+                              : getAppointmentStatus(apt) === "PAID" ? "bg-orange-100 text-orange-700"
+                              : getAppointmentStatus(apt) === "COMPLETED" ? "bg-gray-600 text-white"
                               : "bg-green-600 text-white"
-                          }`}
+                            }
+                          `}
                         >
                           {getAppointmentStatus(apt)}
                         </span>

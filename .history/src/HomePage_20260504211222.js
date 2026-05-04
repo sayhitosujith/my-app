@@ -377,9 +377,10 @@ function Welcome() {
     className="w-full h-full object-cover"
   />
 
-  {/* Light overlay */}
-  <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent"></div>
+  {/* Contrast Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-transparent"></div>
 </div>
+
       {/* Doctors */}
       <div className="flex items-center justify-center my-10">
         <div className="flex-grow h-[1px] bg-orange-100"></div>

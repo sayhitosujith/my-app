@@ -50,24 +50,22 @@ import { SlCalender } from "react-icons/sl";
 import "./DoctorList.css";
 
 function DoctorList() {
+  // Status logic as per MyCart
   const getAppointmentStatus = (appt) => {
-    // If backend already provides status → respect it
-    if (appt?.status) return appt.status === "Upcoming" ? "Pending" : appt.status;
-
-    if (!appt?.date) return "Pending";
-
+    if (appt?.status) {
+      const s = appt.status.toUpperCase();
+      if (["CANCELLED", "PAID", "PENDING", "COMPLETED"].includes(s)) return s;
+      if (s === "UPCOMING") return "PENDING";
+      return s;
+    }
+    if (appt?.paid || appt?.isPaid) return "PAID";
+    if (!appt?.date) return "PENDING";
     const today = new Date();
     const apptDate = new Date(appt.date);
-
-    // Remove time for accurate comparison
     today.setHours(0, 0, 0, 0);
     apptDate.setHours(0, 0, 0, 0);
-
-    if (apptDate < today) {
-      return "Completed";
-    }
-
-    return "Pending";
+    if (apptDate < today) return "COMPLETED";
+    return "PENDING";
   };
   const navigate = useNavigate();
   const [doctors, setDoctors] = useState([]);
@@ -610,211 +608,99 @@ function DoctorList() {
   //   if (selectAll) {
   //     setSelectedDoctors([]);
   //   } else {
-  //     const allIndices = currentDoctors.map((_, i) => indexOfFirstDoctor + i);
-  //     setSelectedDoctors(allIndices);
-  //   }
-  //   setSelectAll(!selectAll);
-  // };
-
-  const deleteSelectedDoctors = () => {
-    const updated = doctors.filter((_, i) => !selectedDoctors.includes(i));
-    saveDoctors(updated);
-    setSelectedDoctors([]);
-    // setSelectAll(false);
-  };
-
-  const [openHolidayDialog, setOpenHolidayDialog] = useState(false);
-  const [openSettingsModal, setOpenSettingsModal] = useState(false);
-  const [openLeaveHistory, setOpenLeaveHistory] = useState(false);
-  const [openLocationModal, setOpenLocationModal] = useState(false);
-  const [workLocation, setWorkLocation] = useState("");
-  const today = new Date();
-
-  const upcomingHolidays = holidays
-    .filter((holiday) => new Date(holiday.date) >= today)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
-
-  const handleApplyLeave = (holiday) => {
-    const isDuplicate = leaveRequests.some(
-      (l) => l.date === holiday.date && l.status !== "Cancelled",
-    );
-
-    if (isDuplicate) {
-      alert("Leave already applied for this date.");
-      return;
-    }
-
-    if (remainingRH <= 0) {
-      alert("RH quota exhausted. You cannot apply more RH leaves.");
-      return;
-    }
-
-    const newLeave = {
-      id: Date.now(),
-      date: holiday.date,
-      name: holiday.name,
-      type: holiday.type,
-      status: "Approved",
-      appliedOn: new Date().toLocaleString(),
-    };
-
-    const updated = [...leaveRequests, newLeave];
-    setLeaveRequests(updated);
-    localStorage.setItem("leaveRequests", JSON.stringify(updated));
-  };
-
-  const [openSwipeDialog, setOpenSwipeDialog] = useState(false);
-  const [openAllAppointments, setOpenAllAppointments] = useState(false);
-  const handleCancelLeave = (id) => {
-    const updated = leaveRequests.map((l) =>
-      l.id === id ? { ...l, status: "Cancelled" } : l,
-    );
-    setLeaveRequests(updated);
-    localStorage.setItem("leaveRequests", JSON.stringify(updated));
-  };
-
-  return (
-    <div className="p-4 sm:p-6 min-h-screen bg-white-100">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-4 p-1 bg-white shadow-md rounded-xl">
-        <img
-          className="w-24 h-24 sm:w-40 sm:h-28 md:w-32 md:h-32 object-contain"
-          src={logo}
-          alt="Application Logo"
-        />
-
-        {/* Painting Image (End / Right Side) */}
-        <div className="hidden md:flex flex-1 justify-end">
-          <img
-            src={painting}
-            alt="Painting"
-            className="h-28 md:h-32 object-contain"
-          />
-        </div>
-
-        {/* User Badge */}
-        <div className="relative">
-          <button
-            onClick={() => setShowProfileMenu(!showProfileMenu)}
-            className="flex items-center gap-2 px-3 py-2 bg-orange-50 text-orange-900 font-semibold rounded-full shadow-sm hover:bg-orange-100 transition"
-          >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-orange-700 text-white flex items-center justify-center font-bold text-sm sm:text-base">
-              {user.initials}
-            </div>
-            <span className="hidden sm:inline">{user.name}</span>
-            <svg
-              className={`w-4 h-4 ml-1 transform transition-transform duration-200 ${
-                showProfileMenu ? "rotate-180" : "rotate-0"
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              ></path>
-            </svg>
-          </button>
-
-          {showProfileMenu && (
-            <div className="absolute right-0 mt-3 w-64 bg-white rounded-xl shadow-lg border z-20 overflow-hidden">
-              {/* Profile Header */}
-              <div className="flex items-center gap-3 p-4 bg-orange-50 border-b">
-                <div className="w-12 h-12 rounded-full bg-orange-700 text-white flex items-center justify-center font-bold text-lg">
-                  {user.initials}
-                </div>
-
-                <div>
-                  <p className="font-semibold text-orange-900">{user.name}</p>
-                  <p className="text-xs text-gray-600">{user.email}</p>
-                  <p className="text-xs text-gray-500">{user.role}</p>
-                </div>
-              </div>
-
-              {/* Menu */}
-              <button
-                onClick={() => navigate("/NewRegistration")}
-                className="w-full px-4 py-3 text-left hover:bg-orange-50 flex items-center gap-2"
-              >
-                <MdOutlineEditNote size={20} />
-                Edit Profile
-              </button>
-
-              <button
-                onClick={() => navigate("/Settings")}
-                className="w-full px-4 py-3 text-left hover:bg-orange-50 flex items-center gap-2"
-              >
-                <MdOutlineSettings size={20} />
-                Settings
-              </button>
-
-              <button
-                onClick={() => {
-                  setSuccessMsg("Successfully Signed Out ✅");
-                  navigate("/Logout");
-                }}
-                className="w-full px-4 py-3 text-left text-red-600 hover:bg-red-50 flex items-center gap-2"
-              >
-                <MdOutlinePowerSettingsNew size={20} />
-                Logout
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Breadcrumbs */}
-      <Breadcrumbs className="mt-2 sm:mt-6 mb-4 text-sm">
-        <Link to="/HomePage" className="opacity-60 hover:opacity-100">
-          Home
-        </Link>
-        <Link to="/Welcome" className="opacity-60 hover:opacity-100">
-          Welcome
-        </Link>
-        <Link to="/DoctorList" className="font-semibold text-black-700">
-          DoctorList
-        </Link>
-      </Breadcrumbs>
-
-      {successMsg && (
-        <div className="flex justify-center mb-3">
-          <div className="bg-orange-100 text-orange-800 px-6 py-2 rounded-lg text-center font-semibold shadow max-w-md w-full">
-            {successMsg}
-          </div>
-        </div>
-      )}
-
-      <div className="flex flex-col lg:flex-row gap-6 items-stretch">
-        {/* Greeting Card */}
-        <Card className="w-full lg:w-1/3 p-1 shadow-xl rounded-2xl bg-white border border-gray-200">
-          <Typography variant="h5" className="mb-2">
-            Hello, {getGreeting()}
-          </Typography>
-
-          {/* 🌍 Weather Info
-          <p className="text-sm text-gray-600 mb-2">
-            📍 {weather.city || "Detecting location..."} • 🌡{" "}
-            {weather.temp !== null ? `${weather.temp}°C` : "Loading..."}
-          </p> */}
-
-          <Typography className="text-gray-700 italic text-sm sm:text-base">
-            “Don’t worry about failures, worry about the chances you miss when
-            you don’t even try.”
-          </Typography>
-        </Card>
-
-        {/* Time & Shift Card */}
-        <Card className="relative w-full lg:w-1/3 p-1 shadow-xl rounded-2xl bg-white border border-gray-200">
-          <FcEngineering
-            size={26}
-            className="absolute top-4 right-4 cursor-pointer hover:scale-110 transition"
-            title="Settings"
-            onClick={() => setOpenSettingsModal(true)}
-          />
-
+                  {/* appointments */}
+                  <div className="w-full mt-2 bg-gray-50 border rounded-xl shadow-sm overflow-hidden">
+                    {/* Header */}
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 border-b">
+                      <div className="w-8 h-8 flex items-center justify-center rounded-md bg-gray-200">
+                        📅
+                      </div>
+                      <p className="font-semibold text-gray-800">
+                        Scheduled Appointments
+                      </p>
+                    </div>
+                    {/* Body */}
+                    {Array.isArray(doc.appointments) && doc.appointments.length > 0 ? (
+                      <div className="p-3 space-y-3">
+                        {doc.appointments.map((appt, i) => (
+                          <div
+                            key={i}
+                            className="border rounded-lg p-3 bg-white shadow-sm space-y-2"
+                          >
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <p className="text-[11px] text-orange-900">
+                                  Booked on: {appt?.date ? new Date(appt.date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }) : "Not available"}
+                                </p>
+                                <p className="font-semibold text-gray-800 flex items-center gap-1">
+                                  <FaUserNurse />
+                                  <span>{appt?.patientName || appt?.firstName || appt?.name || "Patient"}</span>
+                                </p>
+                              </div>
+                              <span
+                                className={`text-xs px-2 py-1 rounded-full font-bold
+                                  ${getAppointmentStatus(appt) === "CANCELLED" ? "bg-red-100 text-red-700"
+                                    : getAppointmentStatus(appt) === "PAID" ? "bg-orange-100 text-orange-700"
+                                    : getAppointmentStatus(appt) === "COMPLETED" ? "bg-gray-600 text-white"
+                                    : "bg-green-700 text-green-100"
+                                  }
+                                `}
+                              >
+                                {getAppointmentStatus(appt)}
+                              </span>
+                            </div>
+                            <p className="text-sm text-gray-600 flex items-center gap-1">
+                              <SlCalender />
+                              <span>
+                                {getDayLabel(appt?.date) && (
+                                  <span className="text-green-600 font-semibold mr-1">
+                                    {getDayLabel(appt?.date)} •
+                                  </span>
+                                )}
+                                {appt?.date || "N/A"} • {appt?.time || ""}
+                              </span>
+                            </p>
+                            <p className="text-xs text-gray-500 mt-1">
+                              {appt?.type || "General"}
+                            </p>
+                            {appt?.amount && (
+                              <p className="text-sm font-medium text-gray-700">₹{appt.amount}</p>
+                            )}
+                            {appt?.consultationType === "ONLINE" && appt?.meetingUrl && (
+                              getAppointmentStatus(appt) === "COMPLETED" ? (
+                                <span className="text-xs px-3 py-1 bg-gray-400 text-white rounded-md">Completed</span>
+                              ) : (
+                                <button
+                                  onClick={() =>
+                                    window.open(
+                                      appt.meetingUrl.startsWith("http")
+                                        ? appt.meetingUrl
+                                        : `https://${appt.meetingUrl}`,
+                                      "_blank"
+                                    )
+                                  }
+                                  className="text-xs px-3 py-1 bg-green-500 text-white rounded-md"
+                                >
+                                  ▶ Join Call
+                                </button>
+                              )
+                            )}
+                            {appt?.notes && (
+                              <p className="text-xs text-gray-400">Notes: {appt.notes}</p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center justify-center py-6 px-4 text-center">
+                        <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mb-3">
+                          <span className="text-pink-500 text-lg">✔</span>
+                        </div>
+                        <p className="text-gray-800 font-medium">All caught up</p>
+                        <p className="text-sm text-gray-500 mt-1">No appointments right now, we'll notify you when there's something new.</p>
+                      </div>
+                    )}
+                  </div>
           <Dialog
             open={openSettingsModal}
             handler={() => setOpenSettingsModal(false)}
@@ -1261,11 +1147,13 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200 text-center">
                       <td className="px-3 py-2 text-gray-700">{apt.department || "N/A"}</td>
                       <td className="px-3 py-2 text-center">
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            getAppointmentStatus(apt) === "Completed"
-                              ? "bg-gray-600 text-white"
+                          className={`px-3 py-1 rounded-full text-xs font-semibold
+                            ${getAppointmentStatus(apt) === "CANCELLED" ? "bg-red-100 text-red-700"
+                              : getAppointmentStatus(apt) === "PAID" ? "bg-orange-100 text-orange-700"
+                              : getAppointmentStatus(apt) === "COMPLETED" ? "bg-gray-600 text-white"
                               : "bg-green-600 text-white"
-                          }`}
+                            }
+                          `}
                         >
                           {getAppointmentStatus(apt)}
                         </span>

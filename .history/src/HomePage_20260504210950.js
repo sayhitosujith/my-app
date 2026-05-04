@@ -370,16 +370,12 @@ function Welcome() {
       </div>
 
       {/* App Banner */}
-    <div className="relative w-full aspect-[3/1] rounded-lg overflow-hidden shadow-md">
-  <img
-    src={appbanner}
-    alt="App banner scanner"
-    className="w-full h-full object-cover"
-  />
+      <img
+  src={appbanner}
+  alt="App banner scanner"
+  className="w-full h-auto rounded-lg shadow-md"
+/>
 
-  {/* Light overlay */}
-  <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent"></div>
-</div>
       {/* Doctors */}
       <div className="flex items-center justify-center my-10">
         <div className="flex-grow h-[1px] bg-orange-100"></div>

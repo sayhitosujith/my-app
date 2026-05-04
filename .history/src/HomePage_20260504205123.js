@@ -307,9 +307,9 @@ function Welcome() {
 
         {/* Text + Book Now */}
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 md:px-20 z-10">
-          <i><h1 className="text-white text-2xl md:text-4xl font-bold mb-4 drop-shadow-lg">
+          <h1 className="text-white text-2xl md:text-4xl font-bold mb-4 drop-shadow-lg">
             Your personal online Dentist
-          </h1></i>
+          </h1>
           <p className="text-white text-sm md:text-lg font-medium drop-shadow-md leading-relaxed">
             Struggling to get a dentist appointment? Fed up with long queues?
             Frustrated waiting? <br />
@@ -370,16 +370,12 @@ function Welcome() {
       </div>
 
       {/* App Banner */}
-    <div className="relative w-full aspect-[3/1] rounded-lg overflow-hidden shadow-md">
-  <img
-    src={appbanner}
-    alt="App banner scanner"
-    className="w-full h-full object-cover"
-  />
+      <img
+        src={appbanner}
+        alt="App banner scanner"
+        className="w-full h-[30vh] md:h-[50vh] object-cover rounded-lg shadow-md"
+      />
 
-  {/* Light overlay */}
-  <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent"></div>
-</div>
       {/* Doctors */}
       <div className="flex items-center justify-center my-10">
         <div className="flex-grow h-[1px] bg-orange-100"></div>

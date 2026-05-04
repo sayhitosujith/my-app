@@ -52,9 +52,9 @@ import "./DoctorList.css";
 function DoctorList() {
   const getAppointmentStatus = (appt) => {
     // If backend already provides status → respect it
-    if (appt?.status) return appt.status === "Upcoming" ? "Pending" : appt.status;
+    if (appt?.status) return appt.status;
 
-    if (!appt?.date) return "Pending";
+    if (!appt?.date) return "Upcoming";
 
     const today = new Date();
     const apptDate = new Date(appt.date);
@@ -67,7 +67,7 @@ function DoctorList() {
       return "Completed";
     }
 
-    return "Pending";
+    return "Upcoming";
   };
   const navigate = useNavigate();
   const [doctors, setDoctors] = useState([]);
@@ -1236,41 +1236,38 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200 text-center">
               </thead>
               <tbody>
                 {appointments.slice(0, 5).map((apt, index) => {
-                  // Improved Patient Name fallback
-                  let patientName = apt.firstName || apt.patientName || apt.name || "";
-                  let patientLastName = apt.lastName || "";
-                  let fullName = `${patientName} ${patientLastName}`.trim();
-                  if (!fullName || fullName === "N/A" || fullName === "") {
-                    fullName = "Unknown";
-                  }
-
+                  // Get patient name from various possible field names
+                  const patientName = apt.firstName || apt.patientName || apt.name || "N/A";
+                  const patientLastName = apt.lastName || "";
+                  const fullName = `${patientName} ${patientLastName}`.trim();
+                  
                   return (
-                    <tr
-                      key={index}
-                      className={`border-b border-blue-200 hover:bg-blue-50 transition ${getAppointmentStatus(apt) === "Completed" ? "bg-gray-200" : ""}`}
-                    >
-                      <td className="px-3 py-2 text-gray-700">{index + 1}</td>
-                      <td className="px-3 py-2 font-medium text-gray-800">
-                        {fullName}
-                      </td>
-                      <td className="px-3 py-2 text-gray-700">
-                        {apt.date ? new Date(apt.date).toLocaleDateString("en-GB") : "N/A"}
-                      </td>
-                      <td className="px-3 py-2 text-gray-700">{apt.time || "N/A"}</td>
-                      <td className="px-3 py-2 text-gray-700">{apt.doctor || "N/A"}</td>
-                      <td className="px-3 py-2 text-gray-700">{apt.department || "N/A"}</td>
-                      <td className="px-3 py-2 text-center">
-                        <span
-                          className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            getAppointmentStatus(apt) === "Completed"
-                              ? "bg-gray-600 text-white"
-                              : "bg-green-600 text-white"
-                          }`}
-                        >
-                          {getAppointmentStatus(apt)}
-                        </span>
-                      </td>
-                    </tr>
+                  <tr
+                    key={index}
+                    className={`border-b border-blue-200 hover:bg-blue-50 transition ${getAppointmentStatus(apt) === "Completed" ? "bg-gray-200" : ""}`}
+                  >
+                    <td className="px-3 py-2 text-gray-700">{index + 1}</td>
+                    <td className="px-3 py-2 font-medium text-gray-800">
+                      {fullName || "Unknown Patient"}
+                    </td>
+                    <td className="px-3 py-2 text-gray-700">
+                      {apt.date ? new Date(apt.date).toLocaleDateString("en-GB") : "N/A"}
+                    </td>
+                    <td className="px-3 py-2 text-gray-700">{apt.time || "N/A"}</td>
+                    <td className="px-3 py-2 text-gray-700">{apt.doctor || "N/A"}</td>
+                    <td className="px-3 py-2 text-gray-700">{apt.department || "N/A"}</td>
+                    <td className="px-3 py-2 text-center">
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                          getAppointmentStatus(apt) === "Completed"
+                            ? "bg-gray-600 text-white"
+                            : "bg-green-600 text-white"
+                        }`}
+                      >
+                        {getAppointmentStatus(apt)}
+                      </span>
+                    </td>
+                  </tr>
                   );
                 })}
               </tbody>
