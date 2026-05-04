@@ -659,7 +659,15 @@ function Welcome() {
                       <a href="mailto:supportblr@dutydentist.com">
                         ✉ supportblr@dutydentist.com
                       </a>
-                         {/* Social Media */}
+                    </li>{" "}
+                  </ul>
+                </div>
+              </div>
+              {/* Bottom Section */}
+              <div className="border-t border-gray-700 text-center py-4 text-sm">
+                © {new Date().getFullYear()} ToothX. All rights reserved.
+              </div>
+              {/* Social Media */}
 <div className="flex justify-end gap-4 mt-3">
   <a
     href="https://facebook.com"
@@ -706,15 +714,6 @@ function Welcome() {
     <FaYoutube />
   </a>
 </div>
-                    </li>{" "}
-                  </ul>
-                </div>
-              </div>
-              {/* Bottom Section */}
-              <div className="border-t border-gray-700 text-center py-4 text-sm">
-                © {new Date().getFullYear()} ToothX. All rights reserved.
-              </div>
-           
             </footer>
     </div>
   );

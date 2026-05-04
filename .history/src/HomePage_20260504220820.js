@@ -659,53 +659,6 @@ function Welcome() {
                       <a href="mailto:supportblr@dutydentist.com">
                         ✉ supportblr@dutydentist.com
                       </a>
-                         {/* Social Media */}
-<div className="flex justify-end gap-4 mt-3">
-  <a
-    href="https://facebook.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-blue-600 text-white transition duration-300 hover:scale-110"
-  >
-    <FaFacebookF />
-  </a>
-
-  <a
-    href="https://instagram.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-pink-500 text-white transition duration-300 hover:scale-110"
-  >
-    <FaInstagram />
-  </a>
-
-  <a
-    href="https://twitter.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-sky-400 text-white transition duration-300 hover:scale-110"
-  >
-    <FaTwitter />
-  </a>
-
-  <a
-    href="https://linkedin.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-blue-700 text-white transition duration-300 hover:scale-110"
-  >
-    <FaLinkedinIn />
-  </a>
-
-  <a
-    href="https://youtube.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-red-600 text-white transition duration-300 hover:scale-110"
-  >
-    <FaYoutube />
-  </a>
-</div>
                     </li>{" "}
                   </ul>
                 </div>
@@ -714,7 +667,6 @@ function Welcome() {
               <div className="border-t border-gray-700 text-center py-4 text-sm">
                 © {new Date().getFullYear()} ToothX. All rights reserved.
               </div>
-           
             </footer>
     </div>
   );

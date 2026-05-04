@@ -204,127 +204,65 @@ const WhatWeTreatPage = () => {
           ))}
         </div>
       </section>
-{/* Footer */}
-      <footer className="mt-10 w-full bg-gradient-to-r from-orange-700 via-purple-800 to-purple-800 text-gray-300 shadow-lg">
-              {" "}
-              <div className="max-w-7xl mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                {/* Logo + Description */}
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-lg font-semibold">
-                      <img src={logo} alt="logo" className="w-28 mb-2" />
-                    </h3>
-                  </div>
-                  <p className="text-sm">
-                    Providing trusted dental treatments with modern technology and
-                    expert dentists. Your smile is our priority.
-                  </p>
-                </div>
-      
-                <div className="justify-self-start text-left">
-                  <h3 className="text-white font-semibold mb-3">Company</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>
-                      <a href="/HomePage" className="hover:text-white">
-                        Home
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/about" className="hover:text-white">
-                        About Us
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/careers" className="hover:text-white">
-                        Careers
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/blog" className="hover:text-white">
-                        Blog
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-      
-                {/* Treatments */}
-                <div>
-                  <h3 className="text-white font-semibold mb-3">Treatments</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>Dental Implants</li>
-                    <li>Root Canal</li>
-                    <li>Braces</li>
-                    <li>Teeth Whitening</li>
-                  </ul>
-                </div>
-      
-                {/* Contact */}
-                <div>
-                  <h3 className="text-white font-semibold mb-3">Contact</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>📍Head Office - WTC , Bangalore, India</li>
-                    <li>📞 HR - +91 - 8618860059</li>
-                    <li>
-                      <a href="mailto:supportblr@dutydentist.com">
-                        ✉ supportblr@dutydentist.com
-                      </a>
-                         {/* Social Media */}
-<div className="flex justify-end gap-4 mt-3">
-  <a
-    href="https://facebook.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-blue-600 text-white transition duration-300 hover:scale-110"
-  >
-    <FaFacebookF />
-  </a>
 
-  <a
-    href="https://instagram.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-pink-500 text-white transition duration-300 hover:scale-110"
-  >
-    <FaInstagram />
-  </a>
+      {/* ===== FOOTER ===== */}
+      <footer className="mt-10 w-full bg-gradient-to-r from-orange-700 via-purple-800 to-purple-800 text-gray-300 shadow-lg text-white py-12 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Logo + Trust */}
+          <div>
+             {/* Logo */}
+  <div className="flex justify-start mb-3">
+    <img
+      src={logo}
+      alt="ToothX"
+      className="h-40 object-contain opacity-90 hover:opacity-100 transition duration-300"
+    />
+  </div>
+            <p className="text-sm text-orange-100 mb-4">
+              Trusted. Caring. Affordable.
+            </p>
+            <p className="text-xs text-orange-200 leading-relaxed">
+              Fully qualified dental professionals providing safe and reliable
+              oral healthcare services.
+            </p>
+          </div>
 
-  <a
-    href="https://twitter.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-sky-400 text-white transition duration-300 hover:scale-110"
-  >
-    <FaTwitter />
-  </a>
+          {/* About */}
+          <div>
+            <h4 className="font-semibold mb-3">About us</h4>
+            <ul className="space-y-2 text-sm text-orange-100">
+              <li>Book an appointment</li>
+              <li>About us</li>
+              <li>Contact us</li>
+            </ul>
+          </div>
 
-  <a
-    href="https://linkedin.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-blue-700 text-white transition duration-300 hover:scale-110"
-  >
-    <FaLinkedinIn />
-  </a>
+          {/* Services */}
+          <div>
+            <h4 className="font-semibold mb-3">Services</h4>
+            <ul className="space-y-2 text-sm text-orange-100">
+              <li>Dental Consultation</li>
+              <li>Prescription Advice</li>
+              <li>Dental Certificates</li>
+              <li>Referrals and Reports</li>
+              <li>Oral Health & Hygiene</li>
+              <li>Follow-up Appointment</li>
+            </ul>
+          </div>
+        </div>
 
-  <a
-    href="https://youtube.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/10 hover:bg-red-600 text-white transition duration-300 hover:scale-110"
-  >
-    <FaYoutube />
-  </a>
+        <div className="border-t border-orange-300/30 mt-10 pt-6 text-center text-xs text-orange-200">
+  
+ 
+
+  {/* Footer Text */}
+  <div>
+    © ToothX &nbsp; | &nbsp; Privacy Policy &nbsp; | &nbsp; Terms &
+    Conditions &nbsp; | &nbsp; Cookies
+  </div>
+
 </div>
-                    </li>{" "}
-                  </ul>
-                </div>
-              </div>
-              {/* Bottom Section */}
-              <div className="border-t border-gray-700 text-center py-4 text-sm">
-                © {new Date().getFullYear()} ToothX. All rights reserved.
-              </div>
-           
-            </footer>
+      </footer>
     </div>
   );
 };
