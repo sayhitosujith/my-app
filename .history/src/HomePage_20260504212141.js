@@ -318,7 +318,7 @@ function Welcome() {
             experienced Dentist, in just a few clicks.
           </p>
 
-          <div className="relative inline-block mt-6">
+<div className="relative inline-block mt-6">
   {/* Glow */}
   <div className="absolute inset-0 rounded-xl blur-md bg-gradient-to-r from-orange-400 via-orange-600 to-orange-900 opacity-60"></div>
 

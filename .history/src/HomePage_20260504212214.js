@@ -318,27 +318,14 @@ function Welcome() {
             experienced Dentist, in just a few clicks.
           </p>
 
-          <div className="relative inline-block mt-6">
-  {/* Glow */}
-  <div className="absolute inset-0 rounded-xl blur-md bg-gradient-to-r from-orange-400 via-orange-600 to-orange-900 opacity-60"></div>
-
-  <Button
-    size="lg"
-    className="relative flex items-center gap-3 px-6 py-3 
-    rounded-xl 
-    text-white 
-    bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 
-    shadow-lg 
-    border border-white/20
-    backdrop-blur-md
-    hover:scale-105 hover:shadow-orange-500/40
-    transition duration-300"
-    onClick={() => navigate("/Customer_home")}
-  >
-    <BsPlus size={22} />
-    <span className="tracking-wide font-semibold">BOOK ONLINE NOW</span>
-  </Button>
-</div>
+          <Button
+            size="lg"
+            className="flex items-center gap-3 mt-6 cursor-pointer text-white shadow-md bg-gradient-to-r from-orange-500 via-orange-900 to-orange-900 hover:scale-105 transition duration-300"
+            onClick={() => navigate("/Customer_home")}
+          >
+            <BsPlus size={22} />
+            <span>BOOK ONLINE NOW</span>
+          </Button>
         </div>
       </div>
 
