@@ -1,6 +1,7 @@
+import axios from "axios";
 import "./App.css";
 import React, { useState, useRef } from "react";
-import Background_img from "./assets/D-logo.jpg";
+import RCB from "./assets/D-logo.jpg";
 import logo from "./assets/Toothx_Logo.png";
 import { useNavigate } from "react-router-dom";
 
@@ -29,93 +30,112 @@ function App() {
   });
 
   const startDrag = (e) => {
-    if (["INPUT", "SELECT", "BUTTON", "LABEL"].includes(e.target.tagName))
-      return;
-    drag.current.isDragging = true;
-    drag.current.startX = e.clientX - drag.current.dx;
-    drag.current.startY = e.clientY - drag.current.dy;
-    document.addEventListener("mousemove", onDrag);
-    document.addEventListener("mouseup", stopDrag);
-  };
+  if (e.target.closest("input, button, a")) return;
 
-  const onDrag = (e) => {
-    if (!drag.current.isDragging || !cardRef.current) return;
-    drag.current.dx = e.clientX - drag.current.startX;
-    drag.current.dy = e.clientY - drag.current.startY;
-    cardRef.current.style.transform = `translate(${drag.current.dx}px, ${drag.current.dy}px)`;
-  };
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-  const stopDrag = () => {
-    drag.current.isDragging = false;
-    document.removeEventListener("mousemove", onDrag);
-    document.removeEventListener("mouseup", stopDrag);
-  };
+  drag.current.isDragging = true;
+  drag.current.startX = clientX - drag.current.dx;
+  drag.current.startY = clientY - drag.current.dy;
+
+  document.addEventListener("mousemove", onDrag);
+  document.addEventListener("mouseup", stopDrag);
+  document.addEventListener("touchmove", onDrag);
+  document.addEventListener("touchend", stopDrag);
+};
+
+const onDrag = (e) => {
+  if (!drag.current.isDragging || !cardRef.current) return;
+
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+  drag.current.dx = clientX - drag.current.startX;
+  drag.current.dy = clientY - drag.current.startY;
+
+  cardRef.current.style.transform = `translate(${drag.current.dx}px, ${drag.current.dy}px)`;
+};
+
+const stopDrag = () => {
+  drag.current.isDragging = false;
+
+  document.removeEventListener("mousemove", onDrag);
+  document.removeEventListener("mouseup", stopDrag);
+  document.removeEventListener("touchmove", onDrag);
+  document.removeEventListener("touchend", stopDrag);
+};
 
   // ---- LOGIN ---- //
-  const handleLogin = () => {
-    setEmailError("");
-    setPasswordError("");
-    setPracticeError("");
-    setLoginError("");
-    setLoginSuccess("");
+const handleLogin = async () => {
+  setEmailError("");
+  setPasswordError("");
+  setPracticeError("");
+  setLoginError("");
+  setLoginSuccess("");
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    let valid = true;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  let valid = true;
 
-    if (!email) {
-      setEmailError("Email is required");
-      valid = false;
-    } else if (!emailPattern.test(email)) {
-      setEmailError("Enter a valid email");
-      valid = false;
-    }
+  if (!email) {
+    setEmailError("Email is required");
+    valid = false;
+  } else if (!emailPattern.test(email)) {
+    setEmailError("Enter a valid email");
+    valid = false;
+  }
 
-    if (!password) {
-      setPasswordError("Password is required");
-      valid = false;
-    }
+  if (!password) {
+    setPasswordError("Password is required");
+    valid = false;
+  }
 
-    if (!practice) {
-      setPracticeError("Please select a practice");
-      valid = false;
-    }
+  if (!practice) {
+    setPracticeError("Please select a practice");
+    valid = false;
+  }
 
-    if (!valid) return;
+  if (!valid) return;
 
-    const storedUsers = JSON.parse(
-      localStorage.getItem("registeredUsers") || "[]",
+  try {
+    const response = await axios.post(
+      "http://localhost:8080/api/login",
+      {
+        email,
+        password,
+      }
     );
-    const existingUser = storedUsers.find((u) => u.email === email);
 
-    if (!existingUser) {
-      setLoginError("User not registered");
-      return;
-    }
-
-    if (existingUser.password !== password) {
-      setPasswordError("Invalid credentials");
-      return;
-    }
+    const user = response.data;
 
     setLoginSuccess("Login successful! Redirecting...");
 
     localStorage.setItem(
       "user",
       JSON.stringify({
-        name: existingUser.name || email,
-        email: existingUser.email,
-        role: existingUser.role || "CUSTOMER",
+        name: user.name,
+        email: user.email,
+        role: user.role,
         practiceName: practice,
-      }),
+      })
     );
 
     setTimeout(() => navigate("/Welcome"), 2000);
-  };
+  } catch (error) {
+    if (error.response?.status === 404) {
+      setLoginError("User not registered");
+    } else if (error.response?.status === 401) {
+      setPasswordError("Invalid credentials");
+    } else {
+      setLoginError("Server error. Try again.");
+    }
+  }
+};
 
   return (
     <div
       style={{
-        backgroundImage: `url(${Background_img})`,
+        backgroundImage: `url(${RCB})`,
         minHeight: "100vh",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -126,15 +146,7 @@ function App() {
         fontFamily: "'Outfit', sans-serif",
       }}
     >
-      {/* Blur overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(0,0,0,0.65)",
-          backdropFilter: "blur(8px)",
-        }}
-      />
+      {/* Blur overlay removed for full opacity */}
 
       {/* Background orbs */}
       <style>{`
@@ -160,29 +172,62 @@ function App() {
           to   { opacity: 1; transform: translateY(0); }
         }
         .login-card {
-          display: flex;
-          width: 860px;
-          max-width: 95vw;
-          min-height: 520px;
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
-          animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) both;
-          position: relative; z-index: 10;
-          cursor: default;
-        }
-        .panel-left {
-          flex: 1;
-          background: linear-gradient(160deg, #1e1b4b 0%, #312e81 40%, #4c1d95 100%);
-          display: flex; flex-direction: column; justify-content: space-between;
-          padding: 40px; position: relative; overflow: hidden;
-        }
-        .panel-left::before {
-          content: ''; position: absolute; inset: 0;
-          background-image:
-            radial-gradient(circle at 20% 80%, rgba(249,115,22,0.2) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(124,58,237,0.3) 0%, transparent 50%);
-        }
+  display: flex;
+  flex-direction: row;
+  width: 900px;
+  max-width: 95vw;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  position: relative;
+  z-index: 10;
+}
+        .left-panel {
+  flex: 1;
+  background: linear-gradient(160deg,#1e1b4b,#4c1d95);
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 16px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+}
+
+  .left-panel {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .right-panel {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .left-panel img {
+    width: 140px !important;
+    margin: 0 auto;
+  }
         .topo {
           position: absolute; inset: 0; opacity: 0.06;
           background-image: repeating-radial-gradient(
@@ -243,7 +288,7 @@ function App() {
       <div className="orb2" />
 
       {/* Card */}
-      <div ref={cardRef} className="login-card" onMouseDown={startDrag}>
+      <div ref={cardRef} className="login-card" onMouseDown={startDrag} onTouchStart={startDrag} style={{ background: '#fff' }}>
         {/* Left Panel */}
         <div className="panel-left">
           <div className="topo" />
@@ -262,11 +307,7 @@ function App() {
               <img
                 src={logo}
                 alt="ToothX"
-                className="logo-animate"
-                style={{
-                  height: 100,
-                  objectFit: "contain",
-                }}
+                style={{ height: 100, objectFit: "contain" }}
               />
             </div>
 
@@ -536,10 +577,8 @@ function App() {
             className="btn-secondary"
             onClick={() => navigate("/NewRegistration")}
           >
-            <span style={{ color: "#000", textTransform: "none" }}>
-              New User?
-            </span>{" "}
-            <span style={{ textDecoration: "underline" }}>Register Here</span>
+            <span style={{ color: '#000', textTransform: 'none' }}>New User?</span>{' '}
+            <span style={{ textDecoration: 'underline' }}>Register Here</span>
           </button>
         </div>
       </div>

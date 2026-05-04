@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useRef } from "react";
-import Background_img from "./assets/D-logo.jpg";
+import RCB from "./assets/D-logo.jpg";
 import logo from "./assets/Toothx_Logo.png";
 import { useNavigate } from "react-router-dom";
 
@@ -115,7 +115,7 @@ function App() {
   return (
     <div
       style={{
-        backgroundImage: `url(${Background_img})`,
+        backgroundImage: `url(${RCB})`,
         minHeight: "100vh",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -262,11 +262,7 @@ function App() {
               <img
                 src={logo}
                 alt="ToothX"
-                className="logo-animate"
-                style={{
-                  height: 100,
-                  objectFit: "contain",
-                }}
+                style={{ height: 100, objectFit: "contain" }}
               />
             </div>
 
@@ -536,10 +532,8 @@ function App() {
             className="btn-secondary"
             onClick={() => navigate("/NewRegistration")}
           >
-            <span style={{ color: "#000", textTransform: "none" }}>
-              New User?
-            </span>{" "}
-            <span style={{ textDecoration: "underline" }}>Register Here</span>
+            <span style={{ color: '#000', textTransform: 'none' }}>New User?</span>{' '}
+            <span style={{ textDecoration: 'underline' }}>Register Here</span>
           </button>
         </div>
       </div>
