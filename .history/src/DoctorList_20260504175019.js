@@ -943,13 +943,12 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200"
             Upcoming Holidays
             <VscArrowRight
               size={24}
-              className="absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer from-green-600 via-green-700 to-orange-900 "
+              className="absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer text-green-600 hover:scale-110 transition"
               title="View all holidays"
               onClick={() => setOpenHolidayDialog(true)}
             />
           </Typography>
-          <div className="bg-gradient-to-r from-green-100 via-green-50 to-orange-100 
-p-2 rounded-xl shadow-md mb-3 border border-orange-200 text-center">
+          <div className="mb-3 p-1 bg-green-100 rounded-lg text-center shadow-inner">
             <Typography className="font-semibold text-red-800">
               RH Leave Balance: {remainingRH} / {RH_QUOTA}
             </Typography>
@@ -1905,7 +1904,7 @@ p-2 rounded-xl shadow-md mb-3 border border-orange-200 text-center">
             Session Expired ⏰
           </Typography>
           <Typography className="text-sm sm:text-base">
-            Your session will expire in 1 minute. Please Close the modal to
+            Your session has exceeded 5 minutes. Please Close the modal to
             continue.
           </Typography>
         </DialogBody>
