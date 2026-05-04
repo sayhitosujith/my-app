@@ -320,7 +320,7 @@ function Welcome() {
 
           <Button
             size="lg"
-            className="flex items-center gap-3 mt-6 cursor-pointer text-white shadow-md bg-gradient-to-r from-orange-500 via-orange-900 to-orange-900 hover:scale-105 transition duration-300"
+            className="flex items-center gap-3 mt-6 cursor-pointer text-white shadow-md bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 hover:scale-105 transition duration-300"
             onClick={() => navigate("/Customer_home")}
           >
             <BsPlus size={22} />
