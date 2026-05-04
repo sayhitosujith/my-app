@@ -108,7 +108,6 @@ const WhatWeTreatPage = () => {
         <span className="tracking-wide font-semibold">BOOK ONLINE NOW</span>
       </button>
   </div>
-</div>
 
 
       {/* ===== WHAT WE TREAT SECTION ===== */}

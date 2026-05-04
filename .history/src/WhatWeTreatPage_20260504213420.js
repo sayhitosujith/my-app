@@ -81,33 +81,68 @@ const WhatWeTreatPage = () => {
   </div>
 
   <div className="hidden md:flex items-center gap-6 text-sm font-medium">
-    <button onClick={() => navigate("/HomePage")}>Home</button>
-    <button onClick={() => navigate("/gallery")}>Gallery</button>
-    <button
-      className="text-orange-600 font-semibold"
-      onClick={() => navigate("/treatments")}
-    >
-      What We Treat
-    </button>
-    <button onClick={() => navigate("/CustomerCare")}>Support</button>
+
+  {/* Nav Links */}
+  <button
+    onClick={() => navigate("/HomePage")}
+    className="relative text-gray-700 hover:text-orange-600 transition duration-300
+    after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 
+    after:bg-orange-500 after:transition-all after:duration-300 
+    hover:after:w-full"
+  >
+    Home
+  </button>
+
+  <button
+    onClick={() => navigate("/gallery")}
+    className="relative text-gray-700 hover:text-orange-600 transition duration-300
+    after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 
+    after:bg-orange-500 after:transition-all after:duration-300 
+    hover:after:w-full"
+  >
+    Gallery
+  </button>
+
+  <button
+    onClick={() => navigate("/treatments")}
+    className="relative text-orange-600 font-semibold
+    after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full 
+    after:bg-orange-500"
+  >
+    What We Treat
+  </button>
+
+  <button
+    onClick={() => navigate("/CustomerCare")}
+    className="relative text-gray-700 hover:text-orange-600 transition duration-300
+    after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 
+    after:bg-orange-500 after:transition-all after:duration-300 
+    hover:after:w-full"
+  >
+    Support
+  </button>
+
+  {/* CTA Button (Your Styled One) */}
+  <div className="relative ml-4">
+    <div className="absolute inset-0 rounded-xl blur-md bg-gradient-to-r from-orange-400 via-orange-600 to-orange-900 opacity-60"></div>
 
     <button
-        size="lg"
-        className="relative flex items-center gap-3 px-6 py-3 
-        rounded-xl 
-        text-white 
-        bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 
-        shadow-lg 
-        border border-white/20
-        backdrop-blur-md
-        hover:scale-105 hover:shadow-orange-500/40
-        transition duration-300"
-        onClick={() => navigate("/Customer_home")}
-      >
-        <BsPlus size={22} />
-        <span className="tracking-wide font-semibold">BOOK ONLINE NOW</span>
-      </button>
+      className="relative flex items-center gap-3 px-5 py-2.5 
+      rounded-xl 
+      text-white 
+      bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 
+      shadow-lg 
+      border border-white/20
+      backdrop-blur-md
+      hover:scale-105 hover:shadow-orange-500/40
+      transition duration-300"
+      onClick={() => navigate("/Customer_home")}
+    >
+      <BsPlus size={20} />
+      <span className="tracking-wide font-semibold">BOOK ONLINE</span>
+    </button>
   </div>
+
 </div>
 
 

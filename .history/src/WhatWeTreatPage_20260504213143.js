@@ -69,7 +69,7 @@ const WhatWeTreatPage = () => {
           <FaYoutube />
         </div>
         <div className="flex items-center gap-4">
-          <span>info@ToothX.com</span>
+          <span>info@dutydentist.com</span>
           <span>Mon–Fri: 9AM–5PM</span>
         </div>
       </div>
@@ -77,7 +77,7 @@ const WhatWeTreatPage = () => {
     {/* ===== NAVBAR ===== */}
 <div className="flex items-center justify-between px-6 py-4 shadow-sm">
   <div className="flex items-center gap-2 text-xl font-bold text-orange-600">
-    <img src={logo} alt="ToothX Logo" className="w-40 h-auto" />
+    <img src={logo} alt="DutyDentist Logo" className="w-28 h-auto" />
   </div>
 
   <div className="hidden md:flex items-center gap-6 text-sm font-medium">

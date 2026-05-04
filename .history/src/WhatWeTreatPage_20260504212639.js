@@ -60,7 +60,7 @@ const WhatWeTreatPage = () => {
   return (
     <div className="w-full bg-white font-sans">
       {/* ===== TOP BAR ===== */}
-      <div className="bg-[#f16c37] text-white text-sm px-6 py-2 flex justify-between items-center">
+      <div className="bg-[#004E8C] text-white text-sm px-6 py-2 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <FaFacebookF />
           <FaInstagram />
@@ -69,7 +69,7 @@ const WhatWeTreatPage = () => {
           <FaYoutube />
         </div>
         <div className="flex items-center gap-4">
-          <span>info@ToothX.com</span>
+          <span>info@dutydentist.com</span>
           <span>Mon–Fri: 9AM–5PM</span>
         </div>
       </div>
@@ -77,7 +77,7 @@ const WhatWeTreatPage = () => {
     {/* ===== NAVBAR ===== */}
 <div className="flex items-center justify-between px-6 py-4 shadow-sm">
   <div className="flex items-center gap-2 text-xl font-bold text-orange-600">
-    <img src={logo} alt="ToothX Logo" className="w-40 h-auto" />
+    <img src={logo} alt="DutyDentist Logo" className="w-28 h-auto" />
   </div>
 
   <div className="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -92,27 +92,18 @@ const WhatWeTreatPage = () => {
     <button onClick={() => navigate("/CustomerCare")}>Support</button>
 
     <button
-        size="lg"
-        className="relative flex items-center gap-3 px-6 py-3 
-        rounded-xl 
-        text-white 
-        bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 
-        shadow-lg 
-        border border-white/20
-        backdrop-blur-md
-        hover:scale-105 hover:shadow-orange-500/40
-        transition duration-300"
-        onClick={() => navigate("/Customer_home")}
-      >
-        <BsPlus size={22} />
-        <span className="tracking-wide font-semibold">BOOK ONLINE NOW</span>
-      </button>
+      className="flex items-center gap-3 px-5 py-2 rounded-full shadow-lg cursor-pointer bg-orange-600 hover:bg-orange-700 text-white"
+      onClick={() => navigate("/Customer_Home")}
+    >
+      <BsPlus size={22} />
+      <span>Book ONLINE NOW</span>
+    </button>
   </div>
 </div>
 
 
       {/* ===== WHAT WE TREAT SECTION ===== */}
-      <section className="bg-[#f16c37] text-white py-16 px-6">
+      <section className="bg-[#004E8C] text-white py-16 px-6">
         <h2 className="text-3xl font-bold text-center mb-4">What we treat</h2>
         <p className="text-center text-sm text-orange-100 mb-10">
           We help with a wide range of dental concerns — from routine checkups to
@@ -156,12 +147,12 @@ const WhatWeTreatPage = () => {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="bg-[#f16c37] text-white py-12 px-6">
+      <footer className="bg-[#004E8C] text-white py-12 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo + Trust */}
           <div>
             <div className="flex items-center gap-2 text-xl font-bold mb-3">
-              ToothX<span className="text-orange-300">🦷</span>
+              DutyDentist<span className="text-orange-300">🦷</span>
             </div>
             <p className="text-sm text-orange-100 mb-4">
               Trusted. Caring. Affordable.
@@ -197,7 +188,7 @@ const WhatWeTreatPage = () => {
         </div>
 
         <div className="border-t border-orange-300/30 mt-10 pt-4 text-center text-xs text-orange-200">
-          © ToothX &nbsp; | &nbsp; Privacy Policy &nbsp; | &nbsp; Terms &
+          © DutyDentist &nbsp; | &nbsp; Privacy Policy &nbsp; | &nbsp; Terms &
           Conditions &nbsp; | &nbsp; Cookies
         </div>
       </footer>
