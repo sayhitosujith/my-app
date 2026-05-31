@@ -22,20 +22,7 @@ function AddDoctor() {
     license: "",
     address: "",
     image: "",
-    consultationFee: "",
-    isActive: true,
-    availableDays: [],   
-
   });
-  const daysOfWeek = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
 
   const [errors, setErrors] = useState({});
   const [previewGrid, setPreviewGrid] = useState(true);
@@ -67,9 +54,7 @@ function AddDoctor() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newDoctor.email)) {
       newErrors.email = "Invalid email format";
     }
-if (newDoctor.availableDays.length === 0) {
-  newErrors.availableDays = "Select at least one available day";
-}
+
     if (!newDoctor.phone.trim()) {
       newErrors.phone = "Phone is required";
     } else if (!/^\d{10}$/.test(newDoctor.phone)) {
@@ -91,12 +76,6 @@ if (newDoctor.availableDays.length === 0) {
     if (!newDoctor.clinic.trim()) newErrors.clinic = "Clinic is required";
     if (!newDoctor.license.trim()) newErrors.license = "License is required";
     if (!newDoctor.address.trim()) newErrors.address = "Address is required";
-
-    if (!newDoctor.consultationFee.trim()) {
-      newErrors.consultationFee = "Consultation fee is required";
-    } else if (isNaN(newDoctor.consultationFee) || Number(newDoctor.consultationFee) <= 0) {
-      newErrors.consultationFee = "Consultation fee must be a positive number";
-    }
 
     if (!newDoctor.image) newErrors.image = "Doctor image is required";
 
@@ -135,11 +114,11 @@ if (newDoctor.availableDays.length === 0) {
         >
           Doctors
         </Typography>
-        <Typography color="orange-gray">Add Dentist</Typography>
+        <Typography color="orange-gray">Add Doctor</Typography>
       </Breadcrumbs>
 
       <Typography variant="h4" className="mb-4 text-center">
-        Add Dentist
+        Add Doctor
       </Typography>
 
       <div className="flex flex-col gap-4">
@@ -206,19 +185,19 @@ if (newDoctor.availableDays.length === 0) {
           helperText={errors.clinic}
         />
         <Input
-          name="license"
-          label="License"
-          value={newDoctor.license}
-          onChange={(e) => {
-            const value = e.target.value.replace(/\D/g, ""); // allow only digits
-            if (value.length <= 10) {
-              setNewDoctor({ ...newDoctor, license: value });
-            }
-          }}
-          inputProps={{
-            maxLength: 10,
-            inputMode: "numeric",
-            pattern: "[0-9]*",
+  name="license"
+  label="License"
+  value={newDoctor.license}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, ""); // allow only digits
+    if (value.length <= 10) {
+      setNewDoctor({ ...newDoctor, license: value });
+    }
+  }}
+  inputProps={{
+    maxLength: 10,
+    inputMode: "numeric",
+    pattern: "[0-9]*",
   }}
   error={!!errors.license}
   helperText={errors.license}
@@ -231,79 +210,6 @@ if (newDoctor.availableDays.length === 0) {
           error={!!errors.address}
           helperText={errors.address}
         />
-        <Input
-          name="consultationFee"
-          label="Consultation Fee (₹)"
-          value={newDoctor.consultationFee}
-          onChange={(e) => {
-            const value = e.target.value.replace(/\D/g, ""); // allow only digits
-            setNewDoctor({ ...newDoctor, consultationFee: value });
-          }}
-          inputProps={{
-            inputMode: "numeric",
-            pattern: "[0-9]*",
-          }}
-          error={!!errors.consultationFee}
-          helperText={errors.consultationFee}
-        />
-
-        <div className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            id="isActive"
-            checked={newDoctor.isActive}
-            onChange={(e) =>
-              setNewDoctor({ ...newDoctor, isActive: e.target.checked })
-            }
-            className="w-4 h-4 cursor-pointer"
-          />
-          <label htmlFor="isActive" className="font-medium cursor-pointer">
-            Is Active
-          </label>
-        </div>
-
-        <div>
-  <Typography className="font-medium mb-2">
-    Available Days
-  </Typography>
-
-  <div className="grid grid-cols-2 gap-2">
-    {daysOfWeek.map((day) => (
-      <label
-        key={day}
-        className="flex items-center gap-2 border rounded p-2 cursor-pointer"
-      >
-        <input
-          type="checkbox"
-          checked={newDoctor.availableDays.includes(day)}
-          onChange={(e) => {
-            if (e.target.checked) {
-              setNewDoctor({
-                ...newDoctor,
-                availableDays: [...newDoctor.availableDays, day],
-              });
-            } else {
-              setNewDoctor({
-                ...newDoctor,
-                availableDays: newDoctor.availableDays.filter(
-                  (d) => d !== day
-                ),
-              });
-            }
-          }}
-          className="w-4 h-4"
-        />
-        {day}
-      </label>
-    ))}
-  </div>
-
-  {errors.availableDays && (
-    <Typography color="red" className="text-xs mt-1">
-      {errors.availableDays}
-    </Typography>
-  )}
-</div>
 
         <div>
           <label className="block mb-1 font-medium">Upload Image:</label>

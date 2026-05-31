@@ -27,7 +27,11 @@ import {
 import { FaFlag, FaSun, FaMoon, FaStar, FaChurch } from "react-icons/fa";
 import { MdOutlinePhoneIphone, MdOutlineEmail } from "react-icons/md";
 import { GiPartyPopper, GiRam } from "react-icons/gi";
-import { MdOutlinePowerSettingsNew } from "react-icons/md";
+import {
+  MdOutlineEditNote,
+  MdOutlineSettings,
+  MdOutlinePowerSettingsNew,
+} from "react-icons/md";
 // Components
 import AppLogo from "./AppLogo";
 
@@ -354,7 +358,18 @@ function DoctorList() {
     }
   };
 
-
+  const handleSignOut = () => {
+    if (window.confirm("Are you sure you want to sign out?")) {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("loginTime");
+      localStorage.removeItem("loggedInUser");
+      setIsLoggedIn(false);
+      setSuccessMsg("Signed out successfully!");
+      setTimeout(() => {
+        navigate("/Welcome");
+      }, 1500);
+    }
+  };
 
   const completeSignAction = () => {
     setSwipeHistory((prev) => {
@@ -762,7 +777,7 @@ const handleToggle = (id, value) => {
       </div>
 
       {/* Doctor List Section */}
-      <Card className="p-4 sm:p-6 shadow-lg border border-blue-500 mb-6 bg-blue-50 hover:bg-blue-100 transition duration-200">
+      <Card className="p-4 sm:p-6 shadow-lg border border-gray-200 mb-6 bg-blue-500">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mb-4">
           <div className="flex items-center gap-3">
             <Typography
@@ -807,7 +822,7 @@ const handleToggle = (id, value) => {
           >
             + ADD DENTIST
           </Button>
-        </div>Dentists
+        </div>
 
         {/* Doctors Display */}
         {doctors.length === 0 ? (
@@ -826,15 +841,15 @@ const handleToggle = (id, value) => {
                 return (
                   <Card
                     key={realIndex}
-                    className={`p-3 relative border min-h-[10px] w-full ${
+                    className={`p-3 flex relative border min-h-[10px] ${
                       selectedDoctors.includes(realIndex)
-                        ? "border-blue-400 bg-blue-100 shadow-lg"
+                        ? "border-red-100 bg-white"
                         : "border-white bg-white shadow-md"
                     } ${
                       gridView
-                        ? "flex flex-col justify-between items-center text-center"
-                        : "flex flex-row items-start gap-3"
-                    } hover:shadow-xl transition duration-200`}
+                        ? "flex-col items-center text-center justify-between"
+                        : "flex-row items-start gap-3"
+                    }`}
                   >
                     <input
                       type="checkbox"
@@ -857,7 +872,7 @@ const handleToggle = (id, value) => {
                     )}
 
 {/* Doctor Details */}
-<div className={`flex-1 w-full space-y-2 text-black ${gridView ? "flex flex-col items-center text-center" : "flex flex-col items-start text-left"}`}>
+<div className="flex-1 w-full h-2 flex flex-col items-start text-left space-y-2 text-black">
 
   {/* Doctor Name */}
   <Typography

@@ -1,7 +1,3 @@
-import { useEffect, useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-import { Switch } from "@material-tailwind/react";
-// Material Tailwind
 import {
   Card,
   Typography,
@@ -9,227 +5,52 @@ import {
   Dialog,
   DialogBody,
   DialogFooter,
-} from "@material-tailwind/react";
-
-// Icons
-import {
-  Bars3Icon,
-  Squares2X2Icon,
-  PencilIcon,
-  TrashIcon,
-  DocumentDuplicateIcon,
-} from "@heroicons/react/24/solid";
-import { FaUserMd } from "react-icons/fa";
-import { AiOutlineDelete } from "react-icons/ai";
-import {
-  MdOutlineFestival,
-} from "react-icons/md";
-import { FaFlag, FaSun, FaMoon, FaStar, FaChurch } from "react-icons/fa";
-import { MdOutlinePhoneIphone, MdOutlineEmail } from "react-icons/md";
-import { GiPartyPopper, GiRam } from "react-icons/gi";
-import { MdOutlinePowerSettingsNew } from "react-icons/md";
-// Components
-import AppLogo from "./AppLogo";
-
-// Styles
-import "./DoctorList.css";
-
-function DoctorList() {
-  const navigate = useNavigate();
-
-  // ==================== State Variables ====================
-  const [doctors, setDoctors] = useState([]);
-  const [editIndex, setEditIndex] = useState(null);
-  const [editDoctor, setEditDoctor] = useState({});
-  const [gridView, setGridView] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [timeZoneLabel, setTimeZoneLabel] = useState("");
-  const [confirmAction, setConfirmAction] = useState({
-    open: false,
-    type: "",
-    index: null,
-    doctor: null,
-  });
-  const [workReason, setWorkReason] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
-  const [selectedDoctors, setSelectedDoctors] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    JSON.parse(localStorage.getItem("isLoggedIn")) || false,
-  );
-  const [currentTime, setCurrentTime] = useState("");
-  const [openSwipeDialog, setOpenSwipeDialog] = useState(false);
-  const [openHolidayDialog, setOpenHolidayDialog] = useState(false);
-  const [openLeaveHistory, setOpenLeaveHistory] = useState(false);
-  const [openLocationModal, setOpenLocationModal] = useState(false);
-  const [workLocation, setWorkLocation] = useState("");
-  const [sessionExpired, setSessionExpired] = useState(false);
-  const [swipeHistory, setSwipeHistory] = useState(
-    JSON.parse(localStorage.getItem("swipeHistory")) || [],
-  );
-  const [leaveRequests, setLeaveRequests] = useState(
-    JSON.parse(localStorage.getItem("leaveRequests")) || [],
-  );
-
-  const doctorsPerPage = 32;
-  const RH_QUOTA = 2;
-
-  // ==================== Helper Functions ====================
-  const getAppointmentStatus = (appt) => {
-    if (appt?.status) {
-      const s = appt.status.toUpperCase();
-      if (["CANCELLED", "PAID", "PENDING", "COMPLETED"].includes(s)) return s;
-      if (s === "UPCOMING") return "PENDING";
-      return s;
-    }
-    if (appt?.paid || appt?.isPaid) return "PAID";
-    if (!appt?.date) return "PENDING";
-    const today = new Date();
-    const apptDate = new Date(appt.date);
-    today.setHours(0, 0, 0, 0);
-    apptDate.setHours(0, 0, 0, 0);
-    if (apptDate < today) return "COMPLETED";
-    return "PENDING";
-  };
-
-  const getInitials = (firstName = "", lastName = "") => {
-    if (!firstName && !lastName) return "U";
-    return `${firstName[0] || ""}${lastName[0] || ""}`.toUpperCase();
-  };
-
-  const getGreeting = () => {
-    const hour = new Date().getHours();
-    if (hour < 12) return "Good Morning";
-    if (hour < 18) return "Good Afternoon";
-    return "Good Evening";
-  };
-
-  // ==================== User Data ====================
-  const [user] = useState(() => {
-    try {
-      const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
-      if (storedUser) {
-        const fullName =
-          storedUser.name ||
-          `${storedUser.firstName || ""} ${storedUser.lastName || ""}`.trim();
-        return {
-          name: fullName || "User",
-          email: storedUser.email || "user@email.com",
-          role: storedUser.role || "User",
-          initials: getInitials(storedUser.firstName, storedUser.lastName),
-        };
-      }
-      return {
-        name: "User",
-        email: "user@email.com",
-        role: "User",
-        initials: "U",
-      };
-    } catch {
-      return {
-        name: "User",
-        email: "user@email.com",
-        role: "User",
-        initials: "U",
-      };
-    }
-  });
-
-  const shiftObj = {
-    type: "Flexi Shift",
-    start: "10:00 AM",
-    end: "10:00 PM",
-  };
-
-  const usedRH = leaveRequests.filter(
-    (l) => l.type === "RH" && l.status !== "Cancelled",
-  ).length;
-  const remainingRH = RH_QUOTA - usedRH;
-
-  // ==================== Holidays Array ====================
-  const holidays = [
-    {
-      date: "1 Jan 2026",
-      day: "Thursday",
-      name: "New Year's Day",
-      type: "NH",
-      icon: <FaSun className="inline mr-1 text-yellow-500" />,
-    },
-    {
-      date: "3 Jan 2026",
-      day: "Saturday",
-      name: "Hazrat Ali's Birthday",
-      type: "RH",
-      icon: <FaMoon className="inline mr-1 text-orange-500" />,
-    },
-    {
-      date: "14 Jan 2026",
-      day: "Wednesday",
-      name: "Makar Sankranti / Pongal",
-      type: "RH",
-      icon: <FaStar className="inline mr-1 text-orange-500" />,
-    },
-    {
-      date: "23 Jan 2026",
-      day: "Friday",
-      name: "Vasant Panchami",
-      type: "RH",
-      icon: <MdOutlineFestival className="inline mr-1 text-yellow-400" />,
-    },
-    {
-      date: "26 Jan 2026",
-      day: "Monday",
-      name: "Republic Day",
-      type: "NH",
-      icon: <FaFlag className="inline mr-1 text-red-500" />,
-    },
-    {
-      date: "15 Feb 2026",
-      day: "Sunday",
-      name: "Maha Shivaratri",
-      type: "RH",
-      icon: <FaMoon className="inline mr-1 text-gray-700" />,
-    },
-    {
-      date: "4 Mar 2026",
-      day: "Wednesday",
-      name: "Holi",
-      type: "NH",
-      icon: <GiPartyPopper className="inline mr-1 text-pink-500" />,
-    },
-    {
-      date: "21 Mar 2026",
-      day: "Saturday",
-      name: "Eid-ul-Fitr (Tentative)",
-      type: "RH",
-      icon: <FaMoon className="inline mr-1 text-orange-600" />,
-    },
-    {
-      date: "26 Mar 2026",
-      day: "Thursday",
-      name: "Ram Navami",
-      type: "RH",
-      icon: <GiRam className="inline mr-1 text-orange-400" />,
-    },
-    {
-      date: "31 Mar 2026",
-      day: "Tuesday",
-      name: "Mahavir Jayanti",
-      type: "RH",
-      icon: <FaStar className="inline mr-1 text-orange-400" />,
-    },
-    {
-      date: "3 Apr 2026",
-      day: "Friday",
-      name: "Good Friday",
-      type: "NH",
-      icon: <FaChurch className="inline mr-1 text-red-600" />,
-    },
-    {
-      date: "1 May 2026",
-      day: "Friday",
-      name: "Labour Day / Buddha Purnima",
-      type: "NH",
+            {/* View Profile Dialog */}
+            {typeof viewProfile === "number" && viewProfile >= 0 && (
+              <Dialog open={true} handler={() => setViewProfile(null)}>
+                <DialogBody className="space-y-3">
+                  <Typography variant="h6">Doctor Actions</Typography>
+                  <div className="flex flex-col gap-2">
+                    <Button
+                      size="sm"
+                      className="flex items-center bg-green-500 text-white hover:bg-green-600 text-xs px-2 py-1"
+                      onClick={() => {
+                        setEditIndex(viewProfile);
+                        setEditDoctor(currentDoctors[viewProfile - indexOfFirstDoctor]);
+                        setViewProfile(null);
+                      }}
+                    >
+                      <PencilIcon className="w-4 h-4 mr-1" /> Edit
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="bg-blue-500 text-white hover:bg-blue-600 text-xs px-2 py-1"
+                      onClick={() => {
+                        setConfirmAction({ open: true, type: "clone", index: viewProfile });
+                        setViewProfile(null);
+                      }}
+                    >
+                      <DocumentDuplicateIcon className="w-4 h-4 mr-1" /> Clone
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="bg-red-500 text-white hover:bg-red-600 text-xs px-2 py-1"
+                      onClick={() => {
+                        setConfirmAction({ open: true, type: "delete", index: viewProfile });
+                        setViewProfile(null);
+                      }}
+                    >
+                      <TrashIcon className="w-4 h-4 mr-1" /> Delete
+                    </Button>
+                  </div>
+                </DialogBody>
+                <DialogFooter>
+                  <Button color="orange" onClick={() => setViewProfile(null)}>
+                    Close
+                  </Button>
+                </DialogFooter>
+              </Dialog>
+            )}
       icon: <FaFlag className="inline mr-1 text-orange-500" />,
     },
     {

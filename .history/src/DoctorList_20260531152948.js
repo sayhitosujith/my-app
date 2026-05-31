@@ -826,14 +826,14 @@ const handleToggle = (id, value) => {
                 return (
                   <Card
                     key={realIndex}
-                    className={`p-3 relative border min-h-[10px] w-full ${
+                    className={`p-3 flex relative border min-h-[10px] ${
                       selectedDoctors.includes(realIndex)
                         ? "border-blue-400 bg-blue-100 shadow-lg"
                         : "border-white bg-white shadow-md"
                     } ${
                       gridView
-                        ? "flex flex-col justify-between items-center text-center"
-                        : "flex flex-row items-start gap-3"
+                        ? "flex-col items-center text-center justify-between"
+                        : "flex-row items-start gap-3"
                     } hover:shadow-xl transition duration-200`}
                   >
                     <input
@@ -857,7 +857,7 @@ const handleToggle = (id, value) => {
                     )}
 
 {/* Doctor Details */}
-<div className={`flex-1 w-full space-y-2 text-black ${gridView ? "flex flex-col items-center text-center" : "flex flex-col items-start text-left"}`}>
+<div className="flex-1 w-full h-2 flex flex-col items-start text-left space-y-2 text-black">
 
   {/* Doctor Name */}
   <Typography
