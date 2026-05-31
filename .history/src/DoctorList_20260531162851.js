@@ -451,8 +451,6 @@ function DoctorList() {
     indexOfFirstDoctor,
     indexOfLastDoctor,
   );
-  const [appointmentData, selectedDoctorName] = useState("");
-
   const totalPages = Math.ceil(filteredDoctors.length / doctorsPerPage);
 const handleToggle = (id, value) => {
  const updatedDoctors = doctors.map((doctor) => {

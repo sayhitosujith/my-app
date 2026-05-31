@@ -458,7 +458,6 @@ const handleToggle = (id, value) => {
  const updatedDoctors = doctors.map((doctor) => {
   const fullName =
     `${doctor.firstName} ${doctor.lastName}`.trim();
-
   if (fullName === selectedDoctorName) {
     return {
       ...doctor,
@@ -471,11 +470,6 @@ const handleToggle = (id, value) => {
 
   return doctor;
 });
-
-localStorage.setItem(
-  "doctors",
-  JSON.stringify(updatedDoctors)
-);
 
   setDoctors(updatedDoctors);
   localStorage.setItem("doctors", JSON.stringify(updatedDoctors));

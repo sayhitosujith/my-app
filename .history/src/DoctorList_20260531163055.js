@@ -451,14 +451,12 @@ function DoctorList() {
     indexOfFirstDoctor,
     indexOfLastDoctor,
   );
-  const [appointmentData, selectedDoctorName] = useState("");
-
   const totalPages = Math.ceil(filteredDoctors.length / doctorsPerPage);
 const handleToggle = (id, value) => {
  const updatedDoctors = doctors.map((doctor) => {
   const fullName =
     `${doctor.firstName} ${doctor.lastName}`.trim();
-
+const [appointmentDate, setSelectedDoctor] = useState("");
   if (fullName === selectedDoctorName) {
     return {
       ...doctor,
@@ -471,11 +469,6 @@ const handleToggle = (id, value) => {
 
   return doctor;
 });
-
-localStorage.setItem(
-  "doctors",
-  JSON.stringify(updatedDoctors)
-);
 
   setDoctors(updatedDoctors);
   localStorage.setItem("doctors", JSON.stringify(updatedDoctors));

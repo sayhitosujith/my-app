@@ -451,31 +451,11 @@ function DoctorList() {
     indexOfFirstDoctor,
     indexOfLastDoctor,
   );
-  const [appointmentData, selectedDoctorName] = useState("");
-
   const totalPages = Math.ceil(filteredDoctors.length / doctorsPerPage);
 const handleToggle = (id, value) => {
- const updatedDoctors = doctors.map((doctor) => {
-  const fullName =
-    `${doctor.firstName} ${doctor.lastName}`.trim();
-
-  if (fullName === selectedDoctorName) {
-    return {
-      ...doctor,
-      appointments: [
-        ...(doctor.appointments || []),
-        appointmentData,
-      ],
-    };
-  }
-
-  return doctor;
-});
-
-localStorage.setItem(
-  "doctors",
-  JSON.stringify(updatedDoctors)
-);
+  const updatedDoctors = doctors.map((doc) =>
+    doc.id === id ? { ...doc, isActive: value } : doc
+  );
 
   setDoctors(updatedDoctors);
   localStorage.setItem("doctors", JSON.stringify(updatedDoctors));
