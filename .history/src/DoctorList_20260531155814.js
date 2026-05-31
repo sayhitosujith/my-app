@@ -849,7 +849,7 @@ const handleToggle = (id, value) => {
                         alt="Doctor"
                         className={`${
                           gridView
-                            ? "w-20 h-20 sm:w-24 sm:h-24"
+                            ? "w-24 h-24 sm:w-28 sm:h-28"
                             : "w-20 h-20 sm:w-24 sm:h-24"
                         } object-cover border-2 border-blue-100 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl`}
                       />

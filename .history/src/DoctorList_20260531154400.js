@@ -453,12 +453,13 @@ function DoctorList() {
   );
   const totalPages = Math.ceil(filteredDoctors.length / doctorsPerPage);
 const handleToggle = (id, value) => {
-  const updatedDoctors = doctors.map((doc) =>
-    doc.id === id ? { ...doc, isActive: value } : doc
+  setDoctors((prev) =>
+    prev.map((doc) =>
+      doc.id === id
+        ? { ...doc, isActive: value }
+        : doc
+    )
   );
-
-  setDoctors(updatedDoctors);
-  localStorage.setItem("doctors", JSON.stringify(updatedDoctors));
 };
   const handlePrevPage = () => setCurrentPage((p) => Math.max(p - 1, 1));
   const handleNextPage = () =>
@@ -825,14 +826,14 @@ const handleToggle = (id, value) => {
                 return (
                   <Card
                     key={realIndex}
-                    className={`p-3 flex relative border min-h-[10px] ${
+                    className={`p-3 relative border min-h-[10px] w-full ${
                       selectedDoctors.includes(realIndex)
                         ? "border-blue-400 bg-blue-100 shadow-lg"
                         : "border-white bg-white shadow-md"
                     } ${
                       gridView
-                        ? "flex-col items-center text-center justify-between"
-                        : "flex-row items-start gap-3"
+                        ? "flex flex-col justify-between items-center text-center"
+                        : "flex flex-row items-start gap-3"
                     } hover:shadow-xl transition duration-200`}
                   >
                     <input
@@ -849,14 +850,15 @@ const handleToggle = (id, value) => {
                         alt="Doctor"
                         className={`${
                           gridView
-                            ? "w-20 h-20 sm:w-24 sm:h-24"
+                            ? "w-24 h-24 sm:w-28 sm:h-28"
                             : "w-20 h-20 sm:w-24 sm:h-24"
                         } object-cover border-2 border-blue-100 mb-2 cursor-pointer rounded-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl`}
                       />
                     )}
 
 {/* Doctor Details */}
-<div className="flex-1 w-full flex flex-col items-start text-left space-y-1 text-black">
+<div className={`flex-1 w-full space-y-2 text-black ${gridView ? "flex flex-col items-center text-center" : "flex flex-col items-start text-left"}`}>
+
   {/* Doctor Name */}
   <Typography
     variant="h6"
@@ -878,9 +880,7 @@ const handleToggle = (id, value) => {
   {/* Experience + Consultation Fee */}
   <div className="flex justify-between items-center w-full text-sm">
     <span className="text-gray-700">
-     <span className="font-medium text-black-700">
-    Experience:
-  </span> {doc.experience || 0} years
+      {doc.experience || 0} yrs experience
     </span>
 
     <span className="font-semibold text-green-700 text-base">
@@ -908,26 +908,25 @@ const handleToggle = (id, value) => {
   </div>
 )}
 
-  {/* Active Status */}
+ <div className="w-full flex justify-start">
   <div className="flex items-center gap-2 text-sm">
-  <span className="font-medium text-gray-700">
-    Is Active:
-  </span>
+    <span className="font-medium text-gray-700">
+      Is Active:
+    </span>
 
-  <Switch
-    checked={doc.isActive}
-    onChange={(e) =>
-      handleToggle(doc.id, e.target.checked)
-    }
-    color="green"
-  />
+    <Switch
+      checked={doc.isActive}
+      onChange={(e) => handleToggle(doc.id, e.target.checked)}
+      color="green"
+    />
+  </div>
 </div>
 
 
 
   {/* Phone */}
   {doc.phone && (
-    <Typography className="text-xs sm:text-sm flex items-center gap-1 break-all">
+    <Typography className="text-xs sm:text-sm flex items-center gap-1 break-all justify-start">
       <MdOutlinePhoneIphone className="text-blue-600" />
       <a
         href={`tel:${doc.phone}`}
@@ -1326,20 +1325,6 @@ const handleToggle = (id, value) => {
             />
 
             <input
-  type="text"
-  placeholder="Specialization"
-  value={editDoctor.specialization || ""}
-  onChange={(e) =>
-    setEditDoctor({
-      ...editDoctor,
-      specialization: e.target.value,
-    })
-  }
-  className="w-full border px-3 py-2 rounded"
-/>
-
-
-            <input
               type="tel"
               placeholder="Phone Number"
               value={editDoctor.phone || ""}
@@ -1358,18 +1343,6 @@ const handleToggle = (id, value) => {
               }
               className="w-full border px-3 py-2 rounded"
             />
-            <input
-  type="number"
-  placeholder="Consultation Fee"
-  value={editDoctor.consultationFee || ""}
-  onChange={(e) =>
-    setEditDoctor({
-      ...editDoctor,
-      consultationFee: Number(e.target.value),
-    })
-  }
-  className="w-full border px-3 py-2 rounded"
-/>
           </DialogBody>
 
           <DialogFooter>
