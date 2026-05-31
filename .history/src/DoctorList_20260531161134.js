@@ -954,42 +954,46 @@ const handleToggle = (id, value) => {
 
   {/* Appointments Card */}
   {doc.appointments?.length > 0 && (
-<div className="w-full mt-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-indigo-200 rounded-lg shadow-sm overflow-hidden text-xs">
-  <div className="flex items-center gap-1 px-2 py-1 bg-indigo-100 border-b border-indigo-200">
+<div className="w-full mt-2 bg-green-50 border border-green-200 rounded-lg shadow-sm overflow-hidden text-xs">     
+  <div className="flex items-center gap-1 px-2 py-1 bg-green-100 border-b border-green-200">
   <span>📅</span>
-  <p className="font-semibold text-indigo-800">
+  <p className="font-semibold text-green-800">
     Appointments ({doc.appointments.length})
   </p>
 </div>
 
-     <div className="p-2 max-h-48 overflow-y-auto space-y-1">
-  {doc.appointments.map((appt, i) => (
-    <div
-      key={i}
-      className="text-[10px] p-2 bg-white border border-blue-100 rounded-md"
-    >
-      <p className="font-semibold text-gray-800">
-        {appt?.patientName || "Patient"}
-      </p>
+      <div className="p-1 max-h-32 overflow-y-auto">
+        {doc.appointments.slice(0, 2).map((appt, i) => (
+          <div
+            key={i}
+            className="text-[10px] p-1 mb-1 bg-white border rounded"
+          >
+            <p className="font-semibold text-gray-700">
+              {appt?.patientName || "Patient"}
+            </p>
 
-      <p className="text-gray-600">
-        {appt?.date || "N/A"}
-      </p>
+            <p className="text-gray-600">
+              {appt?.date || "N/A"}
+            </p>
 
-      <span
-        className={`inline-block text-[9px] px-2 py-1 rounded-full ${
-          getAppointmentStatus(appt) === "COMPLETED"
-            ? "bg-red-500 text-white"
-            : getAppointmentStatus(appt) === "PAID"
-            ? "bg-green-500 text-white"
-            : "bg-orange-500 text-white"
-        }`}
-      >
-        {getAppointmentStatus(appt)}
-      </span>
-    </div>
-  ))}
-</div>
+            <span
+              className={`inline-block text-[9px] px-1 py-0 rounded ${
+                getAppointmentStatus(appt) === "COMPLETED"
+                  ? "bg-gray-400 text-white"
+                  : "bg-green-400 text-white"
+              }`}
+            >
+              {getAppointmentStatus(appt)}
+            </span>
+          </div>
+        ))}
+
+        {doc.appointments.length > 2 && (
+          <p className="text-[10px] text-gray-500 text-center pt-1">
+            +{doc.appointments.length - 2} more
+          </p>
+        )}
+      </div>
     </div>
   )}
 </div>

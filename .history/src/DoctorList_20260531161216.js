@@ -962,34 +962,38 @@ const handleToggle = (id, value) => {
   </p>
 </div>
 
-     <div className="p-2 max-h-48 overflow-y-auto space-y-1">
-  {doc.appointments.map((appt, i) => (
-    <div
-      key={i}
-      className="text-[10px] p-2 bg-white border border-blue-100 rounded-md"
-    >
-      <p className="font-semibold text-gray-800">
-        {appt?.patientName || "Patient"}
-      </p>
+      <div className="p-1 max-h-32 overflow-y-auto">
+        {doc.appointments.slice(0, 2).map((appt, i) => (
+          <div
+            key={i}
+            className="text-[10px] p-1 mb-1 bg-white border rounded"
+          >
+            <p className="font-semibold text-gray-700">
+              {appt?.patientName || "Patient"}
+            </p>
 
-      <p className="text-gray-600">
-        {appt?.date || "N/A"}
-      </p>
+            <p className="text-gray-600">
+              {appt?.date || "N/A"}
+            </p>
 
-      <span
-        className={`inline-block text-[9px] px-2 py-1 rounded-full ${
-          getAppointmentStatus(appt) === "COMPLETED"
-            ? "bg-red-500 text-white"
-            : getAppointmentStatus(appt) === "PAID"
-            ? "bg-green-500 text-white"
-            : "bg-orange-500 text-white"
-        }`}
-      >
-        {getAppointmentStatus(appt)}
-      </span>
-    </div>
-  ))}
-</div>
+            <span
+              className={`inline-block text-[9px] px-1 py-0 rounded ${
+                getAppointmentStatus(appt) === "COMPLETED"
+                  ? "bg-gray-400 text-white"
+                  : "bg-green-400 text-white"
+              }`}
+            >
+              {getAppointmentStatus(appt)}
+            </span>
+          </div>
+        ))}
+
+        {doc.appointments.length > 2 && (
+          <p className="text-[10px] text-gray-500 text-center pt-1">
+            +{doc.appointments.length - 2} more
+          </p>
+        )}
+      </div>
     </div>
   )}
 </div>

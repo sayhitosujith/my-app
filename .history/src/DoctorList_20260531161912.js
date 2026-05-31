@@ -968,7 +968,7 @@ const handleToggle = (id, value) => {
       key={i}
       className="text-[10px] p-2 bg-white border border-blue-100 rounded-md"
     >
-      <p className="font-semibold text-gray-800">
+      <p className="font-semibold text-red-800">
         {appt?.patientName || "Patient"}
       </p>
 
@@ -979,7 +979,7 @@ const handleToggle = (id, value) => {
       <span
         className={`inline-block text-[9px] px-2 py-1 rounded-full ${
           getAppointmentStatus(appt) === "COMPLETED"
-            ? "bg-red-500 text-white"
+            ? "bg-gray-500 text-white"
             : getAppointmentStatus(appt) === "PAID"
             ? "bg-green-500 text-white"
             : "bg-orange-500 text-white"
