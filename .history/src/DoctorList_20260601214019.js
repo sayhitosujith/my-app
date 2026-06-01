@@ -653,7 +653,7 @@ const handleToggle = (doctorIndex, value) => {
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Left Navigation Bar */}
-      <div className="w-64 bg-orange-600 text-white shadow-lg fixed left-0 top-0 h-full border-r border-blue-700 flex flex-col">
+      <div className="w-64 bg-orange-900 text-white shadow-lg fixed left-0 top-0 h-full border-r border-blue-700 flex flex-col">
         {/* Logo and Navigation */}
         <div className="p-6 flex-1 overflow-y-auto">
           <div className="mb-8">

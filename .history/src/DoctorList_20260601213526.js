@@ -653,7 +653,7 @@ const handleToggle = (doctorIndex, value) => {
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Left Navigation Bar */}
-      <div className="w-64 bg-orange-600 text-white shadow-lg fixed left-0 top-0 h-full border-r border-blue-700 flex flex-col">
+      <div className="w-64 bg-blue-900 text-white shadow-lg fixed left-0 top-0 h-full border-r border-blue-700 flex flex-col">
         {/* Logo and Navigation */}
         <div className="p-6 flex-1 overflow-y-auto">
           <div className="mb-8">
@@ -661,13 +661,13 @@ const handleToggle = (doctorIndex, value) => {
           </div>
 
           <nav className="space-y-2">
-            <button
+            {/* <button
               onClick={() => navigate("/Welcome")}
               className="w-full text-left px-4 py-2 rounded-lg text-white hover:bg-blue-500 hover:text-white transition duration-200 flex items-center gap-3"
             >
               <span className="text-xl">🏠</span>
               <span className="font-medium">Dashboard</span>
-            </button>
+            </button> */}
 
             <button
               onClick={() => navigate("/DoctorList")}
