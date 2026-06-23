@@ -305,9 +305,10 @@ const CardItem = ({ item, navigate }) => {
         {booked && (
           <div className="absolute top-0 right-2 z-10">
             <Chip
-  value="BOOKED"
-  className="bg-orange-900 text-white font-bold"
-/>
+              value="BOOKED"
+              color="Orange"
+              className="text-white font-bold"
+            />
           </div>
         )}
         <CardFooter>

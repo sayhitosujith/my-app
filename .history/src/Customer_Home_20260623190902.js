@@ -306,7 +306,7 @@ const CardItem = ({ item, navigate }) => {
           <div className="absolute top-0 right-2 z-10">
             <Chip
   value="BOOKED"
-  className="bg-orange-900 text-white font-bold"
+  className="bg-orange-500 text-white font-bold"
 />
           </div>
         )}
